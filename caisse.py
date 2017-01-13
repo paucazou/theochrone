@@ -536,8 +536,26 @@ menus = {
     { 'title': "Faire la bascule", 'type': COMMAND, 'command': basculer },
     ]
     }
-if args.xtopic:
-    pass
+if args.xtopic: # cette fonction semble changer les fichiers xml, en supprimant l'indentation...
+    os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/Dossier d'objets")
+    liste = subprocess.run(['ls'],stdout=subprocess.PIPE)
+    liste = liste.stdout.decode().split('\n')
+    fichiers = {}
+    for file in liste:
+        if file.split('.')[-1] != 'xml':
+            continue
+        try:
+            with enc.Preferences(file,'r') as f:
+                fichiers[file.split('.')[0]] = f.prefs
+        except:
+            exit("L'un des fichiers ne semble pas avoir le bon format, ou bien est corrompu : {}".format(file))
+    os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
+    for fichier,obj in fichiers.items():
+        with open(fichier,'wb') as f:
+            pic = pickle.Pickler(f)
+            for a in obj:
+                a.regex = CompileRegex(a)
+                pic.dump(a)    
 else:
     menu(menus)
 
