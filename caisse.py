@@ -293,8 +293,7 @@ def sauvegarde():
                 print(a.nom)
                 for z,b in sorted(a.__dict__.items()):
                     print(z,':',b)
-    print(objets == objets_ancien)
-    print(objets_ancien)
+    print(objets is objets_ancien)
     reponse = 'peut-être'
     while reponse != 'non':
         reponse = input("""Voulez-vous sauvegarder ? (oui/non)""")
