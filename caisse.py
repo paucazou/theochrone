@@ -11,6 +11,16 @@ import os
 import subprocess
 import re
 import random
+import argparse
+
+parser = argparse.ArgumentParser(
+        prog='Caisse',
+        formatter_class=argparse.RawTextHelpFormatter,
+        description="""A tool to create, modify, delete and save objects as xml or pickle for Theochrone""",
+        )
+
+parser.add_argument('-x','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
+args = parser.parse_args()
 
 objets = []
 objets_ancien = []
@@ -526,8 +536,10 @@ menus = {
     { 'title': "Faire la bascule", 'type': COMMAND, 'command': basculer },
     ]
     }
-
-menu(menus)
+if args.xtopic:
+    pass
+else:
+    menu(menus)
 
 
 
