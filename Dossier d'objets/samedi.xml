@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<list>
+  <Modele>
+    <dict key="attributs">
+      <int key="commemoraison_privilegiee">-1</int>
+      <int key="_priorite">300</int>
+      <bool key="votive">True</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="peut_etre_celebree">False</bool>
+      <dict key="nom">
+        <str key="latina">Sanctae Mariae Sabbato</str>
+        <str key="english">Saturday of the Blessed Virgin Mary</str>
+        <str key="francais">De la Sainte Vierge le samedi</str>
+      </dict>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="celebree">True</bool>
+      <None key="regex"/>
+      <int key="ordo">1962</int>
+      <int key="degre">4</int>
+      <bool key="transferee">False</bool>
+      <dict key="regex_">
+        <list key="egal"/>
+        <list key="nom"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+          <str>au</str>
+          <str>le</str>
+        </list>
+        <list key="hyperonyme"/>
+        <list key="nom_compose">
+          <str>(vierge|marie)</str>
+          <str>samedi</str>
+        </list>
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="titre">
+          <str>sainte</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">True</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="personne">marie</str>
+      <bool key="omission">False</bool>
+      <str key="propre">romanus</str>
+      <None key="date"/>
+      <dict key="addendum">
+        <str key="francais">Les informations rentrées sont incomplètes</str>
+      </dict>
+      <str key="date_"/>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <str key="_couleur">blanc</str>
+      <str key="link">http://introibo.fr/-Commun-des-Saints-</str>
+      <bool key="dimanche">False</bool>
+    </dict>
+    <str key="classe">Samedi</str>
+  </Modele>
+</list>
