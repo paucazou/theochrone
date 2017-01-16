@@ -223,7 +223,8 @@ def choix_fichier():
     global objets_ancien
     os.chdir("./Dossier d'objets")
     subprocess.run(['ls'])
-    fichier=finput("""Entrez le nom du fichier. Si ce fichier n'existe pas, il sera automatiquement créé. ""","romanus_1962_.xml")
+    readline.parse_and_bind("tab: complete")
+    fichier=finput("""Entrez le nom du fichier. Si ce fichier n'existe pas, il sera automatiquement créé. """)
     global objets
     try:
         with enc.Preferences(fichier,'r') as file:
