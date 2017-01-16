@@ -288,7 +288,7 @@ def mois_lettre(mot,langue='english'):
     return False, 0
      
 
-def traite(Annee,objet,date,annee):
+def traite(Annee,objet,date,annee,propre):
     """Déplace la fête 'objet' si c'est nécessaire."""
     try:
         isinstance(Annee[date],list)
@@ -555,7 +555,7 @@ def ouvreetregarde(fichier,Annee,ordo,propre,annee,paques):
                 objet=pic.load()
                 if ordo == objet.ordo and trouve(propre,objet.propre,latinus):
                     date=objet.DateCivile(paques,annee)
-                    Annee = traite(Annee,objet,date,annee)
+                    Annee = traite(Annee,objet,date,annee,propre)
             except EOFError:
                 boucle=False
     return Annee
@@ -1002,6 +1002,7 @@ class FeteFerie(Fete):
     
     def Dimanche_precedent(self,jour,Annee):
         """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee."""
+        # attention, s'il ne trouve pas de dimanche, le programme renvoie la fête du dimanche (Noël en 2016, par exemple)
         for office in Annee[dimancheavant(jour)]:
             if office.dimanche:
                 office.nom = self.QuelNom(jour)
