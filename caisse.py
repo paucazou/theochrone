@@ -20,6 +20,7 @@ parser = argparse.ArgumentParser(
         )
 
 parser.add_argument('-x','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
+parser.add_argument('-i','--indente', help="indent all xml files in Dossier d'objets",action='store_true')
 args = parser.parse_args()
 
 objets = []
@@ -536,7 +537,9 @@ menus = {
     { 'title': "Faire la bascule", 'type': COMMAND, 'command': basculer },
     ]
     }
-if args.xtopic: # cette fonction semble changer les fichiers xml, en supprimant l'indentation...
+     
+def dossier_d_objets():
+    """Une fonction qui charge le contenu des fichiers xml de Dossier d'objets"""
     os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/Dossier d'objets")
     liste = subprocess.run(['ls'],stdout=subprocess.PIPE)
     liste = liste.stdout.decode().split('\n')
@@ -546,16 +549,24 @@ if args.xtopic: # cette fonction semble changer les fichiers xml, en supprimant 
             continue
         try:
             with enc.Preferences(file,'r') as f:
-                fichiers[file.split('.')[0]] = f.prefs
+                fichiers[file] = f.prefs
         except:
             exit("L'un des fichiers ne semble pas avoir le bon format, ou bien est corrompu : {}".format(file))
+    return fichiers
+    
+if args.xtopic:
+    fichiers = dossier_d_objets()
     os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
     for fichier,obj in fichiers.items():
-        with open(fichier,'wb') as f:
+        with open(fichier.split('.')[0],'wb') as f:
             pic = pickle.Pickler(f)
             for a in obj:
                 a.regex = CompileRegex(a)
-                pic.dump(a)    
+                pic.dump(a)
+elif args.indente:
+    fichiers = dossier_d_objets()
+    for fichier in fichiers:
+        os.system('cat ' + fichier + '|xmllint --format - > tMpXmL && cat tMpXmL > ' + fichier + '&& rm tMpXmL')
 else:
     menu(menus)
 
