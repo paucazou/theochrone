@@ -162,7 +162,7 @@ if args.INVERSE != 1:
         date = datetime.date(date.year,1,1)
         fin = datetime.date(date.year,12,31)
     retenus = []
-    while date != fin:
+    while date <= fin:
         try:
             Annee[date] = adjutoria.selection(Annee[date],date,Annee,samedi)
             for fete in Annee[date]:
