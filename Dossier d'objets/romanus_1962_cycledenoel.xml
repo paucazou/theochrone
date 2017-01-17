@@ -445,6 +445,7 @@
         <list key="attribut">
           <str>pape</str>
           <str>confesseur</str>
+          <str>1</str>
         </list>
         <list key="nom_compose"/>
         <list key="refus_fort">
@@ -458,7 +459,6 @@
         <list key="syntaxiques"/>
         <list key="titre">
           <str>saint</str>
-          <str>1</str>
         </list>
         <list key="attribut_compose"/>
       </dict>
