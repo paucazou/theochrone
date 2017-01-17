@@ -441,6 +441,36 @@ def selection(liste,date,Annee,samedi):
     
     return liste
 
+def affiche_temps_liturgique(objet,langue='francais'):
+    """Une fonction capable d'afficher le temps liturgique"""
+    sortie = 'erreur'
+    if langue == 'francais':
+        if objet.temps_liturgique == 'nativite':
+            sortie = "Temps de la Nativité (Temps de Noël)"
+        elif objet.temps_liturgique == 'epiphanie':
+            sortie = "Temps de l'Épiphanie (Temps de Noël)"
+        elif objet.temps_liturgique == 'avent':
+            sortie = "Temps de l'Avent"
+        elif objet.temps_liturgique == 'apres_epiphanie':
+            sortie = "Temps per Annum après l'Épiphanie"
+        elif objet.temps_liturgique == 'septuagesime':
+            sortie = "Temps de la Septuagésime"
+        elif objet.temps_liturgique == 'careme':
+            sortie = "Temps du Carême proprement dit (Temps du Carême)"
+        elif objet.temps_liturgique == 'passion':
+            sortie = "Temps de la Passion (Temps du Carême)"
+        elif objet.temps_liturgique == 'paques':
+            sortie = "Temps de Pâques (Temps Pascal)"
+        elif objet.temps_liturgique == 'ascension':
+            sortie = "Temps de l'Ascension (Temps Pascal)"
+        elif objet.temps_liturgique == 'octave_pentecote':
+            sortie = "Octave de la Pentecôte (Temps Pascal)"
+        elif objet.temps_liturgique == 'pentecote':
+            sortie = "Temps per Annum après la Pentecôte"
+    else: # english
+        pass
+    return sortie
+
 def affichage(**kwargs): # rajouter une partie sur le temps liturgique
     """Une fonction destinée à l'affichage des résultats."""
     if kwargs['verbose']:
@@ -526,8 +556,8 @@ def affichage(**kwargs): # rajouter une partie sur le temps liturgique
                 else:
                     sortie += """Fête du Sanctoral. """
                     
-            if False: #kwargs['verbose'] or kwargs['temps_liturgique']: # ne peut marcher qu'avec une année complète supprimer False une fois que c'est corrigé ; ne peut être un simple affichage : ce qui sera enregistré le sera sous une forme plus sobre.
-                sortie += """Temps liturgique : {}. """.format(a.temps_liturgique)
+            if kwargs['verbose'] or kwargs['temps_liturgique']: # ne peut marcher qu'avec une année complète supprimer False une fois que c'est corrigé ; ne peut être un simple affichage : ce qui sera enregistré le sera sous une forme plus sobre.
+                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,'francais'))
                 
             if kwargs['verbose'] or kwargs['couleur']:
                 sortie += """Couleur liturgique : {}. """.format(a.couleur)
@@ -803,6 +833,7 @@ class Fete:
         """Une fonction qui renvoie le temps liturgique"""
         if self._temps_liturgique == 'variable':
             date = self.date
+            print(self.date)
             from __main__ import Annee
             while True:
                 try:
@@ -1000,7 +1031,7 @@ class FeteFerie(Fete):
                 'francais':nom[i] + ' de la férie',
                 'english':name[i]} # Comment dit on jour de férie en anglais ?
     
-    def Dimanche_precedent(self,jour,Annee): # rajouter une partie avec le tps liturgique
+    def Dimanche_precedent(self,jour,Annee): # rajouter une partie avec le tps liturgique # peut-être lier les jours octaves de Noël
         """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee."""
         # attention, s'il ne trouve pas de dimanche, le programme renvoie la fête du dimanche (Noël en 2016, par exemple)
         for office in Annee[dimancheavant(jour)]:
@@ -1010,7 +1041,7 @@ class FeteFerie(Fete):
                 office._priorite=200
                 office.commemoraison_privilegiee=-1
                 office.date=jour
-                office.dimanche = False
+                #office.dimanche = False # la suppression de la mention du dimanche pose des gros problèmes, mais je ne sais pourquoi. Pourtant, il faut la garder pour la sélection, qui sans cela est perturbée.
                 if jour >= datetime.date(jour.year,1,14) and office.temps_liturgique == 'epiphanie': # ne fonctionne pas
                     office._temps_liturgique = 'apres_epiphanie'
                 break # attention, le Très Saint de Jésus peut se trouver en semaine, mais devra être repris -> regarder la semaine plutôt.
