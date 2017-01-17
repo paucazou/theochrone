@@ -371,7 +371,7 @@ def selection(liste,date,Annee,samedi):
             ferie.Dimanche_precedent(date,Annee)
             liste.append(ferie)
     liste.sort(key=lambda x: x.priorite,reverse=True)
-
+    
     liste[0].commemoraison = False
     liste[0].omission = False
     liste[0].celebree=True
@@ -749,6 +749,8 @@ class Fete:
     def Correspondance(self,mots,mots_separes):
         """Fonction qui renvoie un chiffre de correspondance entre les mots rentrés et les regex"""
         niveau = 0
+        if isinstance(self,FeteFerie):
+            return niveau
         for index in self.regex:
             if 'compose' in index:
                 i=0
