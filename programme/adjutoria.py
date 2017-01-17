@@ -359,16 +359,19 @@ def selection(liste,date,Annee,samedi):
     commemoraison_temporal=False
     
     if samedi.Est_ce_samedi(date):
+        samedi.date = date
         liste.append(samedi)
     else:
         try:
             ferie = FeteFerie()
             if liste[0].degre == 5:
-                liste.append(ferie.Dimanche_precedent(date,Annee))
+                ferie.Dimanche_precedent(date,Annee)
+                liste.append(ferie)
         except IndexError:
-            liste.append(ferie.Dimanche_precedent(date,Annee))
+            ferie.Dimanche_precedent(date,Annee)
+            liste.append(ferie)
     liste.sort(key=lambda x: x.priorite,reverse=True)
-    
+
     liste[0].commemoraison = False
     liste[0].omission = False
     liste[0].celebree=True
@@ -508,7 +511,7 @@ def affichage(**kwargs): # rajouter une partie sur le temps liturgique
                     sortie += attente.capitalize()
                 else:
                     sortie += attente
-                
+                    
                 premier_mot = a.nom['francais'].split()[0].lower() # peut-être traiter aussi le deuxième mot ; avec une regex ?
                 if [True for i in ('dimanche',) if i in premier_mot]:
                     sortie += 'le '
@@ -524,7 +527,7 @@ def affichage(**kwargs): # rajouter une partie sur le temps liturgique
             sortie += a.nom['francais']
             
             if not kwargs['verbose'] and a.commemoraison:
-                sortie += '(Commémoraison)'
+                sortie += ' (Commémoraison)'
                 
             sortie += '. '
             
@@ -580,7 +583,6 @@ def ouvreetregarde(fichier,Annee,ordo,propre,annee,paques):
         pic=pickle.Unpickler(file)
         boucle=True
         while boucle:
-            #print(Annee)
             try:
                 objet=pic.load()
                 if ordo == objet.ordo and trouve(propre,objet.propre,latinus):
@@ -833,7 +835,6 @@ class Fete:
         """Une fonction qui renvoie le temps liturgique"""
         if self._temps_liturgique == 'variable':
             date = self.date
-            print(self.date)
             from __main__ import Annee
             while True:
                 try:
@@ -1020,6 +1021,9 @@ class FeteFerie(Fete):
     
     def __init__(self):
         Fete.__init__(self)
+        self.degre=4
+        self._priorite=200
+        self.commemoraison_privilegiee=-1
     
     def QuelNom(self,jour):
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
@@ -1031,21 +1035,30 @@ class FeteFerie(Fete):
                 'francais':nom[i] + ' de la férie',
                 'english':name[i]} # Comment dit on jour de férie en anglais ?
     
-    def Dimanche_precedent(self,jour,Annee): # rajouter une partie avec le tps liturgique # peut-être lier les jours octaves de Noël
+    def Dimanche_precedent(self,jour,Annee): # peut-être lier les jours octaves de Noël
         """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee."""
         # attention, s'il ne trouve pas de dimanche, le programme renvoie la fête du dimanche (Noël en 2016, par exemple)
-        for office in Annee[dimancheavant(jour)]:
-            if office.dimanche:
-                office.nom = self.QuelNom(jour)
-                office.degre=4
-                office._priorite=200
-                office.commemoraison_privilegiee=-1
-                office.date=jour
-                #office.dimanche = False # la suppression de la mention du dimanche pose des gros problèmes, mais je ne sais pourquoi. Pourtant, il faut la garder pour la sélection, qui sans cela est perturbée.
-                if jour >= datetime.date(jour.year,1,14) and office.temps_liturgique == 'epiphanie': # ne fonctionne pas
-                    office._temps_liturgique = 'apres_epiphanie'
-                break # attention, le Très Saint de Jésus peut se trouver en semaine, mais devra être repris -> regarder la semaine plutôt.
-        return office
+        curseur = jour
+        boucle = True
+        while boucle:
+            curseur = curseur - datetime.timedelta(1)
+            try:
+                for office in Annee[curseur]:
+                    if office.dimanche:
+                        self.nom = self.QuelNom(jour)
+                        self.date=jour
+                        self._couleur = office.couleur
+                        self.propre = office.propre
+                        self.link = office.link
+                        self.addendum = office.addendum
+                        if jour >= datetime.date(jour.year,1,14) and office.temps_liturgique == 'epiphanie': # ne fonctionne pas
+                            self._temps_liturgique = 'apres_epiphanie'
+                        else:
+                            self._temps_liturgique = office._temps_liturgique
+                        boucle = False
+                        break
+            except KeyError:
+                continue
         
 class Samedi(Fete):
     """Une fête définissant l'office de la sainte Vierge du samedi"""
