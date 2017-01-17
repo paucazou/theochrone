@@ -1000,7 +1000,7 @@ class FeteFerie(Fete):
                 'francais':nom[i] + ' de la férie',
                 'english':name[i]} # Comment dit on jour de férie en anglais ?
     
-    def Dimanche_precedent(self,jour,Annee):
+    def Dimanche_precedent(self,jour,Annee): # rajouter une partie avec le tps liturgique
         """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee."""
         # attention, s'il ne trouve pas de dimanche, le programme renvoie la fête du dimanche (Noël en 2016, par exemple)
         for office in Annee[dimancheavant(jour)]:
@@ -1010,6 +1010,7 @@ class FeteFerie(Fete):
                 office._priorite=200
                 office.commemoraison_privilegiee=-1
                 office.date=jour
+                office.dimanche = False
                 if jour >= datetime.date(jour.year,1,14) and office.temps_liturgique == 'epiphanie': # ne fonctionne pas
                     office._temps_liturgique = 'apres_epiphanie'
                 break # attention, le Très Saint de Jésus peut se trouver en semaine, mais devra être repris -> regarder la semaine plutôt.
