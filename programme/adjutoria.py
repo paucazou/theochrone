@@ -8,6 +8,7 @@ import argparse
 import sys
 import unicodedata
 import re
+import copy
 #import pdb ; pdb.set_trace()
 #from IPython.lib.deepreload import reload as dreload
 
@@ -586,8 +587,12 @@ def ouvreetregarde(fichier,Annee,ordo,propre,annee,paques):
             try:
                 objet=pic.load()
                 if ordo == objet.ordo and trouve(propre,objet.propre,latinus):
-                    date=objet.DateCivile(paques,annee)
-                    Annee = traite(Annee,objet,date,annee,propre)
+                    if isinstance(objet.DateCivile(paques,annee),datetime.date):
+                        date=objet.DateCivile(paques,annee)
+                        Annee = traite(Annee,objet,date,annee,propre)
+                    else:
+                        for a in objet.DateCivile(paques,annee):
+                            Annee = traite(Annee,a,objet.DateCivile(paques,annee),annee,propre)
             except EOFError:
                 boucle=False
     return Annee
@@ -1112,6 +1117,31 @@ class DimancheOctaveNoel(Fete):
         if dimancheapres(datetime.date(annee,12,25)) == datetime.date(annee + 1,1,1):
             self._priorite = 0
         return dimancheapres(datetime.date(annee,12,25))
+    
+# classes de fêtes à plusieurs dates
+
+class JoursOctaveDeNoel(FeteFixe):
+    """Une classe pour les jours dans l'Octave de Noël"""
+    
+    def __init__(self):
+        FeteFixe.__init__(self)
+        self.nom_={'francais':"jour dans l'Octave de Noël",'latina':'Die infra octavam Nativitatis','english':'day in the Octave of Christmas'} 
+        self.compléments_nom={'francais':['Deuxième','Troisième','Quatrième','Cinquième','Sixième','Septième'],
+                              'latina': ['De Secunda','De Tertia','De Quarta','De Quinqua', 'De Sexta','De Septima'],
+                              'english': ['Secund','Third','Fourth','Fifth','Sixth','Seventh',]
+                              }
+        self.date_=[26,27,28,29,30,31]
+        
+    def DateCivile(self,paques,annee):
+        """Renvoie une liste de dates"""
+        for i,a in enumerate(self.date_):
+            retour = FeteFixe()
+            retour.__dict__ = copy.deepcopy(self.__dict__)
+            for langue in ('francais','latina','english'):
+                retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
+            retour.date = datetime.date(annee,12,self.date_[i])
+            yield retour
+            
     
 
     
