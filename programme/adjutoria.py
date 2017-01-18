@@ -514,7 +514,7 @@ def affichage(**kwargs):
                 elif a.omission:
                     attente = 'on omet '
                     
-                if sortie[-1:] == '\n':
+                if sortie[-1:] == '\n' or sortie[-1:] == '':
                     sortie += attente.capitalize()
                 else:
                     sortie += attente
@@ -535,12 +535,14 @@ def affichage(**kwargs):
             
             if not kwargs['verbose'] and a.commemoraison:
                 sortie += ' (Commémoraison)'
+            elif not kwargs['verbose'] and kwargs['recherche'] and a.omission:
+                sortie += ' (omis)'
                 
             if kwargs['recherche'] and kwargs['verbose']:
-                sortie += ' ' + affiche_jour(kwargs['date'],kwargs['langue'])
+                sortie += ' ' + affiche_jour(a.date,kwargs['langue'])
                 
             if kwargs['recherche'] and not kwargs['verbose']:
-                sortie += """ : {}/{}/{}""".format(kwargs['date'].day,kwargs['date'].month,kwargs['date'].year)
+                sortie += """ : {}/{}/{}""".format(a.date.day,a.date.month,a.date.year)
                 
             sortie += '. '
             
