@@ -475,25 +475,31 @@ def affiche_temps_liturgique(objet,langue='francais'):
         pass
     return sortie
 
-def affichage(**kwargs): # rajouter une partie sur le temps liturgique
+def affiche_jour(date,langue):
+    """Une fonction pour afficher le jour"""
+    if langue =='francais':
+        if date.day == 1:
+            jour = 'premier'
+        else:
+            jour = date.day
+        mois = mois_lettre(date.month - 1,langue)
+        sortie="""le {} {} {}""".format(jour,mois,date.year)
+    elif kwargs['langue']=='english':
+        sortie="""on {}""".format(date)
+    elif kwargs['langue']=='latina':
+        sortie="""in {}""".format(date) # à développer
+    
+    return sortie
+
+def affichage(**kwargs):
     """Une fonction destinée à l'affichage des résultats."""
-    if kwargs['verbose']:
-        if kwargs['langue']=='francais':
-            if kwargs['date'].day == 1:
-                jour = 'premier'
-            else:
-                jour = kwargs['date'].day
-            mois = mois_lettre(kwargs['date'].month - 1,kwargs['langue'])
-            sortie="""Le {} {} {}, """.format(jour,mois,kwargs['date'].year)
-        elif kwargs['langue']=='english':
-            sortie="""On {}, """.format(kwargs['date'])
-        elif kwargs['langue']=='latina':
-            sortie="""In {}, """.format(kwargs['date']) # à développer
+    if kwargs['verbose'] and not kwargs['recherche']:
+        sortie = affiche_jour(kwargs['date'],kwargs['langue']).capitalize() + ', '
     else:
         sortie=''
         
     for a in kwargs['liste']:
-        if a.omission and not kwargs['verbose']:
+        if a.omission and not kwargs['verbose'] and not kwargs['recherche']:
             continue
         if kwargs['langue'] == 'francais':
             if kwargs['verbose']:
@@ -520,15 +526,21 @@ def affichage(**kwargs): # rajouter une partie sur le temps liturgique
                     sortie += 'la '
                 elif [True for i in ('saints',) if i in premier_mot]:
                     sortie += 'les '
-                elif [True for i in ('office',) if i in premier_mot]:
+                elif [True for i in ('office','octave',) if i in premier_mot]:
                     sortie += "l'"
             
-            if kwargs['date_affichee'] and not kwargs['verbose']:
+            if kwargs['date_affichee'] and not kwargs['verbose'] and not kwargs['recherche']:
                 sortie += """{}/{}/{} : """.format(kwargs['date'].day,kwargs['date'].month,kwargs['date'].year)
             sortie += a.nom['francais']
             
             if not kwargs['verbose'] and a.commemoraison:
                 sortie += ' (Commémoraison)'
+                
+            if kwargs['recherche'] and kwargs['verbose']:
+                sortie += ' ' + affiche_jour(kwargs['date'],kwargs['langue'])
+                
+            if kwargs['recherche'] and not kwargs['verbose']:
+                sortie += """ : {}/{}/{}""".format(kwargs['date'].day,kwargs['date'].month,kwargs['date'].year)
                 
             sortie += '. '
             
@@ -1131,6 +1143,7 @@ class JoursOctaveDeNoel(FeteFixe):
                               'english': ['Secund','Third','Fourth','Fifth','Sixth','Seventh',]
                               }
         self.date_=[26,27,28,29,30,31]
+        self.mois_ = 12
         
     def DateCivile(self,paques,annee):
         """Renvoie une liste de dates"""
@@ -1139,10 +1152,12 @@ class JoursOctaveDeNoel(FeteFixe):
             retour.__dict__ = copy.deepcopy(self.__dict__)
             for langue in ('francais','latina','english'):
                 retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
-            retour.date = datetime.date(annee,12,self.date_[i])
+            retour.date = datetime.date(annee,self.mois_,self.date_[i])
             yield retour
             
-    
+class JoursAvent(FeteMobileAvent):
+    """Une classe pour les jours de férie de l'Avent"""
+    pass
 
     
 
