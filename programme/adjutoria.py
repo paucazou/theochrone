@@ -1068,14 +1068,15 @@ class FeteFerie(Fete):
                     if office.dimanche:
                         self.nom = self.QuelNom(jour)
                         self.date=jour
-                        self._couleur = office.couleur
                         self.propre = office.propre
                         self.link = office.link
                         self.addendum = office.addendum
-                        if jour >= datetime.date(jour.year,1,14) and office.temps_liturgique == 'epiphanie': # ne fonctionne pas
+                        if jour >= datetime.date(jour.year,1,14) and office.temps_liturgique == 'epiphanie':
                             self._temps_liturgique = 'apres_epiphanie'
+                            self._couleur = 'vert'
                         else:
                             self._temps_liturgique = office._temps_liturgique
+                            self._couleur = office.couleur
                         boucle = False
                         break
             except KeyError:
