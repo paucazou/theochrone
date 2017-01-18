@@ -450,27 +450,27 @@ def affiche_temps_liturgique(objet,langue='francais'):
     sortie = 'erreur'
     if langue == 'francais':
         if objet.temps_liturgique == 'nativite':
-            sortie = "Temps de la Nativité (Temps de Noël)"
+            sortie = "temps de la Nativité (Temps de Noël)"
         elif objet.temps_liturgique == 'epiphanie':
-            sortie = "Temps de l'Épiphanie (Temps de Noël)"
+            sortie = "temps de l'Épiphanie (Temps de Noël)"
         elif objet.temps_liturgique == 'avent':
-            sortie = "Temps de l'Avent"
+            sortie = "temps de l'Avent"
         elif objet.temps_liturgique == 'apres_epiphanie':
-            sortie = "Temps per Annum après l'Épiphanie"
+            sortie = "temps per Annum après l'Épiphanie"
         elif objet.temps_liturgique == 'septuagesime':
-            sortie = "Temps de la Septuagésime"
+            sortie = "temps de la Septuagésime"
         elif objet.temps_liturgique == 'careme':
-            sortie = "Temps du Carême proprement dit (Temps du Carême)"
+            sortie = "temps du Carême proprement dit (Temps du Carême)"
         elif objet.temps_liturgique == 'passion':
-            sortie = "Temps de la Passion (Temps du Carême)"
+            sortie = "temps de la Passion (Temps du Carême)"
         elif objet.temps_liturgique == 'paques':
-            sortie = "Temps de Pâques (Temps Pascal)"
+            sortie = "temps de Pâques (Temps Pascal)"
         elif objet.temps_liturgique == 'ascension':
-            sortie = "Temps de l'Ascension (Temps Pascal)"
+            sortie = "temps de l'Ascension (Temps Pascal)"
         elif objet.temps_liturgique == 'octave_pentecote':
-            sortie = "Octave de la Pentecôte (Temps Pascal)"
+            sortie = "octave de la Pentecôte (Temps Pascal)"
         elif objet.temps_liturgique == 'pentecote':
-            sortie = "Temps per Annum après la Pentecôte"
+            sortie = "temps per Annum après la Pentecôte"
     else: # english
         pass
     return sortie
@@ -575,7 +575,7 @@ def affichage(**kwargs):
                     sortie += """Fête du Sanctoral. """
                     
             if kwargs['verbose'] or kwargs['temps_liturgique']: # ne peut marcher qu'avec une année complète supprimer False une fois que c'est corrigé ; ne peut être un simple affichage : ce qui sera enregistré le sera sous une forme plus sobre.
-                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,'francais'))
+                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,'francais').capitalize())
                 
             if kwargs['verbose'] or kwargs['couleur']:
                 sortie += """Couleur liturgique : {}. """.format(a.couleur)
@@ -1053,7 +1053,7 @@ class FeteFerie(Fete):
         nom = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi']
         name = ['Monday','Tuesday','Wednesday','Thursday','Friday']
         return {'latina':'Feria ' + nomen[i],
-                'francais':nom[i] + ' de la férie',
+                'francais':nom[i] + ' de la férie du ' + affiche_temps_liturgique(self,'francais'),
                 'english':name[i]} # Comment dit on jour de férie en anglais ?
     
     def Dimanche_precedent(self,jour,Annee): # peut-être lier les jours octaves de Noël
@@ -1066,7 +1066,6 @@ class FeteFerie(Fete):
             try:
                 for office in Annee[curseur]:
                     if office.dimanche:
-                        self.nom = self.QuelNom(jour)
                         self.date=jour
                         self.propre = office.propre
                         self.link = office.link
@@ -1077,6 +1076,7 @@ class FeteFerie(Fete):
                         else:
                             self._temps_liturgique = office._temps_liturgique
                             self._couleur = office.couleur
+                        self.nom = self.QuelNom(jour)
                         boucle = False
                         break
             except KeyError:
