@@ -539,7 +539,7 @@ def affichage(**kwargs):
                 sortie += ' (omis)'
                 
             if kwargs['recherche'] and kwargs['verbose']:
-                sortie += ' ' + affiche_jour(a.date,kwargs['langue'])
+                sortie += ' ' + affiche_jour(a.date,kwargs['langue']) #rajouter le jour de la semaine
                 
             if kwargs['recherche'] and not kwargs['verbose']:
                 sortie += """ : {}/{}/{}""".format(a.date.day,a.date.month,a.date.year)
@@ -690,7 +690,8 @@ class Fete:
         self.fete_du_Seigneur=False
         
         self.occurrence_perpetuelle=False # Pour toutes les fêtes souffrant d'une occurrence perpetuelle avec une autre fête.
-        self.dimanche=False # Pour les dimanches qui sont reprises en semaine
+        self.dimanche=False # Pour les dimanches
+        self.repris_en_ferie=False # Pour les jours qui sont repris en férie
         
         self.temporal=False
         self.sanctoral=False
@@ -745,7 +746,7 @@ class Fete:
         if isinstance(autrefete,Fete):
             return self.__dict__ == autrefete.__dict__
         else:
-            raise TypeError("""{} is not a 'Fete' class, or one of her subclasses.""".format(autrefete))
+            raise TypeError("""{} is not a 'Fete' class, or any of her subclasses.""".format(autrefete))
         
     # Définitions de méthodes   
     def Votive(self):
@@ -1102,8 +1103,10 @@ class TSNJ(FeteFixe):
         """Une fonction qui détermine la date pour une année précise."""
         dimanche=calendar.monthcalendar(annee,self.date_['mois'])[0][6]
         if dimanche <= self.limite_haute and dimanche >= self.limite_basse:
+            self.dimanche=True
             return datetime.date(annee,self.date_['mois'],dimanche)
         else:
+            self.dimanche=False
             return datetime.date(annee,self.date_['mois'],self.date_['jour'])
 
 class Defunts(FeteFixe):
