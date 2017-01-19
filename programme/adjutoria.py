@@ -1057,16 +1057,15 @@ class FeteFerie(Fete):
                 'francais':nom[i] + ' de la férie du ' + affiche_temps_liturgique(self,'francais'),
                 'english':name[i]} # Comment dit on jour de férie en anglais ?
     
-    def Dimanche_precedent(self,jour,Annee): # peut-être lier les jours octaves de Noël
-        """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee."""
-        # attention, s'il ne trouve pas de dimanche, le programme renvoie la fête du dimanche (Noël en 2016, par exemple)
+    def Dimanche_precedent(self,jour,Annee):
+        """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee.""" # changer cette aide
         curseur = jour
         boucle = True
         while boucle:
             curseur = curseur - datetime.timedelta(1)
             try:
                 for office in Annee[curseur]:
-                    if office.dimanche:
+                    if office.repris_en_ferie:
                         self.date=jour
                         self.propre = office.propre
                         self.link = office.link
