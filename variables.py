@@ -87,7 +87,7 @@ derniers_dimanches_apres_pentecote = [
 codes_erreurs = {
     0 : 'Système',
     1 : 'date',
-    2 : 'date',
+    2 : 'recherche',
     3 : '',
     4 : '',
     5 : '',
