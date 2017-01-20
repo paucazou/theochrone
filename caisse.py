@@ -124,8 +124,9 @@ def CompileRegex(objet):
     """Fonction de compilation des regex""" # énormément d'erreurs dans cette fonction = certaines regex font n'importe quoi, et certains titres ne sont pas supprimés.
     
     vaisseau = copy.deepcopy(objet.regex_)
-    titres = ['saint([^e]|$)', 'sainte', 'bienheureux', 'bienheureuse([^s]|$)', 'bienheureuses.' ] # rajouter jours de la semaine, nom de mois
-    syntaxiques=['de','à','l','le','des','du'] #ne pas mettre des mots qui pourraient se trouver dans les annexes : du, après, à,l'
+    titres = ['saint([^e]|$)', 'sainte', 'saints','saintes','bienheureux', 'bienheureuse([^s]|$)','bienheureuses.',
+              'lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche','janvier','février','mars','avril','juin','juillet','août','septembre','octobre','novembre','décembre',] # rajouter jours de la semaine, nom de mois
+    syntaxiques=['de','à','l','le','d','des','du'] #ne pas mettre des mots qui pourraient se trouver dans les annexes : du, après, à,l'
     chiffres = ['0','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26',]
 
     annexes = [] # Il faudrait quelque chose de ce genre pour les jours de la semaine, et les données modifiables peut-être lancer la recherche directement depuis la fonction de traitement des données : oui, une recherche par caractéristiques ; cela ne fait pas doublet, mais permet de faire des recherches approximatives.
@@ -378,7 +379,8 @@ def ajouter(modele,entrees={}):
         nouveau.pal = valider('La messe peut-elle être Pro aliquibus locis ?',nouveau.pal,'bool')
         nouveau.votive = valider('La messe est-elle votive, ou peut-elle être reprise comme votive ?',nouveau.votive,'bool')
         nouveau.occurrence_perpetuelle = valider('La fête souffre-t-elle d\'une occurrence perpétuelle avec une autre fête ?',nouveau.occurrence_perpetuelle,'bool')
-        nouveau.dimanche = valider('La fête tombe-t-elle un dimanche qui doit être repris en semaine ? ',nouveau.dimanche,'bool')
+        nouveau.dimanche = valider('La fête tombe-t-elle un dimanche ?',nouveau.dimanche,'bool')
+        nouveau.repris_en_ferie = valider('La fête est-elle reprise en férie ?',nouveau.repris_en_ferie,'bool')
         nouveau.fete_du_Seigneur = valider('La fête est-elle une fête du Seigneur ?',nouveau.fete_du_Seigneur,'bool')
         nouveau.temporal = valider('La fête fait-elle partie du Temporal ?', nouveau.temporal,'bool')
         if not nouveau.temporal:
