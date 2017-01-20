@@ -521,15 +521,21 @@ def affichage(**kwargs):
                 else:
                     sortie += attente
                     
-                premier_mot = a.nom['francais'].split()[0].lower() # peut-être traiter aussi le deuxième mot ; avec une regex ?
-                if [True for i in ('dimanche',) if i in premier_mot]:
-                    sortie += 'le '
-                elif [True for i in ('dédicace','présentation') if i in premier_mot]:
-                    sortie += 'la '
-                elif [True for i in ('saints',) if i in premier_mot]:
-                    sortie += 'les '
-                elif [True for i in ('office','octave',) if i in premier_mot]:
-                    sortie += "l'"
+                for i, mot in enumerate(a.nom['francais'].lower().split()):
+                    if [True for i in ('dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi') if i in mot]:
+                        sortie += 'le '
+                        break
+                    elif [True for i in ('dédicace','présentation','fête','très','commémoraison') if i in mot]:
+                        sortie += 'la '
+                        break
+                    elif [True for i in ('saints',) if i in mot]:
+                        sortie += 'les '
+                        break
+                    elif [True for i in ('office','octave','épiphanie') if i in mot]:
+                        sortie += "l'"
+                        break
+                    if i > 2:
+                        break
             
             if kwargs['date_affichee'] and not kwargs['verbose'] and not kwargs['recherche']:
                 sortie += """{}/{}/{} : """.format(kwargs['date'].day,kwargs['date'].month,kwargs['date'].year)
@@ -1164,16 +1170,15 @@ class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les recherche
         for i,a in enumerate(self.date_):
             retour = FeteFixe()
             retour.__dict__ = copy.deepcopy(self.__dict__)
-            if True: # pour des tests
-                retour.__dict__['regex'] = {}
-                for index in regex:
-                    retour.regex[index]=[]
-                    for a in regex[index]:
-                        if a.match(str(i+2)):
-                            de_cote = a
-                        else:
-                            retour.regex[index].append(a)
-                retour.regex['egal'].append(de_cote)
+            retour.__dict__['regex'] = {}
+            for index in regex:
+                retour.regex[index]=[]
+                for a in regex[index]:
+                    if a.match(str(i+2)):
+                        de_cote = a
+                    else:
+                        retour.regex[index].append(a)
+            retour.regex['egal'].append(de_cote)
             for langue in ('francais','latina','english'):
                 retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
