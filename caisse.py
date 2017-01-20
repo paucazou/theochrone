@@ -12,6 +12,7 @@ import subprocess
 import re
 import random
 import argparse
+import copy
 
 parser = argparse.ArgumentParser(
         prog='Caisse',
@@ -122,7 +123,7 @@ def finput(prompt='>>> ', text=''):
 def CompileRegex(objet):
     """Fonction de compilation des regex""" # énormément d'erreurs dans cette fonction = certaines regex font n'importe quoi, et certains titres ne sont pas supprimés.
     
-    vaisseau = objet.regex_
+    vaisseau = copy.deepcopy(objet.regex_)
     titres = ['saint([^e]|$)', 'sainte', 'bienheureux', 'bienheureuse([^s]|$)', 'bienheureuses.' ] # rajouter jours de la semaine, nom de mois
     syntaxiques=['de','à','l','le','des','du'] #ne pas mettre des mots qui pourraient se trouver dans les annexes : du, après, à,l'
     chiffres = ['0','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26',]
