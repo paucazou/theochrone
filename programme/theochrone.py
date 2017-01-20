@@ -185,7 +185,7 @@ if args.INVERSE != 1:
     retenus.sort(key=lambda x:x.Correspondance(mots_str,mots),reverse=True)
     superieurs = [x for x in retenus if x.Correspondance(mots_str,mots) >= 70]
     if args.plus:
-        print(retenus)
+        print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=retenus,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert))
     elif len(superieurs) == 1:
         print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=[superieurs[0]],langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert))
     elif len(superieurs) > 1:
