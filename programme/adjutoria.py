@@ -447,6 +447,20 @@ def selection(liste,date,Annee,samedi):
     
     return liste
 
+def renvoie_regex(retour,regex,liste):
+    retour.__dict__['regex'] = {}
+    de_cote = []
+    for index in regex:
+        retour.regex[index]=[]
+        for a in regex[index]:
+            for elt in liste:
+                if a.match(str(elt)):
+                    de_cote.append(a)
+                else:
+                    retour.regex[index].append(a)
+    retour.regex['egal'] += de_cote
+    return retour
+
 def affiche_temps_liturgique(objet,langue='francais'):
     """Une fonction capable d'afficher le temps liturgique"""
     sortie = 'erreur'
@@ -618,7 +632,14 @@ def ouvreetregarde(fichier,Annee,ordo,propre,annee,paques):
             except EOFError:
                 boucle=False
     return Annee
-                    
+
+def nom_jour(date,langue):
+    """Une fonction qui renvoie le nom du jour de la semaine en fonction du datetime.date rentré"""
+    semaine = {'francais':['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'],
+               'english': ['monday','tuesday','wednesday','tuesday','thursday','saturday','sunday'],
+               'latina': ['feria prima','feria secunda','feria tertia','feria quarta','feria quinta', 'feria sexta','dominica'],
+               }
+    return semaine[langue][datetime.date.weekday(date)]                    
 
 def remonte(liste, entre, nom='latinus'):
     """Function used in the 'trouve' function. Find the proper which is before the 'entre' one in the 'liste'."""
@@ -1170,23 +1191,54 @@ class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les recherche
         for i,a in enumerate(self.date_):
             retour = FeteFixe()
             retour.__dict__ = copy.deepcopy(self.__dict__)
-            retour.__dict__['regex'] = {}
-            for index in regex:
-                retour.regex[index]=[]
-                for a in regex[index]:
-                    if a.match(str(i+2)):
-                        de_cote = a
-                    else:
-                        retour.regex[index].append(a)
-            retour.regex['egal'].append(de_cote)
+            retour = renvoie_regex(retour,regex,[i])
             for langue in ('francais','latina','english'):
                 retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
             yield retour
-            
+
 class JoursAvent(FeteMobileAvent):
     """Une classe pour les jours de férie de l'Avent"""
     pass
+
+    def __init__(self):
+        FeteMobileAvent.__init__(self)
+        self.date_ = [-1,-2,-3,-4,-5,
+                      3,5,6,
+                      8,9,10,11,12,13,
+                      15,16,17,18,19,20,]
+        self.nom_ = {"francais":["de la première semaine de l'Avent","de la deuxième semaine de l'Avent","de la troisième semaine de l'Avent","de la quatrième semaine de l'Avent"],
+                        "english": ['of the first week of Advent','of the second week of Advent','of the third week of Advent','of the fourth week of Advent'],
+                        "latina": ['infra primam Hebdomadam Adventus', 'infra secondam Hebdomadam Adventus','infra tertiam Hebdomadam Adventus','infra quartam Hebdomadam Adventus'],
+                        }
+        
+    def DateCivile(self,paques,annee):
+        """Renvoie une liste d'objets"""
+        objets = []
+        regex = self.regex
+        del(self.__dict__['regex'])
+        for a in self.date_:
+            retour = FeteMobileAvent()
+            retour.__dict__ = copy.deepcopy(self.__dict__)
+            retour.date_ = a
+            nom = retour.DateCivile(paques,annee)
+            for langue in ('francais','latina','english'):
+                retour.nom[langue] = nom.capitalize() + ' '
+                if a > 14:
+                    retour.nom += self.nom_[langue][0]
+                    semaine = 1
+                elif a > 6 and a < 15:
+                    retour.nom += self.nom_[langue][1]
+                    semaine = 2
+                elif a > 0 and a < 7:
+                    retour.nom += self.nom_[langue][2]
+                    semaine = 3
+                else:
+                    retour.nom += self.nom_[langue][3]
+                    semaine = 4
+            retour = renvoie_regex(retour,regex,[nom,semaine])
+            yield retour
+    
 
     
 
