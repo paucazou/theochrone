@@ -77,7 +77,8 @@ erreurs={
         ["L'année ne peut pas être inférieure à 1583.",
          "L'année ne peut pas être supérieure à 4100.",
          "Merci de rentrer la date sous une forme standard comme JJ-MM-AAAA.",
-         "Merci de rentrer un jour ou un mois valide."]
+         "Merci de rentrer un jour ou un mois valide."],
+        ["Votre recherche n'a pas pu aboutir. Merci de rentrer des informations plus précises.",],
         ],
     'english':[
         ['Your command-interpreter is not supported by this program.',
@@ -1158,18 +1159,21 @@ class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les recherche
     def DateCivile(self,paques,annee):
         """Renvoie une liste de dates"""
         objets = []
-        del(self.__dict__['regex'],self.__dict__['regex_'])
+        regex = self.regex
+        del(self.__dict__['regex'])
         for i,a in enumerate(self.date_):
             retour = FeteFixe()
             retour.__dict__ = copy.deepcopy(self.__dict__)
-            if False: # pour des tests
-                for hideux, a in enumerate(self.regex['refus_fort']):
-                    if a.match(str(i+2)):
-                        retour.regex['egal'] = tuple(list(self.regex['egal']) + [a])
-                        tmp = list(self.regex['refus_fort'])
-                        del(tmp[hideux])
-                        retour.regex['refus_fort'] = tuple(tmp)
-                        break
+            if True: # pour des tests
+                retour.__dict__['regex'] = {}
+                for index in regex:
+                    retour.regex[index]=[]
+                    for a in regex[index]:
+                        if a.match(str(i+2)):
+                            de_cote = a
+                        else:
+                            retour.regex[index].append(a)
+                retour.regex['egal'].append(de_cote)
             for langue in ('francais','latina','english'):
                 retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
