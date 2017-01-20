@@ -835,23 +835,25 @@
       <dict key="regex_">
         <list key="nom_compose"/>
         <list key="egal">
-          <str>mercredi</str>
           <str>quatre</str>
           <str>temps</str>
-          <str>avent</str>
+          
         </list>
         <list key="nom"/>
         <list key="attribut_compose"/>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
-        <list key="titre"/>
+        <list key="titre">
+                      <str>mercredi</str>
+                  </list>
         <list key="syntaxiques">
           <str>des</str>
           <str>d</str>
           <str>l</str>
+          <str>de</str>
         </list>
         <list key="refus_fort"/>
-        <list key="attribut"/>
+        <list key="attribut"><str>avent</str></list>
       </dict>
       <bool key="transferee">False</bool>
       <str key="_temps_liturgique">avent</str>
@@ -897,16 +899,16 @@
       <dict key="regex_">
         <list key="nom_compose"/>
         <list key="egal">
-          <str>vendredi</str>
           <str>quatre</str>
           <str>temps</str>
-          <str>avent</str>
         </list>
         <list key="nom"/>
         <list key="attribut_compose"/>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
-        <list key="titre"/>
+        <list key="titre">
+            <str>vendredi</str>
+        </list>
         <list key="syntaxiques">
           <str>des</str>
           <str>d</str>
@@ -914,7 +916,7 @@
           <str>de</str>
         </list>
         <list key="refus_fort"/>
-        <list key="attribut"/>
+        <list key="attribut">          <str>avent</str></list>
       </dict>
       <bool key="transferee">False</bool>
       <str key="_temps_liturgique">avent</str>
@@ -960,16 +962,16 @@
       <dict key="regex_">
         <list key="nom_compose"/>
         <list key="egal">
-          <str>samedi</str>
           <str>quatre</str>
           <str>temps</str>
-          <str>avent</str>
         </list>
         <list key="nom"/>
         <list key="attribut_compose"/>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
-        <list key="titre"/>
+        <list key="titre">
+          <str>samedi</str>
+      </list>
         <list key="syntaxiques">
           <str>de</str>
           <str>des</str>
@@ -977,7 +979,7 @@
           <str>d</str>
         </list>
         <list key="refus_fort"/>
-        <list key="attribut"/>
+        <list key="attribut">          <str>avent</str></list>
       </dict>
       <bool key="transferee">False</bool>
       <str key="_temps_liturgique">avent</str>
