@@ -1221,22 +1221,25 @@ class JoursAvent(FeteMobileAvent):
             retour = FeteMobileAvent()
             retour.__dict__ = copy.deepcopy(self.__dict__)
             retour.date_ = a
-            nom = retour.DateCivile(paques,annee)
-            for langue in ('francais','latina','english'):
+            for langue in ('latina','english','francais'):
+                nom = nom_jour(retour.DateCivile(paques,annee),langue)
                 retour.nom[langue] = nom.capitalize() + ' '
                 if a > 14:
-                    retour.nom += self.nom_[langue][0]
+                    retour.nom[langue] += self.nom_[langue][0]
                     semaine = 1
                 elif a > 6 and a < 15:
-                    retour.nom += self.nom_[langue][1]
+                    retour.nom[langue] += self.nom_[langue][1]
                     semaine = 2
                 elif a > 0 and a < 7:
-                    retour.nom += self.nom_[langue][2]
+                    retour.nom[langue] += self.nom_[langue][2]
                     semaine = 3
                 else:
-                    retour.nom += self.nom_[langue][3]
+                    retour.nom[langue] += self.nom_[langue][3]
                     semaine = 4
             retour = renvoie_regex(retour,regex,[nom,semaine])
+            if retour.date.day > 16:
+                retour.degre = 2
+                retour._priorite = 1200
             yield retour
     
 
