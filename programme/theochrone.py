@@ -55,7 +55,7 @@ affichage = parser.add_argument_group('Print options',description="Convenient op
 affichage.add_argument('-v','--verbose', help="make theochrone more verbose. Equals to -cdtsLD, and more.",action='store_true')
 affichage.add_argument('-c','--color','--colour', dest='couleur', help="print liturgical colour", action='store_true')
 affichage.add_argument('-d','--degree', dest='degre', help='print degree of the liturgical feast', action='store_true')
-affichage.add_argument('-w','--weekday', dest='jour_semaine',help='print weekday',action='store_true')
+affichage.add_argument('-w','--weekday', dest='jour_semaine',help='print weekday',action='store_true') # not yet available
 affichage.add_argument('-t','--transfert', dest='transfert', help='print wether the feast was transfered', action='store_true')
 affichage.add_argument('-s','--temporsanct',dest='temporal_ou_sanctoral', help='print whether the feast belongs to the sanctorum or de tempore', action='store_true')
 affichage.add_argument('-L','--liturgical-time', dest='temps_liturgique',help='print to which liturgical time the feast belongs to',action='store_true')

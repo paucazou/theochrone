@@ -74,7 +74,7 @@ erreurs={
     'francais':[
         ['Votre interpréteur de commandes n\'est pas compatible avec ce programme. Merci de rentrer la langue manuellement.',
          "Cette fonctionnalité n'a pas encore été implémentée."],
-        ["L'année ne peut pas être inférieure à 1583.",
+        ["L'année ne peut pas être inférieure à 1600.",
          "L'année ne peut pas être supérieure à 4100.",
          "Merci de rentrer la date sous une forme standard comme JJ-MM-AAAA.",
          "Merci de rentrer un jour ou un mois valide."],
