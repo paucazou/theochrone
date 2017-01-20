@@ -532,6 +532,7 @@ menus = {
          {'title': 'Très Saint Nom de Jésus', 'type': COMMAND, 'command': ajouter, ARGS: 'TSNJ'},
          {'title': 'Défunts', 'type': COMMAND, 'command': ajouter, ARGS: 'Defunts'},
          {'title': 'Jours dans l\'Octave de Noël', 'type': COMMAND, 'command': ajouter, ARGS: 'JoursOctaveDeNoel'},
+         {'title': 'Jours de l\'Avent', 'type': COMMAND, 'command': ajouter, ARGS: 'JoursAvent'},
          ]
      },
     { 'title': "Modifier des éléments", 'type': COMMAND, 'command': modification },
