@@ -20,7 +20,7 @@ parser = argparse.ArgumentParser(
         )
 
 parser.add_argument('-x','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
-parser.add_argument('-i','--indente', help="indent all xml files in Dossier d'objets",action='store_true')
+parser.add_argument('-i','--indent', help="indent all xml files in Dossier d'objets",action='store_true')
 args = parser.parse_args()
 
 objets = []
@@ -530,6 +530,7 @@ menus = {
          {'title': 'Office de la Vierge le samedi', 'type': COMMAND, 'command': ajouter, ARGS: 'Samedi'},
          {'title': 'Très Saint Nom de Jésus', 'type': COMMAND, 'command': ajouter, ARGS: 'TSNJ'},
          {'title': 'Défunts', 'type': COMMAND, 'command': ajouter, ARGS: 'Defunts'},
+         {'title': 'Jours dans l\'Octave de Noël', 'type': COMMAND, 'command': ajouter, ARGS: 'JoursOctaveDeNoel'},
          ]
      },
     { 'title': "Modifier des éléments", 'type': COMMAND, 'command': modification },
@@ -564,7 +565,7 @@ if args.xtopic:
             for a in obj:
                 a.regex = CompileRegex(a)
                 pic.dump(a)
-elif args.indente:
+elif args.indent:
     fichiers = dossier_d_objets()
     for fichier in fichiers:
         os.system('cat ' + fichier + '|xmllint --format - > tMpXmL && cat tMpXmL > ' + fichier + '&& rm tMpXmL')
