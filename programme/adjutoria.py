@@ -865,6 +865,7 @@ class Fete:
                             return a.temps_liturgique
                     date = date - datetime.timedelta(1)
                 except KeyError:
+                    date = date - datetime.timedelta(1)
                     continue
         else:
             return self._temps_liturgique
@@ -1154,11 +1155,14 @@ class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les recherche
         """Renvoie une liste de dates"""
         for i,a in enumerate(self.date_):
             retour = FeteFixe()
-            retour.__dict__ = copy.deepcopy(self.__dict__)
-            for hideux, a in self.regex['refus_fort']:
+            retour.__dict__ = self.__dict__.copy()
+            for hideux, a in enumerate(self.regex['refus_fort']):
                 if a.match(str(i+2)):
-                    self.regex['egal'].append(a)
-                    del(self.regex['refus_fort'][hideux])            
+                    self.regex['egal'] = tuple(list(self.regex['egal']) + [a])
+                    tmp = list(self.regex['refus_fort'])
+                    del(tmp[hideux])
+                    self.regex['refus_fort'] = tuple(tmp)
+                    break
             for langue in ('francais','latina','english'):
                 retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
