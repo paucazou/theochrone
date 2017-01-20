@@ -1137,7 +1137,7 @@ class DimancheOctaveNoel(Fete):
     
 # classes de fêtes à plusieurs dates
 
-class JoursOctaveDeNoel(FeteFixe):
+class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les rechercher sans discriminer entre eux
     """Une classe pour les jours dans l'Octave de Noël"""
     
     def __init__(self):
@@ -1155,6 +1155,10 @@ class JoursOctaveDeNoel(FeteFixe):
         for i,a in enumerate(self.date_):
             retour = FeteFixe()
             retour.__dict__ = copy.deepcopy(self.__dict__)
+            for hideux, a in self.regex['refus_fort']:
+                if a.match(str(i+2)):
+                    self.regex['egal'].append(a)
+                    del(self.regex['refus_fort'][hideux])            
             for langue in ('francais','latina','english'):
                 retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
