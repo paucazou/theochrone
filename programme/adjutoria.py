@@ -359,18 +359,19 @@ def selection(liste,date,Annee,samedi):
     commemoraison = 0 # max 2
     commemoraison_temporal=False
     
+    samedi.date = date
+    ferie = FeteFerie()
     if samedi.Est_ce_samedi(date):
-        samedi.date = date
-        liste.append(samedi)
+        defaut = samedi
     else:
-        try:
-            ferie = FeteFerie()
-            if liste[0].degre == 5:
-                ferie.Dimanche_precedent(date,Annee)
-                liste.append(ferie)
-        except IndexError:
-            ferie.Dimanche_precedent(date,Annee)
-            liste.append(ferie)
+        ferie.Dimanche_precedent(date,Annee)
+        defaut = ferie
+    try:
+        if liste[0].degre == 5:
+            liste.append(defaut)
+    except IndexError:
+        liste.append(defaut)
+        
     liste.sort(key=lambda x: x.priorite,reverse=True)
     
     liste[0].commemoraison = False
@@ -403,7 +404,7 @@ def selection(liste,date,Annee,samedi):
             if elt.personne == tmp.personne:
                 liste[hideux].omission = True
                 liste[hideux].celebree = False
-            elif commemoraison == 0 and elt.degre <= 2 and not (tmp.fete_du_Seigneur and elt.dimanche or tmp.dimanche and elt.fete_du_Seigneur):
+            elif commemoraison == 0 and elt.degre >= 2 and not (tmp.fete_du_Seigneur and elt.dimanche or tmp.dimanche and elt.fete_du_Seigneur):
                 liste[hideux].commemoraison=True
                 commemoraison = 1
             else:
@@ -606,7 +607,7 @@ def ouvreetregarde(fichier,Annee,ordo,propre,annee,paques):
                         Annee = traite(Annee,objet,date,annee,propre)
                     else:
                         for a in objet.DateCivile(paques,annee):
-                            Annee = traite(Annee,a,objet.DateCivile(paques,annee),annee,propre)
+                            Annee = traite(Annee,a,a.date,annee,propre)
             except EOFError:
                 boucle=False
     return Annee
@@ -1077,7 +1078,10 @@ class FeteFerie(Fete):
                         else:
                             self._temps_liturgique = office._temps_liturgique
                             self._couleur = office.couleur
-                        self.nom = self.QuelNom(jour)
+                        try:
+                            self.nom = self.QuelNom(jour)
+                        except IndexError:
+                            self.nom = 'dimanche'
                         boucle = False
                         break
             except KeyError:
@@ -1153,16 +1157,19 @@ class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les recherche
         
     def DateCivile(self,paques,annee):
         """Renvoie une liste de dates"""
+        objets = []
+        del(self.__dict__['regex'],self.__dict__['regex_'])
         for i,a in enumerate(self.date_):
             retour = FeteFixe()
-            retour.__dict__ = self.__dict__.copy()
-            for hideux, a in enumerate(self.regex['refus_fort']):
-                if a.match(str(i+2)):
-                    self.regex['egal'] = tuple(list(self.regex['egal']) + [a])
-                    tmp = list(self.regex['refus_fort'])
-                    del(tmp[hideux])
-                    self.regex['refus_fort'] = tuple(tmp)
-                    break
+            retour.__dict__ = copy.deepcopy(self.__dict__)
+            if False: # pour des tests
+                for hideux, a in enumerate(self.regex['refus_fort']):
+                    if a.match(str(i+2)):
+                        retour.regex['egal'] = tuple(list(self.regex['egal']) + [a])
+                        tmp = list(self.regex['refus_fort'])
+                        del(tmp[hideux])
+                        retour.regex['refus_fort'] = tuple(tmp)
+                        break
             for langue in ('francais','latina','english'):
                 retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
