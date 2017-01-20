@@ -536,13 +536,13 @@ def affichage(**kwargs):
                     sortie += attente
                     
                 for i, mot in enumerate(a.nom['francais'].lower().split()):
-                    if [True for i in ('dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi') if i in mot]:
+                    if [True for i in ('dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi','jour') if i in mot]:
                         sortie += 'le '
                         break
-                    elif [True for i in ('dédicace','présentation','fête','très','commémoraison') if i in mot]:
+                    elif [True for i in ('dédicace','présentation','fête','très','commémoraison','vigile') if i in mot]:
                         sortie += 'la '
                         break
-                    elif [True for i in ('saints',) if i in mot]:
+                    elif [True for i in ('nothing',) if i in mot]:
                         sortie += 'les '
                         break
                     elif [True for i in ('office','octave','épiphanie') if i in mot]:
@@ -981,6 +981,9 @@ class FeteMobileAvent(Fete):
     def DateCivile_(self,paques,annee):
         """Calcule la date civile en fonction du nombre de jours d'écart avec le quatrième dimanche de l'Avent."""
         retour= dimancheavant(datetime.date(annee,12,25)) - datetime.timedelta(self.date_)
+        self.nom_passager = {}
+        for langue in self.nom:
+            self.nom_passager[langue] = nom_jour(retour,langue)
         if retour > datetime.date(annee,12,24):
             retour = datetime.date(annee,12,24)
             self._priorite = 0
@@ -1221,9 +1224,9 @@ class JoursAvent(FeteMobileAvent):
             retour = FeteMobileAvent()
             retour.__dict__ = copy.deepcopy(self.__dict__)
             retour.date_ = a
+            retour.date = retour.DateCivile(paques,annee)
             for langue in ('latina','english','francais'):
-                nom = nom_jour(retour.DateCivile(paques,annee),langue)
-                retour.nom[langue] = nom.capitalize() + ' '
+                retour.nom[langue] = retour.nom_passager[langue].capitalize() + ' '
                 if a > 14:
                     retour.nom[langue] += self.nom_[langue][0]
                     semaine = 1
@@ -1236,7 +1239,7 @@ class JoursAvent(FeteMobileAvent):
                 else:
                     retour.nom[langue] += self.nom_[langue][3]
                     semaine = 4
-            retour = renvoie_regex(retour,regex,[nom,semaine])
+            retour = renvoie_regex(retour,regex,[retour.nom_passager[langue],semaine])
             if retour.date.day > 16:
                 retour.degre = 2
                 retour._priorite = 1200
