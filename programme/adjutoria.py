@@ -1199,7 +1199,7 @@ class DimancheOctaveNoel(Fete):
     
 # classes de fêtes à plusieurs dates
 
-class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les rechercher sans discriminer entre eux
+class JoursOctaveDeNoel(FeteFixe):
     """Une classe pour les jours dans l'Octave de Noël"""
     
     def __init__(self):
