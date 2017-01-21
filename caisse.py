@@ -424,9 +424,12 @@ def ajouter(modele,entrees={}):
                 prerempli += a +' '
             nouveau.regex_[key] = finput("Rentrez les mots-clefs de la partie '{}'. N'oubliez pas de les séparer par des blancs.".format(key),prerempli).lower().split()
         
-        if modele == 'FeteFixe':
+        if modele == 'FeteFixe' or modele == 'FeteMobileCivile':
             nouveau.date_['mois'] = valider('Rentrez le numéro du mois',nouveau.date_['mois'])
             nouveau.date_['jour'] = valider('Rentrez le jour du mois',nouveau.date_['jour'])
+            if modele == 'FeteMobileCivile':
+                nouveau.semaine = valider('Rentrez le nombre de semaines d\'écart',nouveau.semaine)
+                nouveau.jour_de_semaine = valider("Rentrez le jour de la semaine (dimanche = 0)",nouveau.jour_de_semaine)
         elif modele == 'FeteMobilePaques':
             nouveau.date_ = valider('Rentrez le nombre de jour par rapport à Pâques. Avant Pâques = négatif.',nouveau.date_)
         elif modele == 'FeteFixeBissextile':
