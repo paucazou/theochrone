@@ -638,7 +638,7 @@ def nom_jour(date,langue):
     """Une fonction qui renvoie le nom du jour de la semaine en fonction du datetime.date rentré"""
     semaine = {'francais':['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'],
                'english': ['monday','tuesday','wednesday','tuesday','thursday','saturday','sunday'],
-               'latina': ['feria prima','feria secunda','feria tertia','feria quarta','feria quinta', 'feria sexta','dominica'],
+               'latina': ['de Feria secunda','de Feria tertia','de Feria quarta','de Feria quinta', 'de Feria sexta','sabbato','dominica'],
                }
     return semaine[langue][datetime.date.weekday(date)]                    
 
@@ -1194,7 +1194,7 @@ class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les recherche
         FeteFixe.__init__(self)
         self.nom_={'francais':"jour dans l'Octave de Noël",'latina':'Die infra octavam Nativitatis','english':'day in the Octave of Christmas'} 
         self.compléments_nom={'francais':['Deuxième','Troisième','Quatrième','Cinquième','Sixième','Septième'],
-                              'latina': ['De Secunda','De Tertia','De Quarta','De Quinqua', 'De Sexta','De Septima'],
+                              'latina': ['De Secunda','De Tertia','De Quarta','De Quinqua', 'De Sexta','De Sabbato'],
                               'english': ['Secund','Third','Fourth','Fifth','Sixth','Seventh',]
                               }
         self.date_=[26,27,28,29,30,31]
@@ -1209,9 +1209,9 @@ class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les recherche
             retour = FeteFixe()
             retour.__dict__ = copy.deepcopy(self.__dict__)
             retour = renvoie_regex(retour,regex,[i])
+            retour.date = datetime.date(annee,self.mois_,self.date_[i])
             for langue in ('francais','latina','english'):
                 retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
-            retour.date = datetime.date(annee,self.mois_,self.date_[i])
             yield retour
 
 class JoursAvent(FeteMobileAvent):
