@@ -1072,7 +1072,7 @@ class FeteFixeTransferableDimanche(FeteFixe):
             return datetime.date(dimancheavant(self.date_) - datetime.timedelta(self.ecart_dimanche*7))
         
 class FeteFerie(Fete):
-    """Une classe définissant des jours de férie, comprenant une liste de dates en dehors des fêtes fixes.""" # les dates à rentrer ne sont pas très utiles. Il suffirait de vérifier qu'il n'y ait rien, au jour demandé, d'autre que des commémoraisons...
+    """Une classe définissant des jours de férie, comprenant une liste de dates en dehors des fêtes fixes."""
     
     def __init__(self):
         Fete.__init__(self)
@@ -1082,13 +1082,9 @@ class FeteFerie(Fete):
     
     def QuelNom(self,jour):
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
-        i = datetime.date.weekday(jour)
-        nomen = ['secunda','tertia','quarta','quinta','sexta']
-        nom = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi']
-        name = ['Monday','Tuesday','Wednesday','Thursday','Friday']
-        return {'latina':'Feria ' + nomen[i],
-                'francais':nom[i] + ' de la férie du ' + affiche_temps_liturgique(self,'francais'),
-                'english':name[i]} # Comment dit on jour de férie en anglais ?
+        return {'latina':'Feria ' + nom_jour(jour,'latina').capitalize(),
+                'francais':nom_jour(jour,'francais').capitalize() + ' de la férie du ' + affiche_temps_liturgique(self,'francais'),
+                'english':nom_jour(jour,'english').capitalize()} # Comment dit on jour de férie en anglais ?
     
     def Dimanche_precedent(self,jour,Annee):
         """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee.""" # changer cette aide
