@@ -12,4 +12,5 @@ programme : main folder of the program :
 	other files in it : data made with Pickle.
 Dossiers d'objets : folder containing xml data, for developing purpose.
 caisse.py : script made to create data used by Theochrone
+enc.py : xml parser
 variables : miscellaneous informations, mainly used by caisse.py
