@@ -276,4 +276,1265 @@
       </dict>
     </dict>
   </Modele>
+    <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Mardi de la première semaine de Carême</str>
+        <str key="latina">Feria tertia infra primam Hebdomadam in Quadragesimam</str>
+        <str key="english">Tuesday of the first week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Mardi-de-la-1ere-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-40</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>mardi</str>
+          <str>1</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+
+   <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Jeudi de la première semaine de Carême</str>
+        <str key="latina">Feria quinta infra primam Hebdomadam in Quadragesimam</str>
+        <str key="english">Thursday of the first week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Jeudi-de-la-1ere-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-38</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>jeudi</str>
+          <str>1</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+</Modele>
+ <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Lundi de la deuxième semaine de Carême</str>
+        <str key="latina">Feria secunda infra secundam Hebdomadam in Quadragesimam</str>
+        <str key="english">Monday of the second week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Lundi-de-la-2eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-34</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>lundi</str>
+          <str>2</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+   <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Mardi de la deuxième semaine de Carême</str>
+        <str key="latina">Feria tertia infra secundam Hebdomadam in Quadragesimam</str>
+        <str key="english">Tuesday of the second week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Mardi-de-la-2eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-33</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>mardi</str>
+          <str>2</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+   <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Mercredi de la deuxième semaine de Carême</str>
+        <str key="latina">Feria quarta infra secundam Hebdomadam in Quadragesimam</str>
+        <str key="english">Wednesday of the second week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Mercredi-de-la-2eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-32</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>mercredi</str>
+          <str>2</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+   <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Jeudi de la deuxième semaine de Carême</str>
+        <str key="latina">Feria quinta infra secundam Hebdomadam in Quadragesimam</str>
+        <str key="english">Thursday of the second week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Jeudi-de-la-2eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-31</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>jeudi</str>
+          <str>2</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+   <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Vendredi de la deuxième semaine de Carême</str>
+        <str key="latina">Feria sexta infra secundam Hebdomadam in Quadragesimam</str>
+        <str key="english">Friday of the second week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Vendredi-de-la-2eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-30</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>vendredi</str>
+          <str>2</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+   <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Samedi de la deuxième semaine de Carême</str>
+        <str key="latina">Sabbato infra secundam Hebdomadam in Quadragesimam</str>
+        <str key="english">Saturday of the second week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Samedi-de-la-2eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-29</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>samedi</str>
+          <str>2</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+   <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Lundi de la troisième semaine de Carême</str>
+        <str key="latina">Feria secunda infra tertiam Hebdomadam in Quadragesimam</str>
+        <str key="english">Monday of the third week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Lundi-de-la-3eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-27</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>lundi</str>
+          <str>3</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+     <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Mardi de la troisième semaine de Carême</str>
+        <str key="latina">Feria tertia infra tertiam Hebdomadam in Quadragesimam</str>
+        <str key="english">Tuesday of the third week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Mardi-de-la-3eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-26</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>mardi</str>
+          <str>3</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+     <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Mercredi de la troisième semaine de Carême</str>
+        <str key="latina">Feria quarta infra tertiam Hebdomadam in Quadragesimam</str>
+        <str key="english">Wednesday of the third week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Mercredi-de-la-3eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-25</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>mercredi</str>
+          <str>3</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+     <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Jeudi de la troisième semaine de Carême</str>
+        <str key="latina">Feria quinta infra tertiam Hebdomadam in Quadragesimam</str>
+        <str key="english">Thursday of the third week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Jeudi-de-la-3eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-24</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>jeudi</str>
+          <str>3</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+     <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Vendredi de la troisième semaine de Carême</str>
+        <str key="latina">Feria sexta infra tertiam Hebdomadam in Quadragesimam</str>
+        <str key="english">Friday of the third week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Vendredi-de-la-3eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-23</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>vendredi</str>
+          <str>3</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+     <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Samedi de la troisième semaine de Carême</str>
+        <str key="latina">Sabbato infra tertiam Hebdomadam in Quadragesimam</str>
+        <str key="english">Saturday of the third week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Samedi-de-la-3eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-22</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>samedi</str>
+          <str>3</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+     <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Lundi de la quatrième semaine de Carême</str>
+        <str key="latina">Feria secunda infra quartam Hebdomadam in Quadragesimam</str>
+        <str key="english">Monday of the fourth week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Lundi-de-la-4eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-20</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>lundi</str>
+          <str>4</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+       <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Mardi de la quatrième semaine de Carême</str>
+        <str key="latina">Feria tertia infra quartam Hebdomadam in Quadragesimam</str>
+        <str key="english">Tuesday of the fourth week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Mardi-de-la-4eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-19</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>mardi</str>
+          <str>4</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+        <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Mercredi de la quatrième semaine de Carême</str>
+        <str key="latina">Feria quarta infra quartam Hebdomadam in Quadragesimam</str>
+        <str key="english">Wednesday of the fourth week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Mercredi-de-la-4eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-18</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>mercredi</str>
+          <str>4</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+        <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Jeudi de la quatrième semaine de Carême</str>
+        <str key="latina">Feria quinta infra quartam Hebdomadam in Quadragesimam</str>
+        <str key="english">Thursday of the fourth week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Jeudi-de-la-4eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-17</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>jeudi</str>
+          <str>4</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+        <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Vendredi de la quatrième semaine de Carême</str>
+        <str key="latina">Feria sexta infra quartam Hebdomadam in Quadragesimam</str>
+        <str key="english">Friday of the fourth week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Vendredi-de-la-4eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-16</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>vendredi</str>
+          <str>4</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
+        <Modele>
+    <str key="classe">FeteMobilePaques</str>
+    <dict key="attributs">
+      <bool key="transferee">False</bool>
+      <bool key="celebree">True</bool>
+      <int key="degre">3</int>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="votive">False</bool>
+      <int key="ordo">1962</int>
+      <str key="personne">deuxieme</str>
+      <int key="_priorite">800</int>
+      <dict key="nom">
+        <str key="francais">Samedi de la quatrième semaine de Carême</str>
+        <str key="latina">Sabbato infra quartam Hebdomadam in Quadragesimam</str>
+        <str key="english">Saturday of the fourth week in Lent</str>
+      </dict>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="commemoraison">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="link">http://www.introibo.fr/Samedi-de-la-4eme-semaine-de-Careme</str>
+      <bool key="dimanche">False</bool>
+      <int key="date_">-15</int>
+      <bool key="fete_du_Seigneur">False</bool>
+      <None key="regex"/>
+      <str key="propre">romanus</str>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="omission">False</bool>
+      <str key="_temps_liturgique">careme</str>
+      <None key="date"/>
+      <str key="textes"/>
+      <dict key="regex_">
+        <list key="hyperonyme"/>
+        <list key="attribut_compose"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>du</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="nom"/>
+        <list key="egal">
+          <str>samedi</str>
+          <str>4</str>
+          <str>semaine</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="titre"/>
+        <list key="attribut">
+          <str>carême</str>
+        </list>
+      </dict>
+      <bool key="sanctoral">False</bool>
+      <str key="_couleur">violet</str>
+      <bool key="pal">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="addendum">
+        <str key="francais"/>
+        <str key="english"/>
+        <str key="latina"/>
+      </dict>
+    </dict>
+  </Modele>
 </list>
