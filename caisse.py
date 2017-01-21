@@ -125,7 +125,7 @@ def CompileRegex(objet):
     
     vaisseau = copy.deepcopy(objet.regex_)
     titres = ['saint([^e]|$)', 'sainte', 'saints','saintes','bienheureux', 'bienheureuse([^s]|$)','bienheureuses.',
-              'lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche','janvier','février','mars','avril','juin','juillet','août','septembre','octobre','novembre','décembre',] # rajouter jours de la semaine, nom de mois
+              'lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche','janvier','février','mars','avril','mai$', 'juin','juillet','août','septembre','octobre','novembre','décembre',] # rajouter jours de la semaine, nom de mois
     syntaxiques=['de','à','l','le','d','des','du'] #ne pas mettre des mots qui pourraient se trouver dans les annexes : du, après, à,l'
     chiffres = ['0','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26',]
 
@@ -194,6 +194,8 @@ def CompileRegex(objet):
                 mot = re.sub("(y|i)","(y|i)",mot)
                 #traitement du son [o]
                 mot = re.sub("(ô|o($|[^nm])|e?au)",r"(o|e?au)\2",mot)
+                #traitement du œ
+                mot = re.sub('œ',r"(oe|œ)",mot)
                 #traitement de [on]
                 mot = re.sub('o(m([^m])|n([^n]))',r"o(m|n)\2\3",mot)
                 #traitement de lettres finales ; on peut y échapper en mettant un point derrière, par exemple, ou un tréma pour le e.
