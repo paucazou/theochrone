@@ -289,13 +289,13 @@ def supprimer(numero='NON'):
         print("""Vous n'avez actuellement aucun objet. Veuillez choisir un fichier à traiter ou enregistrer préalablement des objets avant de vouloir supprimer des objets.""")
 
 def sauvegarde():
-    os.chdir("./Dossier d'objets")
     global ajout
     global objets
     global objets_ancien
     global fichier
     if fichier == 'non':
         choix_fichier()
+    os.chdir("./Dossier d'objets")
     if ajout != []:
         print("""Voici les objets ajoutés : """)
         for a in ajout:
