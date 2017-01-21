@@ -186,20 +186,17 @@ if args.INVERSE != 1:
     retenus.sort(key=lambda x:x.Correspondance(mots_str,mots),reverse=True)
     superieurs = [x for x in retenus if x.Correspondance(mots_str,mots) >= 70]
     if args.plus:
-        print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=retenus,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert))
-    elif len(superieurs) == 1:
-        print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=[superieurs[0]],langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert))
-    elif len(superieurs) > 1:
+        liste = retenus
+    elif len(superieurs) >= 1:
         if superieurs[0].Correspondance(mots_str,mots) > 100:
-            print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=[superieurs[0]],langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert))
+            liste = [superieurs[0]]
         else:
-            print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=superieurs,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert))
-    elif len(superieurs) == 0 and len(retenus) == 1:
-        print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=retenus,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert))
-    elif len(retenus) >= 1:
-        print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=retenus,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert))
+            liste=superieurs
+    elif len(superieurs) == 0 and len(retenus) >= 1:
+        liste=retenus
     else:
         adjutoria.erreur(20,args.langue)
+    print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert))
 else:
     date = debut
     while True:
