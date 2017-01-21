@@ -1071,6 +1071,23 @@ class FeteFixeTransferableDimanche(FeteFixe):
         else:
             return datetime.date(dimancheavant(self.date_) - datetime.timedelta(self.ecart_dimanche*7))
         
+class FeteMobileCivile(FeteFixe):
+    """Une classe pour toutes les fêtes qui dépendent d'un jour de l'année précis, mais mobiles dans la semaine"""
+    
+    def __init__(self):
+        FeteFixe.__init__(self)
+        self.semaine = int() # un numéro correspondant au nombre de semaines d'écart
+        self.jour_de_semaine=int() # un numéro correspondant au jour (0=dimanche)
+        
+    def DateCivile_(self,paques,annee):
+        """Une fonction calculant la date civile"""
+        calendrier = calendar.Calendar(firstweekday=6)
+        mois = calendrier.monthdatescalendar(annee,self.date_['mois'])
+        for i,semaine in enumerate(mois):
+            for jour in semaine:
+                if jour == datetime.date(annee,self.date_['mois'],self.date_['jour']):
+                    return mois[i+1][self.jour_de_semaine]        
+        
 class FeteFerie(Fete):
     """Une classe définissant des jours de férie, comprenant une liste de dates en dehors des fêtes fixes."""
     
