@@ -492,7 +492,9 @@ def ajouter(modele,entrees={}):
         boucle_deux = True
         while boucle_deux:
             reponse=input()
-            if reponse[0].lower() == 'v':
+            if reponse == '':
+                continue
+            elif reponse[0].lower() == 'v':
                 with enc.Preferences(fichier_tmp,'w') as tmp:
                     tmp.prefs = ajout + [nouveau]
                 os.system('cat ' + fichier_tmp + '|xmllint --format - > tMpXmL && cat tMpXmL > ' + fichier_tmp + '&& rm tMpXmL')
