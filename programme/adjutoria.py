@@ -1194,7 +1194,7 @@ class JoursOctaveDeNoel(FeteFixe): # Pour le moment, impossible de les recherche
         FeteFixe.__init__(self)
         self.nom_={'francais':"jour dans l'Octave de Noël",'latina':'Die infra octavam Nativitatis','english':'day in the Octave of Christmas'} 
         self.compléments_nom={'francais':['Deuxième','Troisième','Quatrième','Cinquième','Sixième','Septième'],
-                              'latina': ['De Secunda','De Tertia','De Quarta','De Quinqua', 'De Sexta','De Sabbato'],
+                              'latina': ['De Secunda','De Tertia','De Quarta','De Quinta', 'De Sexta','De Sabbato'],
                               'english': ['Secund','Third','Fourth','Fifth','Sixth','Seventh',]
                               }
         self.date_=[26,27,28,29,30,31]
