@@ -1323,11 +1323,8 @@
       <bool key="votive">False</bool>
       <bool key="pal">False</bool>
       <dict key="regex_">
-        <list key="titre"/>
-        <list key="egal">
-          <str>dimanche</str>
-          <str>ascension</str>
-        </list>
+          <list key="titre"><str>dimanche</str></list>
+        <list key="egal"/>
         <list key="attribut"/>
         <list key="syntaxiques">
           <str>après</str>
@@ -1335,7 +1332,7 @@
           <str>de</str>
         </list>
         <list key="refus_fort"/>
-        <list key="nom"/>
+        <list key="nom"><str>ascension</str></list>
         <list key="hyperonyme"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
