@@ -22,6 +22,7 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument('-x','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
 parser.add_argument('-i','--indent', help="indent all xml files in Dossier d'objets",action='store_true')
+parser.add_argument('-d','--debug', help="debug the script",action='store_true')
 args = parser.parse_args()
 
 objets = []
@@ -248,6 +249,8 @@ def basculer():
         with open(second_file,'wb') as f:
             pic = pickle.Pickler(f)
             for a in objets:
+                if args.debug:
+                    print(a)
                 a.regex = CompileRegex(a)
                 pic.dump(a)
                 print("""{} enregistré.""".format(a.nom))
