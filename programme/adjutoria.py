@@ -500,7 +500,7 @@ def affiche_jour(date,langue):
         else:
             jour = date.day
         mois = mois_lettre(date.month - 1,langue)
-        sortie="""le {} {} {}""".format(jour,mois,date.year)
+        sortie="""le {} {} {} {}""".format(nom_jour(date,langue),jour,mois,date.year)
     elif kwargs['langue']=='english':
         sortie="""on {}""".format(date)
     elif kwargs['langue']=='latina':
@@ -553,7 +553,16 @@ def affichage(**kwargs):
                         break
             
             if kwargs['date_affichee'] and not kwargs['verbose'] and not kwargs['recherche']:
-                sortie += """{}/{}/{} : """.format(kwargs['date'].day,kwargs['date'].month,kwargs['date'].year)
+                sortie += """{}/{}/{} """.format(kwargs['date'].day,kwargs['date'].month,kwargs['date'].year)
+                if kwargs['jour_semaine']:
+                    sortie += '(' + nom_jour(a.date,kwargs['langue']) + ') '
+            
+            if kwargs['jour_semaine'] and not kwargs['verbose'] and not kwargs['recherche'] and not kwargs['date_affichee']:
+                sortie += nom_jour(a.date,kwargs['langue']).capitalize() + ' '
+                
+            if (kwargs['jour_semaine'] or kwargs['date_affichee']) and not kwargs['recherche'] and not kwargs['verbose']:
+                sortie += ': '
+                
             sortie += a.nom['francais']
             
             if not kwargs['verbose'] and a.commemoraison:
@@ -562,10 +571,13 @@ def affichage(**kwargs):
                 sortie += ' (omis)'
                 
             if kwargs['recherche'] and kwargs['verbose']:
-                sortie += ' ' + affiche_jour(a.date,kwargs['langue']) #rajouter le jour de la semaine
+                sortie += ' ' + affiche_jour(a.date,kwargs['langue'])
                 
             if kwargs['recherche'] and not kwargs['verbose']:
                 sortie += """ : {}/{}/{}""".format(a.date.day,a.date.month,a.date.year)
+            
+            if kwargs['recherche'] and not kwargs['verbose'] and kwargs['jour_semaine']:
+                sortie += ' (' + nom_jour(a.date,kwargs['langue']) + ')'
                 
             sortie += '. '
             
