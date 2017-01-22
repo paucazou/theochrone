@@ -34,6 +34,9 @@ MENU = "menu"
 COMMAND = "command"
 EQUAL = "equal"
 ARGS = 'args'
+
+if os.getcwd().split('/')[-1] == 'programme' or os.getcwd().split('/')[-1] == "Dossier d'objets":
+    os.chdir('..')
      
 def menu(donnee,parent=None,direct_exit=False,renvoi=False):
     exitmenu = False
@@ -557,7 +560,7 @@ menus = {
      
 def dossier_d_objets():
     """Une fonction qui charge le contenu des fichiers xml de Dossier d'objets"""
-    os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/Dossier d'objets")
+    os.chdir("./Dossier d'objets")
     liste = subprocess.run(['ls'],stdout=subprocess.PIPE)
     liste = liste.stdout.decode().split('\n')
     fichiers = {}
@@ -573,7 +576,7 @@ def dossier_d_objets():
     
 if args.xtopic:
     fichiers = dossier_d_objets()
-    os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
+    os.chdir("./programme")
     for fichier,obj in fichiers.items():
         with open(fichier.split('.')[0],'wb') as f:
             pic = pickle.Pickler(f)
