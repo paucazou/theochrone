@@ -186,7 +186,7 @@ if args.INVERSE != 1: # des raisons aléatoires semblent s'appliquer...
     retenus.sort(key=lambda x:x.valeur,reverse=True)
     superieurs = [x for x in retenus if x.valeur >= 70 and x.valeur < 100]
     elite = [x for x in retenus if x.valeur >= 100]
-    #print(retenus,superieurs,elite)
+    #print(mots,retenus,superieurs,elite)
     if args.plus:
         liste = retenus
     elif len(elite) >= 1:

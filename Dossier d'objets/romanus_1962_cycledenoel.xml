@@ -757,14 +757,13 @@
         </list>
         <list key="nom_compose"/>
         <list key="egal">
-          <str>semaine</str>
           <str>avent</str>
         </list>
         <list key="nom"/>
         <list key="attribut_compose"/>
         <list key="refus_faible"/>
-        <list key="titre"/>
-        <list key="refus_fort"/>
+        <list key="titre"><str>semaine</str></list>
+        <list key="refus_fort"><str>quatre-?temps</str><str>-</str></list>
         <list key="hyperonyme"/>
         <list key="attribut"/>
       </dict>
