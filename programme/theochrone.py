@@ -152,7 +152,7 @@ while True:
     else:
         year += 1
 
-with open('samedi','rb') as file:
+with open('samedi.pic','rb') as file:
     pic=pickle.Unpickler(file)
     samedi=pic.load()
     

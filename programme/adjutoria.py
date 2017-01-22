@@ -45,10 +45,10 @@ vingt1 = re.compile('(21|vingt.?.?(et)?.?.?un)(.?eme)?')
 dix = re.compile('(10|dix)(.?eme)?')
         
 fichiers=(
-    'romanus_1962_dimanches',
-    'romanus_1962_fetesduseigneur',
-    'romanus_1962_cycledenoel',
-    'romanus_1962_cycledepaques',
+    'romanus_1962_dimanches.pic',
+    'romanus_1962_fetesduseigneur.pic',
+    'romanus_1962_cycledenoel.pic',
+    'romanus_1962_cycledepaques.pic',
     #'romanus_1962_saints_premier_trimestre',
     #'gallicanus_1962_dimanches',
     #'samedi', ce fichier n'est utilisé que dans un cas particulier.

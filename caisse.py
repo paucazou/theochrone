@@ -248,7 +248,7 @@ def basculer():
     if objets != []:
         os.chdir("./programme")
         subprocess.run(['ls'])
-        second_file = finput("""Entrez le nom du fichier dans lequel seront enregistrées les données. S'il n'existe pas, il sera automatiquement créé. """,fichier.split('.')[0])
+        second_file = finput("""Entrez le nom du fichier dans lequel seront enregistrées les données. S'il n'existe pas, il sera automatiquement créé. """,fichier.split('.')[0]+'.pic')
         with open(second_file,'wb') as f:
             pic = pickle.Pickler(f)
             for a in objets:
@@ -579,7 +579,7 @@ if args.xtopic:
     fichiers = dossier_d_objets()
     os.chdir("./programme")
     for fichier,obj in fichiers.items():
-        with open(fichier.split('.')[0],'wb') as f:
+        with open(fichier.split('.')[0]+'.pic','wb') as f:
             pic = pickle.Pickler(f)
             for a in obj:
                 a.regex = CompileRegex(a)
