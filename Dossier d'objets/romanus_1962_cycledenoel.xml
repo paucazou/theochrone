@@ -1,253 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
 <list>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="commemoraison">False</bool>
+      <bool key="sanctoral">False</bool>
+      <int key="degre">1</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">90</int>
       <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
       <bool key="dimanche">False</bool>
-      <bool key="omission">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Octave day of the Nativity</str>
+        <str key="francais">Octave de la Nativité du Seigneur</str>
+        <str key="latina">In Octava Nativitatis</str>
+      </dict>
+      <dict key="date_">
+        <int key="mois">1</int>
+        <int key="jour">1</int>
+      </dict>
+      <int key="_priorite">2400</int>
+      <str key="personne">deuxieme</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
       <dict key="addendum">
         <str key="english"/>
-        <str key="latina"/>
         <str key="francais"/>
+        <str key="latina"/>
       </dict>
-      <str key="_couleur">blanc</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">1</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
+      <bool key="omission">False</bool>
       <dict key="regex_">
-        <list key="syntaxiques">
-          <str>de</str>
-          <str>l</str>
-          <str>la</str>
-          <str>le</str>
-          <str>du</str>
-        </list>
         <list key="nom_compose">
           <str>nouvel</str>
           <str>an</str>
           <str>octave</str>
           <str>n(oël|ativité)</str>
         </list>
+        <list key="attribut_compose"/>
         <list key="egal">
           <str>marie</str>
           <str>mère</str>
           <str>dieu</str>
         </list>
-        <list key="nom"/>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>l</str>
+          <str>la</str>
+          <str>le</str>
+          <str>du</str>
+        </list>
         <list key="titre">
           <str>jour</str>
         </list>
-        <list key="refus_fort"/>
         <list key="hyperonyme">
           <str>circoncision</str>
         </list>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="nom"/>
         <list key="attribut">
           <str>seigneur</str>
           <str>jésus</str>
         </list>
       </dict>
-      <dict key="date_">
-        <int key="mois">1</int>
-        <int key="jour">1</int>
-      </dict>
-      <str key="_temps_liturgique">nativite</str>
-      <dict key="nom">
-        <str key="english">Octave day of the Nativity</str>
-        <str key="latina">In Octava Nativitatis</str>
-        <str key="francais">Octave de la Nativité du Seigneur</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">deuxieme</str>
-      <int key="_priorite">2400</int>
-      <bool key="transferee">False</bool>
-      <str key="link">http://www.introibo.fr/Octave-de-la-Nativite-1er-janvier</str>
-      <bool key="fete_du_Seigneur">True</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">blanc</str>
       <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">90</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">nativite</str>
+      <str key="link">http://www.introibo.fr/Octave-de-la-Nativite-1er-janvier</str>
+      <str key="propre">romanus</str>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="commemoraison">False</bool>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
-      <bool key="omission">False</bool>
-      <dict key="addendum">
-        <str key="english"/>
-        <str key="latina"/>
-        <str key="francais"/>
-      </dict>
-      <str key="_couleur">blanc</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">1</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
       <bool key="sanctoral">False</bool>
+      <int key="degre">1</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">90</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
       <bool key="peut_etre_celebree">False</bool>
-      <dict key="regex_">
-        <list key="syntaxiques">
-          <str>du</str>
-          <str>de</str>
-          <str>la</str>
-        </list>
-        <list key="nom_compose"/>
-        <list key="egal"/>
-        <list key="nom"/>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
-        <list key="titre"/>
-        <list key="refus_fort"/>
-        <list key="hyperonyme">
-          <str>(nativité|noël)</str>
-        </list>
-        <list key="attribut">
-          <str>jésus</str>
-          <str>seigneur</str>
-        </list>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Christmas</str>
+        <str key="francais">Nativité du Seigneur</str>
+        <str key="latina">In Nativitate Domini</str>
       </dict>
       <dict key="date_">
         <int key="mois">12</int>
         <int key="jour">25</int>
       </dict>
-      <str key="_temps_liturgique">nativite</str>
-      <dict key="nom">
-        <str key="english">Christmas</str>
-        <str key="latina">In Nativitate Domini</str>
-        <str key="francais">Nativité du Seigneur</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">deuxieme</str>
       <int key="_priorite">2800</int>
-      <bool key="transferee">False</bool>
-      <str key="link">http://introibo.fr/Nativite-du-Seigneur-25-decembre</str>
-      <bool key="fete_du_Seigneur">True</bool>
-      <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">90</int>
-    </dict>
-  </Modele>
-  <Modele>
-    <str key="classe">FeteFixe</str>
-    <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
+      <str key="personne">deuxieme</str>
       <bool key="commemoraison">False</bool>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
-      <bool key="omission">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
       <dict key="addendum">
         <str key="english"/>
-        <str key="latina"/>
         <str key="francais"/>
+        <str key="latina"/>
       </dict>
-      <str key="_couleur">rouge</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">2</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">True</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
+      <bool key="omission">False</bool>
       <dict key="regex_">
-        <list key="syntaxiques">
-          <str>le</str>
-        </list>
         <list key="nom_compose"/>
-        <list key="egal"/>
-        <list key="nom">
-          <str>(étienne|stéphane)</str>
-        </list>
         <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="syntaxiques">
+          <str>du</str>
+          <str>de</str>
+          <str>la</str>
+        </list>
+        <list key="titre"/>
+        <list key="hyperonyme">
+          <str>(nativité|noël)</str>
+        </list>
         <list key="refus_faible"/>
-        <list key="titre">
-          <str>saint</str>
-        </list>
         <list key="refus_fort"/>
-        <list key="hyperonyme"/>
+        <list key="nom"/>
         <list key="attribut">
-          <str>(protomartyr|premier.*martyr)</str>
+          <str>jésus</str>
+          <str>seigneur</str>
         </list>
+      </dict>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">blanc</str>
+      <int key="ordo">1962</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">nativite</str>
+      <str key="link">http://introibo.fr/Nativite-du-Seigneur-25-decembre</str>
+      <str key="propre">romanus</str>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <bool key="sanctoral">False</bool>
+      <int key="degre">2</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">80</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Saint Stephen, protomartyr</str>
+        <str key="francais">Saint Étienne, protomartyr</str>
+        <str key="latina">Sancti Stephani Protomartyris</str>
       </dict>
       <dict key="date_">
         <int key="mois">12</int>
         <int key="jour">26</int>
       </dict>
-      <str key="_temps_liturgique">nativite</str>
-      <dict key="nom">
-        <str key="english">Saint Stephen, protomartyr</str>
-        <str key="latina">Sancti Stephani Protomartyris</str>
-        <str key="francais">Saint Étienne, protomartyr</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">etienne_protomartyr</str>
       <int key="_priorite">1300</int>
-      <bool key="transferee">False</bool>
-      <str key="link">http://introibo.fr/St-Etienne-26-decembre</str>
-      <bool key="fete_du_Seigneur">False</bool>
-      <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">80</int>
-    </dict>
-  </Modele>
-  <Modele>
-    <str key="classe">FeteFixe</str>
-    <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
+      <str key="personne">etienne_protomartyr</str>
       <bool key="commemoraison">False</bool>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
-      <bool key="omission">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
       <dict key="addendum">
         <str key="english"/>
-        <str key="latina"/>
         <str key="francais"/>
+        <str key="latina"/>
       </dict>
-      <str key="_couleur">blanc</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">2</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">True</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
+      <bool key="omission">False</bool>
       <dict key="regex_">
+        <list key="nom_compose"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="syntaxiques">
+          <str>le</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+        </list>
+        <list key="hyperonyme"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="nom">
+          <str>(étienne|stéphane)</str>
+        </list>
+        <list key="attribut">
+          <str>(protomartyr|premier.*martyr)</str>
+        </list>
+      </dict>
+      <bool key="peut_etre_votive">True</bool>
+      <str key="_couleur">rouge</str>
+      <int key="ordo">1962</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">nativite</str>
+      <str key="link">http://introibo.fr/St-Etienne-26-decembre</str>
+      <str key="propre">romanus</str>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <bool key="sanctoral">False</bool>
+      <int key="degre">2</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">80</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Saint John, aposte and evangelist</str>
+        <str key="francais">Saint Jean, apôtre et évangéliste</str>
+        <str key="latina">Sancti Joannis Apostoli et Evangelistae</str>
+      </dict>
+      <dict key="date_">
+        <int key="mois">12</int>
+        <int key="jour">27</int>
+      </dict>
+      <int key="_priorite">1300</int>
+      <str key="personne">jean_apotre</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="omission">False</bool>
+      <dict key="regex_">
+        <list key="nom_compose"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
         <list key="syntaxiques">
           <str>l</str>
           <str>de</str>
         </list>
-        <list key="nom_compose"/>
-        <list key="egal"/>
-        <list key="nom">
-          <str>jean</str>
-        </list>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
         <list key="titre">
           <str>saint</str>
         </list>
-        <list key="refus_fort"/>
         <list key="hyperonyme"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="nom">
+          <str>jean</str>
+        </list>
         <list key="attribut">
           <str>apôtre</str>
           <str>évangéliste</str>
@@ -255,404 +269,375 @@
           <str>aigle</str>
         </list>
       </dict>
-      <dict key="date_">
-        <int key="mois">12</int>
-        <int key="jour">27</int>
-      </dict>
-      <str key="_temps_liturgique">nativite</str>
-      <dict key="nom">
-        <str key="english">Saint John, aposte and evangelist</str>
-        <str key="latina">Sancti Joannis Apostoli et Evangelistae</str>
-        <str key="francais">Saint Jean, apôtre et évangéliste</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">jean_apotre</str>
-      <int key="_priorite">1300</int>
-      <bool key="transferee">False</bool>
-      <str key="link">http://introibo.fr/St-Jean-27-decembre</str>
-      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="peut_etre_votive">True</bool>
+      <str key="_couleur">blanc</str>
       <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">80</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">nativite</str>
+      <str key="link">http://introibo.fr/St-Jean-27-decembre</str>
+      <str key="propre">romanus</str>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="commemoraison">False</bool>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
-      <bool key="omission">False</bool>
-      <dict key="addendum">
-        <str key="english"/>
-        <str key="latina"/>
-        <str key="francais"/>
-      </dict>
-      <str key="_couleur">rouge</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">2</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">True</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
       <bool key="sanctoral">False</bool>
+      <int key="degre">2</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">80</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
       <bool key="peut_etre_celebree">False</bool>
-      <dict key="regex_">
-        <list key="syntaxiques">
-          <str>les</str>
-          <str>des</str>
-          <str>le</str>
-        </list>
-        <list key="nom_compose"/>
-        <list key="egal"/>
-        <list key="nom"/>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
-        <list key="titre">
-          <str>saints</str>
-        </list>
-        <list key="refus_fort"/>
-        <list key="hyperonyme">
-          <str>innocents</str>
-        </list>
-        <list key="attribut">
-          <str>massacre</str>
-        </list>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Holy Innocents</str>
+        <str key="francais">Les Saints Innocents</str>
+        <str key="latina">Sanctorum Innocentium Martyrum</str>
       </dict>
       <dict key="date_">
         <int key="mois">12</int>
         <int key="jour">28</int>
       </dict>
-      <str key="_temps_liturgique">nativite</str>
-      <dict key="nom">
-        <str key="english">Holy Innocents</str>
-        <str key="latina">Sanctorum Innocentium Martyrum</str>
-        <str key="francais">Les Saints Innocents</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">innocents</str>
       <int key="_priorite">1300</int>
-      <bool key="transferee">False</bool>
-      <str key="link">http://www.introibo.fr/Sts-Innocents-28-decembre</str>
-      <bool key="fete_du_Seigneur">False</bool>
-      <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">80</int>
-    </dict>
-  </Modele>
-  <Modele>
-    <str key="classe">FeteFixe</str>
-    <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
+      <str key="personne">innocents</str>
       <bool key="commemoraison">False</bool>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
-      <bool key="omission">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
       <dict key="addendum">
         <str key="english"/>
-        <str key="latina"/>
         <str key="francais"/>
+        <str key="latina"/>
       </dict>
-      <str key="_couleur">rouge</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">5</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
+      <bool key="omission">False</bool>
       <dict key="regex_">
+        <list key="nom_compose"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="syntaxiques">
+          <str>les</str>
+          <str>des</str>
+          <str>le</str>
+        </list>
+        <list key="titre">
+          <str>saints</str>
+        </list>
+        <list key="hyperonyme">
+          <str>innocents</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="nom"/>
+        <list key="attribut">
+          <str>massacre</str>
+        </list>
+      </dict>
+      <bool key="peut_etre_votive">True</bool>
+      <str key="_couleur">rouge</str>
+      <int key="ordo">1962</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">nativite</str>
+      <str key="link">http://www.introibo.fr/Sts-Innocents-28-decembre</str>
+      <str key="propre">romanus</str>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <bool key="sanctoral">False</bool>
+      <int key="degre">5</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">0</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Saint Thomas of Canterbury</str>
+        <str key="francais">Saint Thomas de Cantorbéry</str>
+        <str key="latina">Sancti Thomae Episcopi et Martyris</str>
+      </dict>
+      <dict key="date_">
+        <int key="mois">12</int>
+        <int key="jour">29</int>
+      </dict>
+      <int key="_priorite">100</int>
+      <str key="personne">thomas_cantorbéry</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="omission">False</bool>
+      <dict key="regex_">
+        <list key="nom_compose"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
         <list key="syntaxiques">
           <str>de</str>
         </list>
-        <list key="nom_compose"/>
-        <list key="egal"/>
-        <list key="nom">
-          <str>thomas</str>
-        </list>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
         <list key="titre">
           <str>saint</str>
         </list>
-        <list key="refus_fort"/>
         <list key="hyperonyme"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="nom">
+          <str>thomas</str>
+        </list>
         <list key="attribut">
           <str>cant(o|e)rb(é|u)ry</str>
           <str>becket</str>
           <str>londres</str>
         </list>
       </dict>
-      <dict key="date_">
-        <int key="mois">12</int>
-        <int key="jour">29</int>
-      </dict>
-      <str key="_temps_liturgique">nativite</str>
-      <dict key="nom">
-        <str key="english">Saint Thomas of Canterbury</str>
-        <str key="latina">Sancti Thomae Episcopi et Martyris</str>
-        <str key="francais">Saint Thomas de Cantorbéry</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">thomas_cantorbéry</str>
-      <int key="_priorite">100</int>
-      <bool key="transferee">False</bool>
-      <str key="link">http://www.introibo.fr/29-decembre</str>
-      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">rouge</str>
       <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">0</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">nativite</str>
+      <str key="link">http://www.introibo.fr/29-decembre</str>
+      <str key="propre">romanus</str>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="commemoraison">False</bool>
+      <bool key="sanctoral">False</bool>
+      <int key="degre">5</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">0</int>
       <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
       <bool key="dimanche">False</bool>
-      <bool key="omission">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Saint Sylvester, Pope</str>
+        <str key="francais">Saint Sylvestre Premier, Pape et Confesseur</str>
+        <str key="latina">Sancti Silvestri I Papae et Confessoris</str>
+      </dict>
+      <dict key="date_">
+        <int key="mois">12</int>
+        <int key="jour">31</int>
+      </dict>
+      <int key="_priorite">100</int>
+      <str key="personne">sylvestre_pape</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
       <dict key="addendum">
         <str key="english"/>
-        <str key="latina"/>
         <str key="francais"/>
+        <str key="latina"/>
       </dict>
-      <str key="_couleur">blanc</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">5</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
+      <bool key="omission">False</bool>
       <dict key="regex_">
-        <list key="syntaxiques"/>
         <list key="nom_compose"/>
-        <list key="egal"/>
-        <list key="nom">
-          <str>sylvestre</str>
-        </list>
         <list key="attribut_compose"/>
-        <list key="refus_faible"/>
+        <list key="egal"/>
+        <list key="syntaxiques"/>
         <list key="titre">
           <str>saint</str>
         </list>
+        <list key="hyperonyme"/>
+        <list key="refus_faible"/>
         <list key="refus_fort">
           <str>abbé</str>
         </list>
-        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>sylvestre</str>
+        </list>
         <list key="attribut">
           <str>pape</str>
           <str>confesseur</str>
           <str>1</str>
         </list>
       </dict>
-      <dict key="date_">
-        <int key="mois">12</int>
-        <int key="jour">31</int>
-      </dict>
-      <str key="_temps_liturgique">nativite</str>
-      <dict key="nom">
-        <str key="english">Saint Sylvester, Pope</str>
-        <str key="latina">Sancti Silvestri I Papae et Confessoris</str>
-        <str key="francais">Saint Sylvestre Premier, Pape et Confesseur</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">sylvestre_pape</str>
-      <int key="_priorite">100</int>
-      <bool key="transferee">False</bool>
-      <str key="link">http://www.introibo.fr/31-decembre</str>
-      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">blanc</str>
       <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">0</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">nativite</str>
+      <str key="link">http://www.introibo.fr/31-decembre</str>
+      <str key="propre">romanus</str>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
-      <bool key="repris_en_ferie">True</bool>
-      <bool key="commemoraison">False</bool>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
-      <bool key="omission">False</bool>
-      <dict key="addendum">
-        <str key="english"/>
-        <str key="latina"/>
-        <str key="francais"/>
-      </dict>
-      <str key="_couleur">blanc</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">1</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
       <bool key="sanctoral">False</bool>
+      <int key="degre">1</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">90</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
       <bool key="peut_etre_celebree">False</bool>
-      <dict key="regex_">
-        <list key="syntaxiques">
-          <str>du</str>
-        </list>
-        <list key="nom_compose"/>
-        <list key="egal"/>
-        <list key="nom"/>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
-        <list key="titre"/>
-        <list key="refus_fort"/>
-        <list key="hyperonyme">
-          <str>épiphanie</str>
-        </list>
-        <list key="attribut">
-          <str>seigneur</str>
-        </list>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">True</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Epiphany</str>
+        <str key="francais">Épiphanie du Seigneur</str>
+        <str key="latina">In Epiphania Domini</str>
       </dict>
       <dict key="date_">
         <int key="mois">1</int>
         <int key="jour">6</int>
       </dict>
-      <str key="_temps_liturgique">epiphanie</str>
-      <dict key="nom">
-        <str key="english">Epiphany</str>
-        <str key="latina">In Epiphania Domini</str>
-        <str key="francais">Épiphanie du Seigneur</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">deuxieme</str>
       <int key="_priorite">2600</int>
-      <bool key="transferee">False</bool>
-      <str key="link">http://www.introibo.fr/Epiphanie-du-Seigneur-6-janvier</str>
-      <bool key="fete_du_Seigneur">True</bool>
-      <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">90</int>
-    </dict>
-  </Modele>
-  <Modele>
-    <str key="classe">FeteFixe</str>
-    <dict key="attributs">
-      <bool key="repris_en_ferie">True</bool>
+      <str key="personne">deuxieme</str>
       <bool key="commemoraison">False</bool>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
-      <bool key="omission">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
       <dict key="addendum">
         <str key="english"/>
-        <str key="latina"/>
         <str key="francais"/>
+        <str key="latina"/>
       </dict>
-      <str key="_couleur">blanc</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">2</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
+      <bool key="omission">False</bool>
       <dict key="regex_">
-        <list key="syntaxiques">
-          <str>de</str>
-          <str>du</str>
-          <str>le</str>
-        </list>
         <list key="nom_compose"/>
+        <list key="attribut_compose"/>
         <list key="egal"/>
+        <list key="syntaxiques">
+          <str>du</str>
+        </list>
+        <list key="titre"/>
+        <list key="hyperonyme">
+          <str>épiphanie</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
         <list key="nom"/>
+        <list key="attribut">
+          <str>seigneur</str>
+        </list>
+      </dict>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">blanc</str>
+      <int key="ordo">1962</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">epiphanie</str>
+      <str key="link">http://www.introibo.fr/Epiphanie-du-Seigneur-6-janvier</str>
+      <str key="propre">romanus</str>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <bool key="sanctoral">False</bool>
+      <int key="degre">2</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">0</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">True</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Baptism of Our Lord Jesus Christ</str>
+        <str key="francais">Commémoraison du Baptême de Notre-Seigneur Jésus-Christ</str>
+        <str key="latina">In Commemoratione Baptismatis Domini Nostri Jesu Christi</str>
+      </dict>
+      <dict key="date_">
+        <int key="mois">1</int>
+        <int key="jour">13</int>
+      </dict>
+      <int key="_priorite">1550</int>
+      <str key="personne">deuxieme</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="omission">False</bool>
+      <dict key="regex_">
+        <list key="nom_compose"/>
         <list key="attribut_compose">
           <str>notre</str>
           <str>seigneur</str>
           <str>jésus</str>
           <str>christ</str>
         </list>
-        <list key="refus_faible"/>
+        <list key="egal"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>du</str>
+          <str>le</str>
+        </list>
         <list key="titre">
           <str>commémoraison</str>
         </list>
-        <list key="refus_fort"/>
         <list key="hyperonyme">
           <str>baptême.?(de)?((jésus)?.?(christ)?|(notre.?seigneur)|((du)?.?seigneur))?</str>
         </list>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="nom"/>
         <list key="attribut"/>
       </dict>
-      <dict key="date_">
-        <int key="mois">1</int>
-        <int key="jour">13</int>
-      </dict>
-      <str key="_temps_liturgique">epiphanie</str>
-      <dict key="nom">
-        <str key="english">Baptism of Our Lord Jesus Christ</str>
-        <str key="latina">In Commemoratione Baptismatis Domini Nostri Jesu Christi</str>
-        <str key="francais">Commémoraison du Baptême de Notre-Seigneur Jésus-Christ</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">deuxieme</str>
-      <int key="_priorite">1550</int>
-      <bool key="transferee">False</bool>
-      <str key="link">http://www.introibo.fr/Bapteme-du-Seigneur-13-janvier</str>
-      <bool key="fete_du_Seigneur">True</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">blanc</str>
       <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">0</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">epiphanie</str>
+      <str key="link">http://www.introibo.fr/Bapteme-du-Seigneur-13-janvier</str>
+      <str key="propre">romanus</str>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">JoursOctaveDeNoel</str>
     <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="commemoraison">False</bool>
-      <bool key="temporal">True</bool>
-      <bool key="celebree">True</bool>
-      <bool key="omission">False</bool>
-      <dict key="addendum">
-        <str key="english"/>
-        <str key="latina"/>
-        <str key="francais"/>
-      </dict>
-      <str key="_couleur">blanc</str>
-      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="sanctoral">False</bool>
       <int key="degre">2</int>
-      <bool key="pal">False</bool>
       <dict key="nom_">
         <str key="english">day in the Octave of Christmas</str>
-        <str key="latina">Die infra octavam Nativitatis</str>
         <str key="francais">jour dans l'Octave de Noël</str>
+        <str key="latina">Die infra octavam Nativitatis</str>
       </dict>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
+      <bool key="transferee">False</bool>
       <None key="regex"/>
-      <bool key="dimanche">False</bool>
-      <bool key="sanctoral">False</bool>
+      <int key="commemoraison_privilegiee">80</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <int key="mois_">12</int>
       <bool key="peut_etre_celebree">False</bool>
-      <dict key="regex_">
-        <list key="syntaxiques">
-          <str>dans</str>
-          <str>l</str>
-          <str>de</str>
-          <str>la</str>
-        </list>
-        <list key="nom_compose"/>
-        <list key="egal">
-          <str>(jour|férie)</str>
-          <str>octave</str>
-          <str>(nativité|noël)</str>
-        </list>
-        <list key="nom"/>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
-        <list key="titre"/>
-        <list key="refus_fort"/>
-        <list key="hyperonyme"/>
-        <list key="attribut"/>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Days in the Octave of Christmas</str>
+        <str key="francais">Jours dans l'Octave de la Nativité</str>
+        <str key="latina">Dies infra Octavam Nativitatis</str>
       </dict>
       <list key="date_">
         <int>26</int>
@@ -662,15 +647,38 @@
         <int>30</int>
         <int>31</int>
       </list>
-      <str key="_temps_liturgique">nativite</str>
-      <dict key="nom">
-        <str key="english">Days in the Octave of Christmas</str>
-        <str key="latina">Dies infra Octavam Nativitatis</str>
-        <str key="francais">Jours dans l'Octave de la Nativité</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <str key="personne">deuxieme</str>
       <int key="_priorite">1290</int>
+      <str key="personne">deuxieme</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="omission">False</bool>
+      <dict key="regex_">
+        <list key="nom_compose"/>
+        <list key="attribut_compose"/>
+        <list key="egal">
+          <str>(jour|férie)</str>
+          <str>octave</str>
+          <str>(nativité|noël)</str>
+        </list>
+        <list key="syntaxiques">
+          <str>dans</str>
+          <str>l</str>
+          <str>de</str>
+          <str>la</str>
+        </list>
+        <list key="titre"/>
+        <list key="hyperonyme"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="nom"/>
+        <list key="attribut"/>
+      </dict>
       <dict key="compléments_nom">
         <list key="english">
           <str>Secund</str>
@@ -680,14 +688,6 @@
           <str>Sixth</str>
           <str>Seventh</str>
         </list>
-        <list key="latina">
-          <str>De Secunda</str>
-          <str>De Tertia</str>
-          <str>De Quarta</str>
-          <str>De Quinta</str>
-          <str>De Sexta</str>
-          <str>De Septima</str>
-        </list>
         <list key="francais">
           <str>Deuxième</str>
           <str>Troisième</str>
@@ -696,32 +696,29 @@
           <str>Sixième</str>
           <str>Septième</str>
         </list>
+        <list key="latina">
+          <str>De Secunda</str>
+          <str>De Tertia</str>
+          <str>De Quarta</str>
+          <str>De Quinta</str>
+          <str>De Sexta</str>
+          <str>De Septima</str>
+        </list>
       </dict>
-      <bool key="transferee">False</bool>
-      <int key="mois_">12</int>
-      <str key="link">http://www.introibo.fr/Feries-dans-l-octave-de-la</str>
-      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">blanc</str>
       <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">80</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">nativite</str>
+      <str key="link">http://www.introibo.fr/Feries-dans-l-octave-de-la</str>
+      <str key="propre">romanus</str>
     </dict>
+    <str key="classe">JoursOctaveDeNoel</str>
   </Modele>
   <Modele>
-    <str key="classe">JoursAvent</str>
     <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="commemoraison">False</bool>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
-      <str key="personne">deuxieme</str>
-      <dict key="addendum">
-        <str key="english"/>
-        <str key="latina"/>
-        <str key="francais"/>
-      </dict>
-      <str key="_couleur">violet</str>
-      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="sanctoral">False</bool>
       <int key="degre">3</int>
-      <bool key="pal">False</bool>
       <dict key="nom_">
         <list key="english">
           <str>of the first week of Advent</str>
@@ -729,43 +726,34 @@
           <str>of the third week of Advent</str>
           <str>of the fourth week of Advent</str>
         </list>
-        <list key="latina">
-          <str>infra primam Hebdomadam Adventus</str>
-          <str>infra secondam Hebdomadam Adventus</str>
-          <str>infra tertiam Hebdomadam Adventus</str>
-          <str>infra quartam Hebdomadam Adventus</str>
-        </list>
         <list key="francais">
           <str>de la première semaine de l'Avent</str>
           <str>de la deuxième semaine de l'Avent</str>
           <str>de la troisième semaine de l'Avent</str>
           <str>de la quatrième semaine de l'Avent</str>
         </list>
+        <list key="latina">
+          <str>infra primam Hebdomadam Adventus</str>
+          <str>infra secondam Hebdomadam Adventus</str>
+          <str>infra tertiam Hebdomadam Adventus</str>
+          <str>infra quartam Hebdomadam Adventus</str>
+        </list>
       </dict>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
+      <bool key="transferee">False</bool>
       <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="sanctoral">False</bool>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
       <bool key="peut_etre_celebree">False</bool>
-      <dict key="regex_">
-        <list key="syntaxiques">
-          <str>de</str>
-          <str>la</str>
-          <str>l</str>
-        </list>
-        <list key="nom_compose"/>
-        <list key="egal">
-          <str>avent</str>
-        </list>
-        <list key="nom"/>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
-        <list key="titre"><str>semaine</str></list>
-        <list key="refus_fort"><str>quatre-?temps</str><str>-</str></list>
-        <list key="hyperonyme"/>
-        <list key="attribut"/>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Advent</str>
+        <str key="francais">Avent</str>
+        <str key="latina">Adventus</str>
       </dict>
       <list key="date_">
         <int>-1</int>
@@ -789,124 +777,88 @@
         <int>19</int>
         <int>20</int>
       </list>
-      <str key="_temps_liturgique">avent</str>
-      <dict key="nom">
-        <str key="english">Advent</str>
-        <str key="latina">Adventus</str>
-        <str key="francais">Avent</str>
+      <int key="_priorite">500</int>
+      <str key="personne">deuxieme</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
       </dict>
+      <bool key="omission">False</bool>
+      <dict key="regex_">
+        <list key="nom_compose"/>
+        <list key="attribut_compose"/>
+        <list key="egal">
+          <str>avent</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+          <str>l</str>
+        </list>
+        <list key="titre">
+          <str>semaine</str>
+        </list>
+        <list key="hyperonyme"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>quatre-?temps</str>
+          <str>-</str>
+        </list>
+        <list key="nom"/>
+        <list key="attribut"/>
+      </dict>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">violet</str>
+      <int key="ordo">1962</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">avent</str>
       <str key="link">http://www.introibo.fr/-Temps-de-l-Avent-</str>
       <str key="propre">romanus</str>
-      <int key="_priorite">500</int>
-      <bool key="transferee">False</bool>
-      <bool key="omission">False</bool>
-      <bool key="fete_du_Seigneur">False</bool>
-      <int key="ordo">1962</int>
-      <int key="commemoraison_privilegiee">60</int>
     </dict>
+    <str key="classe">JoursAvent</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteMobileAvent</str>
     <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
-      <int key="date_">4</int>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
-      <str key="personne">deuxieme</str>
-      <dict key="addendum">
-        <str key="english"/>
-        <str key="latina"/>
-        <str key="francais"/>
-      </dict>
-      <str key="_couleur">violet</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">2</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
-      <bool key="omission">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="commemoraison">False</bool>
       <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
-      <dict key="regex_">
-        <list key="nom_compose"/>
-        <list key="egal">
-          <str>quatre</str>
-          <str>temps</str>
-          
-        </list>
-        <list key="nom"/>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
-        <list key="hyperonyme"/>
-        <list key="titre">
-                      <str>mercredi</str>
-                  </list>
-        <list key="syntaxiques">
-          <str>des</str>
-          <str>d</str>
-          <str>l</str>
-          <str>de</str>
-        </list>
-        <list key="refus_fort"/>
-        <list key="attribut"><str>avent</str></list>
-      </dict>
+      <int key="degre">2</int>
       <bool key="transferee">False</bool>
-      <str key="_temps_liturgique">avent</str>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
       <dict key="nom">
         <str key="english">Ember Wednesday in Advent</str>
-        <str key="latina">Feria Quarta Quatuor Temporum Adventus</str>
         <str key="francais">Mercredi des Quatre-Temps d'Avent</str>
+        <str key="latina">Feria Quarta Quatuor Temporum Adventus</str>
       </dict>
-      <str key="propre">romanus</str>
+      <int key="date_">4</int>
       <int key="_priorite">1200</int>
-      <int key="ordo">1962</int>
-      <str key="link">http://www.introibo.fr/Mercredi-des-Quatre-Temps</str>
-      <bool key="fete_du_Seigneur">False</bool>
-      <int key="commemoraison_privilegiee">60</int>
-    </dict>
-  </Modele>
-  <Modele>
-    <str key="classe">FeteMobileAvent</str>
-    <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
-      <int key="date_">2</int>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
       <str key="personne">deuxieme</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
       <dict key="addendum">
         <str key="english"/>
-        <str key="latina"/>
         <str key="francais"/>
+        <str key="latina"/>
       </dict>
-      <str key="_couleur">violet</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">2</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
       <bool key="omission">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="commemoraison">False</bool>
-      <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
       <dict key="regex_">
         <list key="nom_compose"/>
+        <list key="attribut_compose"/>
         <list key="egal">
           <str>quatre</str>
           <str>temps</str>
-        </list>
-        <list key="nom"/>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
-        <list key="hyperonyme"/>
-        <list key="titre">
-            <str>vendredi</str>
         </list>
         <list key="syntaxiques">
           <str>des</str>
@@ -914,149 +866,222 @@
           <str>l</str>
           <str>de</str>
         </list>
+        <list key="titre">
+          <str>mercredi</str>
+        </list>
+        <list key="hyperonyme"/>
+        <list key="refus_faible"/>
         <list key="refus_fort"/>
-        <list key="attribut">          <str>avent</str></list>
+        <list key="nom"/>
+        <list key="attribut">
+          <str>avent</str>
+        </list>
       </dict>
-      <bool key="transferee">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">violet</str>
+      <int key="ordo">1962</int>
+      <bool key="votive">False</bool>
       <str key="_temps_liturgique">avent</str>
+      <str key="link">http://www.introibo.fr/Mercredi-des-Quatre-Temps</str>
+      <str key="propre">romanus</str>
+    </dict>
+    <str key="classe">FeteMobileAvent</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <bool key="sanctoral">False</bool>
+      <int key="degre">2</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
       <dict key="nom">
         <str key="english">Ember Friday in Advent</str>
-        <str key="latina">Feria Sexta Quatuor Temporum Adventus</str>
         <str key="francais">Vendredi des Quatre-Temps d'Avent</str>
+        <str key="latina">Feria Sexta Quatuor Temporum Adventus</str>
       </dict>
-      <str key="propre">romanus</str>
+      <int key="date_">2</int>
       <int key="_priorite">1200</int>
-      <int key="ordo">1962</int>
-      <str key="link">http://www.introibo.fr/Vendredi-des-Quatre-Temps</str>
-      <bool key="fete_du_Seigneur">False</bool>
-      <int key="commemoraison_privilegiee">60</int>
-    </dict>
-  </Modele>
-  <Modele>
-    <str key="classe">FeteMobileAvent</str>
-    <dict key="attributs">
-      <bool key="repris_en_ferie">False</bool>
-      <int key="date_">1</int>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
       <str key="personne">deuxieme</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
       <dict key="addendum">
         <str key="english"/>
-        <str key="latina"/>
         <str key="francais"/>
+        <str key="latina"/>
       </dict>
-      <str key="_couleur">violet</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">2</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
       <bool key="omission">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="commemoraison">False</bool>
-      <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
       <dict key="regex_">
         <list key="nom_compose"/>
+        <list key="attribut_compose"/>
         <list key="egal">
           <str>quatre</str>
           <str>temps</str>
         </list>
-        <list key="nom"/>
-        <list key="attribut_compose"/>
-        <list key="refus_faible"/>
-        <list key="hyperonyme"/>
+        <list key="syntaxiques">
+          <str>des</str>
+          <str>d</str>
+          <str>l</str>
+          <str>de</str>
+        </list>
         <list key="titre">
-          <str>samedi</str>
-      </list>
+          <str>vendredi</str>
+        </list>
+        <list key="hyperonyme"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="nom"/>
+        <list key="attribut">
+          <str>avent</str>
+        </list>
+      </dict>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">violet</str>
+      <int key="ordo">1962</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">avent</str>
+      <str key="link">http://www.introibo.fr/Vendredi-des-Quatre-Temps</str>
+      <str key="propre">romanus</str>
+    </dict>
+    <str key="classe">FeteMobileAvent</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <bool key="sanctoral">False</bool>
+      <int key="degre">2</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">60</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="dimanche">False</bool>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Ember Saturday in Advent</str>
+        <str key="francais">Samedi des Quatre-Temps d'Avent</str>
+        <str key="latina">Sabbato Quatuor Temporum Adventus</str>
+      </dict>
+      <int key="date_">1</int>
+      <int key="_priorite">1200</int>
+      <str key="personne">deuxieme</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="omission">False</bool>
+      <dict key="regex_">
+        <list key="nom_compose"/>
+        <list key="attribut_compose"/>
+        <list key="egal">
+          <str>quatre</str>
+          <str>temps</str>
+        </list>
         <list key="syntaxiques">
           <str>de</str>
           <str>des</str>
           <str>l</str>
           <str>d</str>
         </list>
+        <list key="titre">
+          <str>samedi</str>
+        </list>
+        <list key="hyperonyme"/>
+        <list key="refus_faible"/>
         <list key="refus_fort"/>
-        <list key="attribut">          <str>avent</str></list>
+        <list key="nom"/>
+        <list key="attribut">
+          <str>avent</str>
+        </list>
       </dict>
-      <bool key="transferee">False</bool>
-      <str key="_temps_liturgique">avent</str>
-      <dict key="nom">
-        <str key="english">Ember Saturday in Advent</str>
-        <str key="latina">Sabbato Quatuor Temporum Adventus</str>
-        <str key="francais">Samedi des Quatre-Temps d'Avent</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <int key="_priorite">1200</int>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">violet</str>
       <int key="ordo">1962</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">avent</str>
       <str key="link">http://www.introibo.fr/Vendredi-des-Quatre-Temps</str>
-      <bool key="fete_du_Seigneur">False</bool>
-      <int key="commemoraison_privilegiee">60</int>
+      <str key="propre">romanus</str>
     </dict>
+    <str key="classe">FeteMobileAvent</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
+      <bool key="sanctoral">False</bool>
+      <int key="degre">1</int>
+      <bool key="transferee">False</bool>
+      <None key="regex"/>
+      <int key="commemoraison_privilegiee">90</int>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="dimanche">False</bool>
       <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <dict key="nom">
+        <str key="english">Christmas Eve</str>
+        <str key="francais">Vigile de la Nativité du Seigneur</str>
+        <str key="latina">In Vigilia Nativitatis Domini</str>
+      </dict>
       <dict key="date_">
         <int key="mois">12</int>
         <int key="jour">24</int>
       </dict>
-      <bool key="temporal">True</bool>
-      <bool key="dimanche">False</bool>
+      <int key="_priorite">2400</int>
       <str key="personne">deuxieme</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="celebree">True</bool>
+      <None key="date"/>
       <dict key="addendum">
         <str key="english"/>
-        <str key="latina"/>
         <str key="francais"/>
+        <str key="latina"/>
       </dict>
-      <str key="_couleur">violet</str>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <int key="degre">1</int>
-      <bool key="pal">False</bool>
-      <None key="date"/>
-      <str key="textes"/>
-      <bool key="votive">False</bool>
       <bool key="omission">False</bool>
-      <None key="regex"/>
-      <bool key="celebree">True</bool>
-      <bool key="commemoraison">False</bool>
-      <bool key="sanctoral">False</bool>
-      <bool key="peut_etre_celebree">False</bool>
       <dict key="regex_">
         <list key="nom_compose"/>
-        <list key="egal"/>
-        <list key="nom"/>
         <list key="attribut_compose"/>
-        <list key="refus_faible"/>
-        <list key="hyperonyme">
-          <str>vigile.?(noël|nativité)</str>
-        </list>
-        <list key="titre"/>
+        <list key="egal"/>
         <list key="syntaxiques">
           <str>de</str>
           <str>la</str>
           <str>du</str>
         </list>
+        <list key="titre"/>
+        <list key="hyperonyme">
+          <str>vigile.?(noël|nativité)</str>
+        </list>
+        <list key="refus_faible"/>
         <list key="refus_fort"/>
+        <list key="nom"/>
         <list key="attribut">
           <str>seigneur</str>
         </list>
       </dict>
-      <bool key="transferee">False</bool>
-      <str key="_temps_liturgique">avent</str>
-      <dict key="nom">
-        <str key="english">Christmas Eve</str>
-        <str key="latina">In Vigilia Nativitatis Domini</str>
-        <str key="francais">Vigile de la Nativité du Seigneur</str>
-      </dict>
-      <str key="propre">romanus</str>
-      <int key="_priorite">2400</int>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="_couleur">violet</str>
       <int key="ordo">1962</int>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">avent</str>
       <str key="link">http://www.introibo.fr/Vigile-de-la-Nativite</str>
-      <bool key="fete_du_Seigneur">False</bool>
-      <int key="commemoraison_privilegiee">90</int>
+      <str key="propre">romanus</str>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
 </list>

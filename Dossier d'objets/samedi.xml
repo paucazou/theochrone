@@ -2,40 +2,15 @@
 <list>
   <Modele>
     <dict key="attributs">
-      <bool key="commemoraison">False</bool>
-      <str key="_couleur">blanc</str>
-      <str key="textes"/>
-      <dict key="nom">
-        <str key="latina">Sanctae Mariae Sabbato</str>
-        <str key="english">Saturday of the Blessed Virgin Mary</str>
-        <str key="francais">De la Sainte Vierge le samedi</str>
-      </dict>
-      <bool key="omission">False</bool>
-      <bool key="celebree">True</bool>
-      <str key="_temps_liturgique">variable</str>
-      <int key="ordo">1962</int>
-      <bool key="dimanche">False</bool>
+      <bool key="sanctoral">True</bool>
       <int key="degre">4</int>
       <bool key="transferee">False</bool>
-      <str key="personne">marie</str>
-      <dict key="addendum">
-        <str key="francais">Les informations rentrées sont incomplètes</str>
-      </dict>
-      <int key="commemoraison_privilegiee">-1</int>
-      <bool key="temporal">False</bool>
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <str key="link">http://introibo.fr/-Commun-des-Saints-</str>
-      <str key="propre">romanus</str>
-      <bool key="peut_etre_celebree">False</bool>
-      <bool key="sanctoral">True</bool>
-      <None key="date"/>
-      <bool key="votive">True</bool>
-      <bool key="pal">False</bool>
       <dict key="regex_">
-        <list key="titre">
-          <str>sainte</str>
+        <list key="nom_compose">
+          <str>(vierge|marie)</str>
+          <str>samedi</str>
         </list>
+        <list key="attribut_compose"/>
         <list key="egal"/>
         <list key="syntaxiques">
           <str>de</str>
@@ -44,21 +19,47 @@
           <str>au</str>
           <str>le</str>
         </list>
-        <list key="attribut_compose"/>
-        <list key="refus_fort"/>
-        <list key="nom"/>
-        <list key="hyperonyme"/>
-        <list key="nom_compose">
-          <str>(vierge|marie)</str>
-          <str>samedi</str>
-        </list>
-        <list key="attribut"/>
         <list key="refus_faible"/>
+        <list key="hyperonyme"/>
+        <list key="titre">
+          <str>sainte</str>
+        </list>
+        <list key="nom"/>
+        <list key="refus_fort"/>
+        <list key="attribut"/>
       </dict>
-      <int key="_priorite">300</int>
-      <None key="regex"/>
-      <str key="date_"/>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="celebree">True</bool>
+      <int key="ordo">1962</int>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="pal">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="peut_etre_celebree">False</bool>
+      <dict key="nom">
+        <str key="english">Saturday of the Blessed Virgin Mary</str>
+        <str key="francais">De la Sainte Vierge le samedi</str>
+        <str key="latina">Sanctae Mariae Sabbato</str>
+      </dict>
+      <str key="date_"/>
+      <int key="_priorite">300</int>
+      <str key="personne">marie</str>
+      <bool key="commemoraison">False</bool>
+      <bool key="votive">False</bool>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="omission">False</bool>
+      <int key="commemoraison_privilegiee">-1</int>
+      <bool key="peut_etre_votive">True</bool>
+      <str key="_couleur">blanc</str>
+      <bool key="dimanche">False</bool>
+      <None key="regex"/>
+      <None key="date"/>
+      <dict key="addendum">
+        <str key="francais">Les informations rentrées sont incomplètes</str>
+      </dict>
+      <str key="link">http://introibo.fr/-Commun-des-Saints-</str>
+      <str key="propre">romanus</str>
     </dict>
     <str key="classe">Samedi</str>
   </Modele>
