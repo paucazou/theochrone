@@ -747,7 +747,8 @@ class Fete:
                        } # à ajouter à l'affichage. Par exemple, fête de la dédicace : priorité uniquement pour l'église en question.
 
         self.pal=False # pal=Pro aliquibus locis
-        self.votive=False # Si la messe est votive, ou peut être reprise comme votive.
+        self.votive=False # Si la messe est votive
+        self.peut_etre_votive=False # Si la messe peut être reprise comme votive
         
         #Éléments variables selon l'année
         self.peut_etre_celebree=False
@@ -769,6 +770,7 @@ class Fete:
                     'refus_faible':[],                    
             } # les éléments propres de la regex, avant compilation
         self.regex=None# la regex véritable, après compilation avec la fonction à créer
+        self.valeur=int() # the value returned by Correspondance
 
     # Définitions de certaines méthodes spéciales
     def __str__(self):
