@@ -837,20 +837,20 @@ class Fete:
                 elif a.findall(mots):
                     if index == 'syntaxiques':
                         niveau += 3
-                    if index == 'titre':
+                    elif index == 'titre':
                         niveau += 15
-                    if index == 'attribut':
+                    elif index == 'attribut':
                         if a.fullmatch(mots):
                             niveau += 46
                         else:
                             niveau += 35
-                    if index == 'nom' or index == 'hyperonyme':
+                    elif index == 'nom' or index == 'hyperonyme':
                         niveau += 45
-                    if index == 'egal':
+                    elif index == 'egal':
                         niveau += 76/len(self.regex[index])
-                    if index == 'refus_fort':
+                    elif index == 'refus_fort':
                         niveau -= 15 # 15 normalement
-                    if index == 'annexes':
+                    elif index == 'annexes':
                         niveau + 20
                 
                 for mot in mots_separes: # cela pose problème pour certaines regex, qui sont composées de deux mots. (in albis par exemple)
@@ -859,8 +859,6 @@ class Fete:
                             niveau -= 5 #5 normalement
                         else:
                             niveau += 10
-            
-        
         return niveau
     
     def Correspondance2(self,liste,attache): # ceci n'est qu'un modèle à améliorer ; l'incrémentation fonctionne.

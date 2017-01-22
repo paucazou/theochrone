@@ -167,8 +167,8 @@ if args.INVERSE != 1:
         try:
             Annee[date] = adjutoria.selection(Annee[date],date,Annee,samedi)
             for fete in Annee[date]:
-                valeur = fete.Correspondance(mots_str,mots)
-                if valeur >= 50:
+                fete.valeur = fete.Correspondance(mots_str,mots)
+                if fete.valeur >= 50:
                     retenus.append(fete)
         except KeyError:
             pass
@@ -183,16 +183,16 @@ if args.test and args.verbose:
         print('\n')
 
 if args.INVERSE != 1: # des raisons aléatoires semblent s'appliquer...
-    retenus.sort(key=lambda x:x.Correspondance(mots_str,mots),reverse=True)
-    superieurs = [x for x in retenus if x.Correspondance(mots_str,mots) >= 70]
-    #print(retenus,superieurs)
+    retenus.sort(key=lambda x:x.valeur,reverse=True)
+    superieurs = [x for x in retenus if x.valeur >= 70 and x.valeur < 100]
+    elite = [x for x in retenus if x.valeur >= 100]
+    #print(retenus,superieurs,elite)
     if args.plus:
         liste = retenus
+    elif len(elite) >= 1:
+        liste = elite
     elif len(superieurs) >= 1:
-        if superieurs[0].Correspondance(mots_str,mots) > 100:
-            liste = [superieurs[0]]
-        else:
-            liste=superieurs
+        liste=superieurs
     elif len(superieurs) == 0 and len(retenus) >= 1:
         liste=retenus
     else:
