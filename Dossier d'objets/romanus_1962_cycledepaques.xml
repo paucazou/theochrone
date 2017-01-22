@@ -434,16 +434,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>lundi</str>
-          <str>1</str>
+          <str>1</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -496,7 +494,7 @@
       <dict key="regex_">
         <list key="titre"/>
         <list key="egal">
-          <str>mardi</str>
+          <str>mardi</str><str>carême</str>
           <str>1</str>
           <str>semaine</str>
         </list>
@@ -504,9 +502,7 @@
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -561,15 +557,13 @@
         <list key="egal">
           <str>jeudi</str>
           <str>1</str>
-          <str>semaine</str>
+          <str>semaine</str><str>carême</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -624,15 +618,13 @@
         <list key="egal">
           <str>lundi</str>
           <str>2</str>
-          <str>semaine</str>
+          <str>semaine</str><str>carême</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -687,15 +679,13 @@
         <list key="egal">
           <str>mardi</str>
           <str>2</str>
-          <str>semaine</str>
+          <str>semaine</str><str>carême</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -749,16 +739,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>mercredi</str>
-          <str>2</str>
+          <str>2</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -812,16 +800,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>jeudi</str>
-          <str>2</str>
+          <str>2</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -875,16 +861,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>vendredi</str>
-          <str>2</str>
+          <str>2</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -938,16 +922,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>samedi</str>
-          <str>2</str>
+          <str>2</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1008,9 +990,7 @@
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1064,16 +1044,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>mardi</str>
-          <str>3</str>
+          <str>3</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1127,16 +1105,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>mercredi</str>
-          <str>3</str>
+          <str>3</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1190,16 +1166,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>jeudi</str>
-          <str>3</str>
+          <str>3</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1253,16 +1227,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>vendredi</str>
-          <str>3</str>
+          <str>3</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1316,16 +1288,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>samedi</str>
-          <str>3</str>
+          <str>3</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1379,16 +1349,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>lundi</str>
-          <str>4</str>
+          <str>4</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1442,16 +1410,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>mardi</str>
-          <str>4</str>
+          <str>4</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1505,16 +1471,14 @@
         <list key="titre"/>
         <list key="egal">
           <str>mercredi</str>
-          <str>4</str>
+          <str>4</str><str>carême</str>
           <str>semaine</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1567,7 +1531,7 @@
       <dict key="regex_">
         <list key="titre"/>
         <list key="egal">
-          <str>jeudi</str>
+          <str>jeudi</str><str>carême</str>
           <str>4</str>
           <str>semaine</str>
         </list>
@@ -1575,9 +1539,7 @@
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1632,15 +1594,13 @@
         <list key="egal">
           <str>vendredi</str>
           <str>4</str>
-          <str>semaine</str>
+          <str>semaine</str><str>carême</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
@@ -1695,15 +1655,13 @@
         <list key="egal">
           <str>samedi</str>
           <str>4</str>
-          <str>semaine</str>
+          <str>semaine</str><str>carême</str>
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut">
-          <str>carême</str>
-        </list>
+        <list key="attribut"/>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
