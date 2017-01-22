@@ -16,7 +16,7 @@ import copy
 
 # variables
 
-unites = (re.compile('(1(er)?|un|premier)'),
+unites = (re.compile('(1(ere?)?|une?\||premiere?)'),
             re.compile('(2(nd)?|second|deux)(.?eme)?'),
             re.compile('(3|trois)(.?eme)?'),
             re.compile('(4|quatre?)(.?eme)?'),
