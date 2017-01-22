@@ -572,6 +572,7 @@ def dossier_d_objets():
                 fichiers[file] = f.prefs
         except:
             exit("L'un des fichiers ne semble pas avoir le bon format, ou bien est corrompu : {}".format(file))
+    os.chdir('..')
     return fichiers
     
 if args.xtopic:
