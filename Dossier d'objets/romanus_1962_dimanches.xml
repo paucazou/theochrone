@@ -1035,7 +1035,7 @@
         <list key="nom"/>
         <list key="hyperonyme">
           <str>quasi.*modo</str>
-          <str>in.*albis</str>
+          <str>(dimanche)?.*in.*albis</str>
         </list>
         <list key="nom_compose"/>
         <list key="attribut_compose"/>

@@ -125,8 +125,8 @@ def CompileRegex(objet):
     """Fonction de compilation des regex""" # énormément d'erreurs dans cette fonction = certaines regex font n'importe quoi, et certains titres ne sont pas supprimés.
     
     vaisseau = copy.deepcopy(objet.regex_)
-    titres = ['saint([^e]|$)', 'sainte', 'saints','saintes','bienheureux', 'bienheureuse([^s]|$)','bienheureuses.',
-              'lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche','janvier','février','mars','avril','mai$', 'juin','juillet','août','septembre','octobre','novembre','décembre',] # rajouter jours de la semaine, nom de mois
+    titres = ['saint([^e]|$|\.|\?)', 'sainte', 'saints','saintes','bienheureux', 'bienheureuse([^s]|$|\.|\?)','bienheureuses.',
+              'lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche','janvier','février','mars','avril','mai$', 'juin','juillet','août','septembre','octobre','novembre','décembre',]
     syntaxiques=['de','à','l','le','d','des','du'] #ne pas mettre des mots qui pourraient se trouver dans les annexes : du, après, à,l'
     chiffres = ['0','1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26',]
 
@@ -172,7 +172,7 @@ def CompileRegex(objet):
                     elif a == value[1]:
                         chiffres[i] = "(^|[^" + value[0] + "])" + a # tester si ces nouvelles fonctionnalités marchent.
             for i,a in enumerate(titres):
-                if re.fullmatch(a,value):
+                if re.findall(a,value):
                     del(titres[i])
     if 'refus_fort' in vaisseau.keys():
         vaisseau['refus_fort'] += chiffres + titres

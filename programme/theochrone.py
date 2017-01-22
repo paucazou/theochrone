@@ -182,9 +182,10 @@ if args.test and args.verbose:
             print(a)
         print('\n')
 
-if args.INVERSE != 1:
+if args.INVERSE != 1: # des raisons aléatoires semblent s'appliquer...
     retenus.sort(key=lambda x:x.Correspondance(mots_str,mots),reverse=True)
     superieurs = [x for x in retenus if x.Correspondance(mots_str,mots) >= 70]
+    #print(retenus,superieurs)
     if args.plus:
         liste = retenus
     elif len(superieurs) >= 1:

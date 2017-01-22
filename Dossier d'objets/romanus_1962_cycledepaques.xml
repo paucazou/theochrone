@@ -1823,7 +1823,7 @@
         </list>
         <list key="refus_faible"/>
         <list key="hyperonyme"/>
-        <list key="nom"/>
+        <list key="nom"><str>quatre.*temps</str></list>
         <list key="refus_fort"/>
         <list key="attribut">
           <str>carême</str>
@@ -2393,13 +2393,13 @@
       <None key="date"/>
       <dict key="regex_">
         <list key="titre">
-          <str>lundi</str>
+          <str>lundi</str><str>saint</str>
         </list>
         <list key="nom_compose"/>
         <list key="egal"/>
         <list key="refus_faible"/>
         <list key="hyperonyme">
-          <str>lundi.?saint</str>
+          <str>lundi.*saint</str>
         </list>
         <list key="nom"/>
         <list key="refus_fort"/>
@@ -2457,13 +2457,13 @@
       <None key="date"/>
       <dict key="regex_">
         <list key="titre">
-          <str>mardi</str>
+            <str>mardi</str><str>saint</str>
         </list>
         <list key="nom_compose"/>
         <list key="egal"/>
         <list key="refus_faible"/>
         <list key="hyperonyme">
-          <str>mardi.?saint</str>
+          <str>mardi.*saint</str>
         </list>
         <list key="nom"/>
         <list key="refus_fort"/>
@@ -2521,13 +2521,13 @@
       <None key="date"/>
       <dict key="regex_">
         <list key="titre">
-          <str>mercredi</str>
+          <str>mercredi</str><str>saint</str>
         </list>
         <list key="nom_compose"/>
         <list key="egal"/>
         <list key="refus_faible"/>
         <list key="hyperonyme">
-          <str>mercredi.?saint</str>
+          <str>mercredi.*saint</str>
         </list>
         <list key="nom"/>
         <list key="refus_fort"/>
@@ -2586,14 +2586,13 @@
       <dict key="regex_">
         <list key="titre">
           <str>jeudi</str>
+          <str>saint</str>
         </list>
         <list key="nom_compose"/>
         <list key="egal"/>
         <list key="refus_faible"/>
         <list key="hyperonyme">
-          <str>jeudi.?saint</str>
-          <str>cène.*seigneur</str>
-          <str>messe.*chrismale</str>
+          <str>(jeudi.*saint|cène.*seigneur|messe.*chrismale)</str>
         </list>
         <list key="nom"/>
         <list key="refus_fort"/>
@@ -2653,12 +2652,12 @@
       <dict key="regex_">
         <list key="egal"/>
         <list key="titre">
-          <str>vendredi</str>
+          <str>vendredi</str><str>saint</str>
         </list>
         <list key="nom_compose"/>
         <list key="refus_faible"/>
         <list key="hyperonyme">
-          <str>vendredi.?saint</str>
+          <str>vendredi.*saint</str>
         </list>
         <list key="nom"/>
         <list key="refus_fort"/>
@@ -2719,17 +2718,16 @@
       <dict key="regex_">
         <list key="egal"/>
         <list key="titre">
-          <str>samedi</str>
+            <str>samedi</str><str>vigile</str><str>saint</str>
         </list>
         <list key="nom_compose"/>
         <list key="refus_faible"/>
         <list key="hyperonyme">
-          <str>vigile.*(pascale|paques)</str>
-          <str>samedi.?saint</str>
+          <str>(vigile.*(pascale|paques)|samedi.*saint)</str>
         </list>
         <list key="nom"/>
         <list key="refus_fort"/>
-        <list key="attribut"/>
+        <list key="attribut"><str>paques</str><str>pascale</str></list>
         <list key="attribut_compose"/>
         <list key="syntaxiques">
           <str>de</str>

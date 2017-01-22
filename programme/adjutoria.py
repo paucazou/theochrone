@@ -837,20 +837,20 @@ class Fete:
                 elif a.findall(mots):
                     if index == 'syntaxiques':
                         niveau += 3
-                    elif index == 'titre':
+                    if index == 'titre':
                         niveau += 15
-                    elif index == 'attribut':
+                    if index == 'attribut':
                         if a.fullmatch(mots):
                             niveau += 46
                         else:
                             niveau += 35
-                    elif index == 'nom' or index == 'hyperonyme':
+                    if index == 'nom' or index == 'hyperonyme':
                         niveau += 45
-                    elif index == 'egal':
+                    if index == 'egal':
                         niveau += 76/len(self.regex[index])
-                    elif index == 'refus_fort':
+                    if index == 'refus_fort':
                         niveau -= 15 # 15 normalement
-                    elif index == 'annexes':
+                    if index == 'annexes':
                         niveau + 20
                 
                 for mot in mots_separes: # cela pose problème pour certaines regex, qui sont composées de deux mots. (in albis par exemple)
