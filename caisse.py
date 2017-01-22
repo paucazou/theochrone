@@ -586,6 +586,7 @@ if args.xtopic:
                 pic.dump(a)
 elif args.indent:
     fichiers = dossier_d_objets()
+    os.chdir("./Dossier d'objets")
     for fichier in fichiers:
         os.system('cat ' + fichier + '|xmllint --format - > tMpXmL && cat tMpXmL > ' + fichier + '&& rm tMpXmL')
 else:
