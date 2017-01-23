@@ -78,7 +78,9 @@ erreurs={
         ["L'année ne peut pas être inférieure à 1600.",
          "L'année ne peut pas être supérieure à 4100.",
          "Merci de rentrer la date sous une forme standard comme JJ-MM-AAAA.",
-         "Merci de rentrer un jour ou un mois valide."],
+         "Merci de rentrer un jour ou un mois valide.",
+         "Merci de rentrer un jour qui correspond au mois.", #4
+         ],
         ["Votre recherche n'a pas pu aboutir. Merci de rentrer des informations plus précises.",],
         ],
     'english':[
@@ -187,6 +189,7 @@ def datevalable(entree,langue_defaut='english',mois_seul=False,annee_seule=False
             
     if len(entree) == 1:
         try:
+            int(entree[0])
             if int(entree[0]) >= 1600 and int(entree[0]) <= 4100:
                 if langue_defaut == 'francais':
                     entree = ['1','1',entree[0]]
@@ -220,7 +223,15 @@ def datevalable(entree,langue_defaut='english',mois_seul=False,annee_seule=False
         
         entree = [int(a) for a in entree]
         if len(entree) == 1:
-            date=datetime.date(aujourdhui.year,aujourdhui.month,entree[0])
+            try:
+                date=datetime.date(aujourdhui.year,aujourdhui.month,entree[0])
+            except ValueError:
+                if entree[0] < 40:
+                    erreur(14,langue_defaut)
+                elif entree[0] <1600:
+                    erreur(10,langue_defaut)
+                else:
+                    erreur(11,langue_defaut)
         elif langue_defaut == 'francais':
             if len(entree) == 2:
                 date=datetime.date(aujourdhui.year,entree[1],entree[0])
@@ -284,6 +295,7 @@ def mois_lettre(mot,langue='english'):
             for f in a[1:]:
                 if mot.lower() in f:
                     return True, str(a[0])
+        erreur(13,langue)
     else: #default : english
         for month_idx in range(1,13):
             if mot in calendar.month_name[month_idx].lower():
