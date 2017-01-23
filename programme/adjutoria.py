@@ -187,7 +187,7 @@ def datevalable(entree,langue_defaut='english',mois_seul=False,annee_seule=False
             
     if len(entree) == 1:
         try:
-            if int(entree[0]) >= 1583 and int(entree[0]) <= 4100:
+            if int(entree[0]) >= 1600 and int(entree[0]) <= 4100:
                 if langue_defaut == 'francais':
                     entree = ['1','1',entree[0]]
                 else:
@@ -216,7 +216,7 @@ def datevalable(entree,langue_defaut='english',mois_seul=False,annee_seule=False
                 jour = int(entree[6:])
                 mois = int(entree[4:6])
                 an = int(entree[:4])
-            return datetime.date(an,mois,jour)
+            return datetime.date(an,mois,jour), False, False
         
         entree = [int(a) for a in entree]
         if len(entree) == 1:
