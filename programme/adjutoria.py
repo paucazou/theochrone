@@ -43,6 +43,11 @@ vingtaines = (re.compile('(22|vingt.?.?deux)(.?eme)?'),
 vingt = re.compile('(20|vingt)(.?eme)?')
 vingt1 = re.compile('(21|vingt.?.?(et)?.?.?un)(.?eme)?')
 dix = re.compile('(10|dix)(.?eme)?')
+
+semaine = {'francais':['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'],
+            'english': ['monday','tuesday','wednesday','tuesday','thursday','saturday','sunday'],
+            'latina': ['de Feria secunda','de Feria tertia','de Feria quarta','de Feria quinta', 'de Feria sexta','sabbato','dominica'],
+               }
         
 fichiers=(
     'romanus_1962_dimanches.pic',
@@ -176,6 +181,7 @@ def default_language():
 def datevalable(entree,langue='english',semaine_seule=False,mois_seul=False,annee_seule=False):
     """Function used to see whether a list can be converted into datetime or not"""
     aujourdhui=datetime.date.today()
+    nonliturgiccal=calendar.Calendar()
     liturgiccal=calendar.Calendar(firstweekday=6)
     passager=[]
 
@@ -192,10 +198,31 @@ def datevalable(entree,langue='english',semaine_seule=False,mois_seul=False,anne
     for i,elt in enumerate(passager):
         if elt == '':
             del(passager[i])
-    return passager
     
     if langue == 'francais':
-        pass
+        if len(passager) == 1:
+            pass
+        elif len(passager) == 2:
+            pass
+        elif len(passager) == 3:
+            pass
+        elif len(passager) == 4: # il faut gérer les erreurs, et le problème du mois en lettres.
+            #try:            
+            date = datetime.date(int(passager[3]),int(passager[2]),int(passager[1]))
+            #except:
+             #   print('erreur de date')
+            wd=-1
+            for i,a in enumerate(semaine[langue]):
+                if a == passager[0].lower():
+                    wd=i
+                    break
+            for week in nonliturgiccal.monthdatescalendar(date.year,date.month):
+                for hideux,day in enumerate(week):
+                    if day == date and hideux != wd:
+                        print('erreur: le jour rentré est incorrect')
+                    
+        else: # erreur
+            pass
     else: # english
         pass
     return date, semaine_seule, mois_seul, annee_seule
@@ -687,10 +714,6 @@ def ouvreetregarde(fichier,Annee,ordo,propre,annee,paques):
 
 def nom_jour(date,langue):
     """Une fonction qui renvoie le nom du jour de la semaine en fonction du datetime.date rentré"""
-    semaine = {'francais':['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'],
-               'english': ['monday','tuesday','wednesday','tuesday','thursday','saturday','sunday'],
-               'latina': ['de Feria secunda','de Feria tertia','de Feria quarta','de Feria quinta', 'de Feria sexta','sabbato','dominica'],
-               }
     return semaine[langue][datetime.date.weekday(date)]                    
 
 def remonte(liste, entre, nom='latinus'):
