@@ -13,8 +13,6 @@
 import adjutoria
 from adjutoria import datetime, calendar, argparse, pickle, re
 
-aujourdhui=datetime.date.today()
-
 ### Arguments ###
 parser = argparse.ArgumentParser(
         prog='Theochrone',
@@ -23,7 +21,7 @@ parser = argparse.ArgumentParser(
         epilog="Please pray God for me.",
         )
 main = parser.add_argument_group('Main options', description="Main options of the program")
-main.add_argument('DATE', nargs='*',default=aujourdhui,help="""Theochrone accepts many formats :
+main.add_argument('DATE', nargs='*',help="""Theochrone accepts many formats :
                   - Nothing : current day
                   - A complete date with year, month and day of month, for example as following :
                     - DD MM YYYY
@@ -94,10 +92,7 @@ if args.INVERSE != 1:
 mois_seul = False
 annee_seule = False
 if args.DEPUIS == 1 and args.JUSQUE == 1:
-    if isinstance(args.DATE, datetime.date):
-        date=args.DATE
-    else:
-        date, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.DATE,args.langue)
+    date, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.DATE,args.langue)
 else:
     date = 'fromto'
     if args.DEPUIS != 1:
