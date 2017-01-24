@@ -173,7 +173,34 @@ def default_language():
     
     return langue_defaut
 
-def datevalable(entree,langue_defaut='english',mois_seul=False,annee_seule=False):
+def datevalable(entree,langue='english',semaine_seule=False,mois_seul=False,annee_seule=False):
+    """Function used to see whether a list can be converted into datetime or not"""
+    aujourdhui=datetime.date.today()
+    liturgiccal=calendar.Calendar(firstweekday=6)
+    passager=[]
+
+    for elt in entree:
+        elt = re.sub('(^|[0-9])(st|er|nd|rd|th)$',r"\1",elt)
+        if '-' in elt:
+            elt = elt.split('-')
+        elif '/' in elt:
+            elt = elt.split('/')
+        if isinstance(elt,list):
+            passager += elt
+        else:
+            passager += [elt]
+    for i,elt in enumerate(passager):
+        if elt == '':
+            del(passager[i])
+    return passager
+    
+    if langue == 'francais':
+        pass
+    else: # english
+        pass
+    return date, semaine_seule, mois_seul, annee_seule
+
+def ancienne_datevalable(entree,langue_defaut='english',mois_seul=False,annee_seule=False):
     """Function used to see whether a list can be converted into datetime or not"""
     aujourdhui=datetime.date.today()
     
