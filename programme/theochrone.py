@@ -97,18 +97,18 @@ if args.DEPUIS == 1 and args.JUSQUE == 1:
     if isinstance(args.DATE, datetime.date):
         date=args.DATE
     else:
-        date, mois_seul, annee_seule = adjutoria.datevalable(args.DATE,args.langue)
+        date, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.DATE,args.langue)
 else:
     date = 'fromto'
     if args.DEPUIS != 1:
-        args.DEPUIS, mois_seul, annee_seule = adjutoria.datevalable(args.DEPUIS,args.langue)
+        args.DEPUIS, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.DEPUIS,args.langue)
         if args.JUSQUE == 1 and args.DEPUIS <= aujourdhui:
             args.JUSQUE = aujourdhui
         elif args.JUSQUE == 1:
             args.JUSQUE = datetime.date(args.DEPUIS.year,12,31)
             
     if args.JUSQUE != 1 and not isinstance(args.JUSQUE,datetime.date):
-        args.JUSQUE, mois_seul, annee_seule = adjutoria.datevalable(args.JUSQUE,args.langue)
+        args.JUSQUE, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.JUSQUE,args.langue)
         if args.DEPUIS == 1 and args.JUSQUE >= aujourdhui:
             args.DEPUIS = aujourdhui
         elif args.DEPUIS == 1:
@@ -131,11 +131,6 @@ elif mois_seul:
 else:
     debut = date
     fin = date
-
-if debut.year < 1600:
-    adjutoria.erreur(10,args.langue)
-elif fin.year > 4100:
-    adjutoria.erreur(11,args.langue)
     
 Annee = dict()
 ordo=args.ordo
