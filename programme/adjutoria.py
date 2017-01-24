@@ -83,7 +83,7 @@ erreurs={
         ["L'année ne peut pas être inférieure à 1600.",
          "L'année ne peut pas être supérieure à 4100.",
          "Merci de rentrer la date sous une forme standard comme JJ-MM-AAAA.",
-         "Merci de rentrer un jour ou un mois valide.",
+         "Merci de rentrer un mois valide.",
          "Merci de rentrer un jour qui correspond au mois.", #4
          ],
         ["Votre recherche n'a pas pu aboutir. Merci de rentrer des informations plus précises.",],
@@ -178,7 +178,7 @@ def default_language():
     
     return langue_defaut
 
-def datevalable(entree,langue='english',semaine_seule=False,mois_seul=False,annee_seule=False):
+def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,annee_seule=False):
     """Function used to see whether a list can be converted into datetime or not"""
     aujourdhui=datetime.date.today()
     nonliturgiccal=calendar.Calendar()
@@ -186,6 +186,7 @@ def datevalable(entree,langue='english',semaine_seule=False,mois_seul=False,anne
     passager=[]
 
     for elt in entree:
+        elt = sans_accent(elt)
         elt = re.sub('(^|[0-9])(st|er|nd|rd|th)$',r"\1",elt)
         if '-' in elt:
             elt = elt.split('-')
@@ -199,18 +200,95 @@ def datevalable(entree,langue='english',semaine_seule=False,mois_seul=False,anne
         if elt == '':
             del(passager[i])
     
+    def producteur_de_datte(jour,mois,annee): # beaucoup d'erreurs potentielles
+        """A function to create the datetime.date object"""
+        if int(annee) > 4100:
+            erreur(10,langue)
+        elif int(annee) < 1600:
+            erreur(11,langue)
+        try:
+            date = datetime.date(int(annee),int(mois),int(jour))
+        except:
+            print('erreur')
+            quit()
+        return date
+    
+    def hebdomadaire(nb):
+        """A function wich returns True and a datetime.date which is the first day of the week required"""
+        for week in liturgiccal.monthdatescalendar(aujourdhui.year,aujourdhui.month):
+            if aujourdhui in week:
+                return True, week[0] + datetime.timedelta(nb)
+            
+    def queljour(jour):
+        """A function wich returns a number between 0 and 6 (0=Sunday)"""
+        for i,day in enumerate(('dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi')):
+            if day == jour:
+                return i
+    
     if langue == 'francais':
-        if len(passager) == 1:
-            pass
+        if len(passager) == 0:
+            date = aujourdhui
+            
+        elif len(passager) == 1: # manque le jour de la semaine
+            if passager[0] == 'demain':
+                date = aujourdhui + datetime.timedelta(1)
+            elif passager[0] == 'hier':
+                date = aujourdhui - datetime.timedelta(1)
+            elif passager[0] == 'semaine':
+                semaine_seule, date = hebdomadaire(0)
+            elif re.fullmatch(r"[0-9]{8}",passager[0]):
+                date = producteur_de_datte(passager[0][:2],passager[0][2:4],passager[0][4:])
+            elif re.fullmatch(r"[0-9]{4}",passager[0]):
+                date = producteur_de_datte(passager[0],1,1)
+                annee_seule = True
+            elif re.fullmatch(r"[0-3]?[0-9]",passager[0]):
+                date = producteur_de_datte(passager[0],aujourdhui.month,aujourdhui.year)
+            elif passager[0] in semaine[langue]:
+                for week in liturgiccal.monthdatescalendar(aujourdhui.year,aujourdhui.month):
+                    if aujourdhui in week:
+                        date = week[queljour(passager[0])]
+            else:
+                mois = mois_lettre(passager[0],langue)
+                date = producteur_de_datte(1,mois,aujourdhui.year,)
+                mois_seul = True
+        
         elif len(passager) == 2:
-            pass
+            if 'semaine' in passager and 'prochaine' in passager:
+                semaine_seule, date = hebdomadaire(7)
+            elif 'semaine' in passager and 'derniere' in passager:
+                semaine_seule, date = hebdomadaire(-7)
+            elif 'mois' in passager and 'prochain' in passager:
+                if aujourdhui.month < 12:
+                    date = datetime.date(aujourdhui.year,aujourdhui.month + 1,1)
+                else:
+                    date = datetime.date(aujourdhui.year + 1,1,1)
+                mois_seul = True
+            elif 'mois' in passager and 'precedent' in passager:
+                if aujourdhui.month == 1:
+                    date = datetime.date(aujourdhui.year - 1,12,1)
+                else:
+                    date = datetime.date(aujourdhui.year,aujourdhui.month + 1,1)
+                mois_seul = True
+            elif passager[0] in semaine[langue] and (passager[1] == 'precedent' or passager[1] == 'avant'):
+                date=aujourdhui
+                while True:
+                    date -= datetime.timedelta(1)
+                    if passager[0] == nom_jour(date,langue):
+                        break   
+            elif passager[0] in semaine[langue] and (passager[1] == 'suivant' or passager[1] == 'prochain'):
+                date=aujourdhui
+                while True:
+                    date += datetime.timedelta(1)
+                    if passager[0] == nom_jour(date,langue):
+                        break 
+            else:#erreur
+                pass
+        
         elif len(passager) == 3:
             pass
-        elif len(passager) == 4: # il faut gérer les erreurs, et le problème du mois en lettres.
-            #try:            
-            date = datetime.date(int(passager[3]),int(passager[2]),int(passager[1]))
-            #except:
-             #   print('erreur de date')
+        
+        elif len(passager) == 4: # il faut gérer les erreurs, et le problème du mois en lettres.           
+            date = producteur_de_datte(passager[1],passager[2],passager[3])
             wd=-1
             for i,a in enumerate(semaine[langue]):
                 if a == passager[0].lower():
@@ -348,7 +426,7 @@ def mois_lettre(mot,langue='english'):
         for a in mois:
             for f in a[1:]:
                 if mot.lower() in f:
-                    return True, str(a[0])
+                    return a[0]
         erreur(13,langue)
     else: #default : english
         for month_idx in range(1,13):
