@@ -85,6 +85,7 @@ erreurs={
          "Merci de rentrer la date sous une forme standard comme JJ-MM-AAAA.",
          "Merci de rentrer un mois valide.",
          "Merci de rentrer un jour qui correspond au mois.", #4
+         "Merci de rentrer un jour de la semaine correspondant au jour du mois.",#5
          ],
         ["Votre recherche n'a pas pu aboutir. Merci de rentrer des informations plus précises.",],
         ],
@@ -224,12 +225,23 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
         for i,day in enumerate(('dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi')):
             if day == jour:
                 return i
-    
+    def jourmois_joursemaine(jour,date):
+        """A function which determines wether or not the weekday entered matches with date"""
+        wd=-1
+        for i,a in enumerate(semaine[langue]):
+            if a == jour.lower():
+                wd=i
+                break
+        for week in nonliturgiccal.monthdatescalendar(date.year,date.month):
+            for hideux,day in enumerate(week):
+                if day == date and hideux != wd:
+                    erreur(15,langue)
+                        
     if langue == 'francais':
         if len(passager) == 0:
             date = aujourdhui
             
-        elif len(passager) == 1: # manque le jour de la semaine
+        elif len(passager) == 1:
             if passager[0] == 'demain':
                 date = aujourdhui + datetime.timedelta(1)
             elif passager[0] == 'hier':
@@ -281,23 +293,35 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                     date += datetime.timedelta(1)
                     if passager[0] == nom_jour(date,langue):
                         break 
+            elif passager[0] in semaine[langue] and re.fullmatch(r"[0-3]?[0-9]",passager[1]):
+                date = producteur_de_datte(passager[1],aujourdhui.month,aujourdhui.year)
+                jourmois_joursemaine(passager[0],date)              
+            elif ('an' in passager or 'annee' in passager) and ('prochain' in passager or 'prochaine' in passager):
+                date = datetime.date(aujourdhui.year + 1,1,1)
+                annee_seule = True
+            elif ('an' in passager or 'annee' in passager) and ('dernier' in passager or 'derniere' in passager):
+                date = datetime.date(aujourdhui.year - 1, 1,1)
+                annee_seule = True
+            elif re.fullmatch(r"[0-9]{4}",passager[1]): #janvier 2000, 1 2000
+                if not re.fullmatch(r"(1[1-2]|[1-9])",passager[0]):
+                    passager[0] = mois_lettre(passager[0],langue)
+                date = producteur_de_datte(1,passager[0],passager[1])
+                mois_seul = True
+            elif re.fullmatch(r"[0-3]?[0-9]",passager[0]): # ex: 11 janvier, 11 1
+                if not re.fullmatch(r"(1[1-2]|[1-9])",passager[1]):
+                    passager[1] = mois_lettre(passager[1],langue)
+                date = producteur_de_datte(passager[0],passager[1],aujourdhui.year)
             else:#erreur
-                pass
+                print('erreur')
         
         elif len(passager) == 3:
             pass
         
-        elif len(passager) == 4: # il faut gérer les erreurs, et le problème du mois en lettres.           
+        elif len(passager) == 4: # il faut gérer les erreurs, et le problème du mois en lettres.
+            if not re.fullmatch(r"(1[1-2]|[1-9])",passager[0]):
+                passager[2] = mois_lettre(passager[2],langue)
             date = producteur_de_datte(passager[1],passager[2],passager[3])
-            wd=-1
-            for i,a in enumerate(semaine[langue]):
-                if a == passager[0].lower():
-                    wd=i
-                    break
-            for week in nonliturgiccal.monthdatescalendar(date.year,date.month):
-                for hideux,day in enumerate(week):
-                    if day == date and hideux != wd:
-                        print('erreur: le jour rentré est incorrect')
+            jourmois_joursemaine(passager[0],date)            
                     
         else: # erreur
             pass
