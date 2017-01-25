@@ -27,14 +27,22 @@ main.add_argument('DATE', nargs='*',help="""Theochrone accepts many formats :
                     - DD MM YYYY
                     - DD-MM-YYYY
                     - DD/MM/YYYY
-                    - DDMMYYYY
+                    - DDMMYYYY (eight characters required)
                     - Day in figures, month in letters, year in figures : ex. 30 december 1990 ; 8th july 1990
+                    - weekday before the date as above : ex. Wednesday the 24th of January 2017
                     WARNING !!! The order of these elements much depends on your language.
                 - You can imply one of these elements, and so works Theochrone :
                     - a figure between 1 and 31 : day of the current month in the current year
+                    - a weekday in letters only : the requested day in the current week (starting with Sunday)
                     - a month only (ex : july, sept,...) : the complete month of the current year
                     - the day and the month without year : current year used
-                    - a number between 1583 and 4100 : the complete year.
+                    - a number between 1600 and 4100 : the complete year.
+                    - a word as listed below in your current language :
+                        - 'week' : the complete current week, starting with Sunday, ending with Saturday. You can also ask for 'next' or 'last' 'week', which returns the week after current, and the past one.
+                        - 'tomorrow' : the day after current one. You can also ask for the 'day after tomorrow'.
+                        - 'yesterday' : the day before current one. You can also ask for the 'day before yesterday'.
+                        - 'next month', or 'previous month', which returns the month after current one, and the month before current one.
+                        - 'next year', or 'previous year', which returns the year after current one, and the year before current one.
                 All of these formats are also accepted by the --from and --to options. (See below)
                     """)
 main.add_argument('--from',dest='DEPUIS',nargs='*',default=1,help="""With --to option, --from option can be used to point out the beginning of the period you want to print.
@@ -117,6 +125,9 @@ if date == 'fromto':
     else:
         debut = args.DEPUIS
         fin = args.JUSQUE
+elif semaine_seule:
+    debut = date
+    fin = date + datetime.timedelta(6)
 elif annee_seule:
     debut = date
     fin = datetime.date(date.year,12,31)

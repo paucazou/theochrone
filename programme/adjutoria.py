@@ -82,9 +82,9 @@ erreurs={
          "Cette fonctionnalité n'a pas encore été implémentée."],
         ["L'année ne peut pas être inférieure à 1600.",
          "L'année ne peut pas être supérieure à 4100.",
-         "Merci de rentrer la date sous une forme standard comme JJ-MM-AAAA.",
+         "Merci de rentrer une date valide.",
          "Merci de rentrer un mois valide.",
-         "Merci de rentrer un jour qui correspond au mois.", #4
+         "Merci de rentrer un jour qui correspond au mois.", #DEPRECATED
          "Merci de rentrer un jour de la semaine correspondant au jour du mois.",#5
          ],
         ["Votre recherche n'a pas pu aboutir. Merci de rentrer des informations plus précises.",],
@@ -204,14 +204,10 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
     def producteur_de_datte(jour,mois,annee): # beaucoup d'erreurs potentielles
         """A function to create the datetime.date object"""
         if int(annee) > 4100:
-            erreur(10,langue)
-        elif int(annee) < 1600:
             erreur(11,langue)
-        try:
-            date = datetime.date(int(annee),int(mois),int(jour))
-        except:
-            print('erreur')
-            quit()
+        elif int(annee) < 1600:
+            erreur(10,langue)
+        date = datetime.date(int(annee),int(mois),int(jour))
         return date
     
     def hebdomadaire(nb):
@@ -269,6 +265,10 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                 semaine_seule, date = hebdomadaire(7)
             elif 'semaine' in passager and 'derniere' in passager:
                 semaine_seule, date = hebdomadaire(-7)
+            elif 'avant' in passager and 'hier' in passager:
+                date = aujourdhui - datetime.timedelta(2)
+            elif 'apres' in passager and 'demain' in passager:
+                date = aujourdhui + datetime.timedelta(2)
             elif 'mois' in passager and 'prochain' in passager:
                 if aujourdhui.month < 12:
                     date = datetime.date(aujourdhui.year,aujourdhui.month + 1,1)
@@ -312,19 +312,29 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                     passager[1] = mois_lettre(passager[1],langue)
                 date = producteur_de_datte(passager[0],passager[1],aujourdhui.year)
             else:#erreur
-                print('erreur')
+                erreur(12,langue)
         
         elif len(passager) == 3:
-            pass
+            if passager[0] in semaine[langue]:
+                if not re.fullmatch(r"(1[1-2]|[1-9])",passager[2]):
+                    passager[2] = mois_lettre(passager[2],langue)
+                date = producteur_de_datte(passager[1],passager[2],aujourdhui.year)
+                jourmois_joursemaine(passager[0],date)
+            elif re.fullmatch(r"[0-3]?[0-9]",passager[0]) and re.fullmatch(r"[0-9]{4}",passager[2]):
+                if not re.fullmatch(r"(1[1-2]|[1-9])",passager[1]):
+                    passager[1] = mois_lettre(passager[1],langue)
+                date = producteur_de_datte(passager[0],passager[1],passager[2])
+            else:#erreur
+                erreur(12,langue)
         
-        elif len(passager) == 4: # il faut gérer les erreurs, et le problème du mois en lettres.
+        elif len(passager) == 4: # il faut gérer les erreurs
             if not re.fullmatch(r"(1[1-2]|[1-9])",passager[0]):
                 passager[2] = mois_lettre(passager[2],langue)
             date = producteur_de_datte(passager[1],passager[2],passager[3])
-            jourmois_joursemaine(passager[0],date)            
+            jourmois_joursemaine(passager[0],date) 
                     
         else: # erreur
-            pass
+            erreur(12,langue)
     else: # english
         pass
     return date, semaine_seule, mois_seul, annee_seule
@@ -427,30 +437,29 @@ def ancienne_datevalable(entree,langue_defaut='english',mois_seul=False,annee_se
     return date, mois_seul, annee_seule
 
 def mois_lettre(mot,langue='english'):
-    """Une fonction qui doit déterminer si le mot entré correspond à un mois. Si le mot entré correspond à un chiffre, renvoie le nom du mois ; si le mot entré est un nom de mois, vérifie qu'il en est un et renvoie un booléen et le chiffre correspondant."""
+    """Une fonction qui doit déterminer si le mot entré correspond à un mois. Si le mot entré correspond à un chiffre, renvoie le nom du mois ; si le mot entré est un nom de mois, vérifie qu'il en est un et renvoie le chiffre correspondant."""
     if isinstance(mot,str):
         mot = mot.lower()
     if langue == 'francais':
         mois = (
             (1,'janvier'),
-            (2,'février','fevrier'),
+            (2,'fevrier'),
             (3,'mars'),
             (4,'avril'),
             (5,'mai'),
             (6,'juin'),
             (7,'juillet'),
-            (8, 'août','aout'),
+            (8, 'aout'),
             (9,'septembre'),
             (10,'octobre'),
             (11,'novembre'),
-            (12, 'décembre','decembre')
+            (12, 'decembre')
             )
         if isinstance(mot,int):
             return mois[mot][1]
         for a in mois:
-            for f in a[1:]:
-                if mot.lower() in f:
-                    return a[0]
+            if mot.lower() in a[1]:
+                return a[0]
         erreur(13,langue)
     else: #default : english
         for month_idx in range(1,13):
