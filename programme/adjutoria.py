@@ -87,6 +87,7 @@ erreurs={
          "Merci de rentrer un mois valide.",
          "Merci de rentrer un jour qui correspond au mois.", #DEPRECATED
          "Merci de rentrer un jour de la semaine correspondant au jour du mois.",#5
+         "La date de début est postérieure à la date de fin.",
          ],
         ["Votre recherche n'a pas pu aboutir. Merci de rentrer des informations plus précises.",],
         ],
@@ -340,6 +341,23 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
     else: # english
         pass
     return date, semaine_seule, mois_seul, annee_seule
+
+def AtoZ(semaine_seule,mois_seul,annee_seule,date):
+    """Une fonction qui définit le début et la fin de la période qui va être affichée"""
+    if semaine_seule:
+        debut = date
+        fin = date + datetime.timedelta(6)
+    elif annee_seule:
+        debut = date
+        fin = datetime.date(date.year,12,31)
+    elif mois_seul:
+        debut = date
+        fin = datetime.date(date.year,date.month,calendar.monthrange(date.year,date.month)[1])
+    else:
+        debut = date
+        fin = date
+    
+    return debut, fin
 
 def mois_lettre(mot,langue='english'):
     """Une fonction qui doit déterminer si le mot entré correspond à un mois. Si le mot entré correspond à un chiffre, renvoie le nom du mois ; si le mot entré est un nom de mois, vérifie qu'il en est un et renvoie le chiffre correspondant."""

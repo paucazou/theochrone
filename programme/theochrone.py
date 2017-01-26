@@ -97,50 +97,32 @@ if args.INVERSE != 1:
     for a in mots:
         mots_str += a
 
-mois_seul = False
-annee_seule = False
 if args.DEPUIS == 1 and args.JUSQUE == 1:
     date, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.DATE,args.langue)
+    debut, fin = adjutoria.AtoZ(semaine_seule,mois_seul,annee_seule,date)
 else:
-    date = 'fromto'
     if args.DEPUIS != 1:
-        args.DEPUIS, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.DEPUIS,args.langue)
+        date, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.DEPUIS,args.langue)
         if args.JUSQUE == 1 and args.DEPUIS <= aujourdhui:
-            args.JUSQUE = aujourdhui
+            fin = aujourdhui
         elif args.JUSQUE == 1:
-            args.JUSQUE = datetime.date(args.DEPUIS.year,12,31)
+            fin = datetime.date(args.DEPUIS.year,12,31)
+        debut = adjutoria.AtoZ(semaine_seule,mois_seul,annee_seule,date)[0]
             
     if args.JUSQUE != 1 and not isinstance(args.JUSQUE,datetime.date):
-        args.JUSQUE, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.JUSQUE,args.langue)
+        date, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(args.JUSQUE,args.langue)
         if args.DEPUIS == 1 and args.JUSQUE >= aujourdhui:
-            args.DEPUIS = aujourdhui
+            debut = aujourdhui
         elif args.DEPUIS == 1:
-            args.DEPUIS = datetime.date(args.JUSQUE.year,1,1)
-        
-### Définition de quelques variables ###
-if date == 'fromto':
-    if args.DEPUIS > args.JUSQUE:
-        debut = args.JUSQUE
-        fin = args.DEPUIS
-    else:
-        debut = args.DEPUIS
-        fin = args.JUSQUE
-elif semaine_seule:
-    debut = date
-    fin = date + datetime.timedelta(6)
-elif annee_seule:
-    debut = date
-    fin = datetime.date(date.year,12,31)
-elif mois_seul:
-    debut = date
-    fin = datetime.date(date.year,date.month,calendar.monthrange(date.year,date.month)[1])
-else:
-    debut = date
-    fin = date
+            debut = datetime.date(args.JUSQUE.year,1,1)
+        fin = adjutoria.AtoZ(semaine_seule,mois_seul,annee_seule,date)[1]
     
+    if fin < debut:
+        adjutoria.erreur(16,args.langue)
+        
+### Définition de quelques variables ###  
 Annee = dict()
 ordo=args.ordo
-
 
 ### Analyse des fichiers ###
 year = debut.year - 1
@@ -157,6 +139,7 @@ with open('samedi.pic','rb') as file:
     pic=pickle.Unpickler(file)
     samedi=pic.load()
     
+### Traitement de la recherche inversée ###
 if args.INVERSE != 1:
     boucle = True
     date = debut
