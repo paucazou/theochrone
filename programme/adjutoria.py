@@ -248,7 +248,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
             elif re.fullmatch(r"[0-9]{8}",passager[0]):
                 date = producteur_de_datte(passager[0][:2],passager[0][2:4],passager[0][4:])
             elif re.fullmatch(r"[0-9]{4}",passager[0]):
-                date = producteur_de_datte(passager[0],1,1)
+                date = producteur_de_datte(1,1,passager[0])
                 annee_seule = True
             elif re.fullmatch(r"[0-3]?[0-9]",passager[0]):
                 date = producteur_de_datte(passager[0],aujourdhui.month,aujourdhui.year)
