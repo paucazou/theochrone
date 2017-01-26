@@ -48,6 +48,7 @@ semaine = {'francais':['lundi','mardi','mercredi','jeudi','vendredi','samedi','d
             'english': ['monday','tuesday','wednesday','tuesday','thursday','saturday','sunday'],
             'latina': ['de Feria secunda','de Feria tertia','de Feria quarta','de Feria quinta', 'de Feria sexta','sabbato','dominica'],
                }
+mois = ('janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
         
 fichiers=(
     'romanus_1962_dimanches.pic',
@@ -345,25 +346,11 @@ def mois_lettre(mot,langue='english'):
     if isinstance(mot,str):
         mot = mot.lower()
     if langue == 'francais':
-        mois = (
-            (1,'janvier'),
-            (2,'fevrier'),
-            (3,'mars'),
-            (4,'avril'),
-            (5,'mai'),
-            (6,'juin'),
-            (7,'juillet'),
-            (8, 'aout'),
-            (9,'septembre'),
-            (10,'octobre'),
-            (11,'novembre'),
-            (12, 'decembre')
-            )
         if isinstance(mot,int):
-            return mois[mot][1]
-        for a in mois:
-            if mot.lower() in a[1]:
-                return a[0]
+            return mois[mot - 1]
+        for i,a in enumerate(mois):
+            if mot.lower() in sans_accent(a):
+                return i + 1
         erreur(13,langue)
     else: #default : english
         for month_idx in range(1,13):
@@ -580,7 +567,7 @@ def affiche_jour(date,langue):
             jour = 'premier'
         else:
             jour = date.day
-        mois = mois_lettre(date.month - 1,langue)
+        mois = mois_lettre(date.month,langue)
         sortie="""le {} {} {} {}""".format(nom_jour(date,langue),jour,mois,date.year)
     elif kwargs['langue']=='english':
         sortie="""on {}""".format(date)
@@ -681,7 +668,7 @@ def affichage(**kwargs):
                         jour = 'premier'
                     else:
                         jour = kwargs['date'].day
-                    mois = mois_lettre(kwargs['date'].month - 1,kwargs['langue'])
+                    mois = mois_lettre(kwargs['date'].month,kwargs['langue'])
                     sortie += """Fête transférée du {} {} {}. """.format(jour, mois, origine.year)
                   
             if kwargs['verbose'] or kwargs['temporal_ou_sanctoral']:
