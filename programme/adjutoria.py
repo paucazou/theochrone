@@ -221,6 +221,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
         for i,day in enumerate(('dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi')):
             if day == jour:
                 return i
+            
     def jourmois_joursemaine(jour,date):
         """A function which determines wether or not the weekday entered matches with date"""
         wd=-1
@@ -702,7 +703,8 @@ def affichage(**kwargs):
             erreur('01')
         else: # latin
             pass
-        sortie += '\n'
+        if a != kwargs['liste'][-1]:
+            sortie += '\n'
             
     return sortie
             

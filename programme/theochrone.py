@@ -209,5 +209,7 @@ else:
         celebrations = adjutoria.selection(Annee[date],date,Annee,samedi)
         print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=False,                   liste=celebrations,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine))
         date = date + datetime.timedelta(1)
-        if date > fin:
+        if date <= fin:
+            print('')
+        elif date > fin:
             break
