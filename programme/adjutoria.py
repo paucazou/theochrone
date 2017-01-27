@@ -55,8 +55,11 @@ fichiers=(
     'romanus_1962_fetesduseigneur.pic',
     'romanus_1962_cycledenoel.pic',
     'romanus_1962_cycledepaques.pic',
-    #'romanus_1962_saints_premier_trimestre',
-    #'gallicanus_1962_dimanches',
+    'romanus_1962_premiertrimestre_sanctoral.pic',
+    #'romanus_1962_deuxiemetrimestre_sanctoral.pic',
+    #'romanus_1962_troisiemetrimestre_sanctoral.pic',
+    #'romanus_1962_quatriemetrimestre_sanctoral.pic',
+    #'gallicanus_1962_dimanches.pic',
     #'samedi', ce fichier n'est utilisé que dans un cas particulier.
     )
 
