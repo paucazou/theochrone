@@ -1195,6 +1195,7 @@ class FeteFerie(Fete):
         self.degre=4
         self._priorite=200
         self.commemoraison_privilegiee=-1
+        self.temporal = True
     
     def QuelNom(self,jour):
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
