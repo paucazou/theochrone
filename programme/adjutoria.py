@@ -699,7 +699,7 @@ def affichage(**kwargs):
                     sortie += """Fête du Sanctoral. """
                     
             if kwargs['verbose'] or kwargs['temps_liturgique']: # ne peut marcher qu'avec une année complète supprimer False une fois que c'est corrigé ; ne peut être un simple affichage : ce qui sera enregistré le sera sous une forme plus sobre.
-                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,'francais').capitalize())
+                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,'francais'))
                 
             if kwargs['verbose'] or kwargs['couleur']:
                 sortie += """Couleur liturgique : {}. """.format(a.couleur)
