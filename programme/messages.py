@@ -4,15 +4,17 @@
 import argparse, gettext
 from adjutoria import default_language
 
+gettext.install('messages','./locale')
+
 ### Command-line args ###
 parser = argparse.ArgumentParser(
         prog='Theochrone',
         formatter_class=argparse.RawTextHelpFormatter,
-        description="""A universal calendar for the Tridentine Mass (i.e. Extraordinary Form of the Roman Rite)""",
-        epilog="Please pray God for me.",
+        description=_("""A universal calendar for the Tridentine Mass (i.e. Extraordinary Form of the Roman Rite)"""),
+        epilog=_("Please pray God for me."),
         )
-main = parser.add_argument_group('Main options', description="Main options of the program")
-main.add_argument('DATE', nargs='*',help="""Theochrone accepts many formats :
+main = parser.add_argument_group(_('Main options'), description=_("Main options of the program"))
+main.add_argument('DATE', nargs='*',help=_("""Theochrone accepts many formats :
                   - Nothing : current day
                   - A complete date with year, month and day of month, for example as following :
                     - DD MM YYYY
@@ -35,39 +37,39 @@ main.add_argument('DATE', nargs='*',help="""Theochrone accepts many formats :
                         - 'next month', or 'previous month', which returns the month after current one, and the month before current one.
                         - 'next year', or 'previous year', which returns the year after current one, and the year before current one.
                 All of these formats are also accepted by the --from and --to options. (See below)
-                    """)
-main.add_argument('--from',dest='DEPUIS',nargs='*',default=1,help="""With --to option, --from option can be used to point out the beginning of the period you want to print.
+                    """))
+main.add_argument('--from',dest='DEPUIS',nargs='*',default=1,help=_("""With --to option, --from option can be used to point out the beginning of the period you want to print.
                   Arguments accepted have exactly the same format as DATE (see above).
                   --from may be implied : if --to point out a date later than the current day,
                   --from would automatically considered to be the current day ;
-                  else, it would be the first of january of the current year.""" )
-main.add_argument('--to',dest='JUSQUE',nargs='*',default=1,help="""With --from option, --to option can be used to point out the end of the period you want to print.
+                  else, it would be the first of january of the current year.""" ))
+main.add_argument('--to',dest='JUSQUE',nargs='*',default=1,help=_("""With --from option, --to option can be used to point out the end of the period you want to print.
                   Arguments accepted have exactly the same format as DATE (see above).
                   --to may be implied : if --from point out a date prior to the current day,
                   --to would automatically considered to be the current day ;
-                  else, it would be the 31st of december of the current year.""")
-main.add_argument('-r','--reverse',dest='INVERSE',nargs='*',default=1,help="""Alpha. Does not work properly. Reverse is to be a way to find and print feast by entering their names as arguments, ex : -r Easter, -r 21 Sunday after Pentecosten,... Every other options should be available with this one.""")
+                  else, it would be the 31st of december of the current year."""))
+main.add_argument('-r','--reverse',dest='INVERSE',nargs='*',default=1,help=_("""Alpha. Does not work properly. Reverse is to be a way to find and print feast by entering their names as arguments, ex : -r Easter, -r 21 Sunday after Pentecosten,... Every other options should be available with this one."""))
 
-affichage = parser.add_argument_group('Print options',description="Convenient options for printing results")
-affichage.add_argument('-v','--verbose', help="make theochrone more verbose. Equals to -cdtsLD, and more.",action='store_true')
-affichage.add_argument('-c','--color','--colour', dest='couleur', help="print liturgical colour", action='store_true')
-affichage.add_argument('-d','--degree', dest='degre', help='print degree of the liturgical feast', action='store_true')
-affichage.add_argument('-w','--weekday', dest='jour_semaine',help='print weekday',action='store_true')
-affichage.add_argument('-t','--transfert', dest='transfert', help='print wether the feast was transfered', action='store_true')
-affichage.add_argument('-s','--temporsanct',dest='temporal_ou_sanctoral', help='print whether the feast belongs to the sanctorum or de tempore', action='store_true')
-affichage.add_argument('-L','--liturgical-time', dest='temps_liturgique',help='print to which liturgical time the feast belongs to',action='store_true')
-affichage.add_argument('-D','--print-date',dest='date_affichee',help='print date',action='store_true')
-affichage.add_argument('-l','--language', dest='langue', action='store', help="choose your language /!\ ONLY FRENCH AVAILABLE /!\ ", default=default_language(),choices=['francais','english'])
+affichage = parser.add_argument_group(_('Print options'),description=_("Convenient options for printing results"))
+affichage.add_argument('-v','--verbose', help=_("make theochrone more verbose. Equals to -cdstwLD, and more."),action='store_true')
+affichage.add_argument('-c','--color','--colour', dest='couleur', help=_("print liturgical colour"), action='store_true')
+affichage.add_argument('-d','--degree', dest='degre', help=_('print degree of the liturgical feast'), action='store_true')
+affichage.add_argument('-w','--weekday', dest='jour_semaine',help=_('print weekday'),action='store_true')
+affichage.add_argument('-t','--transfert', dest='transfert', help=_('print wether the feast was transfered'), action='store_true')
+affichage.add_argument('-s','--temporsanct',dest='temporal_ou_sanctoral', help=_('print whether the feast belongs to the sanctorum or de tempore'), action='store_true')
+affichage.add_argument('-L','--liturgical-time', dest='temps_liturgique',help=_('print to which liturgical time the feast belongs to'),action='store_true')
+affichage.add_argument('-D','--print-date',dest='date_affichee',help=_('print date'),action='store_true')
+affichage.add_argument('-l','--language', dest='langue', action='store', help=_("choose your language /!\ ONLY FRENCH AVAILABLE /!\ "), default=default_language(),choices=['francais','english']) # créer une classe particulière d'action pour accepter 'français' ?
 
-selection = parser.add_argument_group('Selection options',description="Options to focus researches")
-selection.add_argument('-p','--proper','--rite', dest='propre', help='select which proper or rite you want to use',action='store',default='romanus',choices=['romanus','all'])
-selection.add_argument('-o','--ordo', dest='ordo', help='select which ordo you want to use', type=int, action='store',default=1962,choices=[1962])
-selection.add_argument('-m','--more',dest='plus', help='used with -r/--reverse, print a more complete list of feasts matching with arguments entered', action='store_true')
+selection = parser.add_argument_group(_('Selection options'),description=_("Options to focus researches"))
+selection.add_argument('-p','--proper','--rite', dest='propre', help=_('select which proper or rite you want to use'),action='store',default='romanus',choices=['romanus','all'])
+selection.add_argument('-o','--ordo', dest='ordo', help=_('select which ordo you want to use'), type=int, action='store',default=1962,choices=[1962])
+selection.add_argument('-m','--more',dest='plus', help=_('used with -r/--reverse, print a more complete list of feasts matching with arguments entered'), action='store_true')
 
-system = parser.add_argument_group('System options', description="Other options for developers")
+system = parser.add_argument_group(_('System options'), description=_("Other options for developers"))
 system.add_argument('--version', action='version',version='%(prog)s 0.1')
 system.add_argument('--test',help='Do not run',action='store_true')
-system.add_argument('--poems',help='open O Crux ave Spes Unica', action='store_true')
+system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
 
 args = parser.parse_args()
 
@@ -81,5 +83,7 @@ loc = './locale'
  #   francais.install()
 
 ### Messages ###
+theochrone = {} # a dict with all the messages used in theochrone.py
+adjutoria = {} # a dict with all the messages used in adjutoria.py : first functions, second classes
 
 
