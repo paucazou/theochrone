@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-28 14:20+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: command_line.py:30
+msgid "francais"
+msgstr "french"
+
+#: command_line.py:31
+msgid "english"
+msgstr "english"
+
+#: command_line.py:32
+msgid "latina"
+msgstr "latin"
+
+#: command_line.py:48
+msgid ""
+"A universal calendar for the Tridentine Mass (i.e. Extraordinary Form of the "
+"Roman Rite)"
+msgstr ""
+
+#: command_line.py:49
+msgid "Please pray God for me."
+msgstr ""
+
+#: command_line.py:51
+msgid "Main options"
+msgstr ""
+
+#: command_line.py:51
+msgid "Main options of the program"
+msgstr ""
+
+#: command_line.py:52
+msgid ""
+"Theochrone accepts many formats :\n"
+"                  - Nothing : current day\n"
+"                  - A complete date with year, month and day of month, for "
+"example as following :\n"
+"                    - DD MM YYYY\n"
+"                    - DD-MM-YYYY\n"
+"                    - DD/MM/YYYY\n"
+"                    - DDMMYYYY (eight characters required)\n"
+"                    - Day in figures, month in letters, year in figures : "
+"ex. 30 december 1990 ; 8th july 1990\n"
+"                    - weekday before the date as above : ex. Wednesday the "
+"24th of January 2017\n"
+"                    WARNING !!! The order of these elements much depends on "
+"your language.\n"
+"                - You can imply one of these elements, and so works "
+"Theochrone :\n"
+"                    - a figure between 1 and 31 : day of the current month "
+"in the current year\n"
+"                    - a weekday in letters only : the requested day in the "
+"current week (starting with Sunday)\n"
+"                    - a month only (ex : july, sept,...) : the complete "
+"month of the current year\n"
+"                    - the day and the month without year : current year "
+"used\n"
+"                    - a number between 1600 and 4100 : the complete year.\n"
+"                    - a word as listed below in your current language :\n"
+"                        - 'week' : the complete current week, starting with "
+"Sunday, ending with Saturday. You can also ask for 'next' or 'last' 'week', "
+"which returns the week after current, and the past one.\n"
+"                        - 'tomorrow' : the day after current one. You can "
+"also ask for the 'day after tomorrow'.\n"
+"                        - 'yesterday' : the day before current one. You can "
+"also ask for the 'day before yesterday'.\n"
+"                        - 'next month', or 'previous month', which returns "
+"the month after current one, and the month before current one.\n"
+"                        - 'next year', or 'previous year', which returns the "
+"year after current one, and the year before current one.\n"
+"                All of these formats are also accepted by the --from and --"
+"to options. (See below)\n"
+"                    "
+msgstr ""
+
+#: command_line.py:76
+msgid ""
+"With --to option, --from option can be used to point out the beginning of "
+"the period you want to print.\n"
+"                  Arguments accepted have exactly the same format as DATE "
+"(see above).\n"
+"                  --from may be implied : if --to point out a date later "
+"than the current day,\n"
+"                  --from would automatically considered to be the current "
+"day ;\n"
+"                  else, it would be the first of january of the current year."
+msgstr ""
+
+#: command_line.py:81
+msgid ""
+"With --from option, --to option can be used to point out the end of the "
+"period you want to print.\n"
+"                  Arguments accepted have exactly the same format as DATE "
+"(see above).\n"
+"                  --to may be implied : if --from point out a date prior to "
+"the current day,\n"
+"                  --to would automatically considered to be the current "
+"day ;\n"
+"                  else, it would be the 31st of december of the current year."
+msgstr ""
+
+#: command_line.py:86
+msgid ""
+"Alpha. Does not work properly. Reverse is to be a way to find and print "
+"feast by entering their names as arguments, ex : -r Easter, -r 21 Sunday "
+"after Pentecost,... Every other options are available with this one."
+msgstr ""
+
+#: command_line.py:88
+msgid "Print options"
+msgstr ""
+
+#: command_line.py:88
+msgid "Convenient options for printing results"
+msgstr ""
+
+#: command_line.py:89
+msgid "make theochrone more verbose. Equals to -cdstwLD, and more."
+msgstr ""
+
+#: command_line.py:90
+msgid "print liturgical colour"
+msgstr ""
+
+#: command_line.py:91
+msgid "print degree of the liturgical feast"
+msgstr ""
+
+#: command_line.py:92
+msgid "print weekday"
+msgstr ""
+
+#: command_line.py:93
+msgid "print wether the feast was transfered"
+msgstr ""
+
+#: command_line.py:94
+msgid "print whether the feast belongs to the sanctorum or de tempore"
+msgstr ""
+
+#: command_line.py:95
+msgid "print to which liturgical time the feast belongs to"
+msgstr ""
+
+#: command_line.py:96
+msgid "print date"
+msgstr ""
+
+#: command_line.py:97
+msgid ""
+"choose your language /!\\ ONLY FRENCH AVAILABLE /!\\ \n"
+"    Available languages :\n"
+"    - French\n"
+"    - English\n"
+"    - Latin"
+msgstr ""
+
+#: command_line.py:103
+msgid "Selection options"
+msgstr ""
+
+#: command_line.py:103
+msgid "Options to focus researches"
+msgstr ""
+
+#: command_line.py:104
+msgid "select which proper or rite you want to use"
+msgstr ""
+
+#: command_line.py:105
+msgid "select which ordo you want to use"
+msgstr ""
+
+#: command_line.py:106
+msgid ""
+"used with -r/--reverse, print a more complete list of feasts matching with "
+"arguments entered"
+msgstr ""
+
+#: command_line.py:108
+msgid "System options"
+msgstr ""
+
+#: command_line.py:108
+msgid "Other options for developers"
+msgstr ""
+
+#: command_line.py:111
+msgid "open O Crux ave Spes Unica"
+msgstr ""

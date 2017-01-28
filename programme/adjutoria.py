@@ -9,8 +9,9 @@ import sys
 import unicodedata
 import re
 import copy
+from messages import adjutoria_messages as msg
+
 #import pdb ; pdb.set_trace()
-#from IPython.lib.deepreload import reload as dreload
 
 # Deus, in adjutorium meum intende.
 
@@ -165,24 +166,6 @@ def erreur(code,langue='english'):
     else:
         sys.exit("Error {} : {} Please type --help for more information.".format(code,message))
 
-def default_language():
-    """Find which language is used on the system"""
-    shell, err = subprocess.Popen('echo $SHELL', stdout=subprocess.PIPE, shell=True).communicate()
-    shell = str(shell)
-    
-    if 'sh' in shell: # fonctionnera pour tout interpréteur type sh, bash, zsh, tcsh, etc.
-         command = 'printenv LANGUAGE'
-    else:
-        erreur('00')
-    
-    langue_defaut, error=subprocess.Popen(command, stdout=subprocess.PIPE, shell=True).communicate()
-    
-    if b'fr' in langue_defaut:
-        langue_defaut = 'francais'
-    else:
-        langue_defaut = 'english'
-    
-    return langue_defaut
 
 def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,annee_seule=False):
     """Function used to see whether a list can be converted into datetime or not"""
@@ -1358,6 +1341,7 @@ class JoursAvent(FeteMobileAvent):
                 retour._priorite = 1200
             yield retour
     
+
 
     
 
