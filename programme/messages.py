@@ -10,7 +10,7 @@ loc = './i18n'
 francais = gettext.translation('messages',loc,languages=['fr'])
 english = gettext.translation('messages',loc,languages=['en'])
 latina = gettext.translation('messages',loc,languages=['la_LA'])
-print(args.langue)
+
 if args.langue == 'francais':
     francais.install()
 elif args.langue == 'latina':
