@@ -246,7 +246,7 @@ def choix_fichier():
 
 def basculer():
     if objets != []:
-        os.chdir("./programme")
+        os.chdir("./programme/data")
         subprocess.run(['ls'])
         second_file = finput("""Entrez le nom du fichier dans lequel seront enregistrées les données. S'il n'existe pas, il sera automatiquement créé. """,fichier.split('.')[0]+'.pic')
         with open(second_file,'wb') as f:
@@ -260,7 +260,7 @@ def basculer():
             input("""Enregistrement terminé""")
     else:
         print("""Vous n'avez actuellement aucun objet. Veuillez choisir un fichier à traiter ou enregistrer préalablement des objets avant de faire la bascule.""")
-    os.chdir("..")
+    os.chdir("../..")
 
 def modification():
     global objets
@@ -577,7 +577,7 @@ def dossier_d_objets():
     
 if args.xtopic:
     fichiers = dossier_d_objets()
-    os.chdir("./programme")
+    os.chdir("./programme/data")
     for fichier,obj in fichiers.items():
         with open(fichier.split('.')[0]+'.pic','wb') as f:
             pic = pickle.Pickler(f)

@@ -111,4 +111,11 @@ temps_liturgiques = {
     'pentecote':'Temps après la Pentecôte',
     }
     
+programmes_utilises = (
+    'xmllint --format -',
+    'enc.py',
+    'xgettext (-j) ./programme/i18n/[language]/LC_MESSAGES [filename]',
+    'msgformat [filename].po',
+    'caisse.py',
+    )
     

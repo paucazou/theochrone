@@ -74,13 +74,18 @@ system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='stor
 args = parser.parse_args()
 
 ### i18n ###
-loc = './locale'
-#francais = gettext.translation('messages',loc,languages=['fr_FR']) # à installer
-#english = gettext.translation('messages',loc,languages=['en_EN'])
-#latina = gettext.translation('messages',loc,languages=['la_LA'])
+loc = './i18n'
+francais = gettext.translation('messages',loc,languages=['fr']) # à installer
+english = gettext.translation('messages',loc,languages=['en'])
+latina = gettext.translation('messages',loc,languages=['la_LA'])
 
-#if args.language == 'francais':
- #   francais.install()
+if args.langue == 'francais':
+    francais.install()
+elif args.langue == 'latina':
+    latina.install()
+else:
+    english.install()
+    
 
 ### Messages ###
 theochrone = {} # a dict with all the messages used in theochrone.py
