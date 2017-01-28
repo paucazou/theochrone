@@ -30,13 +30,12 @@ class CoursDeLangue(argparse.Action):
         language_available = { 'francais': (_('francais'),'fr'),
                               'english':('en',_('english')),
                               'latina':('la',_('latina'))}
-        print(language_available)
         def sans_accent(mot):
             """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules."""
             return ''.join(c for c in unicodedata.normalize('NFD',mot.lower()) if unicodedata.category(c) != 'Mn')
         value = sans_accent(value.lower())
         for key,values in language_available.items():
-            if value in values:
+            if value in values or value == key:
                 value = key
                 break
         setattr(namespace,self.dest,value)
@@ -98,7 +97,7 @@ affichage.add_argument('-l','--language', dest='langue', action=CoursDeLangue, h
     Available languages :
     - French
     - English
-    - Latin"""), default=default_language()) # créer une classe particulière d'action pour accepter 'français' ?
+    - Latin"""), default=default_language())
 
 selection = parser.add_argument_group(_('Selection options'),description=_("Options to focus researches"))
 selection.add_argument('-p','--proper','--rite', dest='propre', help=_('select which proper or rite you want to use'),action='store',default='romanus',choices=['romanus','all'])

@@ -114,7 +114,7 @@ temps_liturgiques = {
 programmes_utilises = (
     'xmllint --format -',
     'enc.py',
-    'xgettext (-j) ./programme/i18n/[language]/LC_MESSAGES [filename]',
+    'xgettext -(j)p ./programme/i18n/[language]/LC_MESSAGES [filename]',
     'msgformat [filename].po',
     'caisse.py',
     )
