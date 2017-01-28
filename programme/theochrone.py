@@ -63,13 +63,13 @@ year = debut.year - 1
 while True:
     paques = adjutoria.paques(year)
     for fichier in [file for file in adjutoria.fichiers if file.split('_')[1] == str(ordo) and adjutoria.trouve(args.propre,file.split('_')[0])]:
-        Annee = adjutoria.ouvreetregarde(fichier,Annee,ordo,args.propre,year,paques)
+        Annee = adjutoria.ouvreetregarde('./data/' + fichier,Annee,ordo,args.propre,year,paques)
     if year == fin.year:
         break
     else:
         year += 1
 
-with open('samedi.pic','rb') as file:
+with open('./data/samedi.pic','rb') as file:
     pic=pickle.Unpickler(file)
     samedi=pic.load()
     
