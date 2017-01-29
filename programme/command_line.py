@@ -2,27 +2,17 @@
 # -*-coding:Utf-8 -*
 """A file for command-line arguments"""
 
-import argparse, gettext, unicodedata, subprocess
+import argparse, gettext, unicodedata, locale
 gettext.install('command_line','./i18n')
 
 def default_language():
-    """Find which language is used on the system"""
-    shell, err = subprocess.Popen('echo $SHELL', stdout=subprocess.PIPE, shell=True).communicate()
-    shell = str(shell)
-    
-    if 'sh' in shell: # fonctionnera pour tout interpréteur type sh, bash, zsh, tcsh, etc.
-         command = 'printenv LANGUAGE'
+    """A function which defines default language of the system"""
+    langue = locale.getdefaultlocale()[0]
+    if 'fr' in langue:
+        langue = 'francais'
     else:
-        erreur('00')
-    
-    langue_defaut, error=subprocess.Popen(command, stdout=subprocess.PIPE, shell=True).communicate()
-    
-    if b'fr' in langue_defaut:
-        langue_defaut = 'francais'
-    else:
-        langue_defaut = 'english'
-    
-    return langue_defaut
+        langue = 'english'
+    return langue
 
 class CoursDeLangue(argparse.Action):
     """A class to set language name entered by user"""
