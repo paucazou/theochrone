@@ -424,7 +424,7 @@ def ajouter(modele,entrees={}):
                 Prénoms composés :
                     Ex : jean-marie, jean-pierre.""",nouveau.personne)
         
-        for key, value in nouveau.regex_.items():
+        for key, value in sorted(nouveau.regex_.items()):
             prerempli = ''
             for a in value:
                 prerempli += a +' '
