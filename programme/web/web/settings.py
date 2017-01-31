@@ -1,3 +1,5 @@
+# -*-coding:Utf-8 -*
+
 """
 Django settings for web project.
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'kalendarium', # on rajoutera une appli pour afficher les textes, ou la même ?
 ]
 
 MIDDLEWARE = [
@@ -103,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-FR'
 
 TIME_ZONE = 'UTC'
 

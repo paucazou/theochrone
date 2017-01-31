@@ -1275,7 +1275,7 @@ class JoursOctaveDeNoel(FeteFixe):
     def __init__(self):
         FeteFixe.__init__(self)
         self.nom_={'francais':"jour dans l'Octave de Noël",'latina':'Die infra octavam Nativitatis','english':'day in the Octave of Christmas'} 
-        self.compléments_nom={'francais':['Deuxième','Troisième','Quatrième','Cinquième','Sixième','Septième'],
+        self.complements_nom={'francais':['Deuxième','Troisième','Quatrième','Cinquième','Sixième','Septième'],
                               'latina': ['De Secunda','De Tertia','De Quarta','De Quinta', 'De Sexta','De Sabbato'],
                               'english': ['Secund','Third','Fourth','Fifth','Sixth','Seventh',]
                               }
@@ -1293,7 +1293,7 @@ class JoursOctaveDeNoel(FeteFixe):
             retour = renvoie_regex(retour,regex,[i])
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
             for langue in ('francais','latina','english'):
-                retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
+                retour.nom[langue] = self.complements_nom[langue][i] + ' ' + self.nom_[langue]
             yield retour
 
 class JoursAvent(FeteMobileAvent):

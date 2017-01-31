@@ -24,6 +24,7 @@ parser.add_argument('-x','--xtopic', help="transform xml files in pickle ones fa
 parser.add_argument('-i','--indent', help="indent all xml files in Dossier d'objets",action='store_true')
 parser.add_argument('-d','--debug', help="debug the script",action='store_true')
 args = parser.parse_args()
+print(args)
 
 objets = []
 objets_ancien = []

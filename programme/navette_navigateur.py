@@ -25,7 +25,7 @@ class Navigateur(threading.Thread):
     def run(self):
         """Run by Thread"""
         sleep(1)
-        webbrowser.open_new_tab('localhost:8000')
+        webbrowser.open_new_tab('localhost:8000/kalendarium/accueil')
         
 primus = Serveur()
 secundus = Navigateur()

@@ -679,7 +679,7 @@
         <list key="nom"/>
         <list key="attribut"/>
       </dict>
-      <dict key="compléments_nom">
+      <dict key="complements_nom">
         <list key="english">
           <str>Secund</str>
           <str>Third</str>
