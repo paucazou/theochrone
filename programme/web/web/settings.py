@@ -1,5 +1,3 @@
-# -*-coding:Utf-8 -*
-
 """
 Django settings for web project.
 
@@ -22,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9ywq#1(=_c9$gfvuop2%5wdiqeh^i7e1*xc6!wg7&tq2p=rip6'
+SECRET_KEY = '=0o&lofc7ed$4ywtx2xfh4-nfmu+*24pk4glz2equ2ry_9)g67'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'kalendarium', # on rajoutera une appli pour afficher les textes, ou la même ?
+    'kalendarium',
 ]
 
 MIDDLEWARE = [

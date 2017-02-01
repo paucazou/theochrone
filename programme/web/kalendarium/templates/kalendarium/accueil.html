@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ titre }} {% endblock %}
+{% block content %}
+<p>
+    <form method='get' action="accueil">
+        <label for="type">Vous recherchez :</label>
+        <select name="type" id="type">
+            <option value="jour">un jour</option>
+            <option value="semaine">une semaine</option>
+            <option value="mois">un mois</option>
+            <option value="annee">une année</option>
+        </select>
+        <label for="date">Entrez la date :</label>
+        <input type="date" name="date"/>
+    </form>
+    {{ retour }}
+</p>
+{% endblock %}
