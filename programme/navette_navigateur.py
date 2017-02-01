@@ -16,24 +16,14 @@ class Serveur(threading.Thread):
         """Run by Thread"""
         os.chdir("./web")
         sys.argv = ["manage.py","runserver"]
-        #exec(open('./manage.py').read()) # doesn't work for some reason
         subprocess.run(['./manage.py','runserver'])
         
-class Navigateur(threading.Thread):
-    """Class which opens browser to make Theochrone work on it"""
-
-    def run(self):
-        """Run by Thread"""
-        sleep(1)
-        webbrowser.open_new_tab('localhost:8000/kalendarium/accueil')
-        
 primus = Serveur()
-secundus = Navigateur()
 
 primus.start()
-secundus.start()
-
-secundus.join()
-primus.join()
+sleep(0.5)
+webbrowser.open_new_tab('localhost:8000/kalendarium/accueil')
+print("Local server will be closed within 30 minutes")
+primus.join(1800)
 
 
