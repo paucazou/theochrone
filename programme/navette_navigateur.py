@@ -16,6 +16,7 @@ class Serveur(threading.Thread):
         """Run by Thread"""
         os.chdir("./web")
         sys.argv = ["manage.py","runserver"]
+#        exec(open('manage.py').read())
         subprocess.run(['./manage.py','runserver'])
         
 primus = Serveur()
