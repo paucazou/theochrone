@@ -10,13 +10,14 @@ import adjutoria
 
 def home(request):
     """A function which defines homepage"""
-    #try:
-    if request.GET['type'] == 'jour':
-        date, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable(request.GET['date'],'francais')
-        debut, fin = adjutoria.AtoZ(semaine_seule,mois_seul,annee_seule,date)
-
+    try:
+        if request.GET['type'] == 'jour':
+         date, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable([request.GET['date']],'francais',exit=False)
+         debut, fin = adjutoria.AtoZ(semaine_seule,mois_seul,annee_seule,date)
+    except KeyError:
+        date = adjutoria.datevalable([],'francais',exit=False)[0]
     #retour, err = subprocess.Popen('./theochrone.py', stdout=subprocess.PIPE, shell=True).communicate()
     #titre=retour
-    titre = debut
-    retour = fin
+    titre = request.GET 
+    retour = date 
     return render(request,'kalendarium/accueil.html',locals())
