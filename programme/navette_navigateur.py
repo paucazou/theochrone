@@ -22,7 +22,7 @@ class Serveur(threading.Thread):
 primus = Serveur()
 
 primus.start()
-sleep(0.5)
+sleep(1)
 webbrowser.open_new_tab('localhost:8000/kalendarium/accueil')
 print("Local server will be closed within 30 minutes")
 primus.join(1800)
