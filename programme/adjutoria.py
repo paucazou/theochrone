@@ -165,7 +165,7 @@ def erreur(code,langue='english',exit=True):
         if exit:
             sys.exit("Erreur n°{} : {} Tapez --help pour plus d'informations.".format(code,message))
         else:
-            return int(i)
+            return "Erreur n° {} : {}".format(code,message)
     else:
         sys.exit("Error {} : {} Please type --help for more information.".format(code,message))
 
@@ -201,7 +201,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
         try:
             date = datetime.date(int(annee),int(mois),int(jour))
         except ValueError:
-            erreur(14,langue,exit)
+            date = erreur(14,langue,exit)
         return date
     
     def hebdomadaire(nb):
