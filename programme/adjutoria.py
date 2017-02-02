@@ -198,7 +198,10 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
             erreur(11,langue,exit)
         elif int(annee) < 1600:
             erreur(10,langue,exit)
-        date = datetime.date(int(annee),int(mois),int(jour))
+        try:
+            date = datetime.date(int(annee),int(mois),int(jour))
+        except ValueError:
+            erreur(14,langue,exit)
         return date
     
     def hebdomadaire(nb):
