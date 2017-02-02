@@ -156,18 +156,21 @@ def modification(mots,langue):
     
     return mots
 
-def erreur(code,langue='english'):
+def erreur(code,langue='english',exit=True):
     """Une fonction qui renvoie un message d'erreur selon la langue et le code employé. Si le code commence par zéro, il faut le mettre entre guillemets."""
     message = erreurs[langue]
     for i in str(code):
         message = message[int(i)]
     if langue == 'francais':
-        sys.exit("Erreur n°{} : {} Tapez --help pour plus d'informations.".format(code,message))
+        if exit:
+            sys.exit("Erreur n°{} : {} Tapez --help pour plus d'informations.".format(code,message))
+        else:
+            return int(i)
     else:
         sys.exit("Error {} : {} Please type --help for more information.".format(code,message))
 
 
-def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,annee_seule=False):
+def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,annee_seule=False,exit=True):
     """Function used to see whether a list can be converted into datetime or not"""
     aujourdhui=datetime.date.today()
     nonliturgiccal=calendar.Calendar()
@@ -192,9 +195,9 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
     def producteur_de_datte(jour,mois,annee): # beaucoup d'erreurs potentielles
         """A function to create the datetime.date object"""
         if int(annee) > 4100:
-            erreur(11,langue)
+            erreur(11,langue,exit)
         elif int(annee) < 1600:
-            erreur(10,langue)
+            erreur(10,langue,exit)
         date = datetime.date(int(annee),int(mois),int(jour))
         return date
     
@@ -220,7 +223,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
         for week in nonliturgiccal.monthdatescalendar(date.year,date.month):
             for hideux,day in enumerate(week):
                 if day == date and hideux != wd:
-                    erreur(15,langue)
+                    erreur(15,langue,exit)
                         
     if langue == 'francais':
         if len(passager) == 0:
@@ -301,7 +304,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                     passager[1] = mois_lettre(passager[1],langue)
                 date = producteur_de_datte(passager[0],passager[1],aujourdhui.year)
             else:#erreur
-                erreur(12,langue)
+                erreur(12,langue,exit)
         
         elif len(passager) == 3:
             if passager[0] in semaine[langue]:
@@ -314,7 +317,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                     passager[1] = mois_lettre(passager[1],langue)
                 date = producteur_de_datte(passager[0],passager[1],passager[2])
             else:#erreur
-                erreur(12,langue)
+                erreur(12,langue,exit)
         
         elif len(passager) == 4: # il faut gérer les erreurs
             if not re.fullmatch(r"(1[1-2]|[1-9])",passager[0]):
@@ -323,7 +326,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
             jourmois_joursemaine(passager[0],date) 
                     
         else: # erreur
-            erreur(12,langue)
+            erreur(12,langue,exit)
     else: # english
         pass
     return date, semaine_seule, mois_seul, annee_seule
