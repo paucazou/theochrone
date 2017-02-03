@@ -2,22 +2,34 @@ from django.shortcuts import render
 import subprocess
 import os
 import sys
+import pickle
+from .forms import Recherche
 
-os.chdir('../..')
+#os.chdir('../..')
+os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
 sys.path.append('.')
 import adjutoria
+import officia
 # Create your views here.
 
 def home(request):
     """A function which defines homepage"""
+    form = Recherche(request.GET or None)
+    if form.is_valid():
+        date = form.cleaned_data['date_seule']
+    else:
+        date = adjutoria.datetime.date.today() 
+    Annee = officia.fabrique_an(date,date)
+    with open('./data/samedi.pic','rb') as file:
+        pic=pickle.Unpickler(file)
+        samedi=pic.load()
     try:
-        if request.GET['type'] == 'jour':
-         date, semaine_seule, mois_seul, annee_seule = adjutoria.datevalable([request.GET['date']],'francais',exit=False)
-         debut, fin = adjutoria.AtoZ(semaine_seule,mois_seul,annee_seule,date)
+        Annee[date]
     except KeyError:
-        date = adjutoria.datevalable([],'francais',exit=False)[0]
-    #retour, err = subprocess.Popen('./theochrone.py', stdout=subprocess.PIPE, shell=True).communicate()
-    #titre=retour
-    titre = request.GET 
-    retour = date 
+        Annee[date] = []
+    celebrations = adjutoria.selection(Annee[date],date,Annee,samedi)
+    retour = ''
+    for a in celebrations:
+        retour += a.nom['francais'] + '<br />'
+
     return render(request,'kalendarium/accueil.html',locals())
