@@ -1,25 +1,22 @@
 {% extends "base.html" %}
 {% block title %}{{ date }} {% endblock %}
 {% block content %}
-<p>
-        <table>
-            <tr>
-                <td>colonne 1: résultats
-                <ul>
-                    {% for celebration in celebrations %}
-                        <li>{{ celebration.nom.francais }}</li>
-                    {% endfor %}
-                </ul>
-                </td>
-                <td>colonne 2 : recherche
-                    <form action="accueil" method="get">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <input type="submit" value="Chercher" />
-                    </form>
-                </td>
-            </tr>
-        </table>
-    
-</p>
+    <table>
+        <tr>
+            <td><h3>Résultats</h3>
+            <table>
+                {% for celebration in celebrations %}
+                    <tr><td id="image">image</td><td id="result">{{ celebration.nom.francais }}</td></tr>
+                {% endfor %}
+            </table>
+            </td>
+            <td><h3>Recherche</h3>
+                <form action="accueil" method="get">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Chercher" />
+                </form>
+            </td>
+        </tr>
+    </table>
 {% endblock %}
