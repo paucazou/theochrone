@@ -22,7 +22,6 @@ def home(request):
         date = recherche_simple.cleaned_data['date_seule']
     if recherche_mot_clef.is_valid():
         mots_clefs = recherche_mot_clef.cleaned_data['recherche']
-        mots_separes = mots_clefs.split()
     if not date:
         date = adjutoria.datetime.date.today() 
 
@@ -41,7 +40,7 @@ def home(request):
         titre=date
         inversion=False
     else:
-        liste = officia.inversons(mots_clefs,mots_separes,Annee,adjutoria.datetime.date.today(),adjutoria.datetime.date.today(),samedi)
+        liste = officia.inversons(mots_clefs,Annee,adjutoria.datetime.date.today(),adjutoria.datetime.date.today(),samedi,exit=False)
         titre = mots_clefs
         inversion=True
 

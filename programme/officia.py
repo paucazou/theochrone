@@ -16,7 +16,22 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
             
     return Annee
 
-def inversons(mots_str,mots,Annee,debut,fin,samedi,plus=False,langue='francais',exit=True):
+def inversons(mots_bruts,Annee,debut,fin,samedi,plus=False,langue='francais',exit=True):
+    if isinstance(mots_bruts,list):
+        mots_bruts = [adjutoria.sans_accent(mot) for mot in mots_bruts]
+    else:
+        mots_bruts = adjutoria.sans_accent(mots_bruts).split()
+    mots = []
+    for mot in mots_bruts:
+        if ' ' in mot:
+            mots = mots + mot.split()
+        else:
+            mots = mots + [mot]
+    mots = adjutoria.modification(mots,langue)
+    mots_str=''
+    for a in mots:
+        mots_str += a
+        
     boucle = True
     date = debut
     if date == fin:
@@ -46,6 +61,6 @@ def inversons(mots_str,mots,Annee,debut,fin,samedi,plus=False,langue='francais',
     elif len(superieurs) == 0 and len(retenus) >= 1:
         liste=retenus
     else:
-        liste = adjutoria.erreur(20,langue,exit=exit)
+        liste = [adjutoria.erreur(20,langue,exit=exit)]
     
     return liste
