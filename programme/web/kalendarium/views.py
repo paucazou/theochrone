@@ -22,16 +22,21 @@ def home(request):
         date = recherche_simple.cleaned_data['date_seule']
     if recherche_mot_clef.is_valid():
         mots_clefs = recherche_mot_clef.cleaned_data['recherche']
+        plus = recherche_mot_clef.cleaned_data['plus']
+        try:
+            annee = int(recherche_mot_clef.cleaned_data['annee'])
+        except TypeError:
+            annee = adjutoria.datetime.date.today().year
     if not date:
         date = adjutoria.datetime.date.today() 
 
-    Annee = officia.fabrique_an(date,date)
     with open('./data/samedi.pic','rb') as file:
         pic=pickle.Unpickler(file)
         samedi=pic.load()
     
     retour = ''
     if mots_clefs == '':
+        Annee = officia.fabrique_an(date,date)
         try:
             Annee[date]
         except KeyError:
@@ -40,7 +45,7 @@ def home(request):
         titre=date
         inversion=False
     else:
-        liste = officia.inversons(mots_clefs,Annee,adjutoria.datetime.date.today(),adjutoria.datetime.date.today(),samedi,exit=False)
+        liste = officia.inversons(mots_clefs,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),samedi,exit=False,plus=plus)
         titre = mots_clefs
         inversion=True
 

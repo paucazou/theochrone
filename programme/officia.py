@@ -16,7 +16,8 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
             
     return Annee
 
-def inversons(mots_bruts,Annee,debut,fin,samedi,plus=False,langue='francais',exit=True):
+def inversons(mots_bruts,debut,fin,samedi,plus=False,langue='francais',exit=True):
+    Annee = fabrique_an(debut,fin)
     if isinstance(mots_bruts,list):
         mots_bruts = [adjutoria.sans_accent(mot) for mot in mots_bruts]
     else:
