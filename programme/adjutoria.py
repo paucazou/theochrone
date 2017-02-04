@@ -23,7 +23,7 @@ unites = (re.compile('(1(ere?)?|une?\||premiere?)'),
             re.compile('(4|quatre?)(.?eme)?'),
             re.compile('(5|cinqu?)(.?eme)?'),
             re.compile('(6|six)(.?eme)?'),
-            re.compile('(7|sept)(.?eme)?'),
+            re.compile('(7|sept[^u])(.?eme)?'),
             re.compile('(8|huit)(.?eme)?'),
             re.compile('(9|neu[fv])(.?eme)?'),)
 dizaines = (re.compile('(11|onze?)(.?eme)?'),
