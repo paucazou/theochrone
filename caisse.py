@@ -20,11 +20,10 @@ parser = argparse.ArgumentParser(
         description="""A tool to create, modify, delete and save objects as xml or pickle for Theochrone""",
         )
 
-parser.add_argument('-x','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
-parser.add_argument('-i','--indent', help="indent all xml files in Dossier d'objets",action='store_true')
+parser.add_argument('-w','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
+parser.add_argument('-t','--indent', help="indent all xml files in Dossier d'objets",action='store_true')
 parser.add_argument('-d','--debug', help="debug the script",action='store_true')
 args = parser.parse_args()
-print(args)
 
 objets = []
 objets_ancien = []
