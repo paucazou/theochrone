@@ -1,19 +1,29 @@
 {% extends "base.html" %}
-{% block title %}{{ date }} {% endblock %}
+{% block title %}{{ titre }} {% endblock %}
 {% block content %}
     <table>
         <tr>
-            <td><h3>Résultats</h3>
+            <td><h3>{{ titre }}</h3>
             <table>
-                {% for celebration in celebrations %}
-                    <tr><td id="image">image</td><td id="result">{{ celebration.nom.francais }}</td></tr>
+                {% for fete in liste %}
+                    <tr><td id="image">image</td><td id="result">{{ fete.nom.francais }}
+                    {% if inversion %}
+                    - {{ fete.date }}
+                    {% endif %}
+                    </td>
+                    </tr>
                 {% endfor %}
             </table>
             </td>
             <td><h3>Recherche</h3>
                 <form action="accueil" method="get">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {{ recherche_simple.as_p }}
+                    <input type="submit" value="Chercher" />
+                </form>
+                <form action="accueil" method="get">
+                    {% csrf_token %}
+                    {{ recherche_mot_clef.as_p }}
                     <input type="submit" value="Chercher" />
                 </form>
             </td>

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
-import adjutoria
+import adjutoria, datetime
 
 def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     year = debut.year - 1
@@ -15,3 +15,37 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
             year += 1
             
     return Annee
+
+def inversons(mots_str,mots,Annee,debut,fin,samedi,plus=False,langue='francais',exit=True):
+    boucle = True
+    date = debut
+    if date == fin:
+        date = datetime.date(date.year,1,1)
+        fin = datetime.date(date.year,12,31)
+    retenus = []
+    while date <= fin:
+        try:
+            Annee[date] = adjutoria.selection(Annee[date],date,Annee,samedi)
+            for fete in Annee[date]:
+                fete.valeur = fete.Correspondance(mots_str,mots)
+                if fete.valeur >= 50:
+                    retenus.append(fete)
+        except KeyError:
+            pass
+        date += datetime.timedelta(1)
+    
+    retenus.sort(key=lambda x:x.valeur,reverse=True)
+    superieurs = [x for x in retenus if x.valeur >= 70 and x.valeur < 100]
+    elite = [x for x in retenus if x.valeur >= 100]
+    if plus:
+        liste = retenus
+    elif len(elite) >= 1:
+        liste = elite
+    elif len(superieurs) >= 1:
+        liste=superieurs
+    elif len(superieurs) == 0 and len(retenus) >= 1:
+        liste=retenus
+    else:
+        liste = adjutoria.erreur(20,langue,exit=exit)
+    
+    return liste

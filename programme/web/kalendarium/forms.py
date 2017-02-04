@@ -3,6 +3,10 @@
 from django import forms
 import datetime
 
-class Recherche(forms.Form):
-    date_seule = forms.DateField(widget = forms.SelectDateWidget(years=range(1600,4101)),required = True,label="Choisissez une date : ",initial = datetime.date.today) #,attrs={"value":datetime.date.today()})
+class RechercheSimple(forms.Form):
+    date_seule = forms.DateField(widget = forms.SelectDateWidget(years=range(1600,4101)),required = False,label="Choisissez une date : ",initial = datetime.date.today) #,attrs={"value":datetime.date.today()})
+
+class RechercheMotClef(forms.Form):
+    annee = forms.Select(choices = range(1600,4101)) #,required=True) #,initial=datetime.date.today().year)
+    recherche = forms.CharField(label="Entrez vos mots-clefs",required=False)
 

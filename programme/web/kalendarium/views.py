@@ -3,7 +3,7 @@ import subprocess
 import os
 import sys
 import pickle
-from .forms import Recherche
+from .forms import * 
 
 #os.chdir('../..')
 os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
@@ -14,22 +14,35 @@ import officia
 
 def home(request):
     """A function which defines homepage"""
-    form = Recherche(request.GET or None)
-    if form.is_valid():
-        date = form.cleaned_data['date_seule']
-    else:
+    recherche_simple = RechercheSimple(request.GET or None)
+    recherche_mot_clef = RechercheMotClef(request.GET or None)
+    date = None
+    mots_clefs = ''
+    if recherche_simple.is_valid():
+        date = recherche_simple.cleaned_data['date_seule']
+    if recherche_mot_clef.is_valid():
+        mots_clefs = recherche_mot_clef.cleaned_data['recherche']
+        mots_separes = mots_clefs.split()
+    if not date:
         date = adjutoria.datetime.date.today() 
+
     Annee = officia.fabrique_an(date,date)
     with open('./data/samedi.pic','rb') as file:
         pic=pickle.Unpickler(file)
         samedi=pic.load()
-    try:
-        Annee[date]
-    except KeyError:
-        Annee[date] = []
-    celebrations = adjutoria.selection(Annee[date],date,Annee,samedi)
+    
     retour = ''
-    for a in celebrations:
-        retour += a.nom['francais'] + '<br />'
+    if mots_clefs == '':
+        try:
+            Annee[date]
+        except KeyError:
+            Annee[date] = []
+        liste = adjutoria.selection(Annee[date],date,Annee,samedi)
+        titre=date
+        inversion=False
+    else:
+        liste = officia.inversons(mots_clefs,mots_separes,Annee,adjutoria.datetime.date.today(),adjutoria.datetime.date.today(),samedi)
+        titre = mots_clefs
+        inversion=True
 
     return render(request,'kalendarium/accueil.html',locals())
