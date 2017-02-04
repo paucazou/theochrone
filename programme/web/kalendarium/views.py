@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import subprocess
 import os
 import sys
@@ -6,29 +6,23 @@ import pickle
 from .forms import * 
 
 #os.chdir('../..')
-os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
+os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme") # tester avec .. seul
 sys.path.append('.')
 import adjutoria
 import officia
 # Create your views here.
 
-def home(request):
+def home(request,recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),date=datetime.date.today(),mots_clefs='',plus=False,annee=datetime.date.today().year):
     """A function which defines homepage"""
-    recherche_simple = RechercheSimple(request.GET or None)
-    recherche_mot_clef = RechercheMotClef(request.GET or None)
-    date = None
-    mots_clefs = ''
-    if recherche_simple.is_valid():
+    """if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
     if recherche_mot_clef.is_valid():
         mots_clefs = recherche_mot_clef.cleaned_data['recherche']
         plus = recherche_mot_clef.cleaned_data['plus']
         try:
-            annee = int(recherche_mot_clef.cleaned_data['annee'])
+            annee = recherche_mot_clef.cleaned_data['annee']
         except TypeError:
-            annee = adjutoria.datetime.date.today().year
-    if not date:
-        date = adjutoria.datetime.date.today() 
+            annee = adjutoria.datetime.date.today().year""" 
 
     with open('./data/samedi.pic','rb') as file:
         pic=pickle.Unpickler(file)
@@ -50,3 +44,17 @@ def home(request):
         inversion=True
 
     return render(request,'kalendarium/accueil.html',locals())
+
+def mc_transfert(request):
+    recherche_mot_clef = RechercheMotClef(request.GET or None)
+    if recherche_mot_clef.is_valid():
+        mots_clefs = recherche_mot_clef.cleaned_data['recherche']
+        plus = recherche_mot_clef.cleaned_data['plus']
+        annee = recherche_mot_clef.cleaned_data['annee']
+    return home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,annee=annee)
+        
+def date_transfert(request):
+    recherche_simple = RechercheSimple(request.GET or None)
+    if recherche_simple.is_valid():
+        date = recherche_simple.cleaned_data['date_seule']
+    return home(request,recherche_simple=recherche_simple,date=date)

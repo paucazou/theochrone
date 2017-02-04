@@ -16,12 +16,12 @@
             </table>
             </td>
             <td><h3>Recherche</h3>
-                <form action="accueil" method="get">
+                <form action="date_seule" method="get">
                     {% csrf_token %}
                     {{ recherche_simple.as_p }}
                     <input type="submit" value="Chercher" />
                 </form>
-                <form action="accueil" method="get">
+                <form action="mot_clef" method="get">
                     {% csrf_token %}
                     {{ recherche_mot_clef.as_p }}
                     <input type="submit" value="Chercher" />
