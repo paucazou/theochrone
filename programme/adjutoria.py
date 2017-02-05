@@ -89,7 +89,7 @@ erreurs={
          "L'année ne peut pas être supérieure à 4100.",
          "Merci de rentrer une date valide.",
          "Merci de rentrer un mois valide.",
-         "Merci de rentrer un jour qui correspond au mois.", #DEPRECATED
+         "Merci de rentrer un jour qui correspond au mois.",
          "Merci de rentrer un jour de la semaine correspondant au jour du mois.",#5
          "La date de début est postérieure à la date de fin.",
          ],
