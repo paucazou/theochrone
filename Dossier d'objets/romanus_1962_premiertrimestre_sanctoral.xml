@@ -2396,4 +2396,195 @@
       <bool key="votive">False</bool>
     </dict>
   </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">4</int>
+        <int key="mois">2</int>
+      </dict>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/04-02-St-Andre-Corsini-eveque-et</str>
+      <dict key="nom">
+        <str key="english">Saint Andrew Corsini</str>
+        <str key="francais">Saint André Corsini, Évêque et Confesseur</str>
+        <str key="latina">Sancti Andreae Corsini, Episcopis et Confessoris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">andre_corsini</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>corsini</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>andré</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>protoklite</str>
+          <str>apôtre</str>
+          <str>martyr</str>
+          <str>alexandrie</str>
+          <str>arezzo</str>
+          <str>athènes</str>
+          <str>égypte</str>
+          <str>stratilate</str>
+          <str>elnon</str>
+          <str>crète</str>
+          <str>xirolophi</str>
+          <str>étienne</str>
+          <str>pierre</str>
+          <str>paul</str>
+          <str>blachernes</str>
+          <str>calyvite</str>
+          <str>crisis</str>
+          <str>auxence</str>
+          <str>constantinople</str>
+          <str>syracuse</str>
+          <str>zoerard</str>
+          <str>vallombreuse</str>
+          <str>baudiment</str>
+          <str>gallerani</str>
+          <str>caccioli</str>
+          <str>conti</str>
+          <str>segni</str>
+          <str>dotti</str>
+          <str>sépulcre</str>
+          <str>franchi</str>
+          <str>abellon</str>
+          <str>grego</str>
+          <str>peschiera</str>
+          <str>hibernon</str>
+          <str>avellin</str>
+          <str>phu</str>
+          <str>yen</str>
+          <str>soveral</str>
+          <str>bobola</str>
+          <str>trong</str>
+          <str>kim</str>
+          <str>taegon</str>
+          <str>dung</str>
+          <str>lac</str>
+          <str>kogwa</str>
+          <str>charles</str>
+          <str>ferrari</str>
+          <str>hyacinthe</str>
+          <str>longhin</str>
+          <str>frère</str>
+        </list>
+        <list key="syntaxiques"/>
+        <list key="titre">
+          <str>saint</str>
+          <str>confesseur</str>
+          <str>évêque</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">5</int>
+        <int key="mois">2</int>
+      </dict>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/05-02-Ste-Agathe-vierge-et-martyre</str>
+      <dict key="nom">
+        <str key="english">Saint Agatha of Sicily</str>
+        <str key="francais">Sainte Agathe, Vierge et Martyre</str>
+        <str key="latina">Sanctae Agathae, Virginis et Martyris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">agathe_catane</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>catane</str>
+          <str>sicile</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>agathe</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>nicomédie</str>
+          <str>lin</str>
+          <str>kim</str>
+          <str>augustin</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+        </list>
+        <list key="titre">
+          <str>sainte</str>
+          <str>martyre</str>
+          <str>vierge</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
 </list>
