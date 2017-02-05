@@ -58,11 +58,37 @@ input
     box-shadow: none;
 }
 
+header
+{
+    display: inline;
+}
+
+#banniere
+{
+    background-position: left center;
+    width: 50%;
+    display: inline;
+}
+
+#banniere h1
+{
+    text-align: left;
+    font-size: 700%;
+    
+}
+
+#banniere img
+{
+    width: 4%; 
+    float: left;
+}
+
+
 nav ul
 {
     display: flex;
     float:left;
-    left:80%;
+    left:75%;
     position:relative;
 }
 
