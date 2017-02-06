@@ -800,7 +800,7 @@ class Fete:
         
         self.propre='romanus' # a string with the propre the feast belongs to 
         self.ordo=1962 # Default : 1962 ordo. The others may be : 1955,1942,1914
-        self._couleur='vert' # vert par défaut 
+        self._couleur='blanc' # vert par défaut 
         self.date_='' # un élément qui permet de calculer la date
 
         self.personne='deuxieme' # indique quel saint ou personne divine est célébrée. Très important pour le classement.
