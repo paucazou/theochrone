@@ -5,8 +5,8 @@ import sys
 import pickle
 from .forms import * 
 
-#os.chdir('../..')
-os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme") # tester avec .. seul
+#os.chdir('..')
+os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
 sys.path.append('.')
 import adjutoria
 import officia
