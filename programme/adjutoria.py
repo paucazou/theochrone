@@ -678,7 +678,7 @@ def affichage(**kwargs):
                     if origine.day == 1:
                         jour = 'premier'
                     else:
-                        jour = kwargs['date'].day
+                        jour = origine.day
                     mois = mois_lettre(kwargs['date'].month,kwargs['langue'])
                     sortie += """Fête transférée du {} {} {}. """.format(jour, mois, origine.year)
                   
