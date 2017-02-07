@@ -378,6 +378,7 @@ def traite(Annee,objet,date,annee,propre):
         return Annee
     #Faut-il déplacer ?
     adversaire = Annee[date][0]
+
     # Cas de 'objet' ayant la même self.personne que 'adversaire'
     if objet.personne == adversaire.personne:
         Annee[date].append(objet)
@@ -387,50 +388,50 @@ def traite(Annee,objet,date,annee,propre):
             Annee[date][0] = objet
             adversaire.date = adversaire.date + datetime.timedelta(1)
             adversaire.transferee=True
-            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
         else:
             objet.date = objet.date + datetime.timedelta(1)
-            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
     # Si l'un ou l'autre est transféré
     elif objet.transferee and adversaire.priorite > 800:
         objet.date = objet.date + datetime.timedelta(1)
-        Annee=traite(Annee,objet,date + datetime.timedelta(1),annee)
+        Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
     elif adversaire.transferee and objet.priorite > 800:
         Annee[date][0] = objet
         adversaire.date = adversaire.date + datetime.timedelta(1)
-        Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
+        Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
     # Cas de 'objet' fête de première classe vs 'adversaire' fête de première classe
     elif objet.priorite > 1600:
         if objet.priorite < adversaire.priorite and not objet.dimanche:
             objet.transferee=True
             objet.date = objet.date + datetime.timedelta(1)
-            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
         elif adversaire.priorite > 1600 and adversaire.priorite < objet.priorite and not adversaire.dimanche:
             Annee[date][0] = objet
             adversaire.date = adversaire.date + datetime.timedelta(1)
             adversaire.transferee=True
-            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
     elif propre != 'romanus' and (objet.occurrence_perpetuelle or adversaire.occurrence_perpetuelle):
         premier_dimanche_avent = dimancheapres(datetime.date(annee,12,25)) - datetime.timedelta(28)
         # Cas de 'objet' fête de seconde classe empêchée perpétuellement
         if objet.priorite > 800 and adversaire.priorite > 800 and adversaire.priorite > objet.priorite and not objet.dimanche:
             objet.date = objet.date + datetime.timedelta(1)
-            Annee=traite(Annee,objet, date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,objet, date + datetime.timedelta(1),annee,propre)
         elif adversaire.priorite > 800 and objet.priorite > 800 and objet.priorite > adversaire.priorite and not adversaire.dimanche:
             Annee[date][0] = objet
             adversaire.date = adversaire.date + datetime.timedelta(1)
-            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
         # Cas de 'objet' fête de troisième classe particulière empêchée perpétuellement 
         elif not date - paques >= datetime.timedelta(-46) and not date - paques < datetime.timedelta(0) and not objet.DateCivile(paques,annee) < datetime.date(annee,12,25) and not objet.DateCivile(paques,annee) >= premier_dimanche_avent:
             if objet.priorite <= 700 and objet.priorite >= 550 and objet.priorite < adversaire.priorite and not objet.dimanche:
                 objet.date = objet.date + datetime.timedelta(1)
-                Annee=traite(Annee,objet, date + datetime.timedelta(1),annee)
+                Annee=traite(Annee,objet, date + datetime.timedelta(1),annee,propre)
             elif adversaire.priorite <=700 and objet.priorite >= 550 and objet.priorite > adversaire.priorite and not adversaire.dimanche:
                 Annee[date][0] = objet
                 adversaire.date = adversaire.date + datetime.timedelta(1)
-                Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
-    else:
-        Annee[date].append(objet)
+                Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
+
+    Annee[date].append(objet)
     Annee[date].sort(key=lambda x: x.priorite,reverse=True)
     return Annee
     
