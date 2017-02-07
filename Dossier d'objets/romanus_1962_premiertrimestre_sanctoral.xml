@@ -5141,7 +5141,7 @@
         <str key="latina"/>
       </dict>
       <int key="borne_debut">-7</int>
-      <int key="borne_fin">8</int>
+      <int key="borne_fin">7</int>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
       <int key="commemoraison_privilegiee">90</int>
@@ -5198,7 +5198,7 @@
       <bool key="temporal">False</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
-      <int key="transfert">9</int>
+      <int key="transfert">8</int>
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
