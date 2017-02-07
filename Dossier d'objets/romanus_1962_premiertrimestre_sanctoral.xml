@@ -4962,4 +4962,171 @@
       <bool key="votive">False</bool>
     </dict>
   </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">21</int>
+        <int key="mois">3</int>
+      </dict>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/21-03-St-Benoit-abbe</str>
+      <dict key="nom">
+        <str key="english">Saint Benedict of Nursia</str>
+        <str key="francais">Saint Benoît, Abbé</str>
+        <str key="latina">Sancti Benedicti, Abbatis</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">benoit_nursie</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>nursie</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>benoît</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>aniane</str>
+          <str>angers</str>
+          <str>biscop</str>
+          <str>macérac</str>
+          <str>poitiers</str>
+          <str>sébaste</str>
+          <str>szkalka</str>
+          <str>bénévent</str>
+          <str>revelli</str>
+          <str>cagliari</str>
+          <str>crespi</str>
+          <str>milan</str>
+          <str>campanie</str>
+          <str>more</str>
+          <str>noir</str>
+          <str>africain</str>
+          <str>éthiopien</str>
+          <str>san</str>
+          <str>fradello</str>
+          <str>bénezet</str>
+          <str>avignon</str>
+          <str>labre</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+          <str>abbé</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">24</int>
+        <int key="mois">3</int>
+      </dict>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/24-03-St-Gabriel-archange</str>
+      <dict key="nom">
+        <str key="english">Saint Gabriel, Archangel</str>
+        <str key="francais">Saint Gabriel, Archange</str>
+        <str key="latina">Sancti Gabrielis, Archangeli</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">gabriel_archange</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>archange</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>gabriel</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>jérusalem</str>
+          <str>feretti</str>
+          <str>kermidolis</str>
+          <str>lalemant</str>
+          <str>crieur</str>
+          <str>bialystock</str>
+          <str>pergaud</str>
+          <str>addolorata</str>
+          <str>dame</str>
+          <str>douleurs</str>
+        </list>
+        <list key="syntaxiques">
+          <str>l</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
+      <bool key="votive">True</bool>
+    </dict>
+  </Modele>
 </list>
