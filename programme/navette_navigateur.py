@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
+import http.client
 import os
 import subprocess
 import sys
@@ -22,10 +23,21 @@ class Serveur(threading.Thread):
 primus = Serveur()
 primus.start()
 
-return_code = 1
+"""return_code = 1
 while return_code != 0:
-    """Waits until the server is on. 'nc' tries to connect to server at '8000' port. Works on *nix."""
+    Waits until the server is on. 'nc' tries to connect to server at '8000' port. Works on *nix.
     return_code = subprocess.call(['nc','-vz','localhost','8000'])
+    """
+local = http.client.HTTPConnection("localhost",port=8000,timeout=1)
+local.connection = "off"
+while local.connection == "off":
+    try:
+        local.connect()
+        local.connection = "on"
+        local.close()
+        print("Server is on")
+    except ConnectionRefusedError:
+        local.connection = "off"
     
 webbrowser.open_new_tab('localhost:8000/kalendarium/accueil')
 print("Local server will be closed within 30 minutes")
