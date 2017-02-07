@@ -4,7 +4,7 @@ import os
 import sys
 import pickle
 from .forms import * 
-
+p=os.path.realpath('.')
 #os.chdir('..')
 os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
 sys.path.append('.')
@@ -42,6 +42,9 @@ def home(request,recherche_mot_clef=RechercheMotClef(None),recherche_simple=Rech
         liste = officia.inversons(mots_clefs,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),samedi,exit=False,plus=plus)
         titre = mots_clefs
         inversion=True
+
+    p = p 
+    locaux = locals() #for development alone 
 
     return render(request,'kalendarium/accueil.html',locals())
 
