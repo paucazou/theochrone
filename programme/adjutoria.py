@@ -1144,8 +1144,8 @@ class FeteFixeTransferablePaques(FeteFixe):
     def DateCivile_(self,paques,annee):
         """Une fonction calculant la date civile."""
         datedebase=datetime.date(annee,self.date_['mois'],self.date_['jour'])
-        if datedebase < paques + datetime.timedelta(self.borne_debut) or datebase > paques + datetime.timedelta(self.borne_fin):
-            return datebase
+        if datedebase < paques + datetime.timedelta(self.borne_debut) or datedebase > paques + datetime.timedelta(self.borne_fin):
+            return datedebase
         else:
             return paques + datetime.timedelta(self.transfert)
         
