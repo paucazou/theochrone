@@ -25,7 +25,7 @@ SECRET_KEY = '=0o&lofc7ed$4ywtx2xfh4-nfmu+*24pk4glz2equ2ry_9)g67'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lasna',]
+ALLOWED_HOSTS = ['lasna','localhost']
 
 
 # Application definition

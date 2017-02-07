@@ -4,7 +4,6 @@ import os
 import sys
 import pickle
 from .forms import * 
-p=os.path.realpath('.')
 #os.chdir('..')
 os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
 sys.path.append('.')
@@ -43,7 +42,7 @@ def home(request,recherche_mot_clef=RechercheMotClef(None),recherche_simple=Rech
         titre = mots_clefs
         inversion=True
 
-    p = p 
+    p=os.path.realpath('.')
     locaux = locals() #for development alone 
 
     return render(request,'kalendarium/accueil.html',locals())
