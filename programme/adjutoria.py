@@ -411,6 +411,8 @@ def traite(Annee,objet,date,annee,propre):
             adversaire.date = adversaire.date + datetime.timedelta(1)
             adversaire.transferee=True
             Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
+        else:
+            Annee[date].append(objet)
     elif propre != 'romanus' and (objet.occurrence_perpetuelle or adversaire.occurrence_perpetuelle):
         premier_dimanche_avent = dimancheapres(datetime.date(annee,12,25)) - datetime.timedelta(28)
         # Cas de 'objet' fête de seconde classe empêchée perpétuellement
@@ -430,8 +432,10 @@ def traite(Annee,objet,date,annee,propre):
                 Annee[date][0] = objet
                 adversaire.date = adversaire.date + datetime.timedelta(1)
                 Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
-
-    Annee[date].append(objet)
+            else:
+                Annee[date].append(objet)
+    else:
+        Annee[date].append(objet)
     Annee[date].sort(key=lambda x: x.priorite,reverse=True)
     return Annee
     
