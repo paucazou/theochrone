@@ -57,7 +57,7 @@ fichiers=(
     'romanus_1962_cycledenoel.pic',
     'romanus_1962_cycledepaques.pic',
     'romanus_1962_premiertrimestre_sanctoral.pic',
-    #'romanus_1962_deuxiemetrimestre_sanctoral.pic',
+    'romanus_1962_deuxiemetrimestre_sanctoral.pic',
     #'romanus_1962_troisiemetrimestre_sanctoral.pic',
     #'romanus_1962_quatriemetrimestre_sanctoral.pic',
     #'gallicanus_1962_dimanches.pic',
@@ -1133,7 +1133,7 @@ class FeteMobileMois(Fete):
         return datetime.date(annee,self.date_['mois'],jouran)
     
 class FeteFixeTransferablePaques(FeteFixe):
-    """Une classe pour toutes les fêtes fixes qui peuvent être transférées et dont la date se calculera par rapport à Pâques.""" #Pour l'Annonciation et les litanies majeures
+    """Une classe pour toutes les fêtes fixes qui peuvent être transférées et dont la date se calculera par rapport à Pâques.""" #Pour l'Annonciation et les litanies majeures ; sans doute inutile : le système de base devrait suffire, puisque les fêtes sont de première classe
     
     def __init__(self):
         FeteFixe.__init__(self)
