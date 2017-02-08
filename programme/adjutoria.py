@@ -1132,7 +1132,7 @@ class FeteMobileMois(Fete):
             
         return datetime.date(annee,self.date_['mois'],jouran)
     
-class FeteFixeTransferablePaques(FeteFixe):
+class FeteFixeTransferablePaques(FeteFixe): # DEPRECATED
     """Une classe pour toutes les fêtes fixes qui peuvent être transférées et dont la date se calculera par rapport à Pâques.""" #Pour l'Annonciation et les litanies majeures ; sans doute inutile : le système de base devrait suffire, puisque les fêtes sont de première classe
     
     def __init__(self):
