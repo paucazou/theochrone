@@ -406,4 +406,244 @@
     </dict>
     <str key="classe">FeteFixe</str>
   </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">rouge</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">14</int>
+        <int key="mois">4</int>
+      </dict>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/14-04-St-Justin-martyr</str>
+      <dict key="nom">
+        <str key="english">Saint Justin Martyr</str>
+        <str key="francais">Saint Justin, Martyr</str>
+        <str key="latina">Sancti Justini, Martyris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">True</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">justin_naplouse</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>naplouse</str>
+          <str>néapolis</str>
+          <str>philosophe</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>justin</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>rome</str>
+          <str>chieti</str>
+          <str>paris</str>
+          <str>jacobis</str>
+          <str>orona</str>
+          <str>confesseur</str>
+          <str>juste</str>
+        </list>
+        <list key="syntaxiques">
+          <str>le</str>
+          <str>de</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+          <str>martyr</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
+      <bool key="votive">True</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">rouge</str>
+      <int key="_priorite">100</int>
+      <str key="_temps_liturgique">variable</str>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">14</int>
+        <int key="mois">4</int>
+      </dict>
+      <int key="degre">5</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/14-04-Sts-Tiburce-Valerien-et</str>
+      <dict key="nom">
+        <str key="english">Saints Tiburtius, Valerian and Maximus</str>
+        <str key="francais">Saints Tiburce, Valérien et Maxime, Martyrs</str>
+        <str key="latina">Sanctorum Tiburtii, Valeriani et Maximi, Martyrum</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">True</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">tiburce_valerien_maxime</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>rome</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>tiburce</str>
+          <str>valérien</str>
+          <str>maxime</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>chromace</str>
+          <str>padoue</str>
+          <str>alexandrie</str>
+          <str>constantinople</str>
+          <str>aquila</str>
+          <str>marchand</str>
+          <str>ostie</str>
+          <str>gros</str>
+          <str>carthage</str>
+          <str>cumes</str>
+          <str>durostorum</str>
+          <str>mysie</str>
+          <str>andrinople</str>
+          <str>jérusalem</str>
+          <str>naples</str>
+          <str>mayence</str>
+          <str>évreux</str>
+          <str>turin</str>
+          <str>riez</str>
+          <str>vienne</str>
+          <str>confesseur</str>
+          <str>callian</str>
+          <str>auxerre</str>
+          <str>avensa</str>
+          <str>tournus</str>
+          <str>cimiez</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>et</str>
+        </list>
+        <list key="titre">
+          <str>saints</str>
+          <str>martyrs</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">rouge</str>
+      <int key="_priorite">100</int>
+      <str key="_temps_liturgique">variable</str>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">17</int>
+        <int key="mois">4</int>
+      </dict>
+      <int key="degre">5</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/17-04-St-Anicet-pape-et-martyr</str>
+      <dict key="nom">
+        <str key="english">Saint Anicetus</str>
+        <str key="francais">Saint Anicet, Pape et Martyr</str>
+        <str key="latina">Sancti Aniceti, Papae et Martyris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">anicet_pape</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>anicet</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>koplin</str>
+        </list>
+        <list key="syntaxiques"/>
+        <list key="titre">
+          <str>saint</str>
+          <str>martyr</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
 </list>
