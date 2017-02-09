@@ -4,8 +4,9 @@ import os
 import sys
 import pickle
 from .forms import * 
-#os.chdir('..')
-os.chdir("/home/partage/.scripts/projet_liturgie/wip_fetes/programme")
+
+chemin = os.path.dirname(os.path.abspath(__file__)) + '/../..'
+os.chdir(chemin)
 sys.path.append('.')
 import adjutoria
 import officia
@@ -42,7 +43,6 @@ def home(request,recherche_mot_clef=RechercheMotClef(None),recherche_simple=Rech
         titre = mots_clefs
         inversion=True
 
-    p=os.path.realpath('.')
     locaux = locals() #for development alone 
 
     return render(request,'kalendarium/accueil.html',locals())
