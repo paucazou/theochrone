@@ -10,6 +10,10 @@
 # Affichage #
 ### ###
 
+import os
+chemin = os.path.dirname(os.path.abspath(__file__))
+os.chdir(chemin)
+
 import adjutoria
 from adjutoria import datetime, calendar, pickle, re
 from messages import args
