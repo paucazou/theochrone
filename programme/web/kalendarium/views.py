@@ -12,7 +12,9 @@ import adjutoria
 import officia
 # Create your views here.
 
-def home(request,recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),date=datetime.date.today(),mots_clefs='',plus=False,annee=datetime.date.today().year):
+def home(request,
+         recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),date=datetime.date.today(),
+         mots_clefs='',plus=False,annee=datetime.date.today().year):
     """A function which defines homepage"""
     """if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
@@ -60,3 +62,11 @@ def date_transfert(request):
     if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
     return home(request,recherche_simple=recherche_simple,date=date)
+
+def mois_transfert(request):
+    mois_seul = MoisSeul(request.GET or None)
+    if mois_seul.is_valid():
+        debut = mois_seul.cleaned_data['debut']
+        fin = mois_seul.cleaned_data['fin']
+    return home(request,mois_seul=mois_seul,debut=debut,fin=fin)
+    
