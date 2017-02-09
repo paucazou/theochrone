@@ -7,5 +7,6 @@ urlpatterns = [
         url(r"^accueil$",views.home,name="accueil"),
         url(r"^date_seule$",views.date_transfert),
         url(r"^mot_clef$",views.mc_transfert),
+        url(r"^mois$",views.mois_transfert),
         ]
 

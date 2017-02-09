@@ -13,8 +13,8 @@ import officia
 # Create your views here.
 
 def home(request,
-         recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),
-         date=datetime.date.today(),
+         recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
+         debut=datetime.date.today(),fin=datetime.date.today(),
          mots_clefs='',plus=False,annee=datetime.date.today().year):
     """A function which defines homepage""" 
 
@@ -24,20 +24,27 @@ def home(request,
     
     retour = ''
     if mots_clefs == '':
-        Annee = officia.fabrique_an(date,date)
-        try:
-            Annee[date]
-        except KeyError:
-            Annee[date] = []
-        liste = adjutoria.selection(Annee[date],date,Annee,samedi)
-        titre=date
+        Annee = officia.fabrique_an(debut,fin)
+        date = debut
+        periode = {}
+        while date <= fin:
+            try:
+                Annee[date]
+            except KeyError:
+                Annee[date] = []
+            periode[date] = adjutoria.selection(Annee[date],date,Annee,samedi)
+            date = date + datetime.timedelta(1)
         inversion=False
+        if mois_seul:
+            titre = adjutoria.mois[debut.month - 1]
+        else:
+            titre = debut
     else:
         liste = officia.inversons(mots_clefs,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),samedi,exit=False,plus=plus)
         titre = mots_clefs
         inversion=True
 
-    locaux = locals() #for development alone 
+    locaux = locals() #for development only 
 
     return render(request,'kalendarium/accueil.html',locals())
 
@@ -53,12 +60,23 @@ def date_transfert(request):
     recherche_simple = RechercheSimple(request.GET or None)
     if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
-    return home(request,recherche_simple=recherche_simple,date=date)
+    return home(request,recherche_simple=recherche_simple,debut=date,fin=date)
 
 def mois_transfert(request):
-    mois_seul = MoisSeul(request.GET or None)
-    if mois_seul.is_valid():
-        debut = mois_seul.cleaned_data['debut']
-        fin = mois_seul.cleaned_data['fin']
-    return home(request,mois_seul=mois_seul,debut=debut,fin=fin)
+    mois_entier = MoisEntier(request.GET or None)
+    if mois_entier.is_valid():
+        mois = mois_entier.cleaned_data['mois']
+        for i,a in enumerate(adjutoria.mois):
+            if mois == a:
+                mois = i + 1
+        annee = mois_entier.cleaned_data['annee']
+        debut = datetime.date(annee,mois,1)
+        i=31
+        while True:
+            try:
+                fin = datetime.date(annee,mois,i)
+                break
+            except ValueError:
+                i -= 1
+    return home(request,mois_entier=mois_entier,mois_seul=True,debut=debut,fin=fin)
     

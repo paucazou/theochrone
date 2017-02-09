@@ -3,17 +3,20 @@
 {% block content %}
     <table>
         <tr>
-            <td><h3>{{ titre }}</h3>
+            <td>{% for date,jour in periode.items %}
+            <h3>{{ date }}</h3>
             <table>
-                {% for fete in liste %}
+                
+                    {% for fete in jour %}
                     <tr><td id="image">image</td><td id="result">{{ fete.nom.francais }}
                     {% if inversion %}
                     - {{ fete.date }}
                     {% endif %}
                     </td>
                     </tr>
-                {% endfor %}
-            </table>
+                    {% endfor %}
+                
+            </table>{% endfor %}
             </td>
             <td><h3>Recherche</h3>
                 <form action="date_seule" method="get">
@@ -24,6 +27,11 @@
                 <form action="mot_clef" method="get">
                     {% csrf_token %}
                     {{ recherche_mot_clef.as_p }}
+                    <input type="submit" value="Chercher" />
+                </form>
+                <form action="mois" method="get">
+                    {% csrf_token %}
+                    {{ mois_entier.as_p }}
                     <input type="submit" value="Chercher" />
                 </form>
             </td>
