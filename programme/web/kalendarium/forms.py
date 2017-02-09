@@ -3,14 +3,20 @@
 from django import forms
 import datetime
 
+annees=[]
+for a in range(1600,4101):
+    annees.append((a,a))
+    
+douze = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre']
+
 class RechercheSimple(forms.Form):
     date_seule = forms.DateField(widget = forms.SelectDateWidget(years=range(1600,4101)),required = True,label="Choisissez une date : ",initial = datetime.date.today) #,attrs={"value":datetime.date.today()})
 
 class RechercheMotClef(forms.Form):
-    annees=[]
-    for a in range(1600,4101):
-        annees.append((a,a))
     annee = forms.IntegerField(widget=forms.Select(choices = annees),max_value=4100,min_value=1600,required=True,initial=datetime.date.today().year)
     recherche = forms.CharField(label="Entrez vos mots-clefs",required=True)
     plus = forms.BooleanField(help_text="Recherche large",required=False)
 
+class MoisSeul(forms.Form):
+    annee = forms.IntegerField(widget=forms.Select(choices = annees),max_value=4100,min_value=1600,required=True,initial=datetime.date.today().year)
+    mois = forms.CharField(widget = forms.Select(choices = douze),required = True,initial = douze[datetime.date.today().month - 1])
