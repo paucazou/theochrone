@@ -13,18 +13,10 @@ import officia
 # Create your views here.
 
 def home(request,
-         recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),date=datetime.date.today(),
+         recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),
+         date=datetime.date.today(),
          mots_clefs='',plus=False,annee=datetime.date.today().year):
-    """A function which defines homepage"""
-    """if recherche_simple.is_valid():
-        date = recherche_simple.cleaned_data['date_seule']
-    if recherche_mot_clef.is_valid():
-        mots_clefs = recherche_mot_clef.cleaned_data['recherche']
-        plus = recherche_mot_clef.cleaned_data['plus']
-        try:
-            annee = recherche_mot_clef.cleaned_data['annee']
-        except TypeError:
-            annee = adjutoria.datetime.date.today().year""" 
+    """A function which defines homepage""" 
 
     with open('./data/samedi.pic','rb') as file:
         pic=pickle.Unpickler(file)
