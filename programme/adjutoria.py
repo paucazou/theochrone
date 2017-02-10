@@ -111,7 +111,7 @@ def sans_accent(mot):
     """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules."""
     return ''.join(c for c in unicodedata.normalize('NFD',mot.lower()) if unicodedata.category(c) != 'Mn')
 
-def ocasu():
+def ocasu(): #DEPRECATED
     """Go to http://philippeaucazou.wordpress.com"""
     try:
         subprocess.run(['x-www-browser','http://philippeaucazou.wordpress.com'],check=True)

@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-import subprocess
 import os
 import sys
 import pickle
