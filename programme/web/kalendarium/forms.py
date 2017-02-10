@@ -7,7 +7,7 @@ annees=[]
 for a in range(1960,2101):
     annees.append((a,a))
     
-douze = [(1,'janvier'),(2,'février'),(3,'mars'),(4,'avril'),('mai',5),('juin',6),('juillet',7),('août',8),('septembre',9),('octobre',10),(11,'novembre'),('décembre',12)]
+douze = [(1,'janvier'),(2,'février'),(3,'mars'),(4,'avril'),(5,'mai'),(6,'juin'),(7,'juillet'),(8,'août'),(9,'septembre'),(10,'octobre'),(11,'novembre'),(12,'décembre')]
 
 class RechercheSimple(forms.Form):
     date_seule = forms.DateField(widget = forms.SelectDateWidget(years=range(1960,2100)),required = True,label="Choisissez une date : ",initial = datetime.date.today) #,attrs={"value":datetime.date.today()})
