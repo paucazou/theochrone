@@ -23,16 +23,16 @@ def home(request,
         samedi=pic.load()
     
     retour = ''
+    deroule = {}
     if mots_clefs == '':
         Annee = officia.fabrique_an(debut,fin)
         date = debut
-        periode = {}
         while date <= fin:
             try:
                 Annee[date]
             except KeyError:
                 Annee[date] = []
-            periode[date] = adjutoria.selection(Annee[date],date,Annee,samedi)
+            deroule[date] = adjutoria.selection(Annee[date],date,Annee,samedi)
             date = date + datetime.timedelta(1)
         inversion=False
         if mois_seul:
@@ -40,8 +40,8 @@ def home(request,
         else:
             titre = debut
     else:
-        liste = officia.inversons(mots_clefs,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),samedi,exit=False,plus=plus)
         titre = mots_clefs
+        deroule[titre] = officia.inversons(mots_clefs,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),samedi,exit=False,plus=plus)
         inversion=True
 
     locaux = locals() #for development only 
@@ -66,9 +66,6 @@ def mois_transfert(request):
     mois_entier = MoisEntier(request.GET or None)
     if mois_entier.is_valid():
         mois = mois_entier.cleaned_data['mois']
-        for i,a in enumerate(adjutoria.mois):
-            if mois == a:
-                mois = i + 1
         annee = mois_entier.cleaned_data['annee']
         debut = datetime.date(annee,mois,1)
         i=31
