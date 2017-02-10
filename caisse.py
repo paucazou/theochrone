@@ -371,8 +371,8 @@ def ajouter(modele,entrees={}):
         nouveau.nom['latina'] = finput('Rentrez le nom de la fête en latin',nouveau.nom['latina'])
         nouveau.nom['francais'] = finput('Rentrez le nom de la fête en français',nouveau.nom['francais'])
         nouveau.nom['english'] = finput('Rentrez le nom de la fête en anglais',nouveau.nom['english'])
-        nouveau.ordo=valider('Rentrez l\'année de l\'ordo de référence.',nouveau.ordo)
-        nouveau.propre = finput('Rentrez le propre de cette fête.',nouveau.propre)
+        #nouveau.ordo=valider('Rentrez l\'année de l\'ordo de référence.',nouveau.ordo)
+        #nouveau.propre = finput('Rentrez le propre de cette fête.',nouveau.propre)
         
         nouveau.degre = valider('Rentrez le degré de la fête (1 à 5)',nouveau.degre)
         print("""Voici les différents degrés de préséance :""")
@@ -387,10 +387,10 @@ def ajouter(modele,entrees={}):
         nouveau.pal = valider('La messe peut-elle être Pro aliquibus locis ?',nouveau.pal,'bool')
         nouveau.votive = valider('La messe est-elle votive, ou peut-elle être reprise comme votive ?',nouveau.votive,'bool')
         nouveau.occurrence_perpetuelle = valider('La fête souffre-t-elle d\'une occurrence perpétuelle avec une autre fête ?',nouveau.occurrence_perpetuelle,'bool')
-        nouveau.dimanche = valider('La fête tombe-t-elle un dimanche ?',nouveau.dimanche,'bool')
-        nouveau.repris_en_ferie = valider('La fête est-elle reprise en férie ?',nouveau.repris_en_ferie,'bool')
+        #nouveau.dimanche = valider('La fête tombe-t-elle un dimanche ?',nouveau.dimanche,'bool')
+        #nouveau.repris_en_ferie = valider('La fête est-elle reprise en férie ?',nouveau.repris_en_ferie,'bool')
         nouveau.fete_du_Seigneur = valider('La fête est-elle une fête du Seigneur ?',nouveau.fete_du_Seigneur,'bool')
-        nouveau.temporal = valider('La fête fait-elle partie du Temporal ?', nouveau.temporal,'bool')
+        #nouveau.temporal = valider('La fête fait-elle partie du Temporal ?', nouveau.temporal,'bool')
         if not nouveau.temporal:
             nouveau.sanctoral = True
         else:
