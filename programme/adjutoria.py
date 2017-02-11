@@ -23,7 +23,7 @@ unites = (re.compile('(1(ere?)?|une?\||premiere?)'),
             re.compile('(4|quatre?)(.?eme)?'),
             re.compile('(5|cinqu?)(.?eme)?'),
             re.compile('(6|six)(.?eme)?'),
-            re.compile('(7|sept)(.?eme)?'),
+            re.compile('(7|sept[^u])(.?eme)?'),
             re.compile('(8|huit)(.?eme)?'),
             re.compile('(9|neu[fv])(.?eme)?'),)
 dizaines = (re.compile('(11|onze?)(.?eme)?'),
@@ -57,7 +57,7 @@ fichiers=(
     'romanus_1962_cycledenoel.pic',
     'romanus_1962_cycledepaques.pic',
     'romanus_1962_premiertrimestre_sanctoral.pic',
-    #'romanus_1962_deuxiemetrimestre_sanctoral.pic',
+    'romanus_1962_deuxiemetrimestre_sanctoral.pic',
     #'romanus_1962_troisiemetrimestre_sanctoral.pic',
     #'romanus_1962_quatriemetrimestre_sanctoral.pic',
     #'gallicanus_1962_dimanches.pic',
@@ -89,7 +89,7 @@ erreurs={
          "L'année ne peut pas être supérieure à 4100.",
          "Merci de rentrer une date valide.",
          "Merci de rentrer un mois valide.",
-         "Merci de rentrer un jour qui correspond au mois.", #DEPRECATED
+         "Merci de rentrer un jour qui correspond au mois.",
          "Merci de rentrer un jour de la semaine correspondant au jour du mois.",#5
          "La date de début est postérieure à la date de fin.",
          ],
@@ -111,7 +111,7 @@ def sans_accent(mot):
     """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules."""
     return ''.join(c for c in unicodedata.normalize('NFD',mot.lower()) if unicodedata.category(c) != 'Mn')
 
-def ocasu():
+def ocasu(): #DEPRECATED
     """Go to http://philippeaucazou.wordpress.com"""
     try:
         subprocess.run(['x-www-browser','http://philippeaucazou.wordpress.com'],check=True)
@@ -156,18 +156,21 @@ def modification(mots,langue):
     
     return mots
 
-def erreur(code,langue='english'):
+def erreur(code,langue='english',exit=True):
     """Une fonction qui renvoie un message d'erreur selon la langue et le code employé. Si le code commence par zéro, il faut le mettre entre guillemets."""
     message = erreurs[langue]
     for i in str(code):
         message = message[int(i)]
     if langue == 'francais':
-        sys.exit("Erreur n°{} : {} Tapez --help pour plus d'informations.".format(code,message))
+        if exit:
+            sys.exit("Erreur n°{} : {} Tapez --help pour plus d'informations.".format(code,message))
+        else:
+            return "Erreur n° {} : {}".format(code,message)
     else:
         sys.exit("Error {} : {} Please type --help for more information.".format(code,message))
 
 
-def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,annee_seule=False):
+def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,annee_seule=False,exit=True):
     """Function used to see whether a list can be converted into datetime or not"""
     aujourdhui=datetime.date.today()
     nonliturgiccal=calendar.Calendar()
@@ -192,10 +195,13 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
     def producteur_de_datte(jour,mois,annee): # beaucoup d'erreurs potentielles
         """A function to create the datetime.date object"""
         if int(annee) > 4100:
-            erreur(11,langue)
+            erreur(11,langue,exit)
         elif int(annee) < 1600:
-            erreur(10,langue)
-        date = datetime.date(int(annee),int(mois),int(jour))
+            erreur(10,langue,exit)
+        try:
+            date = datetime.date(int(annee),int(mois),int(jour))
+        except ValueError:
+            date = erreur(14,langue,exit)
         return date
     
     def hebdomadaire(nb):
@@ -220,7 +226,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
         for week in nonliturgiccal.monthdatescalendar(date.year,date.month):
             for hideux,day in enumerate(week):
                 if day == date and hideux != wd:
-                    erreur(15,langue)
+                    erreur(15,langue,exit)
                         
     if langue == 'francais':
         if len(passager) == 0:
@@ -301,7 +307,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                     passager[1] = mois_lettre(passager[1],langue)
                 date = producteur_de_datte(passager[0],passager[1],aujourdhui.year)
             else:#erreur
-                erreur(12,langue)
+                erreur(12,langue,exit)
         
         elif len(passager) == 3:
             if passager[0] in semaine[langue]:
@@ -314,7 +320,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                     passager[1] = mois_lettre(passager[1],langue)
                 date = producteur_de_datte(passager[0],passager[1],passager[2])
             else:#erreur
-                erreur(12,langue)
+                erreur(12,langue,exit)
         
         elif len(passager) == 4: # il faut gérer les erreurs
             if not re.fullmatch(r"(1[1-2]|[1-9])",passager[0]):
@@ -323,7 +329,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
             jourmois_joursemaine(passager[0],date) 
                     
         else: # erreur
-            erreur(12,langue)
+            erreur(12,langue,exit)
     else: # english
         pass
     return date, semaine_seule, mois_seul, annee_seule
@@ -372,6 +378,7 @@ def traite(Annee,objet,date,annee,propre):
         return Annee
     #Faut-il déplacer ?
     adversaire = Annee[date][0]
+
     # Cas de 'objet' ayant la même self.personne que 'adversaire'
     if objet.personne == adversaire.personne:
         Annee[date].append(objet)
@@ -381,48 +388,52 @@ def traite(Annee,objet,date,annee,propre):
             Annee[date][0] = objet
             adversaire.date = adversaire.date + datetime.timedelta(1)
             adversaire.transferee=True
-            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
         else:
             objet.date = objet.date + datetime.timedelta(1)
-            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
     # Si l'un ou l'autre est transféré
     elif objet.transferee and adversaire.priorite > 800:
         objet.date = objet.date + datetime.timedelta(1)
-        Annee=traite(Annee,objet,date + datetime.timedelta(1),annee)
+        Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
     elif adversaire.transferee and objet.priorite > 800:
         Annee[date][0] = objet
         adversaire.date = adversaire.date + datetime.timedelta(1)
-        Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
+        Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
     # Cas de 'objet' fête de première classe vs 'adversaire' fête de première classe
     elif objet.priorite > 1600:
         if objet.priorite < adversaire.priorite and not objet.dimanche:
             objet.transferee=True
             objet.date = objet.date + datetime.timedelta(1)
-            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
         elif adversaire.priorite > 1600 and adversaire.priorite < objet.priorite and not adversaire.dimanche:
             Annee[date][0] = objet
             adversaire.date = adversaire.date + datetime.timedelta(1)
             adversaire.transferee=True
-            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
+        else:
+            Annee[date].append(objet)
     elif propre != 'romanus' and (objet.occurrence_perpetuelle or adversaire.occurrence_perpetuelle):
         premier_dimanche_avent = dimancheapres(datetime.date(annee,12,25)) - datetime.timedelta(28)
         # Cas de 'objet' fête de seconde classe empêchée perpétuellement
         if objet.priorite > 800 and adversaire.priorite > 800 and adversaire.priorite > objet.priorite and not objet.dimanche:
             objet.date = objet.date + datetime.timedelta(1)
-            Annee=traite(Annee,objet, date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,objet, date + datetime.timedelta(1),annee,propre)
         elif adversaire.priorite > 800 and objet.priorite > 800 and objet.priorite > adversaire.priorite and not adversaire.dimanche:
             Annee[date][0] = objet
             adversaire.date = adversaire.date + datetime.timedelta(1)
-            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
+            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
         # Cas de 'objet' fête de troisième classe particulière empêchée perpétuellement 
         elif not date - paques >= datetime.timedelta(-46) and not date - paques < datetime.timedelta(0) and not objet.DateCivile(paques,annee) < datetime.date(annee,12,25) and not objet.DateCivile(paques,annee) >= premier_dimanche_avent:
             if objet.priorite <= 700 and objet.priorite >= 550 and objet.priorite < adversaire.priorite and not objet.dimanche:
                 objet.date = objet.date + datetime.timedelta(1)
-                Annee=traite(Annee,objet, date + datetime.timedelta(1),annee)
+                Annee=traite(Annee,objet, date + datetime.timedelta(1),annee,propre)
             elif adversaire.priorite <=700 and objet.priorite >= 550 and objet.priorite > adversaire.priorite and not adversaire.dimanche:
                 Annee[date][0] = objet
                 adversaire.date = adversaire.date + datetime.timedelta(1)
-                Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee)
+                Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
+            else:
+                Annee[date].append(objet)
     else:
         Annee[date].append(objet)
     Annee[date].sort(key=lambda x: x.priorite,reverse=True)
@@ -671,7 +682,7 @@ def affichage(**kwargs):
                     if origine.day == 1:
                         jour = 'premier'
                     else:
-                        jour = kwargs['date'].day
+                        jour = origine.day
                     mois = mois_lettre(kwargs['date'].month,kwargs['langue'])
                     sortie += """Fête transférée du {} {} {}. """.format(jour, mois, origine.year)
                   
@@ -794,7 +805,7 @@ class Fete:
         
         self.propre='romanus' # a string with the propre the feast belongs to 
         self.ordo=1962 # Default : 1962 ordo. The others may be : 1955,1942,1914
-        self._couleur='vert' # vert par défaut 
+        self._couleur='blanc' # vert par défaut 
         self.date_='' # un élément qui permet de calculer la date
 
         self.personne='deuxieme' # indique quel saint ou personne divine est célébrée. Très important pour le classement.
@@ -1121,8 +1132,8 @@ class FeteMobileMois(Fete):
             
         return datetime.date(annee,self.date_['mois'],jouran)
     
-class FeteFixeTransferablePaques(FeteFixe):
-    """Une classe pour toutes les fêtes fixes qui peuvent être transférées et dont la date se calculera par rapport à Pâques.""" #Pour l'Annonciation et les litanies majeures
+class FeteFixeTransferablePaques(FeteFixe): # DEPRECATED
+    """Une classe pour toutes les fêtes fixes qui peuvent être transférées et dont la date se calculera par rapport à Pâques.""" #Pour l'Annonciation et les litanies majeures ; sans doute inutile : le système de base devrait suffire, puisque les fêtes sont de première classe
     
     def __init__(self):
         FeteFixe.__init__(self)
@@ -1133,8 +1144,8 @@ class FeteFixeTransferablePaques(FeteFixe):
     def DateCivile_(self,paques,annee):
         """Une fonction calculant la date civile."""
         datedebase=datetime.date(annee,self.date_['mois'],self.date_['jour'])
-        if datedebase < paques + datetime.timedelta(self.borne_debut) or datebase > paques + datetime.timedelta(self.borne_fin):
-            return datebase
+        if datedebase < paques + datetime.timedelta(self.borne_debut) or datedebase > paques + datetime.timedelta(self.borne_fin):
+            return datedebase
         else:
             return paques + datetime.timedelta(self.transfert)
         
@@ -1275,7 +1286,7 @@ class JoursOctaveDeNoel(FeteFixe):
     def __init__(self):
         FeteFixe.__init__(self)
         self.nom_={'francais':"jour dans l'Octave de Noël",'latina':'Die infra octavam Nativitatis','english':'day in the Octave of Christmas'} 
-        self.compléments_nom={'francais':['Deuxième','Troisième','Quatrième','Cinquième','Sixième','Septième'],
+        self.complements_nom={'francais':['Deuxième','Troisième','Quatrième','Cinquième','Sixième','Septième'],
                               'latina': ['De Secunda','De Tertia','De Quarta','De Quinta', 'De Sexta','De Sabbato'],
                               'english': ['Secund','Third','Fourth','Fifth','Sixth','Seventh',]
                               }
@@ -1293,7 +1304,7 @@ class JoursOctaveDeNoel(FeteFixe):
             retour = renvoie_regex(retour,regex,[i])
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
             for langue in ('francais','latina','english'):
-                retour.nom[langue] = self.compléments_nom[langue][i] + ' ' + self.nom_[langue]
+                retour.nom[langue] = self.complements_nom[langue][i] + ' ' + self.nom_[langue]
             yield retour
 
 class JoursAvent(FeteMobileAvent):

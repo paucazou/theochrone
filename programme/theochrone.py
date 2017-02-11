@@ -10,13 +10,23 @@
 # Affichage #
 ### ###
 
+import os
+import webbrowser
+chemin = os.path.dirname(os.path.abspath(__file__))
+os.chdir(chemin)
+
 import adjutoria
-from adjutoria import datetime, calendar, pickle, re
+from adjutoria import datetime, calendar, pickle, re, subprocess, sys
 from messages import args
 
 ### Traitement des informations entrées par l'utilisateur ###
 if args.poems:
-    adjutoria.ocasu()
+    webbrowser.open_new_tab("http://philippeaucazou.wordpress.com")
+    sys.exit()
+    
+if args.navigateur:
+    subprocess.run(['./navette_navigateur.py'])
+    sys.exit()
 
 if args.INVERSE != 1:
     args.INVERSE = [adjutoria.sans_accent(mot) for mot in args.INVERSE]

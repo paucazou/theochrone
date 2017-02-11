@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+                <meta charset="utf-8" />
+		<link rel="stylesheet" href="{% static "kalendarium/style.css" %}" />
+		<title>Theochrone : {% block title %}{% endblock %}</title>
+	</head>
+	
+	<header><div id="into_header">
+            <div id="banniere">
+            <img src="{% static "kalendarium/logo.png" %}" alt="logo">
+            <h1>Théochrone</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="{% url "accueil" %}">Accueil</a></li>
+                    <li><a href="http://philippeaucazou.wordpress.com">Blogue</a></li>
+                    <li><a href="http://philippeaucazou.wordpress.com/contact">Contact</a></li>
+                </ul>
+            </nav></div>
+	</header>
+	
+	<body>
+		{% block content %}{% endblock %}
+	</body>
+	
+	<footer>
+	{{ locaux }}
+	</footer>
+</html>
