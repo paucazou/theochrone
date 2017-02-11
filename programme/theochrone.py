@@ -66,7 +66,7 @@ else:
         adjutoria.erreur(16,args.langue)
         
 ### Définition de quelques variables ###  
-Annee = dict()
+"""Annee = dict()"""
 ordo=args.ordo
 
 ### Analyse des fichiers ###

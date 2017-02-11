@@ -626,7 +626,7 @@ def affichage(**kwargs):
                     elif [True for i in ('dédicace','présentation','fête','très','commémoraison','vigile') if i in mot]:
                         sortie += 'la '
                         break
-                    elif [True for i in ('nothing',) if i in mot]:
+                    elif [True for i in ('saints',) if i in mot]:
                         sortie += 'les '
                         break
                     elif [True for i in ('office','octave','épiphanie') if i in mot]:
