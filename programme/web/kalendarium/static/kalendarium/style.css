@@ -1,24 +1,50 @@
 body
 {
     color: grey;
-    margin: auto;
 }
 
-td
+
+#conteneur
 {
-    width: 70%;
-    border: 4px solid black;
-    border-radius: 10px;
-    box-shadow: 6px 6px 2px grey;
-    padding: 0px 7px 10px 7px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    align-content: stretch;
     color: red;
 }
 
-table
+#resultats
 {
-    width: 100%;
-    height: 70%;
-    empty-cells: hide;
+    display: flex;
+    flex-direction: column;
+    flex:1;
+}
+
+#value
+{
+    display: flex;
+    flex-direction: column;
+    
+}
+#entourage
+{
+    display: flex;
+    flex-direction: row;
+}
+#image
+{
+    border: 2px solid grey;
+    border-radius: 9px;
+    padding: 5px 4px 5px 4px;
+    display: flex;
+}
+
+#result
+{
+    border: 2px solid grey;
+    border-radius: 9px;
+    padding: 5px 4px 5px 4px;
+    display: flex;
 }
 
 form
@@ -28,73 +54,47 @@ form
     padding: 5px 4px 5px 4px;
     display: flex;
 }
-
+#search
+{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
 input
 {
-    margin: 15px;
+    margin: 14px;
 }
 
-#image
-{
-    list-style-type: none;
-    width: 25%;
-    border: 2px solid grey;
-    margin: 15px;
-    margin-bottom: 20px;
-    padding: 5px 4px 5px 4px;
-    border-radius: 9px;
-    box-shadow: none;
-}
-    
-#result
-{
-    list-style-type: none;
-    width: 70%;
-    border: 2px solid grey;
-    border-collapse:collapse;
-    margin: 0px 4px 5px 4px;
-    padding: 5px 4px 5px 4px;
-    border-radius: 9px;
-    box-shadow: none;
-}
 
-header
+#into_header
 {
-    display: inline;
+    display: flex;
+    justify-content: space-between;
 }
 
 #banniere
 {
-    background-position: left center;
-    width: 50%;
-    display: inline;
+    display: flex;
+    font-size: 300%;
 }
-
-#banniere h1
-{
-    text-align: left;
-    font-size: 700%;
-    
-}
-
 #banniere img
 {
-    width: 4%; 
-    float: left;
+    width: 7%;
+    height: 70%;
 }
 
 
 nav ul
 {
     display: flex;
-    float:left;
-    left:75%;
-    position:relative;
+    margin: auto;
+    padding: 10px;
+    list-style: none;
+
 }
 
 nav li
 {
-    margin: 10%;
-    text-align: center;
-    list-style-type:none;
+    margin-right: 3%;
 }
+

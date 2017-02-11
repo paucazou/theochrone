@@ -43,6 +43,7 @@ def home(request,
         deroule[titre] = officia.inversons(mots_clefs,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),samedi,exit=False,plus=plus)
         inversion=True
 
+    deroule = sorted(deroule.items())
     locaux = locals() #for development only 
 
     return render(request,'kalendarium/accueil.html',locals())
@@ -53,13 +54,17 @@ def mc_transfert(request):
         mots_clefs = recherche_mot_clef.cleaned_data['recherche']
         plus = recherche_mot_clef.cleaned_data['plus']
         annee = recherche_mot_clef.cleaned_data['annee']
-    return home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,annee=annee)
+        return home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,annee=annee)
+    else:
+        return home(request, recherche_mot_clef)
         
 def date_transfert(request):
     recherche_simple = RechercheSimple(request.GET or None)
     if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
-    return home(request,recherche_simple=recherche_simple,debut=date,fin=date)
+        return home(request,recherche_simple=recherche_simple,debut=date,fin=date)
+    else:
+        return home(request,recherche_simple=recherche_simple)
 
 def mois_transfert(request):
     mois_entier = MoisEntier(request.GET or None)
@@ -74,5 +79,7 @@ def mois_transfert(request):
                 break
             except ValueError:
                 i -= 1
-    return home(request,mois_entier=mois_entier,mois_seul=True,debut=debut,fin=fin)
+        return home(request,mois_entier=mois_entier,mois_seul=True,debut=debut,fin=fin)
+    else:
+        return home(request, mois_entier=mois_entier)
     

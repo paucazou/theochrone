@@ -1,24 +1,25 @@
 {% extends "base.html" %}
 {% block title %}{{ titre }} {% endblock %}
 {% block content %}
-    <table>
-        <tr>
-            <td>{% for date,jour in deroule.items %}
+    <div id="conteneur">
+        
+        <div id="resultats">
+            {% for date,jour in deroule %}
             <h3>{{ date }}</h3>
-            <table>
-                
+            <div id="value">                
                     {% for fete in jour %}
-                    <tr><td id="image">image</td><td id="result">{{ fete.nom.francais }}
-                    {% if inversion %}
-                    - {{ fete.date }}
-                    {% endif %}
-                    </td>
-                    </tr>
-                    {% endfor %}
-                
-            </table>{% endfor %}
-            </td>
-            <td><h3>Recherche</h3>
+                    <div id="entourage">
+                        <div id="image">image</div>
+                        <div id="result">{{ fete.nom.francais }}
+                        {% if inversion %}
+                        - {{ fete.date }}
+                        {% endif %}</div>
+                    </div>{% endfor %}
+            </div>
+                    
+         {% endfor %}       
+        </div>
+        <div id="search"><h3>Recherche</h3>
                 <form action="date_seule" method="get">
                     {% csrf_token %}
                     {{ recherche_simple.as_p }}
@@ -34,7 +35,7 @@
                     {{ mois_entier.as_p }}
                     <input type="submit" value="Chercher" />
                 </form>
-            </td>
-        </tr>
-    </table>
+        </div>    
+        
+    </div>
 {% endblock %}
