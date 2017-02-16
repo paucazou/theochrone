@@ -98,6 +98,7 @@ system = parser.add_argument_group(_('System options'), description=_("Other opt
 system.add_argument('-b','--browser',dest='navigateur',help=_("Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
     - --from/--to options
     - a complete week
+    - a complete year
     - years before 1960, after 2100
     - every print option.
     If one of the previous args was entered, it will not result an error, but the program will use default value."),action='store_true')
