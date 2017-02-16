@@ -24,19 +24,21 @@ primus.start()
 
 taille = len(sys.argv)
 adresse = "http://localhost:8000/kalendarium/accueil"
-
-if taille == 4:
-    if sys.argv[1] == "mois":
-        adresse = "http://localhost:8000/kalendarium/mois?annee=" + sys.argv[3] + "&mois=" + sys.argv[2]
-if taille == 4:
-    adresse = "http://localhost:8000/kalendarium/date_seule?date_seule_day={}&date_seule_month={}&date_seule_year={}".format(sys.argv[1],sys.argv[2],sys.argv[3])
-if taille >= 4:
-    if sys.argv[1] == 'inverse':
-        adresse = "http://localhost:8000/kalendarium/mot_clef?annee=" + sys.argv[2] + "&recherche="
-        for elt in sys.argv[3:]:
-            adresse += elt
-            if elt != sys.argv[-1]:
-                adresse += '+'
+try:
+    if taille == 4:
+        if sys.argv[1] == "mois":
+            adresse = "http://localhost:8000/kalendarium/mois?annee=" + sys.argv[3] + "&mois=" + sys.argv[2]
+    if taille == 4:
+        adresse = "http://localhost:8000/kalendarium/date_seule?date_seule_day={}&date_seule_month={}&date_seule_year={}".format(sys.argv[1],sys.argv[2],sys.argv[3])
+    if taille >= 4:
+        if sys.argv[1] == 'inverse':
+            adresse = "http://localhost:8000/kalendarium/mot_clef?annee=" + sys.argv[2] + "&recherche="
+            for elt in sys.argv[3:]:
+                adresse += elt
+                if elt != sys.argv[-1]:
+                    adresse += '+'
+except IndexError:
+    adresse = "http://localhost:8000/kalendarium/accueil"
 
     
 local = http.client.HTTPConnection("localhost",port=8000,timeout=1)
