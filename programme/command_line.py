@@ -95,7 +95,12 @@ selection.add_argument('-o','--ordo', dest='ordo', help=_('select which ordo you
 selection.add_argument('-m','--more',dest='plus', help=_('used with -r/--reverse, print a more complete list of feasts matching with arguments entered'), action='store_true')
 
 system = parser.add_argument_group(_('System options'), description=_("Other options"))
-system.add_argument('-b','--browser',dest='navigateur',help=_("Open Theochrone in your default webbrowser. You can pass args, except print options, which are useless"),action='store_true')
+system.add_argument('-b','--browser',dest='navigateur',help=_("Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
+    - --from/--to options
+    - a complete week
+    - years before 1960, after 2100
+    - every print option.
+    If one of the previous args was entered, it will not result an error, but the program will use default value."),action='store_true')
 system.add_argument('--version', action='version',version='%(prog)s 0.1')
 system.add_argument('--test',help='Do not run',action='store_true')
 system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
