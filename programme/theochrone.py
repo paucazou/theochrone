@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python3
 # -*-coding:Utf-8 -*
 #Deus, in adjutorium meum intende. Domine, ad adjuvandum me festina.
 
