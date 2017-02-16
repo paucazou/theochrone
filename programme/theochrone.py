@@ -25,9 +25,7 @@ if args.poems:
     webbrowser.open_new_tab("http://philippeaucazou.wordpress.com")
     sys.exit()
     
-if args.navigateur:
-    subprocess.run(['./navette_navigateur.py'])
-    sys.exit()
+
 
 """if args.INVERSE != 1:
     args.INVERSE = [adjutoria.sans_accent(mot) for mot in args.INVERSE]
@@ -64,7 +62,17 @@ else:
     
     if fin < debut:
         adjutoria.erreur(16,args.langue)
-        
+
+if args.navigateur:
+    if mois_seul:
+        sys.exit(subprocess.run(['./navette_navigateur.py','mois',str(debut.month),str(debut.year)]))
+    elif args.INVERSE != 1:
+        sys.exit(subprocess.run(['./navette_navigateur.py','inverse',str(debut.year),*args.INVERSE]))
+    elif not semaine_seule and not mois_seul and not annee_seule and args.DEPUIS == 1 and args.JUSQUE == 1:
+        sys.exit(subprocess.run(['./navette_navigateur.py',str(debut.day),str(debut.month),str(debut.year)]))
+    else:
+        sys.exit(subprocess.run(['./navette_navigateur.py']))
+    
 ### Définition de quelques variables ###  
 """Annee = dict()"""
 ordo=args.ordo

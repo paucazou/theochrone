@@ -22,6 +22,23 @@ class Serveur(threading.Thread):
 primus = Serveur()
 primus.start()
 
+taille = len(sys.argv)
+adresse = "http://localhost:8000/kalendarium/accueil"
+
+if taille == 4:
+    if sys.argv[1] == "mois":
+        adresse = "http://localhost:8000/kalendarium/mois?annee=" + sys.argv[3] + "&mois=" + sys.argv[2]
+if taille == 4:
+    adresse = "http://localhost:8000/kalendarium/date_seule?date_seule_day={}&date_seule_month={}&date_seule_year={}".format(sys.argv[1],sys.argv[2],sys.argv[3])
+if taille >= 4:
+    if sys.argv[1] == 'inverse':
+        adresse = "http://localhost:8000/kalendarium/mot_clef?annee=" + sys.argv[2] + "&recherche="
+        for elt in sys.argv[3:]:
+            adresse += elt
+            if elt != sys.argv[-1]:
+                adresse += '+'
+
+    
 local = http.client.HTTPConnection("localhost",port=8000,timeout=1)
 local.connection = "off"
 while local.connection == "off":
@@ -33,7 +50,7 @@ while local.connection == "off":
     except ConnectionRefusedError:
         local.connection = "off"
     
-webbrowser.open_new_tab('http://localhost:8000/kalendarium/accueil') # open_new_tab renvoie un bool ; essayer de faire le test avec lui, plutôt qu'avec un connexion http
+webbrowser.open_new_tab(adresse) # open_new_tab renvoie un bool ; essayer de faire le test avec lui, plutôt qu'avec un connexion http
 print("Local server will be closed within 30 minutes") # doesn't work
 primus.join(1.0)
 
