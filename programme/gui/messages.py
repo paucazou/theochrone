@@ -25,3 +25,9 @@ menus['help'] = _("Help")
 
 main_window['menus'] = menus
 
+## initUI
+init = {}
+init['right_dock'] = _("Research")
+
+main_window['init'] = init
+
