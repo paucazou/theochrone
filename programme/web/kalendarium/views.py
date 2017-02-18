@@ -32,8 +32,8 @@ def home(request,
     
     retour = ''
     deroule = {}
-    if mots_clefs == '':
-        Annee = officia.fabrique_an(debut,fin)
+    Annee = officia.fabrique_an(debut,fin)
+    if mots_clefs == '':        
         date = debut
         while date <= fin:
             try:
@@ -49,7 +49,7 @@ def home(request,
             titre = debut
     else:
         titre = mots_clefs
-        deroule[titre] = officia.inversons(mots_clefs,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),samedi,exit=False,plus=plus)
+        deroule[titre] = officia.inversons(mots_clefs,Annee,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),samedi,exit=False,plus=plus)
         inversion=True
 
     deroule = sorted(deroule.items())

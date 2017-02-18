@@ -22,9 +22,10 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
             
     return Annee
 
-def inversons(mots_bruts,debut,fin,samedi,plus=False,langue='francais',exit=True):
+def inversons(mots_bruts,Annee,debut,fin,samedi,plus=False,langue='francais',exit=True):
     """Function which returns a list of feasts matching with mots_bruts. It takes seven args:
     - mots_bruts : a string for the research ;
+    - Annee : a dict with datetime.date as keys, and lists of Fete as values ;
     - debut : a datetime.date for the older date ;
     - fin : a datetime.date for the latest date ;
     - samedi : the Saturday of the Virgin Fete ;
@@ -32,7 +33,6 @@ def inversons(mots_bruts,debut,fin,samedi,plus=False,langue='francais',exit=True
     - langue : language used ;
     - exit : a bool to define whether the system have to exit or not in case of error ;
     """
-    Annee = fabrique_an(debut,fin)
     if isinstance(mots_bruts,list):
         mots_bruts = [adjutoria.sans_accent(mot) for mot in mots_bruts]
     else:
