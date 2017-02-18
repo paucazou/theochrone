@@ -128,7 +128,7 @@ if args.INVERSE != 1: # des raisons aléatoires semblent s'appliquer...
         liste=retenus
     else:
         adjutoria.erreur(20,args.langue)"""
-    liste = officia.inversons(args.INVERSE,Annee,debut,fin,samedi,plus=args.plus,langue=args.langue,exit=True) # BUG l'année est absente...
+    liste = officia.inversons(args.INVERSE,Annee,debut,fin,samedi,plus=args.plus,langue=args.langue,exit=True)
     print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine))
 else:
     date = debut
