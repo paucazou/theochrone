@@ -31,3 +31,21 @@ init['right_dock'] = _("Research")
 
 main_window['init'] = init
 
+# Onglets
+onglets = {}
+## initUI
+init = {}
+init['status'] = _("Research widget")
+
+onglets['init'] = init
+
+# Unique
+unique = {}
+## initUI
+init = {}
+init['cal_label'] = _("Please select a date : ")
+init['kw_label'] = _("Please enter keywords")
+init['kw_button'] = _("Launch key word research")
+
+unique['init'] = init
+
