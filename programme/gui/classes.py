@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
 
+import messages
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction, QApplication, QComboBox, QDockWidget, QHBoxLayout, QMainWindow, QLabel, QTableWidget
 
@@ -14,25 +15,26 @@ class Main(QMainWindow):
         
     def menu(self):
         """A function which describes the menubar of the main window"""
+        _ = messages.main_window['menus']
         menubar = self.menuBar()
         
         # File menu
-        fileMenu = menubar.addMenu('File')
+        fileMenu = menubar.addMenu(_['file'])
         fileMenu.addAction(self.exitAction)
         
         # Edit menu
-        editMenu = menubar.addMenu('Edit')
+        editMenu = menubar.addMenu(_['edit'])
         
         # Help menu
-        helpMenu = menubar.addMenu('Help')
+        helpMenu = menubar.addMenu(_['help'])
         
     def actions(self):
         """A function which defines actions in the main window"""
-        
+        _ = messages.main_window['actions']
         # Exit
-        self.exitAction = QAction(QIcon('icons/exit.png'),'Quitter',self)
+        self.exitAction = QAction(QIcon('icons/exit.png'),_['exit_name'],self)
         self.exitAction.setShortcut('Ctrl+Q')
-        self.exitAction.setStatusTip("""Quitter l'application""")
+        self.exitAction.setStatusTip(_['exit_status'])
         self.exitAction.triggered.connect(self.close)
         
     def initUI(self):
