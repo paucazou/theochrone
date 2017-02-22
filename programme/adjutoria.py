@@ -439,8 +439,9 @@ def traite(Annee,objet,date,annee,propre):
     Annee[date].sort(key=lambda x: x.priorite,reverse=True)
     return Annee
     
-def selection(liste,date,Annee,samedi):
+def selection(date,Annee,samedi):
     """Selects the feasts which are actually celebrated."""
+    liste = Annee.setdefault(date,[])
     commemoraison = 0 # max 2
     commemoraison_temporal=False
     

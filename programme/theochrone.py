@@ -88,9 +88,7 @@ while True:
     else:
         year += 1""" # commented to test frabrique_an function
 Annee = officia.fabrique_an(debut,fin,ordo,args.propre)
-with open('./data/samedi.pic','rb') as file:
-    pic=pickle.Unpickler(file)
-    samedi=pic.load()
+
     
 """### Traitement de la recherche inversée ###
 if args.INVERSE != 1:
@@ -128,17 +126,17 @@ if args.INVERSE != 1: # des raisons aléatoires semblent s'appliquer...
         liste=retenus
     else:
         adjutoria.erreur(20,args.langue)"""
-    liste = officia.inversons(args.INVERSE,Annee,debut,fin,samedi,plus=args.plus,langue=args.langue,exit=True)
+    liste = officia.inversons(args.INVERSE,Annee,debut,fin,plus=args.plus,langue=args.langue,exit=True)
     print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine))
 else:
     date = debut
     while True:
-        try:
+        """try:
             Annee[date]
         except KeyError:
             Annee[date]=[]
-        celebrations = adjutoria.selection(Annee[date],date,Annee,samedi)
-        print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=False,                   liste=celebrations,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine))
+        celebrations = adjutoria.selection(Annee[date],date,Annee,samedi)"""
+        print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=False,                   liste=Annee[date],langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine))
         date = date + datetime.timedelta(1)
         if date <= fin:
             print('')

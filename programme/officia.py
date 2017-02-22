@@ -8,7 +8,11 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     - fin : a datetime.date for the latest date ;
     - ordo : an integer to select which missal will be used ;
     - propre : a string to select the proper.
-    It returns a dict, whose keys are datetime.date, and values are lists containing Fete classes. The dict will not contain Saturday feasts of the Virgin, nor feria days."""
+    It returns a dict, whose keys are datetime.date, and values are lists containing Fete classes."""
+    with open('./data/samedi.pic','rb') as file:
+        pic=adjutoria.pickle.Unpickler(file)
+        samedi=pic.load()
+    
     year = debut.year - 1
     Annee = {}
     while True:
@@ -19,16 +23,22 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
             break
         else:
             year += 1
-            
+    
+    date = datetime.date(debut.year,1,1)
+    while True:
+        Annee[date] = adjutoria.selection(date,Annee,samedi)
+        date = date + datetime.timedelta(1)
+        if date > datetime.date(fin.year,12,31):
+            break
     return Annee
 
-def inversons(mots_bruts,Annee,debut,fin,samedi,plus=False,langue='francais',exit=True):
-    """Function which returns a list of feasts matching with mots_bruts. It takes seven args:
+def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='francais',exit=True):
+    """Function which returns a list of feasts matching with mots_bruts. It takes six args:
     - mots_bruts : a string for the research ;
     - Annee : a dict with datetime.date as keys, and lists of Fete as values ;
     - debut : a datetime.date for the older date ;
     - fin : a datetime.date for the latest date ;
-    - samedi : the Saturday of the Virgin Fete ;
+    - samedi : the Saturday of the Virgin Fete ; # DEPRECATED no more useful
     - plus : a bool to define whether the results will be larger or not ;
     - langue : language used ;
     - exit : a bool to define whether the system have to exit or not in case of error ;
@@ -56,7 +66,7 @@ def inversons(mots_bruts,Annee,debut,fin,samedi,plus=False,langue='francais',exi
     retenus = []
     while date <= fin:
         try:
-            Annee[date] = adjutoria.selection(Annee[date],date,Annee,samedi)
+            #Annee[date] = adjutoria.selection(Annee[date],date,Annee,samedi) # DEPRECATED
             for fete in Annee[date]:
                 fete.valeur = fete.Correspondance(mots_str,mots)
                 if fete.valeur >= 50:
