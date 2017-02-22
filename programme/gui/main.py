@@ -4,6 +4,5 @@
 import classes
 import sys
 
-app = classes.QApplication(sys.argv)
-main = classes.Main()
+app = classes.App(sys.argv)
 sys.exit(app.exec_())
