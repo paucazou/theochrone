@@ -25,10 +25,6 @@ def home(request,
     - plus : a bool used to know whether the research must be large, or not ;
     - annee : the year ;
     """ 
-
-    with open('./data/samedi.pic','rb') as file:
-        pic=pickle.Unpickler(file)
-        samedi=pic.load()
     
     retour = ''
     deroule = {}
@@ -36,11 +32,7 @@ def home(request,
     if mots_clefs == '':        
         date = debut
         while date <= fin:
-            try:
-                Annee[date]
-            except KeyError:
-                Annee[date] = []
-            deroule[date] = adjutoria.selection(Annee[date],date,Annee,samedi)
+            deroule[date] = Annee[date]
             date = date + datetime.timedelta(1)
         inversion=False
         if mois_seul:
@@ -49,7 +41,7 @@ def home(request,
             titre = debut
     else:
         titre = mots_clefs
-        deroule[titre] = officia.inversons(mots_clefs,Annee,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),samedi,exit=False,plus=plus)
+        deroule[titre] = officia.inversons(mots_clefs,Annee,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),exit=False,plus=plus)
         inversion=True
 
     deroule = sorted(deroule.items())
