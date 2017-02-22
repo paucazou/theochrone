@@ -68,6 +68,7 @@ class Main(QMainWindow,SuperTranslator):
         
         # File menu
         self.fileMenu = menubar.addMenu('file')
+        self.fileMenu.addAction(self.settingsAction)
         self.fileMenu.addAction(self.exitAction)
         
         # Edit menu
@@ -75,6 +76,9 @@ class Main(QMainWindow,SuperTranslator):
         
         # Language menu (change on the fly)
         self.languageMenu = menubar.addMenu('language')
+        self.languageMenu.addAction(self.chooseLanguageLatin)
+        self.languageMenu.addAction(self.chooseLanguageFrench)
+        self.languageMenu.addAction(self.chooseLanguageEnglish)
         
         # Help menu
         self.helpMenu = menubar.addMenu('help')
@@ -82,10 +86,23 @@ class Main(QMainWindow,SuperTranslator):
     def actions(self):
         """A function which defines actions in the main window"""
         
+        # Settings
+        
+        self.settingsAction = QAction(QIcon('icons/settings.png'),'settings',self) # icons https://www.iconfinder.com/icons/353407/cog_settings_icon#size=128
+        
         # Exit
         self.exitAction = QAction(QIcon('icons/exit.png'),'exit_name',self)
         self.exitAction.setShortcut('Ctrl+Q')
         self.exitAction.triggered.connect(self.close)
+        
+        # Languages
+        ## Latin
+        self.chooseLanguageLatin = QAction(QIcon('icons/latin.png'),'choose_latin',self) # à lier dans la classe App pour changer de langue
+        ## French
+        self.chooseLanguageFrench = QAction(QIcon('icons/french.png'),'choose_french',self)
+        ## English
+        self.chooseLanguageEnglish = QAction(QIcon('icons/english.png'),'choose_english',self)
+                                           
         
     def initUI(self):
         """A function which defines widgets and main features of the window"""
@@ -122,8 +139,14 @@ class Main(QMainWindow,SuperTranslator):
         self.helpMenu.setTitle(_('Main','Help'))
         
         #actions
+        self.settingsAction.setText(_('Main','Settings'))
+        
         self.exitAction.setText(_('Main','Exit'))
         self.exitAction.setStatusTip(_('Main','Exit the app'))
+        
+        self.chooseLanguageLatin.setText(_('Main','Latin'))
+        self.chooseLanguageFrench.setText(_('Main','French'))
+        self.chooseLanguageEnglish.setText(_('Main','English'))
         
         #initUI
         #widgets on the right
@@ -209,7 +232,7 @@ class Unique(QWidget,SuperTranslator):
         self.kw_label.setText(_('Unique',"Please enter keywords : "))
         self.kw_bouton.setText(_('Unique','Launch keywords research'))
         
-        self.cal.setLocale(QLocale())
+        self.cal.setLocale(QLocale()) # à mettre dans la toute première fonction
         
         
         
