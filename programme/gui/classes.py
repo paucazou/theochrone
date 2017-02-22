@@ -6,6 +6,24 @@ from PyQt5.QtCore import pyqtSignal, pyqtSlot, QDate, Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QComboBox, QDockWidget, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QTableWidget, QTabWidget, QVBoxLayout, QWidget
 
+class ReTranslateBox():
+    """A class which can contain only items with the retranslateUI function"""
+    def __iter__(self):
+        """Iters values of  self.__dict__"""
+        for value in self.__dict__.values():
+            yield value
+        
+    def __repr__(self):
+        """Returns self.__dict__ to be recognized in the interactive interpreter"""
+        return str(self.__dict__)
+    
+    def __setattr__(self,attribute,value):
+        """Tests wether the 'value' is an object which has the function retranslateUI in it. If it is true, set the 'attribute'. This function should be useless in prod."""
+        if 'retranslateUI' in value.__dir__():
+            self.__dict__[attribute] = value
+        else:
+            raise TypeError("""Could not set attribute '{}' : '{}' object doesn't contain any 'retranslateUI' method.""".format(attribute,value))
+
 class Main(QMainWindow):
     """Main window"""
     def __init__(self):
