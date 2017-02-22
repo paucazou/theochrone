@@ -23,6 +23,23 @@ class ReTranslateBox():
             self.__dict__[attribute] = value
         else:
             raise TypeError("""Could not set attribute '{}' : '{}' object doesn't contain any 'retranslateUI' method.""".format(attribute,value))
+        
+class SuperTranslator():
+    """A class which should be inherited by every custom widget class to make an easy translation on the fly."""
+    
+    def __init__(self):
+        """This method only defines a ReTranslateBox object which is called 'W'. This attribute can only store widgets with a 'retranslateUI' method, i.e. from objects which inherit of this class"""
+        self.W = ReTranslateBox()
+        
+    def retranslateUI(self):
+        """This method calls every 'retranslateUI' methods of the 'W' attribute.
+        This method should be overloaded by every widget which contains
+        widgets to be immediately retranslated
+        (i.e., which are not custom widgets).
+        User shouldn't forget to call this function if necessary in the function itself :
+        SuperTranslator.retranslateUI()"""
+        for a in self.W:
+            a.retranslateUI()
 
 class Main(QMainWindow):
     """Main window"""
