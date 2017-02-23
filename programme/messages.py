@@ -3,6 +3,7 @@
 """A file with arparse and i18n"""
 import argparse, gettext
 from command_line import args
+args = args()
 gettext.install('messages','./i18n')
 
 ### i18n ###

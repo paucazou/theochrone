@@ -14,7 +14,10 @@ import os
 import webbrowser
 chemin = os.path.dirname(os.path.abspath(__file__))
 os.chdir(chemin)
+from command_line import AutoCompleter
 
+autocomplete = AutoCompleter()
+autocomplete.autocomplete()
 import adjutoria
 from adjutoria import datetime, calendar, pickle, re, subprocess, sys
 from messages import args
