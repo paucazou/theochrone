@@ -83,7 +83,7 @@ affichage.add_argument('-t','--transfert', dest='transfert', help=_('print wethe
 affichage.add_argument('-s','--temporsanct',dest='temporal_ou_sanctoral', help=_('print whether the feast belongs to the sanctorum or de tempore'), action='store_true')
 affichage.add_argument('-L','--liturgical-time', dest='temps_liturgique',help=_('print to which liturgical time the feast belongs to'),action='store_true')
 affichage.add_argument('-D','--print-date',dest='date_affichee',help=_('print date'),action='store_true')
-affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected. Opens the introibo.fr page in a webbrowser. Works only with -r/--reverse or an only date."""),action='store_true')
+affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected. Opens the introibo.fr page in a webbrowser. Works only with -r/--reverse (three results max) or an only date."""),action='store_true')
 affichage.add_argument('-l','--language', dest='langue', action=CoursDeLangue, help=_("""choose your language /!\ ONLY FRENCH AVAILABLE /!\ 
     Available languages :
     - French

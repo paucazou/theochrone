@@ -127,8 +127,14 @@ if args.INVERSE != 1: # des raisons aléatoires semblent s'appliquer...
     else:
         adjutoria.erreur(20,args.langue)"""
     liste = officia.inversons(args.INVERSE,Annee,debut,fin,plus=args.plus,langue=args.langue,exit=True)
+    if args.textes and len(liste) < 4:
+        for fete in liste:
+            webbrowser.open_new_tab(fete.link)
     print(adjutoria.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine))
 else:
+    if args.textes and debut == fin:
+        for fete in Annee[debut]:
+            webbrowser.open_new_tab(fete.link)
     date = debut
     while True:
         """try:
