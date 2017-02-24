@@ -5,7 +5,7 @@
 import argparse, gettext, locale, os, sys, unicodedata
 gettext.install('command_line','./i18n')
 
-arguments = {
+arguments = { # essayer d'ajouter les commandes de DATE
     """A dict whith following tree :
     DEST : {
         'short' : '-r',
@@ -14,10 +14,91 @@ arguments = {
         'options' : 'if necessary',
         },
         """
+        # Main options
+        'DEPUIS':{
+            'short':[],
+            'long' : ['--from'],
+            },
+        'JUSQUE':{
+            'short':[],
+            'long' : ['--to'],
+            },
+        'INVERSE':{
+            'short':['-r'],
+            'long' : ['--reverse'],
+            },
+        
+        # Print options
+        'verbose':{
+            'short':['-v'],
+            'long' : ['--verbose'],
+            },
+        'couleur':{
+            'short':['-c'],
+            'long' : ['--color','--colour'],
+            },
+        'degre':{
+            'short':['-d'],
+            'long' : ['--degree'],
+            },
+        'jour_semaine':{
+            'short':['-w'],
+            'long' : ['--weekday'],
+            },
+        'transfert':{
+            'short':['-t'],
+            'long' : ['--transfert'],
+            },
+        'temporal_ou_sanctoral':{
+            'short':['-s'],
+            'long' : ['--temporsanct'],
+            },
+        'temps_liturgique':{
+            'short':['-L'],
+            'long' : ['--liturgical-time'],
+            },
+        'date_affichee':{
+            'short':['-D'],
+            'long' : ['--print-date'],
+            },
+        'textes':{
+            'short':[],
+            'long' : ['--show-texts'],
+            },
+        'langue':{
+            'short':['-l'],
+            'long' : ['--language'],
+            'options': ['francais','english','latina'],
+            },
+        
+        # Selection options
         'propre': {
             'short':['-p',],
             'long':['--proper','--rite',],
             'options':['romanus','all',]
+            },
+        'ordo': {
+            'short':['-o'],
+            'long':['--ordo'],
+            'options':['1962'],
+            },
+        'plus': {
+            'short':['-m'],
+            'long':['--more'],
+            },
+        
+        # System options
+        'navigateur': {
+            'short':['-b'],
+            'long':['--browser'],
+            },
+        'version': {
+            'short':[],
+            'long':['--version'],
+            },
+        'poems': {
+            'short':[],
+            'long':['--poems'],
             },
         }
 
@@ -57,7 +138,7 @@ class AutoCompleter():
         
         for value in self.options.values():
             if 'options' in value:
-                if (last_one in value['long'] or last_one in value['short']) or ((blast_one in value['long'] or blast_one in value['short']) and [True for val in value['options'] if last_one in val]):
+                if (last_one in value['long'] or last_one in value['short']) or ((blast_one in value['long'] or blast_one in value['short']) and [True for val in value['options'] if last_one in val]): #BUG il fait choisir deux langues...
                     self.options_ = value['options']
                     break
                     
