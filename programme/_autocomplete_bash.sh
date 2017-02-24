@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+# This script was made thanks to this page : http://tech.novapost.fr/autocompletion-des-arguments-dans-vos-commandes.html
 
 _theochrone_completion() {
     COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
