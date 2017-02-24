@@ -138,7 +138,7 @@ class AutoCompleter():
         
         for value in self.options.values():
             if 'options' in value:
-                if (last_one in value['long'] or last_one in value['short']) or ((blast_one in value['long'] or blast_one in value['short']) and [True for val in value['options'] if last_one in val]): #BUG il fait choisir deux langues...
+                if (last_one in value['long'] or last_one in value['short']) or ((blast_one in value['long'] or blast_one in value['short']) and [True for val in value['options'] if last_one in val and last_one != val]): #BUG il fait choisir deux langues...
                     self.options_ = value['options']
                     break
                     
