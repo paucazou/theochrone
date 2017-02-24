@@ -5,11 +5,27 @@
 import argparse, gettext, locale, os, sys, unicodedata
 gettext.install('command_line','./i18n')
 
+arguments = {
+    """A dict whith following tree :
+    DEST : {
+        'short' : '-r',
+        'long' : '--research',
+        'help' : 'description for zsh or fish',
+        'options' : 'if necessary',
+        },
+        """
+        'propre': {
+            'short':['-p',],
+            'long':['--proper','--rite',],
+            'options':['romanus','all',]
+            },
+        }
+
 
 class AutoCompleter():
     
     def __init__(self):
-        self.options = []
+        self.options = arguments
         self.options_ = []
         
     def autocomplete(self):
@@ -19,12 +35,40 @@ class AutoCompleter():
         words = os.environ['COMP_WORDS'].split()[1:]
         cword = int(os.environ['COMP_CWORD'])
         
-        self.options_ = self.options
-        for word in words:
-            for i,suggest in enumerate(self.options_):
-                if suggest == word:
-                    del(self.options[i])
+        short_options = set()
+        
+        for arg in words:
+            try:
+                if arg[0] == '-' and arg[1] != '-':
+                    short_options = short_options.union(set(arg[1:]))
+            except IndexError:
+                continue
+        
+        if len(words) > 1:
+            blast_one = words[-2]
+        else:
+            blast_one = False
+        if len(words) > 0:
+            last_one = words[-1]
+        else:
+            blast_one = False
+            last_one = False
+        self.options_ = []
+        
+        for value in self.options.values():
+            if 'options' in value:
+                if (last_one in value['long'] or last_one in value['short']) or ((blast_one in value['long'] or blast_one in value['short']) and [True for val in value['options'] if last_one in val]):
+                    self.options_ = value['options']
                     break
+                    
+            for long_one in value['long']:
+                if long_one in words:
+                    value['long'] = []
+                    break
+            for short_one in value['short']:
+                if short_one[1] in short_options:
+                    value['long'] = []
+            self.options_ += value['long']
                 
         if self.options_ == []:
             sys.exit(1)
