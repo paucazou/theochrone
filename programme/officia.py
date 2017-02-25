@@ -137,7 +137,13 @@ def pdata(read=True,write=False,**kwargs):
                 if write:
                     debut = kwargs['debut'].strftime("%Y-%m-%d")
                     fin = kwargs['fin'].strftime("%Y-%m-%d")
-                    keywords.write("""{}|{}|{}\n""".format(debut,fin,kwargs['keywords']))
+                    keywords.write("""{}|{}/{}\n""".format(debut,fin,' '.join(kwargs['keywords'])))
+                else:
+                    history = []
+                    for line in keywords.readlines():
+                        dates, kw = line.split('/')
+                        history.append([datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in dates.split('|')] + [kw.replace('\n','').split()])
+                    return history
                     
             
         
