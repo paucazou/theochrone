@@ -100,6 +100,12 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':[],
             'long':['--poems'],
             },
+        
+        # Help
+        'help':{
+            'short':['-h'],
+            'long':['--help'],
+            }
         }
 
 
@@ -151,8 +157,6 @@ class AutoCompleter():
                     value['long'] = []
             self.options_ += value['long']
                 
-        if self.options_ == []:
-            sys.exit(1)
         try:
             # curr is the current word, with cword being a 1-based index
             curr = words[cword - 1]
