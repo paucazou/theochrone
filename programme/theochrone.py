@@ -65,6 +65,9 @@ else:
     if fin < debut:
         adjutoria.erreur(16,args.langue)
 
+if args.INVERSE == 1:
+    officia.pdata(write=True,history='dates',debut=debut,fin=fin)
+
 if args.navigateur:
     if mois_seul:
         sys.exit(subprocess.run(['./navette_navigateur.py','mois',str(debut.month),str(debut.year)]))

@@ -121,16 +121,17 @@ def pdata(read=True,write=False,**kwargs):
         action = 'r'
         
     if 'history' in kwargs:
-        with open(history_folder + '/dates',action) as dates:
-            if write:
-                debut = kwargs['debut'].strftime("%Y-%m-%d")
-                fin = kwargs['fin'].strftime("%Y-%m-%d")
-                dates.write(debut + '|' + fin + '\n')
-            else:
-                history = []
-                for line in dates.readlines():
-                    history.append([datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in line.replace('\n','').split('|')])
-                return history
+        if kwargs['history'] == 'dates':
+            with open(history_folder + '/dates',action) as dates:
+                if write:
+                    debut = kwargs['debut'].strftime("%Y-%m-%d")
+                    fin = kwargs['fin'].strftime("%Y-%m-%d")
+                    dates.write(debut + '|' + fin + '\n')
+                else:
+                    history = []
+                    for line in dates.readlines():
+                        history.append([datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in line.replace('\n','').split('|')])
+                    return history
                     
             
         
