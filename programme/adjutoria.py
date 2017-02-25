@@ -601,6 +601,7 @@ def affichage(**kwargs):
         
     for a in kwargs['liste']:
         if a.omission and not kwargs['verbose'] and not kwargs['recherche']:
+            sortie = sortie[:-2]
             continue
         if kwargs['langue'] == 'francais':
             if kwargs['verbose']:
