@@ -114,12 +114,24 @@ def pdata(read=True,write=False,**kwargs):
     with open(main_folder + '/refus','r') as refus:
         if refus.read() == 'True':
             return
+    
+    if write:
+        action = 'a'
+    else:
+        action = 'r'
         
-    if 'debut' in kwargs:
-        with open(history_folder + '/dates','a') as dates:
+    if 'history' in kwargs:
+        with open(history_folder + '/dates',action) as dates:
             if write:
                 debut = kwargs['debut'].strftime("%Y-%m-%d")
                 fin = kwargs['fin'].strftime("%Y-%m-%d")
                 dates.write(debut + '|' + fin + '\n')
+            else:
+                history = []
+                for line in dates.readlines():
+                    history.append([datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in line.replace('\n','').split('|')])
+                return history
+                    
+            
         
     
