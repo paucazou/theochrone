@@ -191,7 +191,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
     for i,elt in enumerate(passager):
         if elt == '':
             del(passager[i])
-    
+                
     def producteur_de_datte(jour,mois,annee): # beaucoup d'erreurs potentielles
         """A function to create the datetime.date object"""
         if int(annee) > 4100:
@@ -298,12 +298,12 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                 date = datetime.date(aujourdhui.year - 1, 1,1)
                 annee_seule = True
             elif re.fullmatch(r"[0-9]{4}",passager[1]): #janvier 2000, 1 2000
-                if not re.fullmatch(r"(1[1-2]|[1-9])",passager[0]):
+                if not re.fullmatch(r"(1[1-2]|0?[1-9])",passager[0]):
                     passager[0] = mois_lettre(passager[0],langue)
                 date = producteur_de_datte(1,passager[0],passager[1])
                 mois_seul = True
             elif re.fullmatch(r"[0-3]?[0-9]",passager[0]): # ex: 11 janvier, 11 1
-                if not re.fullmatch(r"(1[1-2]|[1-9])",passager[1]):
+                if not re.fullmatch(r"(1[1-2]|0?[1-9])",passager[1]):
                     passager[1] = mois_lettre(passager[1],langue)
                 date = producteur_de_datte(passager[0],passager[1],aujourdhui.year)
             else:#erreur
@@ -311,19 +311,20 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
         
         elif len(passager) == 3:
             if passager[0] in semaine[langue]:
-                if not re.fullmatch(r"(1[1-2]|[1-9])",passager[2]):
+                if not re.fullmatch(r"(1[1-2]|0?[1-9])",passager[2]):
                     passager[2] = mois_lettre(passager[2],langue)
                 date = producteur_de_datte(passager[1],passager[2],aujourdhui.year)
                 jourmois_joursemaine(passager[0],date)
             elif re.fullmatch(r"[0-3]?[0-9]",passager[0]) and re.fullmatch(r"[0-9]{4}",passager[2]):
-                if not re.fullmatch(r"(1[1-2]|[1-9])",passager[1]):
+                if not re.fullmatch(r"(1[1-2]|0?[1-9])",passager[1]):
                     passager[1] = mois_lettre(passager[1],langue)
+                    
                 date = producteur_de_datte(passager[0],passager[1],passager[2])
             else:#erreur
                 erreur(12,langue,exit)
         
         elif len(passager) == 4: # il faut gérer les erreurs
-            if not re.fullmatch(r"(1[1-2]|[1-9])",passager[0]):
+            if not re.fullmatch(r"(1[1-2]|0?[1-9])",passager[0]):
                 passager[2] = mois_lettre(passager[2],langue)
             date = producteur_de_datte(passager[1],passager[2],passager[3])
             jourmois_joursemaine(passager[0],date) 
