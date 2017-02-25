@@ -112,7 +112,7 @@ def pdata(read=True,write=False,**kwargs):
                 refus.write('False')
                 
     with open(main_folder + '/refus','r') as refus:
-        if refus.read() == 'True':
+        if 'True' in refus.read():
             return
     
     if write:
@@ -132,6 +132,12 @@ def pdata(read=True,write=False,**kwargs):
                     for line in dates.readlines():
                         history.append([datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in line.replace('\n','').split('|')])
                     return history
+        elif kwargs['history'] == 'reverse':
+            with open(history_folder + '/keywords',action) as keywords:
+                if write:
+                    debut = kwargs['debut'].strftime("%Y-%m-%d")
+                    fin = kwargs['fin'].strftime("%Y-%m-%d")
+                    keywords.write("""{}|{}|{}\n""".format(debut,fin,kwargs['keywords']))
                     
             
         

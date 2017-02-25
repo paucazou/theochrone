@@ -67,6 +67,8 @@ else:
 
 if args.INVERSE == 1:
     officia.pdata(write=True,history='dates',debut=debut,fin=fin)
+elif args.INVERSE != 1:
+    officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=args.INVERSE)
 
 if args.navigateur:
     if mois_seul:
