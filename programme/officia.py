@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
-import adjutoria, datetime
+import adjutoria, datetime, os
 
 def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     """Function which creates a liturgical year emulation. It takes four arguments :
@@ -90,3 +90,29 @@ def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='francais',exit=True)
         liste = [adjutoria.erreur(20,langue,exit=exit)]
     
     return liste
+
+def pdata(read=True,write=False,**kwargs):
+    """A function for personal data, which reads and writes config files and history in ~/.theochrone"""
+    main_folder = os.path.expanduser('~/.theochrone')
+    config_folder = main_folder + '/config'
+    history_folder = main_folder + '/history'
+    
+    if not os.path.exists(main_folder):
+        os.mkdir(main_folder)
+        os.mkdir(config_folder)
+        os.mkdir(history_folder)
+        with open(main_folder + '/refus','w') as refus:
+            refus.write('False')
+        
+    if 'refus' in kwargs:
+        with open(main_folder + '/refus','w') as refus:
+            if kwargs['refus']:
+                refus.write('True')
+            else:
+                refus.write('False')
+                
+    with open(main_folder + '/refus','r') as refus:
+        if refus.read() == 'True':
+            return
+        
+    
