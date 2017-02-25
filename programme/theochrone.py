@@ -28,8 +28,6 @@ import officia
 if args.poems:
     webbrowser.open_new_tab("http://philippeaucazou.wordpress.com")
     sys.exit()
-    
-
 
 """if args.INVERSE != 1:
     args.INVERSE = [adjutoria.sans_accent(mot) for mot in args.INVERSE]

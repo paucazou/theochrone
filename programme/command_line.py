@@ -179,13 +179,16 @@ class CoursDeLangue(argparse.Action):
                               'english':('en',_('english')),
                               'latina':('la',_('latina'))}
         def sans_accent(mot):
-            """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules."""
+            """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules.""" # voir si on ne peut pas le mettre dans officia.
             return ''.join(c for c in unicodedata.normalize('NFD',mot.lower()) if unicodedata.category(c) != 'Mn')
         value = sans_accent(value.lower())
         for key,values in language_available.items():
             if value in values or value == key:
                 value = key
                 break
+        if value not in ('francais','latina','english'):
+            print(_("Language entered is not available. Default language will be used instead."))
+            value = default_language()
         setattr(namespace,self.dest,value)
 
 ### Command-line args ###
