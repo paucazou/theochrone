@@ -162,7 +162,9 @@ class AutoCompleter():
             curr = words[cword - 1]
         except IndexError:
             curr = ''
-
+        if self.options_ == []:
+            self.options_.append('--')
+            
         complete = ' '.join(sorted(filter(lambda x: x.startswith(curr),self.options_)))
         print(complete)
         sys.exit(1)
