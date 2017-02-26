@@ -108,7 +108,10 @@ def caracteristiques():
     pass
 
 def sans_accent(mot):
-    """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules."""
+    """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules.
+    >>> sans_accent('Noël Pâques Pentecôte Jésus Père Saint-Esprit où à maçon')
+    'noel paques pentecote jesus pere saint-esprit ou a macon'
+    """
     return ''.join(c for c in unicodedata.normalize('NFD',mot.lower()) if unicodedata.category(c) != 'Mn')
 
 def ocasu(): #DEPRECATED
