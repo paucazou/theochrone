@@ -3,6 +3,7 @@
 """A file with arparse and i18n"""
 import argparse, gettext
 from command_line import args
+
 args = args()
 gettext.install('messages','./i18n')
 
@@ -22,10 +23,11 @@ else:
 
 ### Messages ###
 theochrone_messages = {} # a dict with all the messages used in theochrone.py
-adjutoria_messages = { # functions # classes
+adjutoria_messages = {
     _('francais'),
     _('english'),
     _('latina'),
-    } # a dict with all the messages used in adjutoria.py : first functions, second classes
+    } # a dict with all the messages used in adjutoria.py
+officia_messages = {}
 
 

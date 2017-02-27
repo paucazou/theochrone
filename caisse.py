@@ -11,6 +11,7 @@ import os
 import subprocess
 import re
 import random
+import officia
 import argparse
 import copy
 
@@ -219,7 +220,7 @@ def CompileRegex(objet):
                 #traitement des consonnes doubles
                 for lettre in 'bcdfglmnprstv':
                     mot = re.sub(lettre+lettre,lettre+lettre+'?',mot)
-            liste[i]=re.compile(adjutoria.sans_accent(mot))
+            liste[i]=re.compile(officia.sans_accent(mot))
         vaisseau[index]=tuple(liste)
     for key in delete:
         if vaisseau[key] == []:
