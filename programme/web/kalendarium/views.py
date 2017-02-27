@@ -36,7 +36,7 @@ def home(request,
             date = date + datetime.timedelta(1)
         inversion=False
         if mois_seul:
-            titre = adjutoria.mois[debut.month - 1]
+            titre = officia.mois[debut.month - 1]
         else:
             titre = debut
     else:
