@@ -3,8 +3,10 @@
 """A file with arparse and i18n"""
 import argparse, gettext
 from command_line import args
-
-args = args()
+from __main__ import __file__ as main_name
+main_name = main_name.split('/')[-1]
+if main_name in ('theochrone.py','officia.py'):
+    args = args()
 gettext.install('messages','./i18n')
 
 ### i18n ###
