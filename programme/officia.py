@@ -8,8 +8,8 @@ import pickle
 import re
 import sys
 import unicodedata
-
-#from messages import officia_messages as msg
+from adjutoria import FeteFerie
+from messages import officia_messages as msg
 
 
 
@@ -441,7 +441,7 @@ def selection(date,Annee,samedi):
     commemoraison_temporal=False
     
     samedi.date = date
-    from adjutoria import FeteFerie
+    
     ferie = FeteFerie()
     if samedi.Est_ce_samedi(date):
         defaut = samedi
