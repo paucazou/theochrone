@@ -270,7 +270,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                 else:
                     date = datetime.date(aujourdhui.year,aujourdhui.month + 1,1)
                 mois_seul = True
-            elif passager[0] in semaine[langue] and (passager[1] == 'precedent' or passager[1] == 'avant'):
+            elif passager[0] in semaine[langue] and passager[1] in ('precedent','avant','dernier'):
                 date=aujourdhui
                 while True:
                     date -= datetime.timedelta(1)
