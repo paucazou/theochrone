@@ -433,17 +433,19 @@ def traite(Annee,objet,date,annee,propre):
     
 def selection(date,Annee,samedi):
     """Selects the feasts which are actually celebrated."""
-    from adjutoria import FeteFerie
+    
     liste = Annee.setdefault(date,[])
     commemoraison = 0 # max 2
     commemoraison_temporal=False
     
     samedi.date = date
     
-    ferie = FeteFerie()
+    
     if samedi.Est_ce_samedi(date):
         defaut = samedi
     else:
+        from adjutoria import FeteFerie
+        ferie = FeteFerie()
         ferie.Dimanche_precedent(date,Annee)
         defaut = ferie
     try:
