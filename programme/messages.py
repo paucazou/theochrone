@@ -3,8 +3,11 @@
 """A file with arparse and i18n"""
 import argparse, gettext
 from command_line import args
-from __main__ import __file__ as main_name
-main_name = main_name.split('/')[-1]
+try:
+    from __main__ import __file__ as main_name
+    main_name = main_name.split('/')[-1]
+except ImportError:
+    main_name = None
 gettext.install('messages','./i18n')
 
 

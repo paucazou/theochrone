@@ -1,0 +1,6 @@
+#python -m doctest -v file.txt
+>>> import dossier
+>>> dossier.main()
+>>> import officia
+>>> officia.sans_accent("ABCDEFGHIJKLMNOPQRSTUVWXYZàâëêéèïîôöùüÿ")
+'abcdefghijklmnopqrstuvwxyzaaeeeeiioouuy'
