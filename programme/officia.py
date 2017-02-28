@@ -105,15 +105,13 @@ def caracteristiques():
     pass
 
 def sans_accent(mot):
-    """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules.
-    >>> sans_accent('Noël Pâques Pentecôte Jésus Père Saint-Esprit où à maçon')
-    'noel paques pentecote jesus pere saint-esprit ou a macon'
-    """
+    """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules."""
     return ''.join(c for c in unicodedata.normalize('NFD',mot.lower()) if unicodedata.category(c) != 'Mn')
 
 
 def modification(mots,langue):
-    """Change certains mots"""
+    """Modify some words. 'mots' is a list of strings ; 'langue' refers to language to be used.
+    Returns 'mots' modified."""
 
     if langue == 'francais':
         for i,a in enumerate(mots):
@@ -128,7 +126,7 @@ def modification(mots,langue):
                 elif mots[i] in ('bses','bhses'):
                     mots[i] = 'bienheureuses'
         
-        mots_str='' # supprimer le | initial ; vérifier la regex (.|\|){2}? ne semble pas fonctionner correctement
+        mots_str='' # supprimer le | initial ; vérifier la regex (.|\|){2}? ne semble pas fonctionner correctement # autre bug : un + 1er > 11
         for a in mots:
             mots_str = mots_str + '|' + a
         
@@ -141,7 +139,7 @@ def modification(mots,langue):
         mots_str = dix.sub('10',mots_str)
         for i, elt in enumerate(unites):
             mots_str = elt.sub(str(i + 1),mots_str)
-        mots = mots_str.split('|')
+        mots = mots_str.split('|') 
         del(mots[0])
     
     else: # english
