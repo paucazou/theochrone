@@ -8,7 +8,7 @@ import os
 
 os.chdir('..')
 
-from programme import theochrone
+#from programme import theochrone
 
 def test_earlydate():
     pass

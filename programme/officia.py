@@ -8,7 +8,6 @@ import pickle
 import re
 import sys
 import unicodedata
-from adjutoria import FeteFerie
 from messages import officia_messages as msg
 
 
@@ -436,6 +435,7 @@ def traite(Annee,objet,date,annee,propre):
     
 def selection(date,Annee,samedi):
     """Selects the feasts which are actually celebrated."""
+    from adjutoria import FeteFerie
     liste = Annee.setdefault(date,[])
     commemoraison = 0 # max 2
     commemoraison_temporal=False
