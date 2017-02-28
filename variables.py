@@ -117,5 +117,8 @@ programmes_utilises = (
     'xgettext -(j)p ./programme/i18n/[language]/LC_MESSAGES [filename]',
     'msgformat [filename].po',
     'caisse.py',
+    'python -m doctest -v example.txt', # for doctests
+    'pytest',
+    'linguist',# translator program for pyqt5
     )
     
