@@ -30,6 +30,19 @@ from messages import args
 if args.poems:
     webbrowser.open_new_tab("http://philippeaucazou.wordpress.com")
     sys.exit()
+    
+if args.historique:
+    if args.INVERSE != 1:
+        history = officia.pdata(history='reverse')
+        for line in history:
+            print("{} : {}/{} : {}".format(line[0].strftime(_('%Y-%m-%d-%HH%M')),line[1].year,line[2].year,' '.join(line[3])))
+    else:
+        history = officia.pdata(history='dates')
+        for line in history:
+            print("{} : {} : {}/{}".format(line[0].strftime(_('%Y-%m-%d-%HH%M')),line[1],line[2][0],line[2][1]))
+    sys.exit()
+    
+    
 
 if args.DEPUIS == 1 and args.JUSQUE == 1:
     date, semaine_seule, mois_seul, annee_seule = officia.datevalable(args.DATE,args.langue)
@@ -54,8 +67,11 @@ else:
     if fin < debut:
         officia.erreur(16,args.langue)
 
-if args.INVERSE == 1:
-    officia.pdata(write=True,history='dates',debut=debut,fin=fin)
+if args.INVERSE == 1 and args.DEPUIS == 1 and args.JUSQUE == 1:
+    officia.pdata(write=True,history='dates',debut=debut,fin=fin,
+                  semaine_seule=semaine_seule,mois_seul=mois_seul,annee_seule=annee_seule)
+elif args.INVERSE == 1:
+    officia.pdata(write=True,history='date',debut=debut,fin=fin,fromto=True)
 elif args.INVERSE != 1:
     officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=args.INVERSE)
 
