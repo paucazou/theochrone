@@ -4203,4 +4203,152 @@
       <bool key="votive">False</bool>
     </dict>
   </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">rouge</str>
+      <int key="_priorite">100</int>
+      <str key="_temps_liturgique">variable</str>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">2</int>
+        <int key="mois">6</int>
+      </dict>
+      <int key="degre">5</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/02-06-Sts-Marcellin-et-Pierre-et</str>
+      <dict key="nom">
+        <str key="english">Saints Marcellinus and Peter, Martyrs, and Saint Erasmus, Bishop and Martyr</str>
+        <str key="francais">Saints Marcellin, Pierre et Érasme, Évêque, et Martyrs</str>
+        <str key="latina">Sanctorum Marcellini, Petri atque Erasmi, Episcopi, Martyrum</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">marcellin_pierre_erasme</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>formi(a|es)</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>marcellin</str>
+          <str>(érasme|elme)</str>
+          <str>pierre</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>pedro</str>
+          <str>gonzales</str>
+          <str>telmo</str>
+            <str>lampsaque</str>
+          <str>balsame</str>
+          <str>sébaste</str>
+          <str>chrysologue</str>
+          <str>doroverne</str>
+          <str>athonite</str>
+          <str>cordoue</str>
+          <str>argos</str>
+          <str>koricha</str>
+          <str>moscou</str>
+          <str>mavimène</str>
+          <str>orseolo</str>
+          <str>damien</str>
+          <str>osma</str>
+          <str>ermite</str>
+          <str>pappacarbone</str>
+          <str>juilly</str>
+          <str>tarentaise</str>
+          <str>vérone</str>
+          <str>cadirète</str>
+          <str>sienne</str>
+          <str>armengol</str>
+          <str>luxembourg</str>
+          <str>narbonne</str>
+          <str>becchetti</str>
+          <str>massalenis</str>
+          <str>alcantara</str>
+          <str>berno</str>
+          <str>nolasque</str>
+          <str>assomption</str>
+          <str>fourier</str>
+          <str>claver</str>
+          <str>fioretti</str>
+          <str>rochefoucauld</str>
+          <str>faverge</str>
+          <str>gabilhaud</str>
+          <str>morélie</str>
+          <str>puyredon</str>
+          <str>noël</str>
+          <str>dumoulin</str>
+          <str>borie</str>
+          <str>yu</str>
+          <str>thi</str>
+          <str>chanel</str>
+          <str>doan</str>
+          <str>công</str>
+          <str>quy</str>
+          <str>friedhofen</str>
+          <str>almato</str>
+          <str>dung</str>
+          <str>ryou</str>
+          <str>liu</str>
+          <str>ziyu</str>
+          <str>giorgio</str>
+          <str>frassati</str>
+          <str>mesonero</str>
+          <str>rodriguez</str>
+          <str>verhun</str>
+          <str>tribun</str>
+          <str>tomes</str>
+          <str>mannée</str>
+          <str>jean</str>
+          <str>pierre</str>
+          <str>argeu</str>
+          <str>narcisse</str>
+          <str>tomis</str>
+          <str>embrun</str>
+          <str>carthage</str>
+          <str>lérins</str>
+          <str>marchelme</str>
+          <str>marculf</str>
+          <str>champagnat</str>
+          <str>auxerre</str>
+        </list>
+        <list key="syntaxiques">
+          <str>et</str>
+          <str>de</str>
+        </list>
+        <list key="titre">
+          <str>saints</str>
+          <str>martyrs</str>
+          <str>évêque</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
 </list>
