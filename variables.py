@@ -119,6 +119,6 @@ programmes_utilises = (
     'caisse.py',
     'python -m doctest -v example.txt', # for doctests
     'pytest',
-    'linguist',# translator program for pyqt5
+    'voir le .procedure dans /programme/gui/',
     )
     
