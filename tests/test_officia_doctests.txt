@@ -2,8 +2,17 @@
 >>> import dossier
 >>> dossier.main()
 >>> import officia
+>>> import datetime
 >>> officia.sans_accent("ABCDEFGHIJKLMNOPQRSTUVWXYZàâëêéèïîôöùüÿ")
 'abcdefghijklmnopqrstuvwxyzaaeeeeiioouuy'
 >>>
 >>> officia.modification(['st','ste','bhx','bx','bse','bhse','bses','bhses','premier','un','1er','second','2eme','trois','troisieme'],'francais')
 ['saint', 'sainte', 'bienheureux', 'bienheureux', 'bienheureuse', 'bienheureuse', 'bienheureuses', 'bienheureuses', '1', '1', '1', '2', '2', '3', '3']
+>>> officia.AtoZ(True,False,False,datetime.date(1990,1,1))
+(datetime.date(1990, 1, 1), datetime.date(1990, 1, 7))
+>>> officia.AtoZ(False,True,False,datetime.date(1990,1,1))
+(datetime.date(1990, 1, 1), datetime.date(1990, 1, 31))
+>>> officia.AtoZ(False,False,True,datetime.date(1990,1,1))
+(datetime.date(1990, 1, 1), datetime.date(1990, 12, 31))
+>>> officia.AtoZ(False,False,False,datetime.date(1990,1,1))
+(datetime.date(1990, 1, 1), datetime.date(1990, 1, 1))
