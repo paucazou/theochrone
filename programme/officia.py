@@ -597,7 +597,8 @@ def affichage(**kwargs):
         
     for a in kwargs['liste']:
         if a.omission and not kwargs['verbose'] and not kwargs['recherche']:
-            sortie = sortie[:-2]
+            if sortie [-2:] == '\n': # ne marche toujours pas
+                sortie = sortie[:-2]
             continue
         if kwargs['langue'] == 'francais':
             if kwargs['verbose']:
@@ -904,28 +905,46 @@ def pdata(read=True,write=False,**kwargs):
         action = 'r'
         
     if 'history' in kwargs:
+        aujourdhui = str(datetime.datetime.today())
         if kwargs['history'] == 'dates':
             with open(history_folder + '/dates',action) as dates:
                 if write:
+                    if kwargs.get('semaine_seule',False):
+                        periode = 'week'
+                    elif kwargs.get('mois_seul',False):
+                        periode = 'month'
+                    elif kwargs.get('annee_seule',False):
+                        periode = 'year'
+                    elif kwargs.get('fromto',False):
+                        periode = 'arbitrary'
+                    else:
+                        periode = 'day'
+                        
                     debut = kwargs['debut'].strftime("%Y-%m-%d")
                     fin = kwargs['fin'].strftime("%Y-%m-%d")
-                    dates.write(debut + '|' + fin + '\n')
+                    
+                    dates.write('{}<>{}<>{}|{}\n'.format(aujourdhui,periode,debut,fin))
                 else:
                     history = []
                     for line in dates.readlines():
-                        history.append([datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in line.replace('\n','').split('|')])
+                        tmp = []
+                        separee = line.replace('\n','').split('<>')
+                        tmp.append(datetime.datetime.strptime(separee[0],'%Y-%m-%d %H:%M:%S.%f'))
+                        tmp.append(separee[1])
+                        tmp.append([datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in separee[2].split('|')])
+                        history.append(tmp)
                     return history
         elif kwargs['history'] == 'reverse':
             with open(history_folder + '/keywords',action) as keywords:
                 if write:
                     debut = kwargs['debut'].strftime("%Y-%m-%d")
                     fin = kwargs['fin'].strftime("%Y-%m-%d")
-                    keywords.write("""{}|{}/{}\n""".format(debut,fin,' '.join(kwargs['keywords'])))
+                    keywords.write("""{}/{}|{}/{}\n""".format(aujourdhui,debut,fin,' '.join(kwargs['keywords'])))
                 else:
                     history = []
                     for line in keywords.readlines():
-                        dates, kw = line.split('/')
-                        history.append([datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in dates.split('|')] + [kw.replace('\n','').split()])
+                        jour, dates, kw = line.split('/')
+                        history.append([datetime.datetime.strptime(jour,'%Y-%m-%d %H:%M:%S.%f')] +                                                                 [datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in dates.split('|')] + [kw.replace('\n','').split()])
                     return history
                     
             
