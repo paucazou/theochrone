@@ -27,6 +27,17 @@ import sys
 import webbrowser
 from messages import args
 ### Traitement des informations entrées par l'utilisateur ###
+if args.settings != None:
+    if args.settings.lower() == "no":
+        officia.pdata(refus='yes')
+    elif args.settings.lower() == "yes":
+        officia.pdata(refus='no')
+    else:
+        officia.pdata(langue=args.langue)
+        
+    sys.exit("Settings saved.")
+        
+
 if args.poems:
     webbrowser.open_new_tab("http://philippeaucazou.wordpress.com")
     sys.exit()

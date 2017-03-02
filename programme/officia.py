@@ -6,6 +6,7 @@ import datetime
 import os
 import pickle
 import re
+import shutil
 import sys
 import unicodedata
 from messages import officia_messages as msg
@@ -891,18 +892,26 @@ def pdata(read=True,write=False,**kwargs):
         os.mkdir(config_folder)
         os.mkdir(history_folder)
         with open(main_folder + '/refus','w') as refus:
-            refus.write('False')
+            refus.write('no')
         
     if 'refus' in kwargs:
         with open(main_folder + '/refus','w') as refus:
-            if kwargs['refus']:
-                refus.write('True')
+            if kwargs['refus'] == 'yes':
+                refus.write('yes')
+                shutil.rmtree(config_folder)
+                shutil.rmtree(history_folder)
             else:
-                refus.write('False')
+                refus.write('no')
+                os.mkdir(config_folder)
+                os.mkdir(history_folder)
                 
     with open(main_folder + '/refus','r') as refus:
-        if 'True' in refus.read():
-            return
+        if 'yes' in refus.read():
+            return [] # WARNING très mauvaise idée : cela évite juste les ennuis, mais ne résout rien !!!
+        
+    if kwargs.get('langue',False):
+        with open(main_folder + '/LANG','w') as lang:
+            lang.write(kwargs['langue'])
     
     if write:
         action = 'a'

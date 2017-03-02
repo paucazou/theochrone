@@ -100,6 +100,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':[],
             'long':['--poems'],
             },
+        'settings' : {
+            'short':[],
+            'long' : ['--set'],
+            },
         
         # History options
         'historique': {
@@ -308,5 +312,11 @@ def args():
     system.add_argument('--version', action='version',version='%(prog)s 0.1')
     system.add_argument('--test',help='Do not run',action='store_true')
     system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
+    system.add_argument(*arguments['settings']['long'],dest='settings',nargs='?',help=_("""Modify some settings of the program and exits. Following options are available :
+        - 'No' : with this option, you don't accept to save settings nor history. 'Yes' is the contrary : you accept to save settings and history (default).
+            It also deletes all your personal settings and history, if previously set.
+        - An integer : set the maximum lines of your history. /!\ NOT YET AVAILABLE
+        - --language : with this parameter, you can save the default language you want to use.
+        Settings and history can be found in '.theochrone', which is in your personal directory."""))
 
     return parser.parse_args()
