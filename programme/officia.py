@@ -910,7 +910,7 @@ def pdata(read=True,write=False,**kwargs):
             return [] # WARNING très mauvaise idée : cela évite juste les ennuis, mais ne résout rien !!!
         
     if kwargs.get('langue',False):
-        with open(main_folder + '/LANG','w') as lang:
+        with open(config_folder + '/LANG','w') as lang:
             lang.write(kwargs['langue'])
     
     if write:
