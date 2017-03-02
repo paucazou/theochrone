@@ -56,7 +56,7 @@ if args.precedent or args.suivant: # do not forget day !!!
     try:
         entree = officia.pdata(history='dates')[-i]
     except IndexError:
-        sys.exit("Il n'y a pas d'entrée correspondante dans l'historique. Tapez -H pour connaître les entrées disponibles.") # TODO à faire entrer dans la liste des erreurs.
+        officia.erreur(32,args.langue)
     if args.suivant:
         i = args.suivant
         if entree[1] == 'week':
@@ -98,7 +98,10 @@ if args.precedent or args.suivant: # do not forget day !!!
 
 elif args.entree_historique:
     if args.INVERSE == 1:
-        entree = officia.pdata(history='dates')[-args.entree_historique] #TODO idem que pour next/previous
+        try:
+            entree = officia.pdata(history='dates')[-args.entree_historique]
+        except IndexError:
+            officia.erreur(32,args.langue)
         if entree[1] == 'week':
             semaine_seule = True
         elif entree[1] == 'month':
@@ -107,7 +110,10 @@ elif args.entree_historique:
             annee_seule = True
         debut,fin = entree[2]
     else:
-        entree = officia.pdata(history='reverse')[-args.entree_historique] #TODO idem que pour next/previous
+        try:
+            entree = officia.pdata(history='reverse')[-args.entree_historique]
+        except IndexError:
+            officia.erreur(32,args.langue)
         debut, fin = entree[1], entree[2]
         args.INVERSE = entree[3]
     

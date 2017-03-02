@@ -88,7 +88,7 @@ codes_erreurs = {
     0 : 'Système',
     1 : 'date',
     2 : 'recherche',
-    3 : '',
+    3 : 'historique',
     4 : '',
     5 : '',
     6 : '',

@@ -91,6 +91,9 @@ erreurs={
          "La date de début est postérieure à la date de fin.",
          ],
         ["Votre recherche n'a pas pu aboutir. Merci de rentrer des informations plus précises.",],
+        ["L'historique des recherches par dates n'a pas encore été renseigné. Merci de faire au moins une recherche.",
+         "L'historique des recherches par mots-clefs n'a pas encore été renseigné. Merci de faire au moins une recherche.",
+         "Il n'y a pas d'entrée correspondante dans l'historique. Tapez -H pour connaître les entrées disponibles.",],
         ],
     'english':[
         ['Your command-interpreter is not supported by this program.',
@@ -909,6 +912,9 @@ def pdata(read=True,write=False,**kwargs):
     if 'history' in kwargs:
         aujourdhui = str(datetime.datetime.today())
         if kwargs['history'] == 'dates':
+            if not write:
+                if not os.path.isfile(history_folder + '/dates'):
+                    erreur(30,'francais')               
             with open(history_folder + '/dates',action) as dates:
                 if write:
                     if kwargs.get('semaine_seule',False):
@@ -928,6 +934,7 @@ def pdata(read=True,write=False,**kwargs):
                     dates.write('{}<>{}<>{}|{}\n'.format(aujourdhui,periode,debut,fin))
                 else:
                     history = []
+                    
                     for line in dates.readlines():
                         tmp = []
                         separee = line.replace('\n','').split('<>')
@@ -937,6 +944,9 @@ def pdata(read=True,write=False,**kwargs):
                         history.append(tmp)
                     return history
         elif kwargs['history'] == 'reverse':
+            if not write:
+                if not os.path.isfile(history_folder + '/keywords'):
+                    erreur(31,'francais')
             with open(history_folder + '/keywords',action) as keywords:
                 if write:
                     debut = kwargs['debut'].strftime("%Y-%m-%d")
