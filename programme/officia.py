@@ -591,15 +591,17 @@ def affiche_jour(date,langue):
 def affichage(**kwargs):
     """Une fonction destinée à l'affichage des résultats."""
     if kwargs['verbose'] and not kwargs['recherche']:
-        sortie = affiche_jour(kwargs['date'],kwargs['langue']).capitalize() + ', '
+        sortie = affiche_jour(kwargs['date'],kwargs['langue']).capitalize() + ' :'
     else:
         sortie=''
         
     for a in kwargs['liste']:
         if a.omission and not kwargs['verbose'] and not kwargs['recherche']:
-            if sortie [-2:] == '\n': # ne marche toujours pas
-                sortie = sortie[:-2]
+            """if sortie [-2:] == '\n': # ne marche toujours pas
+                sortie = sortie[:-2]"""
             continue
+        elif sortie != '':
+            sortie += "\n"
         if kwargs['langue'] == 'francais':
             if kwargs['verbose']:
                 if a.celebree:
@@ -704,8 +706,8 @@ def affichage(**kwargs):
             erreur('01')
         else: # latin
             pass
-        if a != kwargs['liste'][-1]:
-            sortie += '\n'
+        """if a != kwargs['liste'][-1]:
+            sortie += '\n'"""
             
     return sortie
             
