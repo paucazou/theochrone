@@ -59,7 +59,9 @@ if args.precedent or args.suivant: # do not forget day !!!
         officia.erreur(32,args.langue)
     if args.suivant:
         i = args.suivant
-        if entree[1] == 'week':
+        if entree[1] == 'day':
+            debut = fin = entree[2][0] + datetime.timedelta(1*i)
+        elif entree[1] == 'week':
             semaine_seule = True
             fin = entree[2][1] + datetime.timedelta(7*i)
             debut= fin - datetime.timedelta(6)
@@ -78,7 +80,9 @@ if args.precedent or args.suivant: # do not forget day !!!
             debut = fin - ecart
     else:
         i = args.precedent
-        if entree[1] == 'week':
+        if entree[1] == 'day':
+            debut = fin = entree[2][0] - datetime.timedelta(1*i)
+        elif entree[1] == 'week':
             semaine_seule = True
             fin = entree[2][1] + datetime.timedelta(-7*i)
             debut= fin - datetime.timedelta(6)

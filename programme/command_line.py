@@ -284,9 +284,18 @@ def args():
     
     history = parser.add_argument_group(_('History options'),description=_('All about history'))
     history.add_argument(*arguments['historique']['short'],*arguments['historique']['long'],dest='historique', help=_("Print history and exit. With -r/--reverse, print reverse history"),action='store_true')
-    history.add_argument(*arguments['entree_historique']['short'],*arguments['entree_historique']['long'],dest='entree_historique',help=_("Select which entry of the history you want to use again"),default=0,const=1,action='store',type=int,nargs='?')
-    history.add_argument(*arguments['suivant']['short'],*arguments['suivant']['long'],dest='suivant',help=_("Research for the next item. Doesn't work with -r/--reverse"),action='store',default=0,const=1,type=int,nargs='?')
-    history.add_argument(*arguments['precedent']['short'],*arguments['precedent']['long'],dest='precedent',help=_("Research for the previous item. Doesn't work with -r/--reverse"),action='store',default=0,const=1,type=int,nargs='?') # mettre toutes ces options dans un groupe exclusif avec -r/DATE, etc.
+    history.add_argument(*arguments['entree_historique']['short'],*arguments['entree_historique']['long'],dest='entree_historique',help=_("Select which entry of the history you want to use again. Can be used with --next and --previous."),default=0,const=1,action='store',type=int,nargs='?')
+    NnPenemies = history.add_mutually_exclusive_group()
+    NnPenemies.add_argument(*arguments['suivant']['short'],*arguments['suivant']['long'],dest='suivant',help=_("""Research for the next item. Example :
+        the last item researched was a the 1st of January ; --next will research for the 2nd of January.
+        It works with a week, a month, a year, and an arbitrary period defined with --from/--to.
+        You can also specify a number : to take the same example, after the 1st of January, --next 2 will research for the 3rd of January.
+        If you specify an entry of the history with --select-entry, the research will start from this entry, and not from the last one.
+        If used with DATE or --from/--to, these options will have no effect.
+        Doesn't work with -r/--reverse."""),action='store',default=0,const=1,type=int,nargs='?')
+    NnPenemies.add_argument(*arguments['precedent']['short'],*arguments['precedent']['long'],dest='precedent',help=_("""Research for the previous item.
+        Works the same way as --next, on the other side. See above.
+        Doesn't work with -r/--reverse"""),action='store',default=0,const=1,type=int,nargs='?') # mettre toutes ces options dans un groupe exclusif avec -r/DATE, etc.
 
     system = parser.add_argument_group(_('System options'), description=_("Other options"))
     system.add_argument('-b','--browser',dest='navigateur',help=_("""Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
