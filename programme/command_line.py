@@ -284,9 +284,9 @@ def args():
     
     history = parser.add_argument_group(_('History options'),description=_('All about history'))
     history.add_argument(*arguments['historique']['short'],*arguments['historique']['long'],dest='historique', help=_("Print history and exit. With -r/--reverse, print reverse history"),action='store_true')
-    history.add_argument(*arguments['entree_historique']['short'],*arguments['entree_historique']['long'],dest='entree_historique',help=_("Select which entry of the history you want to use again"),action='store',default=1,type=int)
-    history.add_argument(*arguments['suivant']['short'],*arguments['suivant']['long'],dest='suivant',help=_("Research for the next item. Doesn't work with -r/--reverse"),action='store',default=1,type=int,nargs='?')
-    history.add_argument(*arguments['precedent']['short'],*arguments['precedent']['long'],dest='precedent',help=_("Research for the previous item. Doesn't work with -r/--reverse"),action='store',default=1,type=int,nargs='?')
+    history.add_argument(*arguments['entree_historique']['short'],*arguments['entree_historique']['long'],dest='entree_historique',help=_("Select which entry of the history you want to use again"),default=0,const=1,action='store',type=int,nargs='?')
+    history.add_argument(*arguments['suivant']['short'],*arguments['suivant']['long'],dest='suivant',help=_("Research for the next item. Doesn't work with -r/--reverse"),action='store',default=0,const=1,type=int,nargs='?')
+    history.add_argument(*arguments['precedent']['short'],*arguments['precedent']['long'],dest='precedent',help=_("Research for the previous item. Doesn't work with -r/--reverse"),action='store',default=0,const=1,type=int,nargs='?') # mettre toutes ces options dans un groupe exclusif avec -r/DATE, etc.
 
     system = parser.add_argument_group(_('System options'), description=_("Other options"))
     system.add_argument('-b','--browser',dest='navigateur',help=_("""Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
