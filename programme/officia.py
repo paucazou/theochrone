@@ -529,7 +529,7 @@ def selection(date,Annee,samedi,ferie):
     
     return liste
 
-def renvoie_regex(retour,regex,liste):
+def renvoie_regex(retour,regex,liste): # WARNING is this func useless ?
     retour.__dict__['regex'] = {}
     de_cote = []
     for index in regex:

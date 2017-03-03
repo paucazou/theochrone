@@ -60,3 +60,28 @@
 12
 12
 
+>>> class Test:
+...     def temps_liturgique(self,Annee):
+...             return self._temps_liturgique
+>>> liste = []
+>>> for time in ('nativite','epiphanie','avent','apres_epiphanie','septuagesime','careme','passion','paques','ascension','octave_pentecote','pentecote','ERROR'):
+...     new = Test()
+...     new._temps_liturgique = time
+...     liste.append(new)
+... 
+>>> for item in liste:
+...     officia.affiche_temps_liturgique(item,'Annee',langue='francais')
+... 
+'temps de la Nativité (Temps de Noël)'
+"temps de l'Épiphanie (Temps de Noël)"
+"temps de l'Avent"
+"temps per Annum après l'Épiphanie"
+'temps de la Septuagésime'
+'temps du Carême proprement dit (Temps du Carême)'
+'temps de la Passion (Temps du Carême)'
+'temps de Pâques (Temps Pascal)'
+"temps de l'Ascension (Temps Pascal)"
+'octave de la Pentecôte (Temps Pascal)'
+'temps per Annum après la Pentecôte'
+'erreur'
+
