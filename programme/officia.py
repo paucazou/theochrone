@@ -435,7 +435,7 @@ def traite(Annee,objet,date,annee,propre):
     Annee[date].sort(key=lambda x: x.priorite,reverse=True)
     return Annee
     
-def selection(date,Annee,samedi):
+def selection(date,Annee,samedi,ferie):
     """Selects the feasts which are actually celebrated."""
     
     liste = Annee.setdefault(date,[])
@@ -446,12 +446,9 @@ def selection(date,Annee,samedi):
     
     
     if samedi.Est_ce_samedi(date):
-        defaut = samedi
+        defaut = samedi.copy()
     else:
-        from adjutoria import FeteFerie
-        ferie = FeteFerie()
-        ferie.Dimanche_precedent(date,Annee)
-        defaut = ferie
+        defaut = ferie.Dimanche_precedent(date,Annee)
     try:
         if liste[0].degre == 5:
             liste.append(defaut)
@@ -546,31 +543,31 @@ def renvoie_regex(retour,regex,liste):
     retour.regex['egal'] += de_cote
     return retour
 
-def affiche_temps_liturgique(objet,langue='francais'):
+def affiche_temps_liturgique(objet,Annee,langue='francais'):
     """Une fonction capable d'afficher le temps liturgique"""
     sortie = 'erreur'
     if langue == 'francais':
-        if objet.temps_liturgique == 'nativite':
+        if objet.temps_liturgique(Annee) == 'nativite':
             sortie = "temps de la Nativité (Temps de Noël)"
-        elif objet.temps_liturgique == 'epiphanie':
+        elif objet.temps_liturgique(Annee) == 'epiphanie':
             sortie = "temps de l'Épiphanie (Temps de Noël)"
-        elif objet.temps_liturgique == 'avent':
+        elif objet.temps_liturgique(Annee) == 'avent':
             sortie = "temps de l'Avent"
-        elif objet.temps_liturgique == 'apres_epiphanie':
+        elif objet.temps_liturgique(Annee) == 'apres_epiphanie':
             sortie = "temps per Annum après l'Épiphanie"
-        elif objet.temps_liturgique == 'septuagesime':
+        elif objet.temps_liturgique(Annee) == 'septuagesime':
             sortie = "temps de la Septuagésime"
-        elif objet.temps_liturgique == 'careme':
+        elif objet.temps_liturgique(Annee) == 'careme':
             sortie = "temps du Carême proprement dit (Temps du Carême)"
-        elif objet.temps_liturgique == 'passion':
+        elif objet.temps_liturgique(Annee) == 'passion':
             sortie = "temps de la Passion (Temps du Carême)"
-        elif objet.temps_liturgique == 'paques':
+        elif objet.temps_liturgique(Annee) == 'paques':
             sortie = "temps de Pâques (Temps Pascal)"
-        elif objet.temps_liturgique == 'ascension':
+        elif objet.temps_liturgique(Annee) == 'ascension':
             sortie = "temps de l'Ascension (Temps Pascal)"
-        elif objet.temps_liturgique == 'octave_pentecote':
+        elif objet.temps_liturgique(Annee) == 'octave_pentecote':
             sortie = "octave de la Pentecôte (Temps Pascal)"
-        elif objet.temps_liturgique == 'pentecote':
+        elif objet.temps_liturgique(Annee) == 'pentecote':
             sortie = "temps per Annum après la Pentecôte"
     else: # english
         pass
@@ -697,8 +694,8 @@ def affichage(**kwargs):
                 else:
                     sortie += """Fête du Sanctoral. """
                     
-            if kwargs['verbose'] or kwargs['temps_liturgique']: # ne peut marcher qu'avec une année complète supprimer False une fois que c'est corrigé ; ne peut être un simple affichage : ce qui sera enregistré le sera sous une forme plus sobre.
-                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,'francais'))
+            if kwargs['verbose'] or kwargs['temps_liturgique']:
+                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,kwargs['Annee'],'francais'))
                 
             if kwargs['verbose'] or kwargs['couleur']:
                 sortie += """Couleur liturgique : {}. """.format(a.couleur)
@@ -799,9 +796,10 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     - ordo : an integer to select which missal will be used ;
     - propre : a string to select the proper.
     It returns a dict, whose keys are datetime.date, and values are lists containing Fete classes."""
-    with open('./data/samedi.pic','rb') as file:
+    with open('./data/samedi_ferie.pic','rb') as file:
         pic=pickle.Unpickler(file)
         samedi = pic.load()
+        ferie = pic.load()
     
     year = debut.year - 1
     Annee = {}
@@ -816,7 +814,7 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     
     date = datetime.date(debut.year,1,1)
     while True:
-        Annee[date] = selection(date,Annee,samedi)
+        Annee[date] = selection(date,Annee,samedi,ferie)
         date = date + datetime.timedelta(1)
         if date > datetime.date(fin.year,12,31):
             break

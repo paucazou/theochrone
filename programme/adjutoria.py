@@ -196,23 +196,15 @@ class Fete:
                         break
         return liste_match
     
-    # Définitions de propriétés
-    def _get_priorite(self):
-        """Une fonction pour renvoyer self._priorite."""
-        return self._priorite
-    
-    priorite = property(_get_priorite)
-    
-    def _get_temps_liturgique(self):
+    def temps_liturgique(self,Annee):
         """Une fonction qui renvoie le temps liturgique"""
         if self._temps_liturgique == 'variable':
             date = self.date
-            from __main__ import Annee
             while True:
                 try:
                     for a in Annee[date]:
                         if a.temporal:
-                            return a.temps_liturgique
+                            return a._temps_liturgique
                     date = date - datetime.timedelta(1)
                 except KeyError:
                     date = date - datetime.timedelta(1)
@@ -220,8 +212,13 @@ class Fete:
         else:
             return self._temps_liturgique
     
-    temps_liturgique = property(_get_temps_liturgique)
+    # Définitions de propriétés
+    def _get_priorite(self):
+        """Une fonction pour renvoyer self._priorite."""
+        return self._priorite
     
+    priorite = property(_get_priorite)
+
     def _get_couleur(self):
         """Une fonction qui calcule la couleur des ornements"""
         return self._couleur
@@ -419,10 +416,10 @@ class FeteFerie(Fete):
         self.commemoraison_privilegiee=-1
         self.temporal = True
     
-    def QuelNom(self,jour):
+    def QuelNom(self,jour,Annee):
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
         return {'latina':'Feria ' + officia.nom_jour(jour,'latina').capitalize(),
-                'francais':officia.nom_jour(jour,'francais').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,'francais'),
+                'francais':officia.nom_jour(jour,'francais').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,Annee,'francais'),
                 'english':officia.nom_jour(jour,'english').capitalize()} # Comment dit on jour de férie en anglais ?
     
     def Dimanche_precedent(self,jour,Annee):
@@ -434,22 +431,22 @@ class FeteFerie(Fete):
             try:
                 for office in Annee[curseur]:
                     if office.repris_en_ferie:
-                        self.date=jour
-                        self.propre = office.propre
-                        self.link = office.link
-                        self.addendum = office.addendum
+                        nouveau = self.__class__()
+                        nouveau.date=jour
+                        nouveau.propre = office.propre
+                        nouveau.link = office.link
+                        nouveau.addendum = office.addendum
                         if jour >= datetime.date(jour.year,1,14) and office.temps_liturgique == 'epiphanie':
-                            self._temps_liturgique = 'apres_epiphanie'
-                            self._couleur = 'vert'
+                            nouveau._temps_liturgique = 'apres_epiphanie'
+                            nouveau._couleur = 'vert'
                         else:
-                            self._temps_liturgique = office._temps_liturgique
-                            self._couleur = office.couleur
+                            nouveau._temps_liturgique = office._temps_liturgique
+                            nouveau._couleur = office.couleur
                         try:
-                            self.nom = self.QuelNom(jour)
+                            nouveau.nom = nouveau.QuelNom(jour,Annee)
                         except IndexError:
-                            self.nom = 'dimanche'
-                        boucle = False
-                        break
+                            nouveau.nom = 'dimanche'
+                        return nouveau
             except KeyError:
                 continue
         
@@ -458,7 +455,17 @@ class Samedi(Fete):
     
     def Est_ce_samedi(self,jour):
         """Une fonction qui renvoie un booléen si le jour considéré est un samedi"""
-        return True if datetime.date.isoweekday(jour) == 6 else False
+        if datetime.date.isoweekday(jour) == 6:
+            self.date = jour
+            return True
+        else:
+            return False
+        
+    def copy(self):
+        """Une fonction qui renvoie un autre objet Samedi"""
+        renvoye = self.__class__()
+        renvoye.__dict__ = self.__dict__.copy()
+        return renvoye
     
 #classe de fêtes sui generis
 class TSNJ(FeteFixe):
