@@ -14,7 +14,7 @@ import officia
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QComboBox, QDockWidget, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDockWidget, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QVBoxLayout, QWidget
 
 _ = QCoreApplication.translate # a name more convenient
 
@@ -202,7 +202,11 @@ class Main(QMainWindow,SuperTranslator):
         debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
         if debut not in self.Annee:
             self.Annee.update(officia.fabrique_an(debut,fin))
-        selection = officia.inversons(keyword,self.Annee,debut,fin)
+        if self.W.onglets.W.tab1.plus.isChecked():
+            plus = True
+        else:
+            plus = False
+        selection = officia.inversons(keyword,self.Annee,debut,fin,plus=plus)
         self.tableau.setRowCount(len(selection))
         self.tableau.setColumnCount(6)
         for i, elt in enumerate(selection):
@@ -277,6 +281,8 @@ class Unique(QWidget,SuperTranslator):
         self.keyword = QLineEdit(self)
         self.layout.addWidget(self.keyword)
         
+        self.plus = QCheckBox('More results',self)
+        self.layout.addWidget(self.plus)
         
         self.spinbox = QSpinBox()
         self.spinbox.setMaximum(4100)
@@ -297,6 +303,7 @@ class Unique(QWidget,SuperTranslator):
         
         self.cal_label.setText(_('Unique','Please select a date : '))
         self.kw_label.setText(_('Unique',"Please enter keywords : "))
+        self.plus.setText(_('Unique','More results'))
         self.kw_bouton.setText(_('Unique','OK'))
         
         self.cal.setLocale(QLocale()) # à mettre dans la toute première fonction
