@@ -92,6 +92,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':['-b'],
             'long':['--browser'],
             },
+        'gui':{
+            'short':['-g'],
+            'long':['--gui'],
+            },
         'version': {
             'short':[],
             'long':['--version'],
@@ -309,6 +313,7 @@ def args():
         - years before 1960, after 2100
         - every print option.
         If one of the previous args was entered, it will not result an error, but the program will use default value."""),action='store_true')
+    system.add_argument(*arguments['gui']['short'],*arguments['gui']['long'],dest='gui',help=_("""Open Theochrone in a Graphical User Interface (GUI). This is the standard behaviour if Theochrone is opened in a file manager. You can pass args (/!\ NOT YET AVAILABLE)."""),action='store_true')
     system.add_argument('--version', action='version',version='%(prog)s 0.1')
     system.add_argument('--test',help='Do not run',action='store_true')
     system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
