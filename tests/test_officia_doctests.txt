@@ -1,0 +1,87 @@
+#python -m doctest -v file.txt
+>>> import dossier
+>>> dossier.main()
+>>> import officia
+>>> import datetime
+>>> officia.sans_accent("ABCDEFGHIJKLMNOPQRSTUVWXYZàâëêéèïîôöùüÿ")
+'abcdefghijklmnopqrstuvwxyzaaeeeeiioouuy'
+>>>
+>>> officia.modification(['st','ste','bhx','bx','bse','bhse','bses','bhses','premier','un','1er','second','2eme','trois','troisieme'],'francais')
+['saint', 'sainte', 'bienheureux', 'bienheureux', 'bienheureuse', 'bienheureuse', 'bienheureuses', 'bienheureuses', '1', '1','1', '2', '2', '3', '3']
+
+>>> officia.AtoZ(True,False,False,datetime.date(1990,1,1))
+(datetime.date(1990, 1, 1), datetime.date(1990, 1, 7))
+>>> officia.AtoZ(False,True,False,datetime.date(1990,1,1))
+(datetime.date(1990, 1, 1), datetime.date(1990, 1, 31))
+>>> officia.AtoZ(False,False,True,datetime.date(1990,1,1))
+(datetime.date(1990, 1, 1), datetime.date(1990, 12, 31))
+>>> officia.AtoZ(False,False,False,datetime.date(1990,1,1))
+(datetime.date(1990, 1, 1), datetime.date(1990, 1, 1))
+
+>>> for i in range(13):
+...     officia.mois_lettre(i,langue='francais')
+... 
+'décembre'
+'janvier'
+'février'
+'mars'
+'avril'
+'mai'
+'juin'
+'juillet'
+'août'
+'septembre'
+'octobre'
+'novembre'
+'décembre'
+>>> for a in ('jan','janvier','fevrier','fev','mars','mar','avril','avr','mai','juin','juil','juillet','aou','aout','sep','septembre','oct','octobre','nov','novembre','dec','decembre'):
+...     officia.mois_lettre(a,'francais')
+... 
+1
+1
+2
+2
+3
+3
+4
+4
+5
+6
+7
+7
+8
+8
+9
+9
+10
+10
+11
+11
+12
+12
+
+>>> class Test:
+...     def temps_liturgique(self,Annee):
+...             return self._temps_liturgique
+>>> liste = []
+>>> for time in ('nativite','epiphanie','avent','apres_epiphanie','septuagesime','careme','passion','paques','ascension','octave_pentecote','pentecote','ERROR'):
+...     new = Test()
+...     new._temps_liturgique = time
+...     liste.append(new)
+... 
+>>> for item in liste:
+...     officia.affiche_temps_liturgique(item,'Annee',langue='francais')
+... 
+'temps de la Nativité (Temps de Noël)'
+"temps de l'Épiphanie (Temps de Noël)"
+"temps de l'Avent"
+"temps per Annum après l'Épiphanie"
+'temps de la Septuagésime'
+'temps du Carême proprement dit (Temps du Carême)'
+'temps de la Passion (Temps du Carême)'
+'temps de Pâques (Temps Pascal)'
+"temps de l'Ascension (Temps Pascal)"
+'octave de la Pentecôte (Temps Pascal)'
+'temps per Annum après la Pentecôte'
+'erreur'
+

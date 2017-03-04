@@ -88,7 +88,7 @@ codes_erreurs = {
     0 : 'Système',
     1 : 'date',
     2 : 'recherche',
-    3 : '',
+    3 : 'historique',
     4 : '',
     5 : '',
     6 : '',
@@ -117,5 +117,8 @@ programmes_utilises = (
     'xgettext -(j)p ./programme/i18n/[language]/LC_MESSAGES [filename]',
     'msgformat [filename].po',
     'caisse.py',
+    'python -m doctest -v example.txt', # for doctests
+    'pytest',
+    'voir le .procedure dans /programme/gui/',
     )
     
