@@ -27,6 +27,11 @@ import sys
 import webbrowser
 from messages import args
 ### Traitement des informations entrées par l'utilisateur ###
+if not os.isatty(0) or args.gui:
+    from gui import classes
+    app = classes.App(sys.argv)
+    sys.exit(app.exec_())
+
 if args.settings != None:
     if args.settings.lower() == "no":
         officia.pdata(refus='yes')
