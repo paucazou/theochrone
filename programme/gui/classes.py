@@ -1,9 +1,20 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
 
+import datetime
+import os.path
+import sys
+
+gui = os.path.dirname(os.path.abspath(__file__))
+theo = gui + '/..'
+os.chdir(theo)
+sys.path.append(theo)
+import adjutoria
+import officia 
+
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QComboBox, QDockWidget, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QTableWidget, QTabWidget, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QComboBox, QDockWidget, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QVBoxLayout, QWidget
 
 _ = QCoreApplication.translate # a name more convenient
 
@@ -54,8 +65,10 @@ class Main(QMainWindow,SuperTranslator):
     """Main window"""
     def __init__(self):
         """Function which initializes the main window"""
+        os.chdir(gui)
         QMainWindow.__init__(self)
         SuperTranslator.__init__(self)
+        self.Annee = {}
         self.actions()
         self.initUI()
         
@@ -109,8 +122,8 @@ class Main(QMainWindow,SuperTranslator):
         
         # widgets
         # main widget
-        tableau = QTableWidget()
-        self.setCentralWidget(tableau)
+        self.tableau = QTableWidget()
+        self.setCentralWidget(self.tableau)
         # widgets on the right
         self.rightDock = QDockWidget('right_dock',self)
         self.W.onglets = Onglets()
@@ -125,7 +138,11 @@ class Main(QMainWindow,SuperTranslator):
         
         # main features
         self.setGeometry(400,400,1000,1000) # TODO centrer la fenêtre au démarrage
-        self.setWindowTitle('Theochrone - ')
+        current = QDate()
+        os.chdir(theo)
+        current = current.currentDate()
+        self.W.onglets.W.tab1.spinbox.setValue(current.year())
+        self.useDate(current)
         self.retranslateUI() # voir si on ne la met pas carrément dans l'app, qui hériterait elle aussi de SuperTranslator
         self.show()
         
@@ -155,6 +172,25 @@ class Main(QMainWindow,SuperTranslator):
         
     def useDate(self,date):
         self.setWindowTitle('Theochrone - ' + date.toString())
+        print(date.day(),date.month(),date.year())
+        debut = fin = date.toPyDate()
+        if debut not in self.Annee:
+            self.Annee.update(officia.fabrique_an(debut,fin))
+        selection = self.Annee[debut]
+        self.tableau.setRowCount(len(selection))
+        self.tableau.setColumnCount(5)
+        for i, elt in enumerate(selection):
+            self.tableau.setItem(i,0,QTableWidgetItem(elt.nom['francais']))
+            self.tableau.setItem(i,1,QTableWidgetItem(str(elt.degre)))
+            self.tableau.setItem(i,2,QTableWidgetItem(elt.couleur))
+            #self.tableau.setItem(i,3,QTableWidgetItem(elt.temps_liturgique(self.Annee)))
+            if elt.temporal:
+                temps = 'Temporal'
+            else:
+                temps = 'Sanctoral'
+            self.tableau.setItem(i,4,QTableWidgetItem(temps))
+            
+        
         
     def useKeyWord(self):
         keyword = self.W.onglets.W.tab1.keyword.text()
@@ -212,15 +248,25 @@ class Unique(QWidget,SuperTranslator):
         self.layout.addWidget(self.cal)
         self.layout.addStretch(1)
         
+        self.slider_layout = QHBoxLayout()
+        
         self.kw_label = QLabel('kw_label',self)
         self.layout.addWidget(self.kw_label)
         
         self.keyword = QLineEdit(self)
         self.layout.addWidget(self.keyword)
         
-        self.kw_bouton = QPushButton('kw_button',self)
-        self.layout.addWidget(self.kw_bouton)
         
+        self.spinbox = QSpinBox()
+        self.spinbox.setMaximum(4100)
+        self.spinbox.setMinimum(1600)
+        
+        self.kw_bouton = QPushButton('kw_button',self)
+        
+        self.slider_layout.addWidget(self.spinbox)
+        self.slider_layout.addWidget(self.kw_bouton)
+        
+        self.layout.addLayout(self.slider_layout)        
         self.layout.addStretch(2)
         
         self.setLayout(self.layout)
@@ -230,7 +276,7 @@ class Unique(QWidget,SuperTranslator):
         
         self.cal_label.setText(_('Unique','Please select a date : '))
         self.kw_label.setText(_('Unique',"Please enter keywords : "))
-        self.kw_bouton.setText(_('Unique','Launch keywords research'))
+        self.kw_bouton.setText(_('Unique','OK'))
         
         self.cal.setLocale(QLocale()) # à mettre dans la toute première fonction
         
