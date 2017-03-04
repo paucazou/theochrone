@@ -856,7 +856,7 @@ def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='francais',exit=True)
         try:
             #Annee[date] = selection(Annee[date],date,Annee,samedi) # DEPRECATED
             for fete in Annee[date]:
-                fete.valeur = fete.Correspondance(mots_str,mots)
+                fete.valeur = fete.Correspondance(mots_str,mots,plus)
                 if fete.valeur >= 50:
                     retenus.append(fete)
         except KeyError:

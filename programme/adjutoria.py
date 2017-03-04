@@ -118,8 +118,8 @@ class Fete:
         """Une fonction qui calcule le nombre de jours par rapport à Pâques"""
         return paques - self.DateCivile(paques,annee)
     
-    def Correspondance(self,mots,mots_separes):
-        """Fonction qui renvoie un chiffre de correspondance entre les mots rentrés et les regex""" # rajouter le plus
+    def Correspondance(self,mots,mots_separes,plus):
+        """Fonction qui renvoie un chiffre de correspondance entre les mots rentrés et les regex"""
         niveau = 0
         if isinstance(self,FeteFerie):
             return niveau
@@ -135,7 +135,7 @@ class Fete:
                             niveau += 30
                     i+= 1
                 continue
-            elif index == 'refus_faible':
+            elif index == 'refus_faible' and not plus:
                 for a in self.regex[index]:
                     for mot in mots_separes:
                         if a.fullmatch(mot):
@@ -158,7 +158,7 @@ class Fete:
                         niveau += 45
                     elif index == 'egal':
                         niveau += 76/len(self.regex[index])
-                    elif index == 'refus_fort':
+                    elif index == 'refus_fort' and not plus:
                         niveau -= 15 # 15 normalement
                     elif index == 'annexes':
                         niveau + 20
@@ -166,7 +166,8 @@ class Fete:
                 for mot in mots_separes: # cela pose problème pour certaines regex, qui sont composées de deux mots. (in albis par exemple)
                     if a.fullmatch(mot):
                         if 'refus' in index:
-                            niveau -= 5 #5 normalement
+                            if not plus:
+                                niveau -= 5 #5 normalement
                         else:
                             niveau += 10
         return niveau
