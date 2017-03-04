@@ -183,7 +183,7 @@ class Main(QMainWindow,SuperTranslator):
             self.tableau.setItem(i,0,QTableWidgetItem(elt.nom['francais']))
             self.tableau.setItem(i,1,QTableWidgetItem(str(elt.degre)))
             self.tableau.setItem(i,2,QTableWidgetItem(elt.couleur))
-            #self.tableau.setItem(i,3,QTableWidgetItem(elt.temps_liturgique(self.Annee)))
+            self.tableau.setItem(i,3,QTableWidgetItem(officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize()))
             if elt.temporal:
                 temps = 'Temporal'
             else:
@@ -194,7 +194,28 @@ class Main(QMainWindow,SuperTranslator):
         
     def useKeyWord(self):
         keyword = self.W.onglets.W.tab1.keyword.text()
-        print(keyword)
+        if keyword == '':
+            return
+        self.setWindowTitle('Theochrone - ' + keyword)
+        annee = self.W.onglets.W.tab1.spinbox.value()
+        print(annee,keyword)
+        debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
+        if debut not in self.Annee:
+            self.Annee.update(officia.fabrique_an(debut,fin))
+        selection = officia.inversons(keyword,self.Annee,debut,fin)
+        self.tableau.setRowCount(len(selection))
+        self.tableau.setColumnCount(6)
+        for i, elt in enumerate(selection):
+            self.tableau.setItem(i,0,QTableWidgetItem(elt.nom['francais']))
+            self.tableau.setItem(i,1,QTableWidgetItem(str(elt.date)))
+            self.tableau.setItem(i,2,QTableWidgetItem(str(elt.degre)))
+            self.tableau.setItem(i,3,QTableWidgetItem(elt.couleur))
+            self.tableau.setItem(i,4,QTableWidgetItem(officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize()))
+            if elt.temporal:
+                temps = 'Temporal'
+            else:
+                temps = 'Sanctoral'
+            self.tableau.setItem(i,5,QTableWidgetItem(temps))
         
 class Onglets(QWidget,SuperTranslator):
     """A class for a tab widget"""
