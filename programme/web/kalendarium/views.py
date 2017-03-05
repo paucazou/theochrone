@@ -7,18 +7,15 @@ from .forms import *
 
 # Create your views here.
 
-def changedir(): # dirty, dirty...
-    """A function called once to change directory"""
-    chemin = os.path.dirname(os.path.abspath(__file__)) + '/../..'
-    os.chdir(chemin)
-    sys.path.append('.')
-    import adjutoria
-    import officia
-    global officia
-    global adjutoria
-    changedir.firstime = False
 
-changedir.firstime = True
+chemin = os.path.dirname(os.path.abspath(__file__)) + '/../..'
+os.chdir(chemin)
+sys.path.append('.')
+import adjutoria
+import officia
+global officia
+global adjutoria
+
     
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
@@ -33,9 +30,7 @@ def home(request,
     - mots_clefs : a string used for research ;
     - plus : a bool used to know whether the research must be large, or not ;
     - annee : the year ;
-    """
-    if changedir.firstime:
-        changedir()       
+    """      
     
     retour = ''
     deroule = {}
