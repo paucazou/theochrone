@@ -14,7 +14,7 @@ import officia
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDockWidget, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QVBoxLayout, QWidget
 
 _ = QCoreApplication.translate # a name more convenient
 
@@ -137,7 +137,7 @@ class Main(QMainWindow,SuperTranslator):
         self.statusBar()
         
         # main features
-        self.setGeometry(400,400,1000,1000) # TODO centrer la fenêtre au démarrage
+        self.setGeometry(400,200,1500,700) # TODO centrer la fenêtre au démarrage
         current = QDate()
         os.chdir(theo)
         current = current.currentDate()
@@ -235,10 +235,10 @@ class Onglets(QWidget,SuperTranslator):
         # main widgets
         self.tabs = QTabWidget()
         self.W.tab1 = Unique()
-        self.tabPlus = QWidget()
+        self.W.tabPlus = Multiple()
         
         self.tabs.addTab(self.W.tab1,"1")
-        self.tabs.addTab(self.tabPlus,"+")
+        self.tabs.addTab(self.W.tabPlus,"+")
         
         self.layout = QHBoxLayout()
         self.layout.addWidget(self.tabs)
@@ -307,6 +307,73 @@ class Unique(QWidget,SuperTranslator):
         self.kw_bouton.setText(_('Unique','OK'))
         
         self.cal.setLocale(QLocale()) # à mettre dans la toute première fonction
+        
+class Multiple(QWidget,SuperTranslator):
+    """A class which defines widgets with multiple results : research by week, month, year, or arbitrary"""
+    
+    def __init__(self):
+        QWidget.__init__(self)
+        SuperTranslator.__init__(self)
+        self.initUI()
+        
+    def initUI(self):      
+        
+        self.gb_year = QGroupBox("Search for a whole year")
+        self.spinbox = QSpinBox()
+        self.spinbox.setMaximum(4100)
+        self.spinbox.setMinimum(1600)
+        self.bt_year = QPushButton("OK")
+        self.year_layout = QHBoxLayout()
+        self.year_layout.addWidget(self.spinbox)
+        self.year_layout.addWidget(self.bt_year)
+        self.gb_year.setLayout(self.year_layout)
+        
+        self.gb_arbritrary = QGroupBox("Search for arbitrary dates")
+        self.frome_label = QLabel("frome label",self)
+        self.frome = QDateEdit()
+        self.frome.setMinimumDate(QDate(1600,1,1))
+        self.frome.setMaximumDate(QDate(4100,12,31)) # set to current
+        self.frome.setCalendarPopup(True)
+        self.frome.dateChanged.connect(self.isgreater)
+        self.to_label = QLabel("to label",self)
+        self.to = QDateEdit()
+        self.to.setMinimumDate(QDate(1600,1,1))
+        self.to.setMaximumDate(QDate(4100,12,31))
+        self.to.setCalendarPopup(True)
+        self.to.dateChanged.connect(self.isgreater)
+        self.arbitrary_layout = QVBoxLayout()
+        self.bt_arbitrary = QPushButton("OK")
+        self.arbitrary_layout.addWidget(self.frome_label)
+        self.arbitrary_layout.addWidget(self.frome)
+        self.arbitrary_layout.addWidget(self.to_label)
+        self.arbitrary_layout.addWidget(self.to)
+        self.arbitrary_layout.addWidget(self.bt_arbitrary)
+        self.gb_arbritrary.setLayout(self.arbitrary_layout)
+        
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.gb_year)
+        self.layout.addWidget(self.gb_arbritrary)
+        self.layout.addStretch(1)
+        self.setLayout(self.layout)
+        
+    def retranslateUI(self):
+        SuperTranslator.retranslateUI(self)
+        
+        self.gb_year.setTitle(_("Multiple","Search for a whole year"))
+        self.bt_year.setText(_("Multiple","OK"))
+        
+        self.gb_arbritrary.setTitle(_("Multiple","Search for arbitrary dates"))
+        self.frome_label.setText(_("Multiple","Select the earlier date : "))
+        self.to_label.setText(_("Multiple","Select the later date : "))
+        self.bt_arbitrary.setText(_("Multiple","OK"))
+        
+    def isgreater(self,date):
+        """This method tests wether 'frome' date is greater than 'to' date, and sets dates if necessary"""
+        if self.frome.date() > self.to.date():
+            if date == self.frome.date():
+                self.frome.setDate(self.to.date())
+            else:
+                self.to.setDate(self.frome.date())
         
         
         
