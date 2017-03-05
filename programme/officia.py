@@ -10,8 +10,7 @@ import shutil
 import sys
 import unicodedata
 from messages import officia_messages as msg
-
-
+chemin = os.path.dirname(os.path.abspath(__file__))
 
 # variables
 
@@ -796,7 +795,7 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     - ordo : an integer to select which missal will be used ;
     - propre : a string to select the proper.
     It returns a dict, whose keys are datetime.date, and values are lists containing Fete classes."""
-    with open('./data/samedi_ferie.pic','rb') as file:
+    with open(chemin + '/data/samedi_ferie.pic','rb') as file:
         pic=pickle.Unpickler(file)
         samedi = pic.load()
         ferie = pic.load()
@@ -806,7 +805,7 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     while True:
         Paques = paques(year)
         for fichier in [file for file in fichiers if file.split('_')[1] == str(ordo) and trouve(propre,file.split('_')[0])]:
-            Annee = ouvreetregarde('./data/' + fichier,Annee,ordo,propre,year,Paques)
+            Annee = ouvreetregarde(chemin + '/data/' + fichier,Annee,ordo,propre,year,Paques)
         if year == fin.year:
             break
         else:

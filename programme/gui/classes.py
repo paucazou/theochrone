@@ -5,12 +5,12 @@ import datetime
 import os.path
 import sys
 
-gui = os.path.dirname(os.path.abspath(__file__))
-theo = gui + '/..'
-os.chdir(theo)
-sys.path.append(theo)
+chemin = os.path.dirname(os.path.abspath(__file__))
+programme = os.path.abspath(chemin + '/..')
+sys.path.append(programme)
 import adjutoria
-import officia 
+import officia
+os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
 from PyQt5.QtGui import QIcon
@@ -65,7 +65,7 @@ class Main(QMainWindow,SuperTranslator):
     """Main window"""
     def __init__(self):
         """Function which initializes the main window"""
-        os.chdir(gui)
+        
         QMainWindow.__init__(self)
         SuperTranslator.__init__(self)
         self.Annee = {}
@@ -139,7 +139,6 @@ class Main(QMainWindow,SuperTranslator):
         # main features
         self.setGeometry(400,200,1500,700) # TODO centrer la fenêtre au démarrage
         current = QDate()
-        os.chdir(theo)
         current = current.currentDate()
         self.W.onglets.W.tab1.spinbox.setValue(current.year())
         self.useDate(current)

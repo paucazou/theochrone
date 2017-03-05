@@ -7,15 +7,11 @@ from .forms import *
 
 # Create your views here.
 
-
-chemin = os.path.dirname(os.path.abspath(__file__)) + '/../..'
-os.chdir(chemin)
-sys.path.append('.')
+chemin = os.path.dirname(os.path.abspath(__file__))
+programme = os.path.abspath(chemin + '/../..')
+sys.path.append(programme)
 import adjutoria
 import officia
-global officia
-global adjutoria
-
     
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
