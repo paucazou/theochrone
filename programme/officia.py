@@ -794,27 +794,47 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     - fin : a datetime.date for the latest date ;
     - ordo : an integer to select which missal will be used ;
     - propre : a string to select the proper.
-    It returns a dict, whose keys are datetime.date, and values are lists containing Fete classes."""
+    It returns a dict, whose keys are datetime.date, and values are lists containing Fete classes.
+    WARNING Cette fonction ne permet pas aux fêtes d'être transférée d'une année sur l'autre. Cela peut convenir au propre romain, peut-être pas aux calendriers particuliers.
+    """
     with open(chemin + '/data/samedi_ferie.pic','rb') as file:
         pic=pickle.Unpickler(file)
         samedi = pic.load()
         ferie = pic.load()
     
+    cache_files = pdata(cache=True)
+    cache_years = {} 
+    for name in cache_files:
+        cache_years[int(os.path.basename(name).split('.')[0])] = name
+    addtocache = []
     year = debut.year - 1
     Annee = {}
     while True:
-        Paques = paques(year)
-        for fichier in [file for file in fichiers if file.split('_')[1] == str(ordo) and trouve(propre,file.split('_')[0])]:
-            Annee = ouvreetregarde(chemin + '/data/' + fichier,Annee,ordo,propre,year,Paques)
+        if year in cache_years:
+            with open(cache_years[year],'rb') as file:
+                Annee.update(pickle.Unpickler(file).load())
+        else:
+            addtocache.append(year)
+            Paques = paques(year)
+            for fichier in [file for file in fichiers if file.split('_')[1] == str(ordo) and trouve(propre,file.split('_')[0])]:
+                Annee = ouvreetregarde(chemin + '/data/' + fichier,Annee,ordo,propre,year,Paques)
         if year == fin.year:
             break
         else:
             year += 1
     
     date = datetime.date(debut.year,1,1)
+    tosave = {}
     while True:
-        Annee[date] = selection(date,Annee,samedi,ferie)
-        date = date + datetime.timedelta(1)
+        if date.year in addtocache:
+            Annee[date] = tosave[date] = selection(date,Annee,samedi,ferie)
+            if date == datetime.date(date.year,12,31) and pdata(None):
+                with open("{}/{}.pic".format(pdata(cachepath=True),date.year),'wb') as file:
+                    pickle.Pickler(file).dump(tosave)
+                tosave = {}
+            date = date + datetime.timedelta(1)
+        else:
+            date = datetime.date(date.year + 1,1,1)        
         if date > datetime.date(fin.year,12,31):
             break
     return Annee
@@ -883,12 +903,14 @@ def pdata(read=True,write=False,**kwargs):
     main_folder = os.path.expanduser('~/.theochrone')
     config_folder = main_folder + '/config'
     history_folder = main_folder + '/history'
+    cache_folder = main_folder + '/cache'
     
     if not os.path.exists(main_folder):
         os.mkdir(main_folder)
         os.mkdir(config_folder)
         os.mkdir(history_folder)
-        with open(main_folder + '/refus','w') as refus:
+        os.mkdir(cache_folder)
+        with open(main_folder + '/refus','w') as refus: # TODO faire plutôt un fichier SET avec ON/OFF
             refus.write('no')
         
     if 'refus' in kwargs:
@@ -904,11 +926,17 @@ def pdata(read=True,write=False,**kwargs):
                 
     with open(main_folder + '/refus','r') as refus:
         if 'yes' in refus.read():
-            return [] # WARNING très mauvaise idée : cela évite juste les ennuis, mais ne résout rien !!!
+            return [] # WARNING très mauvaise idée : cela évite juste les ennuis, mais ne résout rien !!! renvoyer plutôt False
         
     if kwargs.get('langue',False):
         with open(config_folder + '/LANG','w') as lang:
             lang.write(kwargs['langue'])
+    
+    if kwargs.get('cache',False):
+        return [cache_folder + '/' + filecache for filecache in os.listdir(cache_folder) if '.pic' in filecache]
+    
+    if kwargs.get('cachepath',False):
+        return cache_folder
     
     if write:
         action = 'a'
@@ -964,6 +992,7 @@ def pdata(read=True,write=False,**kwargs):
                         jour, dates, kw = line.split('/')
                         history.append([datetime.datetime.strptime(jour,'%Y-%m-%d %H:%M:%S.%f')] +                                                                 [datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in dates.split('|')] + [kw.replace('\n','').split()])
                     return history
+    return True
                     
             
         

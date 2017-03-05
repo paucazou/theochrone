@@ -201,6 +201,8 @@ class Main(QMainWindow,SuperTranslator):
         debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
         if debut not in self.Annee:
             self.Annee.update(officia.fabrique_an(debut,fin))
+        elif datetime.date(debut.year -1,1,1) not in self.Annee:
+            self.Annee.update(officia.fabrique_an(debut,fin))
         if self.W.onglets.W.tab1.plus.isChecked():
             plus = True
         else:
