@@ -51,9 +51,7 @@ while local.connection == "off":
         print("Server is on")
     except ConnectionRefusedError:
         local.connection = "off"
-    
 webbrowser.open_new_tab(adresse) # open_new_tab renvoie un bool ; essayer de faire le test avec lui, plutôt qu'avec un connexion http
-print("Local server will be closed within 30 minutes") # doesn't work
-primus.join(1.0)
+primus.join() # TODO Faire une commande pour fermer le serveur directement depuis le navigateur
 
 
