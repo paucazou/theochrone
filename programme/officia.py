@@ -14,7 +14,7 @@ chemin = os.path.dirname(os.path.abspath(__file__))
 
 # variables
 
-unites = (re.compile('(1(ere?)?|une?\||premiere?)'),
+unites = (re.compile(r'(1(ere?)?|une?|premiere?)'),
             re.compile('(2(nd)?|second|deux)(.?eme)?'),
             re.compile('(3|trois)(.?eme)?'),
             re.compile('(4|quatre?)(.?eme)?'),
@@ -129,10 +129,8 @@ def modification(mots,langue):
                 elif mots[i] in ('bses','bhses'):
                     mots[i] = 'bienheureuses'
         
-        mots_str='' # supprimer le | initial ; vérifier la regex (.|\|){2}? ne semble pas fonctionner correctement # autre bug : un + 1er > 11
-        for a in mots:
-            mots_str = mots_str + '|' + a
-        
+        # vérifier la regex (.|\|){2}? ne semble pas fonctionner correctement # autre bug : un + 1er > 11
+        mots_str = '|'.join(mots)
         mots_str = vingt1.sub('21',mots_str)
         for i,elt in enumerate(vingtaines):
             mots_str = elt.sub(str(i + 22),mots_str)
@@ -142,8 +140,7 @@ def modification(mots,langue):
         mots_str = dix.sub('10',mots_str)
         for i, elt in enumerate(unites):
             mots_str = elt.sub(str(i + 1),mots_str)
-        mots = mots_str.split('|') 
-        del(mots[0])
+        mots = mots_str.split('|')
     
     else: # english
         erreur('01')
