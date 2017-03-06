@@ -919,6 +919,7 @@ def pdata(read=True,write=False,**kwargs):
                 refus.write('yes')
                 shutil.rmtree(config_folder)
                 shutil.rmtree(history_folder)
+                shutil.rmtree(cache_folder)
             else:
                 refus.write('no')
                 os.mkdir(config_folder)
