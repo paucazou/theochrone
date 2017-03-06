@@ -96,4 +96,16 @@
 'samedi'
 'dimanche'
 
+>>> for i in range(1,8):
+...     officia.affiche_jour(datetime.date(2015,1,i),'francais')
+... 
+'le jeudi premier janvier 2015'
+'le vendredi 2 janvier 2015'
+'le samedi 3 janvier 2015'
+'le dimanche 4 janvier 2015'
+'le lundi 5 janvier 2015'
+'le mardi 6 janvier 2015'
+'le mercredi 7 janvier 2015'
+
+
 
