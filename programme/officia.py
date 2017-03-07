@@ -14,7 +14,7 @@ chemin = os.path.dirname(os.path.abspath(__file__))
 
 # variables
 
-unites = (re.compile(r'(1(ere?)?|une?|premiere?)'),
+unites = (re.compile(r'(1(ere?)?|premiere?)'), # tenter de rajouter un : attention au |
             re.compile('(2(nd)?|second|deux)(.?eme)?'),
             re.compile('(3|trois)(.?eme)?'),
             re.compile('(4|quatre?)(.?eme)?'),

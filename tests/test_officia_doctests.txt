@@ -6,8 +6,8 @@
 >>> officia.sans_accent("ABCDEFGHIJKLMNOPQRSTUVWXYZàâëêéèïîôöùüÿ")
 'abcdefghijklmnopqrstuvwxyzaaeeeeiioouuy'
 >>>
->>> officia.modification(['st','ste','bhx','bx','bse','bhse','bses','bhses','premier','un','1er','second','2eme','trois','troisieme'],'francais')
-['saint', 'sainte', 'bienheureux', 'bienheureux', 'bienheureuse', 'bienheureuse', 'bienheureuses', 'bienheureuses', '1', '1', '1', '2', '2', '3', '3']
+>>> officia.modification(['st','ste','bhx','bx','bse','bhse','bses','bhses','premier','1er','second','2eme','trois','troisieme'],'francais')
+['saint', 'sainte', 'bienheureux', 'bienheureux', 'bienheureuse', 'bienheureuse', 'bienheureuses', 'bienheureuses', '1', '1', '2', '2', '3', '3']
 
 >>> officia.modification(['3eme','quatre','quatrieme','4eme','cinq','cinquieme','5eme','sixieme','six','6eme'],'francais')
 ['3', '4', '4', '4', '5', '5', '5', '6', '6', '6']
