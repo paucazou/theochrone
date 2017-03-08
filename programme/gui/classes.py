@@ -207,7 +207,7 @@ class Main(QMainWindow,SuperTranslator):
             plus = True
         else:
             plus = False
-        selection = officia.inversons(keyword,self.Annee,debut,fin,plus=plus)
+        selection = officia.inversons(keyword,self.Annee,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
         self.tableau.setRowCount(len(selection))
         self.tableau.setColumnCount(6)
         for i, elt in enumerate(selection):
@@ -260,10 +260,8 @@ class Unique(QWidget,SuperTranslator):
         
     def initUI(self):
 
-        self.layout = QVBoxLayout()
-        
-        self.cal_label = QLabel('cal_label',self)
-        self.layout.addWidget(self.cal_label)
+        self.day_layout = QVBoxLayout()        
+        self.gb_day = QGroupBox("Search for an only date")
         
         self.cal = QCalendarWidget(self)
         self.cal.setGridVisible(True)
@@ -271,19 +269,19 @@ class Unique(QWidget,SuperTranslator):
         self.cal.setMinimumDate(QDate(1600,1,1))
         self.cal.setMaximumDate(QDate(4100,12,31))
 
-        self.layout.addWidget(self.cal)
-        self.layout.addStretch(1)
+        self.day_layout.addWidget(self.cal)
+        self.gb_day.setLayout(self.day_layout)
         
+        self.kw_layout = QVBoxLayout()
         self.slider_layout = QHBoxLayout()
         
-        self.kw_label = QLabel('kw_label',self)
-        self.layout.addWidget(self.kw_label)
+        self.gb_kw = QGroupBox("Search for keywords")
         
         self.keyword = QLineEdit(self)
-        self.layout.addWidget(self.keyword)
+        self.kw_layout.addWidget(self.keyword)
         
         self.plus = QCheckBox('More results',self)
-        self.layout.addWidget(self.plus)
+        self.kw_layout.addWidget(self.plus)
         
         self.spinbox = QSpinBox()
         self.spinbox.setMaximum(4100)
@@ -294,16 +292,20 @@ class Unique(QWidget,SuperTranslator):
         self.slider_layout.addWidget(self.spinbox)
         self.slider_layout.addWidget(self.kw_bouton)
         
-        self.layout.addLayout(self.slider_layout)        
-        self.layout.addStretch(2)
+        self.kw_layout.addLayout(self.slider_layout) 
+        self.gb_kw.setLayout(self.kw_layout)
+        self.layout = QVBoxLayout()
+        self.layout.addWidget(self.gb_day)
+        self.layout.addWidget(self.gb_kw)
+        self.layout.addStretch(1)
         
         self.setLayout(self.layout)
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
         
-        self.cal_label.setText(_('Unique','Please select a date : '))
-        self.kw_label.setText(_('Unique',"Please enter keywords : "))
+        self.gb_day.setTitle(_('Unique','Search for an only day'))
+        self.gb_kw.setTitle(_('Unique',"Search by keywords"))
         self.plus.setText(_('Unique','More results'))
         self.kw_bouton.setText(_('Unique','OK'))
         
@@ -317,17 +319,32 @@ class Multiple(QWidget,SuperTranslator):
         SuperTranslator.__init__(self)
         self.initUI()
         
-    def initUI(self):      
+    def initUI(self):   
+        
+        self.gb_month = QGroupBox("Search for a whole month")
+        self.month_layout = QHBoxLayout()
+        self.my_spinbox = QSpinBox()
+        self.my_spinbox.setMaximum(4100)
+        self.my_spinbox.setMinimum(1600)
+        self.month_combo = QComboBox()
+        self.bt_month = QPushButton("OK")        
+        self.month_layout.addWidget(self.my_spinbox)
+        self.month_layout.addWidget(self.month_combo)
+        self.month_layout.addWidget(self.bt_month)
+        self.gb_month.setLayout(self.month_layout)
         
         self.gb_year = QGroupBox("Search for a whole year")
-        self.spinbox = QSpinBox()
-        self.spinbox.setMaximum(4100)
-        self.spinbox.setMinimum(1600)
+        self.yy_spinbox = QSpinBox()
+        self.yy_spinbox.setMaximum(4100)
+        self.yy_spinbox.setMinimum(1600)
         self.bt_year = QPushButton("OK")
         self.year_layout = QHBoxLayout()
-        self.year_layout.addWidget(self.spinbox)
+        self.year_layout.addWidget(self.yy_spinbox)
         self.year_layout.addWidget(self.bt_year)
         self.gb_year.setLayout(self.year_layout)
+        
+        
+        
         
         self.gb_arbritrary = QGroupBox("Search for arbitrary dates")
         self.frome_label = QLabel("frome label",self)
@@ -352,6 +369,7 @@ class Multiple(QWidget,SuperTranslator):
         self.gb_arbritrary.setLayout(self.arbitrary_layout)
         
         self.layout = QVBoxLayout()
+        self.layout.addWidget(self.gb_month)
         self.layout.addWidget(self.gb_year)
         self.layout.addWidget(self.gb_arbritrary)
         self.layout.addStretch(1)
@@ -359,6 +377,11 @@ class Multiple(QWidget,SuperTranslator):
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
+        
+        self.gb_month.setTitle(_("Multiple","Search for a whole month"))
+        for month in (_("Multiple","January"),_("Multiple","February"),_("Multiple","March"),_("Multiple","April"),_("Multiple","May"),_("Multiple","June"),
+                     _("Multiple","July"),_("Multiple","August"),_("Multiple","September"),_("Multiple","October"),_("Multiple","November"),_("Multiple","December")):
+            self.month_combo.addItem(month)
         
         self.gb_year.setTitle(_("Multiple","Search for a whole year"))
         self.bt_year.setText(_("Multiple","OK"))
