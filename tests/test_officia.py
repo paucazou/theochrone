@@ -9,7 +9,7 @@ import os
 import subprocess
 dossier.main()
 
-from officia import datevalable, paques, dimancheavant
+from officia import datevalable, dimancheapres, dimancheavant, paques
 
 def test_datevalable():
     # add more tests for this one
@@ -31,3 +31,10 @@ def test_dimancheavant():
         baseday = datetime.date(1900,1,i)
         supposed_sunday = dimancheavant(baseday)
         assert supposed_sunday < baseday and supposed_sunday.weekday() == 6 and baseday - supposed_sunday <= datetime.timedelta(7)
+        
+def test_dimancheapres():
+    for i in range(1,30):
+        baseday = datetime.date(1900,1,i)
+        supposed_sunday = dimancheapres(baseday)
+        assert supposed_sunday > baseday and supposed_sunday.weekday() == 6 and supposed_sunday - baseday<= datetime.timedelta(7)
+        
