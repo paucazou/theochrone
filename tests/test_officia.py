@@ -30,4 +30,4 @@ def test_dimancheavant():
     for i in range(1,30):
         baseday = datetime.date(1900,1,i)
         supposed_sunday = dimancheavant(baseday)
-        assert supposed_sunday < baseday and supposed_sunday.weekday() == 6
+        assert supposed_sunday < baseday and supposed_sunday.weekday() == 6 and baseday - supposed_sunday <= datetime.timedelta(7)
