@@ -33,14 +33,14 @@ if not os.isatty(0) or args.gui:
     sys.exit(app.exec_())
 
 if args.settings != None:
-    if args.settings.lower() == "no":
-        officia.pdata(refus='yes')
-    elif args.settings.lower() == "yes":
-        officia.pdata(refus='no')
+    if args.settings.lower() == "off":
+        officia.pdata(SET='OFF')
+    elif args.settings.lower() == "on":
+        officia.pdata(SET='ON')
     else:
         officia.pdata(langue=args.langue)
         
-    sys.exit("Settings saved.")
+    sys.exit("Settings saved : {}".format(args.settings))
         
 
 if args.poems:

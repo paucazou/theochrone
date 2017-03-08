@@ -907,23 +907,26 @@ def pdata(read=True,write=False,**kwargs):
         os.mkdir(config_folder)
         os.mkdir(history_folder)
         os.mkdir(cache_folder)
-        with open(main_folder + '/refus','w') as refus: # TODO faire plutôt un fichier SET avec ON/OFF
-            refus.write('no')
+        with open(main_folder + '/SET','w') as SETfile:
+            SETfile.write('ON')
         
-    if 'refus' in kwargs:
-        with open(main_folder + '/refus','w') as refus:
-            if kwargs['refus'] == 'yes':
-                refus.write('yes')
+    if 'SET' in kwargs:
+        with open(main_folder + '/SET','w') as SETfile:
+            if kwargs['SET'] == 'OFF':
+                SETfile.write('OFF')
                 shutil.rmtree(config_folder)
                 shutil.rmtree(history_folder)
                 shutil.rmtree(cache_folder)
             else:
-                refus.write('no')
-                os.mkdir(config_folder)
-                os.mkdir(history_folder)
+                SETfile.write('ON')
+                for folder in (config_folder,history_folder,cache_folder):
+                    try:
+                        os.mkdir(folder)
+                    except FileExistsError:
+                        pass
                 
-    with open(main_folder + '/refus','r') as refus:
-        if 'yes' in refus.read():
+    with open(main_folder + '/SET','r') as SETfile:
+        if 'OFF' in SETfile.read():
             return [] # WARNING très mauvaise idée : cela évite juste les ennuis, mais ne résout rien !!! renvoyer plutôt False
         
     if kwargs.get('langue',False):
