@@ -9,7 +9,7 @@ import os
 import subprocess
 dossier.main()
 
-from officia import datevalable, dimancheapres, dimancheavant, paques
+from officia import datevalable, dimancheapres, dimancheavant, mois, paques
 
 def test_datevalable():
     # add more tests for this one
@@ -18,12 +18,26 @@ def test_datevalable():
 def test_paques():
     """ WARNING This function is a test using a french format of date.""" #faire un refus si pas possible changer
     os.environ['LANG'] = "fr_FR.UTF-8"
-    if 'fr' not in subprocess.run(['printenv','LANG'],stdout=subprocess.PIPE).stdout.decode():
-        return False, "Impossible to pass this test : please set your language to FR"
+    firstest = subprocess.run(['ncal','-e','1962'],stdout=subprocess.PIPE).stdout.decode()
+    if firstest == '22/04/1962\n':
+        strformat = '%d/%m/%Y\n'
+        month_letter = False
+    elif firstest == '22 avril 1962\n':
+        strformat = '%d/%m/%Y'
+        month_letter = True
+    else:
+        return False # impossible to pass the test
     passenger = datetime.datetime.today()
     for year in range(1600,4101):
         easter = subprocess.run(['ncal','-e',str(year)],stdout=subprocess.PIPE)
-        easter = passenger.strptime(easter.stdout.decode(),'%d/%m/%Y\n')
+        if month_letter:
+            easter = easter.split()
+            if easter[1] == 'avril':
+                easter[1] = '04'
+            else:
+                easter[1] = '03'
+            easter = '/'.join(easter)
+        easter = passenger.strptime(easter.stdout.decode(),strformat)
         assert paques(year) == easter.date()
     
 def test_dimancheavant():
