@@ -782,8 +782,17 @@ def dimancheapres(jour):
     ecart=datetime.timedelta(7 - datetime.date.isoweekday(jour))
     return jour + ecart if ecart.days != 0 else jour + datetime.timedelta(7)
     
-
-
+def weekyear(year, week):
+    """doc"""
+    firstday = datetime.date(year, 1, 1)
+    if firstday.isoweekday() == 7 and week == 0:
+        week = 1
+    if firstday.weekday() > 3:
+        firstday = firstday + datetime.timedelta(7 - firstday.isoweekday())
+    else:
+        firstday = firstday - datetime.timedelta(firstday.isoweekday())
+    gap = datetime.timedelta(days = (week - 1)*7)
+    return firstday + gap, firstday + gap + datetime.timedelta(6)
 
 def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     """Function which creates a liturgical year emulation. It takes four arguments :
