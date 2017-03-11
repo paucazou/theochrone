@@ -17,6 +17,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QVBoxLayout, QWidget
 
 _ = QCoreApplication.translate # a name more convenient
+current = QDate().currentDate()
 
 class ReTranslateBox():
     """A class which can contain only items with the retranslateUI function"""
@@ -52,6 +53,14 @@ class SuperTranslator():
         SuperTranslator.retranslateUI()"""
         for a in self.W:
             a.retranslateUI()
+            
+class YearSpinbox(QSpinBox):
+    """A class which defines a spinbox widget specifically to display a set of years from 1600 to 4100."""
+    def __init__(self):
+        QSpinBox.__init__(self)
+        self.setMinimum(1600)
+        self.setMaximum(4100)
+        self.setValue(current.year())
             
 class App(QApplication):
     def __init__(self, args):
@@ -138,9 +147,6 @@ class Main(QMainWindow,SuperTranslator):
         
         # main features
         self.setGeometry(400,200,1500,700) # TODO centrer la fenêtre au démarrage
-        current = QDate()
-        current = current.currentDate()
-        self.W.onglets.W.tab1.spinbox.setValue(current.year())
         self.useDate(current)
         self.retranslateUI() # voir si on ne la met pas carrément dans l'app, qui hériterait elle aussi de SuperTranslator
         self.show()
@@ -283,10 +289,7 @@ class Unique(QWidget,SuperTranslator):
         self.plus = QCheckBox('More results',self)
         self.kw_layout.addWidget(self.plus)
         
-        self.spinbox = QSpinBox()
-        self.spinbox.setMaximum(4100)
-        self.spinbox.setMinimum(1600)
-        
+        self.spinbox = YearSpinbox()        
         self.kw_bouton = QPushButton('kw_button',self)
         
         self.slider_layout.addWidget(self.spinbox)
@@ -323,9 +326,7 @@ class Multiple(QWidget,SuperTranslator):
         
         self.gb_month = QGroupBox("Search for a whole month")
         self.month_layout = QHBoxLayout()
-        self.my_spinbox = QSpinBox()
-        self.my_spinbox.setMaximum(4100)
-        self.my_spinbox.setMinimum(1600)
+        self.my_spinbox = YearSpinbox()
         self.month_combo = QComboBox()
         self.bt_month = QPushButton("OK")        
         self.month_layout.addWidget(self.my_spinbox)
@@ -334,9 +335,7 @@ class Multiple(QWidget,SuperTranslator):
         self.gb_month.setLayout(self.month_layout)
         
         self.gb_year = QGroupBox("Search for a whole year")
-        self.yy_spinbox = QSpinBox()
-        self.yy_spinbox.setMaximum(4100)
-        self.yy_spinbox.setMinimum(1600)
+        self.yy_spinbox = YearSpinbox()
         self.bt_year = QPushButton("OK")
         self.year_layout = QHBoxLayout()
         self.year_layout.addWidget(self.yy_spinbox)
@@ -381,7 +380,7 @@ class Multiple(QWidget,SuperTranslator):
         self.gb_month.setTitle(_("Multiple","Search for a whole month"))
         for month in (_("Multiple","January"),_("Multiple","February"),_("Multiple","March"),_("Multiple","April"),_("Multiple","May"),_("Multiple","June"),
                      _("Multiple","July"),_("Multiple","August"),_("Multiple","September"),_("Multiple","October"),_("Multiple","November"),_("Multiple","December")):
-            self.month_combo.addItem(month)
+            self.month_combo.addItem(month) # set current in main initUI
         
         self.gb_year.setTitle(_("Multiple","Search for a whole year"))
         self.bt_year.setText(_("Multiple","OK"))
@@ -398,6 +397,7 @@ class Multiple(QWidget,SuperTranslator):
                 self.frome.setDate(self.to.date())
             else:
                 self.to.setDate(self.frome.date())
+                
         
         
         
