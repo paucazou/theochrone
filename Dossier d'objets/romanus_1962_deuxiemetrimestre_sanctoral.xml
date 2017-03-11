@@ -5118,7 +5118,8 @@
           <str>gianelli</str>
           <str>marie</str>
           <str>zaccaria</str>
-          <str>rome</str><str>cochon</str>
+          <str>rome</str>
+          <str>cochon</str>
           <str>grand</str>
           <str>ermite</str>
           <str>désert</str>
@@ -5126,6 +5127,85 @@
         </list>
         <list key="syntaxiques">
           <str>de</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+          <str>confesseur</str>
+          <str>docteur</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">14</int>
+        <int key="mois">6</int>
+      </dict>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/14-06-St-Basile-le-Grand-eveque</str>
+      <dict key="nom">
+        <str key="english">Saint Basil the Great, Bishop, Confessor and Doctor of the Church</str>
+        <str key="francais">Saint Basile le Grand, Évêque, Confesseur et Docteur de l'Église</str>
+        <str key="latina">Sancti Basilii Magni, Episcopi, Confessoris et Ecclesiae Doctoris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">basile_grand</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>grand</str>
+          <str>césarée</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>basile</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>bagrat</str>
+          <str>amasée</str>
+          <str>ancyre</str>
+          <str>ancien</str>
+          <str>chersonèse</str>
+          <str>parion</str>
+          <str>jeune</str>
+          <str>hopko</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>le</str>
         </list>
         <list key="titre">
           <str>saint</str>
