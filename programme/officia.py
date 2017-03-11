@@ -801,6 +801,7 @@ def weekyear(year, week=None):
     and a request for it in this case will return week 1.
     If week=None, returns the number of weeks in the year
     according to this system.
+    Function inspired by this page : http://code.activestate.com/recipes/521915-start-date-and-end-date-of-given-week/
     """
     firstday = datetime.date(year, 1, 1)
     if firstday.weekday() > 3:
