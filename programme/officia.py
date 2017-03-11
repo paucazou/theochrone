@@ -89,6 +89,7 @@ erreurs={
          "Merci de rentrer un jour qui correspond au mois.",
          "Merci de rentrer un jour de la semaine correspondant au jour du mois.",#5
          "La date de début est postérieure à la date de fin.",
+         "Cette semaine est en dehors de l'année demandée.",
          ],
         ["Votre recherche n'a pas pu aboutir. Merci de rentrer des informations plus précises.",],
         ["L'historique des recherches par dates n'a pas encore été renseigné. Merci de faire au moins une recherche.",
@@ -782,17 +783,41 @@ def dimancheapres(jour):
     ecart=datetime.timedelta(7 - datetime.date.isoweekday(jour))
     return jour + ecart if ecart.days != 0 else jour + datetime.timedelta(7)
     
-def weekyear(year, week):
-    """doc"""
+def weekyear(year, week=None):
+    """
+    This function returns the first and the later day of a weekyear.
+    It takes two integers as arguments : a year 
+    and a week number in the year (ex : 2017, 2).
+    It returns two datetime.date objects : 
+    the first one is always a Sunday and may be, 
+    if it is in the week 0, in the past year ; 
+    the second one is the Saturday following this Sunday.
+    This function uses the ISO format of the year, 
+    but assumes that the first weekday is Sunday, the last Saturday. 
+    However, calculus is made on the base of a week 
+    starting with Monday, and is moved just later.
+    Week 0 is the last week of the previous year, if it exists.
+    If January 1st is a Sunday, week 0 does not exist,
+    and a request for it in this case will return week 1.
+    If week=None, returns the number of weeks in the year
+    according to this system.
+    """
     firstday = datetime.date(year, 1, 1)
-    if firstday.isoweekday() == 7 and week == 0:
-        week = 1
     if firstday.weekday() > 3:
         firstday = firstday + datetime.timedelta(7 - firstday.isoweekday())
     else:
         firstday = firstday - datetime.timedelta(firstday.isoweekday())
+    weeknumber = int(((datetime.date(year,12,31) - firstday).days / 7) + 1)
+    if week == None:
+        return weeknumber
+    if week < 0 or week > weeknumber:
+        erreur(17,langue='francais')
     gap = datetime.timedelta(days = (week - 1)*7)
-    return firstday + gap, firstday + gap + datetime.timedelta(6)
+    start = firstday + gap
+    end = firstday + gap + datetime.timedelta(6)
+    if week == 0 and end.year != year:
+        start, end = weekyear(year, 1)
+    return start, end
 
 def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     """Function which creates a liturgical year emulation. It takes four arguments :
