@@ -9,7 +9,7 @@ import os
 import subprocess
 dossier.main()
 
-from officia import datevalable, dimancheapres, dimancheavant, mois, paques
+from officia import datevalable, dimancheapres, dimancheavant, mois, paques, weekyear
 
 def test_datevalable():
     # add more tests for this one
@@ -51,4 +51,11 @@ def test_dimancheapres():
         baseday = datetime.date(1900,1,i)
         supposed_sunday = dimancheapres(baseday)
         assert supposed_sunday > baseday and supposed_sunday.weekday() == 6 and supposed_sunday - baseday<= datetime.timedelta(7)
+        
+def test_weekyear(): # faire un autre test basé sur isocalendar
+    for year in range(1600,4101):
+        yearnb = weekyear(year)
+        first, last = weekyear(year, yearnb)
+        sylvester = datetime.date(year,12,31)
+        assert sylvester >= first and sylvester <= last
         
