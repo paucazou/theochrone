@@ -6,6 +6,7 @@
 import datetime
 import dossier
 import os
+import random
 import subprocess
 dossier.main()
 
@@ -58,4 +59,13 @@ def test_weekyear(): # faire un autre test basé sur isocalendar
         first, last = weekyear(year, yearnb)
         sylvester = datetime.date(year,12,31)
         assert sylvester >= first and sylvester <= last
+        
+def test_weekyear_iso():
+    """Tests wether weeks found by weekyear match with isocalendar"""
+    year = random.randrange(1600,4100)
+    weeknb = weekyear(year)
+    for i in range(1,weeknb):
+        two = weekyear(year,i)[0] + datetime.timedelta(1)
+        last = weekyear(year,i)[1]
+        assert two.isocalendar()[1] == last.isocalendar()[1] == i
         
