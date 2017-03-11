@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
 
+import calendar
 import datetime
 import os.path
 import sys
@@ -18,6 +19,7 @@ from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, Q
 
 _ = QCoreApplication.translate # a name more convenient
 current = QDate().currentDate()
+calendrier = calendar.Calendar(firstweekday=6)
 
 class ReTranslateBox():
     """A class which can contain only items with the retranslateUI function"""
@@ -147,8 +149,10 @@ class Main(QMainWindow,SuperTranslator):
         
         # main features
         self.setGeometry(400,200,1500,700) # TODO centrer la fenêtre au démarrage
-        self.useDate(current)
         self.retranslateUI() # voir si on ne la met pas carrément dans l'app, qui hériterait elle aussi de SuperTranslator
+        # default settings
+        self.useDate(current)
+        self.W.onglets.W.tabPlus.change_weeks()
         self.show()
         
     def retranslateUI(self):
@@ -324,6 +328,24 @@ class Multiple(QWidget,SuperTranslator):
         
     def initUI(self):   
         
+        self.gb_week = QGroupBox("Search for a whole week")
+        self.week_layout = QVBoxLayout()
+        self.week_top_layout = QHBoxLayout()
+        self.week_bottom_layout = QHBoxLayout()
+        self.wy_spinbox = YearSpinbox()
+        self.wy_spinbox.valueChanged.connect(self.change_weeks)
+        self.monthweek_combo = QComboBox()
+        self.monthweek_combo.activated.connect(self.change_weeks)
+        self.week_combo = QComboBox()
+        self.bt_week = QPushButton("OK")
+        self.week_top_layout.addWidget(self.wy_spinbox)
+        self.week_top_layout.addWidget(self.monthweek_combo)
+        self.week_bottom_layout.addWidget(self.week_combo)
+        self.week_bottom_layout.addWidget(self.bt_week)
+        self.week_layout.addLayout(self.week_top_layout)
+        self.week_layout.addLayout(self.week_bottom_layout)
+        self.gb_week.setLayout(self.week_layout)
+        
         self.gb_month = QGroupBox("Search for a whole month")
         self.month_layout = QHBoxLayout()
         self.my_spinbox = YearSpinbox()
@@ -340,11 +362,8 @@ class Multiple(QWidget,SuperTranslator):
         self.year_layout = QHBoxLayout()
         self.year_layout.addWidget(self.yy_spinbox)
         self.year_layout.addWidget(self.bt_year)
-        self.gb_year.setLayout(self.year_layout)
-        
-        
-        
-        
+        self.gb_year.setLayout(self.year_layout)      
+               
         self.gb_arbritrary = QGroupBox("Search for arbitrary dates")
         self.frome_label = QLabel("frome label",self)
         self.frome = QDateEdit()
@@ -368,6 +387,7 @@ class Multiple(QWidget,SuperTranslator):
         self.gb_arbritrary.setLayout(self.arbitrary_layout)
         
         self.layout = QVBoxLayout()
+        self.layout.addWidget(self.gb_week)
         self.layout.addWidget(self.gb_month)
         self.layout.addWidget(self.gb_year)
         self.layout.addWidget(self.gb_arbritrary)
@@ -376,10 +396,16 @@ class Multiple(QWidget,SuperTranslator):
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
+        months = (_("Multiple","January"),_("Multiple","February"),_("Multiple","March"),_("Multiple","April"),_("Multiple","May"),_("Multiple","June"),
+                     _("Multiple","July"),_("Multiple","August"),_("Multiple","September"),_("Multiple","October"),_("Multiple","November"),_("Multiple","December"))
+        
+        self.gb_week.setTitle(_("Multiple","Search for a whole week"))
+        for month in months:
+            self.monthweek_combo.addItem(month)
+        self.weeknames = (_("Multiple","First"),_("Multiple","Second"),_("Multiple","Third"),_("Multiple","Fourth"),_("Multiple","Fifth"),_("Multiple","Sixth"))
         
         self.gb_month.setTitle(_("Multiple","Search for a whole month"))
-        for month in (_("Multiple","January"),_("Multiple","February"),_("Multiple","March"),_("Multiple","April"),_("Multiple","May"),_("Multiple","June"),
-                     _("Multiple","July"),_("Multiple","August"),_("Multiple","September"),_("Multiple","October"),_("Multiple","November"),_("Multiple","December")):
+        for month in months:
             self.month_combo.addItem(month) # set current in main initUI
         
         self.gb_year.setTitle(_("Multiple","Search for a whole year"))
@@ -397,6 +423,13 @@ class Multiple(QWidget,SuperTranslator):
                 self.frome.setDate(self.to.date())
             else:
                 self.to.setDate(self.frome.date())
+                
+    def change_weeks(self):
+        """This method changes the week combo"""
+        self.week_combo.clear()
+        month = calendrier.monthdayscalendar(self.wy_spinbox.value(),self.monthweek_combo.currentIndex() + 1)
+        for i, name in zip(month, self.weeknames):
+            self.week_combo.addItem("{} week".format(name))
                 
         
         
