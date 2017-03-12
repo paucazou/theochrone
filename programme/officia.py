@@ -20,7 +20,7 @@ unites = (re.compile(r'(1(ere?)?|premiere?)'), # tenter de rajouter un : attenti
             re.compile('(4|quatre?)(.?eme)?'),
             re.compile('(5|cinqu?)(.?eme)?'),
             re.compile('(6|six)(.?eme)?'),
-            re.compile('(7|sept[^u])(.?eme)?'),
+            re.compile('(7|sept[^u])(.?eme)?'), # le [^u] pose problème
             re.compile('(8|huit)(.?eme)?'),
             re.compile('(9|neu[fv])(.?eme)?'),)
 dizaines = (re.compile('(11|onze?)(.?eme)?'),

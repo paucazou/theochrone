@@ -12,6 +12,9 @@
 >>> officia.modification(['3eme','quatre','quatrieme','4eme','cinq','cinquieme','5eme','sixieme','six','6eme'],'francais')
 ['3', '4', '4', '4', '5', '5', '5', '6', '6', '6']
 
+>>> officia.modification(['septieme','7','7eme','7ieme','huit','huitieme','8','8eme','8ieme'],'francais')
+['7', '7', '7', '7', '8', '8', '8', '8', '8']
+
 >>> officia.AtoZ(True,False,False,datetime.date(1990,1,1))
 (datetime.date(1990, 1, 1), datetime.date(1990, 1, 7))
 >>> officia.AtoZ(False,True,False,datetime.date(1990,1,1))
