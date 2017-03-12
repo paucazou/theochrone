@@ -152,6 +152,8 @@ class Main(QMainWindow,SuperTranslator):
         self.retranslateUI() # voir si on ne la met pas carrément dans l'app, qui hériterait elle aussi de SuperTranslator
         # default settings
         self.useDate(current)
+        self.W.onglets.W.tabPlus.month_combo.setCurrentIndex(current.month() - 1)
+        self.W.onglets.W.tabPlus.monthweek_combo.setCurrentIndex(current.month() - 1)
         self.W.onglets.W.tabPlus.change_weeks()
         self.show()
         
@@ -369,12 +371,14 @@ class Multiple(QWidget,SuperTranslator):
         self.frome = QDateEdit()
         self.frome.setMinimumDate(QDate(1600,1,1))
         self.frome.setMaximumDate(QDate(4100,12,31)) # set to current
+        self.frome.setDate(current)
         self.frome.setCalendarPopup(True)
         self.frome.dateChanged.connect(self.isgreater)
         self.to_label = QLabel("to label",self)
         self.to = QDateEdit()
         self.to.setMinimumDate(QDate(1600,1,1))
         self.to.setMaximumDate(QDate(4100,12,31))
+        self.to.setDate(current)
         self.to.setCalendarPopup(True)
         self.to.dateChanged.connect(self.isgreater)
         self.arbitrary_layout = QVBoxLayout()
@@ -427,9 +431,16 @@ class Multiple(QWidget,SuperTranslator):
     def change_weeks(self):
         """This method changes the week combo"""
         self.week_combo.clear()
-        month = calendrier.monthdayscalendar(self.wy_spinbox.value(),self.monthweek_combo.currentIndex() + 1)
+        month_requested = self.monthweek_combo.currentIndex() + 1
+        year_requested = self.wy_spinbox.value()
+        month = calendrier.monthdayscalendar(year_requested,month_requested)
         for i, name in zip(month, self.weeknames):
             self.week_combo.addItem("{} week".format(name))
+        if year_requested == current.year() and month_requested == current.month():
+            for i, week in enumerate(month):
+                if current.day() in week:
+                    self.week_combo.setCurrentIndex(i)
+                    break
                 
         
         
