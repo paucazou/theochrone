@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
-
+# Deus in adjutorium meum intende
 import calendar
 import datetime
 import os.path
@@ -329,7 +329,7 @@ class Multiple(QWidget,SuperTranslator):
         self.initUI()
         
     def initUI(self):   
-        
+        #week
         self.gb_week = QGroupBox("Search for a whole week")
         self.week_layout = QVBoxLayout()
         self.week_top_layout = QHBoxLayout()
@@ -347,7 +347,7 @@ class Multiple(QWidget,SuperTranslator):
         self.week_layout.addLayout(self.week_top_layout)
         self.week_layout.addLayout(self.week_bottom_layout)
         self.gb_week.setLayout(self.week_layout)
-        
+        #month
         self.gb_month = QGroupBox("Search for a whole month")
         self.month_layout = QHBoxLayout()
         self.my_spinbox = YearSpinbox()
@@ -357,7 +357,7 @@ class Multiple(QWidget,SuperTranslator):
         self.month_layout.addWidget(self.month_combo)
         self.month_layout.addWidget(self.bt_month)
         self.gb_month.setLayout(self.month_layout)
-        
+        #year
         self.gb_year = QGroupBox("Search for a whole year")
         self.yy_spinbox = YearSpinbox()
         self.bt_year = QPushButton("OK")
@@ -365,7 +365,7 @@ class Multiple(QWidget,SuperTranslator):
         self.year_layout.addWidget(self.yy_spinbox)
         self.year_layout.addWidget(self.bt_year)
         self.gb_year.setLayout(self.year_layout)      
-               
+        #arbitrary
         self.gb_arbritrary = QGroupBox("Search for arbitrary dates")
         self.frome_label = QLabel("frome label",self)
         self.frome = QDateEdit()
@@ -389,7 +389,7 @@ class Multiple(QWidget,SuperTranslator):
         self.arbitrary_layout.addWidget(self.to)
         self.arbitrary_layout.addWidget(self.bt_arbitrary)
         self.gb_arbritrary.setLayout(self.arbitrary_layout)
-        
+        #main layout
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.gb_week)
         self.layout.addWidget(self.gb_month)
@@ -429,7 +429,7 @@ class Multiple(QWidget,SuperTranslator):
                 self.to.setDate(self.frome.date())
                 
     def change_weeks(self):
-        """This method changes the week combo"""
+        """This method changes the week combo and set it to current week if possible"""
         self.week_combo.clear()
         month_requested = self.monthweek_combo.currentIndex() + 1
         year_requested = self.wy_spinbox.value()
