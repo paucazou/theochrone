@@ -20,7 +20,7 @@ unites = (re.compile(r'(1(ere?)?|premiere?)'), # tenter de rajouter un : attenti
             re.compile('(4|quatre?)(.?eme)?'),
             re.compile('(5|cinqu?)(.?eme)?'),
             re.compile('(6|six)(.?eme)?'),
-            re.compile('(7|sept[^u])(.?eme)?'), # le [^u] pose problème
+            re.compile('(7|sept[^u])(.?eme)?'), # le [^u] pose problème # TODO faire des tuples (regex-résultat) ?
             re.compile('(8|huit)(.?eme)?'),
             re.compile('(9|neu[fv])(.?eme)?'),)
 dizaines = (re.compile('(11|onze?)(.?eme)?'),
@@ -130,7 +130,7 @@ def modification(mots,langue):
                 elif mots[i] in ('bses','bhses'):
                     mots[i] = 'bienheureuses'
         
-        # vérifier la regex (.|\|){2}? ne semble pas fonctionner correctement # autre bug : un + 1er > 11
+        # vérifier la regex (.|\|){2}? ne semble pas fonctionner correctement
         mots_str = '|'.join(mots)
         mots_str = vingt1.sub('21',mots_str)
         for i,elt in enumerate(vingtaines):
@@ -841,10 +841,13 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     addtocache = []
     year = debut.year - 1
     Annee = {}
+    Annee_renvoyee = dict()
     while True:
         if year in cache_years:
             with open(cache_years[year],'rb') as file:
-                Annee.update(pickle.Unpickler(file).load())
+                extrait = pickle.Unpickler(file).load()
+                Annee.update(extrait)
+                Annee_renvoyee.update(extrait) # facilité
         else:
             addtocache.append(year)
             Paques = paques(year)
@@ -859,7 +862,7 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     tosave = {}
     while True:
         if date.year in addtocache:
-            Annee[date] = tosave[date] = selection(date,Annee,samedi,ferie)
+            Annee_renvoyee[date] = tosave[date] = selection(date,Annee,samedi,ferie)
             if date == datetime.date(date.year,12,31) and pdata(None):
                 with open("{}/{}.pic".format(pdata(cachepath=True),date.year),'wb') as file:
                     pickle.Pickler(file).dump(tosave)
@@ -869,7 +872,7 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
             date = datetime.date(date.year + 1,1,1)        
         if date > datetime.date(fin.year,12,31):
             break
-    return Annee
+    return Annee_renvoyee
 
 def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='francais',exit=True):
     """Function which returns a list of feasts matching with mots_bruts. It takes six args:
