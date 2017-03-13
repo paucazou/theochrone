@@ -439,18 +439,12 @@ def selection(date,Annee,samedi,ferie):
     commemoraison = 0 # max 2
     commemoraison_temporal=False
     
-    samedi.date = date
-    
-    
-    if samedi.Est_ce_samedi(date):
-        defaut = samedi.copy()
-    else:
-        defaut = ferie.Dimanche_precedent(date,Annee)
-    try:
-        if liste[0].degre == 5:
-            liste.append(defaut)
-    except IndexError:
-        liste.append(defaut)
+    if len(liste) == 0 or liste[0].degre == 5:
+        samedi.date = date
+        if samedi.Est_ce_samedi(date):
+            liste.append(samedi.copy())
+        else:
+            liste.append(ferie.Dimanche_precedent(date,Annee))
         
     liste.sort(key=lambda x: x.priorite,reverse=True)
     
@@ -618,7 +612,7 @@ def affichage(**kwargs):
                 else:
                     sortie += attente
                     
-                for i, mot in enumerate(a.nom['francais'].lower().split()):
+                for i, mot in enumerate(a.nom['francais'].lower().split()): # TODO faire plutôt des regex : bien plus précis
                     if [True for i in ('dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi','jour') if i in mot]:
                         sortie += 'le '
                         break
@@ -839,7 +833,7 @@ def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
     for name in cache_files:
         cache_years[int(os.path.basename(name).split('.')[0])] = name
     addtocache = []
-    year = debut.year - 1
+    year = debut.year -1
     Annee = {}
     Annee_renvoyee = dict()
     while True:
@@ -908,7 +902,6 @@ def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='francais',exit=True)
     retenus = []
     while date <= fin:
         try:
-            #Annee[date] = selection(Annee[date],date,Annee,samedi) # DEPRECATED
             for fete in Annee[date]:
                 fete.valeur = fete.Correspondance(mots_str,mots,plus)
                 if fete.valeur >= 50:
