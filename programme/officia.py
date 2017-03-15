@@ -47,7 +47,9 @@ semaine = {'francais':['lundi','mardi','mercredi','jeudi','vendredi','samedi','d
             'latina': ['de Feria secunda','de Feria tertia','de Feria quarta','de Feria quinta', 'de Feria sexta','sabbato','dominica'],
                }
 mois = ('janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
-        
+    
+liturgiccal=calendar.Calendar(firstweekday=6)
+
 fichiers=(
     'romanus_1962_dimanches.pic',
     'romanus_1962_fetesduseigneur.pic',
@@ -166,7 +168,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
     """Function used to see whether a list can be converted into datetime or not"""
     aujourdhui=datetime.date.today()
     nonliturgiccal=calendar.Calendar()
-    liturgiccal=calendar.Calendar(firstweekday=6)
+    
     passager=[]
 
     for elt in entree:
@@ -513,7 +515,7 @@ def selection(Annee,liste,date,samedi,ferie):
                 liste[hideux].omission=True
     
     liste = [tmp] + liste
-    liste.sort(key=lambda x: x.priorite,reverse=True)
+    liste.sort(key=lambda x: x.priorite,reverse=True) # useless ?
     
     return liste
 
@@ -668,7 +670,7 @@ def affichage(**kwargs):
                     
             if kwargs['verbose'] or kwargs['transfert']:                    
                 if a.transferee:
-                    origine = a.DateCivile_(paques,kwargs['date'].year)
+                    origine = a.DateCivile_(paques,kwargs['date'].year) #TODO enregistrer la date d'origine dans un attribut à part
                     if origine.day == 1:
                         jour = 'premier'
                     else:
@@ -701,7 +703,7 @@ def affichage(**kwargs):
     return sortie
             
 
-def ouvreetregarde(fichier,Annee,ordo,propre,annee,paques):
+def ouvreetregarde(fichier,Annee,ordo,propre,annee,paques): #DEPRECATED
     """Open the file 'fichier', and load the objects in it. If objet.ordo with 'ordo' and 'propre' with objet.propre, add the objet to a dict 'Annee', which is an emulation of the year 'Annee', with the key returned by objet.DateCivile."""
     with open(fichier, 'rb') as file:
         pic=pickle.Unpickler(file)
@@ -792,7 +794,7 @@ def weekyear(year, week=None):
         start, end = weekyear(year, 1)
     return start, end
 
-def fabrique_an(debut,fin,ordo=1962,propre='romanus'):
+def fabrique_an(debut,fin,ordo=1962,propre='romanus'): # DEPRECATED
     """Function which creates a liturgical year emulation. It takes four arguments :
     - debut : a datetime.date for the older date ;
     - fin : a datetime.date for the latest date ;
@@ -1075,7 +1077,7 @@ class LiturgicalYear():
                 date += datetime.timedelta(1)
         
         
-    def create_empty_year(self,year): # est-il utile de faire une année sous forme de liste ?
+    def create_empty_year(self,year):
         """A method which creates the skeleton of each year"""
         tmp = list()
         for i in range(12):
@@ -1119,11 +1121,26 @@ class LiturgicalYear():
             self.year_data[key.year][key.month - 1][key.day - 1] = value
             
     def __contains__(self,value):
-        """This method determines wether a year exists as a complete year""" # rajouter pour les datetime ?
+        """This method determines wether a year exists as a complete year"""
+        if isinstance(value,datetime.date):
+            value = value.year
         if value in self.year_data:
             return True
         else:
             return False
+        
+    def __len__(self):
+        """Returns number of years loaded"""
+        return len(self.year_names)
+    
+    def __iter__(self):
+        """Iters from the first day of January of the first year
+        until the 31th of December of the last year.
+        Yield a list containing feasts of the day."""
+        for year in self.year_names:
+            for month in self.year_data[year]:
+                for day in month:
+                    yield day
                     
     def easter(self,year):
         """Return a datetime.date object with the Easter date of the year. The function is only available between 1583 and 4100.
@@ -1165,6 +1182,13 @@ class LiturgicalYear():
         for a in liste.keys():
             entre=self.remonte(liste[a],entre,a)
         return entre
+    
+    def weekmonth(self,year,month,week):
+        """Return a list a feasts for requested week of 'month' in 'year'.
+        Weeks starts with Sundays and may be incomplete.
+        Week number start with 0."""
+        week_list = liturgiccal.monthdayscalendar(year,month)[week]
+        return [ self[datetime.date(year,month,day)] for day in week_list if day != 0]
         
         
 
