@@ -30,7 +30,7 @@ def home(request,
     
     retour = ''
     deroule = {}
-    Annee = officia.fabrique_an(debut,fin)
+    Annee = officia.LiturgicalYear()
     if mots_clefs == '':        
         date = debut
         while date <= fin:
