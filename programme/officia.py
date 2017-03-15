@@ -364,10 +364,8 @@ def mois_lettre(mot,langue='english'):
 
 def traite(Annee,objet,date,annee,propre):
     """Déplace la fête 'objet' si c'est nécessaire."""
-    try:
-        isinstance(Annee[date],list)
-    except KeyError:
-        Annee[date]=[objet]
+    if Annee[date] == []:
+        Annee[date].append(objet)
         return Annee
     #Faut-il déplacer ?
     adversaire = Annee[date][0]
@@ -432,10 +430,9 @@ def traite(Annee,objet,date,annee,propre):
     Annee[date].sort(key=lambda x: x.priorite,reverse=True)
     return Annee
     
-def selection(date,Annee,samedi,ferie):
+def selection(Annee,liste,date,samedi,ferie):
     """Selects the feasts which are actually celebrated."""
     
-    liste = Annee.setdefault(date,[])
     commemoraison = 0 # max 2
     commemoraison_temporal=False
     
@@ -727,28 +724,9 @@ def nom_jour(date,langue):
     """Une fonction qui renvoie le nom du jour de la semaine en fonction du datetime.date rentré"""
     return semaine[langue][datetime.date.weekday(date)]                    
 
-def remonte(liste, entre, nom='latinus'):
-    """Function used in the 'trouve' function. Find the proper which is before the 'entre' one in the 'liste'."""
-    if entre in liste.keys():
-        entre=nom
-        return nom
-    for a in liste.keys():
-        entre=remonte(liste[a],entre,a)
-    return entre
 
-def trouve(entre,cherche,liste=latinus):
-    """Returns a boolean. Find if the propre 'entre' matches whith the propre 'cherche' in the 'liste'."""
-    if entre == cherche:
-        return True
-    else:
-        sortie=entre
-        while sortie != 'latinus':
-            sortie=remonte(liste, sortie)
-            if sortie == cherche:
-                return True
-    return False
 
-def paques(an):
+def paques(an): # DEPRECATED
     """Return a datetime.date object with the Easter date of the year 'an'. The function is only available between 1583 and 4100.
     I didn't write this function, but I found it here : http://python.jpvweb.com/mesrecettespython/doku.php?id=date_de_paques """
     a=an//100
@@ -931,13 +909,11 @@ def pdata(read=True,write=False,**kwargs):
     main_folder = os.path.expanduser('~/.theochrone')
     config_folder = main_folder + '/config'
     history_folder = main_folder + '/history'
-    cache_folder = main_folder + '/cache'
     
     if not os.path.exists(main_folder):
         os.mkdir(main_folder)
         os.mkdir(config_folder)
         os.mkdir(history_folder)
-        os.mkdir(cache_folder)
         with open(main_folder + '/SET','w') as SETfile:
             SETfile.write('ON')
         
@@ -945,12 +921,14 @@ def pdata(read=True,write=False,**kwargs):
         with open(main_folder + '/SET','w') as SETfile:
             if kwargs['SET'] == 'OFF':
                 SETfile.write('OFF')
-                shutil.rmtree(config_folder)
-                shutil.rmtree(history_folder)
-                shutil.rmtree(cache_folder)
+                for folder in (config_folder,history_folder,):
+                    try:
+                        shutil.rmtree(folder)
+                    except FileNotFoundError:
+                        pass
             else:
                 SETfile.write('ON')
-                for folder in (config_folder,history_folder,cache_folder):
+                for folder in (config_folder,history_folder,):
                     try:
                         os.mkdir(folder)
                     except FileExistsError:
@@ -963,12 +941,6 @@ def pdata(read=True,write=False,**kwargs):
     if kwargs.get('langue',False):
         with open(config_folder + '/LANG','w') as lang:
             lang.write(kwargs['langue'])
-    
-    if kwargs.get('cache',False):
-        return [cache_folder + '/' + filecache for filecache in os.listdir(cache_folder) if '.pic' in filecache]
-    
-    if kwargs.get('cachepath',False):
-        return cache_folder
     
     if write:
         action = 'a'
@@ -1027,5 +999,190 @@ def pdata(read=True,write=False,**kwargs):
     return True
                     
             
+class LiturgicalYear():
+    """This class is a collection which contains the whole
+    liturgical years requested during the time of the program."""
+    
+    def __init__(self, proper='romanus',ordo=1962):
+        """Init of the instance"""
+        self.raw_data = self.load_raw_data(proper,ordo) # tuple which contains the data extracted from files
+        self.year_names = [] # an ordered list of the year currently saved in the instance
+        self.year_data = {} # a dict which contains the liturgical years themselves.
+        
+        self.previous_year_names = []
+        self.previous_year_data = {}
+        self.ordo = ordo
+        self.proper = proper
+        
+    def load_raw_data(self,proper,ordo):
+        """Method used only when creating the instance.
+        It loads raw data following the 'proper' and the 'ordo' requested.
+        Returns a tuple whith the whole data"""
+        tmp = list()
+        for fichier in [file for file in fichiers if file.split('_')[1] == str(ordo) and self.trouve(proper,file.split('_')[0])]:
+            with open(chemin + '/data/' + fichier, 'rb') as file:
+                pic=pickle.Unpickler(file)
+                while True:
+                    try:
+                        tmp.append(pic.load())
+                    except EOFError:
+                        break
+        with open(chemin + '/data/samedi_ferie.pic','rb') as file:
+            pic=pickle.Unpickler(file)
+            self.saturday = pic.load()
+            self.feria = pic.load()
+            
+        return tuple(tmp)
+    
+    def put_in_year(self, year):
+        """A method which puts feasts in the year"""
+        easter = self.easter(year)
+        for raw_elt in self.raw_data:
+            elt = raw_elt.__class__()
+            elt.__dict__ = raw_elt.__dict__.copy() # TODO changer peut-être dans Fete, en surchargeant l'opérateur =
+            if isinstance(elt.DateCivile(easter,year),datetime.date): #TODO faire de toutes ces fonctions des méthodes
+                date=elt.DateCivile(easter,year)
+                self = traite(self,elt,date,year,self.proper)
+            else:
+                for a in elt.DateCivile(easter,year):
+                    self = traite(self,a,a.date,year,self.proper)
+        
+    def create_year(self,year):
+        """A function which emules the liturgical 'year' requested.
+        Add year in self.year_names.
+        Create a year in self.year_data."""
+        self.year_names.append(year)
+        self.year_names.sort()
+        
+        if year not in self.previous_year_names:
+            self.year_data[year] = self.create_empty_year(year)
+            self.put_in_year(year)
+        else:
+            self.previous_year_names.remove(year)
+            self.year_data[year] = self.previous_year_data.pop(year)
+            
+        pyear = year - 1
+        if pyear not in self.year_names:
+            self.previous_year_names.append(pyear)
+            self.previous_year_names.sort()
+            self.previous_year_data[pyear] = self.create_empty_year(pyear)
+            self.put_in_year(pyear)
+        
+        date = datetime.date(year,1,1)
+        for month in self.year_data[year]:
+            for day in month:
+                day = selection(self,day,date,self.saturday,self.feria)
+                date += datetime.timedelta(1)
+        
+        
+    def create_empty_year(self,year): # est-il utile de faire une année sous forme de liste ?
+        """A method which creates the skeleton of each year"""
+        tmp = list()
+        for i in range(12):
+            if i in (3,5,8,10):
+                j = 30
+            elif i == 1:
+                if calendar.isleap(year):
+                    j = 29
+                else:
+                    j = 28
+            else:
+                j = 31
+            tmp.append([ [] for i in range(j)])
+        return tmp
+        
+    def __getitem__(self, request):
+        """A method to process request like LiturgicalYear[1962].
+        It accepts two types of request :
+        - years
+        - datetime.date
+        If requested year is not yet loaded,
+        it is automatically loaded and returned."""
+        if isinstance(request,int):
+            if request not in self.year_names:
+                self.create_year(request)
+            return self.year_data[request]
+        elif isinstance(request, datetime.date):
+            if request.year in self.previous_year_names: #pose problème # on devrait pouvoir régler avec __contains__
+                return self.previous_year_data[request.year][request.month - 1][request.day - 1]
+            if request.year not in self.year_names:
+                self.create_year(request.year)
+            return self.year_data[request.year][request.month - 1][request.day - 1]
+        
+    def __setitem__(self,key,value):
+        """A method to process request like LiturgicalYear[datetime.date(2010,1,1] = []"""
+        if key.year in self.previous_year_names:
+            self.previous_year_data[key.year][key.month - 1][key.day - 1] = value
+        if key.year not in self.year_names:
+            self.create_year(key.year) # WARNING cela peut causer des boucles infinies : il vaut mieux créer une année vide.
+        else:
+            self.year_data[key.year][key.month - 1][key.day - 1] = value
+            
+    def __contains__(self,value):
+        """This method determines wether a year exists as a complete year""" # rajouter pour les datetime ?
+        if value in self.year_data:
+            return True
+        else:
+            return False
+                    
+    def easter(self,year):
+        """Return a datetime.date object with the Easter date of the year. The function is only available between 1583 and 4100.
+        I didn't write this function, but I found it here : http://python.jpvweb.com/mesrecettespython/doku.php?id=date_de_paques """
+        a=year//100
+        b=year%100
+        c=(3*(a+25))//4
+        d=(3*(a+25))%4
+        e=(8*(a+11))//25
+        f=(5*a+b)%19
+        g=(19*f+c-e)%30
+        h=(f+11*g)//319
+        j=(60*(5-d)+b)//4
+        k=(60*(5-d)+b)%4
+        m=(2*j-k-g+h)%7
+        n=(g-h+m+114)//31
+        p=(g-h+m+114)%31
+        day=p+1
+        month=n
+        return datetime.date(year,month,day)
+    
+    def trouve(self,entre,cherche,liste=latinus):
+        """Returns a boolean. Find if the propre 'entre' matches whith the propre 'cherche' in the 'liste'."""
+        if entre == cherche:
+            return True
+        else:
+            sortie=entre
+            while sortie != 'latinus':
+                sortie=self.remonte(liste, sortie)
+                if sortie == cherche:
+                    return True
+        return False
+    
+    def remonte(self,liste, entre, nom='latinus'):
+        """Function used in the 'trouve' function. Find the proper which is before the 'entre' one in the 'liste'."""
+        if entre in liste.keys():
+            entre=nom
+            return nom
+        for a in liste.keys():
+            entre=self.remonte(liste[a],entre,a)
+        return entre
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
     

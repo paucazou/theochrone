@@ -183,7 +183,8 @@ if args.navigateur:
 ordo=args.ordo
 
 ### Analyse des fichiers ###
-Annee = officia.fabrique_an(debut,fin,ordo,args.propre)
+#Annee = officia.fabrique_an(debut,fin,ordo,args.propre)
+Annee = officia.LiturgicalYear(args.propre,ordo)
 
 ### Affichage ###
 
