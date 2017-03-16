@@ -21,9 +21,10 @@ parser = argparse.ArgumentParser(
         description="""A tool to create, modify, delete and save objects as xml or pickle for Theochrone""",
         )
 
-parser.add_argument('-w','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
-parser.add_argument('-t','--indent', help="indent all xml files in Dossier d'objets",action='store_true')
+parser.add_argument('-x','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
+parser.add_argument('-i','--indent', help="indent all xml files in Dossier d'objets",action='store_true')
 parser.add_argument('-d','--debug', help="debug the script",action='store_true')
+parser.add_argument('-a','--add',help="Add new attribute to all the objects previously saved")
 args = parser.parse_args()
 
 objets = []
@@ -590,6 +591,15 @@ elif args.indent:
     os.chdir("./Dossier d'objets")
     for fichier in fichiers:
         os.system('cat ' + fichier + '|xmllint --format - > tMpXmL && cat tMpXmL > ' + fichier + '&& rm tMpXmL')
+elif args.add != None: # TODO rajouter une valeur et tester ; args.add attend deux arguments.
+    for file in os.listdir():
+        if file.split('.')[-1] == 'xml':
+            with enc.Preferences(file,r) as f:
+                liste = f.prefs
+            for obj in liste:
+                setattr(obj,args.add,False)
+            with enc.Preferences(file,'w') as f:
+                f.prefs = liste
 else:
     menu(menus)
 
