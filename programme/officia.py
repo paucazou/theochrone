@@ -379,7 +379,6 @@ def traite(Annee,objet,date,annee,propre):
     elif objet.transferee and adversaire.transferee:
         if objet.priorite > adversaire.priorite:
             Annee[date][0] = objet
-            adversaire.date = adversaire.date + datetime.timedelta(1)
             adversaire.transferee=True
             Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
         else:
@@ -397,18 +396,16 @@ def traite(Annee,objet,date,annee,propre):
     elif objet.priorite > 1600:
         if objet.priorite < adversaire.priorite and not objet.dimanche:
             objet.transferee=True
-            objet.date = objet.date + datetime.timedelta(1)
             Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
         elif adversaire.priorite > 1600 and adversaire.priorite < objet.priorite and not adversaire.dimanche:
             Annee[date][0] = objet
-            adversaire.date = adversaire.date + datetime.timedelta(1)
             adversaire.transferee=True
             Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
         else:
             Annee[date].append(objet)
     elif propre != 'romanus' and (objet.occurrence_perpetuelle or adversaire.occurrence_perpetuelle):
         premier_dimanche_avent = dimancheapres(datetime.date(annee,12,25)) - datetime.timedelta(28)
-        # Cas de 'objet' fête de seconde classe empêchée perpétuellement
+        # Cas de 'objet' fête de seconde classe empêchée perpétuellement # WARNING pourquoi la valeur self.transferee n'est-elle pas modifiée en-dessous ? WARNING
         if objet.priorite > 800 and adversaire.priorite > 800 and adversaire.priorite > objet.priorite and not objet.dimanche:
             objet.date = objet.date + datetime.timedelta(1)
             Annee=traite(Annee,objet, date + datetime.timedelta(1),annee,propre)
@@ -670,7 +667,7 @@ def affichage(**kwargs):
                     
             if kwargs['verbose'] or kwargs['transfert']:                    
                 if a.transferee:
-                    origine = a.DateCivile_(paques,kwargs['date'].year) #TODO enregistrer la date d'origine dans un attribut à part
+                    origine = a.date_originelle #TODO enregistrer la date d'origine dans un attribut à part
                     if origine.day == 1:
                         jour = 'premier'
                     else:

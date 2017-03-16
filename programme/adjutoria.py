@@ -60,8 +60,9 @@ class Fete:
         
         #Éléments variables selon l'année
         self.peut_etre_celebree=False
-        self.transferee=False
+        self._transferee=False
         self.date=None # la date effective
+        self.date_originelle=None # en cas de transfert
         self.celebree=True
         self.omission=False # paramètre qui peut changer en fonction des dates
         self.commemoraison=False # paramètre qui peut changer en fonction des dates
@@ -225,6 +226,20 @@ class Fete:
         return self._couleur
     
     couleur = property(_get_couleur)
+    
+    def _set_transferee(self,value):
+        """Une méthode qui modifie la valeur de self.transferee
+        et fait les modifications nécessaires."""
+        self._transferee = value
+        if value and not self.date_originelle:
+            self.date_originelle = self.date
+        self.date = self.date + datetime.timedelta(1)
+        
+    def _get_transferee(self):
+        """Renvoie la valeur de self._transferee"""
+        return self._transferee
+    
+    transferee = property(_get_transferee,_set_transferee)
     
 class FeteFixe(Fete):
     """Une classe définissant une fête fixe, c'est-à-dire dont la date ne change pas dans l'année."""
