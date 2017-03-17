@@ -239,7 +239,7 @@ class Fete:
         """Renvoie la valeur de self._transferee"""
         return self._transferee
     
-    transferee = property(_get_transferee,_set_transferee)
+    transferee = property(_get_transferee,_set_transferee) # WARNING La propriété est de classe, non d'instance
     
 class FeteFixe(Fete):
     """Une classe définissant une fête fixe, c'est-à-dire dont la date ne change pas dans l'année."""
