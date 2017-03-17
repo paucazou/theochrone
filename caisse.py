@@ -24,7 +24,7 @@ parser = argparse.ArgumentParser(
 parser.add_argument('-x','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
 parser.add_argument('-i','--indent', help="indent all xml files in Dossier d'objets",action='store_true')
 parser.add_argument('-d','--debug', help="debug the script",action='store_true')
-parser.add_argument('-a','--add',help="Add new attribute to all the objects previously saved")
+parser.add_argument('-a','--add',help="Add new attribute to all the objects previously saved",action='store_true')
 args = parser.parse_args()
 
 objets = []
@@ -36,6 +36,7 @@ MENU = "menu"
 COMMAND = "command"
 EQUAL = "equal"
 ARGS = 'args'
+dossier="./Dossier d'objets/"
 
 if os.getcwd().split('/')[-1] == 'programme' or os.getcwd().split('/')[-1] == "Dossier d'objets":
     os.chdir('..')
@@ -591,14 +592,17 @@ elif args.indent:
     os.chdir("./Dossier d'objets")
     for fichier in fichiers:
         os.system('cat ' + fichier + '|xmllint --format - > tMpXmL && cat tMpXmL > ' + fichier + '&& rm tMpXmL')
-elif args.add != None: # TODO rajouter une valeur et tester ; args.add attend deux arguments.
-    for file in os.listdir():
+elif args.add:
+    for file in os.listdir(dossier):
         if file.split('.')[-1] == 'xml':
-            with enc.Preferences(file,r) as f:
+            with enc.Preferences(dossier + file,'r') as f:
                 liste = f.prefs
-            for obj in liste:
-                setattr(obj,args.add,False)
-            with enc.Preferences(file,'w') as f:
+            for obj in liste: # obj est un objet type Fete
+                temoin = obj.__class__()
+                for a in temoin.__dict__:
+                    if a not in obj.__dict__:
+                        setattr(obj,a,temoin.__dict__[a])
+            with enc.Preferences(dossier + file,'w') as f:
                 f.prefs = liste
 else:
     menu(menus)
