@@ -364,7 +364,7 @@ def mois_lettre(mot,langue='english'):
     return False, 0
      
 
-def traite(Annee,objet,date,annee,propre):
+def traite(Annee,objet,date,annee,propre): #DEPRECATED
     """Déplace la fête 'objet' si c'est nécessaire."""
     if Annee[date] == []:
         Annee[date].append(objet)
@@ -582,7 +582,6 @@ def affichage(**kwargs):
         sortie = affiche_jour(kwargs['date'],kwargs['langue']).capitalize() + ' :'
     else:
         sortie=''
-        
     for a in kwargs['liste']:
         if a.omission and not kwargs['verbose'] and not kwargs['recherche']:
             """if sortie [-2:] == '\n': # ne marche toujours pas
@@ -667,12 +666,12 @@ def affichage(**kwargs):
                     
             if kwargs['verbose'] or kwargs['transfert']:                    
                 if a.transferee:
-                    origine = a.date_originelle #TODO enregistrer la date d'origine dans un attribut à part
+                    origine = a.date_originelle
                     if origine.day == 1:
                         jour = 'premier'
                     else:
                         jour = origine.day
-                    mois = mois_lettre(kwargs['date'].month,kwargs['langue'])
+                    mois = mois_lettre(a.date_originelle.month,kwargs['langue'])
                     sortie += """Fête transférée du {} {} {}. """.format(jour, mois, origine.year)
                   
             if kwargs['verbose'] or kwargs['temporal_ou_sanctoral']:
@@ -1041,10 +1040,10 @@ class LiturgicalYear():
             elt.__dict__ = raw_elt.__dict__.copy() # TODO changer peut-être dans Fete, en surchargeant l'opérateur =
             if isinstance(elt.DateCivile(easter,year),datetime.date): #TODO faire de toutes ces fonctions des méthodes
                 date=elt.DateCivile(easter,year)
-                self = traite(self,elt,date,year,self.proper)
+                self.move(elt,date,year)
             else:
                 for a in elt.DateCivile(easter,year):
-                    self = traite(self,a,a.date,year,self.proper)
+                    self.move(a,a.date,year)
         
     def create_year(self,year):
         """A function which emules the liturgical 'year' requested.
@@ -1187,7 +1186,75 @@ class LiturgicalYear():
         week_list = liturgiccal.monthdayscalendar(year,month)[week]
         return [ self[datetime.date(year,month,day)] for day in week_list if day != 0]
         
+    def move(self,new_comer,date,year):
+        """Move 'new_comer' if necessary, and put it at the right date.
+        new_comer: a Fete class ;
+        date: a datetime.date ;
+        year : an integer
+        """
         
+        if self[date] == []:
+            self[date].append(new_comer)
+            return self
+        
+        #Faut-il déplacer ?
+        opponent = self[date][0]
+
+        # Cas de 'new_comer' ayant la même self.personne que 'opponent'
+        if new_comer.personne == opponent.personne:
+            self[date].append(new_comer)
+        # Cas de 'new_comer' et 'opponent' tous deux transférés
+        elif new_comer.transferee and opponent.transferee:
+            if new_comer.priorite > opponent.priorite:
+                self[date][0] = new_comer
+                opponent.transferee=True
+                self.move(opponent,date + datetime.timedelta(1),year)
+            else:
+                new_comer.date = new_comer.date + datetime.timedelta(1)
+                self.move(new_comer,date + datetime.timedelta(1),year)
+        # Si l'un ou l'autre est transféré
+        elif new_comer.transferee and opponent.priorite > 800:
+            new_comer.date = new_comer.date + datetime.timedelta(1)
+            self.move(new_comer,date + datetime.timedelta(1),year)
+        elif opponent.transferee and new_comer.priorite > 800:
+            self[date][0] = new_comer
+            opponent.date = opponent.date + datetime.timedelta(1)
+            self.move(opponent,date + datetime.timedelta(1),year)
+        # Cas de 'new_comer' fête de première classe vs 'opponent' fête de première classe
+        elif new_comer.priorite > 1600:
+            if new_comer.priorite < opponent.priorite and not new_comer.dimanche:
+                new_comer.transferee=True
+                self.move(new_comer,date + datetime.timedelta(1),year)
+            elif opponent.priorite > 1600 and opponent.priorite < new_comer.priorite and not opponent.dimanche:
+                self[date][0] = new_comer
+                opponent.transferee=True
+                self.move(opponent,date + datetime.timedelta(1),year)
+            else:
+                self[date].append(new_comer)
+        elif self.proper != 'romanus' and (new_comer.occurrence_perpetuelle or opponent.occurrence_perpetuelle):
+            premier_dimanche_avent = dimancheapres(datetime.date(year,12,25)) - datetime.timedelta(28)
+            # Cas de 'new_comer' fête de seconde classe empêchée perpétuellement # WARNING pourquoi la valeur self.transferee n'est-elle pas modifiée en-dessous ? WARNING
+            if new_comer.priorite > 800 and opponent.priorite > 800 and opponent.priorite > new_comer.priorite and not new_comer.dimanche:
+                new_comer.date = new_comer.date + datetime.timedelta(1)
+                self.move(new_comer, date + datetime.timedelta(1),year)
+            elif opponent.priorite > 800 and new_comer.priorite > 800 and new_comer.priorite > opponent.priorite and not opponent.dimanche:
+                self[date][0] = new_comer
+                opponent.date = opponent.date + datetime.timedelta(1)
+                self.move(opponent,date + datetime.timedelta(1),year)
+            # Cas de 'new_comer' fête de troisième classe particulière empêchée perpétuellement 
+            elif not date - paques >= datetime.timedelta(-46) and not date - paques < datetime.timedelta(0) and not new_comer.DateCivile(paques,year) < datetime.date(year,12,25) and not new_comer.DateCivile(paques,year) >= premier_dimanche_avent:
+                if new_comer.priorite <= 700 and new_comer.priorite >= 550 and new_comer.priorite < opponent.priorite and not new_comer.dimanche:
+                    new_comer.date = new_comer.date + datetime.timedelta(1)
+                    self.move(new_comer, date + datetime.timedelta(1),year)
+                elif opponent.priorite <=700 and new_comer.priorite >= 550 and new_comer.priorite > opponent.priorite and not opponent.dimanche:
+                    self[date][0] = new_comer
+                    opponent.date = opponent.date + datetime.timedelta(1)
+                    self.move(opponent,date + datetime.timedelta(1),year)
+                else:
+                    self[date].append(new_comer)
+        else:
+            self[date].append(new_comer)
+        self[date].sort(key=lambda x: x.priorite,reverse=True)
 
         
         
