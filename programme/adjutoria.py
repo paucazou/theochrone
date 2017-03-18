@@ -121,6 +121,12 @@ class Fete:
     def DateCivile_(self,paques,annee):
         pass
     
+    def copy(self):
+        """Une fonction qui renvoie un autre objet"""
+        renvoye = self.__class__()
+        renvoye.__dict__ = self.__dict__.copy()
+        return renvoye
+    
     def DateCivile(self,paques,annee):
         """Une fonction qui va tester si la date est déjà déterminée, sinon il va la demander à la fonction DateCivile_()"""
         if not isinstance(self.date,datetime.date):
@@ -488,12 +494,6 @@ class Samedi(Fete):
             return True
         else:
             return False
-        
-    def copy(self):
-        """Une fonction qui renvoie un autre objet Samedi"""
-        renvoye = self.__class__()
-        renvoye.__dict__ = self.__dict__.copy()
-        return renvoye
     
 #classe de fêtes sui generis
 class TSNJ(FeteFixe):
