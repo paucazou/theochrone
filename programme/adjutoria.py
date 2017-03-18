@@ -94,12 +94,24 @@ class Fete:
             return self.priorite < autrefete.priorite
         else:
             return self.degre < autrefete.degre
+        
     def __eq__(self,autrefete):
         """Méthode pour comparer deux objets type Fete"""
         if isinstance(autrefete,Fete):
             return self.__dict__ == autrefete.__dict__
         else:
             raise TypeError("""{} is not a 'Fete' class, or any of her subclasses.""".format(autrefete))
+        
+    def __hash__(self):
+        """Méthode appellée par la fonction hash()"""
+        hash_list = []
+        for item in self.__dict__.values():
+            if isinstance(item,dict):
+                hash_list += [ tuple(itemtwo) for itemtwo in item.values() ]
+            else:
+                hash_list.append(item)
+        print(hash_list)
+        return hash(tuple(hash_list))
         
     # Définitions de méthodes   
     def Votive(self):
