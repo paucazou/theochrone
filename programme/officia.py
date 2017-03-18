@@ -60,7 +60,6 @@ fichiers=(
     #'romanus_1962_troisiemetrimestre_sanctoral.pic',
     #'romanus_1962_quatriemetrimestre_sanctoral.pic',
     #'gallicanus_1962_dimanches.pic',
-    #'samedi', ce fichier n'est utilisé que dans un cas particulier.
     )
 
 latinus={
@@ -429,7 +428,7 @@ def traite(Annee,objet,date,annee,propre): #DEPRECATED
     Annee[date].sort(key=lambda x: x.priorite,reverse=True)
     return Annee
     
-def selection(Annee,liste,date,samedi,ferie):
+def selection(Annee,liste,date,samedi,ferie): #DEPRECATED
     """Selects the feasts which are actually celebrated."""
     
     commemoraison = 0 # max 2
@@ -455,7 +454,7 @@ def selection(Annee,liste,date,samedi,ferie):
         for hideux, elt in enumerate(liste):
             liste[hideux].omission = True
             liste[hideux].celebree = False
-    elif tmp.degre == 1:
+    elif tmp.priorite >= 1650:
         for hideux,elt in enumerate(liste):
             liste[hideux].celebree=False
             if elt.personne == tmp.personne:
@@ -468,7 +467,7 @@ def selection(Annee,liste,date,samedi,ferie):
                 liste[hideux].commemoraison=False
                 liste[hideux].omission=True
                 
-    elif tmp.degre == 2:
+    elif tmp.priorite >= 900:
         for hideux,elt in enumerate(liste):
             liste[hideux].celebree=False
             if elt.personne == tmp.personne:
@@ -481,7 +480,7 @@ def selection(Annee,liste,date,samedi,ferie):
                 liste[hideux].commemoraison=False
                 liste[hideux].omission=True
                 
-    elif tmp.degre == 3:
+    elif tmp.priorite >= 400:
         for hideux,elt in enumerate(liste):
             liste[hideux].celebree=False
             if elt.personne == tmp.personne:
@@ -495,7 +494,7 @@ def selection(Annee,liste,date,samedi,ferie):
                 liste[hideux].commemoraison=False
                 liste[hideux].omission=True
     
-    elif tmp.degre == 4:
+    elif tmp.priorite >= 200:
         tmp.celebree=False
         tmp.peut_etre_celebree=True
         for hideux,elt in enumerate(liste):
@@ -516,7 +515,7 @@ def selection(Annee,liste,date,samedi,ferie):
     
     return liste
 
-def renvoie_regex(retour,regex,liste): # WARNING is this func useless ?
+def renvoie_regex(retour,regex,liste):
     retour.__dict__['regex'] = {}
     de_cote = []
     for index in regex:
@@ -999,7 +998,8 @@ def pdata(read=True,write=False,**kwargs):
             
 class LiturgicalYear():
     """This class is a collection which contains the whole
-    liturgical years requested during the time of the program."""
+    liturgical years requested during the time of the program.""" # créer une fonction getitemlight (return false si request non valide, ou erreur)
+    instances = []
     
     def __init__(self, proper='romanus',ordo=1962):
         """Init of the instance"""
@@ -1011,8 +1011,11 @@ class LiturgicalYear():
         self.previous_year_data = {}
         self.next_year_names = []
         self.next_year_data = {}
+        
         self.ordo = ordo
         self.proper = proper
+        
+        LiturgicalYear.instances.append(self)
         
     def load_raw_data(self,proper,ordo):
         """Method used only when creating the instance.
@@ -1038,8 +1041,7 @@ class LiturgicalYear():
         """A method which puts feasts in the year"""
         easter = self.easter(year)
         for raw_elt in self.raw_data:
-            elt = raw_elt.__class__()
-            elt.__dict__ = raw_elt.__dict__.copy() # TODO changer peut-être dans Fete, en surchargeant l'opérateur =
+            elt = raw_elt.copy()
             if isinstance(elt.DateCivile(easter,year),datetime.date): #TODO faire de toutes ces fonctions des méthodes
                 date=elt.DateCivile(easter,year)
                 self.move(elt,date)
@@ -1075,7 +1077,7 @@ class LiturgicalYear():
         date = datetime.date(year,1,1)
         for month in self.year_data[year]:
             for day in month:
-                day = selection(self,day,date,self.saturday,self.feria)
+                self.selection(day,date)
                 date += datetime.timedelta(1)
         
         
@@ -1095,7 +1097,7 @@ class LiturgicalYear():
             tmp.append([ [] for i in range(j)])
         return tmp
         
-    def __getitem__(self, request):
+    def __getitem__(self, request): # TODO faire un slicing
         """A method to process request like LiturgicalYear[1962].
         It accepts two types of request :
         - years
@@ -1109,7 +1111,7 @@ class LiturgicalYear():
         elif isinstance(request, datetime.date):
             if request.year in self.previous_year_names: # il faut donc vérifier l'existence de la date auparavant
                 return self.previous_year_data[request.year][request.month - 1][request.day - 1]
-            if request.year not in self.year_names: # peu satisfaisant : il faudrait une demande explicite (avec __call__ ?)
+            elif request.year not in self.year_names: # peu satisfaisant : il faudrait une demande explicite (avec __call__ ?)
                 self.create_year(request.year)
             return self.year_data[request.year][request.month - 1][request.day - 1]
         
@@ -1145,7 +1147,12 @@ class LiturgicalYear():
             for month in self.year_data[year]:
                 for day in month:
                     yield day
-                    
+    def __repr__(self):
+        return """LiturgicalYear. {}/{}""".format(self.ordo,self.proper)
+    
+    def __str__(self):
+        return """LiturgicalYear. Ordo : {}. Proper : {}. Years already loaded : {}.""".format(self.ordo,self.proper,', '.join([ str(year) for year in self.year_names]))
+    
     def easter(self,year):
         """Return a datetime.date object with the Easter date of the year. The function is only available between 1583 and 4100.
         I didn't write this function, but I found it here : http://python.jpvweb.com/mesrecettespython/doku.php?id=date_de_paques """
@@ -1261,6 +1268,93 @@ class LiturgicalYear():
         else:
             self[date].append(new_comer)
         self[date].sort(key=lambda x: x.priorite,reverse=True)
+        
+    def selection(self,liste,date): #DEPRECATED
+        """Selects the feasts which are actually celebrated."""
+        
+        commemoraison = 0 # max 2
+        commemoraison_temporal=False
+        
+        if len(liste) == 0 or liste[0].degre == 5:
+            self.saturday.date = date
+            if self.saturday.Est_ce_samedi(date):
+                liste.append(self.saturday.copy())
+            else:
+                liste.append(self.feria.Dimanche_precedent(date,self))
+            
+        liste.sort(key=lambda x: x.priorite,reverse=True)
+        
+        liste[0].commemoraison = False
+        liste[0].omission = False
+        liste[0].celebree=True
+        i="nothing, it's just for the joke. How funny I am !"
+        tmp = liste[0]
+        liste = sorted(liste[1:], key=lambda a: a.commemoraison_privilegiee, reverse=True)
+        
+        if tmp.dimanche or tmp.fete_du_Seigneur and datetime.date.isoweekday(date) == 7:
+            for hideux, elt in enumerate(liste):
+                liste[hideux].omission = True
+                liste[hideux].celebree = False
+        elif tmp.priorite >= 1650:
+            for hideux,elt in enumerate(liste):
+                liste[hideux].celebree=False
+                if elt.personne == tmp.personne:
+                    liste[hideux].omission = True
+                    liste[hideux].celebree = False
+                elif elt.commemoraison_privilegiee > 0 and commemoraison == 0 and not (tmp.fete_du_Seigneur and elt.dimanche or tmp.dimanche and elt.fete_du_Seigneur):
+                    liste[hideux].commemoraison=True
+                    commemoraison = 1
+                else:
+                    liste[hideux].commemoraison=False
+                    liste[hideux].omission=True
+                    
+        elif tmp.priorite >= 900:
+            for hideux,elt in enumerate(liste):
+                liste[hideux].celebree=False
+                if elt.personne == tmp.personne:
+                    liste[hideux].omission = True
+                    liste[hideux].celebree = False
+                elif commemoraison == 0 and elt.degre >= 2 and not (tmp.fete_du_Seigneur and elt.dimanche or tmp.dimanche and elt.fete_du_Seigneur):
+                    liste[hideux].commemoraison=True
+                    commemoraison = 1
+                else:
+                    liste[hideux].commemoraison=False
+                    liste[hideux].omission=True
+                    
+        elif tmp.priorite >= 400:
+            for hideux,elt in enumerate(liste):
+                liste[hideux].celebree=False
+                if elt.personne == tmp.personne:
+                    liste[hideux].omission = True
+                    liste[hideux].celebree = False
+                elif commemoraison <= 2 and not commemoraison_temporal:
+                    liste[hideux].commemoraison=True
+                    commemoraison_temporal=liste[hideux].temporal
+                    commemoraison += 1
+                else:
+                    liste[hideux].commemoraison=False
+                    liste[hideux].omission=True
+        
+        elif tmp.priorite >= 200:
+            tmp.celebree=False
+            tmp.peut_etre_celebree=True
+            for hideux,elt in enumerate(liste):
+                liste[hideux].celebree=False
+                liste[hideux].peut_etre_celebree=True
+                if elt.personne == tmp.personne:
+                    liste[hideux].omission = True
+                elif commemoraison <= 2 and not commemoraison_temporal:
+                    liste[hideux].commemoraison=True
+                    commemoraison_temporal=liste[hideux].temporal
+                    commemoraison += 1
+                else:
+                    liste[hideux].commemoraison=False
+                    liste[hideux].omission=True
+        
+        liste = [tmp] + liste
+        liste.sort(key=lambda x: x.priorite,reverse=True) # useless ?
+        
+        self[date] = liste
 
         
         
