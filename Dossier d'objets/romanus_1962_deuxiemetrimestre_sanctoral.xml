@@ -5899,4 +5899,114 @@
     </dict>
     <str key="classe">FeteFixe</str>
   </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">21</int>
+        <int key="mois">6</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/21-06-St-Louis-de-Gonzague</str>
+      <dict key="nom">
+        <str key="english">Saint Aloysius Gonzaga, Confessor</str>
+        <str key="francais">Saint Louis de Gonzague, Confesseur</str>
+        <str key="latina">Sancti Aloisii Gonzagae, Confessoris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">louis_gonzague</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>gonzague</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>louis</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>cordoue</str>
+          <str>france</str>
+          <str>anjou</str>
+          <str>toulouse</str>
+          <str>ibarchi</str>
+          <str>martin</str>
+          <str>versiglia</str>
+          <str>orione</str>
+          <str>marie</str>
+          <str>grignion</str>
+          <str>montfort</str>
+          <str>thuringe</str>
+          <str>hongrie</str>
+          <str>aleman</str>
+          <str>morbioli</str>
+          <str>correa</str>
+          <str>bertrand</str>
+          <str>cavara</str>
+          <str>chakichi</str>
+          <str>flores</str>
+          <str>nifaki</str>
+          <str>baba</str>
+          <str>sasanda</str>
+          <str>sotelo</str>
+          <str>naisen</str>
+          <str>maki</str>
+          <str>someyon</str>
+          <str>matzuo</str>
+          <str>barreau</str>
+          <str>touche</str>
+          <str>tezza</str>
+          <str>bonnard</str>
+          <str>jean</str>
+          <str>palazzolo</str>
+          <str>zéphirin</str>
+          <str>moreau</str>
+          <str>compos</str>
+          <str>gorriz</str>
+          <str>roch</str>
+          <str>gientyngier</str>
+          <str>corsini</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+          <str>confesseur</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
 </list>
