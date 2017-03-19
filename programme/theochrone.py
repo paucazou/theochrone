@@ -19,6 +19,7 @@ from command_line import AutoCompleter
 autocomplete = AutoCompleter()
 autocomplete.autocomplete()
 
+import annus
 import calendar
 import datetime
 import officia
@@ -184,7 +185,7 @@ ordo=args.ordo
 
 ### Analyse des fichiers ###
 #Annee = officia.fabrique_an(debut,fin,ordo,args.propre)
-Annee = officia.LiturgicalYear(args.propre,ordo)
+Annee = annus.LiturgicalYear(args.propre,ordo)
 
 ### Affichage ###
 

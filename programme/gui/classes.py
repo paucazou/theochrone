@@ -10,6 +10,7 @@ chemin = os.path.dirname(os.path.abspath(__file__))
 programme = os.path.abspath(chemin + '/..')
 sys.path.append(programme)
 import adjutoria
+import annus
 import officia
 os.chdir(chemin)
 
@@ -79,7 +80,7 @@ class Main(QMainWindow,SuperTranslator):
         
         QMainWindow.__init__(self)
         SuperTranslator.__init__(self)
-        self.Annee = officia.LiturgicalYear()
+        self.Annee = annus.LiturgicalYear()
         self.actions()
         self.initUI()
         
@@ -185,6 +186,8 @@ class Main(QMainWindow,SuperTranslator):
         self.setWindowTitle('Theochrone - ' + date.toString())
         print(date.day(),date.month(),date.year())
         debut = fin = date.toPyDate()
+        if debut.year not in self.Annee:
+            self.Annee(debut.year)
         selection = self.Annee[debut]
         self.tableau.setRowCount(len(selection))
         self.tableau.setColumnCount(5)
@@ -209,6 +212,8 @@ class Main(QMainWindow,SuperTranslator):
         annee = self.W.onglets.W.tab1.spinbox.value()
         print(annee,keyword)
         debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
+        if debut.year not in self.Annee:
+            self.Annee(debut.year)
         if self.W.onglets.W.tab1.plus.isChecked():
             plus = True
         else:

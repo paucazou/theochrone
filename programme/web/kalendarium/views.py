@@ -10,6 +10,7 @@ from .forms import *
 chemin = os.path.dirname(os.path.abspath(__file__))
 programme = os.path.abspath(chemin + '/../..')
 sys.path.append(programme)
+import annus
 import adjutoria
 import officia
     
@@ -30,7 +31,7 @@ def home(request,
     
     retour = ''
     deroule = {}
-    Annee = officia.LiturgicalYear()
+    Annee = annus.LiturgicalYear()
     if mots_clefs == '':        
         date = debut
         while date <= fin:
