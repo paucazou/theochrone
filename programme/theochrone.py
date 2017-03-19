@@ -186,6 +186,7 @@ ordo=args.ordo
 ### Analyse des fichiers ###
 #Annee = officia.fabrique_an(debut,fin,ordo,args.propre)
 Annee = annus.LiturgicalYear(args.propre,ordo)
+Annee(debut.year,fin.year)
 
 ### Affichage ###
 

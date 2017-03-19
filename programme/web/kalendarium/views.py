@@ -34,6 +34,7 @@ def home(request,
     Annee = annus.LiturgicalYear()
     if mots_clefs == '':        
         date = debut
+        Annee(date.year)
         while date <= fin:
             deroule[date] = Annee[date]
             date = date + datetime.timedelta(1)

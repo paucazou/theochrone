@@ -86,7 +86,7 @@ class LiturgicalYear():
         easter = self.easter(year)
         for raw_elt in self.raw_data:
             elt = raw_elt.copy()
-            if isinstance(elt.DateCivile(easter,year),datetime.date): #TODO faire de toutes ces fonctions des méthodes
+            if isinstance(elt.DateCivile(easter,year),datetime.date):
                 date=elt.DateCivile(easter,year)
                 self.move(elt,date)
             else:
@@ -119,26 +119,18 @@ class LiturgicalYear():
             self.put_in_year(pyear)
         
         date = datetime.date(year,1,1)
-        for month in self.year_data[year]:
-            for day in month:
-                self.selection(day,date)
-                date += datetime.timedelta(1)
+        for date, day in self.year_data[year].items():
+            self.selection(day,date)
+            
         
         
     def create_empty_year(self,year):
         """A method which creates the skeleton of each year"""
-        tmp = list()
-        for i in range(12):
-            if i in (3,5,8,10):
-                j = 30
-            elif i == 1:
-                if calendar.isleap(year):
-                    j = 29
-                else:
-                    j = 28
-            else:
-                j = 31
-            tmp.append([ [] for i in range(j)])
+        tmp = {}
+        date=datetime.date(year,1,1)
+        while date.year == year:
+            tmp[date] = []
+            date += datetime.timedelta(1)
         return tmp
     
     def __call__(self,first,last=None):
@@ -150,7 +142,7 @@ class LiturgicalYear():
             if year not in self.year_names:
                 self.create_year(year)
         
-    def __getitem__(self, request): # WARNING comportement incohérent : supprimer la 'magie'
+    def __getitem__(self, request):
         """A method to process request like LiturgicalYear[1962].
         It accepts two types of request :
         - years
@@ -158,15 +150,9 @@ class LiturgicalYear():
         If requested year is not yet loaded,
         it is automatically loaded and returned."""
         if isinstance(request,int):
-            if request not in self.year_names:
-                self.create_year(request)
             return self.year_data[request]
         elif isinstance(request, datetime.date):
-            if request.year in self.previous_year_names: # il faut donc vérifier l'existence de la date auparavant
-                return self.previous_year_data[request.year][request.month - 1][request.day - 1]
-            elif request.year not in self.year_names: # peu satisfaisant : il faudrait une demande explicite (avec __call__ ?)
-                self.create_year(request.year)
-            return self.year_data[request.year][request.month - 1][request.day - 1]
+            return self.year_data[request.year][request]
         elif isinstance(request,slice): # TODO tenir compte du step
             answer = []
             for day in self:
@@ -177,13 +163,12 @@ class LiturgicalYear():
     def __setitem__(self,key,value):
         """A method to process request like LiturgicalYear[datetime.date(2010,1,1] = []"""
         if key.year in self.previous_year_names:
-            self.previous_year_data[key.year][key.month - 1][key.day - 1] = value
+            self.previous_year_data[key.year][key] = value
         elif key.year not in self.year_names:
             self.next_year_names.append(key.year)
             self.next_year_data[key.year] = self.create_empty_year(year)
-            #self.create_year(key.year) # WARNING cela peut causer des boucles infinies : il vaut mieux créer une année vide.
         else:
-            self.year_data[key.year][key.month - 1][key.day - 1] = value
+            self.year_data[key.year][key] = value
             
     def __contains__(self,value):
         """This method determines wether a year exists as a complete year"""
@@ -203,9 +188,9 @@ class LiturgicalYear():
         until the 31th of December of the last year.
         Yield a list containing feasts of the day."""
         for year in self.year_names:
-            for month in self.year_data[year]:
-                for day in month:
-                    yield day
+            for date,day in sorted(self.year_data[year].items()):
+                yield day
+                
     def __repr__(self):
         return """LiturgicalYear. {}/{}""".format(self.ordo,self.proper)
     
@@ -265,20 +250,30 @@ class LiturgicalYear():
         new_comer: a Fete class ;
         date: a datetime.date ;
         """
-        if self[date] == []:
-            self[date].append(new_comer)
-            return self
+        if date.year in self.year_names:
+            liste = self.year_data[date.year][date]
+        elif date.year in self.previous_year_names:
+            liste = self.previous_year_data[date.year][date]
+        else:
+            if date.year not in self.next_year_names:
+                self.next_year_names.append(date.year)
+                self.next_year_data[date.year] = self.create_empty_year(date.year)
+            liste = self.next_year_data[date.year][date]
+        
+        if liste == []:
+            liste.append(new_comer)
+            return
         
         #Faut-il déplacer ?
-        opponent = self[date][0]
+        opponent = liste[0]
 
         # Cas de 'new_comer' ayant la même self.personne que 'opponent'
         if new_comer.personne == opponent.personne:
-            self[date].append(new_comer)
+            liste.append(new_comer)
         # Cas de 'new_comer' et 'opponent' tous deux transférés
         elif new_comer.transferee and opponent.transferee:
             if new_comer.priorite > opponent.priorite:
-                self[date][0] = new_comer
+                liste[0] = new_comer
                 opponent.transferee=True
                 self.move(opponent,date + datetime.timedelta(1))
             else:
@@ -289,7 +284,7 @@ class LiturgicalYear():
             new_comer.date = new_comer.date + datetime.timedelta(1)
             self.move(new_comer,date + datetime.timedelta(1))
         elif opponent.transferee and new_comer.priorite > 800:
-            self[date][0] = new_comer
+            liste[0] = new_comer
             opponent.date = opponent.date + datetime.timedelta(1)
             self.move(opponent,date + datetime.timedelta(1))
         # Cas de 'new_comer' fête de première classe vs 'opponent' fête de première classe
@@ -298,11 +293,11 @@ class LiturgicalYear():
                 new_comer.transferee=True
                 self.move(new_comer,date + datetime.timedelta(1))
             elif opponent.priorite > 1600 and opponent.priorite < new_comer.priorite and not opponent.dimanche:
-                self[date][0] = new_comer
+                liste[0] = new_comer
                 opponent.transferee=True
                 self.move(opponent,date + datetime.timedelta(1))
             else:
-                self[date].append(new_comer)
+                liste.append(new_comer)
         elif self.proper != 'romanus' and (new_comer.occurrence_perpetuelle or opponent.occurrence_perpetuelle):
             premier_dimanche_avent = dimancheapres(datetime.date(year,12,25)) - datetime.timedelta(28)
             # Cas de 'new_comer' fête de seconde classe empêchée perpétuellement # WARNING pourquoi la valeur self.transferee n'est-elle pas modifiée en-dessous ? WARNING
@@ -310,7 +305,7 @@ class LiturgicalYear():
                 new_comer.date = new_comer.date + datetime.timedelta(1)
                 self.move(new_comer, date + datetime.timedelta(1))
             elif opponent.priorite > 800 and new_comer.priorite > 800 and new_comer.priorite > opponent.priorite and not opponent.dimanche:
-                self[date][0] = new_comer
+                liste[0] = new_comer
                 opponent.date = opponent.date + datetime.timedelta(1)
                 self.move(opponent,date + datetime.timedelta(1))
             # Cas de 'new_comer' fête de troisième classe particulière empêchée perpétuellement 
@@ -319,16 +314,16 @@ class LiturgicalYear():
                     new_comer.date = new_comer.date + datetime.timedelta(1)
                     self.move(new_comer, date + datetime.timedelta(1))
                 elif opponent.priorite <=700 and new_comer.priorite >= 550 and new_comer.priorite > opponent.priorite and not opponent.dimanche:
-                    self[date][0] = new_comer
+                    liste[0] = new_comer
                     opponent.date = opponent.date + datetime.timedelta(1)
                     self.move(opponent,date + datetime.timedelta(1))
                 else:
-                    self[date].append(new_comer)
+                    liste.append(new_comer)
         else:
-            self[date].append(new_comer)
-        self[date].sort(key=lambda x: x.priorite,reverse=True)
+            liste.append(new_comer)
+        liste.sort(key=lambda x: x.priorite,reverse=True)
         
-    def selection(self,liste,date): #DEPRECATED
+    def selection(self,liste,date):
         """Selects the feasts which are actually celebrated."""
         
         commemoraison = 0 # max 2
@@ -411,6 +406,6 @@ class LiturgicalYear():
                     liste[hideux].omission=True
         
         liste = [tmp] + liste
-        liste.sort(key=lambda x: x.priorite,reverse=True) # useless ?
+        liste.sort(key=lambda x: x.priorite,reverse=True)
         
-        self[date] = liste
+        self.year_data[date] = liste

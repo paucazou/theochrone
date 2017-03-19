@@ -186,8 +186,7 @@ class Main(QMainWindow,SuperTranslator):
         self.setWindowTitle('Theochrone - ' + date.toString())
         print(date.day(),date.month(),date.year())
         debut = fin = date.toPyDate()
-        if debut.year not in self.Annee:
-            self.Annee(debut.year)
+        self.Annee(debut.year)
         selection = self.Annee[debut]
         self.tableau.setRowCount(len(selection))
         self.tableau.setColumnCount(5)
@@ -212,8 +211,7 @@ class Main(QMainWindow,SuperTranslator):
         annee = self.W.onglets.W.tab1.spinbox.value()
         print(annee,keyword)
         debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
-        if debut.year not in self.Annee:
-            self.Annee(debut.year)
+        self.Annee(debut.year)
         if self.W.onglets.W.tab1.plus.isChecked():
             plus = True
         else:
