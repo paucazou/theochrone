@@ -1097,7 +1097,7 @@ class LiturgicalYear():
             tmp.append([ [] for i in range(j)])
         return tmp
         
-    def __getitem__(self, request): # TODO faire un slicing
+    def __getitem__(self, request):
         """A method to process request like LiturgicalYear[1962].
         It accepts two types of request :
         - years
@@ -1114,6 +1114,12 @@ class LiturgicalYear():
             elif request.year not in self.year_names: # peu satisfaisant : il faudrait une demande explicite (avec __call__ ?)
                 self.create_year(request.year)
             return self.year_data[request.year][request.month - 1][request.day - 1]
+        elif isinstance(request,slice): # TODO tenir compte du step
+            answer = []
+            for day in self:
+                if day[0].date >= request.start and day[0].date <= request.stop:
+                    answer.append(day)
+            return answer
         
     def __setitem__(self,key,value):
         """A method to process request like LiturgicalYear[datetime.date(2010,1,1] = []"""
