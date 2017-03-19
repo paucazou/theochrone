@@ -16,7 +16,7 @@ os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QVBoxLayout, QWidget
 
 _ = QCoreApplication.translate # a name more convenient
 current = QDate().currentDate()
@@ -86,6 +86,7 @@ class Main(QMainWindow,SuperTranslator):
         
         self.W.onglets.W.tab1.cal.clicked[QDate].connect(self.useDate)
         self.W.onglets.W.tab1.kw_bouton.clicked.connect(self.useKeyWord)
+        self.W.onglets.W.tabPlus.bt_week.clicked.connect(self.useWeek)
         
     def menu(self):
         """A function which describes the menubar of the main window"""
@@ -135,7 +136,7 @@ class Main(QMainWindow,SuperTranslator):
         # widgets
         # main widget
         self.tableau = QTableWidget()
-        self.setCentralWidget(self.tableau)
+        self.arbre = QTreeWidget()
         # widgets on the right
         self.rightDock = QDockWidget('right_dock',self)
         self.W.onglets = Onglets()
@@ -183,6 +184,7 @@ class Main(QMainWindow,SuperTranslator):
         
         
     def useDate(self,date):
+        self.setCentralWidget(self.tableau)
         self.setWindowTitle('Theochrone - ' + date.toString())
         print(date.day(),date.month(),date.year())
         debut = fin = date.toPyDate()
@@ -204,6 +206,7 @@ class Main(QMainWindow,SuperTranslator):
         
         
     def useKeyWord(self):
+        self.setCentralWidget(self.tableau)
         keyword = self.W.onglets.W.tab1.keyword.text()
         if keyword == '':
             return
@@ -230,6 +233,18 @@ class Main(QMainWindow,SuperTranslator):
             else:
                 temps = 'Sanctoral'
             self.tableau.setItem(i,5,QTableWidgetItem(temps))
+            
+    def useWeek(self):
+        self.setCentralWidget(self.arbre)
+        tab=self.W.onglets.W.tabPlus
+        year = tab.wy_spinbox.text()
+        month = tab.monthweek_combo.currentIndex() + 1
+        week = tab.week_combo.currentIndex()
+        self.Annee(year)
+        WEEK = self.Annee.weekmonth(year,month,week)
+        self.arbre.setColumnCount(1)
+        self.arbre.
+        
         
 class Onglets(QWidget,SuperTranslator):
     """A class for a tab widget"""
@@ -439,6 +454,15 @@ class Multiple(QWidget,SuperTranslator):
                     self.week_combo.setCurrentIndex(i)
                     break
                 
+class Tree(QWidget,SuperTranslator):
+    """A class which defines the main widget used with multiple days"""
+    def __init__(self,debut,fin):
+        QWidget.__init__(self)
+        SuperTranslator.__init__(self)
+        self.arbre = QTreeWidget()
+        self.initUI(debut,fin)
+        
+    def initUI(self): 
         
         
         
