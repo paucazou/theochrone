@@ -121,8 +121,6 @@ class LiturgicalYear():
         date = datetime.date(year,1,1)
         for date, day in self.year_data[year].items():
             self.selection(day,date)
-            
-        
         
     def create_empty_year(self,year):
         """A method which creates the skeleton of each year"""
@@ -242,8 +240,28 @@ class LiturgicalYear():
         """Return a list a feasts for requested week of 'month' in 'year'.
         Weeks starts with Sundays and may be incomplete.
         Week number start with 0."""
-        week_list = liturgiccal.monthdayscalendar(year,month)[week]
-        return [ self[datetime.date(year,month,day)] for day in week_list if day != 0]
+        try:
+            week_list = liturgiccal.monthdayscalendar(year,month)[week]
+        except IndexError:
+            return False
+        return [ self.year_data[datetime.date(year,month,day)] for day in week_list if day != 0]
+    
+    def month_with_weeks(self,year,month):
+        """Return a list of weeks for requested month of year.
+        January = 1"""
+        month_list = []
+        for i in range(7):
+            week = self.weekmonth(year,month,i)
+            if week:
+                month_list.append(week)
+            else:
+                break
+        return month_list
+    
+    def year_with_months_and_weeks(self,year):
+        year_list = []
+        return [ self.month_with_weeks(year,i) for i in range(1,13)]
+        
         
     def move(self,new_comer,date):
         """Move 'new_comer' if necessary, and put it at the right date.
