@@ -456,15 +456,15 @@ class Multiple(QWidget,SuperTranslator):
                 
 class Tree(QWidget,SuperTranslator):
     """A class which defines the main widget used with multiple days"""
-    def __init__(self,debut,fin):
+    def __init__(self,debut,fin,data):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
-        self.arbre = QTreeWidget()
         self.initUI(debut,fin)
         
     def initUI(self): 
-        
-        
+        self.arbre = QTreeWidget()
+        self.arbre.setHeaderHidden(True)
+        depth = lambda L: isinstance(L, list) and max(map(depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to
         
         
     
