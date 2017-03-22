@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+import datetime
 import os
 import sys
 import pickle
@@ -31,7 +32,7 @@ def home(request,
     
     retour = ''
     deroule = {}
-    Annee = annus.LiturgicalYear()
+    Annee = annus.LiturgicalCalendar()
     if mots_clefs == '':        
         date = debut
         Annee(date.year)
@@ -45,7 +46,8 @@ def home(request,
             titre = debut
     else:
         titre = mots_clefs
-        deroule[titre] = officia.inversons(mots_clefs,Annee,adjutoria.datetime.date(annee,1,1),adjutoria.datetime.date(annee,12,31),exit=False,plus=plus)
+        Annee(annee)
+        deroule[titre] = officia.inversons(mots_clefs,Annee,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='francais',exit=False,plus=plus)
         inversion=True
 
     deroule = sorted(deroule.items())

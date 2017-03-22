@@ -40,7 +40,7 @@ latinus={
         
 liturgiccal=calendar.Calendar(firstweekday=6)
 
-class LiturgicalYear():
+class LiturgicalCalendar():
     """This class is a collection which contains the whole
     liturgical years requested during the time of the program.""" # créer une fonction getitemlight (return false si request non valide, ou erreur)
     instances = []
@@ -59,7 +59,7 @@ class LiturgicalYear():
         self.ordo = ordo
         self.proper = proper
         
-        LiturgicalYear.instances.append(self)
+        LiturgicalCalendar.instances.append(self)
         
     def load_raw_data(self,proper,ordo):
         """Method used only when creating the instance.

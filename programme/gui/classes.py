@@ -80,7 +80,7 @@ class Main(QMainWindow,SuperTranslator):
         
         QMainWindow.__init__(self)
         SuperTranslator.__init__(self)
-        self.Annee = annus.LiturgicalYear()
+        self.Annee = annus.LiturgicalCalendar()
         self.actions()
         self.initUI()
         
