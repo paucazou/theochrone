@@ -135,7 +135,6 @@ class Main(QMainWindow,SuperTranslator):
         
         # widgets
         # main widget
-        self.tableau = QTableWidget()
         self.arbre = QTreeWidget()
         # widgets on the right
         self.rightDock = QDockWidget('right_dock',self)
@@ -184,29 +183,15 @@ class Main(QMainWindow,SuperTranslator):
         
         
     def useDate(self,date):
-        self.setCentralWidget(self.tableau)
         self.setWindowTitle('Theochrone - ' + date.toString())
         print(date.day(),date.month(),date.year())
         debut = fin = date.toPyDate()
         self.Annee(debut.year)
         selection = self.Annee[debut]
-        self.tableau.setRowCount(len(selection))
-        self.tableau.setColumnCount(5)
-        for i, elt in enumerate(selection):
-            self.tableau.setItem(i,0,QTableWidgetItem(elt.nom['francais']))
-            self.tableau.setItem(i,1,QTableWidgetItem(str(elt.degre)))
-            self.tableau.setItem(i,2,QTableWidgetItem(elt.couleur))
-            self.tableau.setItem(i,3,QTableWidgetItem(officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize()))
-            if elt.temporal:
-                temps = 'Temporal'
-            else:
-                temps = 'Sanctoral'
-            self.tableau.setItem(i,4,QTableWidgetItem(temps))
-            
-        
+        self.tableau = Table(selection,self.Annee)
+        self.setCentralWidget(self.tableau)           
         
     def useKeyWord(self):
-        self.setCentralWidget(self.tableau)
         keyword = self.W.onglets.W.tab1.keyword.text()
         if keyword == '':
             return
@@ -220,19 +205,8 @@ class Main(QMainWindow,SuperTranslator):
         else:
             plus = False
         selection = officia.inversons(keyword,self.Annee,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
-        self.tableau.setRowCount(len(selection))
-        self.tableau.setColumnCount(6)
-        for i, elt in enumerate(selection):
-            self.tableau.setItem(i,0,QTableWidgetItem(elt.nom['francais']))
-            self.tableau.setItem(i,1,QTableWidgetItem(str(elt.date)))
-            self.tableau.setItem(i,2,QTableWidgetItem(str(elt.degre)))
-            self.tableau.setItem(i,3,QTableWidgetItem(elt.couleur))
-            self.tableau.setItem(i,4,QTableWidgetItem(officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize()))
-            if elt.temporal:
-                temps = 'Temporal'
-            else:
-                temps = 'Sanctoral'
-            self.tableau.setItem(i,5,QTableWidgetItem(temps))
+        self.tableau = Table(selection,self.Annee,True)
+        self.setCentralWidget(self.tableau)
             
     def useWeek(self):
         self.setCentralWidget(self.arbre)
@@ -243,7 +217,6 @@ class Main(QMainWindow,SuperTranslator):
         self.Annee(year)
         WEEK = self.Annee.weekmonth(year,month,week)
         self.arbre.setColumnCount(1)
-        self.arbre.
         
         
 class Onglets(QWidget,SuperTranslator):
@@ -466,5 +439,30 @@ class Tree(QWidget,SuperTranslator):
         self.arbre.setHeaderHidden(True)
         depth = lambda L: isinstance(L, list) and max(map(depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to
         
+class Table(QTableWidget,SuperTranslator):
+
+    def __init__(self,liste,Annee,inverse=False):
+        QTableWidget.__init__(self)
+        SuperTranslator.__init__(self)
+        self.setColumnCount(6)
+        self.setRowCount(len(liste))
+        if inverse:
+            name_pos = 0
+            date_pos = 1
+        else:
+            name_pos = 1
+            date_pos = 0
+        for i, elt in enumerate(liste):
+            self.setItem(i,name_pos,QTableWidgetItem(elt.nom['francais']))
+            self.setItem(i,date_pos,QTableWidgetItem(str(elt.date)))
+            self.setItem(i,2,QTableWidgetItem(str(elt.degre)))
+            self.setItem(i,3,QTableWidgetItem(elt.couleur))
+            self.setItem(i,4,QTableWidgetItem(officia.affiche_temps_liturgique(elt,Annee,'francais').capitalize()))
+            if elt.temporal:
+                temps = 'Temporal'
+            else:
+                temps = 'Sanctoral'
+            self.setItem(i,5,QTableWidgetItem(temps))
+       
         
     
