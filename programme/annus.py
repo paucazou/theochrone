@@ -49,7 +49,7 @@ class LiturgicalCalendar():
     
     def __init__(self, proper='romanus',ordo=1962):
         """Init of the instance"""
-        self.raw_data = self._load_raw_data(proper,ordo) # tuple which contains the data extracted from files
+        self._load_raw_data(proper,ordo) # tuple which contains the data extracted from files
         self.year_names = [] # an ordered list of the year currently saved in the instance
         self.year_data = {} # a dict which contains the liturgical years themselves.
         
@@ -62,7 +62,7 @@ class LiturgicalCalendar():
         self.proper = proper
         
         LiturgicalCalendar.instances.append(self)
-        
+     
     def _load_raw_data(self,proper,ordo):
         """Method used only when creating the instance.
         It loads raw data following the 'proper' and the 'ordo' requested.
@@ -81,7 +81,7 @@ class LiturgicalCalendar():
             self.saturday = pic.load()
             self.feria = pic.load()
             
-        return tuple(tmp)
+        self.raw_data = tmp
     
     def _put_in_year(self, year):
         """A method which puts feasts in the year"""
@@ -106,10 +106,10 @@ class LiturgicalCalendar():
             self.year_data[year] = self.create_empty_year(year)
             self._put_in_year(year)
         elif year in self.previous_year_names:
-            self.previous_year_names.re_move(year)
+            self.previous_year_names.remove(year)
             self.year_data[year] = self.previous_year_data.pop(year)
         else:
-            self.next_year_names.re_move(year)
+            self.next_year_names.remove(year)
             self.year_data[year] = self.next_year_data.pop(year)
             self._put_in_year(year)
             
@@ -138,6 +138,8 @@ class LiturgicalCalendar():
             last = first + 1
         else:
             last += 1
+        if first > last or first < 1600 or last > 4100:
+            return False
         for year in range(first,last):
             if year not in self.year_names:
                 self._create_year(year)
