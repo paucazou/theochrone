@@ -16,7 +16,7 @@ os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 
 _ = QCoreApplication.translate # a name more convenient
 current = QDate().currentDate()
@@ -209,14 +209,14 @@ class Main(QMainWindow,SuperTranslator):
         self.setCentralWidget(self.tableau)
             
     def useWeek(self):
-        self.setCentralWidget(self.arbre)
         tab=self.W.onglets.W.tabPlus
-        year = tab.wy_spinbox.text()
+        year = tab.wy_spinbox.value()
         month = tab.monthweek_combo.currentIndex() + 1
         week = tab.week_combo.currentIndex()
         self.Annee(year)
         WEEK = self.Annee.weekmonth(year,month,week)
-        self.arbre.setColumnCount(1)
+        self.arbre = Tree(WEEK,self.Annee,year,month,week)
+        self.setCentralWidget(self.arbre)
         
         
 class Onglets(QWidget,SuperTranslator):
@@ -427,17 +427,37 @@ class Multiple(QWidget,SuperTranslator):
                     self.week_combo.setCurrentIndex(i)
                     break
                 
-class Tree(QWidget,SuperTranslator):
+class Tree(QTreeWidget,SuperTranslator):
     """A class which defines the main widget used with multiple days"""
-    def __init__(self,debut,fin,data):
+    def __init__(self,data,Annee,year,month=-1,week=-1):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
-        self.initUI(debut,fin)
+        self.Annee=Annee
+        self.year = year
+        self.month = month
+        self.week = week
+        self.initUI(data)
+        self.retranslateUI()
+        self.setSortingEnabled(True)
         
-    def initUI(self): 
-        self.arbre = QTreeWidget()
-        self.arbre.setHeaderHidden(True)
-        depth = lambda L: isinstance(L, list) and max(map(depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to
+    
+    def initUI(self,data): 
+        depth = lambda L: isinstance(L, list) and max(map(depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
+        self.setColumnCount(5)
+        if depth(data) == 2:
+            parent = QTreeWidgetItem(self.invisibleRootItem(),["""{}:{}:{}""".format(self.year,self.month,self.week+1)])
+            for day in data:
+                day_parent = QTreeWidgetItem(parent,[str(day[0].date)])
+                for elt in day:
+                    if elt.temporal:
+                        temps = 'Temporal'
+                    else:
+                        temps = 'Sanctoral'
+                    QTreeWidgetItem(day_parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize(),temps])
+        
+    def retranslateUI(self):
+        SuperTranslator.retranslateUI(self)
+        self.setHeaderLabels([_("Tree","Date/Name"),_("Tree","Class"),_("Tree","Colour"),_("Tree","Temporal/Sanctoral"),_("Tree","Time"),])
         
 class Table(QTableWidget,SuperTranslator):
 
