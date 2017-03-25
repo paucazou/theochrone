@@ -87,6 +87,8 @@ class Main(QMainWindow,SuperTranslator):
         self.W.onglets.W.tab1.cal.clicked[QDate].connect(self.useDate)
         self.W.onglets.W.tab1.kw_bouton.clicked.connect(self.useKeyWord)
         self.W.onglets.W.tabPlus.bt_week.clicked.connect(self.useWeek)
+        self.W.onglets.W.tabPlus.bt_month.clicked.connect(self.useMonth)
+        self.W.onglets.W.tabPlus.bt_year.clicked.connect(self.useYear)
         
     def menu(self):
         """A function which describes the menubar of the main window"""
@@ -216,6 +218,23 @@ class Main(QMainWindow,SuperTranslator):
         self.Annee(year)
         WEEK = self.Annee.weekmonth(year,month,week)
         self.W.arbre = Tree(WEEK,self.Annee,year,month,week)
+        self.setCentralWidget(self.W.arbre)
+        
+    def useMonth(self):
+        tab = self.W.onglets.W.tabPlus
+        year = tab.my_spinbox.value()
+        month = tab.month_combo.currentIndex() + 1
+        self.Annee(year)
+        MONTH = self.Annee.month_with_weeks(year, month)
+        self.W.arbre = Tree(MONTH,self.Annee,year,month)
+        self.setCentralWidget(self.W.arbre)
+        
+    def useYear(self):
+        tab = self.W.onglets.W.tabPlus
+        year = tab.yy_spinbox.value()
+        self.Annee(year)
+        YEAR = self.Annee.year_with_months_and_weeks(year)
+        self.W.arbre = Tree(YEAR,self.Annee,year)
         self.setCentralWidget(self.W.arbre)
         
         
@@ -429,7 +448,9 @@ class Multiple(QWidget,SuperTranslator):
                 
 class Tree(QTreeWidget,SuperTranslator):
     """A class which defines the main widget used with multiple days"""
-    def __init__(self,data,Annee,year,month=-1,week=-1):
+    
+    depth = depth = lambda self,L: isinstance(L, list) and max(map(self.depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
+    def __init__(self,data,Annee,year,month=1,week=1):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
         self.Annee=Annee
@@ -441,14 +462,16 @@ class Tree(QTreeWidget,SuperTranslator):
         self.retranslateUI()
         
         for i in range(6):
-            self.resizeColumnToContents(i) # ne marche pas tout à fait
+            self.resizeColumnToContents(i)
         self.header().setStretchLastSection(True)
         
     
-    def initUI(self,data): 
-        depth = lambda L: isinstance(L, list) and max(map(depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
+    def initUI(self,data):
         self.setColumnCount(5)
-        if depth(data) == 2:
+        date = [str(self.week),str(self.month),str(self.year)]
+        self.populateTree(data,self.depth(data),date,self.invisibleRootItem())
+        
+        if self.depth(data) == 25:
             parent = QTreeWidgetItem(self.invisibleRootItem(),["""{}:{}:{}""".format(self.year,self.month,self.week+1)])
             parent.setExpanded(True)
             for day in data:
@@ -461,6 +484,34 @@ class Tree(QTreeWidget,SuperTranslator):
                     else:
                         temps = 'Sanctoral'
                     QTreeWidgetItem(day_parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize(),temps])
+        
+    def populateTree(self,liste,depth,date,parent):
+        """A function wich populates the QTreeWidget"""
+        print(depth)
+        for elt in liste:
+            if depth == 1:
+                if elt.temporal:
+                    temps = 'Temporal'
+                else:
+                    temps = 'Sanctoral'
+                child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize(),temps])
+
+            else:
+                if depth == 2:
+                    data = [str(elt[0].date)]
+                else:
+                    data = date[depth-3:]
+                    print(depth,data)
+                    data.reverse()
+                    data = [" - ".join(data)]    
+                child = QTreeWidgetItem(parent,data)
+                self.populateTree(elt,depth-1,date,child)
+                child.setExpanded(True)
+                if depth > 2:
+                    date[depth-3] = str(int(date[depth-3]) + 1)
+        else:
+            if depth > 2:
+                date[depth-3] = "1"
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
