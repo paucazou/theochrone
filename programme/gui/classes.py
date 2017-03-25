@@ -205,8 +205,8 @@ class Main(QMainWindow,SuperTranslator):
         else:
             plus = False
         selection = officia.inversons(keyword,self.Annee,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
-        self.tableau = Table(selection,self.Annee,True)
-        self.setCentralWidget(self.tableau)
+        self.W.tableau = Table(selection,self.Annee,True)
+        self.setCentralWidget(self.W.tableau)
             
     def useWeek(self):
         tab=self.W.onglets.W.tabPlus
@@ -215,8 +215,8 @@ class Main(QMainWindow,SuperTranslator):
         week = tab.week_combo.currentIndex()
         self.Annee(year)
         WEEK = self.Annee.weekmonth(year,month,week)
-        self.arbre = Tree(WEEK,self.Annee,year,month,week)
-        self.setCentralWidget(self.arbre)
+        self.W.arbre = Tree(WEEK,self.Annee,year,month,week)
+        self.setCentralWidget(self.W.arbre)
         
         
 class Onglets(QWidget,SuperTranslator):
@@ -436,8 +436,13 @@ class Tree(QTreeWidget,SuperTranslator):
         self.year = year
         self.month = month
         self.week = week
+        
         self.initUI(data)
         self.retranslateUI()
+        
+        for i in range(1,7):
+            self.resizeColumnToContents(i) # ne marche pas tout à fait
+            
         self.setSortingEnabled(True)
         
     
@@ -446,8 +451,10 @@ class Tree(QTreeWidget,SuperTranslator):
         self.setColumnCount(5)
         if depth(data) == 2:
             parent = QTreeWidgetItem(self.invisibleRootItem(),["""{}:{}:{}""".format(self.year,self.month,self.week+1)])
+            parent.setExpanded(True)
             for day in data:
                 day_parent = QTreeWidgetItem(parent,[str(day[0].date)])
+                day_parent.setExpanded(True)
                 for elt in day:
                     if elt.temporal:
                         temps = 'Temporal'
