@@ -40,6 +40,21 @@ latinus={
         
 liturgiccal=calendar.Calendar(firstweekday=6)
 
+# Functions
+
+def oncecalled(function):
+    """Decorator which checks wether the function was called or not"""
+    def _oncecalled(*args,**kwargs):
+        self=args[0]
+        if hash(function) in self.once_called:
+            return False
+        else:
+            self.once_called.append(hash(function))
+            return function(*args,**kwargs)
+    return _oncecalled
+
+# class
+
 class LiturgicalCalendar():
     """This class is a collection which contains the whole
     liturgical years requested during the time of the program.
@@ -49,6 +64,7 @@ class LiturgicalCalendar():
     
     def __init__(self, proper='romanus',ordo=1962):
         """Init of the instance"""
+        self.once_called = [] # A list containing hash of methods once called
         self._load_raw_data(proper,ordo) # tuple which contains the data extracted from files
         self.year_names = [] # an ordered list of the year currently saved in the instance
         self.year_data = {} # a dict which contains the liturgical years themselves.
@@ -60,9 +76,10 @@ class LiturgicalCalendar():
         
         self.ordo = ordo
         self.proper = proper
-        
+                
         LiturgicalCalendar.instances.append(self)
      
+    @oncecalled
     def _load_raw_data(self,proper,ordo):
         """Method used only when creating the instance.
         It loads raw data following the 'proper' and the 'ordo' requested.
