@@ -440,10 +440,9 @@ class Tree(QTreeWidget,SuperTranslator):
         self.initUI(data)
         self.retranslateUI()
         
-        for i in range(1,7):
+        for i in range(6):
             self.resizeColumnToContents(i) # ne marche pas tout à fait
-            
-        self.setSortingEnabled(True)
+        self.header().setStretchLastSection(True)
         
     
     def initUI(self,data): 
@@ -453,6 +452,7 @@ class Tree(QTreeWidget,SuperTranslator):
             parent = QTreeWidgetItem(self.invisibleRootItem(),["""{}:{}:{}""".format(self.year,self.month,self.week+1)])
             parent.setExpanded(True)
             for day in data:
+                print(day[0].date)
                 day_parent = QTreeWidgetItem(parent,[str(day[0].date)])
                 day_parent.setExpanded(True)
                 for elt in day:
