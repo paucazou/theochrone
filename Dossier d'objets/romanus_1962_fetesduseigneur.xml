@@ -1,2 +1,418 @@
-<?xml version='1.0' encoding='utf-8'?>
-<list><Modele><dict key="attributs"><str key="_couleur">blanc</str><int key="_priorite">1600</int><str key="_temps_liturgique">apres_epiphanie</str><bool key="_transferee">False</bool><dict key="addendum"><str key="english" /><str key="francais" /><str key="latina" /></dict><bool key="celebree">True</bool><bool key="commemoraison">False</bool><int key="commemoraison_privilegiee">100</int><None key="date" /><int key="date_">0</int><bool key="date_originelle">False</bool><int key="degre">2</int><bool key="dimanche">False</bool><bool key="fete_du_Seigneur">True</bool><str key="link">http://www.introibo.fr/La-Sainte-Famille-dimanche-apres-l</str><dict key="nom"><str key="english">Holy Family</str><str key="francais">La Sainte Famille</str><str key="latina">Sanctae Familiae Jesu, Mariae, Joseph</str></dict><bool key="occurrence_perpetuelle">True</bool><bool key="omission">False</bool><int key="ordo">1962</int><bool key="pal">False</bool><str key="personne">deuxieme</str><bool key="peut_etre_celebree">False</bool><bool key="peut_etre_votive">False</bool><str key="propre">romanus</str><None key="regex" /><dict key="regex_"><list key="attribut" /><list key="attribut_compose" /><list key="egal" /><list key="hyperonyme"><str>(sainte)?.?famille</str></list><list key="nom" /><list key="nom_compose" /><list key="refus_faible" /><list key="refus_fort" /><list key="syntaxiques"><str>la</str><str>de</str></list><list key="titre"><str>fête</str><str>dimanche</str><str>sainte</str></list></dict><bool key="repris_en_ferie">False</bool><bool key="sanctoral">False</bool><bool key="temporal">True</bool><str key="textes" /><bool key="transferee">False</bool><bool key="votive">False</bool></dict><str key="classe">FeteMobileEpiphanie</str></Modele><Modele><dict key="attributs"><str key="_couleur">blanc</str><int key="_priorite">1500</int><str key="_temps_liturgique">nativite</str><bool key="_transferee">False</bool><dict key="addendum"><str key="english" /><str key="francais" /><str key="latina" /></dict><bool key="celebree">True</bool><bool key="commemoraison">False</bool><int key="commemoraison_privilegiee">100</int><None key="date" /><dict key="date_"><int key="jour">2</int><int key="mois">1</int></dict><bool key="date_originelle">False</bool><int key="degre">2</int><bool key="dimanche">True</bool><bool key="fete_du_Seigneur">True</bool><int key="limite_basse">2</int><int key="limite_haute">5</int><str key="link">http://www.introibo.fr/Tres-saint-Nom-de-Jesus-Dimanche</str><dict key="nom"><str key="english">Most Holy Name of Jesus</str><str key="francais">Très Saint Nom de Jésus</str><str key="latina">Sanctissimi Nominis Jesu</str></dict><bool key="occurrence_perpetuelle">False</bool><bool key="omission">False</bool><int key="ordo">1962</int><bool key="pal">False</bool><str key="personne">deuxieme</str><bool key="peut_etre_celebree">False</bool><bool key="peut_etre_votive">True</bool><str key="propre">romanus</str><None key="regex" /><dict key="regex_"><list key="attribut"><str>jésus</str></list><list key="attribut_compose" /><list key="egal" /><list key="hyperonyme" /><list key="nom"><str>nom</str></list><list key="nom_compose" /><list key="refus_faible" /><list key="refus_fort"><str>marie</str></list><list key="syntaxiques"><str>de</str><str>le</str></list><list key="titre"><str>très</str><str>saint</str></list></dict><bool key="repris_en_ferie">True</bool><bool key="sanctoral">False</bool><bool key="temporal">True</bool><str key="textes" /><bool key="transferee">False</bool><bool key="votive">False</bool></dict><str key="classe">TSNJ</str></Modele><Modele><dict key="attributs"><str key="_couleur">blanc</str><int key="_priorite">2600</int><str key="_temps_liturgique">variable</str><bool key="_transferee">False</bool><dict key="addendum"><str key="english" /><str key="francais" /><str key="latina" /></dict><bool key="celebree">True</bool><bool key="commemoraison">False</bool><int key="commemoraison_privilegiee">90</int><None key="date" /><dict key="date_"><int key="jour">6</int><int key="mois">10</int><int key="ordre">-1</int></dict><bool key="date_originelle">False</bool><int key="degre">1</int><bool key="dimanche">False</bool><bool key="fete_du_Seigneur">True</bool><str key="link">http://www.introibo.fr/Dernier-Dimanche-d-Octobre-le</str><dict key="nom"><str key="english">Our Lord Jesus Christ King</str><str key="francais">Notre-Seigneur Jésus-Christ Roi</str><str key="latina">Domini nostri Jesu Christi Regis</str></dict><bool key="occurrence_perpetuelle">False</bool><bool key="omission">False</bool><int key="ordo">1962</int><bool key="pal">False</bool><str key="personne">deuxieme</str><bool key="peut_etre_celebree">False</bool><bool key="peut_etre_votive">True</bool><str key="propre">romanus</str><None key="regex" /><dict key="regex_"><list key="attribut" /><list key="attribut_compose" /><list key="egal" /><list key="hyperonyme"><str>christ.*roi</str></list><list key="nom" /><list key="nom_compose"><str>notre</str><str>seigneur</str><str>jésus</str></list><list key="refus_faible" /><list key="refus_fort"><str>nom</str></list><list key="syntaxiques"><str>de</str><str>du</str></list><list key="titre"><str>fête</str><str>dimanche</str></list></dict><bool key="repris_en_ferie">False</bool><bool key="sanctoral">True</bool><bool key="temporal">False</bool><str key="textes" /><bool key="transferee">False</bool><bool key="votive">False</bool></dict><str key="classe">FeteMobileMois</str></Modele><Modele><dict key="attributs"><str key="_couleur">blanc</str><int key="_priorite">2600</int><str key="_temps_liturgique">pentecote</str><bool key="_transferee">False</bool><dict key="addendum"><str key="english" /><str key="francais" /><str key="latina" /></dict><bool key="celebree">True</bool><bool key="commemoraison">False</bool><int key="commemoraison_privilegiee">90</int><None key="date" /><int key="date_">56</int><bool key="date_originelle">False</bool><int key="degre">1</int><bool key="dimanche">False</bool><bool key="fete_du_Seigneur">True</bool><str key="link">http://www.introibo.fr/Fete-de-la-Trinite</str><dict key="nom"><str key="english">Trinity Sunday</str><str key="francais">Fête de la Très Sainte Trinité</str><str key="latina">Dominica Sanctissimae Trinitatis</str></dict><bool key="occurrence_perpetuelle">True</bool><bool key="omission">False</bool><int key="ordo">1962</int><bool key="pal">False</bool><str key="personne">deuxieme</str><bool key="peut_etre_celebree">False</bool><bool key="peut_etre_votive">False</bool><str key="propre">romanus</str><None key="regex" /><dict key="regex_"><list key="attribut" /><list key="attribut_compose" /><list key="egal" /><list key="hyperonyme"><str>trinité</str></list><list key="nom" /><list key="nom_compose" /><list key="refus_faible" /><list key="refus_fort" /><list key="syntaxiques"><str>de</str><str>la</str></list><list key="titre"><str>sainte</str><str>très</str></list></dict><bool key="repris_en_ferie">False</bool><bool key="sanctoral">False</bool><bool key="temporal">True</bool><str key="textes" /><bool key="transferee">False</bool><bool key="votive">False</bool></dict><str key="classe">FeteMobilePaques</str></Modele><Modele><dict key="attributs"><str key="_couleur">blanc</str><int key="_priorite">2600</int><str key="_temps_liturgique">pentecote</str><bool key="_transferee">False</bool><dict key="addendum"><str key="english" /><str key="francais" /><str key="latina" /></dict><bool key="celebree">True</bool><bool key="commemoraison">False</bool><int key="commemoraison_privilegiee">90</int><None key="date" /><int key="date_">60</int><bool key="date_originelle">False</bool><int key="degre">1</int><bool key="dimanche">False</bool><bool key="fete_du_Seigneur">True</bool><str key="link">http://www.introibo.fr/Fete-Dieu-ou-Fete-du-Tres-Saint</str><dict key="nom"><str key="english">Feast of Corpus Christi</str><str key="francais">Fête du Très Saint Corps du Christ</str><str key="latina">In Festo Sanctissimi Corporis Christi</str></dict><bool key="occurrence_perpetuelle">False</bool><bool key="omission">False</bool><int key="ordo">1962</int><bool key="pal">False</bool><str key="personne">deuxieme</str><bool key="peut_etre_celebree">False</bool><bool key="peut_etre_votive">True</bool><str key="propre">romanus</str><None key="regex" /><dict key="regex_"><list key="attribut" /><list key="attribut_compose"><str>très</str><str>saint</str></list><list key="egal" /><list key="hyperonyme"><str>fête.?dieu</str><str>saint.?sacrement</str><str>corpus.?(christi|domini)</str></list><list key="nom" /><list key="nom_compose"><str>corps</str><str>christ</str></list><list key="refus_faible" /><list key="refus_fort" /><list key="syntaxiques"><str>du</str></list><list key="titre"><str>fête</str></list></dict><bool key="repris_en_ferie">False</bool><bool key="sanctoral">False</bool><bool key="temporal">True</bool><str key="textes" /><bool key="transferee">False</bool><bool key="votive">False</bool></dict><str key="classe">FeteMobilePaques</str></Modele><Modele><dict key="attributs"><str key="_couleur">blanc</str><int key="_priorite">2600</int><str key="_temps_liturgique">pentecote</str><bool key="_transferee">False</bool><dict key="addendum"><str key="english" /><str key="francais" /><str key="latina" /></dict><bool key="celebree">True</bool><bool key="commemoraison">False</bool><int key="commemoraison_privilegiee">90</int><None key="date" /><int key="date_">68</int><bool key="date_originelle">False</bool><int key="degre">1</int><bool key="dimanche">False</bool><bool key="fete_du_Seigneur">True</bool><str key="link">http://www.introibo.fr/Fete-du-Sacre-Coeur</str><dict key="nom"><str key="english">Feast of the Sacred Heart</str><str key="francais">Fête du Très Saint Cœur de Jésus</str><str key="latina">In Festo Sacratissimi Corde Jesu</str></dict><bool key="occurrence_perpetuelle">False</bool><bool key="omission">False</bool><int key="ordo">1962</int><bool key="pal">False</bool><str key="personne">deuxieme</str><bool key="peut_etre_celebree">False</bool><bool key="peut_etre_votive">True</bool><str key="propre">romanus</str><None key="regex" /><dict key="regex_"><list key="attribut" /><list key="attribut_compose"><str>très</str><str>saint</str></list><list key="egal" /><list key="hyperonyme"><str>(sacré|saint).?cœur</str></list><list key="nom" /><list key="nom_compose"><str>cœur</str><str>jésus</str></list><list key="refus_faible" /><list key="refus_fort" /><list key="syntaxiques"><str>de</str><str>du</str></list><list key="titre"><str>fête</str></list></dict><bool key="repris_en_ferie">False</bool><bool key="sanctoral">False</bool><bool key="temporal">True</bool><str key="textes" /><bool key="transferee">False</bool><bool key="votive">False</bool></dict><str key="classe">FeteMobilePaques</str></Modele></list>
+<?xml version="1.0" encoding="utf-8"?>
+<list>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">1600</int>
+      <str key="_temps_liturgique">apres_epiphanie</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">100</int>
+      <None key="date"/>
+      <int key="date_">0</int>
+      <bool key="date_originelle">False</bool>
+      <int key="degre">2</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <str key="link">http://www.introibo.fr/La-Sainte-Famille-dimanche-apres-l</str>
+      <dict key="nom">
+        <str key="english">Holy Family</str>
+        <str key="francais">La Sainte Famille</str>
+        <str key="latina">Sanctae Familiae Jesu, Mariae, Joseph</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">True</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">deuxieme</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme">
+          <str>(sainte)?.?famille</str>
+        </list>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>la</str>
+          <str>de</str>
+        </list>
+        <list key="titre">
+          <str>fête</str>
+          <str>dimanche</str>
+          <str>sainte</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteMobileEpiphanie</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">1500</int>
+      <str key="_temps_liturgique">nativite</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">100</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">2</int>
+        <int key="mois">1</int>
+      </dict>
+      <bool key="date_originelle">False</bool>
+      <int key="degre">2</int>
+      <bool key="dimanche">True</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <int key="limite_basse">2</int>
+      <int key="limite_haute">5</int>
+      <str key="link">http://www.introibo.fr/Tres-saint-Nom-de-Jesus-Dimanche</str>
+      <dict key="nom">
+        <str key="english">Most Holy Name of Jesus</str>
+        <str key="francais">Très Saint Nom de Jésus</str>
+        <str key="latina">Sanctissimi Nominis Jesu</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">deuxieme</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">True</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>jésus</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>nom</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>marie</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>le</str>
+        </list>
+        <list key="titre">
+          <str>très</str>
+          <str>saint</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">True</bool>
+      <bool key="sanctoral">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">TSNJ</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">2600</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">90</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">6</int>
+        <int key="mois">10</int>
+        <int key="ordre">-1</int>
+      </dict>
+      <bool key="date_originelle">False</bool>
+      <int key="degre">1</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <str key="link">http://www.introibo.fr/Dernier-Dimanche-d-Octobre-le</str>
+      <dict key="nom">
+        <str key="english">Our Lord Jesus Christ King</str>
+        <str key="francais">Notre-Seigneur Jésus-Christ Roi</str>
+        <str key="latina">Domini nostri Jesu Christi Regis</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">deuxieme</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">True</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme">
+          <str>christ.*roi</str>
+        </list>
+        <list key="nom"/>
+        <list key="nom_compose">
+          <str>notre</str>
+          <str>seigneur</str>
+          <str>jésus</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>nom</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>du</str>
+        </list>
+        <list key="titre">
+          <str>fête</str>
+          <str>dimanche</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteMobileMois</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">2600</int>
+      <str key="_temps_liturgique">pentecote</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">90</int>
+      <None key="date"/>
+      <int key="date_">56</int>
+      <bool key="date_originelle">False</bool>
+      <int key="degre">1</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <str key="link">http://www.introibo.fr/Fete-de-la-Trinite</str>
+      <dict key="nom">
+        <str key="english">Trinity Sunday</str>
+        <str key="francais">Fête de la Très Sainte Trinité</str>
+        <str key="latina">Dominica Sanctissimae Trinitatis</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">True</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">deuxieme</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme">
+          <str>trinité</str>
+        </list>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>la</str>
+        </list>
+        <list key="titre">
+          <str>sainte</str>
+          <str>très</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteMobilePaques</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">2600</int>
+      <str key="_temps_liturgique">pentecote</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">90</int>
+      <None key="date"/>
+      <int key="date_">60</int>
+      <bool key="date_originelle">False</bool>
+      <int key="degre">1</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <str key="link">http://www.introibo.fr/Fete-Dieu-ou-Fete-du-Tres-Saint</str>
+      <dict key="nom">
+        <str key="english">Feast of Corpus Christi</str>
+        <str key="francais">Fête du Très Saint Corps du Christ</str>
+        <str key="latina">In Festo Sanctissimi Corporis Christi</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">deuxieme</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">True</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose">
+          <str>très</str>
+          <str>saint</str>
+        </list>
+        <list key="egal"/>
+        <list key="hyperonyme">
+          <str>fête.?dieu</str>
+          <str>saint.?sacrement</str>
+          <str>corpus.?(christi|domini)</str>
+        </list>
+        <list key="nom"/>
+        <list key="nom_compose">
+          <str>corps</str>
+          <str>christ</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>du</str>
+        </list>
+        <list key="titre">
+          <str>fête</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteMobilePaques</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">2600</int>
+      <str key="_temps_liturgique">pentecote</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">90</int>
+      <None key="date"/>
+      <int key="date_">68</int>
+      <bool key="date_originelle">False</bool>
+      <int key="degre">1</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <str key="link">http://www.introibo.fr/Fete-du-Sacre-Coeur</str>
+      <dict key="nom">
+        <str key="english">Feast of the Sacred Heart</str>
+        <str key="francais">Fête du Très Saint Cœur de Jésus</str>
+        <str key="latina">In Festo Sacratissimi Corde Jesu</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">deuxieme</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">True</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose">
+          <str>très</str>
+          <str>saint</str>
+        </list>
+        <list key="egal"/>
+        <list key="hyperonyme">
+          <str>(sacré|saint).?cœur</str>
+        </list>
+        <list key="nom"/>
+        <list key="nom_compose">
+          <str>cœur</str>
+          <str>jésus</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>du</str>
+        </list>
+        <list key="titre">
+          <str>fête</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">False</bool>
+      <bool key="temporal">True</bool>
+      <str key="textes"/>
+      <bool key="transferee">False</bool>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteMobilePaques</str>
+  </Modele>
+</list>
