@@ -10,7 +10,7 @@ import subprocess
 dossier.main()
 import annus
 
-L = annus.LiturgicalYear()
+L = annus.LiturgicalCalendar()
 
 
 def test_paques():
