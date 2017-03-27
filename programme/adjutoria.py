@@ -462,8 +462,12 @@ class FeteFerie(Fete):
         boucle = True
         while boucle:
             curseur = curseur - datetime.timedelta(1)
+            if curseur.year < jour.year and curseur.year not in Annee:
+                liste = Annee.previous_year_data[curseur.year][curseur]
+            else:
+                liste = Annee[curseur]
             try:
-                for office in Annee[curseur]:
+                for office in liste:
                     if office.repris_en_ferie:
                         nouveau = self.__class__()
                         nouveau.date=jour
