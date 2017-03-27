@@ -16,7 +16,7 @@ fichiers=(
     'romanus_1962_cycledepaques.pic',
     'romanus_1962_premiertrimestre_sanctoral.pic',
     'romanus_1962_deuxiemetrimestre_sanctoral.pic',
-    #'romanus_1962_troisiemetrimestre_sanctoral.pic',
+    'romanus_1962_troisiemetrimestre_sanctoral.pic',
     #'romanus_1962_quatriemetrimestre_sanctoral.pic',
     #'gallicanus_1962_dimanches.pic',
     )
