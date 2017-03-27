@@ -218,7 +218,7 @@ class Main(QMainWindow,SuperTranslator):
         week = tab.week_combo.currentIndex()
         self.Annee(year)
         WEEK = self.Annee.weekmonth(year,month,week)
-        self.W.arbre = Tree(WEEK,self.Annee,year,month,week)
+        self.W.arbre = Tree(WEEK,self.Annee,WEEK[0][0].date,month,week)
         self.setCentralWidget(self.W.arbre)
         
     def useMonth(self):
@@ -227,7 +227,7 @@ class Main(QMainWindow,SuperTranslator):
         month = tab.month_combo.currentIndex() + 1
         self.Annee(year)
         MONTH = self.Annee.month_with_weeks(year, month)
-        self.W.arbre = Tree(MONTH,self.Annee,year,month)
+        self.W.arbre = Tree(MONTH,self.Annee,datetime.date(year,month,1),month)
         self.setCentralWidget(self.W.arbre)
         
     def useYear(self):
@@ -235,16 +235,16 @@ class Main(QMainWindow,SuperTranslator):
         year = tab.yy_spinbox.value()
         self.Annee(year)
         YEAR = self.Annee.year_with_months_and_weeks(year)
-        self.W.arbre = Tree(YEAR,self.Annee,year)
+        self.W.arbre = Tree(YEAR,self.Annee,datetime.date(year,1,1))
         self.setCentralWidget(self.W.arbre)
         
-    def useArbitrary(self): # reste à ajouter le bool pour setExpanded
+    def useArbitrary(self): # voir si on ne peut pas traiter la chose directement avec LiturgicalCalendar, qui saurait, lui, ce qu'il faut donner.
         tab = self.W.onglets.W.tabPlus
         debut = tab.frome.date().toPyDate()
         fin = tab.to.date().toPyDate()
         self.Annee(debut.year,fin.year)
         RANGE = [ self.Annee.year_with_months_and_weeks(year) for year in range(debut.year,fin.year+1) ]
-        self.W.arbre = Tree(RANGE,self.Annee,debut.year)
+        self.W.arbre = Tree(RANGE,self.Annee,debut,fin=fin)
         self.setCentralWidget(self.W.arbre)
         
 class Onglets(QWidget,SuperTranslator):
@@ -459,13 +459,19 @@ class Tree(QTreeWidget,SuperTranslator):
     """A class which defines the main widget used with multiple days"""
     
     depth = depth = lambda self,L: isinstance(L, list) and max(map(self.depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
-    def __init__(self,data,Annee,year,month=1,week=1):
+    def __init__(self,data,Annee,debut,month=1,week=1,fin=None):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
         self.Annee=Annee
-        self.year = year
+        self.debut = debut
+        if not fin:
+            self.fin = datetime.date(self.debut.year,12,31)
+        else:
+            self.fin = fin
+        self.year = debut.year
         self.month = month
         self.week = week
+        self.expanded = False
         
         self.initUI(data)
         self.retranslateUI()
@@ -477,7 +483,7 @@ class Tree(QTreeWidget,SuperTranslator):
     
     def initUI(self,data):
         self.setColumnCount(5)
-        date = [str(self.week),str(self.month),str(self.year)]
+        date = [str(self.week),str(self.month),str(self.year)] # TODO garder les valeurs de base, et faire le changement en int dans une compréhension de liste
         self.populateTree(data,self.depth(data),date,self.invisibleRootItem())
         
         if self.depth(data) == 25:
@@ -503,6 +509,8 @@ class Tree(QTreeWidget,SuperTranslator):
                 else:
                     temps = 'Sanctoral'
                 child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize(),temps])
+                if elt.date >= self.debut and elt.date <= self.fin:
+                    self.expanded = True # TODO Il faudrait refermer, mais comment ?
 
             else:
                 if depth == 2:
@@ -514,7 +522,7 @@ class Tree(QTreeWidget,SuperTranslator):
                     data = [" - ".join(data)]    
                 child = QTreeWidgetItem(parent,data)
                 self.populateTree(elt,depth-1,date,child)
-                child.setExpanded(True)
+                child.setExpanded(self.expanded)
                 if depth > 2:
                     date[depth-3] = str(int(date[depth-3]) + 1)
         else:
