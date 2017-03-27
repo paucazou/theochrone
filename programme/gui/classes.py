@@ -89,6 +89,7 @@ class Main(QMainWindow,SuperTranslator):
         self.W.onglets.W.tabPlus.bt_week.clicked.connect(self.useWeek)
         self.W.onglets.W.tabPlus.bt_month.clicked.connect(self.useMonth)
         self.W.onglets.W.tabPlus.bt_year.clicked.connect(self.useYear)
+        self.W.onglets.W.tabPlus.bt_arbitrary.clicked.connect(self.useArbitrary)
         
     def menu(self):
         """A function which describes the menubar of the main window"""
@@ -237,6 +238,14 @@ class Main(QMainWindow,SuperTranslator):
         self.W.arbre = Tree(YEAR,self.Annee,year)
         self.setCentralWidget(self.W.arbre)
         
+    def useArbitrary(self): # reste à ajouter le bool pour setExpanded
+        tab = self.W.onglets.W.tabPlus
+        debut = tab.frome.date().toPyDate()
+        fin = tab.to.date().toPyDate()
+        self.Annee(debut.year,fin.year)
+        RANGE = [ self.Annee.year_with_months_and_weeks(year) for year in range(debut.year,fin.year+1) ]
+        self.W.arbre = Tree(RANGE,self.Annee,debut.year)
+        self.setCentralWidget(self.W.arbre)
         
 class Onglets(QWidget,SuperTranslator):
     """A class for a tab widget"""
@@ -487,7 +496,6 @@ class Tree(QTreeWidget,SuperTranslator):
         
     def populateTree(self,liste,depth,date,parent):
         """A function wich populates the QTreeWidget"""
-        print(depth)
         for elt in liste:
             if depth == 1:
                 if elt.temporal:
