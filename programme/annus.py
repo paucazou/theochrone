@@ -271,6 +271,28 @@ class LiturgicalCalendar():
             return retour if retour != [] else False
         else:
             return False
+        
+    def unsafe_iter(self,start=None,stop=None,reverse=False):
+        """Iterator which uses self.unsafe_get function
+        to yield items"""
+        
+        if not start:
+            start = datetime.date(sorted(self.year_names + self.previous_year_names + self.next_year_names)[0],1,1)
+        if not stop:
+            stop = datetime.date(sorted(self.year_names + self.previous_year_names + self.next_year_names)[-1],12,31)
+        print(start,stop)
+        if not reverse:
+            step = 1
+            date = start
+            stop = stop + datetime.timedelta(1)
+        else:
+            step = -1
+            date = stop
+            stop = start - datetime.timedelta(1)
+        while date != stop:
+            yield self.unsafe_get(date)
+            date = date + datetime.timedelta(step)
+            
     
     def weekmonth(self,year,month,week):
         """Return a list a feasts for requested week of 'month' in 'year'.
