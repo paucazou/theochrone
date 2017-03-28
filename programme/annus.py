@@ -126,7 +126,7 @@ class LiturgicalCalendar():
             self.previous_year_names.remove(year)
             self.year_data[year] = self.previous_year_data.pop(year)
         else:
-            self.next_year_names.remove(year)
+            self.next_year_names.remove(year) # TODO TEST et si on trouvait une même année dans next et dans previous ? -> bug : il faudrait faire en sorte de les fusionner avant.
             self.year_data[year] = self.next_year_data.pop(year)
             self._put_in_year(year)
             
@@ -256,6 +256,21 @@ class LiturgicalCalendar():
         for a in liste.keys():
             entre=self.remonte(liste[a],entre,a)
         return entre
+    
+    def unsafe_get(self,date): # TODO create unsafe_iter
+        """Return a list of feasts if 'date' exists in self.year_data.
+        If not, tries to return from self.previous_year_data
+        or self.next_year_data, else False"""
+        if date.year in self.year_names:
+            return self.year_data[date.year][date]
+        elif date.year in self.previous_year_names:
+            retour = self.previous_year_data[date.year][date]
+            return retour if retour != [] else False
+        elif date.year in self.next_year_names:
+            retour = self.next_year_data[date.year][date]
+            return retour if retour != [] else False
+        else:
+            return False
     
     def weekmonth(self,year,month,week):
         """Return a list a feasts for requested week of 'month' in 'year'.
