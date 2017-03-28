@@ -126,7 +126,7 @@ class LiturgicalCalendar():
             self.previous_year_names.remove(year)
             self.year_data[year] = self.previous_year_data.pop(year)
         else:
-            self.next_year_names.remove(year) # TODO TEST et si on trouvait une même année dans next et dans previous ? -> bug : il faudrait faire en sorte de les fusionner avant.
+            self.next_year_names.remove(year)
             self.year_data[year] = self.next_year_data.pop(year)
             self._put_in_year(year)
             
@@ -134,7 +134,11 @@ class LiturgicalCalendar():
         if pyear not in self.year_names:
             self.previous_year_names.append(pyear)
             self.previous_year_names.sort()
-            self.previous_year_data[pyear] = self.create_empty_year(pyear)
+            if pyear in self.next_year_names:
+                self.next_year_names.remove(pyear)
+                self.previous_year_data[pyear] = self.next_year_data.pop(pyear)
+            else:
+                self.previous_year_data[pyear] = self.create_empty_year(pyear)
             self._put_in_year(pyear)
         
         date = datetime.date(year,1,1)
