@@ -321,6 +321,7 @@ class LiturgicalCalendar():
         return month_list
     
     def year_with_months_and_weeks(self,year):
+        """Returns a complete year with months and weeks as lists in it"""
         year_list = []
         return [ self.month_with_weeks(year,i) for i in range(1,13)]
         
