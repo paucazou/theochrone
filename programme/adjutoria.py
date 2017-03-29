@@ -139,9 +139,8 @@ class Fete:
         Si year == True, renvoie la semaine dans l'année.
         Si tous les deux sont True or False,
         renvoie une liste avec le mois puis l'année."""
-        # http://stackoverflow.com/questions/3806473/python-week-number-of-the-month
-        wn = (self.date.day - 1) // 7 + 1
-        
+        wn = lambda x : [i + 1 for i, week in enumerate(liturgiccal.monthdayscalendar(x.year,x.month)) if x.day in week][0]
+        wn = wn(self.date)        
         firstday = datetime.date(self.date.year, 1, 1)
         if firstday.weekday() > 3:
             firstday = firstday + datetime.timedelta(7 - firstday.isoweekday())
