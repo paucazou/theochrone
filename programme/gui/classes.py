@@ -226,7 +226,7 @@ class Main(QMainWindow,SuperTranslator):
         year = tab.my_spinbox.value()
         month = tab.month_combo.currentIndex() + 1
         self.Annee(year)
-        MONTH = self.Annee.month_with_weeks(year, month)
+        MONTH = self.Annee.listed_month(year, month)
         self.W.arbre = Tree(MONTH,self.Annee,datetime.date(year,month,1),month)
         self.setCentralWidget(self.W.arbre)
         
@@ -234,7 +234,7 @@ class Main(QMainWindow,SuperTranslator):
         tab = self.W.onglets.W.tabPlus
         year = tab.yy_spinbox.value()
         self.Annee(year)
-        YEAR = self.Annee.year_with_months_and_weeks(year)
+        YEAR = self.Annee.listed_year(year)
         self.W.arbre = Tree(YEAR,self.Annee,datetime.date(year,1,1))
         self.setCentralWidget(self.W.arbre)
         
@@ -243,7 +243,7 @@ class Main(QMainWindow,SuperTranslator):
         debut = tab.frome.date().toPyDate()
         fin = tab.to.date().toPyDate()
         self.Annee(debut.year,fin.year)
-        RANGE = [ self.Annee.year_with_months_and_weeks(year) for year in range(debut.year,fin.year+1) ]
+        RANGE = self.Annee.listed_arbitrary(debut,fin)
         self.W.arbre = Tree(RANGE,self.Annee,debut,fin=fin)
         self.setCentralWidget(self.W.arbre)
         
@@ -471,7 +471,6 @@ class Tree(QTreeWidget,SuperTranslator):
         self.year = debut.year
         self.month = month
         self.week = week
-        self.expanded = False
         
         self.initUI(data)
         self.retranslateUI()
@@ -483,22 +482,8 @@ class Tree(QTreeWidget,SuperTranslator):
     
     def initUI(self,data):
         self.setColumnCount(5)
-        date = [str(self.week),str(self.month),str(self.year)] # TODO garder les valeurs de base, et faire le changement en int dans une compréhension de liste
+        date = [self.week,self.month,self.year] # TODO garder les valeurs de base, et faire le changement en int dans une compréhension de liste
         self.populateTree(data,self.depth(data),date,self.invisibleRootItem())
-        
-        if self.depth(data) == 25:
-            parent = QTreeWidgetItem(self.invisibleRootItem(),["""{}:{}:{}""".format(self.year,self.month,self.week+1)])
-            parent.setExpanded(True)
-            for day in data:
-                print(day[0].date)
-                day_parent = QTreeWidgetItem(parent,[str(day[0].date)])
-                day_parent.setExpanded(True)
-                for elt in day:
-                    if elt.temporal:
-                        temps = 'Temporal'
-                    else:
-                        temps = 'Sanctoral'
-                    QTreeWidgetItem(day_parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize(),temps])
         
     def populateTree(self,liste,depth,date,parent):
         """A function wich populates the QTreeWidget"""
@@ -509,25 +494,22 @@ class Tree(QTreeWidget,SuperTranslator):
                 else:
                     temps = 'Sanctoral'
                 child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize(),temps])
-                if elt.date >= self.debut and elt.date <= self.fin:
-                    self.expanded = True # TODO Il faudrait refermer, mais comment ?
-
             else:
                 if depth == 2:
                     data = [str(elt[0].date)]
                 else:
                     data = date[depth-3:]
-                    print(depth,data)
-                    data.reverse()
+                    data = reversed([ str(item) for item in data])
+                    #data.reverse()
                     data = [" - ".join(data)]    
                 child = QTreeWidgetItem(parent,data)
                 self.populateTree(elt,depth-1,date,child)
-                child.setExpanded(self.expanded)
+                child.setExpanded(True)
                 if depth > 2:
-                    date[depth-3] = str(int(date[depth-3]) + 1)
+                    date[depth-3] = date[depth-3] + 1
         else:
             if depth > 2:
-                date[depth-3] = "1"
+                date[depth-3] = 1
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
