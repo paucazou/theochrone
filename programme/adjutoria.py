@@ -133,6 +133,28 @@ class Fete:
             self.date = self.DateCivile_(paques,annee)
         return self.date
     
+    def weeknumber(self,month=True,year=False):
+        """Calcule à quelle semaine appartient la fête.
+        Si month == True, renvoie la semaine dans le mois.
+        Si year == True, renvoie la semaine dans l'année.
+        Si tous les deux sont True or False,
+        renvoie une liste avec le mois puis l'année."""
+        # http://stackoverflow.com/questions/3806473/python-week-number-of-the-month
+        wn = (self.date.day - 1) // 7 + 1
+        
+        firstday = datetime.date(self.date.year, 1, 1)
+        if firstday.weekday() > 3:
+            firstday = firstday + datetime.timedelta(7 - firstday.isoweekday())
+        else:
+            firstday = firstday - datetime.timedelta(firstday.isoweekday())
+        wy = int(((self.date - firstday).days / 7) + 1) # TODO à vérifier
+        if month and year or not month and not year:
+            return wn, wy
+        elif month:
+            return wn
+        else:
+            return wy
+    
     def DatePaques(self,paques,annee):
         """Une fonction qui calcule le nombre de jours par rapport à Pâques"""
         return paques - self.DateCivile(paques,annee)
