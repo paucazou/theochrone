@@ -298,7 +298,7 @@ class LiturgicalCalendar():
             date = date + datetime.timedelta(step)
             
     
-    def weekmonth(self,year,month,week):
+    def weekmonth(self,year,month,week,debut=0,fin=32):
         """Return a list a feasts for requested week of 'month' in 'year'.
         Weeks starts with Sundays and may be incomplete.
         Week number start with 0."""
@@ -306,26 +306,62 @@ class LiturgicalCalendar():
             week_list = liturgiccal.monthdayscalendar(year,month)[week]
         except IndexError:
             return False
-        return [ self.year_data[datetime.date(year,month,day)] for day in week_list if day != 0]
+        return [ self.year_data[datetime.date(year,month,day)] for day in week_list if day != 0 and day >= debut and day <= fin ]
     
-    def month_with_weeks(self,year,month):
+    def listed_month(self,year,month,debut=0,fin=32):
         """Return a list of weeks for requested month of year.
         January = 1"""
         month_list = []
         for i in range(7):
-            week = self.weekmonth(year,month,i)
-            if week:
+            week = self.weekmonth(year,month,i,debut,fin)
+            if week and week != [] :
                 month_list.append(week)
-            else:
+            elif week == False:
                 break
         return month_list
     
-    def year_with_months_and_weeks(self,year):
-        """Returns a complete year with months and weeks as lists in it"""
+    def listed_year(self,year,debut=None,fin=None):
+        if not debut:
+            debut = datetime.date(year,1,1)
+        if not fin:
+            fin = datetime.date(year,12,31)
         year_list = []
-        return [ self.month_with_weeks(year,i) for i in range(1,13)]
-        
-        
+        for i in range(1,13):
+            if i == debut.month and i == fin.month:
+                year_list.append(self.listed_month(year,i,debut.day,fin.day))
+            elif i  == debut.month:
+                year_list.append(self.listed_month(year,i,debut=debut.day))
+            elif i == fin.month:
+                if fin == datetime.date(2017,3,5):
+                    print('fin')
+                year_list.append(self.listed_month(year,i,fin=fin.day))
+            elif i > debut.month and i < fin.month:
+                year_list.append(self.listed_month(year,i))
+        return year_list
+    
+    def listed_arbitrary(self,debut,fin):
+        """Returns an arbitrary span listed by week, month and year, if necessary"""
+        weeknumber = lambda x : [i for i, week in enumerate(liturgiccal.monthdayscalendar(x.year,x.month)) if x.day in week][0]
+        if weeknumber(debut) == weeknumber(fin):
+            return self.weekmonth(debut.year,debut.month,
+                                  weeknumber(debut),debut.day,fin.day)
+        elif debut.month == fin.month:
+            return self.listed_month(debut.year,debut.month,
+                                     debut.day,fin.day)
+        elif debut.year == fin.year:
+            return self.listed_year(debut.year,debut,fin)
+        else:
+            retour = []
+            for year in range(debut.year,fin.year + 1):
+                if debut.year == year :
+                    retour.append(self.listed_year(year,debut=debut))
+                elif fin.year == year :
+                    retour.append(self.listed_year(year,fin=fin))
+                else:
+                    retour.append(self.listed_year(year))
+            return retour
+    
+    
     def _move(self,new_comer,date):
         """Move 'new_comer' if necessary, and put it at the right date.
         new_comer: a Fete class ;
