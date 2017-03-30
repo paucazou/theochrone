@@ -50,7 +50,7 @@ mois = ('janvier','février','mars','avril','mai','juin','juillet','août','sept
     
 liturgiccal=calendar.Calendar(firstweekday=6)
 
-   
+weeknumber = lambda x : [i for i, week in enumerate(liturgiccal.monthdayscalendar(x.year,x.month)) if x.day in week][0] # first week = 0
 
 erreurs={
     'francais':[
