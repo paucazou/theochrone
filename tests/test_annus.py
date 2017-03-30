@@ -32,7 +32,7 @@ def test_oncecalled():
 
 def test_contains():
     L = annus.LiturgicalCalendar()
-    L(1960)
+    L(1962)
     assert datetime.date(1962,3,3) in L
     assert 1962 in L
     for i in range(1600,1962):
