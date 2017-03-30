@@ -14,6 +14,8 @@ sys.path.append(programme)
 import annus
 import adjutoria
 import officia
+
+Annee = annus.LiturgicalCalendar()
     
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
@@ -32,7 +34,6 @@ def home(request,
     
     retour = ''
     deroule = {}
-    Annee = annus.LiturgicalCalendar()
     if mots_clefs == '':        
         date = debut
         Annee(date.year)
