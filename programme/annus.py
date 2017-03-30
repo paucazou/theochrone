@@ -220,7 +220,8 @@ class LiturgicalCalendar():
     def __str__(self):
         return """LiturgicalYear. Ordo : {}. Proper : {}. Years already loaded : {}.""".format(self.ordo,self.proper,', '.join([ str(year) for year in self.year_names]))
     
-    def easter(self,year):
+    @staticmethod
+    def easter(year):
         """Return a datetime.date object with the Easter date of the year. The function is only available between 1583 and 4100.
         I didn't write this function, but I found it here : http://python.jpvweb.com/mesrecettespython/doku.php?id=date_de_paques """
         a=year//100
