@@ -291,4 +291,177 @@
       <bool key="votive">False</bool>
     </dict>
   </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">5</int>
+        <int key="mois">7</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/05-07-St-Antoine-Marie-Zaccaria</str>
+      <dict key="nom">
+        <str key="english">Saint Anthony Mary Zaccaria, Confessor</str>
+        <str key="francais">Saint Antoine-Marie Zaccaria, Confesseur</str>
+        <str key="latina">Sancti Antonii Mariae Zaccaria, Confessoris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">antoine_marie_zaccaria</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>zaccaria</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom"/>
+        <list key="nom_compose">
+          <str>antoine</str>
+          <str>marie</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>athènes</str>
+          <str>agen</str>
+          <str>lialores</str>
+          <str>bajewski</str>
+          <str>chevrier</str>
+          <str>daniel</str>
+          <str>daveluy</str>
+          <str>deynan</str>
+          <str>grassi</str>
+          <str>padoue</str>
+          <str>bulhoes</str>
+          <str>lisbonne</str>
+          <str>gianelli</str>
+          <str>grand</str>
+          <str>cochon</str>
+          <str>grand</str>
+          <str>ermite</str>
+          <str>désert</str>
+          <str>égypte</str>
+          <str>rome</str>
+        </list>
+        <list key="syntaxiques"/>
+        <list key="titre">
+          <str>saint</str>
+          <str>confesseur</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">7</int>
+        <int key="mois">7</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/Ss-Cyrille-et-Methode-7-juillet</str>
+      <dict key="nom">
+        <str key="english">Saint Cyril and Methodius, Bishops and Confessors</str>
+        <str key="francais">Saints Cyrille et Méthode, Évêques et Confesseurs</str>
+        <str key="latina">Sanctorum Cyrilli et Methoddi, Episcoporum et Confessorum</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">cyrille_methode</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>sirmium</str>
+          <str>philosophe</str>
+          <str>thessalonique</str>
+        </list>
+        <list key="attribut_compose">
+          <str>apôtres</str>
+          <str>slaves</str>
+        </list>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>cyrille</str>
+          <str>méthode</str>
+          <str>constantin</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>gortyne</str>
+          <str>antioche</str>
+          <str>sébaste</str>
+          <str>héliopolis</str>
+          <str>jérusalem</str>
+          <str>alexandrie</str>
+        </list>
+        <list key="syntaxiques">
+          <str>des</str>
+          <str>et</str>
+          <str>de</str>
+        </list>
+        <list key="titre">
+          <str>saints</str>
+          <str>confesseurs</str>
+          <str>évêques</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
 </list>
