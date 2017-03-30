@@ -178,7 +178,7 @@ class LiturgicalCalendar():
             return self.year_data[request.year][request]
         elif isinstance(request,slice): # TODO tenir compte du step
             answer = []
-            for day in self:
+            for day in self.__iter__():
                 if day[0].date >= request.start and day[0].date <= request.stop:
                     answer.append(day)
             return answer
