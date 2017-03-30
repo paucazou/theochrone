@@ -407,7 +407,7 @@
       <dict key="nom">
         <str key="english">Saint Cyril and Methodius, Bishops and Confessors</str>
         <str key="francais">Saints Cyrille et Méthode, Évêques et Confesseurs</str>
-        <str key="latina">Sanctorum Cyrilli et Methoddi, Episcoporum et Confessorum</str>
+        <str key="latina">Sanctorum Cyrilli et Methodi, Episcoporum et Confessorum</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
