@@ -262,7 +262,7 @@ class LiturgicalCalendar():
             entre=self.remonte(liste[a],entre,a)
         return entre
     
-    def unsafe_get(self,date): # TODO create unsafe_iter
+    def unsafe_get(self,date):
         """Return a list of feasts if 'date' exists in self.year_data.
         If not, tries to return from self.previous_year_data
         or self.next_year_data, else False"""
@@ -307,7 +307,7 @@ class LiturgicalCalendar():
             week_list = liturgiccal.monthdayscalendar(year,month)[week]
         except IndexError:
             return False
-        return [ self.year_data[datetime.date(year,month,day)] for day in week_list if day != 0 and day >= debut and day <= fin ]
+        return [ self.year_data[year][datetime.date(year,month,day)] for day in week_list if day != 0 and day >= debut and day <= fin ]
     
     def listed_month(self,year,month,debut=0,fin=32):
         """Return a list of weeks for requested month of year.
@@ -526,4 +526,4 @@ class LiturgicalCalendar():
         liste = [tmp] + liste
         liste.sort(key=lambda x: x.priorite,reverse=True)
         
-        self.year_data[date] = liste
+        self.year_data[date.year][date] = liste
