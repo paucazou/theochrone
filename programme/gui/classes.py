@@ -238,13 +238,13 @@ class Main(QMainWindow,SuperTranslator):
         self.W.arbre = Tree(YEAR,self.Annee,datetime.date(year,1,1))
         self.setCentralWidget(self.W.arbre)
         
-    def useArbitrary(self): # voir si on ne peut pas traiter la chose directement avec LiturgicalCalendar, qui saurait, lui, ce qu'il faut donner.
+    def useArbitrary(self):
         tab = self.W.onglets.W.tabPlus
         debut = tab.frome.date().toPyDate()
         fin = tab.to.date().toPyDate()
         self.Annee(debut.year,fin.year)
         RANGE = self.Annee.listed_arbitrary(debut,fin)
-        self.W.arbre = Tree(RANGE,self.Annee,debut,fin=fin)
+        self.W.arbre = Tree(RANGE,self.Annee,debut,month=debut.month,week=officia.weeknumber(debut)+1,fin=fin)
         self.setCentralWidget(self.W.arbre)
         
 class Onglets(QWidget,SuperTranslator):
@@ -458,7 +458,7 @@ class Multiple(QWidget,SuperTranslator):
 class Tree(QTreeWidget,SuperTranslator):
     """A class which defines the main widget used with multiple days"""
     
-    depth = depth = lambda self,L: isinstance(L, list) and max(map(self.depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
+    depth = lambda self,L: isinstance(L, list) and max(map(self.depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
     def __init__(self,data,Annee,debut,month=1,week=1,fin=None):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
@@ -482,7 +482,7 @@ class Tree(QTreeWidget,SuperTranslator):
     
     def initUI(self,data):
         self.setColumnCount(5)
-        date = [self.week,self.month,self.year] # TODO garder les valeurs de base, et faire le changement en int dans une compréhension de liste
+        date = [self.week,self.month,self.year]
         self.populateTree(data,self.depth(data),date,self.invisibleRootItem())
         
     def populateTree(self,liste,depth,date,parent):
@@ -500,7 +500,6 @@ class Tree(QTreeWidget,SuperTranslator):
                 else:
                     data = date[depth-3:]
                     data = reversed([ str(item) for item in data])
-                    #data.reverse()
                     data = [" - ".join(data)]    
                 child = QTreeWidgetItem(parent,data)
                 self.populateTree(elt,depth-1,date,child)
