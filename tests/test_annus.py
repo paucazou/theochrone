@@ -6,14 +6,12 @@ import easter_dates
 import datetime
 import dossier
 import os
+import random
 import subprocess
 import unittest.mock as mock
 
 dossier.main()
 import annus
-
-
-
 
 
 def test_paques():
@@ -39,3 +37,19 @@ def test_contains():
         assert i not in L
     for i in range(1963,4100):
         assert i not in L
+        
+@mock.patch("pickle.Unpickler")
+@mock.patch("__main__.open")
+def test_load_raw_data(mock_open,mock_pickle):
+    pass #return annus.LiturgicalCalendar() # doesn't work
+
+def test_create_empty_year():
+    year = random.randrange(1600,4100)
+    empty_year = annus.LiturgicalCalendar.create_empty_year(year)
+    date = datetime.date(year,1,1)
+    while True:
+        assert date in empty_year
+        assert empty_year[date] == []
+        date = date + datetime.timedelta(1)
+        if date.year != year:
+            break
