@@ -88,17 +88,12 @@ class LiturgicalCalendar():
         for fichier in [file for file in fichiers if file.split('_')[1] == str(ordo) and self.trouve(proper,file.split('_')[0])]:
             with open(chemin + '/data/' + fichier, 'rb') as file:
                 pic=pickle.Unpickler(file)
-                while True:
-                    try:
-                        tmp.append(pic.load())
-                    except EOFError:
-                        break
+                tmp += pic.load()
+        self.raw_data = tmp
+        
         with open(chemin + '/data/samedi_ferie.pic','rb') as file:
             pic=pickle.Unpickler(file)
-            self.saturday = pic.load()
-            self.feria = pic.load()
-            
-        self.raw_data = tmp
+            self.saturday, self.feria = pic.load()           
     
     def _put_in_year(self, year):
         """A method which puts feasts in the year"""

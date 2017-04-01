@@ -254,11 +254,14 @@ def basculer():
         second_file = finput("""Entrez le nom du fichier dans lequel seront enregistrées les données. S'il n'existe pas, il sera automatiquement créé. """,fichier.split('.')[0]+'.pic')
         with open(second_file,'wb') as f:
             pic = pickle.Pickler(f)
+            tmp=[]
             for a in objets:
                 if args.debug:
                     print(a)
+                a = a.copy()
                 a.regex = CompileRegex(a)
-                pic.dump(a)
+                tmp.append(a)
+            pic.dump(tmp)
                 print("""{} enregistré.""".format(a.nom))
             input("""Enregistrement terminé""")
     else:
@@ -584,9 +587,11 @@ if args.xtopic:
     for fichier,obj in fichiers.items():
         with open(fichier.split('.')[0]+'.pic','wb') as f:
             pic = pickle.Pickler(f)
+            tmp=[]
             for a in obj:
                 a.regex = CompileRegex(a)
-                pic.dump(a)
+                tmp.append(a)
+            pic.dump(tmp)
 elif args.indent:
     fichiers = dossier_d_objets()
     os.chdir("./Dossier d'objets")
