@@ -336,157 +336,6 @@ def mois_lettre(mot,langue='english'):
     return False, 0
      
 
-def traite(Annee,objet,date,annee,propre): #DEPRECATED
-    """Déplace la fête 'objet' si c'est nécessaire."""
-    if Annee[date] == []:
-        Annee[date].append(objet)
-        return Annee
-    #Faut-il déplacer ?
-    adversaire = Annee[date][0]
-
-    # Cas de 'objet' ayant la même self.personne que 'adversaire'
-    if objet.personne == adversaire.personne:
-        Annee[date].append(objet)
-    # Cas de 'objet' et 'adversaire' tous deux transférés
-    elif objet.transferee and adversaire.transferee:
-        if objet.priorite > adversaire.priorite:
-            Annee[date][0] = objet
-            adversaire.transferee=True
-            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
-        else:
-            objet.date = objet.date + datetime.timedelta(1)
-            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
-    # Si l'un ou l'autre est transféré
-    elif objet.transferee and adversaire.priorite > 800:
-        objet.date = objet.date + datetime.timedelta(1)
-        Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
-    elif adversaire.transferee and objet.priorite > 800:
-        Annee[date][0] = objet
-        adversaire.date = adversaire.date + datetime.timedelta(1)
-        Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
-    # Cas de 'objet' fête de première classe vs 'adversaire' fête de première classe
-    elif objet.priorite > 1600:
-        if objet.priorite < adversaire.priorite and not objet.dimanche:
-            objet.transferee=True
-            Annee=traite(Annee,objet,date + datetime.timedelta(1),annee,propre)
-        elif adversaire.priorite > 1600 and adversaire.priorite < objet.priorite and not adversaire.dimanche:
-            Annee[date][0] = objet
-            adversaire.transferee=True
-            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
-        else:
-            Annee[date].append(objet)
-    elif propre != 'romanus' and (objet.occurrence_perpetuelle or adversaire.occurrence_perpetuelle):
-        premier_dimanche_avent = dimancheapres(datetime.date(annee,12,25)) - datetime.timedelta(28)
-        # Cas de 'objet' fête de seconde classe empêchée perpétuellement # WARNING pourquoi la valeur self.transferee n'est-elle pas modifiée en-dessous ? WARNING
-        if objet.priorite > 800 and adversaire.priorite > 800 and adversaire.priorite > objet.priorite and not objet.dimanche:
-            objet.date = objet.date + datetime.timedelta(1)
-            Annee=traite(Annee,objet, date + datetime.timedelta(1),annee,propre)
-        elif adversaire.priorite > 800 and objet.priorite > 800 and objet.priorite > adversaire.priorite and not adversaire.dimanche:
-            Annee[date][0] = objet
-            adversaire.date = adversaire.date + datetime.timedelta(1)
-            Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
-        # Cas de 'objet' fête de troisième classe particulière empêchée perpétuellement 
-        elif not date - paques >= datetime.timedelta(-46) and not date - paques < datetime.timedelta(0) and not objet.DateCivile(paques,annee) < datetime.date(annee,12,25) and not objet.DateCivile(paques,annee) >= premier_dimanche_avent:
-            if objet.priorite <= 700 and objet.priorite >= 550 and objet.priorite < adversaire.priorite and not objet.dimanche:
-                objet.date = objet.date + datetime.timedelta(1)
-                Annee=traite(Annee,objet, date + datetime.timedelta(1),annee,propre)
-            elif adversaire.priorite <=700 and objet.priorite >= 550 and objet.priorite > adversaire.priorite and not adversaire.dimanche:
-                Annee[date][0] = objet
-                adversaire.date = adversaire.date + datetime.timedelta(1)
-                Annee=traite(Annee,adversaire,date + datetime.timedelta(1),annee,propre)
-            else:
-                Annee[date].append(objet)
-    else:
-        Annee[date].append(objet)
-    Annee[date].sort(key=lambda x: x.priorite,reverse=True)
-    return Annee
-    
-def selection(Annee,liste,date,samedi,ferie): #DEPRECATED
-    """Selects the feasts which are actually celebrated."""
-    
-    commemoraison = 0 # max 2
-    commemoraison_temporal=False
-    
-    if len(liste) == 0 or liste[0].degre == 5:
-        samedi.date = date
-        if samedi.Est_ce_samedi(date):
-            liste.append(samedi.copy())
-        else:
-            liste.append(ferie.Dimanche_precedent(date,Annee))
-        
-    liste.sort(key=lambda x: x.priorite,reverse=True)
-    
-    liste[0].commemoraison = False
-    liste[0].omission = False
-    liste[0].celebree=True
-    i="nothing, it's just for the joke. How funny I am !"
-    tmp = liste[0]
-    liste = sorted(liste[1:], key=lambda a: a.commemoraison_privilegiee, reverse=True)
-    
-    if tmp.dimanche or tmp.fete_du_Seigneur and datetime.date.isoweekday(date) == 7:
-        for hideux, elt in enumerate(liste):
-            liste[hideux].omission = True
-            liste[hideux].celebree = False
-    elif tmp.priorite >= 1650:
-        for hideux,elt in enumerate(liste):
-            liste[hideux].celebree=False
-            if elt.personne == tmp.personne:
-                liste[hideux].omission = True
-                liste[hideux].celebree = False
-            elif elt.commemoraison_privilegiee > 0 and commemoraison == 0 and not (tmp.fete_du_Seigneur and elt.dimanche or tmp.dimanche and elt.fete_du_Seigneur):
-                liste[hideux].commemoraison=True
-                commemoraison = 1
-            else:
-                liste[hideux].commemoraison=False
-                liste[hideux].omission=True
-                
-    elif tmp.priorite >= 900:
-        for hideux,elt in enumerate(liste):
-            liste[hideux].celebree=False
-            if elt.personne == tmp.personne:
-                liste[hideux].omission = True
-                liste[hideux].celebree = False
-            elif commemoraison == 0 and elt.degre >= 2 and not (tmp.fete_du_Seigneur and elt.dimanche or tmp.dimanche and elt.fete_du_Seigneur):
-                liste[hideux].commemoraison=True
-                commemoraison = 1
-            else:
-                liste[hideux].commemoraison=False
-                liste[hideux].omission=True
-                
-    elif tmp.priorite >= 400:
-        for hideux,elt in enumerate(liste):
-            liste[hideux].celebree=False
-            if elt.personne == tmp.personne:
-                liste[hideux].omission = True
-                liste[hideux].celebree = False
-            elif commemoraison <= 2 and not commemoraison_temporal:
-                liste[hideux].commemoraison=True
-                commemoraison_temporal=liste[hideux].temporal
-                commemoraison += 1
-            else:
-                liste[hideux].commemoraison=False
-                liste[hideux].omission=True
-    
-    elif tmp.priorite >= 200:
-        tmp.celebree=False
-        tmp.peut_etre_celebree=True
-        for hideux,elt in enumerate(liste):
-            liste[hideux].celebree=False
-            liste[hideux].peut_etre_celebree=True
-            if elt.personne == tmp.personne:
-                liste[hideux].omission = True
-            elif commemoraison <= 2 and not commemoraison_temporal:
-                liste[hideux].commemoraison=True
-                commemoraison_temporal=liste[hideux].temporal
-                commemoraison += 1
-            else:
-                liste[hideux].commemoraison=False
-                liste[hideux].omission=True
-    
-    liste = [tmp] + liste
-    liste.sort(key=lambda x: x.priorite,reverse=True) # useless ?
-    
-    return liste
 
 def renvoie_regex(retour,regex,liste):
     retour.__dict__['regex'] = {}
@@ -671,24 +520,7 @@ def affichage(**kwargs):
     return sortie
             
 
-def ouvreetregarde(fichier,Annee,ordo,propre,annee,paques): #DEPRECATED
-    """Open the file 'fichier', and load the objects in it. If objet.ordo with 'ordo' and 'propre' with objet.propre, add the objet to a dict 'Annee', which is an emulation of the year 'Annee', with the key returned by objet.DateCivile."""
-    with open(fichier, 'rb') as file:
-        pic=pickle.Unpickler(file)
-        boucle=True
-        while boucle:
-            try:
-                objet=pic.load()
-                if ordo == objet.ordo and trouve(propre,objet.propre,latinus):
-                    if isinstance(objet.DateCivile(paques,annee),datetime.date):
-                        date=objet.DateCivile(paques,annee)
-                        Annee = traite(Annee,objet,date,annee,propre)
-                    else:
-                        for a in objet.DateCivile(paques,annee):
-                            Annee = traite(Annee,a,a.date,annee,propre)
-            except EOFError:
-                boucle=False
-    return Annee
+
 
 def nom_jour(date,langue):
     """Une fonction qui renvoie le nom du jour de la semaine en fonction du datetime.date rentré"""
@@ -696,25 +528,6 @@ def nom_jour(date,langue):
 
 
 
-def paques(an): # DEPRECATED
-    """Return a datetime.date object with the Easter date of the year 'an'. The function is only available between 1583 and 4100.
-    I didn't write this function, but I found it here : http://python.jpvweb.com/mesrecettespython/doku.php?id=date_de_paques """
-    a=an//100
-    b=an%100
-    c=(3*(a+25))//4
-    d=(3*(a+25))%4
-    e=(8*(a+11))//25
-    f=(5*a+b)%19
-    g=(19*f+c-e)%30
-    h=(f+11*g)//319
-    j=(60*(5-d)+b)//4
-    k=(60*(5-d)+b)%4
-    m=(2*j-k-g+h)%7
-    n=(g-h+m+114)//31
-    p=(g-h+m+114)%31
-    jour=p+1
-    mois=n
-    return datetime.date(an,mois,jour)
 
 def dimancheavant(jour):
     """Une fonction qui renvoie le dimanche d'avant le jour concerné. jour doit être un datetime.date."""
@@ -762,59 +575,7 @@ def weekyear(year, week=None):
         start, end = weekyear(year, 1)
     return start, end
 
-def fabrique_an(debut,fin,ordo=1962,propre='romanus'): # DEPRECATED
-    """Function which creates a liturgical year emulation. It takes four arguments :
-    - debut : a datetime.date for the older date ;
-    - fin : a datetime.date for the latest date ;
-    - ordo : an integer to select which missal will be used ;
-    - propre : a string to select the proper.
-    It returns a dict, whose keys are datetime.date, and values are lists containing Fete classes.
-    WARNING Cette fonction ne permet pas aux fêtes d'être transférée d'une année sur l'autre. Cela peut convenir au propre romain, peut-être pas aux calendriers particuliers.
-    """
-    with open(chemin + '/data/samedi_ferie.pic','rb') as file:
-        pic=pickle.Unpickler(file)
-        samedi = pic.load()
-        ferie = pic.load()
-    
-    cache_files = pdata(cache=True)
-    cache_years = {} 
-    for name in cache_files:
-        cache_years[int(os.path.basename(name).split('.')[0])] = name
-    addtocache = []
-    year = debut.year -1
-    Annee = {}
-    Annee_renvoyee = dict()
-    while True:
-        if year in cache_years:
-            with open(cache_years[year],'rb') as file:
-                extrait = pickle.Unpickler(file).load()
-                Annee.update(extrait)
-                Annee_renvoyee.update(extrait) # facilité
-        else:
-            addtocache.append(year)
-            Paques = paques(year)
-            for fichier in [file for file in fichiers if file.split('_')[1] == str(ordo) and trouve(propre,file.split('_')[0])]:
-                Annee = ouvreetregarde(chemin + '/data/' + fichier,Annee,ordo,propre,year,Paques)
-        if year == fin.year:
-            break
-        else:
-            year += 1
-    
-    date = datetime.date(debut.year,1,1)
-    tosave = {}
-    while True:
-        if date.year in addtocache:
-            Annee_renvoyee[date] = tosave[date] = selection(date,Annee,samedi,ferie)
-            if date == datetime.date(date.year,12,31) and pdata(None):
-                with open("{}/{}.pic".format(pdata(cachepath=True),date.year),'wb') as file:
-                    pickle.Pickler(file).dump(tosave)
-                tosave = {}
-            date = date + datetime.timedelta(1)
-        else:
-            date = datetime.date(date.year + 1,1,1)        
-        if date > datetime.date(fin.year,12,31):
-            break
-    return Annee_renvoyee
+
 
 def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='francais',exit=True):
     """Function which returns a list of feasts matching with mots_bruts. It takes six args:
