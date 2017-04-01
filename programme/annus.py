@@ -93,7 +93,9 @@ class LiturgicalCalendar():
         
         with open(chemin + '/data/samedi_ferie.pic','rb') as file:
             pic=pickle.Unpickler(file)
-            self.saturday, self.feria = pic.load()           
+            tmp = pic.load()
+            self.saturday = tmp[0]
+            self.feria = tmp[1]          
     
     def _put_in_year(self, year):
         """A method which puts feasts in the year"""

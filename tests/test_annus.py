@@ -41,7 +41,10 @@ def test_contains():
 @mock.patch("pickle.Unpickler")
 @mock.patch("__main__.open")
 def test_load_raw_data(mock_open,mock_pickle):
-    pass #return annus.LiturgicalCalendar() # doesn't work
+    L = annus.LiturgicalCalendar()
+    assert getattr(L,'raw_data') is not None
+    assert getattr(L,'saturday') is not None
+    assert getattr(L,'feria') is not None # Pas terrible. Comment être sûr que l'appel à Pickle a été fait ?
 
 def test_create_empty_year():
     year = random.randrange(1600,4100)
