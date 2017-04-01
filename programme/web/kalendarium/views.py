@@ -21,7 +21,9 @@ def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
          debut=datetime.date.today(),fin=datetime.date.today(),
          mots_clefs='',plus=False,annee=datetime.date.today().year):
-    """A function which defines homepage. It is also used by other pages to print common code. It takes many arguments :
+    """A function which defines homepage. It is also used
+    by other pages to print common code.
+    It takes many arguments :
     - a request sent by client ;
     - three GET forms whith None as default value  : recherche_mot_clef, recherche_simple, mois_entier ;
     - mois_seul : a bool to define whether a complete month will be returned or not ;
