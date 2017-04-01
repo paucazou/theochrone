@@ -261,8 +261,8 @@ def basculer():
                 a = a.copy()
                 a.regex = CompileRegex(a)
                 tmp.append(a)
-            pic.dump(tmp)
                 print("""{} enregistré.""".format(a.nom))
+            pic.dump(tmp)
             input("""Enregistrement terminé""")
     else:
         print("""Vous n'avez actuellement aucun objet. Veuillez choisir un fichier à traiter ou enregistrer préalablement des objets avant de faire la bascule.""")
