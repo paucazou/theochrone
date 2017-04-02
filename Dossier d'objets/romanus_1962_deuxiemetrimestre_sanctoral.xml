@@ -4058,7 +4058,7 @@
         <list key="nom_compose"/>
         <list key="refus_faible"/>
         <list key="refus_fort">
-          <str>nole</str>
+            <str>nole</str><str>nabor</str>
           <str>metz</str>
           <str>rome</str>
           <str>saulieu</str>
