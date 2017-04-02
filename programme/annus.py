@@ -80,7 +80,7 @@ class LiturgicalCalendar():
         LiturgicalCalendar.instances.append(self)
      
     @oncecalled
-    def _load_raw_data(self,proper,ordo):
+    def _load_raw_data(self,proper,ordo): # TEST
         """Method used only when creating the instance.
         It loads raw data following the 'proper' and the 'ordo' requested.
         Returns a tuple whith the whole data"""
@@ -141,7 +141,7 @@ class LiturgicalCalendar():
             self._selection(day,date)
     
     @staticmethod
-    def create_empty_year(year):
+    def create_empty_year(year): #TEST
         """A method which creates the skeleton of each year"""
         tmp = {}
         date=datetime.date(year,1,1)
@@ -189,7 +189,7 @@ class LiturgicalCalendar():
         else:
             self.year_data[key.year][key] = value
             
-    def __contains__(self,value):
+    def __contains__(self,value): #TEST
         """This method determines wether a year exists as a complete year"""
         if isinstance(value,datetime.date):
             value = value.year
@@ -198,7 +198,7 @@ class LiturgicalCalendar():
         else:
             return False
         
-    def __len__(self):
+    def __len__(self): #TEST
         """Returns number of years loaded"""
         return len(self.year_names)
     
@@ -210,10 +210,10 @@ class LiturgicalCalendar():
             for date,day in sorted(self.year_data[year].items()):
                 yield day
                 
-    def __repr__(self):
+    def __repr__(self): #TEST
         return """LiturgicalYear. {}/{}""".format(self.ordo,self.proper)
     
-    def __str__(self):
+    def __str__(self): #TEST
         return """LiturgicalYear. Ordo : {}. Proper : {}. Years already loaded : {}.""".format(self.ordo,self.proper,', '.join([ str(year) for year in self.year_names]))
     
     @staticmethod
