@@ -6,6 +6,7 @@ import easter_dates
 import datetime
 import dossier
 import os
+import pytest
 import random
 import subprocess
 import unittest.mock as mock
@@ -13,12 +14,19 @@ import unittest.mock as mock
 dossier.main()
 import annus
 
+@mock.patch("pickle.Unpickler")
+@mock.patch("__main__.open")
+@pytest.fixture
+def send_empty_liturgical_calendar(mock_open,mock_unpickler):
+    mock_load = mock.MagicMock()
+    mock_load.load.return_value=[mock.MagicMock(),mock.MagicMock()]
+    mock_unpickler.return_value = mock_load
+    return annus.LiturgicalCalendar()
 
 def test_paques():
     """A function to test every easter date from 1600 to 4100"""
-    L = annus.LiturgicalCalendar()
     for year in range(1600,4100):
-        assert L.easter(year) == easter_dates.check_dates[year]
+        assert annus.LiturgicalCalendar.easter(year) == easter_dates.check_dates[year]
         
 def test_oncecalled():
     mock_class = mock.MagicMock()
@@ -28,8 +36,8 @@ def test_oncecalled():
     assert mock_class.method(mock_class) == True
     assert mock_class.method(mock_class) == False
 
-def test_contains():
-    L = annus.LiturgicalCalendar()
+def test_contains(send_empty_liturgical_calendar):
+    L = send_empty_liturgical_calendar
     L(1962)
     assert datetime.date(1962,3,3) in L
     assert 1962 in L
