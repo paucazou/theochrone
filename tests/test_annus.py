@@ -40,11 +40,16 @@ def test_contains():
         
 @mock.patch("pickle.Unpickler")
 @mock.patch("__main__.open")
-def test_load_raw_data(mock_open,mock_pickle):
+def test_load_raw_data(mock_open,mock_unpickler):
+    mock_load = mock.MagicMock()
+    mock_load.load.return_value=[1,2]
+    mock_unpickler.return_value = mock_load
     L = annus.LiturgicalCalendar()
-    assert getattr(L,'raw_data') is not None
-    assert getattr(L,'saturday') is not None
-    assert getattr(L,'feria') is not None # Pas terrible. Comment être sûr que l'appel à Pickle a été fait ?
+    assert isinstance(getattr(L,'raw_data'),list)
+    assert getattr(L,'saturday') == 1
+    assert getattr(L,'feria') == 2
+    for name, item in zip(annus.fichiers,mock_unpickler.call_args_list):
+        assert name in item.__repr__() # pas terrible, mais on s'assure que l'appel a été fait à tous les fichiers.
 
 def test_create_empty_year():
     year = random.randrange(1600,4100)
