@@ -202,7 +202,7 @@ class LiturgicalCalendar():
         """Returns number of years loaded"""
         return len(self.year_names)
     
-    def __iter__(self):
+    def __iter__(self): #TEST
         """Iters from the first day of January of the first year
         until the 31th of December of the last year.
         Yield a list containing feasts of the day."""

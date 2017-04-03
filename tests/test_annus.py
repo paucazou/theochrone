@@ -18,9 +18,10 @@ class FakeFeast(mock.MagicMock):
     """A class which simulates the Fete class behaviour"""
     
     def __init__(self,
-                 priorite,commemoraison_privilegiee,
-                 date,personne,
+                 priorite=1,commemoraison_privilegiee=90,
+                 date=(1,1),personne='deuxieme',
                  dimanche=False,fete_du_Seigneur=False,):
+        mock.MagicMock.__init__(self)
         self.priorite = priorite
         self.commemoraison_privilegiee = commemoraison_privilegiee
         self.date = None
@@ -41,7 +42,8 @@ class FakeFeast(mock.MagicMock):
         self.ordo = 1962
         
     def DateCivile(self,year):
-        return datetime.date(year,self.date_[0],self.date_[1])
+        self.date = datetime.date(year,self.date_[0],self.date_[1])
+        return self.date
 
 
 
@@ -152,4 +154,22 @@ def test_call():
     assert FakeCalendar.call(FakeCalendar,3000,5000) == False
     assert FakeCalendar.call(FakeCalendar,2000,1995) == False
     assert FakeCalendar.year_names == [1962, 1964, 1965, 1966]
+    
+def test_iter(send_empty_liturgical_calendar):
+    l=send_empty_liturgical_calendar
+    l.year_names.append(2000)
+    l.year_data[2000] = {}
+    date = datetime.date(2000,1,1)
+    date_list = []
+    while True:
+        date_list.append(date)
+        item = FakeFeast(date=(date.month,date.day))
+        item.DateCivile(2000)
+        l.year_data[2000][date] = [item]
+        date = date + datetime.timedelta(1)
+        if date.year != 2000:
+            break
+    for date, item in zip(date_list,l):
+        assert date == item[0].date
+    assert date.day, date.month == (31, 12)
     
