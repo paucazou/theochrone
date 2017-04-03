@@ -14,6 +14,37 @@ import unittest.mock as mock
 dossier.main()
 import annus
 
+class FakeFeast(mock.MagicMock):
+    """A class which simulates the Fete class behaviour"""
+    
+    def __init__(self,
+                 priorite,commemoraison_privilegiee,
+                 date,personne,
+                 dimanche=False,fete_du_Seigneur=False,):
+        self.priorite = priorite
+        self.commemoraison_privilegiee = commemoraison_privilegiee
+        self.date = None
+        self.date_ = date
+        self.personne = personne
+        
+        self.dimanche = dimanche
+        self.fete_du_Seigneur = fete_du_Seigneur
+        
+        self.peut_etre_celebree=False
+        self._transferee=False
+        self.date_originelle=None
+        self.celebree=True
+        self.omission=False
+        self.commemoraison=False
+        
+        self.proper = 'romanus'
+        self.ordo = 1962
+        
+    def DateCivile(self,year):
+        return datetime.date(year,self.date_[0],self.date_[1])
+
+
+
 @mock.patch("pickle.Unpickler")
 @mock.patch("__main__.open")
 @pytest.fixture
@@ -98,3 +129,27 @@ def test_create_empty_year():
         date = date + datetime.timedelta(1)
         if date.year != year:
             break
+        
+def test_call():
+    def _create_year(year):
+        FakeCalendar.year_names.append(year)
+        FakeCalendar.year_names.sort()
+    FakeCalendar = mock.MagicMock()
+    FakeCalendar.call = annus.LiturgicalCalendar.__call__
+    FakeCalendar.year_names = []
+    FakeCalendar._create_year = _create_year
+    
+    assert FakeCalendar.year_names == []
+    FakeCalendar.call(FakeCalendar,1962)
+    assert FakeCalendar.year_names == [1962]
+    FakeCalendar.call(FakeCalendar,1962)
+    assert FakeCalendar.year_names == [1962]
+    FakeCalendar.call(FakeCalendar,1964,1966)
+    assert FakeCalendar.year_names == [1962, 1964, 1965, 1966]
+    assert FakeCalendar.call(FakeCalendar,1200) == False
+    assert FakeCalendar.call(FakeCalendar,5000) == False
+    assert FakeCalendar.call(FakeCalendar,1540,1700) == False
+    assert FakeCalendar.call(FakeCalendar,3000,5000) == False
+    assert FakeCalendar.call(FakeCalendar,2000,1995) == False
+    assert FakeCalendar.year_names == [1962, 1964, 1965, 1966]
+    

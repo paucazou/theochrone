@@ -150,7 +150,7 @@ class LiturgicalCalendar():
             date += datetime.timedelta(1)
         return tmp
     
-    def __call__(self,first,last=None):
+    def __call__(self,first,last=None): #TEST
         if not last:
             last = first + 1
         else:
@@ -217,7 +217,7 @@ class LiturgicalCalendar():
         return """LiturgicalYear. Ordo : {}. Proper : {}. Years already loaded : {}.""".format(self.ordo,self.proper,', '.join([ str(year) for year in self.year_names]))
     
     @staticmethod
-    def easter(year):
+    def easter(year): #TEST
         """Return a datetime.date object with the Easter date of the year. The function is only available between 1583 and 4100.
         I didn't write this function, but I found it here : http://python.jpvweb.com/mesrecettespython/doku.php?id=date_de_paques """
         a=year//100
@@ -237,7 +237,7 @@ class LiturgicalCalendar():
         month=n
         return datetime.date(year,month,day)
     
-    def trouve(self,entre,cherche,liste=latinus):
+    def trouve(self,entre,cherche,liste=latinus): 
         """Returns a boolean. Find if the propre 'entre' matches whith the propre 'cherche' in the 'liste'."""
         if entre == cherche:
             return True
