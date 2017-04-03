@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <list>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
       <int key="_priorite">1900</int>
@@ -68,9 +67,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
       <int key="_priorite">1400</int>
@@ -137,9 +136,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
       <int key="_priorite">100</int>
@@ -210,9 +209,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
       <int key="_priorite">550</int>
@@ -290,9 +289,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
       <int key="_priorite">550</int>
@@ -378,9 +377,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
       <int key="_priorite">550</int>
@@ -463,9 +462,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
       <int key="_priorite">550</int>
@@ -555,9 +554,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
       <int key="_priorite">550</int>
@@ -637,9 +636,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
       <int key="_priorite">100</int>
@@ -704,9 +703,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
       <int key="_priorite">550</int>
@@ -866,9 +865,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
       <int key="_priorite">100</int>
@@ -961,9 +960,9 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
       <int key="_priorite">550</int>
@@ -1036,5 +1035,92 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">15</int>
+        <int key="mois">7</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/15-07-St-Henri-empereur-et</str>
+      <dict key="nom">
+        <str key="english">St Henry, Emperor and Confessor</str>
+        <str key="francais">Saint Henri, Empereur, Confesseur</str>
+        <str key="latina">Sancti Henrici, Imperatoris, Confessoris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">henri_empereur</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>boiteux</str>
+          <str>germanie</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>henri</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>coquet</str>
+          <str>uppsala</str>
+          <str>walpole</str>
+          <str>morse</str>
+          <str>osso</str>
+          <str>cervello</str>
+          <str>bolzano</str>
+          <str>treviso</str>
+          <str>suso</str>
+          <str>trévise</str>
+          <str>abbot</str>
+          <str>josef</str>
+          <str>krzysztofik</str>
+        </list>
+        <list key="syntaxiques">
+          <str>le</str>
+          <str>de</str>
+          <str>l</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+          <str>empereur</str>
+          <str>confesseur</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
 </list>
