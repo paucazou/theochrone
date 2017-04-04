@@ -161,7 +161,7 @@ class LiturgicalCalendar():
             if year not in self.year_names:
                 self._create_year(year)
         
-    def __getitem__(self, request):
+    def __getitem__(self, request): # TEST
         """A method to process request like LiturgicalYear[1962].
         It accepts two types of request :
         - years

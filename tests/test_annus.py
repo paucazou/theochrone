@@ -18,11 +18,12 @@ class FakeFeast(mock.MagicMock):
     """A class which simulates the Fete class behaviour"""
     
     def __init__(self,
-                 priorite=1,commemoraison_privilegiee=90,
+                 degre=1,priorite=1,commemoraison_privilegiee=90,
                  date=(1,1),personne='deuxieme',
                  dimanche=False,fete_du_Seigneur=False,):
         mock.MagicMock.__init__(self)
         self.priorite = priorite
+        self.degre = degre
         self.commemoraison_privilegiee = commemoraison_privilegiee
         self.date = None
         self.date_ = date
@@ -41,11 +42,23 @@ class FakeFeast(mock.MagicMock):
         self.proper = 'romanus'
         self.ordo = 1962
         
-    def DateCivile(self,year):
+    def DateCivile(self,easter,year):
         self.date = datetime.date(year,self.date_[0],self.date_[1])
         return self.date
+    
+    def copy(self):
+        new = FakeFeast()
+        new.__dict__ = self.__dict__.copy()
+        return new
 
-
+def FakeFeast_basic_iterator(year):
+    date=datetime.date(year,1,1)
+    while True:
+        yielded=FakeFeast(date=(date.month,date.day))
+        yield yielded
+        date = date + datetime.timedelta(1)
+        if date.year != year:
+            break
 
 @mock.patch("pickle.Unpickler")
 @mock.patch("__main__.open")
@@ -164,7 +177,7 @@ def test_iter(send_empty_liturgical_calendar):
     while True:
         date_list.append(date)
         item = FakeFeast(date=(date.month,date.day))
-        item.DateCivile(2000)
+        item.DateCivile('easter',2000)
         l.year_data[2000][date] = [item]
         date = date + datetime.timedelta(1)
         if date.year != 2000:
@@ -172,4 +185,31 @@ def test_iter(send_empty_liturgical_calendar):
     for date, item in zip(date_list,l):
         assert date == item[0].date
     assert date.day, date.month == (31, 12)
+    
+def test_getitem(send_empty_liturgical_calendar):
+    l=send_empty_liturgical_calendar
+    l.raw_data=[item for item in FakeFeast_basic_iterator(1962) ]
+    with pytest.raises(KeyError):
+        l[1962]
+    l(1962)
+    assert 1961 in l.previous_year_names
+    with pytest.raises(KeyError):
+        l[1961]
+        l[datetime.date(1961,1,1)]
+    return l
+    assert l[1962][datetime.date(1962,1,1)][0].date == datetime.date(1962,1,1)
+    assert l[1962][datetime.date(1962,12,31)][0].date == datetime.date(1962,12,31)
+    date = datetime.date(1962,4,5)
+    extrait = l[date,datetime.date(1962,4,8)]
+    for item in extrait :
+        assert item[0].date == date
+        date = date + datetime.timedelta(1)
+    assert l[date,datetime.date(1962,1,1)] == []
+    l(1963)
+    date = datetime.date(1962,12,25)
+    extrait = l[date,datetime.date(1963,1,8)]
+    for item in extrait :
+        assert item[0].date == date
+        date = date + datetime.timedelta(1)
+    
     
