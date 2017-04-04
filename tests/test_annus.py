@@ -18,6 +18,7 @@ class FakeFeast(mock.MagicMock):
     """A class which simulates the Fete class behaviour"""
     
     def __init__(self,
+                 nom=None,
                  degre=1,priorite=1,commemoraison_privilegiee=90,
                  date=(1,1),personne='deuxieme',
                  dimanche=False,fete_du_Seigneur=False,):
@@ -28,6 +29,13 @@ class FakeFeast(mock.MagicMock):
         self.date = None
         self.date_ = date
         self.personne = personne
+        
+        if not nom:
+            self.nom = """FakeFeast d:{},p:{},c:{},D:{},P:{}""".format(
+                self.degre,self.priorite,self.commemoraison_privilegiee,
+                self.date,self.personne)
+        else:
+            self.nom = nom
         
         self.dimanche = dimanche
         self.fete_du_Seigneur = fete_du_Seigneur
@@ -42,14 +50,22 @@ class FakeFeast(mock.MagicMock):
         self.proper = 'romanus'
         self.ordo = 1962
         
+    def __repr__(self):
+        return self.nom
+        
     def DateCivile(self,easter,year):
         self.date = datetime.date(year,self.date_[0],self.date_[1])
         return self.date
     
     def copy(self):
-        new = FakeFeast()
+        new = self.__class__()
         new.__dict__ = self.__dict__.copy()
         return new
+    
+class FakeFeast_with_DateCivile_as_iterable(FakeFeast):
+    def DateCivile(self,easter,year):
+        return FakeFeast('FromIterable1'),FakeFeast('FromIterable2')
+
 
 def FakeFeast_basic_iterator(year=1962):
     date=datetime.date(year,1,1)
@@ -227,4 +243,14 @@ def test_setitem(send_empty_liturgical_calendar):
     assert 1100 in l.next_year_names
     assert 1100 not in l.year_data
     assert 1100 not in l.previous_year_data
+    
+def test_put_in_year(send_empty_liturgical_calendar):
+    l=send_empty_liturgical_calendar
+    l._move = mock.MagicMock()
+    args_tuple = (FakeFeast('Something'),FakeFeast('Otherone'),*FakeFeast_with_DateCivile_as_iterable().DateCivile(1,1))
+    l.raw_data = [args_tuple[0],args_tuple[1], FakeFeast_with_DateCivile_as_iterable()]
+    l._put_in_year(1962)
+    assert l._move.call_count == 4
+    for item in args_tuple:
+        assert item.nom in str(l._move.call_args_list)
     

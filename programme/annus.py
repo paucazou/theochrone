@@ -95,7 +95,7 @@ class LiturgicalCalendar():
             pic=pickle.Unpickler(file)
             self.saturday, self.feria = pic.load()        
     
-    def _put_in_year(self, year):
+    def _put_in_year(self, year): # TEST
         """A method which puts feasts in the year"""
         easter = self.easter(year)
         for raw_elt in self.raw_data:
@@ -239,7 +239,7 @@ class LiturgicalCalendar():
         return datetime.date(year,month,day)
     
     @classmethod
-    def trouve(cls,entre,cherche,liste=latinus): 
+    def trouve(cls,entre,cherche,liste=latinus): # TEST
         """Returns a boolean. Find if the propre 'entre' matches whith the propre 'cherche' in the 'liste'."""
         if entre == cherche:
             return True
@@ -252,7 +252,7 @@ class LiturgicalCalendar():
         return False
     
     @classmethod
-    def remonte(cls,liste, entre, nom='latinus'):
+    def remonte(cls,liste, entre, nom='latinus'): #TEST
         """Function used in the 'trouve' function. Find the proper which is before the 'entre' one in the 'liste'."""
         if entre in liste.keys():
             entre=nom
