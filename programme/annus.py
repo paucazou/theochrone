@@ -107,8 +107,8 @@ class LiturgicalCalendar():
                 for a in elt.DateCivile(easter,year):
                     self._move(a,a.date)
         
-    def _create_year(self,year):
-        """A function which emules the liturgical 'year' requested.
+    def _create_year(self,year): # TEST
+        """A function which emulates the liturgical 'year' requested.
         Add year in self.year_names.
         Create a year in self.year_data."""
         self.year_names.append(year)

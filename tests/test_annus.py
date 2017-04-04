@@ -253,4 +253,37 @@ def test_put_in_year(send_empty_liturgical_calendar):
     assert l._move.call_count == 4
     for item in args_tuple:
         assert item.nom in str(l._move.call_args_list)
+        
+def test_create_year(send_empty_liturgical_calendar):
+    l=send_empty_liturgical_calendar
+    l._selection = mock.MagicMock()
+    l._put_in_year = mock.MagicMock()
+    l._create_year(1900)
+    assert 1900 in l.year_names
+    assert 1900 in l.year_data
+    assert 1900 not in l.previous_year_names
+    assert 1900 not in l.next_year_names
+    l._put_in_year.assert_has_calls([mock.call(1900),mock.call(1899)])
+    assert l._selection.call_count == 365 == len(l.year_data[1900])
+    assert isinstance(l.year_data[1900][datetime.date(1900,1,1)],list)
+    assert 1899 in l.previous_year_names
+    l._create_year(1899)
+    assert l.year_names == [1899,1900]
+    assert 1899 not in l.previous_year_names
+    l._create_year(1901)
+    assert l.year_names == [1899,1900,1901]
+    assert 1900 not in l.previous_year_names
+    l.next_year_names.append(1902)
+    l.next_year_data[1902] = {datetime.date(1902,1,1):[mock.MagicMock()]}
+    l._create_year(1902)
+    assert 1902 not in l.next_year_names
+    assert 1902 not in l.next_year_data
+    assert l.year_names == [1899,1900,1901,1902]
+    assert 1901 not in l.previous_year_names
+    l.next_year_names.append(1908)
+    l.next_year_data[1908] = {datetime.date(1908,1,1):[mock.MagicMock()]}
+    l._create_year(1909)
+    assert 1908 not in l.next_year_names
+    assert 1908 in l.previous_year_names
+    
     
