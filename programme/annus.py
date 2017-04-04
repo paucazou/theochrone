@@ -179,13 +179,14 @@ class LiturgicalCalendar():
                     answer.append(day)
             return answer
         
-    def __setitem__(self,key,value):
-        """A method to process request like LiturgicalYear[datetime.date(2010,1,1] = []"""
+    def __setitem__(self,key,value): #TEST
+        """A method to process request like LiturgicalYear[datetime.date(2010,1,1)] = []"""
         if key.year in self.previous_year_names:
             self.previous_year_data[key.year][key] = value
         elif key.year not in self.year_names:
             self.next_year_names.append(key.year)
-            self.next_year_data[key.year] = self.create_empty_year(year)
+            self.next_year_data[key.year] = self.create_empty_year(key.year)
+            self.next_year_data[key.year][key] = value
         else:
             self.year_data[key.year][key] = value
             

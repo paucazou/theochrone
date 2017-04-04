@@ -51,7 +51,7 @@ class FakeFeast(mock.MagicMock):
         new.__dict__ = self.__dict__.copy()
         return new
 
-def FakeFeast_basic_iterator(year):
+def FakeFeast_basic_iterator(year=1962):
     date=datetime.date(year,1,1)
     while True:
         yielded=FakeFeast(date=(date.month,date.day))
@@ -211,5 +211,20 @@ def test_getitem(send_empty_liturgical_calendar):
     for item in extrait :
         assert item[0].date == date
         date = date + datetime.timedelta(1)
-    
+        
+def test_setitem(send_empty_liturgical_calendar):
+    l=send_empty_liturgical_calendar
+    l.raw_data = [item for item in FakeFeast_basic_iterator(1962) ]
+    l(1962)
+    l[datetime.date(1962,1,1)] = 1
+    assert l.year_data[1962][datetime.date(1962,1,1)] == 1
+    l[datetime.date(1961,1,1)] = 1
+    assert l.previous_year_data[1961][datetime.date(1961,1,1)] == 1
+    with pytest.raises(KeyError):
+        l.year_data[1961][datetime.date(1961,1,1)]
+    l[datetime.date(1100,1,1)] = 1
+    assert l.next_year_data[1100][datetime.date(1100,1,1)] == 1
+    assert 1100 in l.next_year_names
+    assert 1100 not in l.year_data
+    assert 1100 not in l.previous_year_data
     
