@@ -237,25 +237,27 @@ class LiturgicalCalendar():
         month=n
         return datetime.date(year,month,day)
     
-    def trouve(self,entre,cherche,liste=latinus): 
+    @classmethod
+    def trouve(cls,entre,cherche,liste=latinus): 
         """Returns a boolean. Find if the propre 'entre' matches whith the propre 'cherche' in the 'liste'."""
         if entre == cherche:
             return True
         else:
             sortie=entre
             while sortie != 'latinus':
-                sortie=self.remonte(liste, sortie)
+                sortie=cls.remonte(liste, sortie)
                 if sortie == cherche:
                     return True
         return False
     
-    def remonte(self,liste, entre, nom='latinus'):
+    @classmethod
+    def remonte(cls,liste, entre, nom='latinus'):
         """Function used in the 'trouve' function. Find the proper which is before the 'entre' one in the 'liste'."""
         if entre in liste.keys():
             entre=nom
             return nom
         for a in liste.keys():
-            entre=self.remonte(liste[a],entre,a)
+            entre=cls.remonte(liste[a],entre,a)
         return entre
     
     def unsafe_get(self,date):
