@@ -16,11 +16,12 @@ import annus
 
 class FakeFeast(mock.MagicMock):
     """A class which simulates the Fete class behaviour"""
+    personne_list = [1]
     
     def __init__(self,
                  nom=None,
                  degre=1,priorite=1,commemoraison_privilegiee=90,
-                 date=(1,1),personne='deuxieme',
+                 date=(1,1),personne=None,
                  dimanche=False,fete_du_Seigneur=False,):
         mock.MagicMock.__init__(self)
         self.priorite = priorite
@@ -28,7 +29,11 @@ class FakeFeast(mock.MagicMock):
         self.commemoraison_privilegiee = commemoraison_privilegiee
         self.date = None
         self.date_ = date
-        self.personne = personne
+        if not personne:
+            self.personne = str(FakeFeast.personne_list[-1]) + str(random.randrange(500))
+        else:
+            self.personne = personne
+        FakeFeast.personne_list.append(self.personne)
         
         if not nom:
             self.nom = """FakeFeast d:{},p:{},c:{},D:{},P:{}""".format(
@@ -41,7 +46,7 @@ class FakeFeast(mock.MagicMock):
         self.fete_du_Seigneur = fete_du_Seigneur
         
         self.peut_etre_celebree=False
-        self._transferee=False
+        self.transferee=False
         self.date_originelle=None
         self.celebree=True
         self.omission=False
@@ -286,4 +291,82 @@ def test_create_year(send_empty_liturgical_calendar):
     assert 1908 not in l.next_year_names
     assert 1908 in l.previous_year_names
     
+def test_move(send_empty_liturgical_calendar): # WARNING do not test local propers
+    l=send_empty_liturgical_calendar
+    l.year_names.append(1962)
+    l.year_data[1962] = l.create_empty_year(1962)
+    l.raw_data = (
+        FakeFeast(nom='JustPutInList'),
+        
+        FakeFeast(nom='P&D=1',personne='john',priorite=234,date=(2,2)),
+        FakeFeast(nom='P&D=2',personne='john',priorite=432,date=(2,2)),
+        
+        FakeFeast(nom='d=1,p=1700,D=3,3',degre=1,priorite=1700,date=(3,3)),
+        FakeFeast(nom='d=1,p=1660,D=3,3 -> 3,6',degre=1,priorite=1660,date=(3,3)),
+        FakeFeast(nom='d=1,p=1601,D=3,3 -> 3,7',degre=1,priorite=1601,date=(3,3)),
+        FakeFeast(nom='d=2,p=900,D=3,5',degre=2,priorite=900,date=(3,5)),
+        FakeFeast(nom='d=1,p=1650,D=3,4',degre=1,priorite=1650,date=(3,4)),
+        
+        FakeFeast(nom='d=2,p=900,D=3,8',degre=2,priorite=900,date=(3,8)),
+        FakeFeast(nom='d=1,p=1650,D=3,8',degre=1,priorite=1650,date=(3,8)),
+        
+        FakeFeast(nom='d=1,p=1601,D=3,10 -> 3,11',degre=1,priorite=1601,date=(3,10)),
+        FakeFeast(nom='d=1,p=1641,D=3,10',degre=1,priorite=1641,date=(3,10)),
+        
+        FakeFeast(nom='sunday,d=2,p=700,D=1,4',degre=2,priorite=700,date=(1,4),dimanche=True),
+        FakeFeast(nom='d=1,p=1700,D=1,4',degre=1,priorite=1700,date=(1,4)),
+        
+        FakeFeast(nom='sunday,d=1,p=1700,D=1,7',degre=1,priorite=1700,date=(1,7),dimanche=True),
+        FakeFeast(nom='d=1,p=1750,D=1,7',degre=1,priorite=1750,date=(1,7)),
+        
+        FakeFeast(nom='d=1,p=1601,D=12,31 -> 1,1',degre=1,priorite=1601,date=(12,31)),
+        FakeFeast(nom='d=1,p=1641,D=12,31',degre=1,priorite=1641,date=(12,31)),
+        )
+    for item in l.raw_data:
+        l._move(item,item.DateCivile(1,1962))
+     
+    YEAR = l.year_data[1962] 
+    assert YEAR[datetime.date(1962,1,1)][0].nom == 'JustPutInList'
+    assert YEAR[datetime.date(1962,1,4)][0].nom == 'd=1,p=1700,D=1,4'
+    assert YEAR[datetime.date(1962,1,4)][1].nom == 'sunday,d=2,p=700,D=1,4'
+    assert YEAR[datetime.date(1962,1,7)][0].nom == 'd=1,p=1750,D=1,7'
+    assert YEAR[datetime.date(1962,1,7)][1].nom == 'sunday,d=1,p=1700,D=1,7' 
+    assert YEAR[datetime.date(1962,2,2)][0].nom == 'P&D=2'
+    assert YEAR[datetime.date(1962,2,2)][1].nom == 'P&D=1'
+    assert YEAR[datetime.date(1962,3,3)][0].nom == 'd=1,p=1700,D=3,3'
+    assert YEAR[datetime.date(1962,3,6)][0].nom == 'd=1,p=1660,D=3,3 -> 3,6'
+    assert YEAR[datetime.date(1962,3,7)][0].nom == 'd=1,p=1601,D=3,3 -> 3,7'
+    assert YEAR[datetime.date(1962,3,5)][0].nom == 'd=2,p=900,D=3,5'
+    assert YEAR[datetime.date(1962,3,4)][0].nom == 'd=1,p=1650,D=3,4'
+    assert YEAR[datetime.date(1962,3,8)][0].nom == 'd=1,p=1650,D=3,8'
+    assert YEAR[datetime.date(1962,3,8)][1].nom == 'd=2,p=900,D=3,8'
+    assert YEAR[datetime.date(1962,3,10)][0].nom == 'd=1,p=1641,D=3,10'
+    assert YEAR[datetime.date(1962,3,11)][0].nom == 'd=1,p=1601,D=3,10 -> 3,11'
+    assert YEAR[datetime.date(1962,12,31)][0].nom == 'd=1,p=1641,D=12,31'
+    assert l.next_year_data[1963][datetime.date(1963,1,1)][0].nom == 'd=1,p=1601,D=12,31 -> 1,1'
+    
+    l.previous_year_names.append(1960)
+    l.previous_year_data[1960] = l.create_empty_year(1960)
+    for item in l.raw_data:
+        l._move(item,item.DateCivile(1,1960))
+        
+    YEAR = l.previous_year_data[1960] 
+    assert YEAR[datetime.date(1960,1,1)][0].nom == 'JustPutInList'
+    assert YEAR[datetime.date(1960,1,4)][0].nom == 'd=1,p=1700,D=1,4'
+    assert YEAR[datetime.date(1960,1,4)][1].nom == 'sunday,d=2,p=700,D=1,4'
+    assert YEAR[datetime.date(1960,1,7)][0].nom == 'd=1,p=1750,D=1,7'
+    assert YEAR[datetime.date(1960,1,7)][1].nom == 'sunday,d=1,p=1700,D=1,7' 
+    assert YEAR[datetime.date(1960,2,2)][0].nom == 'P&D=2'
+    assert YEAR[datetime.date(1960,2,2)][1].nom == 'P&D=1'
+    assert YEAR[datetime.date(1960,3,3)][0].nom == 'd=1,p=1700,D=3,3'
+    assert YEAR[datetime.date(1960,3,6)][0].nom == 'd=1,p=1660,D=3,3 -> 3,6'
+    assert YEAR[datetime.date(1960,3,7)][0].nom == 'd=1,p=1601,D=3,3 -> 3,7'
+    assert YEAR[datetime.date(1960,3,5)][0].nom == 'd=2,p=900,D=3,5'
+    assert YEAR[datetime.date(1960,3,4)][0].nom == 'd=1,p=1650,D=3,4'
+    assert YEAR[datetime.date(1960,3,8)][0].nom == 'd=1,p=1650,D=3,8'
+    assert YEAR[datetime.date(1960,3,8)][1].nom == 'd=2,p=900,D=3,8'
+    assert YEAR[datetime.date(1960,3,10)][0].nom == 'd=1,p=1641,D=3,10'
+    assert YEAR[datetime.date(1960,3,11)][0].nom == 'd=1,p=1601,D=3,10 -> 3,11'
+    assert YEAR[datetime.date(1960,12,31)][0].nom == 'd=1,p=1641,D=12,31'
+    assert l.next_year_data[1961][datetime.date(1961,1,1)][0].nom == 'd=1,p=1601,D=12,31 -> 1,1'
     

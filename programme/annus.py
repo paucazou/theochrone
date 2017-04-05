@@ -362,7 +362,7 @@ class LiturgicalCalendar():
             return retour
     
     
-    def _move(self,new_comer,date):
+    def _move(self,new_comer,date): #TEST
         """Move 'new_comer' if necessary, and put it at the right date.
         new_comer: a Fete class ;
         date: a datetime.date ;
