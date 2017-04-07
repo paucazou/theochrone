@@ -463,16 +463,25 @@ class LiturgicalCalendar():
         liste = sorted(liste[1:], key=lambda a: a.commemoraison_privilegiee, reverse=True)
         
         if tmp.dimanche or tmp.fete_du_Seigneur and datetime.date.isoweekday(date) == 7:
-            for hideux, elt in enumerate(liste):
-                liste[hideux].omission = True
-                liste[hideux].celebree = False
+            if 1650 > tmp.priorite >= 900:
+                for hideux, elt in enumerate(liste):
+                    if elt.commemoraison_privilegiee > 0 or 1650 > elt.priorite >= 900:
+                        liste[hideux].celebree = False
+                        liste[hideux].omission = False
+                        liste[hideux].commemoraison = True
+                    else:
+                        liste[hideux].omission = True
+                        liste[hideux].celebree = False
+            else:
+                for hideux, elt in enumerate(liste):
+                    liste[hideux].omission = True
+                    liste[hideux].celebree = False
         elif tmp.priorite >= 1650:
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
                 if elt.personne == tmp.personne:
                     liste[hideux].omission = True
-                    liste[hideux].celebree = False
-                elif elt.commemoraison_privilegiee > 0 and commemoraison == 0 and not (tmp.fete_du_Seigneur and elt.dimanche or tmp.dimanche and elt.fete_du_Seigneur):
+                elif elt.commemoraison_privilegiee > 0 and commemoraison == 0:
                     liste[hideux].commemoraison=True
                     commemoraison = 1
                 else:
@@ -485,7 +494,7 @@ class LiturgicalCalendar():
                 if elt.personne == tmp.personne:
                     liste[hideux].omission = True
                     liste[hideux].celebree = False
-                elif commemoraison == 0 and elt.degre >= 2 and not (tmp.fete_du_Seigneur and elt.dimanche or tmp.dimanche and elt.fete_du_Seigneur):
+                elif commemoraison == 0:
                     liste[hideux].commemoraison=True
                     commemoraison = 1
                 else:
