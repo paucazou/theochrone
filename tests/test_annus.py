@@ -20,7 +20,7 @@ class FakeFeast(mock.MagicMock):
     
     def __init__(self,
                  nom=None,
-                 degre=1,priorite=1,commemoraison_privilegiee=90,
+                 degre=1,priorite=1,commemoraison_privilegiee=0,
                  date=(1,1),personne=None,
                  dimanche=False,fete_du_Seigneur=False,):
         mock.MagicMock.__init__(self)
@@ -67,6 +67,9 @@ class FakeFeast(mock.MagicMock):
         new.__dict__ = self.__dict__.copy()
         return new
     
+    def _get_child_mock(self,**kw):
+        return mock.MagicMock(**kw)
+    
 class FakeFeast_with_DateCivile_as_iterable(FakeFeast):
     def DateCivile(self,easter,year):
         return FakeFeast('FromIterable1'),FakeFeast('FromIterable2')
@@ -86,7 +89,7 @@ def FakeFeast_basic_iterator(year=1962):
 @pytest.fixture
 def send_empty_liturgical_calendar(mock_open,mock_unpickler):
     mock_load = mock.MagicMock()
-    mock_load.load.return_value=[mock.MagicMock(),mock.MagicMock()]
+    mock_load.load.return_value=[FakeFeast(),FakeFeast()]
     mock_unpickler.return_value = mock_load
     return annus.LiturgicalCalendar()
 
@@ -369,4 +372,61 @@ def test_move(send_empty_liturgical_calendar): # WARNING do not test local prope
     assert YEAR[datetime.date(1960,3,11)][0].nom == 'd=1,p=1601,D=3,10 -> 3,11'
     assert YEAR[datetime.date(1960,12,31)][0].nom == 'd=1,p=1641,D=12,31'
     assert l.next_year_data[1961][datetime.date(1961,1,1)][0].nom == 'd=1,p=1601,D=12,31 -> 1,1'
+    
+def test_selection(send_empty_liturgical_calendar):
+    
+    def assert_in_name(liste,date):
+        l._selection(liste,date)
+        liste = l.year_data[2000][date]
+        for elt in liste:
+            if 'omitted' in elt.nom:
+                assert elt.commemoraison == elt.celebree == elt.peut_etre_celebree == False
+                assert elt.omission == True
+            elif 'memory' in elt.nom:
+                assert elt.celebree == elt.peut_etre_celebree == elt.omission == False
+                assert elt.commemoraison == True
+            elif 'cancelebrated' in elt.nom:
+                assert elt.celebree == elt.omission == elt.commemoraison == False
+                assert elt.peut_etre_celebree == True
+            elif 'celebrated' in elt.nom:
+                assert elt.peut_etre_celebree == elt.omission == elt.commemoraison == False
+                assert elt.celebree == True
+                
+    l=send_empty_liturgical_calendar
+    saturday = FakeFeast(nom='saturday')
+    saturday.Est_ce_samedi.return_value=True
+    l.saturday = saturday
+    l.year_data[2000] = l.create_empty_year(2000)
+    l._selection([],datetime.date(2000,1,1))
+    assert l.year_data[2000][datetime.date(2000,1,1)][0].nom == 'saturday' and len(l.year_data[2000][datetime.date(2000,1,1)]) == 1
+    l.saturday.Est_ce_samedi.return_value=False
+    l.feria.Dimanche_precedent.return_value=FakeFeast(nom='Feria')
+    l._selection([],datetime.date(2000,1,2))
+    assert l.year_data[2000][datetime.date(2000,1,2)][0].nom == 'Feria' and len(l.year_data[2000][datetime.date(2000,1,2)]) == 1
+    
+    liste = [FakeFeast(nom='last',priorite=160),FakeFeast(nom='second',priorite=170),FakeFeast(nom='first',priorite=300,dimanche=True)]
+    l._selection(liste,datetime.date(2000,1,9))
+    returned_list = l.year_data[2000][datetime.date(2000,1,9)]
+    assert returned_list[0].nom == 'first' and returned_list[0].celebree == True
+    assert returned_list[1].nom == 'second' and returned_list[1].celebree == False and returned_list[1].omission == True
+    
+    liste[-1].dimanche=False
+    liste[-1].fete_du_Seigneur=True
+    returned_list = l.year_data[2000][datetime.date(2000,1,16)]
+    returned_list = l.year_data[2000][datetime.date(2000,1,9)]
+    assert returned_list[0].nom == 'first' and returned_list[0].celebree == True
+    assert returned_list[1].nom == 'second' and returned_list[1].celebree == False and returned_list[1].omission == True
+    
+    liste = [FakeFeast(nom='celebrated',priorite=1700,personne='Some'),FakeFeast(nom='omitted',priorite=1600,commemoraison_privilegiee=90,personne='Some'),
+             FakeFeast(nom='1stmemory',priorite=1500,commemoraison_privilegiee=80),FakeFeast(nom='omitted2',priorite=1400,commemoraison_privilegiee=70),
+             FakeFeast(nom='omitted3',priorite=1000,commemoraison_privilegiee=0)]
+    assert_in_name(liste,datetime.date(2000,1,15))
+    
+    liste = [FakeFeast(nom='celebrated',priorite=1400,),FakeFeast(nom='memory',priorite=950,commemoraison_privilegiee=90,),
+             FakeFeast(nom='omitted1',priorite=900),FakeFeast(nom='omitted2',priorite=400),
+             FakeFeast(nom='omitted3',priorite=1000)]
+    assert_in_name(liste,datetime.date(2000,1,16))
+    
+    
+    return l
     
