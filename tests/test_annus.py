@@ -46,6 +46,9 @@ class FakeFeast(mock.MagicMock):
         self.dimanche = dimanche
         self.fete_du_Seigneur = fete_du_Seigneur
         
+        self.temporal = False
+        self.sanctoral = True
+        
         self.peut_etre_celebree=False
         self.transferee=False
         self.date_originelle=None
@@ -387,7 +390,7 @@ def test_selection(send_empty_liturgical_calendar):
                 assert elt.celebree == elt.peut_etre_celebree == elt.omission == False
                 assert elt.commemoraison == True
             elif 'cancelebrated' in elt.nom:
-                assert elt.celebree == elt.omission == elt.commemoraison == False
+                assert elt.celebree == False
                 assert elt.peut_etre_celebree == True
             elif 'celebrated' in elt.nom:
                 assert elt.peut_etre_celebree == elt.omission == elt.commemoraison == False
@@ -440,6 +443,24 @@ def test_selection(send_empty_liturgical_calendar):
     liste[2].priorite = 800
     assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,6))
     
+    liste = [FakeFeast(nom='celebrated',priorite=600,personne='some'),FakeFeast(nom='omitted0',priorite=300,personne='some'),
+             FakeFeast(nom='memory1',priorite=250),FakeFeast(nom='memory2',priorite=200),
+             FakeFeast(nom='omitted1',priorite=100)]
+    assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,4))
+    liste[2].temporal = True
+    liste[2].sanctoral = False
+    assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,5))
+    liste[3].temporal = True
+    liste[3].sanctoral = False
+    liste[3].nom = 'omitted12'
+    liste[4].nom = 'memory2'
+    assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,7))
+    
+    liste = [FakeFeast(nom='cancelebrated',priorite=200,personne='some'),FakeFeast(nom='omitted0',priorite=150,personne='some'),
+             FakeFeast(nom='cancelebrated1',priorite=140),FakeFeast(nom='cancelebrated2',priorite=130),
+             FakeFeast(nom='cancelebrated3',priorite=100)]
+    
+    assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,8))
     
     
 
