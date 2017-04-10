@@ -2095,4 +2095,109 @@
     </dict>
     <str key="classe">FeteFixe</str>
   </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">rouge</str>
+      <int key="_priorite">1900</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">25</int>
+        <int key="mois">7</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">2</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/25-07-St-Jacques-apotre</str>
+      <dict key="nom">
+        <str key="english">Saint James the Greater, Apostle</str>
+        <str key="francais">Saint Jacques, Apôtre</str>
+        <str key="latina">Sancti Jacobi, Apostoli</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">jacques_majeur</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>majeur</str>
+          <str>zébédée</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>jacques</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>jean</str><str>majeur</str>
+          <str>lambèse</str>
+          <str>nisibe</str>
+          <str>perse</str>
+          <str>bergame</str>
+          <str>ascète</str>
+          <str>tarentaise</str>
+          <str>asce?lepios</str>
+          <str>osroene</str>
+          <str>batnès</str>
+          <str>docteur</str>
+          <str>ermite</str>
+          <str>benfatti</str>
+          <str>rostov</str>
+          <str>jelezny-bor</str>
+          <str>marche</str>
+          <str>athos</str>
+          <str>thompson</str>
+          <str>carvalho</str>
+          <str>felice</str>
+          <str>amoroso</str>
+          <str>nicosie</str>
+          <str>lombardie</str>
+          <str>mai</str>
+          <str>nam</str>
+          <str>chastan</str>
+          <str>cusmano</str>
+          <str>berthieu</str>
+          <str>buch</str>
+          <str>canals</str>
+          <str>hilario</str>
+          <str>alberione</str>
+          <str>berry</str>
+          <str>portillon</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>le</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+          <str>apôtre</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
 </list>
