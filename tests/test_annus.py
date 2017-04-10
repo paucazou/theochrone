@@ -4,6 +4,7 @@
 
 import easter_dates
 import datetime
+import copy
 import dossier
 import os
 import pytest
@@ -425,8 +426,23 @@ def test_selection(send_empty_liturgical_calendar):
     liste = [FakeFeast(nom='celebrated',priorite=1400,),FakeFeast(nom='memory',priorite=950,commemoraison_privilegiee=90,),
              FakeFeast(nom='omitted1',priorite=900),FakeFeast(nom='omitted2',priorite=400),
              FakeFeast(nom='omitted3',priorite=1000)]
-    assert_in_name(liste,datetime.date(2000,1,16))
+    assert_in_name(copy.deepcopy(liste),datetime.date(2000,1,16))
+    liste[1].commemoraison_privilegiee=0
+    liste[-1].priorite = 100
+    assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,3))
+    liste[0].dimanche = True
+    assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,1))
+    liste[0].dimanche = False
+    liste[0].fete_du_Seigneur = True
+    assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,2))
+    liste[1].nom = 'omitted0'
+    liste[1].fete_du_Seigneur = True
+    liste[2].priorite = 800
+    assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,6))
     
+    
+    
+
     
     return l
     
