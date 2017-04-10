@@ -440,7 +440,7 @@ class LiturgicalCalendar():
             liste.append(new_comer)
         liste.sort(key=lambda x: x.priorite,reverse=True)
         
-    def _selection(self,liste,date):
+    def _selection(self,liste,date): # TEST 
         """Selects the feasts which are actually celebrated."""
         
         commemoraison = 0 # max 2
@@ -502,21 +502,23 @@ class LiturgicalCalendar():
                     liste[hideux].commemoraison=False
                     liste[hideux].omission=True
                     
-        elif tmp.priorite >= 400: # TODO à tester, ainsi que les suivantes
+        elif tmp.priorite >= 400:
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
                 if elt.personne == tmp.personne:
                     liste[hideux].omission = True
                     liste[hideux].celebree = False
-                elif commemoraison <= 2 and not commemoraison_temporal:
+                elif commemoraison < 2 and (elt.sanctoral or (elt.temporal and commemoraison_temporal == False)):
                     liste[hideux].commemoraison=True
                     commemoraison_temporal=liste[hideux].temporal
                     commemoraison += 1
+                    
                 else:
+                    #print(elt.nom)
                     liste[hideux].commemoraison=False
                     liste[hideux].omission=True
         
-        elif tmp.priorite >= 200:
+        elif tmp.priorite >= 200: # TODO Bien vérifier si le cas est juste
             tmp.celebree=False
             tmp.peut_etre_celebree=True
             for hideux,elt in enumerate(liste):
@@ -524,7 +526,8 @@ class LiturgicalCalendar():
                 liste[hideux].peut_etre_celebree=True
                 if elt.personne == tmp.personne:
                     liste[hideux].omission = True
-                elif commemoraison <= 2 and not commemoraison_temporal:
+                    liste[hideux].peut_etre_celebree = False
+                elif commemoraison < 2 and (elt.sanctoral or (elt.temporal and commemoraison_temporal == False)):
                     liste[hideux].commemoraison=True
                     commemoraison_temporal=liste[hideux].temporal
                     commemoraison += 1
