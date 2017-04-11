@@ -1,32 +1,198 @@
 {% load static %}
 <!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="fr">
+<!--<![endif]-->
 	<head>
                 <meta charset="utf-8" />
-		<link rel="stylesheet" href="{% static "kalendarium/style.css" %}" />
 		<title>Theochrone : {% block title %}{% endblock %}</title>
+		<meta name="description" content="Theochrone. A Liturgical Calendar for Tridentine Rite.">
+		<meta name="author" content="Philippe Aucazou">
+
+		<!-- Mobile Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="kalendarium/images/favicon.ico">
+
+		<!-- Web Fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
+
+		<!-- Bootstrap core CSS -->
+		<link href="{% static "kalendarium/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+
+		<!-- Font Awesome CSS -->
+		<link href="{% static "kalendarium/fonts/font-awesome/css/font-awesome.css" %}" rel="stylesheet">
+
+		<!-- Plugins -->
+		<link href="{% static "kalendarium/css/animations.css" %}" rel="stylesheet">
+
+		<!-- Worthy core CSS file -->
+		<link href="{% static "kalendarium/css/style.css" %}" rel="stylesheet">
+
+		<!-- Custom css --> 
+		<link href="{% static "kalendarium/css/custom.css" %}" rel="stylesheet">
 	</head>
+	<body class="no-trans">
+		<!-- scrollToTop -->
+		<!-- ================ -->
+		<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+
+		<!-- header start -->
+		<!-- ================ --> 
+		<header class="header fixed clearfix navbar navbar-fixed-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+
+						<!-- header-left start -->
+						<!-- ================ -->
+						<div class="header-left clearfix">
+
+							<!-- logo -->
+							<div class="logo smooth-scroll">
+								<a href="#banner"><img id="logo" src="{% static "kalendarium/images/logo.png" %}" alt="Theochrone"></a>
+							</div>
+
+							<!-- name-and-slogan -->
+							<div class="site-name-and-slogan smooth-scroll">
+								<div class="site-name"><a href="#banner">Théochrone</a></div>
+								<div class="site-slogan">Le temps au service de Dieu</div>
+							</div>
+
+						</div>
+						<!-- header-left end -->
+
+					</div>
+					<div class="col-md-8">
+
+						<!-- header-right start -->
+						<!-- ================ -->
+						<div class="header-right clearfix">
+
+							<!-- main-navigation start -->
+							<!-- ================ -->
+							<div class="main-navigation animated">
+
+								<!-- navbar start -->
+								<!-- ================ -->
+								<nav class="navbar navbar-default" role="navigation">
+									<div class="container-fluid">
+
+										<!-- Toggle get grouped for better mobile display -->
+										<div class="navbar-header">
+											<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+												<span class="sr-only">Toggle navigation</span>
+												<span class="icon-bar"></span>
+												<span class="icon-bar"></span>
+												<span class="icon-bar"></span>
+											</button>
+										</div>
+
+										<!-- Collect the nav links, forms, and other content for toggling -->
+										<div class="collapse navbar-collapse scrollspy smooth-scroll" id="navbar-collapse-1">
+											<ul class="nav navbar-nav navbar-right">
+												<li class="active"><a href="#home">Accueil</a></li>
+												<li><a href="#result">Résultats</a></li>
+												<li><a href="#research">Recherche</a></li>
+												<li><a href="#help">Aide</a></li>
+												<li><a href="#download">Télécharger</a></li>
+												<li><a href="#contribute">Contribuer</a></li>
+												<li><a href="#contact">Contact</a></li>
+											</ul>
+										</div>
+
+									</div>
+								</nav>
+								<!-- navbar end -->
+
+							</div>
+							<!-- main-navigation end -->
+
+						</div>
+						<!-- header-right end -->
+
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- header end -->
+	<!-- banner start -->
+		<!-- ================ -->
+		<div id="home" class="banner">
+			<div class="banner-image"></div>
+			<div class="banner-caption">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 object-non-visible" data-animation-effect="fadeIn">
+							<h1 class="text-center">Bienvenue dans le <span>Théochrone</span></h1>
+							<p class="lead text-center">Le Théochrone, qu'est-ce ? Un calendrier liturgique selon le rit tridentin, suivant le missel de 1962.<a class="btn" data-toggle="modal" data-target="#theowhat">En savoir plus...</a></p>
+							
+							<!-- Modal -->
+								<div class="modal fade" id="theowhat" tabindex="-1" role="dialog" aria-labelledby="theowhat-label" aria-hidden="true">
+									<div class="modal-dialog modal-lg">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+												<h4 class="modal-title" id="theowhat-label">En deux mots...</h4>
+											</div>
+											<div class="modal-body">
+												<h3>Qu'est-ce que le Théochrone ?</h3>
+												<div class="row">
+													<div class="col-md-6">
+														<p>Le Théochrone, qu'est-ce ? Un calendrier liturgique selon le rit tridentin, suivant le missel de 1962. Rentrez une date, il vous donnera une fête, et même souvent plusieurs. Rentrez le nom d'un saint, ou d'une fête : il vous donnera sa date. Peu avare d'informations, le Théochrone peut aussi vous donner la couleur liturgique, la classe, le temps liturgique, et bien d'autres choses encore. Il se plie en trois pour vous satisfaire : vous pouvez l'utiliser en ligne, sur ce site, mais aussi <a href="#download">le télécharger</a> et l'utiliser grâce à une superbe interface graphique, et même en ligne de commandes ! </p>
+													</div>
+													<div class="col-md-6">
+														<img src="images/portfolio-2.jpg" alt="">
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Modal end -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- banner end -->
 	
-	<header><div id="into_header">
-            <div id="banniere">
-            <img src="{% static "kalendarium/logo.png" %}" alt="logo">
-            <h1>Théochrone</h1>
-            </div>
-            
-            <nav>
-                <ul>
-                    <li><a href="{% url "accueil" %}">Accueil</a></li>
-                    <li><a href="http://philippeaucazou.wordpress.com">Blogue</a></li>
-                    <li><a href="http://philippeaucazou.wordpress.com/contact">Contact</a></li>
-                </ul>
-            </nav></div>
-	</header>
-	
-	<body>
 		{% block content %}{% endblock %}
-	</body>
+	
 	
 	<footer>
 	{{ locaux }}
 	</footer>
+	
+		<!-- JavaScript files placed at the end of the document so the pages load faster
+		================================================== -->
+		<!-- Jquery and Bootstap core js files -->
+		<script type="text/javascript" src="{% static "kalendarium/plugins/jquery.min.js" %}"></script>
+		<script type="text/javascript" src="{% static "kalendarium/bootstrap/js/bootstrap.min.js" %}"></script>
+
+		<!-- Modernizr javascript -->
+		<script type="text/javascript" src="{% static "kalendarium/plugins/modernizr.js" %}"></script>
+
+		<!-- Isotope javascript -->
+		<script type="text/javascript" src="{% static "kalendarium/plugins/isotope/isotope.pkgd.min.js" %}"></script>
+		
+		<!-- Backstretch javascript -->
+		<script type="text/javascript" src="{% static "kalendarium/plugins/jquery.backstretch.min.js" %}"></script>
+
+		<!-- Appear javascript -->
+		<script type="text/javascript" src="{% static "kalendarium/plugins/jquery.appear.js" %}"></script>
+
+		<!-- Initialization of Plugins -->
+		<script type="text/javascript" src="{% static "kalendarium/js/template.js" %}"></script>
+
+		<!-- Custom Scripts -->
+		<script type="text/javascript" src="{% static "kalendarium/js/custom.js" %}"></script>
+</body>
 </html>
