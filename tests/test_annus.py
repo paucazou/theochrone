@@ -462,8 +462,28 @@ def test_selection(send_empty_liturgical_calendar):
     
     assert_in_name(copy.deepcopy(liste),datetime.date(2000,2,8))
     
-    
-
-    
-    return l
+def test_unsafe_get(send_empty_liturgical_calendar):
+    l=send_empty_liturgical_calendar
+    l.year_names.append(1900)
+    l.year_data[1900] = {}
+    l.previous_year_names.append(1950)
+    l.previous_year_data[1950] = {}
+    l.next_year_names.append(2000)
+    l.next_year_data[2000] = {}
+    some = FakeFeast(nom='some')
+    notsame = FakeFeast(nom='notsame')
+    notsamenot = FakeFeast(nom='notsamenot')
+    l.year_data[1900][datetime.date(1900,1,1)] = [some]
+    l.previous_year_data[1950][datetime.date(1950,1,1)] = []
+    l.previous_year_data[1950][datetime.date(1950,1,30)] = [notsame]
+    l.next_year_data[2000][datetime.date(2000,1,1)] = []
+    l.next_year_data[2000][datetime.date(2000,1,30)] = [notsamenot]
+    assert l.unsafe_get(datetime.date(1900,1,1)) == [some]
+    with pytest.raises(KeyError):
+        l.unsafe_get(datetime.date(1900,1,4))
+    assert not l.unsafe_get(datetime.date(1950,1,1))
+    assert l.unsafe_get(datetime.date(1950,1,30)) == [notsame]
+    assert not l.unsafe_get(datetime.date(2000,1,1))
+    assert l.unsafe_get(datetime.date(2000,1,30)) == [notsamenot]
+                  
     
