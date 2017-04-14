@@ -331,10 +331,10 @@
         </list>
         <list key="attribut_compose"/>
         <list key="egal"/>
-        <list key="hyperonyme">
+        <list key="hyperonyme"/>
+        <list key="nom">
           <str>innocents</str>
         </list>
-        <list key="nom"/>
         <list key="nom_compose"/>
         <list key="refus_faible"/>
         <list key="refus_fort"/>
