@@ -261,7 +261,7 @@ class LiturgicalCalendar():
             entre=cls.remonte(liste[a],entre,a)
         return entre
     
-    def unsafe_get(self,date):
+    def unsafe_get(self,date): #TEST
         """Return a list of feasts if 'date' exists in self.year_data.
         If not, tries to return from self.previous_year_data
         or self.next_year_data, else False"""
@@ -276,15 +276,17 @@ class LiturgicalCalendar():
         else:
             return False
         
-    def unsafe_iter(self,start=None,stop=None,reverse=False):
+    def unsafe_iter(self,start=None,stop=None,reverse=False): #TEST
         """Iterator which uses self.unsafe_get function
-        to yield items"""
+        to yield items.
+        start and stop are datetime.date objects.
+        reverse is an integer.
+        """
         
         if not start:
             start = datetime.date(sorted(self.year_names + self.previous_year_names + self.next_year_names)[0],1,1)
         if not stop:
             stop = datetime.date(sorted(self.year_names + self.previous_year_names + self.next_year_names)[-1],12,31)
-        print(start,stop)
         if not reverse:
             step = 1
             date = start

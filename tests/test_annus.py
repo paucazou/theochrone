@@ -485,5 +485,24 @@ def test_unsafe_get(send_empty_liturgical_calendar):
     assert l.unsafe_get(datetime.date(1950,1,30)) == [notsame]
     assert not l.unsafe_get(datetime.date(2000,1,1))
     assert l.unsafe_get(datetime.date(2000,1,30)) == [notsamenot]
+    
+def test_unsafe_iter(send_one_year_liturgical_calendar):
+    l=send_one_year_liturgical_calendar
+    l.next_year_names.append(1963)
+    l.next_year_data[1963] = l.create_empty_year(1963)
+    l.next_year_data[1963][datetime.date(1963,1,2)] = [FakeFeast(date=(1,2))]
+    
+    first_list = [item for item in l.unsafe_iter() ]
+    assert first_list[0][0].date == datetime.date(1961,1,1)
+    assert first_list[-1] == False
+    
+    reversed_list = [item for item in l.unsafe_iter(reverse=True) ]
+    assert reversed_list[0] == False
+    assert reversed_list[-1][0].date == datetime.date(1961,1,1)
+    
+    start_stop_list = [item for item in l.unsafe_iter(start=datetime.date(1961,1,1),stop=datetime.date(1962,2,3))]
+    assert start_stop_list[0][0].date == datetime.date(1961,1,1)
+    assert start_stop_list[-1][0].date == datetime.date(1962,2,3)
+    
                   
     
