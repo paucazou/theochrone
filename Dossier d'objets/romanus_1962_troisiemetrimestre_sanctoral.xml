@@ -2221,8 +2221,8 @@
       <str key="link">http://introibo.fr/29-07-St-Felix-pape-et-les-Sts</str>
       <dict key="nom">
         <str key="english">Saint Felix, Pope and Martyr, and Companions, Martyrs</str>
-        <str key="francais">Saints Félix, Simplice, Faustin et Béatrice, Martyrs</str>
-        <str key="latina">Sanctorum Felicis, Simplicii, Faustini et Beatricis, Martyrum</str>
+        <str key="francais">Saints Félix, Pape, Simplice, Faustin et Béatrice, Martyrs</str>
+        <str key="latina">Sanctorum Felicis, Papae, Simplicii, Faustini et Beatricis, Martyrum</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2234,7 +2234,9 @@
       <str key="propre">romanus</str>
       <None key="regex"/>
       <dict key="regex_">
-        <list key="attribut"/>
+        <list key="attribut"><str>2</str>
+            <str>rome</str>
+        </list>
         <list key="attribut_compose"/>
         <list key="egal"/>
         <list key="hyperonyme"/>
@@ -2242,11 +2244,37 @@
           <str>félix</str>
           <str>simplice</str>
           <str>faustin</str>
-          <str>béatrice</str>
+          <str>(bé|vi)atri(ce|x)</str>
         </list>
         <list key="nom_compose"/>
         <list key="refus_faible"/>
-        <list key="refus_fort"/>
+        <list key="refus_fort"><str>sardaigne</str><str>vienne</str><str>lyon</str><str>jovite</str><str>nabor</str>
+          <str>metz</str>
+          <str>saulieu</str>
+          <str>valence</str>
+          <str>sutri</str>
+          <str>fortunat</str>
+          <str>regula</str>
+          <str>exuperantius</str>
+          <str>audacte</str>
+          <str>thibiuca</str>
+          <str>gérone</str>
+          <str>carthage</str>
+          <str>saragosse</str>
+          <str>côme</str>
+          <str>séville</str>
+          <str>adrumète</str>
+          <str>cornouailles</str>
+          <str>bourges</str>
+          <str>nantes</str>
+          <str>burgondie</str>
+          <str>brescia</str>
+          <str>cordoue</str>
+          <str>rhuys</str>
+          <str>valois</str>
+          <str>cantalice</str>
+          <str>nicosie</str>
+            </list>
         <list key="syntaxiques">
           <str>et</str>
         </list>
