@@ -19,8 +19,9 @@
                     
          {% endfor %}       
         </div>
-        <div id="search"><h3>Recherche</h3>
-                <form action="date_seule" method="get">
+        
+        <div id="search" class="form-group has-feedback"><h3>Recherche</h3>
+                <form role="form" action="date_seule" method="get">
                     {% csrf_token %}
                     {{ recherche_simple.as_p }}
                     <input type="submit" value="Chercher" />
@@ -33,9 +34,9 @@
                 <form action="mois" method="get">
                     {% csrf_token %}
                     {{ mois_entier.as_p }}
-                    <input type="submit" value="Chercher" />
+                    <input type="submit" value="Chercher" class="btn btn-default"/>
                 </form>
-        </div>    
+        </div>
         
     </div>
 {% endblock %}

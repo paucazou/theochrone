@@ -11,8 +11,11 @@ douze = ('janvier','février','mars','avril','mai','juin','juillet','août','sep
 
 class RechercheSimple(forms.Form):
     """A class which defines a form for a research by an only date"""
-    date_seule = forms.DateField(widget = forms.SelectDateWidget(years=range(1960,2100)),
-                                 required = True,label="Choisissez une date : ",initial = datetime.date.today)
+    date_seule = forms.DateField(widget = forms.SelectDateWidget(years=range(1960,2100),
+                                 attrs = {
+                                     'class' : "form-control"}),
+                                 required = True,label="Choisissez une date",initial = datetime.date.today
+                                 )
 
 class RechercheMotClef(forms.Form):
     """A class which defines a form for a research by key words"""
