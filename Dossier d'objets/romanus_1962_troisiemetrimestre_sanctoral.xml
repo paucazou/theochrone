@@ -2939,4 +2939,182 @@
     </dict>
     <str key="classe">FeteFixe</str>
   </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">2</int>
+        <int key="mois">8</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/02-08-St-Alphonse-Marie-eveque</str>
+      <dict key="nom">
+        <str key="english">Saint Alphonsus Mary de Ligouri, Bishop, Confessor, and Doctor of the Church</str>
+        <str key="francais">Saint Alphonse-Marie de Ligori, Évêque, Confesseur et Docteur de l'Église</str>
+        <str key="latina">Sancti Alfonsi Mariae de Ligorio, Episcopi, Confessoris et Ecclesiae Doctoris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">alphonse_ligori</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>ligu?ori</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom"/>
+        <list key="nom_compose">
+          <str>alphonse</str>
+          <str>marie</str>
+        </list>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>idefonse</str>
+          <str>pacheco</str>
+          <str>rodriguez</str>
+          <str>rojas</str>
+          <str>navarrete</str>
+          <str>leziniana</str>
+          <str>lopez</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+          <str>confesseur</str>
+          <str>docteur</str>
+          <str>évêque</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">rouge</str>
+      <int key="_priorite">100</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">2</int>
+        <int key="mois">8</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">5</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/02-08-St-Etienne-I-pape-et-martyr</str>
+      <dict key="nom">
+        <str key="english">Saint Stephen I, Pope and Martyr</str>
+        <str key="francais">Saint Étienne Premier, Pape et Martyr</str>
+        <str key="latina">Sancti Stephani Primi, Papae et Martyris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">etienne_premier</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>1</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>étienne</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>protomartyr</str>
+          <str>reggio</str>
+          <str>brescia</str>
+          <str>antioche</str>
+          <str>lyon</str>
+          <str>rieti</str>
+          <str>hospitalier</str>
+          <str>jeune</str>
+          <str>souroj</str>
+          <str>sabaïte</str>
+          <str>confesseur</str>
+          <str>cajazzo</str>
+          <str>pérouse</str>
+          <str>hongrie</str>
+          <str>apt</str>
+          <str>rossano</str>
+          <str>châtillon</str>
+          <str>makhrichtchi</str>
+          <str>corvey</str>
+          <str>bourg</str>
+          <str>limousin</str>
+          <str>muret</str>
+          <str>harding</str>
+          <str>obazine</str>
+          <str>lupo</str>
+          <str>bandelli</str>
+          <str>min</str>
+          <str>théodore</str>
+          <str>cuenot</str>
+        </list>
+        <list key="syntaxiques">
+          <str>et</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+          <str>pape</str>
+          <str>martyr</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
 </list>
