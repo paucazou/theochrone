@@ -30,6 +30,7 @@ class MoisEntier(forms.Form):
     annee = forms.IntegerField(widget=forms.Select(choices = annees,attrs = {
                                      'class' : "form-control"}),max_value=2100,min_value=1960,
                                required=True,initial=datetime.date.today().year)
-    mois = forms.IntegerField(widget = forms.Select(choices = [(i+1,month.capitalize()) for i,month in enumerate(douze)]),
+    mois = forms.IntegerField(widget = forms.Select(choices = [(i+1,month.capitalize()) for i,month in enumerate(douze)],attrs = {
+                                     'class' : "form-control"}),
                               max_value=12,min_value=1,required = True,
                               initial = datetime.date.today().month)
