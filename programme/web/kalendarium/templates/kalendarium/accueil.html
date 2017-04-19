@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block title %}{{ titre }} {% endblock %}
 {% block content %}
-    <div id="conteneur">
-        
-        <div id="resultats">
+    <div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 id="result" class="title text-center">Résultats</h1>
             {% for date,jour in deroule %}
             <h3>{{ date }}</h3>
             <div id="value">                
@@ -18,24 +20,29 @@
             </div>
                     
          {% endfor %}       
-        </div>
+        </div></div></div></div>
         
-        <div id="search" class="form-group has-feedback"><h3>Recherche</h3>
-                <form role="form" action="date_seule" method="get">
-                    {% csrf_token %}
-                    {{ recherche_simple.as_p }}
-                    <input type="submit" value="Chercher" />
-                </form>
-                <form action="mot_clef" method="get">
-                    {% csrf_token %}
-                    {{ recherche_mot_clef.as_p }}
-                    <input type="submit" value="Chercher" />
-                </form>
-                <form action="mois" method="get">
-                    {% csrf_token %}
-                    {{ mois_entier.as_p }}
-                    <input type="submit" value="Chercher" class="btn btn-default"/>
-                </form>
+        <div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 id="research" class="title text-center">Recherche</h1>
+                                                    <form role="form" action="date_seule" method="get">
+                                                        {% csrf_token %}
+                                                        {{ recherche_simple.as_p }}
+                                                        <input type="submit" value="Chercher" class="btn btn-default"/>
+                                                    </form>
+                                                    <form action="mot_clef" method="get">
+                                                        {% csrf_token %}
+                                                        {{ recherche_mot_clef.as_p }}
+                                                        <input type="submit" value="Chercher" class="btn btn-default"/>
+                                                    </form>
+                                                    <form action="mois" method="get">
+                                                        {% csrf_token %}
+                                                        {{ mois_entier.as_p }}
+                                                        <input type="submit" value="Chercher" class="btn btn-default"/>
+                                                    </form>
+                                                    </div></div></div>
         </div>
         
     </div>
