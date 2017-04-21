@@ -9,7 +9,37 @@ File Description: Place here your custom CSS styles
 */
 
 /* TODO 
- * refaire le bouton En savoir plus
+ * refaire le bouton En savoir plus, et contact
  * Changer la taille de Bienvenue dans le Théochrone : trop grand pour les petits écrans.
  * Supprimer l'icône du menu pour les petits écrans
+ * Faire fermer le menu du petit écran lorsqu'on clique sur l'un des liens
  */
+
+.errorlist
+{
+    list-style: none;
+    font-weight: bold;
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+select
+{
+    margin-top: 4.4%;
+    background-image: url("/static/kalendarium/images/arrow.png"); /* trop large */
+    padding-right: 25px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}

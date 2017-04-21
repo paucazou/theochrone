@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block title %}{{ titre }} {% endblock %}
 {% block content %}
+<!-- section start -->
+		<!-- ================ -->
     <div id="resultup" class="section clearfix object-non-visible" data-animation-effect="fadeIn">
 			<div class="container">
 				<div class="row">
@@ -21,44 +23,49 @@
                     
          {% endfor %}       
         </div></div></div></div>
+        <!-- section end -->
         <!-- section start -->
 		<!-- ================ -->
 		<div class="default-bg space">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
-						<h1 class="text-center">Au service de <span>Dieu</span></h1>
+						<h1 class="text-center">Au service de <span>Dieu</span</h1>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- section end -->
+		
+	<!-- section start -->
+		<!-- ================ -->	
         <div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
 			<div class="container"><h1 id="research" class="title text-center">Recherche</h1>
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-4"><h2>Rechercher une <span>date seule</span></h2>
 						
                                                     <form role="form" action="date_seule#resultup" method="get">
                                                         {% csrf_token %}
-                                                        {{ recherche_simple.as_p }}
+                                                        {{ recherche_simple.as_p}}
                                                         <input type="submit" value="Chercher" class="btn btn-default"/>
-                                                    </form></div></div>
-                                <div class="row">
-					<div class="col-md-12">
+                                                    </form></div>
+                                                    <div class="col-md-4">
+                                <h2>Rechercher par <span>mots-clefs</span></h2>
+					
                                                     <form action="mot_clef#resultup" method="get">
                                                         {% csrf_token %}
                                                         {{ recherche_mot_clef.as_p }}
                                                         <input type="submit" value="Chercher" class="btn btn-default"/>
-                                                    </form></div></div>
-                                <div class="row">
-					<div class="col-md-12">
+                                                    </form></div>
+                                
+					<div class="col-md-4"><h2>Rechercher un <span>mois entier</span></h2>
                                                     <form action="mois#resultup" method="get">
                                                         {% csrf_token %}
                                                         {{ mois_entier.as_p }}
                                                         <input type="submit" value="Chercher" class="btn btn-default"/>
                                                     </form>
-                                                    </div></div></div>
+                                                    </div></div>
         </div>
         
-    </div>
+    </div><!-- section end -->
 {% endblock %}

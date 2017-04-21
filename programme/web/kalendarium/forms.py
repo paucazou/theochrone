@@ -22,8 +22,9 @@ class RechercheMotClef(forms.Form):
     annee = forms.IntegerField(widget=forms.Select(choices = annees,attrs = {
                                      'class' : "form-control"}), max_value=2100,min_value=1960,
                                required=True,initial=datetime.date.today().year)
-    recherche = forms.CharField(label="Entrez vos mots-clefs",required=True)
-    plus = forms.BooleanField(help_text="Recherche large",required=False)
+    recherche = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'},),
+        label="Entrez vos mots-clefs",required=True)
+    plus = forms.BooleanField(label="Recherche large",required=False)
 
 class MoisEntier(forms.Form):
     """A class which defines a form for a reserch of a complete month"""
