@@ -107,11 +107,10 @@ class Fete:
         hash_list = []
         for item in self.__dict__.values():
             if isinstance(item,dict):
-                hash_list += [ tuple(itemtwo) for itemtwo in item.values() ]
+                hash_list += [ str(itemtwo) for itemtwo in item.values() ]
             else:
                 hash_list.append(item)
-        print(hash_list)
-        return hash(tuple(hash_list))
+        return hash(str(hash_list))
         
     # Définitions de méthodes   
     def Votive(self):
@@ -279,6 +278,8 @@ class Fete:
         return self._transferee
     
     transferee = property(_get_transferee,_set_transferee) # WARNING La propriété est de classe, non d'instance
+    
+    hache = property(__hash__)
     
 class FeteFixe(Fete):
     """Une classe définissant une fête fixe, c'est-à-dire dont la date ne change pas dans l'année."""
