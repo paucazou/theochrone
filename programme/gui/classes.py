@@ -493,7 +493,7 @@ class Tree(QTreeWidget,SuperTranslator):
                     temps = 'Temporal'
                 else:
                     temps = 'Sanctoral'
-                child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,self.Annee,'francais').capitalize(),temps])
+                child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,'francais').capitalize(),temps])
             else:
                 if depth == 2:
                     data = [str(elt[0].date)]
@@ -532,7 +532,7 @@ class Table(QTableWidget,SuperTranslator):
             self.setItem(i,date_pos,QTableWidgetItem(str(elt.date)))
             self.setItem(i,2,QTableWidgetItem(str(elt.degre)))
             self.setItem(i,3,QTableWidgetItem(elt.couleur))
-            self.setItem(i,4,QTableWidgetItem(officia.affiche_temps_liturgique(elt,Annee,'francais').capitalize()))
+            self.setItem(i,4,QTableWidgetItem(officia.affiche_temps_liturgique(elt,'francais').capitalize()))
             if elt.temporal:
                 temps = 'Temporal'
             else:

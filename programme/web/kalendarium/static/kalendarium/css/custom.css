@@ -31,14 +31,14 @@ File Description: Place here your custom CSS styles
 select
 {
     margin-top: 4.4%;
-    background-image: url("/static/kalendarium/images/arrow.png"); /* trop large */
+    background-image: url("/static/kalendarium/images/arrow.png"); /* trop près du bord */
     padding-right: 25px;
     background-repeat: no-repeat;
     background-position: right center;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-}
+} 
 
 select::-ms-expand {
   display: none;

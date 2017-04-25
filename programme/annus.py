@@ -102,9 +102,11 @@ class LiturgicalCalendar():
             elt = raw_elt.copy()
             if isinstance(elt.DateCivile(easter,year),datetime.date):
                 date=elt.DateCivile(easter,year)
+                elt.parent = self
                 self._move(elt,date)
             else:
                 for a in elt.DateCivile(easter,year):
+                    a.parent = self
                     self._move(a,a.date)
         
     def _create_year(self,year): # TEST
@@ -452,6 +454,7 @@ class LiturgicalCalendar():
             self.saturday.date = date
             if self.saturday.Est_ce_samedi(date):
                 liste.append(self.saturday.copy())
+                liste[-1].parent = self
             else:
                 liste.append(self.feria.Dimanche_precedent(date,self))
             

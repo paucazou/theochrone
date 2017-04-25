@@ -351,31 +351,31 @@ def renvoie_regex(retour,regex,liste):
     retour.regex['egal'] += de_cote
     return retour
 
-def affiche_temps_liturgique(objet,Annee,langue='francais'):
+def affiche_temps_liturgique(objet,langue='francais'):
     """Une fonction capable d'afficher le temps liturgique"""
     sortie = 'erreur'
     if langue == 'francais':
-        if objet.temps_liturgique(Annee) == 'nativite':
+        if objet.temps_liturgique() == 'nativite':
             sortie = "temps de la Nativité (Temps de Noël)"
-        elif objet.temps_liturgique(Annee) == 'epiphanie':
+        elif objet.temps_liturgique() == 'epiphanie':
             sortie = "temps de l'Épiphanie (Temps de Noël)"
-        elif objet.temps_liturgique(Annee) == 'avent':
+        elif objet.temps_liturgique() == 'avent':
             sortie = "temps de l'Avent"
-        elif objet.temps_liturgique(Annee) == 'apres_epiphanie':
+        elif objet.temps_liturgique() == 'apres_epiphanie':
             sortie = "temps per Annum après l'Épiphanie"
-        elif objet.temps_liturgique(Annee) == 'septuagesime':
+        elif objet.temps_liturgique() == 'septuagesime':
             sortie = "temps de la Septuagésime"
-        elif objet.temps_liturgique(Annee) == 'careme':
+        elif objet.temps_liturgique() == 'careme':
             sortie = "temps du Carême proprement dit (Temps du Carême)"
-        elif objet.temps_liturgique(Annee) == 'passion':
+        elif objet.temps_liturgique() == 'passion':
             sortie = "temps de la Passion (Temps du Carême)"
-        elif objet.temps_liturgique(Annee) == 'paques':
+        elif objet.temps_liturgique() == 'paques':
             sortie = "temps de Pâques (Temps Pascal)"
-        elif objet.temps_liturgique(Annee) == 'ascension':
+        elif objet.temps_liturgique() == 'ascension':
             sortie = "temps de l'Ascension (Temps Pascal)"
-        elif objet.temps_liturgique(Annee) == 'octave_pentecote':
+        elif objet.temps_liturgique() == 'octave_pentecote':
             sortie = "octave de la Pentecôte (Temps Pascal)"
-        elif objet.temps_liturgique(Annee) == 'pentecote':
+        elif objet.temps_liturgique() == 'pentecote':
             sortie = "temps per Annum après la Pentecôte"
     else: # english
         pass
@@ -502,7 +502,7 @@ def affichage(**kwargs):
                     sortie += """Fête du Sanctoral. """
                     
             if kwargs['verbose'] or kwargs['temps_liturgique']:
-                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,kwargs['Annee'],'francais'))
+                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,'francais'))
                 
             if kwargs['verbose'] or kwargs['couleur']:
                 sortie += """Couleur liturgique : {}. """.format(a.couleur)

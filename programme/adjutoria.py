@@ -127,7 +127,8 @@ class Fete:
         return renvoye
     
     def DateCivile(self,paques,annee):
-        """Une fonction qui va tester si la date est déjà déterminée, sinon il va la demander à la fonction DateCivile_()"""
+        """Une fonction qui va tester si la date est déjà déterminée,
+        sinon il va la demander à la fonction DateCivile_()"""
         if not isinstance(self.date,datetime.date):
             self.date = self.DateCivile_(paques,annee)
         return self.date
@@ -155,7 +156,7 @@ class Fete:
     
     def DatePaques(self,paques,annee):
         """Une fonction qui calcule le nombre de jours par rapport à Pâques"""
-        return paques - self.DateCivile(paques,annee)
+        return paques - self.date
     
     def Correspondance(self,mots,mots_separes,plus):
         """Fonction qui renvoie un chiffre de correspondance entre les mots rentrés et les regex"""
@@ -236,13 +237,13 @@ class Fete:
                         break
         return liste_match
     
-    def temps_liturgique(self,Annee):
+    def temps_liturgique(self):
         """Une fonction qui renvoie le temps liturgique"""
         if self._temps_liturgique == 'variable':
             date = self.date
             while True:
                 try:
-                    for a in Annee[date]:
+                    for a in self.parent[date]:
                         if a.temporal:
                             return a._temps_liturgique
                     date = date - datetime.timedelta(1)
@@ -472,10 +473,10 @@ class FeteFerie(Fete):
         self.commemoraison_privilegiee=-1
         self.temporal = True
     
-    def QuelNom(self,jour,Annee):
+    def QuelNom(self,jour):
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
         return {'latina':'Feria ' + officia.nom_jour(jour,'latina').capitalize(),
-                'francais':officia.nom_jour(jour,'francais').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,Annee,'francais'),
+                'francais':officia.nom_jour(jour,'francais').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,'francais'),
                 'english':officia.nom_jour(jour,'english').capitalize()} # Comment dit on jour de férie en anglais ?
     
     def Dimanche_precedent(self,jour,Annee):
@@ -503,9 +504,10 @@ class FeteFerie(Fete):
                             nouveau._temps_liturgique = office._temps_liturgique
                             nouveau._couleur = office.couleur
                         try:
-                            nouveau.nom = nouveau.QuelNom(jour,Annee)
+                            nouveau.nom = nouveau.QuelNom(jour)
                         except IndexError:
                             nouveau.nom = 'dimanche'
+                        nouveau.parent = Annee
                         return nouveau
             except KeyError:
                 continue
