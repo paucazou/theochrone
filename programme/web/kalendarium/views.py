@@ -53,8 +53,10 @@ def home(request,
         deroule[titre] = officia.inversons(mots_clefs,Annee,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='francais',exit=False,plus=plus)
         inversion=True
 
+    for value in deroule.values():
+        for elt in value:
+            elt.temps_liturgique_ = "T" + officia.affiche_temps_liturgique(elt,langue='francais')[1:]
     deroule = sorted(deroule.items())
-    locaux = locals() #for development only 
 
     return render(request,'kalendarium/accueil.html',locals())
 

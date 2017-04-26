@@ -28,31 +28,31 @@
     <tbody>
         
         <tr>
-            <th>Propre</th><td>{{ fete.propre }}</td></tr>
+            <th>Propre</th><td>{% if fete.propre == "romanus"%}Romain{% endif %}</td></tr>
         <tr>
             <th>Ordo</th><td>{{ fete.ordo }}</td></tr>
         <tr>
-            <th>Célébration</th><td>Cette fête est {% if fete.celebree %}célébrée{% endif %}{% if fete.commemoraison %}commémorée{% endif %}{% if fete.omission %}omise{% endif %}{% if fete.transferee %}transférée{% endif %}.
+            <th>Célébration</th><td>Cette fête est {% if fete.celebree %}célébrée{% endif %}{% if fete.commemoraison %}commémorée{% endif %}{% if fete.omission %}omise{% endif %}{% if fete.transferee %} et transférée du {{ fete.date_originelle }}{% endif %}.
         <tr>
           <th>Classe</th><td>{{ fete.degre }}</td></tr>
         <tr>
             <th>Couleur liturgique</th><td>{{ fete.couleur.capitalize }}</td></tr>
         
         <tr>
-            <th>Temporal</th><td>{{ fete.temporal }}</td></tr>
+            <th>Temporal</th><td>{% if fete.temporal %}Oui{% else %}Non{% endif %}</td></tr>
         <tr>
-            <th>Sanctoral</th><td>{{ fete.sanctoral }}</td></tr>
+            <th>Sanctoral</th><td>{% if fete.sanctoral %}Oui{% else %}Non{% endif %}</td></tr>
         
         <tr>
-            <th>Temps liturgique</th><td>{{ fete.temps_liturgique }}</td></tr>
+            <th>Temps liturgique</th><td>{{ fete.temps_liturgique_ }}</td></tr>
         <tr>
-            <th>Fête transférée</th><td>{{ fete.transferee }}</td></tr>
+            <th>Fête transférée</th><td>{% if fete.transferee %}Oui{% else %}Non{% endif %}</td></tr>
     </tbody></table>
       
       
       </div></div></div>
       </div>
-      <div class="panel-footer"><a href="{{ fete.link }}">Textes de la messe et de l'office</a></div>
+      <div class="panel-footer"><a target="_blank" href="{{ fete.link }}">Textes de la messe et de l'office sur Introibo.fr</a></div>
     </div>
   </div>
 {% endfor %}</div>

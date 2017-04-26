@@ -509,6 +509,9 @@ textarea {
                 position & bg-color for little widgth 
                 Try to put out the logo*/
 	}
+	.banner-caption h1 {
+            font-size: 3em;
+        }
 }
 
 /* Fixed Header
