@@ -292,7 +292,7 @@ class Fete:
         else:
             returnlist=[]
             for name in self._images:
-                returnlist.extend([ self.images_rep + file for file in os.listdir('./images/fetes/{}'.format(self.images_rep)) if name in file ])
+                returnlist.extend([ self.images_rep + file for file in os.listdir(os.path.dirname(os.path.abspath(__file__)) + '/images/fetes/{}'.format(self.images_rep)) if name in file ])
             return returnlist
         
     images = property(_get_images)
