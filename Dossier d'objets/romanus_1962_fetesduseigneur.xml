@@ -415,4 +415,72 @@
     </dict>
     <str key="classe">FeteMobilePaques</str>
   </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <int key="_priorite">1550</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais">Vérifier s'il s'agit bien d'une fête du Seigneur, et la transférer dans ce cas.</str>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">6</int>
+        <int key="mois">8</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">2</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <str key="link">http://introibo.fr/06-08-Transfiguration-de-Notre</str>
+      <dict key="nom">
+        <str key="english">Transfiguration of Our Lord Jesus Christ</str>
+        <str key="francais">Transfiguration de Notre Seigneur Jésus Christ</str>
+        <str key="latina">In Transfiguratione Domini Nostri Jesu Christi</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">deuxieme</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose">
+          <str>jésus</str>
+          <str>christ</str>
+        </list>
+        <list key="egal"/>
+        <list key="hyperonyme">
+          <str>transfiguration</str>
+        </list>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>notre</str>
+        </list>
+        <list key="titre">
+          <str>seigneur</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
 </list>
