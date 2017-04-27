@@ -23,7 +23,7 @@
     </div>
     <div id="{{ fete.hache }}" class="panel-collapse collapse">
       <div class="panel-body">
-      <div class="container"><div class="row"><div class="col-md-4"><img class="img-responsive" src="{% static "kalendarium/images/image_not_found.png" %}" alt="Image not found"></div><div class="col-md-1"></div><div class="col-md-6">
+      <div class="container"><div class="row"><div class="col-md-4">{% if not fete.images %}<img class="img-responsive" src="{% static "kalendarium/images/image_not_found.png" %}" alt="Image not found">{% else %}<img class="img-responsive" src="/static/kalendarium/images/fetes/{{ fete.images.0 }}" alt="fete.personne">{% endif %}</div><div class="col-md-1"></div><div class="col-md-6">
       <table class="table table-hover">
     <tbody>
         
