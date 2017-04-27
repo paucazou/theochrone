@@ -390,9 +390,9 @@ def ajouter(modele,entrees={}):
             print(i,':',a)
         nouveau.commemoraison_privilegiee = valider('Rentrez le degré de commémoraison.',nouveau.commemoraison_privilegiee)
         
-        nouveau.pal = valider('La messe peut-elle être Pro aliquibus locis ?',nouveau.pal,'bool')
-        nouveau.votive = valider('La messe est-elle votive, ou peut-elle être reprise comme votive ?',nouveau.votive,'bool')
-        nouveau.occurrence_perpetuelle = valider('La fête souffre-t-elle d\'une occurrence perpétuelle avec une autre fête ?',nouveau.occurrence_perpetuelle,'bool')
+        #nouveau.pal = valider('La messe peut-elle être Pro aliquibus locis ?',nouveau.pal,'bool')
+        #nouveau.votive = valider('La messe est-elle votive, ou peut-elle être reprise comme votive ?',nouveau.votive,'bool')
+        #nouveau.occurrence_perpetuelle = valider('La fête souffre-t-elle d\'une occurrence perpétuelle avec une autre fête ?',nouveau.occurrence_perpetuelle,'bool')
         #nouveau.dimanche = valider('La fête tombe-t-elle un dimanche ?',nouveau.dimanche,'bool')
         #nouveau.repris_en_ferie = valider('La fête est-elle reprise en férie ?',nouveau.repris_en_ferie,'bool')
         nouveau.fete_du_Seigneur = valider('La fête est-elle une fête du Seigneur ?',nouveau.fete_du_Seigneur,'bool')
@@ -499,6 +499,21 @@ def ajouter(modele,entrees={}):
             pass
         elif modele == 'Defunts': # rien de particulier à rentrer
             pass
+        
+        nouveau._images = finput('Rentrez les noms que vous voulez utiliser pour les images. Séparez-les par des blancs.',' '.join(nouveau._images)).lower().split()
+        proposition_repo = ''
+        if nouveau.sanctoral:
+            proposition_repo += 'sanctoral/'
+            if modele == 'FeteFixe':
+                mois = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
+                proposition_repo += mois[nouveau.date_['mois']]
+        else:
+            proposition_repo += 'temporal/'
+            if nouveau.fete_du_Seigneur:
+                proposition_repo += 'fetesduseigneur'
+            elif nouveau.dimanche:
+                proposition_repo += 'dimanches'
+        nouveau.images_rep = finput('Rentrez le dossier où se trouvent les images',proposition_repo)
         
         nouveau.addendum['francais'] = finput('Avez-vous des choses à ajouter ? (Laissez vide sinon)',nouveau.addendum['francais'])
         print("""Notre objet {} est construit. Voici ses caractéristiques :""".format(type(nouveau)))
