@@ -4,6 +4,7 @@ import copy
 import calendar
 import datetime
 import officia
+import os
 import re
 
 #from messages import adjutoria_messages as msg
@@ -49,6 +50,8 @@ class Fete:
         
         self.link=str() # un lien vers Introibo, en attendant une classe spéciale textes.
         self.textes='' # Textes de la messe et des Vêpres, pour plus tard
+        self._images=[] # une liste de noms correspondant aux noms des images qui devront être recherchées dans le dossier images
+        self.images_rep = str() # un chemin relatif pour trouver les images
         self.addendum={'francais':'',
                        'english':'',
                        'latina':'',
@@ -279,6 +282,20 @@ class Fete:
         return self._transferee
     
     transferee = property(_get_transferee,_set_transferee) # WARNING La propriété est de classe, non d'instance
+    
+    def _get_images(self):
+        """Renvoie une liste d'images en recherchant dans le dossier images
+        tout ce qui correspond à la liste contenue dans self._images.
+        Si la liste est vide, renvoie None"""
+        if not self._images:
+            return None
+        else:
+            returnlist=[]
+            for name in self._images:
+                returnlist.extend([ self.images_rep + file for file in os.listdir('./images/fetes/{}'.format(self.images_rep)) if name in file ])
+            return returnlist
+        
+    images = property(_get_images)
     
     hache = property(__hash__)
     
