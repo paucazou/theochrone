@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <list>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">2400</int>
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
@@ -23,6 +25,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">True</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Octave-de-la-Nativite-1er-janvier</str>
       <dict key="nom">
         <str key="english">Octave day of the Nativity</str>
@@ -77,13 +80,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">2800</int>
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
@@ -104,6 +109,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">True</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Nativite-du-Seigneur-25-decembre</str>
       <dict key="nom">
         <str key="english">Christmas</str>
@@ -145,13 +151,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">1300</int>
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
@@ -172,6 +180,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/St-Etienne-26-decembre</str>
       <dict key="nom">
         <str key="english">Saint Stephen, protomartyr</str>
@@ -212,13 +221,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1300</int>
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
@@ -239,6 +250,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/St-Jean-27-decembre</str>
       <dict key="nom">
         <str key="english">Saint John, aposte and evangelist</str>
@@ -283,13 +295,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">1300</int>
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
@@ -310,6 +324,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Sts-Innocents-28-decembre</str>
       <dict key="nom">
         <str key="english">Holy Innocents</str>
@@ -352,13 +367,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
@@ -379,6 +396,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/29-decembre</str>
       <dict key="nom">
         <str key="english">Saint Thomas of Canterbury</str>
@@ -421,13 +439,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
@@ -448,6 +468,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/31-decembre</str>
       <dict key="nom">
         <str key="english">Saint Sylvester, Pope</str>
@@ -490,13 +511,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">2600</int>
       <str key="_temps_liturgique">epiphanie</str>
       <bool key="_transferee">False</bool>
@@ -517,6 +540,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">True</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Epiphanie-du-Seigneur-6-janvier</str>
       <dict key="nom">
         <str key="english">Epiphany</str>
@@ -555,13 +579,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1550</int>
       <str key="_temps_liturgique">epiphanie</str>
       <bool key="_transferee">False</bool>
@@ -582,6 +608,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">True</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Bapteme-du-Seigneur-13-janvier</str>
       <dict key="nom">
         <str key="english">Baptism of Our Lord Jesus Christ</str>
@@ -627,13 +654,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">JoursOctaveDeNoel</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1290</int>
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
@@ -684,6 +713,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Feries-dans-l-octave-de-la</str>
       <int key="mois_">12</int>
       <dict key="nom">
@@ -731,13 +761,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">JoursOctaveDeNoel</str>
   </Modele>
   <Modele>
+    <str key="classe">JoursAvent</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">500</int>
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
@@ -776,6 +808,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/-Temps-de-l-Avent-</str>
       <dict key="nom">
         <str key="english">Advent</str>
@@ -839,13 +872,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">JoursAvent</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileAvent</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">1200</int>
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
@@ -863,6 +898,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Mercredi-des-Quatre-Temps</str>
       <dict key="nom">
         <str key="english">Ember Wednesday in Advent</str>
@@ -907,13 +943,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileAvent</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileAvent</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">1200</int>
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
@@ -931,6 +969,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Vendredi-des-Quatre-Temps</str>
       <dict key="nom">
         <str key="english">Ember Friday in Advent</str>
@@ -975,13 +1014,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileAvent</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileAvent</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">1200</int>
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
@@ -999,6 +1040,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Vendredi-des-Quatre-Temps</str>
       <dict key="nom">
         <str key="english">Ember Saturday in Advent</str>
@@ -1043,13 +1085,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileAvent</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2400</int>
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
@@ -1070,6 +1114,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Vigile-de-la-Nativite</str>
       <dict key="nom">
         <str key="english">Christmas Eve</str>
@@ -1110,8 +1155,8 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
 </list>

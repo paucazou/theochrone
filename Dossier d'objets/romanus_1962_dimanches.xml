@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <list>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">2800</int>
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
@@ -20,6 +22,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-Paque</str>
       <dict key="nom">
         <str key="english">Easter</str>
@@ -65,13 +68,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">passion</str>
       <bool key="_transferee">False</bool>
@@ -89,6 +94,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-des-Rameaux</str>
       <dict key="nom">
         <str key="english">Palm Sunday</str>
@@ -131,13 +137,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">passion</str>
       <bool key="_transferee">False</bool>
@@ -155,6 +163,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-la-Passion</str>
       <dict key="nom">
         <str key="english">First Sunday of the Passion</str>
@@ -194,13 +203,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">rose</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">careme</str>
       <bool key="_transferee">False</bool>
@@ -218,6 +229,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/4eme-Dimanche-de-Careme</str>
       <dict key="nom">
         <str key="english">Laetare Sunday</str>
@@ -260,13 +272,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">careme</str>
       <bool key="_transferee">False</bool>
@@ -284,6 +298,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/3eme-dimanche-de-Careme</str>
       <dict key="nom">
         <str key="english">Third Sunday of Lent</str>
@@ -323,13 +338,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">careme</str>
       <bool key="_transferee">False</bool>
@@ -347,6 +364,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/2eme-dimanche-de-Careme</str>
       <dict key="nom">
         <str key="english">Second Sunday of Lent</str>
@@ -383,13 +401,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">careme</str>
       <bool key="_transferee">False</bool>
@@ -407,6 +427,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/1er-Dimanche-de-Careme</str>
       <dict key="nom">
         <str key="english">First Sunday of Lent</str>
@@ -443,13 +464,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">septuagesime</str>
       <bool key="_transferee">False</bool>
@@ -467,6 +490,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-la-Quinquasegime</str>
       <dict key="nom">
         <str key="english">Quinquagesima Sunday</str>
@@ -506,13 +530,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">septuagesime</str>
       <bool key="_transferee">False</bool>
@@ -530,6 +556,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-la-Sexagesime</str>
       <dict key="nom">
         <str key="english">Sexagesima Sunday</str>
@@ -569,13 +596,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">septuagesime</str>
       <bool key="_transferee">False</bool>
@@ -593,6 +622,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-la-Septuagesime</str>
       <dict key="nom">
         <str key="english">Septuagesima Sunday</str>
@@ -632,13 +662,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileEpiphanie</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">epiphanie</str>
       <bool key="_transferee">False</bool>
@@ -656,6 +688,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Messe-du-1er-dimanche-apres-l</str>
       <dict key="nom">
         <str key="english">First Sunday after Epiphany</str>
@@ -698,13 +731,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileEpiphanie</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileEpiphanie</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
@@ -722,6 +757,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/2eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
         <str key="english">Second Sunday after the Epiphany</str>
@@ -764,13 +800,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileEpiphanie</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileEpiphanie</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
@@ -788,6 +826,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/3eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
         <str key="english">Third Sunday after the Epiphany</str>
@@ -830,13 +869,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileEpiphanie</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileEpiphanie</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
@@ -854,6 +895,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/4eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
         <str key="english">Fourth Sunday after the Epiphany</str>
@@ -896,13 +938,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileEpiphanie</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileEpiphanie</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
@@ -920,6 +964,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/5eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
         <str key="english">Fifth Sunday after the Epiphany</str>
@@ -962,13 +1007,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileEpiphanie</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileEpiphanie</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
@@ -986,6 +1033,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/6eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
         <str key="english">Sixth Sunday after the Epiphany</str>
@@ -1028,13 +1076,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileEpiphanie</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
@@ -1052,6 +1102,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Dimanche-in-Albis</str>
       <dict key="nom">
         <str key="english">Octave of Easter</str>
@@ -1095,13 +1146,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
@@ -1119,6 +1172,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/2eme-Dimanche-apres-Paques</str>
       <dict key="nom">
         <str key="english">Second Sunday after Easter</str>
@@ -1158,13 +1212,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
@@ -1182,6 +1238,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/3eme-Dimanche-apres-Paques</str>
       <dict key="nom">
         <str key="english">Third Sunday after Easter</str>
@@ -1221,13 +1278,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
@@ -1245,6 +1304,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/4eme-Dimanche-apres-Paques</str>
       <dict key="nom">
         <str key="english">Fourth Sunday after Easter</str>
@@ -1284,13 +1344,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
@@ -1308,6 +1370,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/5eme-Dimanche-apres-Paques</str>
       <dict key="nom">
         <str key="english">Fifth Sunday after Easter</str>
@@ -1347,13 +1410,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1900</int>
       <str key="_temps_liturgique">ascension</str>
       <bool key="_transferee">False</bool>
@@ -1371,6 +1436,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Dimanche-pres-l-Ascension</str>
       <dict key="nom">
         <str key="english">Sunday after Ascension</str>
@@ -1411,13 +1477,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">2800</int>
       <str key="_temps_liturgique">octave_pentecote</str>
       <bool key="_transferee">False</bool>
@@ -1435,6 +1503,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Dimanche-de-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Pentecost</str>
@@ -1474,13 +1543,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -1498,6 +1569,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Messe-du-1er-Dimanche-apres-la</str>
       <dict key="nom">
         <str key="english">First Sunday after Pentecost</str>
@@ -1538,13 +1610,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -1562,6 +1636,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/2eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Second Sunday after Pentecosten</str>
@@ -1602,13 +1677,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -1626,6 +1703,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/3eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Third Sunday after Pentecost</str>
@@ -1666,13 +1744,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -1690,6 +1770,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/4eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Fourth Sunday after Pentecosten</str>
@@ -1730,13 +1811,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -1754,6 +1837,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/5eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Fifth Sunday after Pentecosten</str>
@@ -1794,13 +1878,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -1818,6 +1904,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/6eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Sixth Sunday after Pentecosten</str>
@@ -1858,13 +1945,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -1882,6 +1971,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/7eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Seventh Sunday after Pentecosten</str>
@@ -1922,13 +2012,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -1946,6 +2038,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/8eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Eighth Sunday after Pentecosten</str>
@@ -1986,13 +2079,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2010,6 +2105,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/10eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Tenth Sunday after Pentecosten</str>
@@ -2050,13 +2146,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2074,6 +2172,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/11eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Eleventh Sunday after Pentecosten</str>
@@ -2114,13 +2213,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2138,6 +2239,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/12eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Twelfth Sunday after Pentecosten</str>
@@ -2178,13 +2280,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2202,6 +2306,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/13eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Thirteenth Sunday after Pentecosten</str>
@@ -2242,13 +2347,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2266,6 +2373,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/14eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Fourteenth Sunday after Pentecosten</str>
@@ -2306,13 +2414,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2330,6 +2440,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/15eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Fifteenth Sunday after Pentecosten</str>
@@ -2370,13 +2481,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2394,6 +2507,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/16eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Sixteenth Sunday after Pentecosten</str>
@@ -2434,13 +2548,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2458,6 +2574,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/17eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Seventeenth Sunday after Pentecosten</str>
@@ -2498,13 +2615,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2522,6 +2641,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/18eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Eighteenth Sunday after Pentecosten</str>
@@ -2562,13 +2682,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2586,6 +2708,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/19eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Nineteenth Sunday after Pentecosten</str>
@@ -2626,13 +2749,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2650,6 +2775,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/20eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Twentieth Sunday after Pentecosten</str>
@@ -2690,13 +2816,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2714,6 +2842,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/21eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Twenty-first Sunday after Pentecosten</str>
@@ -2754,13 +2883,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2778,6 +2909,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/22eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Twenty-second Sunday after Pentecosten</str>
@@ -2818,13 +2950,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2848,6 +2982,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/23eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Twenty-third Sunday after Pentecosten</str>
@@ -2888,13 +3023,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2917,6 +3054,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/3eme-Dimanche-restant-apres-l</str>
       <dict key="nom">
         <str key="english">Third Sunday transferred after the Epiphany</str>
@@ -2959,13 +3097,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -2987,6 +3127,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/4eme-Dimanche-restant-apres-l</str>
       <dict key="nom">
         <str key="english">Fourth Sunday transferred after the Epiphany</str>
@@ -3029,13 +3170,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -3056,6 +3199,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/5eme-Dimanche-restant-apres-l</str>
       <dict key="nom">
         <str key="english">Fifth Sunday transferred after the Epiphany</str>
@@ -3096,13 +3240,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -3122,6 +3268,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/6eme-Dimanche-restant-apres-l</str>
       <dict key="nom">
         <str key="english">Sixth Sunday transferred after the Epiphany</str>
@@ -3162,13 +3309,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -3193,6 +3342,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/24eme-et-dernier-dimanche-apres-la</str>
       <dict key="nom">
         <str key="english">Twenty-fourth and last Sunday after Pentecosten</str>
@@ -3235,13 +3385,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileDerniersDimanchesPentecote</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileAvent</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
@@ -3259,6 +3411,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/1er-dimanche-de-l-Avent</str>
       <dict key="nom">
         <str key="english">First Sunday of Advent</str>
@@ -3298,13 +3451,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileAvent</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileAvent</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
@@ -3322,6 +3477,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/2eme-dimanche-de-l-Avent</str>
       <dict key="nom">
         <str key="english">Second Sunday of Advent</str>
@@ -3361,13 +3517,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileAvent</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileAvent</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
@@ -3385,6 +3543,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/3eme-dimanche-de-l-Avent</str>
       <dict key="nom">
         <str key="english">Third Sunday of Advent</str>
@@ -3424,13 +3583,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileAvent</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobileAvent</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">2300</int>
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
@@ -3448,6 +3609,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/4eme-dimanche-de-l-Avent</str>
       <dict key="nom">
         <str key="english">Fourth Sunday of Advent</str>
@@ -3487,13 +3649,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobileAvent</str>
   </Modele>
   <Modele>
+    <str key="classe">DimancheOctaveNoel</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
@@ -3511,6 +3675,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Dimanche-dans-l-Octave-de-la</str>
       <dict key="nom">
         <str key="english">Sunday within the octave of Christmas</str>
@@ -3552,13 +3717,15 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">DimancheOctaveNoel</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteMobilePaques</str>
     <dict key="attributs">
       <str key="_couleur">vert</str>
+      <list key="_images"/>
       <int key="_priorite">1500</int>
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
@@ -3576,6 +3743,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">True</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/9eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
         <str key="english">Ninth Sunday after Pentecosten</str>
@@ -3616,8 +3784,8 @@
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
+      <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteMobilePaques</str>
   </Modele>
 </list>

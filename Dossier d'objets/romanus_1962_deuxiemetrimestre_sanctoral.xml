@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <list>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -23,6 +25,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/02-04-St-Francois-de-Paule</str>
       <dict key="nom">
         <str key="english">Saint Francis of Paola</str>
@@ -94,11 +97,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -119,6 +123,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/04-04-St-Isidore-de-Seville-eveque</str>
       <dict key="nom">
         <str key="english">Saint Isidore of Seville</str>
@@ -176,11 +181,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -201,6 +207,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/05-04-St-Vincent-Ferrier</str>
       <dict key="nom">
         <str key="english">Saint Vincent Ferrer</str>
@@ -270,11 +277,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -295,6 +303,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/11-04-St-Leon-Ier-le-Grand-pape</str>
       <dict key="nom">
         <str key="english">Saint Leo the Great</str>
@@ -349,11 +358,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -374,6 +384,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/13-04-St-Hermenegilde-martyr</str>
       <dict key="nom">
         <str key="english">Saint Hermenegild</str>
@@ -414,11 +425,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -439,6 +451,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-04-St-Justin-martyr</str>
       <dict key="nom">
         <str key="english">Saint Justin Martyr</str>
@@ -494,11 +507,12 @@
       <int key="valeur">0</int>
       <bool key="votive">True</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -519,6 +533,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-04-Sts-Tiburce-Valerien-et</str>
       <dict key="nom">
         <str key="english">Saints Tiburtius, Valerian and Maximus</str>
@@ -593,11 +608,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -618,6 +634,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/17-04-St-Anicet-pape-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Anicetus</str>
@@ -660,11 +677,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -685,6 +703,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/21-04-St-Anselme-eveque-confesseur</str>
       <dict key="nom">
         <str key="english">Saint Anselm of Canterbury</str>
@@ -738,11 +757,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -763,6 +783,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/22-04-Sts-Soter-et-Caius-papes-et</str>
       <dict key="nom">
         <str key="english">Saints Soter and Caius</str>
@@ -812,11 +833,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -837,6 +859,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/23-04-St-Georges-martyr</str>
       <dict key="nom">
         <str key="english">Saint George</str>
@@ -899,11 +922,12 @@
       <int key="valeur">0</int>
       <bool key="votive">True</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -924,6 +948,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/24-04-St-Fidele-de-Sigmaringen</str>
       <dict key="nom">
         <str key="english">Saint Fidelis of Sigmaringen</str>
@@ -977,11 +1002,12 @@
       <int key="valeur">0</int>
       <bool key="votive">True</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">1400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1002,6 +1028,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/25-04-St-Marc-evangeliste</str>
       <dict key="nom">
         <str key="english">Saint Mark the Evangelist</str>
@@ -1054,11 +1081,12 @@
       <int key="valeur">0</int>
       <bool key="votive">True</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1079,6 +1107,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/26-04-Sts-Clet-et-Marcellin-papes</str>
       <dict key="nom">
         <str key="english">Saints Cletus and Marcellinus</str>
@@ -1139,11 +1168,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1164,6 +1194,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/27-04-St-Pierre-Canisius-confesser</str>
       <dict key="nom">
         <str key="english">Saint Peter Canisius</str>
@@ -1270,11 +1301,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1295,6 +1327,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/28-04-St-Paul-de-la-Croix</str>
       <dict key="nom">
         <str key="english">Saint Paul of the Cross</str>
@@ -1375,11 +1408,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1400,6 +1434,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/29-04-St-Pierre-de-Verone-martyr</str>
       <dict key="nom">
         <str key="english">Saint Peter of Verona</str>
@@ -1503,11 +1538,12 @@
       <int key="valeur">0</int>
       <bool key="votive">True</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1528,6 +1564,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/30-04-Ste-Catherine-de-Sienne</str>
       <dict key="nom">
         <str key="english">Saint Catherine of Siena</str>
@@ -1590,11 +1627,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1900</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1615,6 +1653,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/01-05-St-Joseph-artisan</str>
       <dict key="nom">
         <str key="english">Saint Joseph the Worker</str>
@@ -1704,11 +1743,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1729,6 +1769,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/02-05-St-Athanase-eveque</str>
       <dict key="nom">
         <str key="english">Saint Athanasius of Alexandria</str>
@@ -1780,11 +1821,12 @@
       <int key="valeur">0</int>
       <bool key="votive">True</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1805,6 +1847,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/03-05-Sts-Alexandre-Ier-pape</str>
       <dict key="nom">
         <str key="english">Saints Alexander, Eventius, Theodulus and Juvenal</str>
@@ -1894,11 +1937,12 @@
       <int key="valeur">0</int>
       <bool key="votive">True</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1919,6 +1963,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/04-05-Ste-Monique-veuve</str>
       <dict key="nom">
         <str key="english">Saint Monica</str>
@@ -1959,11 +2004,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1984,6 +2030,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/05-05-St-Pie-V-pape-et-confesseur</str>
       <dict key="nom">
         <str key="english">Saint Pius V</str>
@@ -2032,11 +2079,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2057,6 +2105,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/07-05-St-Stanislas-eveque-et</str>
       <dict key="nom">
         <str key="english">Saint Stanislaus of Szczepanow</str>
@@ -2112,11 +2161,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2137,6 +2187,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/09-05-St-Gregoire-de-Nazianze</str>
       <dict key="nom">
         <str key="english">Saint Gregory of Nazianzus</str>
@@ -2205,11 +2256,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2230,6 +2282,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/10-05-St-Antonin-eveque-et</str>
       <dict key="nom">
         <str key="english">Saint Antinonus of Florence</str>
@@ -2289,11 +2342,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2314,6 +2368,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/10-05-Sts-Gordien-et-Epimaque</str>
       <dict key="nom">
         <str key="english">Saints Gordianus and Epimachus</str>
@@ -2362,11 +2417,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">1400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2387,6 +2443,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/11-05-Sts-Philippe-et-Jacques</str>
       <dict key="nom">
         <str key="english">Saints Philip and James</str>
@@ -2510,11 +2567,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2535,6 +2593,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/12-05-Sts-Neree-Achille-et</str>
       <dict key="nom">
         <str key="english">Saints Nereus, Achilleus, Domitilla and Pancras</str>
@@ -2594,11 +2653,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2619,6 +2679,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/13-05-St-Robert-Bellarmin-eveque</str>
       <dict key="nom">
         <str key="english">Saint Robert Berllarmine</str>
@@ -2673,11 +2734,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2698,6 +2760,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-05-St-Boniface-martyr</str>
       <dict key="nom">
         <str key="english">Saint Boniface</str>
@@ -2752,11 +2815,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2777,6 +2841,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/15-05-St-Jean-Baptiste-de-la-Salle</str>
       <dict key="nom">
         <str key="english">Saint Jean-Baptiste de La Salle</str>
@@ -2833,11 +2898,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2858,6 +2924,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/16-05-St-Ubald-eveque-et</str>
       <dict key="nom">
         <str key="english">Saint Ubald of Gubbio</str>
@@ -2906,11 +2973,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2931,6 +2999,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/17-05-St-Pascal-Baylon-confesseur</str>
       <dict key="nom">
         <str key="english">Saint Paschal Baylon</str>
@@ -2973,11 +3042,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2998,6 +3068,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/18-05-St-Venant-martyr</str>
       <dict key="nom">
         <str key="english">Saint Venantius of Camerino</str>
@@ -3049,11 +3120,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3074,6 +3146,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/19-05-St-Pierre-Celestin-pape-et</str>
       <dict key="nom">
         <str key="english">Saint Celestine V</str>
@@ -3122,11 +3195,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3147,6 +3221,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/19-05-Ste-Pudentienne-vierge</str>
       <dict key="nom">
         <str key="english">Saint Pudentiana, Virgin</str>
@@ -3187,11 +3262,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3212,6 +3288,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/20-05-St-Bernardin-de-Sienne</str>
       <dict key="nom">
         <str key="english">Saint Bernardino of Siena</str>
@@ -3259,11 +3336,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3284,6 +3362,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/25-05-St-Gregoire-VII-pape-et</str>
       <dict key="nom">
         <str key="english">Saint Gregory VII, Pope</str>
@@ -3352,11 +3431,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3377,6 +3457,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/25-05-St-Urbain-Ier-pape-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Urban I, Pope</str>
@@ -3426,11 +3507,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3451,6 +3533,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/26-05-St-Philippe-Neri-confesseur</str>
       <dict key="nom">
         <str key="english">Saint Philip Neri</str>
@@ -3531,11 +3614,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3556,6 +3640,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/26-05-St-Eleuthere-pape-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Eleuterus</str>
@@ -3603,11 +3688,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3628,6 +3714,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/27-05-St-Bede-le-venerable</str>
       <dict key="nom">
         <str key="english">Saint Bede the Venerable</str>
@@ -3673,11 +3760,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3698,6 +3786,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/27-05-St-Jean-Ier-pape-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint John I</str>
@@ -3838,11 +3927,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3863,6 +3953,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/28-05-St-Augustin-de-Cantorbery</str>
       <dict key="nom">
         <str key="english">Saint Augustine of Canterbury</str>
@@ -3931,11 +4022,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3956,6 +4048,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/29-05-Ste-Marie-Madeleine-de-Pazzi</str>
       <dict key="nom">
         <str key="english">Saint Mary Magdalene de' Pazzi</str>
@@ -4005,11 +4098,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4030,6 +4124,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/30-05-St-Felix-Ier-pape-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Felix I</str>
@@ -4058,7 +4153,8 @@
         <list key="nom_compose"/>
         <list key="refus_faible"/>
         <list key="refus_fort">
-            <str>nole</str><str>nabor</str>
+          <str>nole</str>
+          <str>nabor</str>
           <str>metz</str>
           <str>rome</str>
           <str>saulieu</str>
@@ -4102,11 +4198,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4127,6 +4224,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/31-05-La-bienheureuse-Vierge-Marie</str>
       <dict key="nom">
         <str key="english">Queenship of the Blessed Virgin Mary</str>
@@ -4171,11 +4269,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4196,6 +4295,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/31-05-Ste-Petronille-vierge</str>
       <dict key="nom">
         <str key="english">Saint Petronilla, Virgin</str>
@@ -4236,11 +4336,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4261,6 +4362,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/01-06-Ste-Angele-Merici-vierge</str>
       <dict key="nom">
         <str key="english">Saint Angela Merici, Virgin</str>
@@ -4309,11 +4411,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4334,6 +4437,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/02-06-Sts-Marcellin-et-Pierre-et</str>
       <dict key="nom">
         <str key="english">Saints Marcellinus and Peter, Martyrs, and Saint Erasmus, Bishop and Martyr</str>
@@ -4459,11 +4563,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4484,6 +4589,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/04-06-St-Francois-Carraciolo</str>
       <dict key="nom">
         <str key="english">Saint Francis Caracciolo, Confessor</str>
@@ -4554,11 +4660,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4579,6 +4686,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/05-06-St-Boniface-eveque-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Boniface, Bishop and Martyr</str>
@@ -4636,11 +4744,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4661,6 +4770,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/06-06-St-Norbert-eveque-et</str>
       <dict key="nom">
         <str key="english">Saint Norbert, Bishop and Confessor</str>
@@ -4707,11 +4817,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4732,6 +4843,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/09-06-Sts-Prime-et-Felicien</str>
       <dict key="nom">
         <str key="english">Saints Primus and Felician, Martyrs</str>
@@ -4777,11 +4889,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4802,6 +4915,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/10-06-Ste-Marguerite-d-Ecosse</str>
       <dict key="nom">
         <str key="english">Saint Margaret, Widow and Queen</str>
@@ -4870,11 +4984,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4895,6 +5010,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/11-06-St-Barnabe-apotre</str>
       <dict key="nom">
         <str key="english">Saint Barnabas, Apostle</str>
@@ -4938,11 +5054,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4963,6 +5080,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/12-06-St-Jean-de-Saint-Facond</str>
       <dict key="nom">
         <str key="english">Saint John of San Facundo, Confessor</str>
@@ -5103,11 +5221,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5128,6 +5247,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/12-06-Sts-Basilide-Cyrin-Nabor-et</str>
       <dict key="nom">
         <str key="english">Saints Basilides, Cyrinus, Nabor and Nazarius, Martyrs</str>
@@ -5178,11 +5298,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5203,6 +5324,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/13-06-St-Antoine-de-Padoue</str>
       <dict key="nom">
         <str key="english">Saint Anthony of Padua, Confessor and Doctor of the Church</str>
@@ -5269,11 +5391,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5294,6 +5417,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-06-St-Basile-le-Grand-eveque</str>
       <dict key="nom">
         <str key="english">Saint Basil the Great, Bishop, Confessor and Doctor of the Church</str>
@@ -5350,11 +5474,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5375,6 +5500,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/15-06-Sts-Vite-ou-Guy-Modeste-et</str>
       <dict key="nom">
         <str key="english">Saint Vitus, Modestus and Crescentia, Martyrs</str>
@@ -5438,11 +5564,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5463,6 +5590,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/17-06-St-Gregoire-Barbarigo-eveque</str>
       <dict key="nom">
         <str key="english">Saint Gregory Barbadici, Bishop and Confessor</str>
@@ -5526,11 +5654,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5551,6 +5680,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/18-06-St-Ephrem-le-Syrien-diacre</str>
       <dict key="nom">
         <str key="english">Saint Ephrem, Bishop, Confessor, and Doctor of the Church</str>
@@ -5603,11 +5733,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5628,6 +5759,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/18-06-Sts-Marc-et-Marcellien</str>
       <dict key="nom">
         <str key="english">Saint Mark and Marcellianus, Martyrs</str>
@@ -5681,11 +5813,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5706,6 +5839,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/19-06-Ste-Julienne-Falconieri</str>
       <dict key="nom">
         <str key="english">Saint Juliana Falconieri, Virgin</str>
@@ -5762,11 +5896,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5787,6 +5922,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/19-06-Sts-Gervais-et-Protais</str>
       <dict key="nom">
         <str key="english">Saint Gervase and Protase, Martyrs</str>
@@ -5832,11 +5968,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5857,6 +5994,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/20-06-St-Silvere-pape-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Silverius, Pope and Martyr</str>
@@ -5897,11 +6035,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -5922,6 +6061,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/21-06-St-Louis-de-Gonzague</str>
       <dict key="nom">
         <str key="english">Saint Aloysius Gonzaga, Confessor</str>
@@ -6007,11 +6147,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -6032,6 +6173,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/22-06-St-Paulin-de-Nole-confesseur</str>
       <dict key="nom">
         <str key="english">Saint Paulinus, Bishop and Confessor</str>
@@ -6080,11 +6222,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">1400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -6105,6 +6248,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/23-06-Vigile-de-la-Nativite-de</str>
       <dict key="nom">
         <str key="english">Vigil of Saint John the Baptist</str>
@@ -6150,11 +6294,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1900</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -6175,6 +6320,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/24-06-Nativite-de-Saint-Jean</str>
       <dict key="nom">
         <str key="english">Birth of Saint John the Baptist</str>
@@ -6219,11 +6365,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -6244,6 +6391,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/25-06-St-Guillaume-abbe</str>
       <dict key="nom">
         <str key="english">Saint William, Abbot</str>
@@ -6318,11 +6466,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
+    <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -6343,6 +6492,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/26-06-Sts-Jean-et-Paul-martyrs</str>
       <dict key="nom">
         <str key="english">Saint John and Paul, Martyrs</str>
@@ -6517,12 +6667,12 @@
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
-    <str key="classe">FeteFixe</str>
   </Modele>
   <Modele>
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">1400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -6543,6 +6693,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/28-06-Vigile-des-Sts-Pierre-et</str>
       <dict key="nom">
         <str key="english">Vigil of the Apostles Saint Peter and Paul</str>
@@ -6663,7 +6814,8 @@
           <str>frassati</str>
           <str>mesonero</str>
           <str>rodriguez</str>
-          <str>verhun</str><str>canisius</str>
+          <str>verhun</str>
+          <str>canisius</str>
         </list>
         <list key="syntaxiques">
           <str>et</str>
@@ -6687,6 +6839,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">1900</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -6707,6 +6860,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/29-06-Sts-Pierre-et-Paul-apotres</str>
       <dict key="nom">
         <str key="english">Saint Peter and Paul, Apostles</str>
@@ -6857,6 +7011,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -6877,6 +7032,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/30-06-Commemoraison-de-St-Paul</str>
       <dict key="nom">
         <str key="english">Commemoration of Saint Paul, Apostle</str>

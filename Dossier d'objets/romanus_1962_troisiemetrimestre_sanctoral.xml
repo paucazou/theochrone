@@ -4,6 +4,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">1900</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -24,6 +25,7 @@
       <int key="degre">1</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Le-Precieux-Sang-1er-juillet</str>
       <dict key="nom">
         <str key="english">The Feast of the Most Precious Blood of Our Lord Jesus Christ</str>
@@ -73,6 +75,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -93,6 +96,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/02-07-Visitation-de-la-Vierge</str>
       <dict key="nom">
         <str key="english">The Visitation of the Blessed Virgin Mary</str>
@@ -142,6 +146,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -162,6 +167,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/02-07-Sts-Processus-et-Martinien</str>
       <dict key="nom">
         <str key="english">Saint Processus and Martinian, Martyrs</str>
@@ -215,6 +221,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -235,6 +242,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/03-07-St-Irenee-eveque-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Irenaeus, Bishop and Martyr</str>
@@ -295,6 +303,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -315,6 +324,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/05-07-St-Antoine-Marie-Zaccaria</str>
       <dict key="nom">
         <str key="english">Saint Anthony Mary Zaccaria, Confessor</str>
@@ -383,6 +393,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -403,6 +414,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/Ss-Cyrille-et-Methode-7-juillet</str>
       <dict key="nom">
         <str key="english">Saint Cyril and Methodius, Bishops and Confessors</str>
@@ -468,6 +480,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -488,6 +501,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/08-07-Ste-Elisabeth-reine-et-veuve</str>
       <dict key="nom">
         <str key="english">Saint Elizabeth, Queen and Widow</str>
@@ -560,6 +574,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -580,6 +595,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/10-07-Les-7-Freres-et-les-Stes</str>
       <dict key="nom">
         <str key="english">The Seven Holy Brothers, Martyrs, and Saint Rufina and Secunda, Virgins and Martyrs</str>
@@ -642,6 +658,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -662,6 +679,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/11-07-St-Pie-Ier-pape-et-Martyr</str>
       <dict key="nom">
         <str key="english">Saint Pius I, Pope and Martyr</str>
@@ -709,6 +727,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -729,6 +748,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/12-07-St-Jean-Gualbert-abbe</str>
       <dict key="nom">
         <str key="english">Saint John Gualbert, Abbot</str>
@@ -871,6 +891,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -891,6 +912,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/11-07-Sts-Nabor-et-Felix-Martyrs</str>
       <dict key="nom">
         <str key="english">Saint Nabor and Felix, Martyrs</str>
@@ -966,6 +988,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -986,6 +1009,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-07-St-Bonaventure-eveque</str>
       <dict key="nom">
         <str key="english">Saint Bonaventure, Bishop, Confessor, and Doctor of the Church</str>
@@ -1041,6 +1065,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1061,6 +1086,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/15-07-St-Henri-empereur-et</str>
       <dict key="nom">
         <str key="english">St Henry, Emperor and Confessor</str>
@@ -1127,6 +1153,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1147,6 +1174,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/16-07-Notre-Dame-du-Mont-Carmel</str>
       <dict key="nom">
         <str key="english">Our Lady of Mount Carmel</str>
@@ -1197,6 +1225,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1217,6 +1246,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/17-07-St-Alexis-confesseur</str>
       <dict key="nom">
         <str key="english">Saint Alexius, Confessor</str>
@@ -1274,6 +1304,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1294,6 +1325,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/18-07-St-Camille-de-Lellis</str>
       <dict key="nom">
         <str key="english">Saint Camillus de Lellis, Confessor</str>
@@ -1345,6 +1377,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1365,6 +1398,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/18-07-Ste-Symphorose-et-ses-Fils</str>
       <dict key="nom">
         <str key="english">Saint Symphorosa and Her Sevens Sons, Martyrs</str>
@@ -1428,6 +1462,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1448,6 +1483,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/19-07-St-Vincent-de-Paul</str>
       <dict key="nom">
         <str key="english">Saint Vincent de Paul, Confessor</str>
@@ -1496,6 +1532,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1516,6 +1553,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/20-07-St-Jerome-Emilien-confesseur</str>
       <dict key="nom">
         <str key="english">Saint Jerome Emilian, Confessor</str>
@@ -1565,6 +1603,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1585,6 +1624,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/20-07-Ste-Marguerite-vierge-et</str>
       <dict key="nom">
         <str key="english">Saint Margaret, Virgin and Martyr</str>
@@ -1660,6 +1700,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1680,6 +1721,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/21-07-St-Laurent-de-Brindes</str>
       <dict key="nom">
         <str key="english">Saint Lawrence of Brindisi, Confessor and Doctor of the Church</str>
@@ -1739,6 +1781,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1759,6 +1802,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/21-07-Ste-Praxede-vierge</str>
       <dict key="nom">
         <str key="english">Saint Praxedes, Virgin</str>
@@ -1803,6 +1847,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1823,6 +1868,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/22-07-Ste-Marie-Madeleine</str>
       <dict key="nom">
         <str key="english">Saint Mary Magdalen, Penitent</str>
@@ -1877,6 +1923,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1897,6 +1944,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/23-07-St-Apollinaire-eveque-et</str>
       <dict key="nom">
         <str key="english">Saint Apollinaris, Bishop and Martyr</str>
@@ -1953,6 +2001,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -1973,6 +2022,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/23-07-St-Liboire-eveque</str>
       <dict key="nom">
         <str key="english">Saint Liborius, Bishop</str>
@@ -2022,6 +2072,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2042,6 +2093,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/24-07-Ste-Christine-vierge-et</str>
       <dict key="nom">
         <str key="english">Saint Christina, Virgin and Martyr</str>
@@ -2099,6 +2151,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2119,6 +2172,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/28-07-Sts-Nazaire-Celse-martyrs</str>
       <dict key="nom">
         <str key="english">Saint Nazarius and Celsus, Martyrs, St Victor I, Pope and Martyr, and St Innocent I, Pope and Confessor</str>
@@ -2198,6 +2252,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2218,6 +2273,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/29-07-St-Felix-pape-et-les-Sts</str>
       <dict key="nom">
         <str key="english">Saint Felix, Pope and Martyr, and Companions, Martyrs</str>
@@ -2302,6 +2358,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">1900</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2322,6 +2379,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/25-07-St-Jacques-apotre</str>
       <dict key="nom">
         <str key="english">Saint James the Greater, Apostle</str>
@@ -2408,6 +2466,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2428,6 +2487,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/25-07-St-Christophe-martyr</str>
       <dict key="nom">
         <str key="english">Saint Christopher, Martyr</str>
@@ -2496,6 +2556,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">1400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2516,6 +2577,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/26-07-Ste-Anne-mere-de-la-T-S</str>
       <dict key="nom">
         <str key="english">Saint Anne, Mother of the Blessed Virgin Mary</str>
@@ -2579,6 +2641,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2599,6 +2662,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/27-07-St-Pantaleon-martyr</str>
       <dict key="nom">
         <str key="english">Saint Pantaleon, Martyr</str>
@@ -2647,6 +2711,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2667,6 +2732,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/29-07-Ste-Marthe-vierge</str>
       <dict key="nom">
         <str key="english">Saint Martha, Virgin</str>
@@ -2724,6 +2790,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2744,6 +2811,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/30-07-Sts-Abdon-et-Sennen-martyrs</str>
       <dict key="nom">
         <str key="english">Saint Abdon and Sennen, Martyrs</str>
@@ -2793,6 +2861,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2813,6 +2882,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/31-07-St-Ignace-de-Loyola</str>
       <dict key="nom">
         <str key="english">Saint Ignatius of Loyola, Confessor</str>
@@ -2873,6 +2943,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2893,6 +2964,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/01-08-Sts-Machabees-martyrs</str>
       <dict key="nom">
         <str key="english">Holy Machabees, Martyrs</str>
@@ -2943,6 +3015,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -2963,6 +3036,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/02-08-St-Alphonse-Marie-eveque</str>
       <dict key="nom">
         <str key="english">Saint Alphonsus Mary de Ligouri, Bishop, Confessor, and Doctor of the Church</str>
@@ -3022,6 +3096,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3042,6 +3117,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/02-08-St-Etienne-I-pape-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Stephen I, Pope and Martyr</str>
@@ -3121,6 +3197,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3141,6 +3218,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/04-08-St-Dominique-confesseur</str>
       <dict key="nom">
         <str key="english">Saint Dominic, Confessor</str>
@@ -3212,6 +3290,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3232,6 +3311,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/05-08-Dedicace-de-Ste-Marie-aux</str>
       <dict key="nom">
         <str key="english">Dedication of the Church of St Mary of the Snows</str>
@@ -3279,11 +3359,11 @@
       <bool key="votive">False</bool>
     </dict>
   </Modele>
-  
   <Modele>
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3304,6 +3384,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/06-08-St-Sixte-II-pape-et-les-Sts</str>
       <dict key="nom">
         <str key="english">Saint Xystus, Pope and Martyr, and Felicissimus and Agapitus, Martyrs</str>
@@ -3365,6 +3446,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3385,6 +3467,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/07-08-St-Gaetan-de-Thienne</str>
       <dict key="nom">
         <str key="english">Saint Cajetan, Confessor</str>
@@ -3433,6 +3516,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3453,6 +3537,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/07-08-St-Donat-eveque-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Donatus, Bishop and Martyr</str>
@@ -3517,6 +3602,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3537,6 +3623,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/08-08-St-Jean-Marie-Vianney</str>
       <dict key="nom">
         <str key="english">Saint John Mary Vianney, Confessor</str>
@@ -3685,6 +3772,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3705,6 +3793,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/08-08-Sts-Cyriaque-Large-et</str>
       <dict key="nom">
         <str key="english">Saint Cyriacus, Largus, and Smaragdus</str>
@@ -3769,6 +3858,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3789,6 +3879,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/09-08-Vigile-de-St-Laurent-martyr</str>
       <dict key="nom">
         <str key="english">Vigil of St Lawrence, Martyr</str>
@@ -3841,6 +3932,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3861,6 +3953,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/09-08-St-Romain-martyr</str>
       <dict key="nom">
         <str key="english">Saint Romanus, Martyr</str>
@@ -3932,6 +4025,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">1400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -3952,6 +4046,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/10-08-St-Laurent-martyr</str>
       <dict key="nom">
         <str key="english">Saint Lawrence, Martyr</str>
@@ -4003,6 +4098,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4023,6 +4119,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/11-08-St-Tiburce-et-Ste-Suzanne</str>
       <dict key="nom">
         <str key="english">Saint Tiburtius, Martyr, and St Susanna, Virgin and Martyr</str>
@@ -4082,6 +4179,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">550</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4102,6 +4200,7 @@
       <int key="degre">3</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/12-08-Ste-Claire-vierge</str>
       <dict key="nom">
         <str key="english">Saint Clare, Virgin</str>
@@ -4155,6 +4254,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4175,6 +4275,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/13-08-Sts-Hippolyte-et-Cassien</str>
       <dict key="nom">
         <str key="english">Saint Hippolyte and Cassian, Martyrs</str>
@@ -4236,6 +4337,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
+      <list key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4256,6 +4358,7 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-08-St-Eusebe-confesseur</str>
       <dict key="nom">
         <str key="english">Saint Eusebius, Confessor</str>
@@ -4318,6 +4421,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">violet</str>
+      <list key="_images"/>
       <int key="_priorite">1400</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4338,6 +4442,7 @@
       <int key="degre">2</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
+      <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-08-Vigile-de-l-Assomption</str>
       <dict key="nom">
         <str key="english">Vigil of the Assumption of the Blessed Virgin Mary</str>
