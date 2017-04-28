@@ -1,27 +1,36 @@
 #!/usr/bin/python3.5
 # -*-coding:Utf-8 -*
+# Deus, in adjutorium meum intende.
 import copy
 import calendar
 import datetime
 import officia
 import os
 import re
+from messages import adjutoria_messages as msg, args
 
-#from messages import adjutoria_messages as msg
+file_folder = os.path.dirname(os.path.abspath(__file__))
+if args.gui or args.navigateur:
+    import pickle
+    with open(file_folder+'/data/images.pic','wr') as file:
+        images = pickle.Unpickler(file).load() # Un dictionnaire, prenant pour clef Fete._images et pour valeur une liste d'objets Images   
 
 #import pdb ; pdb.set_trace()
 
-# Deus, in adjutorium meum intende.
 
-
-    
 # classes
 class Textes:
     """Classe conteneur des textes de la messe et des Vêpres. Encore en chantier."""
     def __init__(self):
         self.contenu='un contenu pour ne pas faire planter les sauvegardes xml'
 
-
+class Images:
+    """Classe conteneur des informations sur les images utilisées associées aux fêtes."""
+    def __init__(self):
+        self.link = '' # adresse relative de l'image. Toutes sont contenues dans le répertoire images/fetes
+        self.titre = {'francais':'','english':'','latina':''} # Titre de l'image qui sera affichée
+        self.auteur = {'francais':'','english':'','latina':''} # Nom de l'auteur, s'il y a lieu
+        
 class Fete:
     """Classe mère de toutes les classes de fêtes.""" 
     def __init__(self,festivitas=''):
@@ -50,8 +59,7 @@ class Fete:
         
         self.link=str() # un lien vers Introibo, en attendant une classe spéciale textes.
         self.textes='' # Textes de la messe et des Vêpres, pour plus tard
-        self._images=[] # une liste de noms correspondant aux noms des images qui devront être recherchées dans le dossier images
-        self.images_rep = str() # un chemin relatif pour trouver les images
+        self._images='' # La clef qui doit être utilisée pour retrouver les images
         self.addendum={'francais':'',
                        'english':'',
                        'latina':'',
@@ -290,10 +298,7 @@ class Fete:
         if not self._images:
             return None
         else:
-            returnlist=[]
-            for name in self._images:
-                returnlist.extend([ self.images_rep + file for file in os.listdir(os.path.dirname(os.path.abspath(__file__)) + '/images/fetes/{}'.format(self.images_rep)) if name in file ])
-            return returnlist
+            return images[self._images]
         
     images = property(_get_images)
     
