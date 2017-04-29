@@ -505,7 +505,7 @@ def ajouter(modele,entrees={}):
         elif modele == 'Defunts': # rien de particulier à rentrer
             pass
         
-        nouveau._images = finput('Rentrez les noms que vous voulez utiliser pour les images. Séparez-les par des blancs.',' '.join(nouveau._images)).lower().split()
+        nouveau._images = finput('Rentrez le nom de la clef pour les images. La personne peut être une bonne solution.',nouveau._images).lower()
         proposition_repo = ''
         if nouveau.sanctoral:
             proposition_repo += 'sanctoral/'
