@@ -10,9 +10,9 @@ import re
 from messages import adjutoria_messages as msg, args
 
 file_folder = os.path.dirname(os.path.abspath(__file__))
-if args.gui or args.navigateur:
+if callable(args) or args.gui:
     import pickle
-    with open(file_folder+'/data/images.pic','wr') as file:
+    with open(file_folder+'/data/images.pic','rb') as file:
         images = pickle.Unpickler(file).load() # Un dictionnaire, prenant pour clef Fete._images et pour valeur une liste d'objets Images   
 
 #import pdb ; pdb.set_trace()
