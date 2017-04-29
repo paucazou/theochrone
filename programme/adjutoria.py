@@ -13,7 +13,7 @@ file_folder = os.path.dirname(os.path.abspath(__file__))
 if callable(args) or args.gui:
     import pickle
     with open(file_folder+'/data/images.pic','rb') as file:
-        images = pickle.Unpickler(file).load() # Un dictionnaire, prenant pour clef Fete._images et pour valeur une liste d'objets Images   
+        images = pickle.Unpickler(file).load() # Un dictionnaire, prenant pour clef Fete._images et pour valeur une liste d'objets imagines.Images
 
 #import pdb ; pdb.set_trace()
 
@@ -23,13 +23,6 @@ class Textes:
     """Classe conteneur des textes de la messe et des Vêpres. Encore en chantier."""
     def __init__(self):
         self.contenu='un contenu pour ne pas faire planter les sauvegardes xml'
-
-class Images:
-    """Classe conteneur des informations sur les images utilisées associées aux fêtes."""
-    def __init__(self):
-        self.link = '' # adresse relative de l'image. Toutes sont contenues dans le répertoire images/fetes
-        self.titre = {'francais':'','english':'','latina':''} # Titre de l'image qui sera affichée
-        self.auteur = {'francais':'','english':'','latina':''} # Nom de l'auteur, s'il y a lieu
         
 class Fete:
     """Classe mère de toutes les classes de fêtes.""" 

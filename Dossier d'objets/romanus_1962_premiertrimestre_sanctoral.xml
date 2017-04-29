@@ -4,7 +4,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
-      <list key="_images"><str>telesphore</str></list>
+      <str key="_images">telesphore</str>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -25,7 +25,6 @@
       <int key="degre">5</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
-      <str key="images_rep">sanctoral/janvier</str>
       <str key="link">http://introibo.fr/05-01-St-Telesphore-pape-et-martyr</str>
       <dict key="nom">
         <str key="english">Saint Telesphorus</str>

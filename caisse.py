@@ -2,7 +2,6 @@
 # -*-coding:Utf-8 -*
 
 from sys import argv, exit
-import adjutoria
 import variables
 import enc
 import pickle
@@ -14,6 +13,12 @@ import random
 import officia
 import argparse
 import copy
+import sys
+
+chemin = os.path.dirname(os.path.abspath(__file__))
+programme = os.path.abspath(chemin + '/programme')
+sys.path.append(programme)
+import adjutoria
 
 parser = argparse.ArgumentParser(
         prog='Caisse',
@@ -513,7 +518,7 @@ def ajouter(modele,entrees={}):
                 proposition_repo += 'fetesduseigneur'
             elif nouveau.dimanche:
                 proposition_repo += 'dimanches'
-        nouveau.images_rep = finput('Rentrez le dossier où se trouvent les images',proposition_repo)
+        #nouveau.images_rep = finput('Rentrez le dossier où se trouvent les images',proposition_repo)
         
         nouveau.addendum['francais'] = finput('Avez-vous des choses à ajouter ? (Laissez vide sinon)',nouveau.addendum['francais'])
         print("""Notre objet {} est construit. Voici ses caractéristiques :""".format(type(nouveau)))
@@ -603,9 +608,12 @@ if args.xtopic:
         with open(fichier.split('.')[0]+'.pic','wb') as f:
             pic = pickle.Pickler(f)
             tmp=[]
-            for a in obj:
-                a.regex = CompileRegex(a)
-                tmp.append(a)
+            if isinstance(obj,list):
+                for a in obj:
+                    a.regex = CompileRegex(a)
+                    tmp.append(a)
+            else:
+                tmp = obj
             pic.dump(tmp)
 elif args.indent:
     fichiers = dossier_d_objets()
