@@ -506,7 +506,7 @@ def ajouter(modele,entrees={}):
             pass
         
         nouveau._images = finput('Rentrez le nom de la clef pour les images. La personne peut être une bonne solution.',nouveau._images).lower()
-        proposition_repo = ''
+        """proposition_repo = ''
         if nouveau.sanctoral:
             proposition_repo += 'sanctoral/'
             if modele == 'FeteFixe':
@@ -518,7 +518,7 @@ def ajouter(modele,entrees={}):
                 proposition_repo += 'fetesduseigneur'
             elif nouveau.dimanche:
                 proposition_repo += 'dimanches'
-        #nouveau.images_rep = finput('Rentrez le dossier où se trouvent les images',proposition_repo)
+        #nouveau.images_rep = finput('Rentrez le dossier où se trouvent les images',proposition_repo)"""
         
         nouveau.addendum['francais'] = finput('Avez-vous des choses à ajouter ? (Laissez vide sinon)',nouveau.addendum['francais'])
         print("""Notre objet {} est construit. Voici ses caractéristiques :""".format(type(nouveau)))
