@@ -23,7 +23,16 @@
     </div>
     <div id="{{ fete.hache }}" class="panel-collapse collapse">
       <div class="panel-body">
-	      <div class="container"><div class="row"><div class="col-md-4">{% if not fete.images %}<img class="img-responsive" src="{% static "kalendarium/images/image_not_found.png" %}" alt="Image not found">{% else %}<img class="img-responsive" src="/static/fetes/{{ fete.images.0.link }}" alt="{{fete.personne}}">{% endif %}</div><div class="col-md-1"></div><div class="col-md-6">
+	      <div class="container"><div class="row"><div class="col-md-4">{% if not fete.images %}<img class="img-responsive" src="{% static "kalendarium/images/image_not_found.png" %}" alt="Image not found">{% else %}<div class="image-box">
+									<div class="overlay-container">
+										<img src="/static/fetes/{{ fete.images.0.link }}" alt="{{fete.personne}}">
+										{% if fete.images.1 %}<a class="overlay" data-toggle="modal" data-target="#{{ fete.hache }}modal">
+											<i class="fa fa-search-plus"></i>
+											<span>Voir les autres images disponibles</span>
+										</a>{% endif %}
+									</div>
+									<a class="btn btn-default btn-block" data-toggle="modal" data-target="#project-1">{{ fete.images.0.titre.francais }}</a>
+								</div>{% endif %}</div><div class="col-md-1"></div><div class="col-md-6">
       <table class="table table-hover">
     <tbody>
         
@@ -34,7 +43,7 @@
         <tr>
             <th>Célébration</th><td>Cette fête{% if fete.peut_etre_celebree %} peut être célébrée{% if fete.commemoraison %} ou commémorée{% endif %}{% else %} est {% if fete.celebree or fete.peut_etre_celebree %}célébrée{% endif %}{% if fete.commemoraison %}commémorée{% endif %}{% if fete.omission %}omise{% endif %}{% endif %}.
         <tr>
-          <th>Classe</th><td>{{ fete.degre }}</td></tr>
+          <th>Classe</th><td>{% if fete.degre == 5 %}Commémoraison{% else%}{{ fete.degre }}{% endif %}</td></tr>
         <tr>
             <th>Couleur liturgique</th><td>{{ fete.couleur.capitalize }}</td></tr>
         
