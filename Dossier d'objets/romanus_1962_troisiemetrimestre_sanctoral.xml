@@ -7282,7 +7282,6 @@
       <bool key="votive">False</bool>
     </dict>
   </Modele>
-  
   <Modele>
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
@@ -7412,6 +7411,252 @@
         <list key="titre">
           <str>saint</str>
           <str>martyr</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">rouge</str>
+      <str key="_images">cyprien_corneille</str>
+      <int key="_priorite">550</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">16</int>
+        <int key="mois">9</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/16-09-Sts-Corneille-pape-et</str>
+      <dict key="nom">
+        <str key="english">Saint Cornelius, Pope and Martyr, and Saint Cyprian, Bishop and Martyr</str>
+        <str key="francais">Saints Corneille, Pape, et Cyprien, Évêque, Martyrs</str>
+        <str key="latina">Sanctorum Cornelii, Papae et Cypriani, Episcopi, Martyrum</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">corneille_cyprien</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>carthage</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>cyprien</str>
+          <str>corneille</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>subran</str>
+          <str>périgord</str>
+          <str>toulon</str>
+          <str>antioche</str>
+          <str>komela</str>
+          <str>pskov</str>
+          <str>pereyaslav</str>
+        </list>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>et</str>
+        </list>
+        <list key="titre">
+          <str>saints</str>
+          <str>martyrs</str>
+          <str>pape</str>
+          <str>évêque</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">rouge</str>
+      <str key="_images">lucie_euphemie_geminien</str>
+      <int key="_priorite">100</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">16</int>
+        <int key="mois">9</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">5</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/16-09-Sts-Euphemie-Vierge-Lucie-et</str>
+      <dict key="nom">
+        <str key="english">Saint Euphemia, Virgin and Martyr, Lucy and Geminianus, Martyrs</str>
+        <str key="francais">Saints Euphémie, Vierge, Lucie et Géminien, Martyrs</str>
+        <str key="latina">Sanctae Euphemiae, Virginis, Luciae et Geminiani, Martyrum</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">euphemie_lucie_geminien</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut">
+          <str>rome</str>
+          <str>chalcédoine</str>
+          <str>modène</str>
+        </list>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>lucie</str>
+          <str>géminien</str>
+          <str>euphémie</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort">
+          <str>yakichi</str>
+          <str>filippini</str>
+          <str>lyon</str>
+          <str>wang</str>
+          <str>cheng</str>
+          <str>cyrène</str>
+          <str>campanie</str>
+          <str>bufalari</str>
+          <str>écosse</str>
+          <str>caltagirone</str>
+          <str>rucellai</str>
+          <str>settefonti</str>
+          <str>brocolelli</str>
+          <str>tertiaire</str>
+          <str>syracuse</str>
+          <str>khambang</str>
+          <str>phila</str>
+        </list>
+        <list key="syntaxiques">
+          <str>et</str>
+          <str>de</str>
+        </list>
+        <list key="titre">
+          <str>saints</str>
+          <str>martyrs</str>
+          <str>vierge</str>
+        </list>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <str key="_images">stigmates_francois</str>
+      <int key="_priorite">100</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="english"/>
+        <str key="francais"/>
+        <str key="latina"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">17</int>
+        <int key="mois">9</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">5</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/17-09-Impression-des-Sts-Stigmates</str>
+      <dict key="nom">
+        <str key="english">The Impression of the Holy Stigmata on the Body of St Francis, Confessor</str>
+        <str key="francais">Impression des Saints Stigmates de Saint François</str>
+        <str key="latina">In Impressione Sanctorum Stigmatum Sancti Francisci</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <str key="personne">francois_assise</str>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose">
+          <str>françois</str>
+          <str>assise</str>
+        </list>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom">
+          <str>impression</str>
+          <str>stigmates</str>
+        </list>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques">
+          <str>de</str>
+          <str>des</str>
+        </list>
+        <list key="titre">
+          <str>saint</str>
+          <str>saints</str>
         </list>
       </dict>
       <bool key="repris_en_ferie">False</bool>
