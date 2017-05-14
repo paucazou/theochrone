@@ -43,3 +43,8 @@ select
 select::-ms-expand {
   display: none;
 }
+
+.download
+{
+    font-size: 4em;
+}
