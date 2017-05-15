@@ -269,7 +269,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                 date = producteur_de_datte(1,passager[0],passager[1])
                 mois_seul = True
             elif re.fullmatch(r"[0-3]?[0-9]",passager[0]): # ex: 11 janvier, 11 1
-                if not re.fullmatch(r"(1[1-2]|0?[1-9])",passager[1]):
+                if not re.fullmatch(r"(1[0-2]|0?[1-9])",passager[1]):
                     passager[1] = mois_lettre(passager[1],langue)
                 date = producteur_de_datte(passager[0],passager[1],aujourdhui.year)
             else:#erreur
@@ -282,7 +282,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                 date = producteur_de_datte(passager[1],passager[2],aujourdhui.year)
                 jourmois_joursemaine(passager[0],date)
             elif re.fullmatch(r"[0-3]?[0-9]",passager[0]) and re.fullmatch(r"[0-9]{4}",passager[2]):
-                if not re.fullmatch(r"(1[1-2]|0?[1-9])",passager[1]):
+                if not re.fullmatch(r"(1[0-2]|0?[1-9])",passager[1]):
                     passager[1] = mois_lettre(passager[1],langue)
                     
                 date = producteur_de_datte(passager[0],passager[1],passager[2])
