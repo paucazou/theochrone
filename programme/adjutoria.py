@@ -288,7 +288,7 @@ class Fete:
         """Renvoie une liste d'images en recherchant dans le dossier images
         tout ce qui correspond à la liste contenue dans self._images.
         Si la liste est vide, renvoie None"""
-        if not self._images:
+        if not self._images or not images.get(self._images):
             return None
         else:
             return images[self._images]
