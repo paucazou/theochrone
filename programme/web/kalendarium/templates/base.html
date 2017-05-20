@@ -183,7 +183,7 @@
 								<h3 class="media-heading">Windows</h3>
 								<blockquote>
 									<p>Bien sûr, le Théochrone fonctionne sur Windows ! Téléchargez-le et utilisez-le, même hors connexion.</p>
-									<footer>Télécharger <cite title="Source Title">(Version O.1)</cite></footer>
+									<footer><a href="{% static "kalendarium/downloads/windows/Theochrone.exe" %}" alt="Download Theochrone for Windows">Télécharger <cite title="Source Title">(Version O.1)</cite></a></footer>
 								</blockquote>
 							</div>
 						</div>
@@ -197,7 +197,7 @@
 								<h3 class="media-heading">Mac OS X</h3>
 								<blockquote>
 									<p>Vous avez un Mac ? Vous pouvez télécharger le Théochrone sur votre ordinateur : c'est compatible !</p>
-									<footer>Télécharger <cite title="Source Title">(Version O.1)</cite></footer>
+									<footer><a href="{% static "kalendarium/downloads/osx/Theochrone" %}" alt="Download Theochrone for Mac OS X">Télécharger <cite title="Source Title">(Version O.1)</cite></a></footer>
 								</blockquote>
 							</div>
 						</div>
@@ -210,8 +210,8 @@
 							<div class="media-body">
 								<h3 class="media-heading">Linux</h3>
 								<blockquote>
-									<p>Développé sur Linux, le Théochrone fonctionne merveilleusement sur... Linux ! Téléchargez-le pour l'utiliser partout.</p>
-									<footer>Télécharger <cite title="Source Title">(Version O.1)</cite></footer>
+									<p>Développé sur GNU/Linux, le Théochrone fonctionne merveilleusement sur... Linux ! Téléchargez-le pour l'utiliser partout.</p>
+									<footer><a href="{% static "kalendarium/downloads/linux/Theochrone" %}" alt="Download Theochrone for GNU/Linux">Télécharger <cite title="Source Title">(Version O.1)</cite></a></footer>
 								</blockquote>
 							</div>
 						</div>
@@ -227,7 +227,7 @@
 								<h3 class="media-heading">Python</h3>
 								<blockquote>
 									<p>Vous avez déjà un interpréteur Python (python3.5>) ? Vous pouvez télécharger une archive du Théochrone sans le superflu.</p>
-									<footer>Télécharger <cite title="Source Title">(Version O.1)</cite></footer>
+									<footer><a href="{% static "kalendarium/downloads/python/Theochrone.zip" %}" alt="Download Theochrone without Python interpreter">Télécharger <cite title="Source Title">(Version O.1)</cite></a></footer>
 								</blockquote>
 							</div>
 						</div>
@@ -292,7 +292,7 @@
 <p class="text-justify">Si vous avez déjà une version de Python (c’est le cas pour les utilisateurs de Mac OS X et la plupart des utilisateurs de Linux), vous pouvez vous contenter de télécharger le programme sans les bibliothèques : ce sera plus léger, mais tout aussi efficace. Vérifiez que vous avez la bonne version de python. Ouvrez un terminal et tapez la commande suivante :</p>
 <pre>$ python –version
 Python 3.5.3</pre>
-<p class="text-justify">Il vous faut une version supérieure à la <mark>3.5</mark>. Si vous avez une version inférieure, téléchargez une version plus à jour de Python.</br>
+<p class="text-justify">Il vous faut une version supérieure à la <mark>3.5</mark>. Si vous avez une version inférieure, téléchargez une version plus à jour de Python.<br>
 Téléchargez le programme. Décompressez l’archive dans le dossier qui vous convient. Vous n’avez pas besoin de bibliothèques supplémentaires si vous voulez utiliser le Théochrone en ligne de commandes. Pour utiliser la version graphique ou web en local, ouvrez un terminal, placez-vous dans le dossier <mark>./Theochrone</mark> et tapez la commande suivante :</p>
 <pre>$ pip install -r requirements.txt</pre>
 <p class="text-justify">Il vous faudra peut-être avoir <span class="bg-danger">les droits de superutilisateur (root)</span> et, selon les versions, taper <mark>pip3</mark> au lieu de <mark>pip</mark>.</p>
@@ -332,13 +332,20 @@ Le bas du panneau propose un lien vers le site <a target="_blank" href="http://i
 <h3>Présentation de l’interface</h3>
 <p class="text-justify"><img class="img-thumbnail img-responsive" src="{% static "kalendarium/images/whole_screen.png" %}" alt="Capture d'écran de l'interface graphique">L'interface graphique se présente comme indiqué dans la capture d'écran ci-dessus (ici sous KDE/Plasma 5). Notez que l'apparence générale varie selon le système d'exploitation ou l'environnement de bureau que vous utilisez.</p>
 <h3>Description du module de recherche</h3>
-<p class="text-justify">Le module de recherche, situé sur la droite, se scinde en deux onglets, nommés <mark>1</mark> et <mark>+</mark>.
-Le premier onglet, <mark>1</mark>, permet de faire deux types de recherche.
-D’abord la recherche pour une date seule, sous la forme d’un calendrier. Cliquez simplement sur un jour pour afficher les résultats à l’écran (sur la gauche). Le calendrier affiche un mois entier : pour changer de mois, vous pouvez cliquer sur les flèches à droite ou à gauche pour avancer ou reculer d’un mois. Vous pouvez aussi cliquer sur le nom du mois : une liste déroulante apparaîtra, vous permettant de choisir un mois spécifique. Procédez de la même manière pour changer l’année.</br>
-Juste en dessous, vous pouvez faire la recherche par mots-clefs. Cela fonctionne exactement de la même manière que le module de recherche par mots-clefs de la version web (voir plus haut).</br>
-Le deuxième onglet, <mark>+</mark> présente des résultats plus abondants et comporte quatre grandes parties : une recherche pour une semaine, pour un mois, pour une année, ou pour une période définie arbitrairement.</br>
+<p class="text-justify">Le module de recherche, situé sur la droite, se scinde en deux onglets, nommés <mark>1</mark> et <mark>+</mark>.</p>
+<h4>Menu 1</h4>
+<div class="row">
+<div class="col-sm-4"><img class="img-thumbnail img-responsive" src="{% static "kalendarium/images/only_tab.png" %}" alt="fete_seule"></div>
+<div class="col-sm-8"><p class="text-justify">Le premier onglet, <mark>1</mark>, permet de faire deux types de recherche.<br>
+D’abord la recherche pour une date seule, sous la forme d’un calendrier. Cliquez simplement sur un jour pour afficher les résultats à l’écran (sur la gauche). Le calendrier affiche un mois entier : pour changer de mois, vous pouvez cliquer sur les flèches à droite ou à gauche pour avancer ou reculer d’un mois. Vous pouvez aussi cliquer sur le nom du mois : une liste déroulante apparaîtra, vous permettant de choisir un mois spécifique. Procédez de la même manière pour changer l’année.<br>
+Juste en dessous, vous pouvez faire la recherche par mots-clefs. Cela fonctionne exactement de la même manière que le module de recherche par mots-clefs de la version web (voir plus haut).</p></div></div>
+<h4>Menu +</h4>
+<div class='row'>
+<div class="col-sm-4"><img class="img-thumbnail img-responsive" src="{% static "kalendarium/images/plus_tab.png" %}" alt="fete_seule"></div>
+<div class="col-sm-8"><p class="text-justify">Le deuxième onglet, <mark>+</mark> présente des résultats plus abondants et comporte quatre grandes parties : une recherche pour une semaine, pour un mois, pour une année, ou pour une période définie arbitrairement.</br>
 Les trois premiers types de recherche fonctionnent de manière similaire : en cliquant sur le menu déroulant, on sélectionne une année (tous), un mois (mois et semaine) et une semaine (semaine seulement), et cliquer sur <mark>Ok</mark>. Les numéros de semaine sont calculés par rapport au mois choisi. La première semaine peut ne pas commencer par un dimanche si le premier jour du mois n’en est pas un. De même pour la dernière, qui peut ne pas terminer un samedi si le dernier jour du mois ne l’est pas. Pour afficher une semaine complète qui soit à cheval sur deux mois, choisissez plutôt la recherche par période définie arbitrairement.
-La recherche par période définie arbitrairement vous permet de sélectionner une période dont vous aurez vous-même défini les bornes. Deux widgets vous permettent de définir ces deux bornes. Ils fonctionnent de la même manière : vous pouvez soit rentrer la date manuellement, soit cliquer sur la flèche à droite pour obtenir un calendrier qui vous permettra de choisir votre date.</p>
+La recherche par période définie arbitrairement vous permet de sélectionner une période dont vous aurez vous-même défini les bornes. Deux widgets vous permettent de définir ces deux bornes. Ils fonctionnent de la même manière : vous pouvez soit rentrer la date manuellement, soit cliquer sur la flèche à droite pour obtenir un calendrier qui vous permettra de choisir votre date.</p></div></div>
+
 <h3>Les menus</h3>
 <p class="text-justify">Il existe plusieurs menus. Pour l’heure, il est seulement possible de quitter. Le raccourci <kbd>Ctrl+Q</kbd> est également disponible.</p>
 
@@ -346,38 +353,38 @@ La recherche par période définie arbitrairement vous permet de sélectionner u
 <h2 id="help_cli">Aide de l’application en ligne de commandes</h2>
 <div class="alert alert-danger"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Attention ! Le programme est encore en version béta. Il est possible que certaines fonctionnalités soient manquantes ou ne remplissent pas correctement leur tâche.</div>
 <h3>Utiliser la ligne de commandes</h3>
-<p class="text-justify">Le Théochrone peut être utilisé en ligne de commandes. C’est même le moyen le plus rapide et le plus puissant. En raison du grand nombre d’options dont la ligne de commandes dispose, cette aide se veut une simple introduction. Pour connaître toutes les options, tapez :
+<p class="text-justify">Le Théochrone peut être utilisé en ligne de commandes. C’est même le moyen le plus rapide et le plus puissant. En raison du grand nombre d’options dont la ligne de commandes dispose, cette aide se veut une simple introduction. Pour connaître toutes les options, tapez :</p>
 <pre>$ theochrone --help</pre>
-Lancé sans options, le Théochrone renvoie tout ce qui est célébré ou commémoré le jour même. Pour obtenir les résultats d’un autre jour, il suffit de rentrer une date, par exemple :
+<p class="text-justify">Lancé sans options, le Théochrone renvoie tout ce qui est célébré ou commémoré le jour même. Pour obtenir les résultats d’un autre jour, il suffit de rentrer une date, par exemple :</p>
 <pre>$ theochrone 1er janvier 2020</pre>
-Par défaut, le résultat n’est pas très instructif. Plusieurs options d’affichage s’offrent à vous : pour les obtenir toutes, rajoutez simplement l’option <mark>-v/--verbose.</mark></br>
-Pour faire une recherche par mot-clef, tapez simplement ceci :
+<p class="text-justify">Par défaut, le résultat n’est pas très instructif. Plusieurs options d’affichage s’offrent à vous : pour les obtenir toutes, rajoutez simplement l’option <mark>-v/--verbose.</mark><br>
+Pour faire une recherche par mot-clef, tapez simplement ceci :</p>
 <pre>$ theochrone -r saint jean</pre>
-Attention à bien mettre les mots-clefs <strong>après</strong> l’option <mark>-r</mark> ! Vous pouvez préciser l’année de recherche :
+<p class="text-justify">Attention à bien mettre les mots-clefs <strong>après</strong> l’option <mark>-r</mark> ! Vous pouvez préciser l’année de recherche :</p>
 <pre>$ theochrone -r pâques 1900</pre>
-La version en ligne de commandes permet d’afficher les résultats pour des périodes de durée diverses, non seulement pour un mois précis, mais aussi pour une année, une semaine, voir une durée tout à fait arbitraire :
-<pre>$ theochrone août 2000 # Tout le mois d’août 2020. L’année est optionnelle
+<p class="text-justify">La version en ligne de commandes permet d’afficher les résultats pour des périodes de durée diverses, non seulement pour un mois précis, mais aussi pour une année, une semaine, voire une durée tout à fait arbitraire :</p>
+<pre>$ theochrone août 2000 # Tout le mois d’août 2020. L’année est optionnelle.
 $ theochrone 2300 # Toute l’année 2300
 $ theochrone semaine # Toute la semaine en cours
 $ theochrone --from 3 janvier 2015 --to 8 février 2015 # Tout le calendrier depuis le 3 janvier 2015 jusqu’au 8 février 2015.</pre>
-Cela n’est qu’un petit aperçu des possibilités de la ligne de commandes. Consultez <mark>-h/--help</mark> pour plus d’informations.</p>
+<p class="text-justify">Tout cela n’est qu’un petit aperçu des possibilités de la ligne de commandes. Consultez <mark>-h/--help</mark> pour plus d’informations.</p>
 
 <h3>Mise en place de l’utilisation en ligne de commandes</h3>
-<p  class="text-justify">Sur Linux et Mac OS X : avant toute chose, il faut que vous vous accordiez le droit d’exécution du Théochrone. Ouvrez un terminal et tapez par exemple :
+<p  class="text-justify">Sur Linux et Mac OS X : avant toute chose, il faut que vous vous accordiez le droit d’exécution du Théochrone. Ouvrez un terminal et tapez par exemple :</p>
 <pre>$ chmod u+x theochrone.py</pre>
-Nous vous suggérons de rajouter un alias pour une utilisation plus facile, par exemple :
+<p  class="text-justify">Nous vous suggérons de rajouter un alias pour une utilisation plus facile, par exemple :</p>
 <pre>$ echo alias theochrone=’/chemin/vers/le/theochrone/theochrone.py’ >> ~/.bashrc #Bash
 $ print alias theochrone=’/chemin/vers/le/theochrone/theochrone.py’ >> ~/.zshrc #Zsh</pre>
-Sinon, placez-vous dans le dossier contenant le programme et tapez :
+<p  class="text-justify">Sinon, placez-vous dans le dossier contenant le programme et tapez :</p>
 <pre>$ ./theochrone.py</pre>
-Il est possible d’activer l’autocomplétion pour utiliser le Théochrone. Pour cela tapez, ou rajoutez dans votre fichier de configuration la ligne suivante :
+<p  class="text-justify">Il est possible d’activer l’autocomplétion pour utiliser le Théochrone. Pour cela tapez, ou rajoutez dans votre fichier de configuration la ligne suivante :</p>
 <pre>$ source autocomplete_bash.sh # Bash (fonctionne aussi avec Zsh)
-$ source autocomplete_zsh.sh # Zsh (beaucoup plus performant)</pre></p>
+$ source autocomplete_zsh.sh # Zsh (beaucoup plus performant)</pre>
 
 					</div>
 				</div>
-			</div>
-		</div>
+                        </div>
+                    </div>
 		<!-- section end -->
 
 	<!-- section start -->
