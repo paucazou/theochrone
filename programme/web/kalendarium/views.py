@@ -1,3 +1,5 @@
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import datetime
 import os
@@ -20,7 +22,8 @@ Annee = annus.LiturgicalCalendar()
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
          debut=datetime.date.today(),fin=datetime.date.today(),
-         mots_clefs='',plus=False,annee=datetime.date.today().year):
+         mots_clefs='',plus=False,annee=datetime.date.today().year,
+         contact_success=False):
     """A function which defines homepage. It is also used
     by other pages to print common code.
     It takes many arguments :
@@ -98,3 +101,20 @@ def mois_transfert(request):
     else:
         return home(request, mois_entier=mois_entier)
     
+def contact(request):
+    """A function which takes the request arguments (POST) and returns the home function with success"""
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['sender']
+            message = form.cleaned_data['message']
+            mail_list = ['paucazou@yahoo.fr',from_email]
+            try:
+                send_mail(subject, message, from_email, mail_list)
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return home(request, contact_success = True)
+    return home(request, contact_success = False)

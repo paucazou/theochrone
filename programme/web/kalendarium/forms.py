@@ -35,3 +35,9 @@ class MoisEntier(forms.Form):
                                      'class' : "form-control"}),
                               max_value=12,min_value=1,required = True,
                               initial = datetime.date.today().month)
+    
+class ContactForm(forms.Form):
+    """A class which defines a contact form"""
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField(widget=forms.Textarea)
+    sender = forms.EmailField()

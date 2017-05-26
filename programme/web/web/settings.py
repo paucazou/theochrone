@@ -124,3 +124,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS= [
         ("fetes",os.path.normpath("{}/../../images/fetes".format(filepath)))
         ]
+
+# mail
+
+EMAIL_HOST = 'smtp-theochrone.alwaysdata.net'
+EMAIL_HOST_USER = 'theochrone@alwaysdata.net'
+EMAIL_HOST_PASSWORD = 'PRIVATE'
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+

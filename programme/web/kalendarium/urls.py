@@ -8,5 +8,6 @@ urlpatterns = [
         url(r"^date_seule$",views.date_transfert),
         url(r"^mot_clef$",views.mc_transfert),
         url(r"^mois$",views.mois_transfert),
+        url(r"^contact$", views.contact),
         ]
 
