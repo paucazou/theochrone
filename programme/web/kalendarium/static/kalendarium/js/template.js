@@ -32,6 +32,14 @@
 				}
 			};
 		});
+                
+                // Close toggle menu onclick
+                //-----------------------------------------------
+                // Found here : https://stackoverflow.com/questions/21203111/bootstrap-3-collapsed-menu-doesnt-close-on-click
+                $(".navbar-nav li a").click(function(event) {
+                    if (!$(this).parent().hasClass('dropdown'))
+                        $(".navbar-collapse").collapse('hide');
+                });
 
 		//Scroll Spy
 		//-----------------------------------------------
