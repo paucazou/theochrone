@@ -504,5 +504,13 @@ def test_unsafe_iter(send_one_year_liturgical_calendar):
     assert start_stop_list[0][0].date == datetime.date(1961,1,1)
     assert start_stop_list[-1][0].date == datetime.date(1962,2,3)
     
+def test_weekmonth(send_one_year_liturgical_calendar):
+    l=send_one_year_liturgical_calendar
+    first_week = l.weekmonth(1962,1,0)
+    for i in range(1,7):
+        assert first_week[i-1] is l[datetime.date(1962,1,i)]
+    fifth_week = l.weekmonth(1962,1,4)
+    assert len(fifth_week) == 4
+    assert not l.weekmonth(1962,1,6)
                   
     

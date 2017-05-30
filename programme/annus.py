@@ -302,7 +302,7 @@ class LiturgicalCalendar():
             date = date + datetime.timedelta(step)
             
     
-    def weekmonth(self,year,month,week,debut=0,fin=32):
+    def weekmonth(self,year,month,week,debut=0,fin=32): # TEST
         """Return a list a feasts for requested week of 'month' in 'year'.
         Weeks starts with Sundays and may be incomplete.
         Week number start with 0."""
@@ -318,10 +318,9 @@ class LiturgicalCalendar():
         month_list = []
         for i in range(7):
             week = self.weekmonth(year,month,i,debut,fin)
-            if week and week != [] :
-                month_list.append(week)
-            elif week == False:
+            if not week:
                 break
+            month_list.append(week)
         return month_list
     
     def listed_year(self,year,debut=None,fin=None):
