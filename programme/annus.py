@@ -302,7 +302,7 @@ class LiturgicalCalendar():
             date = date + datetime.timedelta(step)
             
     
-    def weekmonth(self,year,month,week,debut=0,fin=32): # TEST
+    def weekmonth(self,year,month,week,debut=0,fin=32):
         """Return a list a feasts for requested week of 'month' in 'year'.
         Weeks starts with Sundays and may be incomplete.
         Week number start with 0."""
@@ -310,36 +310,39 @@ class LiturgicalCalendar():
             week_list = liturgiccal.monthdayscalendar(year,month)[week]
         except IndexError:
             return False
-        return [ self.year_data[year][datetime.date(year,month,day)] for day in week_list if day != 0 and day >= debut and day <= fin ]
+        return { datetime.date(year,month,day) : self.year_data[year][datetime.date(year,month,day)]
+                for day in week_list if day != 0 and day >= debut and day <= fin }
     
     def listed_month(self,year,month,debut=0,fin=32):
         """Return a list of weeks for requested month of year.
         January = 1"""
-        month_list = []
+        month_dic = {}
         for i in range(7):
             week = self.weekmonth(year,month,i,debut,fin)
-            if not week:
+            if week == {}:
+                continue
+            elif not week:
                 break
-            month_list.append(week)
-        return month_list
+            month_dic[i] = week
+        return month_dic
     
     def listed_year(self,year,debut=None,fin=None):
+        """Return a dic of months for requested year.
+        'debut' and 'fin' are datetime.date of the requested 'year'."""
         if not debut:
             debut = datetime.date(year,1,1)
         if not fin:
             fin = datetime.date(year,12,31)
-        year_list = []
+        year_list = {}
         for i in range(1,13):
             if i == debut.month and i == fin.month:
-                year_list.append(self.listed_month(year,i,debut.day,fin.day))
+                year_list[i] = self.listed_month(year,i,debut.day,fin.day)
             elif i  == debut.month:
-                year_list.append(self.listed_month(year,i,debut=debut.day))
+                year_list[i] = self.listed_month(year,i,debut=debut.day)
             elif i == fin.month:
-                if fin == datetime.date(2017,3,5):
-                    print('fin')
-                year_list.append(self.listed_month(year,i,fin=fin.day))
+                year_list[i] = self.listed_month(year,i,fin=fin.day)
             elif i > debut.month and i < fin.month:
-                year_list.append(self.listed_month(year,i))
+                year_list[i] = self.listed_month(year,i)
         return year_list
     
     def listed_arbitrary(self,debut,fin):
@@ -354,14 +357,14 @@ class LiturgicalCalendar():
         elif debut.year == fin.year:
             return self.listed_year(debut.year,debut,fin)
         else:
-            retour = []
+            retour = {}
             for year in range(debut.year,fin.year + 1):
                 if debut.year == year :
-                    retour.append(self.listed_year(year,debut=debut))
+                    retour[year] = self.listed_year(year,debut=debut)
                 elif fin.year == year :
-                    retour.append(self.listed_year(year,fin=fin))
+                    retour[year] = self.listed_year(year,fin=fin)
                 else:
-                    retour.append(self.listed_year(year))
+                    retour[year] = self.listed_year(year)
             return retour
     
     
