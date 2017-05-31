@@ -302,7 +302,7 @@ class LiturgicalCalendar():
             date = date + datetime.timedelta(step)
             
     
-    def weekmonth(self,year,month,week,debut=0,fin=32):
+    def weekmonth(self,year,month,week,debut=0,fin=32): #TEST
         """Return a list a feasts for requested week of 'month' in 'year'.
         Weeks starts with Sundays and may be incomplete.
         Week number start with 0."""
@@ -313,7 +313,7 @@ class LiturgicalCalendar():
         return { datetime.date(year,month,day) : self.year_data[year][datetime.date(year,month,day)]
                 for day in week_list if day != 0 and day >= debut and day <= fin }
     
-    def listed_month(self,year,month,debut=0,fin=32):
+    def listed_month(self,year,month,debut=0,fin=32): # TEST
         """Return a list of weeks for requested month of year.
         January = 1"""
         month_dic = {}
@@ -326,7 +326,7 @@ class LiturgicalCalendar():
             month_dic[i] = week
         return month_dic
     
-    def listed_year(self,year,debut=None,fin=None):
+    def listed_year(self,year,debut=None,fin=None): # TEST
         """Return a dic of months for requested year.
         'debut' and 'fin' are datetime.date of the requested 'year'."""
         if not debut:
