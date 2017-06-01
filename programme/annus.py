@@ -345,7 +345,7 @@ class LiturgicalCalendar():
                 year_list[i] = self.listed_month(year,i)
         return year_list
     
-    def listed_arbitrary(self,debut,fin):
+    def listed_arbitrary(self,debut,fin): #TEST
         """Returns an arbitrary span listed by week, month and year, if necessary"""
         weeknumber = lambda x : [i for i, week in enumerate(liturgiccal.monthdayscalendar(x.year,x.month)) if x.day in week][0]
         if weeknumber(debut) == weeknumber(fin) and debut.month == fin.month and debut.year == fin.year:

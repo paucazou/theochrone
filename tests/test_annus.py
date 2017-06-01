@@ -532,5 +532,17 @@ def test_listed_year(mock_month,send_one_year_liturgical_calendar):
 @mock.patch('annus.LiturgicalCalendar.listed_month')
 @mock.patch('annus.LiturgicalCalendar.listed_year')
 def test_arbitrary(mock_year,mock_month,mock_week,send_one_year_liturgical_calendar):
-    pass
+    l=send_one_year_liturgical_calendar
+    l.listed_arbitrary(datetime.date(1962,1,8),datetime.date(1962,1,13))
+    assert mock_week.call_count == 1
+    l.listed_arbitrary(datetime.date(1962,1,8),datetime.date(1962,1,14))
+    assert mock_month.call_count == 1
+    l.listed_arbitrary(datetime.date(1962,1,8),datetime.date(1962,2,14))
+    assert mock_year.call_count == 1
+    l(1961)
+    l.listed_arbitrary(datetime.date(1961,1,8),datetime.date(1962,2,14))
+    assert mock_year.call_count == 3
+    mock_year.assert_any_call(1962,fin=datetime.date(1962,2,14))
+    mock_year.assert_any_call(1961,debut=datetime.date(1961,1,8))
+    
     
