@@ -82,12 +82,12 @@ def caracteristiques():
     """Une fonction qui traite les arguments rentrés pour une recherche par caractéristiques (liste de messes votives, de lundis, de fêtes transférées, par couleur, etc., et qui renvoie cette liste ?"""
     pass
 
-def sans_accent(mot):
+def sans_accent(mot): # TEST 
     """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules."""
     return ''.join(c for c in unicodedata.normalize('NFD',mot.lower()) if unicodedata.category(c) != 'Mn')
 
 
-def modification(mots,langue):
+def modification(mots,langue): # TEST
     """Modify some words. 'mots' is a list of strings ; 'langue' refers to language to be used.
     Returns 'mots' modified."""
 
@@ -301,7 +301,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
         pass
     return date, semaine_seule, mois_seul, annee_seule
 
-def AtoZ(semaine_seule,mois_seul,annee_seule,date):
+def AtoZ(semaine_seule,mois_seul,annee_seule,date): # TEST
     """Une fonction qui définit le début et la fin de la période qui va être affichée"""
     if semaine_seule:
         debut = date
@@ -318,7 +318,7 @@ def AtoZ(semaine_seule,mois_seul,annee_seule,date):
     
     return debut, fin
 
-def mois_lettre(mot,langue='english'):
+def mois_lettre(mot,langue='english'): #TEST
     """Une fonction qui doit déterminer si le mot entré correspond à un mois. Si le mot entré correspond à un chiffre, renvoie le nom du mois ; si le mot entré est un nom de mois, vérifie qu'il en est un et renvoie le chiffre correspondant."""
     if isinstance(mot,str):
         mot = mot.lower()
@@ -351,7 +351,7 @@ def renvoie_regex(retour,regex,liste):
     retour.regex['egal'] += de_cote
     return retour
 
-def affiche_temps_liturgique(objet,langue='francais'):
+def affiche_temps_liturgique(objet,langue='francais'): #TEST
     """Une fonction capable d'afficher le temps liturgique"""
     sortie = 'erreur'
     if langue == 'francais':
@@ -381,7 +381,7 @@ def affiche_temps_liturgique(objet,langue='francais'):
         pass
     return sortie
 
-def affiche_jour(date,langue):
+def affiche_jour(date,langue): #TEST
     """Une fonction pour afficher le jour"""
     if langue =='francais':
         if date.day == 1:
@@ -522,18 +522,18 @@ def affichage(**kwargs):
 
 
 
-def nom_jour(date,langue):
+def nom_jour(date,langue): #TEST
     """Une fonction qui renvoie le nom du jour de la semaine en fonction du datetime.date rentré"""
     return semaine[langue][datetime.date.weekday(date)]                    
 
 
 
 
-def dimancheavant(jour):
+def dimancheavant(jour): #TEST
     """Une fonction qui renvoie le dimanche d'avant le jour concerné. jour doit être un datetime.date."""
     return jour - datetime.timedelta(datetime.date.isoweekday(jour))
     
-def dimancheapres(jour):
+def dimancheapres(jour):#TEST
     """Une fonction qui renvoie le dimanche d'après le jour concerné. jour doit être un datetime.date."""
     ecart=datetime.timedelta(7 - datetime.date.isoweekday(jour))
     return jour + ecart if ecart.days != 0 else jour + datetime.timedelta(7)

@@ -113,5 +113,19 @@
 'le mardi 6 janvier 2015'
 'le mercredi 7 janvier 2015'
 
+>>> officia.dimancheavant(datetime.date(2017,6,1))
+datetime.date(2017, 5, 28)
+>>> officia.dimancheavant(datetime.date(2017,6,4))
+datetime.date(2017, 5, 28)
+>>> officia.dimancheavant(datetime.date(2017,6,5))
+datetime.date(2017, 6, 4)
+>>> officia.dimancheapres(datetime.date(2017,6,1))
+datetime.date(2017, 6, 4)
+>>> officia.dimancheapres(datetime.date(2017,6,4))
+datetime.date(2017, 6, 11)
+>>> officia.dimancheapres(datetime.date(2017,6,5))
+datetime.date(2017, 6, 11)
+
+
 
 
