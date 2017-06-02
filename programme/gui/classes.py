@@ -218,7 +218,7 @@ class Main(QMainWindow,SuperTranslator):
         week = tab.week_combo.currentIndex()
         self.Annee(year)
         WEEK = self.Annee.weekmonth(year,month,week)
-        self.W.arbre = Tree(WEEK,self.Annee,WEEK[0][0].date,month,week)
+        self.W.arbre = Tree(WEEK,self.Annee)
         self.setCentralWidget(self.W.arbre)
         
     def useMonth(self):
@@ -227,7 +227,7 @@ class Main(QMainWindow,SuperTranslator):
         month = tab.month_combo.currentIndex() + 1
         self.Annee(year)
         MONTH = self.Annee.listed_month(year, month)
-        self.W.arbre = Tree(MONTH,self.Annee,datetime.date(year,month,1),month)
+        self.W.arbre = Tree(MONTH,self.Annee)
         self.setCentralWidget(self.W.arbre)
         
     def useYear(self):
@@ -235,7 +235,7 @@ class Main(QMainWindow,SuperTranslator):
         year = tab.yy_spinbox.value()
         self.Annee(year)
         YEAR = self.Annee.listed_year(year)
-        self.W.arbre = Tree(YEAR,self.Annee,datetime.date(year,1,1))
+        self.W.arbre = Tree(YEAR,self.Annee)
         self.setCentralWidget(self.W.arbre)
         
     def useArbitrary(self):
@@ -244,7 +244,7 @@ class Main(QMainWindow,SuperTranslator):
         fin = tab.to.date().toPyDate()
         self.Annee(debut.year,fin.year)
         RANGE = self.Annee.listed_arbitrary(debut,fin)
-        self.W.arbre = Tree(RANGE,self.Annee,debut,month=debut.month,week=officia.weeknumber(debut)+1,fin=fin)
+        self.W.arbre = Tree(RANGE,self.Annee)
         self.setCentralWidget(self.W.arbre)
         
 class Onglets(QWidget,SuperTranslator):
@@ -459,18 +459,11 @@ class Tree(QTreeWidget,SuperTranslator):
     """A class which defines the main widget used with multiple days"""
     
     depth = lambda self,L: isinstance(L, list) and max(map(self.depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
-    def __init__(self,data,Annee,debut,month=1,week=1,fin=None):
+    def __init__(self,data,Annee):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
         self.Annee=Annee
-        self.debut = debut
-        if not fin:
-            self.fin = datetime.date(self.debut.year,12,31)
-        else:
-            self.fin = fin
-        self.year = debut.year
-        self.month = month
-        self.week = week
+        
         
         self.initUI(data)
         self.retranslateUI()
@@ -482,10 +475,28 @@ class Tree(QTreeWidget,SuperTranslator):
     
     def initUI(self,data):
         self.setColumnCount(5)
-        date = [self.week,self.month,self.year]
-        self.populateTree(data,self.depth(data),date,self.invisibleRootItem())
+        #date = [self.week,self.month,self.year]
+        #self.populateTree(data,self.depth(data),date,self.invisibleRootItem())
+        self.populateTree(data,self.invisibleRootItem())
         
-    def populateTree(self,liste,depth,date,parent):
+    def populateTree(self,data,parent):
+        """A function which populates the QTreeWidget"""
+        for key, item in sorted(data.items()):
+            if isinstance(item,list):
+                item = { i:elt for i,elt in enumerate(item)}
+            if isinstance(item,dict):
+                child = QTreeWidgetItem(parent,[str(key)])
+                child.setExpanded(True)
+                self.populateTree(item,child)
+            else:
+                elt = item
+                if elt.temporal:
+                    temps = 'Temporal'
+                else:
+                    temps = 'Sanctoral'
+                child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,'francais').capitalize(),temps])
+        
+    def _populateTree(self,liste,depth,date,parent): #DEPRECATED
         """A function wich populates the QTreeWidget"""
         for elt in liste:
             if depth == 1:
