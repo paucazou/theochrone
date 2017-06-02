@@ -538,7 +538,7 @@ def dimancheapres(jour):#TEST
     ecart=datetime.timedelta(7 - datetime.date.isoweekday(jour))
     return jour + ecart if ecart.days != 0 else jour + datetime.timedelta(7)
     
-def weekyear(year, week=None):
+def weekyear(year,week=None): # TEST
     """
     This function returns the first and the later day of a weekyear.
     It takes two integers as arguments : a year 

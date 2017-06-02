@@ -6,8 +6,10 @@
 import datetime
 import dossier
 import os
+import pytest
 import random
 import subprocess
+import unittest.mock as mock
 dossier.main()
 
 from officia import datevalable, dimancheapres, dimancheavant, mois, weekyear
@@ -44,8 +46,9 @@ def test_weekyear():
         first, last = weekyear(year, yearnb)
         sylvester = datetime.date(year,12,31)
         assert sylvester >= first and sylvester <= last
-        
-def test_weekyear_iso():
+
+@mock.patch('officia.erreur')        
+def test_weekyear_iso(mock_erreur):
     """Tests wether weeks found by weekyear match with isocalendar"""
     year = random.randrange(1600,4100)
     weeknb = weekyear(year)
@@ -53,4 +56,7 @@ def test_weekyear_iso():
         two = weekyear(year,i)[0] + datetime.timedelta(1)
         last = weekyear(year,i)[1]
         assert two.isocalendar()[1] == last.isocalendar()[1] == i
+    weekyear(2016,-1)
+    weekyear(2016,53)
+    assert mock_erreur.call_count == 2
         

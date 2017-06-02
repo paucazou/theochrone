@@ -126,6 +126,21 @@ datetime.date(2017, 6, 11)
 >>> officia.dimancheapres(datetime.date(2017,6,5))
 datetime.date(2017, 6, 11)
 
+>>> officia.weekyear(2017)
+53
+>>> officia.weekyear(2016)
+52
+>>> officia.weekyear(2017,0)
+(datetime.date(2017, 1, 1), datetime.date(2017, 1, 7))
+>>> officia.weekyear(2017,1)
+(datetime.date(2017, 1, 1), datetime.date(2017, 1, 7))
+>>> officia.weekyear(2017,53)
+(datetime.date(2017, 12, 31), datetime.date(2018, 1, 6))
+>>> officia.weekyear(2016,0)
+(datetime.date(2015, 12, 27), datetime.date(2016, 1, 2))
+>>> officia.weekyear(2016,1)
+(datetime.date(2016, 1, 3), datetime.date(2016, 1, 9))
+
 
 
 
