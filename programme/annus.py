@@ -323,7 +323,7 @@ class LiturgicalCalendar():
                 continue
             elif not week:
                 break
-            month_dic[i] = week
+            month_dic[(i,'week')] = week
         return month_dic
     
     def listed_year(self,year,debut=None,fin=None): # TEST
@@ -336,13 +336,13 @@ class LiturgicalCalendar():
         year_list = {}
         for i in range(1,13):
             if i == debut.month and i == fin.month:
-                year_list[i] = self.listed_month(year,i,debut.day,fin.day)
+                year_list[(i,'month')] = self.listed_month(year,i,debut.day,fin.day)
             elif i  == debut.month:
-                year_list[i] = self.listed_month(year,i,debut=debut.day)
+                year_list[(i,'month')] = self.listed_month(year,i,debut=debut.day)
             elif i == fin.month:
-                year_list[i] = self.listed_month(year,i,fin=fin.day)
+                year_list[(i,'month')] = self.listed_month(year,i,fin=fin.day)
             elif i > debut.month and i < fin.month:
-                year_list[i] = self.listed_month(year,i)
+                year_list[(i,'month')] = self.listed_month(year,i)
         return year_list
     
     def listed_arbitrary(self,debut,fin): #TEST
