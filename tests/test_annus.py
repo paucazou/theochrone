@@ -516,16 +516,18 @@ def test_weekmonth(send_one_year_liturgical_calendar):
 @mock.patch('annus.LiturgicalCalendar.weekmonth')                  
 def test_listedmonth(mock_week,send_one_year_liturgical_calendar):
     l=send_one_year_liturgical_calendar
-    for i,j in zip(range(5),l.listed_month(1962,1)):
-        assert i == j
+    for i,j in zip(range(5),sorted(l.listed_month(1962,1))):
+        assert i == j[0]
+        assert j[1] == "week"
     assert mock_week.call_count == 7 # parait étrange, mais normal : mock ne sait pas qu'il ne peut pas y avoir cinq semaines seulement en janvier
     
 @mock.patch('annus.LiturgicalCalendar.listed_month')    
 def test_listed_year(mock_month,send_one_year_liturgical_calendar):
     l=send_one_year_liturgical_calendar
     listed_year = l.listed_year(1962)
-    for i,j in zip(range(1,13),listed_year):
-        assert i == j
+    for i,j in zip(range(1,13),sorted(listed_year)):
+        assert i == j[0]
+        assert j[1] == 'month'
     assert mock_month.call_count == 12
    
 @mock.patch('annus.LiturgicalCalendar.weekmonth')
