@@ -123,7 +123,8 @@ def modification(mots,langue): # TEST
     return mots
 
 def erreur(code,langue='english',exit=True):
-    """Une fonction qui renvoie un message d'erreur selon la langue et le code employé. Si le code commence par zéro, il faut le mettre entre guillemets."""
+    """Une fonction qui renvoie un message d'erreur selon la langue et le code employé.
+    Si le code commence par zéro, il faut le mettre entre guillemets."""
     message = erreurs[langue]
     for i in str(code):
         message = message[int(i)]
@@ -580,7 +581,7 @@ def weekyear(year,week=None): # TEST
 def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='francais',exit=True):
     """Function which returns a list of feasts matching with mots_bruts. It takes six args:
     - mots_bruts : a string for the research ;
-    - Annee : a dict with datetime.date as keys, and lists of Fete as values ;
+    - Annee : a LiturgicalCalendar object ;
     - debut : a datetime.date for the older date ;
     - fin : a datetime.date for the latest date ;
     - samedi : the Saturday of the Virgin Fete ; # DEPRECATED no more useful
