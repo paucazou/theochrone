@@ -21,6 +21,8 @@ from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, Q
 _ = QCoreApplication.translate # a name more convenient
 current = QDate().currentDate()
 calendrier = calendar.Calendar(firstweekday=6)
+months_tuple = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
+week_number = ("Première","Deuxième","Troisième","Quatrième","Cinquième","Sixième") # TODO TRANSLATION ?
 
 class ReTranslateBox():
     """A class which can contain only items with the retranslateUI function"""
@@ -220,6 +222,13 @@ class Main(QMainWindow,SuperTranslator):
         WEEK = self.Annee.weekmonth(year,month,week)
         self.W.arbre = Tree(WEEK,self.Annee)
         self.setCentralWidget(self.W.arbre)
+        if months_tuple[month][0] in ('a','o'):
+            preposition = "d'"
+        else:
+            preposition = "de "
+        self.setWindowTitle('Theochrone - {} semaine {}{} {}'.format(
+            week_number[week], preposition,
+            months_tuple[month],str(year)))
         
     def useMonth(self):
         tab = self.W.onglets.W.tabPlus
@@ -229,6 +238,7 @@ class Main(QMainWindow,SuperTranslator):
         MONTH = self.Annee.listed_month(year, month)
         self.W.arbre = Tree(MONTH,self.Annee)
         self.setCentralWidget(self.W.arbre)
+        self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
         
     def useYear(self):
         tab = self.W.onglets.W.tabPlus
@@ -237,6 +247,7 @@ class Main(QMainWindow,SuperTranslator):
         YEAR = self.Annee.listed_year(year)
         self.W.arbre = Tree(YEAR,self.Annee)
         self.setCentralWidget(self.W.arbre)
+        self.setWindowTitle('Theochrone - {}'.format(str(year)))
         
     def useArbitrary(self):
         tab = self.W.onglets.W.tabPlus
@@ -246,6 +257,8 @@ class Main(QMainWindow,SuperTranslator):
         RANGE = self.Annee.listed_arbitrary(debut,fin)
         self.W.arbre = Tree(RANGE,self.Annee)
         self.setCentralWidget(self.W.arbre)
+        self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
+                                                              tab.to.date().toString()))
         
 class Onglets(QWidget,SuperTranslator):
     """A class for a tab widget"""
@@ -462,11 +475,10 @@ class Tree(QTreeWidget,SuperTranslator):
     def __init__(self,data,Annee):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
-        self.Annee=Annee
-        
-        
+        self.Annee=Annee      
         self.initUI(data)
         self.retranslateUI()
+        
         
         for i in range(6):
             self.resizeColumnToContents(i)
@@ -485,7 +497,16 @@ class Tree(QTreeWidget,SuperTranslator):
             if isinstance(item,list):
                 item = { i:elt for i,elt in enumerate(item)}
             if isinstance(item,dict):
-                child = QTreeWidgetItem(parent,[str(key)])
+                if isinstance(key,tuple):
+                    if key[1] == 'week':
+                        key = """{} semaine""".format(week_number[key[0]])
+                    else:
+                        key = months_tuple[key[0]].capitalize()
+                elif isinstance(key,int):
+                    key = str(key)
+                else:
+                    key = officia.affiche_jour(key,'francais').capitalize()
+                child = QTreeWidgetItem(parent,[key])
                 child.setExpanded(True)
                 self.populateTree(item,child)
             else:
