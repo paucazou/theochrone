@@ -29,8 +29,8 @@ import webbrowser
 from messages import args
 ### Traitement des informations entrées par l'utilisateur ###
 if not os.isatty(0) or args.gui:
-    from gui import classes
-    app = classes.App(sys.argv)
+    from gui import main_window
+    app = main_window.App(sys.argv)
     sys.exit(app.exec_())
 
 if args.settings != None:
