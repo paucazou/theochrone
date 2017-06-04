@@ -559,6 +559,7 @@ class Table(QTableWidget,SuperTranslator):
         SuperTranslator.__init__(self)
         self.setColumnCount(6)
         self.setRowCount(len(liste))
+        
         if inverse:
             name_pos = 0
             date_pos = 1
@@ -576,6 +577,9 @@ class Table(QTableWidget,SuperTranslator):
             else:
                 temps = 'Sanctoral'
             self.setItem(i,5,QTableWidgetItem(temps))
+        for i in range(6):
+            self.resizeColumnToContents(i)
+        #self.setStretchLastSection(True)
        
         
     
