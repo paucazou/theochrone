@@ -559,8 +559,10 @@ class Table(QTableWidget,SuperTranslator):
         SuperTranslator.__init__(self)
         self.setColumnCount(6)
         self.setRowCount(len(liste))
+        self.inverse = inverse
+        self.retranslateUI()
         
-        if inverse:
+        if self.inverse:
             name_pos = 0
             date_pos = 1
         else:
@@ -571,15 +573,26 @@ class Table(QTableWidget,SuperTranslator):
             self.setItem(i,date_pos,QTableWidgetItem(str(elt.date)))
             self.setItem(i,2,QTableWidgetItem(str(elt.degre)))
             self.setItem(i,3,QTableWidgetItem(elt.couleur))
-            self.setItem(i,4,QTableWidgetItem(officia.affiche_temps_liturgique(elt,'francais').capitalize()))
             if elt.temporal:
                 temps = 'Temporal'
             else:
                 temps = 'Sanctoral'
-            self.setItem(i,5,QTableWidgetItem(temps))
+            self.setItem(i,4,QTableWidgetItem(temps))
+            self.setItem(i,5,QTableWidgetItem(officia.affiche_temps_liturgique(elt,'francais').capitalize()))
+            
         for i in range(6):
             self.resizeColumnToContents(i)
-        #self.setStretchLastSection(True)
+        self.horizontalHeader().setStretchLastSection(True)
+        
+        
+    def retranslateUI(self):
+        if self.inverse:
+            first_item = 'Name'
+            second_item = 'Date'
+        else:
+            first_item = 'Date'
+            second_item = 'Name'
+        self.setHorizontalHeaderLabels([_("Table",first_item),_("Table",second_item),_("Table",'Class'),_("Table",'Colour'),_("Table",'Sanctoral/Temporal'),_("Table",'Time'),])
        
         
     
