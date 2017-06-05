@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
 # Deus in adjutorium meum intende
+
 import calendar
 import datetime
 import os.path
@@ -9,55 +10,24 @@ import sys
 chemin = os.path.dirname(os.path.abspath(__file__))
 programme = os.path.abspath(chemin + '/..')
 sys.path.append(programme)
+sys.path.append(chemin)
 import adjutoria
 import annus
 import officia
+import settings
 os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
+from translation import *
+
 
 _ = QCoreApplication.translate # a name more convenient
 current = QDate().currentDate()
 calendrier = calendar.Calendar(firstweekday=6)
 months_tuple = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
 week_number = ("Première","Deuxième","Troisième","Quatrième","Cinquième","Sixième") # TODO TRANSLATION ?
-
-class ReTranslateBox():
-    """A class which can contain only items with the retranslateUI function"""
-    def __iter__(self):
-        """Iters values of  self.__dict__"""
-        for value in self.__dict__.values():
-            yield value
-        
-    def __repr__(self):
-        """Returns self.__dict__ to be recognized in the interactive interpreter"""
-        return str(self.__dict__)
-    
-    def __setattr__(self,attribute,value):
-        """Tests wether the 'value' is an object which has the function retranslateUI in it. If it is true, set the 'attribute'. This function should be useless in prod."""
-        if 'retranslateUI' in value.__dir__():
-            self.__dict__[attribute] = value
-        else:
-            raise TypeError("""Could not set attribute '{}' : '{}' object doesn't contain any 'retranslateUI' method.""".format(attribute,value))
-        
-class SuperTranslator():
-    """A class which should be inherited by every custom widget class to make an easy translation on the fly."""
-    
-    def __init__(self):
-        """This method only defines a ReTranslateBox object which is called 'W'. This attribute can only store widgets with a 'retranslateUI' method, i.e. from objects which inherit of this class"""
-        self.W = ReTranslateBox()
-        
-    def retranslateUI(self):
-        """This method calls every 'retranslateUI' methods of the 'W' attribute.
-        This method should be overloaded by every widget which contains
-        widgets to be immediately retranslated
-        (i.e., which are not custom widgets).
-        User shouldn't forget to call this function if necessary in the function itself :
-        SuperTranslator.retranslateUI()"""
-        for a in self.W:
-            a.retranslateUI()
             
 class YearSpinbox(QSpinBox):
     """A class which defines a spinbox widget specifically to display a set of years from 1600 to 4100."""
@@ -84,6 +54,7 @@ class Main(QMainWindow,SuperTranslator):
         SuperTranslator.__init__(self)
         self.Annee = annus.LiturgicalCalendar()
         self.actions()
+        self.settings = settings.SettingsWindow()
         self.initUI()
         
         self.W.onglets.W.tab1.cal.clicked[QDate].connect(self.useDate)
