@@ -612,9 +612,7 @@
       <str key="propre">romanus</str>
       <None key="regex"/>
       <dict key="regex_">
-        <list key="attribut">
-          <str>félicité</str>
-        </list>
+        <list key="attribut"/>
         <list key="attribut_compose"/>
         <list key="egal"/>
         <list key="hyperonyme"/>
@@ -624,15 +622,11 @@
         </list>
         <list key="nom_compose">
           <str>7</str>
-          <str>fils</str>
+          <str>frères</str>
         </list>
         <list key="refus_faible"/>
         <list key="refus_fort">
           <str>séville</str>
-          <str>perpétue</str>
-          <str>pricet</str>
-          <str>carthage</str>
-          <str>padoue</str>
         </list>
         <list key="syntaxiques">
           <str>de</str>
