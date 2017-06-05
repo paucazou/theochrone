@@ -34,12 +34,19 @@ if not os.isatty(0) or args.gui:
     sys.exit(app.exec_())
 
 if args.settings != None:
+    
     if args.settings.lower() == "off":
         officia.pdata(SET='OFF')
     elif args.settings.lower() == "on":
         officia.pdata(SET='ON')
     else:
-        officia.pdata(langue=args.langue)
+        try:
+            int(args.settings)
+            officia.pdata(max_history=args.settings)
+            args.settings = "History maximum lines number : {}".format(args.settings)
+        except ValueError:
+            officia.pdata(langue=args.langue)
+            args.settings = "Default language : {}".format(args.langue)
         
     sys.exit("Settings saved : {}".format(args.settings))
         

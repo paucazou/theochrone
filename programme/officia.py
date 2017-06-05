@@ -673,6 +673,10 @@ def pdata(read=True,write=False,**kwargs):
     if kwargs.get('langue',False):
         with open(config_folder + '/LANG','w') as lang:
             lang.write(kwargs['langue'])
+            
+    if kwargs.get('max_history',False):
+        with open(config_folder + '/max_history','w') as max_history:
+            max_history.write(kwargs['max_history'])
     
     if write:
         action = 'a'
@@ -680,6 +684,11 @@ def pdata(read=True,write=False,**kwargs):
         action = 'r'
         
     if 'history' in kwargs:
+        try:
+            with open(config_folder + '/max_history') as max_history_file:
+                max_history = int(max_history_file.read())
+        except FileNotFoundError:
+            max_history = 1000
         aujourdhui = str(datetime.datetime.today())
         if kwargs['history'] == 'dates':
             if not write:
@@ -704,14 +713,19 @@ def pdata(read=True,write=False,**kwargs):
                     dates.write('{}<>{}<>{}|{}\n'.format(aujourdhui,periode,debut,fin))
                 else:
                     history = []
+                    raw_dates = dates.readlines()
+                    if len(raw_dates) > max_history:
+                        to_delete = len(history) - max_history
+                        del(raw_dates[0:to_delete])
                     
-                    for line in dates.readlines():
+                    for line in raw_dates:
                         tmp = []
                         separee = line.replace('\n','').split('<>')
                         tmp.append(datetime.datetime.strptime(separee[0],'%Y-%m-%d %H:%M:%S.%f'))
                         tmp.append(separee[1])
                         tmp.append([datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in separee[2].split('|')])
                         history.append(tmp)
+                        
                     return history
         elif kwargs['history'] == 'reverse':
             if not write:
@@ -724,7 +738,11 @@ def pdata(read=True,write=False,**kwargs):
                     keywords.write("""{}/{}|{}/{}\n""".format(aujourdhui,debut,fin,' '.join(kwargs['keywords'])))
                 else:
                     history = []
-                    for line in keywords.readlines():
+                    raw_keywords = keywords.readlines()
+                    if len(raw_dates) > max_history:
+                        to_delete = len(history) - max_history
+                        del(raw_dates[0:to_delete])
+                    for line in raw_keywords:
                         jour, dates, kw = line.split('/')
                         history.append([datetime.datetime.strptime(jour,'%Y-%m-%d %H:%M:%S.%f')] +                                                                 [datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in dates.split('|')] + [kw.replace('\n','').split()])
                     return history
