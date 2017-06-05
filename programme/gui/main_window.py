@@ -54,7 +54,6 @@ class Main(QMainWindow,SuperTranslator):
         SuperTranslator.__init__(self)
         self.Annee = annus.LiturgicalCalendar()
         self.actions()
-        self.settings = settings.SettingsWindow()
         self.initUI()
         
         self.W.onglets.W.tab1.cal.clicked[QDate].connect(self.useDate)
@@ -92,6 +91,7 @@ class Main(QMainWindow,SuperTranslator):
         # Settings
         
         self.settingsAction = QAction(QIcon('icons/settings.png'),'settings',self) # icons https://www.iconfinder.com/icons/353407/cog_settings_icon#size=128
+        self.settingsAction.triggered.connect(self.openSettings)
         
         self.printAction = QAction(QIcon('icons/print.png'),'print',self) # https://www.iconfinder.com/icons/392497/print_printer_printing_icon#size=128
         self.printAction.setShortcut('Ctrl+P')
@@ -163,6 +163,8 @@ class Main(QMainWindow,SuperTranslator):
         #widgets on the right
         self.rightDock.setWindowTitle(_('Main','Research'))
         
+    def openSettings(self):
+        self.W.settings = settings.SettingsWindow()
         
     def useDate(self,date):
         self.setWindowTitle('Theochrone - ' + date.toString())

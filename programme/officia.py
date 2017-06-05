@@ -665,7 +665,7 @@ def pdata(read=True,write=False,**kwargs):
                         os.mkdir(folder)
                     except FileExistsError:
                         pass
-                
+
     with open(main_folder + '/SET','r') as SETfile:
         if 'OFF' in SETfile.read():
             return [] # WARNING très mauvaise idée : cela évite juste les ennuis, mais ne résout rien !!! renvoyer plutôt False

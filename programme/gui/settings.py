@@ -11,7 +11,7 @@ sys.path.append(chemin)
 import officia
 os.chdir(chemin)
 from translation import *
-from PyQt5.QtCore import QCoreApplication, QTranslator
+from PyQt5.QtCore import QCoreApplication, Qt, QTranslator
 from PyQt5.QtWidgets import QCheckBox, QVBoxLayout, QWidget
 
 _ = QCoreApplication.translate
@@ -24,14 +24,30 @@ class SettingsWindow(QWidget,SuperTranslator):
         
         self.initUI()
         self.retranslateUI()
-        self.show()
     
     def initUI(self):
         self.layout = QVBoxLayout()
-        self.settings_on = QCheckBox('Set settings off',self)
-        self.layout.addWidget(self.settings_on)
+        self.settings_state = QCheckBox('Set settings off',self)
+        self.settings_state.toggle()
+        self.settings_state.stateChanged.connect(self.SettingState)
+        if not officia.pdata():
+            self.settings_state.setChecked(False)
+        else:
+            self.settings_state.setChecked(True)
+        self.layout.addWidget(self.settings_state)
         self.setLayout(self.layout)
+        self.show()
         
     def retranslateUI(self):
         self.setWindowTitle = _("SettingsWindow","Settings")
-        self.settings_on.setText(_("SettingsWindow","Set settings on/off"))
+        if self.settings_state.isChecked():
+            self.settings_state.setText(_("SettingsWindow","Set settings OFF"))
+        else:
+            self.settings_state.setText(_("SettingsWindow","Set settings ON"))
+        
+    def SettingState(self, state):
+        if state == Qt.Checked:
+            officia.pdata(SET='ON')
+        else:
+            officia.pdata(SET='OFF')
+        self.retranslateUI()
