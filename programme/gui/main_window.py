@@ -71,8 +71,8 @@ class Main(QMainWindow,SuperTranslator):
             self.W.onglets.W.tab1.keyword.setText(' '.join(reverse))
             self.W.onglets.W.tab1.spinbox.setValue(debut.year)
             self.useKeyWord()
-        elif debut == fin:
-            self.useDate(debut)
+        elif debut == fin != current.toPyDate():
+            self.useDate(QDate(debut.year,debut.month,debut.day))
         else:
             self.W.onglets.W.tabPlus.frome.setDate(QDate(debut.year,debut.month,debut.day))
             self.W.onglets.W.tabPlus.to.setDate(QDate(fin.year,fin.month,fin.day))
