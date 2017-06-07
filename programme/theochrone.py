@@ -28,13 +28,7 @@ import sys
 import webbrowser
 from messages import args
 ### Traitement des informations entrées par l'utilisateur ###
-if not os.isatty(0) or args.gui:
-    from gui import main_window
-    app = main_window.App(sys.argv)
-    sys.exit(app.exec_())
-
 if args.settings != None:
-    
     if args.settings.lower() == "off":
         officia.pdata(SET='OFF')
     elif args.settings.lower() == "on":
@@ -150,21 +144,22 @@ elif args.DEPUIS == 1 and args.JUSQUE == 1:
     debut, fin = officia.AtoZ(semaine_seule,mois_seul,annee_seule,date)
 else:
     fromto=True
+    aujourdhui = datetime.date.today()
     if args.DEPUIS != 1:
-        date, semaine_seule, mois_seul, annee_seule = officia.datevalable(args.DEPUIS,args.langue)
-        if args.JUSQUE == 1 and args.DEPUIS <= aujourdhui:
+        args.DEPUIS, semaine_seule, mois_seul, annee_seule = officia.datevalable(args.DEPUIS,args.langue)
+        if args.JUSQUE == 1 and args.DEPUIS <= aujourdhui: # WARNING name aujourdhui is not defined WARNING BUG
             fin = aujourdhui
         elif args.JUSQUE == 1:
             fin = datetime.date(args.DEPUIS.year,12,31)
-        debut = officia.AtoZ(semaine_seule,mois_seul,annee_seule,date)[0]
+        debut = officia.AtoZ(semaine_seule,mois_seul,annee_seule,args.DEPUIS)[0]
             
     if args.JUSQUE != 1 and not isinstance(args.JUSQUE,datetime.date):
-        date, semaine_seule, mois_seul, annee_seule = officia.datevalable(args.JUSQUE,args.langue)
+        args.JUSQUE, semaine_seule, mois_seul, annee_seule = officia.datevalable(args.JUSQUE,args.langue)
         if args.DEPUIS == 1 and args.JUSQUE >= aujourdhui:
             debut = aujourdhui
         elif args.DEPUIS == 1:
             debut = datetime.date(args.JUSQUE.year,1,1)
-        fin = officia.AtoZ(semaine_seule,mois_seul,annee_seule,date)[1]
+        fin = officia.AtoZ(semaine_seule,mois_seul,annee_seule,args.JUSQUE)[1]
     
     if fin < debut:
         officia.erreur(16,args.langue)
@@ -186,6 +181,10 @@ if args.navigateur:
         sys.exit(subprocess.run(['./navette_navigateur.py',str(debut.day),str(debut.month),str(debut.year)]))
     else:
         sys.exit(subprocess.run(['./navette_navigateur.py']))
+elif not os.isatty(0) or args.gui:
+    from gui import main_window
+    app = main_window.App([args.INVERSE,debut,fin])
+    sys.exit(app.exec_())
     
 ### Définition de quelques variables ###  
 ordo=args.ordo
