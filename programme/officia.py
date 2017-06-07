@@ -683,12 +683,16 @@ def pdata(read=True,write=False,**kwargs):
     else:
         action = 'r'
         
+    try:
+        with open(config_folder + '/max_history') as max_history_file:
+            max_history = int(max_history_file.read())
+    except FileNotFoundError:
+        max_history = 1000
+        
+    if 'history_info' in kwargs:
+        return max_history
+    
     if 'history' in kwargs:
-        try:
-            with open(config_folder + '/max_history') as max_history_file:
-                max_history = int(max_history_file.read())
-        except FileNotFoundError:
-            max_history = 1000
         aujourdhui = str(datetime.datetime.today())
         if kwargs['history'] == 'dates':
             if not write:

@@ -13,7 +13,7 @@ os.chdir(chemin)
 from translation import *
 from PyQt5.QtCore import QCoreApplication, Qt, QTranslator
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QCheckBox, QLabel, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QCheckBox, QComboBox, QHBoxLayout, QLabel, QPushButton, QSpinBox, QVBoxLayout, QWidget
 
 _ = QCoreApplication.translate
 
@@ -41,15 +41,53 @@ class SettingsWindow(QWidget,SuperTranslator):
             self.settings_state.setChecked(False)
         else:
             self.settings_state.setChecked(True)
+            
+        # History line number
+        self.history_layout = QHBoxLayout()
+        self.history_lines = QSpinBox()
+        self.history_lines.setMinimum(0)
+        self.history_lines.setMaximum(1000)
+        self.history_lines.setValue(officia.pdata(history_info=True))
+        self.history_label = QLabel('Maximum number of lines of your history')
+        self.history_layout.addWidget(self.history_lines)
+        self.history_layout.addWidget(self.history_label)
         
+        # Language choice
+        self.language_layout = QHBoxLayout()
+        self.language_combo = QComboBox()
+        self.languages_label = QLabel('Choose your default language')
+        self.language_layout.addWidget(self.language_combo)
+        self.language_layout.addWidget(self.languages_label)
+        
+        # OK & Cancel buttons
+        self.buttons_layout = QHBoxLayout()
+        self.cancel = QPushButton("Cancel")
+        self.cancel.setDefault(True)
+        self.ok = QPushButton("OK")
+        self.buttons_layout.addStretch(1)
+        self.buttons_layout.addWidget(self.cancel)
+        self.buttons_layout.addWidget(self.ok)
+        
+        # Main layout
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.title)
         self.layout.addWidget(self.settings_state)
+        self.layout.addLayout(self.history_layout) # à mettre dans une condition : si settings_state == True
+        self.layout.addLayout(self.language_layout)
+        self.layout.addLayout(self.buttons_layout)
         self.setLayout(self.layout)
         self.show()
         
     def retranslateUI(self):
         self.setWindowTitle(_("SettingsWindow","Settings"))
+        self.title.setText(_("SettingsWindow","Settings"))
+        self.history_label.setText(_("SettingsWindow","Maximum number of lines of your history"))
+        languages = (_("SettingsWindow","English"),_("SettingsWindow","French"),_("SettingsWindow","Latin"),)
+        for lang in languages:
+            self.language_combo.addItem(lang)
+        self.languages_label.setText(_("SettingsWindow","Choose your default language"))
+        self.cancel.setText(_("SettingsWindow","Cancel"))
+        self.ok.setText(_("SettingsWindow","OK"))
         if self.settings_state.isChecked():
             self.settings_state.setText(_("SettingsWindow","Set settings OFF"))
         else:

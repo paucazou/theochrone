@@ -55,6 +55,7 @@ class Main(QMainWindow,SuperTranslator):
         self.Annee = annus.LiturgicalCalendar()
         self.actions()
         self.initUI()
+        self.openSettings() # for tests only
         
         self.W.onglets.W.tab1.cal.clicked[QDate].connect(self.useDate)
         self.W.onglets.W.tab1.kw_bouton.clicked.connect(self.useKeyWord)
