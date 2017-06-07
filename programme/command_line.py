@@ -247,21 +247,30 @@ def args():
                         - DD-MM-YYYY
                         - DD/MM/YYYY
                         - DDMMYYYY (eight characters required)
-                        - Day in figures, month in letters, year in figures : ex. 30 december 1990 ; 8th july 1990
+                        - Day in figures, month in letters, year in figures :
+                        ex. 30 december 1990 ; 8th july 1990
                         - weekday before the date as above : ex. Wednesday the 24th of January 2017
                         WARNING !!! The order of these elements much depends on your language.
                     - You can imply one of these elements, and so works Theochrone :
                         - a figure between 1 and 31 : day of the current month in the current year
-                        - a weekday in letters only : the requested day in the current week (starting with Sunday)
+                        - a weekday in letters only : the requested day in the current week
+                        (starting with Sunday)
                         - a month only (ex : july, sept,...) : the complete month of the current year
                         - the day and the month without year : current year used
                         - a number between 1600 and 4100 : the complete year.
                         - a word as listed below in your current language :
-                            - 'week' : the complete current week, starting with Sunday, ending with Saturday. You can also ask for 'next' or 'last' 'week', which returns the week after current, and the past one.
-                            - 'tomorrow' : the day after current one. You can also ask for the 'day after tomorrow'.
-                            - 'yesterday' : the day before current one. You can also ask for the 'day before yesterday'.
-                            - 'next month', or 'previous month', which returns the month after current one, and the month before current one.
-                            - 'next year', or 'previous year', which returns the year after current one, and the year before current one.
+                            - 'week' : the complete current week, starting with Sunday,
+                            ending with Saturday.
+                            You can also ask for 'next' or 'last' 'week', which returns the week
+                            after current, and the past one.
+                            - 'tomorrow' : the day after current one.
+                            You can also ask for the 'day after tomorrow'.
+                            - 'yesterday' : the day before current one.
+                            You can also ask for the 'day before yesterday'.
+                            - 'next month', or 'previous month', which returns the month
+                            after current one, and the month before current one.
+                            - 'next year', or 'previous year', which returns the year
+                            after current one, and the year before current one.
                     All of these formats are also accepted by the --from and --to options. (See below)
                         """))
     main.add_argument('--from',dest='DEPUIS',nargs='*',default=1,help=_("""With --to option, --from option can be used to point out the beginning of the period you want to print.
@@ -274,7 +283,10 @@ def args():
                     --to may be implied : if --from point out a date prior to the current day,
                     --to would automatically considered to be the current day ;
                     else, it would be the 31st of december of the current year."""))
-    main.add_argument('-r','--reverse',dest='INVERSE',nargs='*',default=1,help=_("""Alpha. Does not work properly. Reverse is to be a way to find and print feast by entering their names as arguments, ex : -r Easter, -r 21 Sunday after Pentecost,... Every other options are available with this one."""))
+    main.add_argument('-r','--reverse',dest='INVERSE',nargs='*',default=1,help=_("""Alpha. Does not work properly.
+        Reverse is to be a way to find and print feast by entering their names as arguments,
+        ex : -r Easter, -r 21 Sunday after Pentecost,...
+        Every other options are available with this one."""))
 
     affichage = parser.add_argument_group(_('Print options'),description=_("Convenient options for printing results"))
     affichage.add_argument('-v','--verbose', help=_("make theochrone more verbose. Equals to -cdstwLD, and more."),action='store_true')
@@ -285,7 +297,9 @@ def args():
     affichage.add_argument('-s','--temporsanct',dest='temporal_ou_sanctoral', help=_('print whether the feast belongs to the sanctorum or de tempore'), action='store_true')
     affichage.add_argument('-L','--liturgical-time', dest='temps_liturgique',help=_('print to which liturgical time the feast belongs to'),action='store_true')
     affichage.add_argument('-D','--print-date',dest='date_affichee',help=_('print date'),action='store_true')
-    affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected. Opens the introibo.fr page in a webbrowser. Works only with -r/--reverse (three results max) or an only date."""),action='store_true')
+    affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected.
+        Opens the introibo.fr page in a webbrowser.
+        Works only with -r/--reverse (three results max) or an only date."""),action='store_true')
     affichage.add_argument('-l','--language', dest='langue', action=CoursDeLangue, help=_("""choose your language /!\ ONLY FRENCH AVAILABLE /!\ 
         Available languages :
         - French
@@ -299,13 +313,16 @@ def args():
     
     history = parser.add_argument_group(_('History options'),description=_('All about history'))
     history.add_argument(*arguments['historique']['short'],*arguments['historique']['long'],dest='historique', help=_("Print history and exit. With -r/--reverse, print reverse history"),action='store_true')
-    history.add_argument(*arguments['entree_historique']['short'],*arguments['entree_historique']['long'],dest='entree_historique',help=_("Select which entry of the history you want to use again. Can be used with --next and --previous."),default=0,const=1,action='store',type=int,nargs='?')
+    history.add_argument(*arguments['entree_historique']['short'],*arguments['entree_historique']['long'],dest='entree_historique',help=_("""Select which entry of the history you want to use again.
+        Can be used with --next and --previous."""),default=0,const=1,action='store',type=int,nargs='?')
     NnPenemies = history.add_mutually_exclusive_group()
     NnPenemies.add_argument(*arguments['suivant']['short'],*arguments['suivant']['long'],dest='suivant',help=_("""Research for the next item. Example :
         the last item researched was a the 1st of January ; --next will research for the 2nd of January.
         It works with a week, a month, a year, and an arbitrary period defined with --from/--to.
-        You can also specify a number : to take the same example, after the 1st of January, --next 2 will research for the 3rd of January.
-        If you specify an entry of the history with --select-entry, the research will start from this entry, and not from the last one.
+        You can also specify a number : to take the same example, after the 1st of January,
+        --next 2 will research for the 3rd of January.
+        If you specify an entry of the history with --select-entry,
+        the research will start from this entry, and not from the last one.
         If used with DATE or --from/--to, these options will have no effect.
         Doesn't work with -r/--reverse."""),action='store',default=0,const=1,type=int,nargs='?')
     NnPenemies.add_argument(*arguments['precedent']['short'],*arguments['precedent']['long'],dest='precedent',help=_("""Research for the previous item.
@@ -319,13 +336,17 @@ def args():
         - a complete year
         - years before 1960, after 2100
         - every print option.
-        If one of the previous args was entered, it will not result an error, but the program will use default value."""),action='store_true')
-    system.add_argument(*arguments['gui']['short'],*arguments['gui']['long'],dest='gui',help=_("""Open Theochrone in a Graphical User Interface (GUI). This is the standard behaviour if Theochrone is opened in a file manager. You can pass args (/!\ NOT YET AVAILABLE)."""),action='store_true')
+        If one of the previous args was entered, it will not result an error,
+        but the program will use default value."""),action='store_true')
+    system.add_argument(*arguments['gui']['short'],*arguments['gui']['long'],dest='gui',help=_("""Open Theochrone in a Graphical User Interface (GUI).
+        This is the standard behaviour if Theochrone is opened in a file manager.
+        You can pass all research types args."""),action='store_true')
     system.add_argument('--version', action='version',version='%(prog)s 0.1')
     system.add_argument('--test',help='Do not run',action='store_true')
     system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
     system.add_argument(*arguments['settings']['long'],dest='settings',nargs='?',const='nothing',help=_("""Modify some settings of the program and exits. Following options are available :
-        - ON/OFF : set settings and history ON (default) or OFF. OFF also deletes all your personal settings and history, if previously set.
+        - ON/OFF : set settings and history ON (default) or OFF.
+        OFF also deletes all your personal settings and history, if previously set.
         - An integer : set the maximum lines of your history.
         - --language : save the default language you want to use.
         Settings and history can be found in '.theochrone', which is in your personal directory."""))

@@ -43,11 +43,11 @@ class App(QApplication):
         self.translator = QTranslator()
         self.installTranslator(self.translator)
         self.translator.load(QLocale(),"gui",'.','./i18n','.qm') # TODO : sélection de la langue dans cet ordre : settings, locale, puis choix.
-        self.execute = Main()
+        self.execute = Main(args)
 
 class Main(QMainWindow,SuperTranslator):
     """Main window"""
-    def __init__(self):
+    def __init__(self,args):
         """Function which initializes the main window"""
         
         QMainWindow.__init__(self)
@@ -56,6 +56,7 @@ class Main(QMainWindow,SuperTranslator):
         self.actions()
         self.initUI()
         self.openSettings() # for tests only
+        self.processCommandLineArgs(args)
         
         self.W.onglets.W.tab1.cal.clicked[QDate].connect(self.useDate)
         self.W.onglets.W.tab1.kw_bouton.clicked.connect(self.useKeyWord)
@@ -63,6 +64,20 @@ class Main(QMainWindow,SuperTranslator):
         self.W.onglets.W.tabPlus.bt_month.clicked.connect(self.useMonth)
         self.W.onglets.W.tabPlus.bt_year.clicked.connect(self.useYear)
         self.W.onglets.W.tabPlus.bt_arbitrary.clicked.connect(self.useArbitrary)
+        
+    def processCommandLineArgs(self,args):
+        reverse, debut, fin = args
+        if reverse != 1:
+            self.W.onglets.W.tab1.keyword.setText(' '.join(reverse))
+            self.W.onglets.W.tab1.spinbox.setValue(debut.year)
+            self.useKeyWord()
+        elif debut == fin:
+            self.useDate(debut)
+        else:
+            self.W.onglets.W.tabPlus.frome.setDate(QDate(debut.year,debut.month,debut.day))
+            self.W.onglets.W.tabPlus.to.setDate(QDate(fin.year,fin.month,fin.day))
+            self.useArbitrary()
+            self.W.onglets.tabs.setCurrentIndex(1)
         
     def menu(self):
         """A function which describes the menubar of the main window"""
@@ -321,6 +336,7 @@ class Unique(QWidget,SuperTranslator):
         
         self.gb_day.setTitle(_('Unique','Search for an only day'))
         self.gb_kw.setTitle(_('Unique',"Search by keywords"))
+        self.keyword.setPlaceholderText(_("Unique","Enter keywords here"))
         self.plus.setText(_('Unique','More results'))
         self.kw_bouton.setText(_('Unique','OK'))
         
