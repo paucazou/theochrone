@@ -50,7 +50,9 @@ if args.poems:
     sys.exit()
     
 if args.historique:
-    if args.INVERSE != 1:
+    if not officia.pdata():
+        pass
+    elif args.INVERSE != 1:
         history = officia.pdata(history='reverse')
         taille = len(history)
         for i,line in enumerate(history):
@@ -73,7 +75,7 @@ if args.precedent or args.suivant: # do not forget day !!!
         i = args.entree_historique
     try:
         entree = officia.pdata(history='dates')[-i]
-    except IndexError:
+    except (IndexError, TypeError):
         officia.erreur(32,args.langue)
     if args.suivant:
         i = args.suivant

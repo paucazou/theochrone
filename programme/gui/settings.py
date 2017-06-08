@@ -23,6 +23,8 @@ class SettingsWindow(QWidget,SuperTranslator):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
         
+        
+        self.languages = ('english','francais','latina')
         self.initUI()
         self.retranslateUI()
     
@@ -33,14 +35,6 @@ class SettingsWindow(QWidget,SuperTranslator):
         self.title = QLabel('Settings')
         self.title.setFont(title_font)
         self.title.setAlignment(Qt.AlignHCenter)
-        # Main checkbox
-        self.settings_state = QCheckBox('Set settings off',self)
-        self.settings_state.toggle()
-        self.settings_state.stateChanged.connect(self.SettingState)
-        if not officia.pdata():
-            self.settings_state.setChecked(False)
-        else:
-            self.settings_state.setChecked(True)
             
         # History line number
         self.history_layout = QHBoxLayout()
@@ -68,14 +62,27 @@ class SettingsWindow(QWidget,SuperTranslator):
         self.buttons_layout.addWidget(self.cancel)
         self.buttons_layout.addWidget(self.ok)
         
+        # Main checkbox
+        self.settings_state = QCheckBox('Set settings off',self)
+        self.settings_state.toggle()
+        self.settings_state.stateChanged.connect(self.SettingState)
+        if not officia.pdata():
+            self.settings_state.setChecked(False)
+        else:
+            self.settings_state.setChecked(True)
+            
         # Main layout
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.title)
         self.layout.addWidget(self.settings_state)
-        self.layout.addLayout(self.history_layout) # à mettre dans une condition : si settings_state == True
+        self.layout.addLayout(self.history_layout)
         self.layout.addLayout(self.language_layout)
         self.layout.addLayout(self.buttons_layout)
         self.setLayout(self.layout)
+        
+        # Buttons
+        self.ok.clicked.connect(self.saveSettings)
+        self.cancel.clicked.connect(self.close)
         self.show()
         
     def retranslateUI(self):
@@ -83,12 +90,13 @@ class SettingsWindow(QWidget,SuperTranslator):
         self.title.setText(_("SettingsWindow","Settings"))
         self.history_label.setText(_("SettingsWindow","Maximum number of lines of your history"))
         languages = (_("SettingsWindow","English"),_("SettingsWindow","French"),_("SettingsWindow","Latin"),)
+        self.language_combo.clear()
+        print(len(languages))
         for lang in languages:
             self.language_combo.addItem(lang)
-        languages = ('english','francais','latina')
         lang = officia.pdata(language_saved=True)
         if lang:
-            index = languages.index(lang)
+            index = self.languages.index(lang)
         else:
             index = 0
         self.language_combo.setCurrentIndex(index)
@@ -106,3 +114,9 @@ class SettingsWindow(QWidget,SuperTranslator):
         else:
             officia.pdata(SET='OFF')
         self.retranslateUI()
+        
+    def saveSettings(self):
+        officia.pdata(langue=str(self.languages[self.language_combo.currentIndex()]),
+                      max_history=str(self.history_lines.value()),
+                      )
+        self.close()

@@ -179,7 +179,7 @@ class Main(QMainWindow,SuperTranslator):
         #widgets on the right
         self.rightDock.setWindowTitle(_('Main','Research'))
         
-    def openSettings(self):
+    def openSettings(self): # passer un argument concernant la langue choisie
         self.W.settings = settings.SettingsWindow()
         
     def useDate(self,date):

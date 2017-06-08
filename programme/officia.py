@@ -668,7 +668,7 @@ def pdata(read=True,write=False,**kwargs):
 
     with open(main_folder + '/SET','r') as SETfile:
         if 'OFF' in SETfile.read():
-            return [] # WARNING très mauvaise idée : cela évite juste les ennuis, mais ne résout rien !!! renvoyer plutôt False
+            return False
         
     if kwargs.get('langue',False):
         with open(config_folder + '/LANG','w') as lang:
