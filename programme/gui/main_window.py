@@ -55,7 +55,6 @@ class Main(QMainWindow,SuperTranslator):
         self.Annee = annus.LiturgicalCalendar()
         self.actions()
         self.initUI()
-        self.openSettings() # for tests only
         self.processCommandLineArgs(args)
         
         self.W.onglets.W.tab1.cal.clicked[QDate].connect(self.useDate)
@@ -87,6 +86,7 @@ class Main(QMainWindow,SuperTranslator):
         self.fileMenu = menubar.addMenu('file')
         self.fileMenu.addAction(self.settingsAction)
         self.fileMenu.addAction(self.printAction)
+        self.fileMenu.addAction(self.exportPDF)
         self.fileMenu.addAction(self.exitAction)
         
         # Edit menu
@@ -104,14 +104,17 @@ class Main(QMainWindow,SuperTranslator):
     def actions(self):
         """A function which defines actions in the main window"""
         
+        #File
         # Settings
-        
         self.settingsAction = QAction(QIcon('icons/settings.png'),'settings',self) # icons https://www.iconfinder.com/icons/353407/cog_settings_icon#size=128
         self.settingsAction.triggered.connect(self.openSettings)
-        
+        self.settingsAction.setShortcut('Ctr+S')
+        # Print
         self.printAction = QAction(QIcon('icons/print.png'),'print',self) # https://www.iconfinder.com/icons/392497/print_printer_printing_icon#size=128
         self.printAction.setShortcut('Ctrl+P')
-        
+        # PDF
+        self.exportPDF = QAction(QIcon('icons/pdf.png'),'export as PDF',self)
+        self.exportPDF.setShortcut('Ctrl+E')
         # Exit
         self.exitAction = QAction(QIcon('icons/exit.png'),'exit_name',self)
         self.exitAction.setShortcut('Ctrl+Q')
@@ -167,6 +170,7 @@ class Main(QMainWindow,SuperTranslator):
         self.settingsAction.setText(_('Main','Settings'))
         
         self.printAction.setText(_('Main','Print'))
+        self.exportPDF.setText(_('Main','Export as PDF'))
         
         self.exitAction.setText(_('Main','Exit'))
         self.exitAction.setStatusTip(_('Main','Exit the app'))
@@ -184,7 +188,6 @@ class Main(QMainWindow,SuperTranslator):
         
     def useDate(self,date):
         self.setWindowTitle('Theochrone - ' + date.toString())
-        print(date.day(),date.month(),date.year())
         debut = fin = date.toPyDate()
         self.Annee(debut.year)
         selection = self.Annee[debut]
@@ -197,7 +200,6 @@ class Main(QMainWindow,SuperTranslator):
             return
         self.setWindowTitle('Theochrone - ' + keyword)
         annee = self.W.onglets.W.tab1.spinbox.value()
-        print(annee,keyword)
         debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
         self.Annee(debut.year)
         if self.W.onglets.W.tab1.plus.isChecked():
@@ -474,8 +476,6 @@ class Tree(QTreeWidget,SuperTranslator):
         self.Annee=Annee      
         self.initUI(data)
         self.retranslateUI()
-        
-        
         for i in range(6):
             self.resizeColumnToContents(i)
         self.header().setStretchLastSection(True)
@@ -483,8 +483,6 @@ class Tree(QTreeWidget,SuperTranslator):
     
     def initUI(self,data):
         self.setColumnCount(5)
-        #date = [self.week,self.month,self.year]
-        #self.populateTree(data,self.depth(data),date,self.invisibleRootItem())
         self.populateTree(data,self.invisibleRootItem())
         
     def populateTree(self,data,parent):
@@ -513,30 +511,6 @@ class Tree(QTreeWidget,SuperTranslator):
                     temps = 'Sanctoral'
                 child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,'francais').capitalize(),temps])
         
-    def _populateTree(self,liste,depth,date,parent): #DEPRECATED
-        """A function wich populates the QTreeWidget"""
-        for elt in liste:
-            if depth == 1:
-                if elt.temporal:
-                    temps = 'Temporal'
-                else:
-                    temps = 'Sanctoral'
-                child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,'francais').capitalize(),temps])
-            else:
-                if depth == 2:
-                    data = [str(elt[0].date)]
-                else:
-                    data = date[depth-3:]
-                    data = reversed([ str(item) for item in data])
-                    data = [" - ".join(data)]    
-                child = QTreeWidgetItem(parent,data)
-                self.populateTree(elt,depth-1,date,child)
-                child.setExpanded(True)
-                if depth > 2:
-                    date[depth-3] = date[depth-3] + 1
-        else:
-            if depth > 2:
-                date[depth-3] = 1
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
