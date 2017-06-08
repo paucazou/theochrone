@@ -674,6 +674,13 @@ def pdata(read=True,write=False,**kwargs):
         with open(config_folder + '/LANG','w') as lang:
             lang.write(kwargs['langue'])
             
+    if kwargs.get('language_saved',False):
+        try:
+            with open(config_folder + '/LANG') as lang:
+                return lang.read()
+        except FileNotFoundError:
+            return False
+            
     if kwargs.get('max_history',False):
         with open(config_folder + '/max_history','w') as max_history:
             max_history.write(kwargs['max_history'])

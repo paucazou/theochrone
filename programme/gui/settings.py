@@ -85,6 +85,13 @@ class SettingsWindow(QWidget,SuperTranslator):
         languages = (_("SettingsWindow","English"),_("SettingsWindow","French"),_("SettingsWindow","Latin"),)
         for lang in languages:
             self.language_combo.addItem(lang)
+        languages = ('english','francais','latina')
+        lang = officia.pdata(language_saved=True)
+        if lang:
+            index = languages.index(lang)
+        else:
+            index = 0
+        self.language_combo.setCurrentIndex(index)
         self.languages_label.setText(_("SettingsWindow","Choose your default language"))
         self.cancel.setText(_("SettingsWindow","Cancel"))
         self.ok.setText(_("SettingsWindow","OK"))

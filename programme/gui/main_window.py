@@ -73,7 +73,7 @@ class Main(QMainWindow,SuperTranslator):
             self.useKeyWord()
         elif debut == fin != current.toPyDate():
             self.useDate(QDate(debut.year,debut.month,debut.day))
-        else:
+        elif debut != fin:
             self.W.onglets.W.tabPlus.frome.setDate(QDate(debut.year,debut.month,debut.day))
             self.W.onglets.W.tabPlus.to.setDate(QDate(fin.year,fin.month,fin.day))
             self.useArbitrary()
