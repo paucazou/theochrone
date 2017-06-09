@@ -240,6 +240,11 @@ class Main(QMainWindow,SuperTranslator):
         self.W.arbre = Tree(MONTH,self.Annee)
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
+        #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
+        debut = datetime.date(year,month,1)
+        fin_day = calendar.monthrange(year,month)[1]
+        fin = datetime.date(year,month,fin_day)
+        officia.pdata(write=True,history='dates',debut=debut,fin=fin,mois_seul=True)
         
     def useYear(self):
         tab = self.W.onglets.W.tabPlus
