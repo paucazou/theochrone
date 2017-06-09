@@ -750,9 +750,9 @@ def pdata(read=True,write=False,**kwargs):
                 else:
                     history = []
                     raw_keywords = keywords.readlines()
-                    if len(raw_dates) > max_history:
+                    if len(raw_keywords) > max_history:
                         to_delete = len(history) - max_history
-                        del(raw_dates[0:to_delete])
+                        del(raw_keywords[0:to_delete])
                     for line in raw_keywords:
                         jour, dates, kw = line.split('/')
                         history.append([datetime.datetime.strptime(jour,'%Y-%m-%d %H:%M:%S.%f')] +                                                                 [datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in dates.split('|')] + [kw.replace('\n','').split()])
