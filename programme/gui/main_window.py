@@ -228,8 +228,8 @@ class Main(QMainWindow,SuperTranslator):
         self.setWindowTitle('Theochrone - {} semaine {}{} {}'.format(
             week_number[week], preposition,
             months_tuple[month],str(year)))
-        #officia.pdata(write=True,history='dates',debut=debut,fin=fin,
-                  #semaine_seule=semaine_seule,mois_seul=mois_seul,annee_seule=annee_seule)
+        debut, fin = sorted(WEEK)[0], sorted(WEEK)[-1]
+        officia.pdata(write=True,history='dates',debut=debut,fin=fin,semaine_seule=True)
         
     def useMonth(self):
         tab = self.W.onglets.W.tabPlus
