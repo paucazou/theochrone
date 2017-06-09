@@ -192,7 +192,8 @@ class Main(QMainWindow,SuperTranslator):
         self.Annee(debut.year)
         selection = self.Annee[debut]
         self.tableau = Table(selection,self.Annee)
-        self.setCentralWidget(self.tableau)           
+        self.setCentralWidget(self.tableau)
+        officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
     def useKeyWord(self):
         keyword = self.W.onglets.W.tab1.keyword.text()
@@ -209,6 +210,7 @@ class Main(QMainWindow,SuperTranslator):
         selection = officia.inversons(keyword,self.Annee,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
         self.W.tableau = Table(selection,self.Annee,True)
         self.setCentralWidget(self.W.tableau)
+        officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=[keyword])
             
     def useWeek(self):
         tab=self.W.onglets.W.tabPlus
@@ -226,6 +228,8 @@ class Main(QMainWindow,SuperTranslator):
         self.setWindowTitle('Theochrone - {} semaine {}{} {}'.format(
             week_number[week], preposition,
             months_tuple[month],str(year)))
+        #officia.pdata(write=True,history='dates',debut=debut,fin=fin,
+                  #semaine_seule=semaine_seule,mois_seul=mois_seul,annee_seule=annee_seule)
         
     def useMonth(self):
         tab = self.W.onglets.W.tabPlus
@@ -245,6 +249,7 @@ class Main(QMainWindow,SuperTranslator):
         self.W.arbre = Tree(YEAR,self.Annee)
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - {}'.format(str(year)))
+        officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=annee_seule)
         
     def useArbitrary(self):
         tab = self.W.onglets.W.tabPlus
@@ -256,6 +261,7 @@ class Main(QMainWindow,SuperTranslator):
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
                                                               tab.to.date().toString()))
+        officia.pdata(write=True,history='dates',debut=debut,fin=fin,fromto=True)
         
 class Onglets(QWidget,SuperTranslator):
     """A class for a tab widget"""
