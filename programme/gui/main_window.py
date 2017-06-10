@@ -18,8 +18,9 @@ import settings
 os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtGui import QIcon, QTextDocument
+from PyQt5.QtPrintSupport import QPrinter
+from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from translation import *
 
 
@@ -113,7 +114,8 @@ class Main(QMainWindow,SuperTranslator):
         self.printAction = QAction(QIcon('icons/print.png'),'print',self) # https://www.iconfinder.com/icons/392497/print_printer_printing_icon#size=128
         self.printAction.setShortcut('Ctrl+P')
         # PDF
-        self.exportPDF = QAction(QIcon('icons/pdf.png'),'export as PDF',self)
+        self.exportPDF = QAction(QIcon('icons/pdf.png'),'export as PDF',self) # https://www.iconfinder.com/icons/83290/file_pdf_icon#size=32
+        self.exportPDF.triggered.connect(self.exportAsPDF)
         self.exportPDF.setShortcut('Ctrl+E')
         # Exit
         self.exitAction = QAction(QIcon('icons/exit.png'),'exit_name',self)
@@ -267,6 +269,15 @@ class Main(QMainWindow,SuperTranslator):
         self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
                                                               tab.to.date().toString()))
         officia.pdata(write=True,history='dates',debut=debut,fin=fin,fromto=True)
+        
+    def exportAsPDF(self):
+        personal_directory = os.path.expanduser('~')
+        dialog = QFileDialog.getSaveFileName(self,'Export as PDF',personal_directory,'Documents PDF (*.pdf)')
+        if dialog[0]:
+            printer = QPrinter(QPrinter.HighResolution)
+            printer.setOutputFormat(QPrinter.PdfFormat)
+            printer.setOutputFileName(dialog[0])
+            self.centralWidget().render(printer) # Créer plutôt un modèle d'impression à partir des données de base, avec du texte brut. TODO
         
 class Onglets(QWidget,SuperTranslator):
     """A class for a tab widget"""
