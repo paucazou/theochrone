@@ -8050,7 +8050,35 @@
         </list>
         <list key="nom_compose"/>
         <list key="refus_faible"/>
-        <list key="refus_fort"/>
+        <list key="refus_fort">
+          <str>apôtre</str>
+          <str>tibériopolis</str>
+          <str>constantinople</str>
+          <str>farfa</str>
+          <str>maurienne</str>
+          <str>nouveau</str>
+          <str>ancien</str>
+          <str>defourkinos</str>
+          <str>maléon</str>
+          <str>becket</str>
+          <str>contorbéry</str>
+          <str>more</str>
+          <str>green</str>
+          <str>reding</str>
+          <str>abel</str>
+          <str>aquin</str>
+          <str>bosgrave</str>
+          <str>warcop</str>
+          <str>welbourne</str>
+          <str>garnet</str>
+          <str>ghengoro</str>
+          <str>zumarraga</str>
+          <str>whitaker</str>
+          <str>tran</str>
+          <str>van</str>
+          <str>thien</str>
+          <str>toan</str>
+        </list>
         <list key="syntaxiques">
           <str>de</str>
         </list>
