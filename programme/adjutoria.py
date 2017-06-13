@@ -92,14 +92,14 @@ class Fete:
     def __repr__(self):
         """Méthode affichant le nom de l'objet"""
         return self.nom['latina']
-    def __lt__(self,autrefete):
-        """Méthode pour comparer les objets ensemble, et surtout pour les trier dans la liste (via un list.sort(). ordo représente la variable globale utilisée dans le reste du script.)""" # Je crains que cette fonction ne serve à rien.
+    def __lt__(self,autrefete): # TEST
+        """Méthode pour comparer les objets ensemble, et surtout pour les trier dans la liste (via un list.sort().)""" # Je crains que cette fonction ne serve à rien.
         if self.degre == autrefete.degre:
-            return self.priorite < autrefete.priorite
+            return self.priorite > autrefete.priorite
         else:
             return self.degre < autrefete.degre
         
-    def __eq__(self,autrefete):
+    def __eq__(self,autrefete): # TEST
         """Méthode pour comparer deux objets type Fete"""
         if isinstance(autrefete,Fete):
             return self.__dict__ == autrefete.__dict__
@@ -124,13 +124,13 @@ class Fete:
     def DateCivile_(self,paques,annee):
         pass
     
-    def copy(self):
+    def copy(self): # TEST
         """Une fonction qui renvoie un autre objet"""
         renvoye = self.__class__()
         renvoye.__dict__ = self.__dict__.copy()
         return renvoye
     
-    def DateCivile(self,paques,annee):
+    def DateCivile(self,paques,annee): # TEST
         """Une fonction qui va tester si la date est déjà déterminée,
         sinon il va la demander à la fonction DateCivile_()"""
         if not isinstance(self.date,datetime.date):
@@ -158,7 +158,7 @@ class Fete:
         else:
             return wy
     
-    def DatePaques(self,paques,annee):
+    def DatePaques(self,paques,annee): # TEST
         """Une fonction qui calcule le nombre de jours par rapport à Pâques"""
         return paques - self.date
     
