@@ -106,7 +106,7 @@ class Fete:
         else:
             raise TypeError("""{} is not a 'Fete' class, or any of her subclasses.""".format(autrefete))
         
-    def __hash__(self):
+    def __hash__(self): # méthode très mauvaise, dont le résultat est changeant. Il faut trouver une autre solution.
         """Méthode appellée par la fonction hash()"""
         hash_list = []
         for item in self.__dict__.values():

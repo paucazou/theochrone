@@ -15,6 +15,7 @@ def fete_base():
     fete1 = adjutoria.Fete()
     fete1.degre = 1
     fete1._priorite = 1800
+    fete1._temps_liturgique = 'Sometimes'
     return fete1
 
 # Test Fete
@@ -27,6 +28,8 @@ def test_lt():
     autrefete.degre = 1
     assert fete1.__lt__(autrefete)
     
+def test_hash():
+    fete = adjutoria.Fete()
     
 def test_eq():
     fete1 = fete_base()
@@ -55,6 +58,21 @@ def test_paques():
     fete.date = datetime.date(1962,4,21)
     easter = datetime.date(1962,4,22)
     assert fete.DatePaques(easter,1962) == datetime.timedelta(1)
+    
+def test_temps_liturgique():
+    fete = fete_base()
+    assert fete.temps_liturgique() == 'Sometimes'
+    fete._temps_liturgique = 'variable'
+    fete.date = datetime.date(1962,1,1)
+    fete.parent = mock.MagicMock()
+    fete2 = adjutoria.Fete()
+    fete2.temporal = True
+    fete2._temps_liturgique = 'A time'
+    fete.parent.__getitem__.return_value = [fete2]
+    assert fete.temps_liturgique() == fete2._temps_liturgique
+    assert mock.call(fete.date) in fete.parent.__getitem__.call_args_list
+    assert fete.parent.__getitem__.call_count == 1
+
     
     
     
