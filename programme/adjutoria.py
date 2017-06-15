@@ -345,7 +345,7 @@ class FeteMobilePaques(Fete):
         """Calcule la date civile d'une fête mobile."""
         return paques + datetime.timedelta(self.date_)
     
-class FeteMobileDerniersDimanchesPentecote(Fete):
+class FeteMobileDerniersDimanchesPentecote(Fete): # TEST
     """Une classe définissant les derniers dimanches après la Pentecôte, à partir du 23 ème."""
     
     def __init__(self):

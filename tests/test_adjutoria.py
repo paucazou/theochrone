@@ -118,3 +118,12 @@ def test_DateCivile_FeteMobilePaques():
     fete = adjutoria.FeteMobilePaques()
     fete.date_ = -2
     assert fete.DateCivile_(datetime.date(1962,4,22),1962) == datetime.date(1962,4,20)
+    
+# test FeteMobileDerniersDimanchesPentecote
+
+def test_DateCivile_FeteMobileDerniersDimanchesPentecote():
+    fete = adjutoria.FeteMobileDerniersDimanchesPentecote()
+    fete.date_[238] = 2
+    assert fete.DateCivile_(datetime.date(1943,4,25), 1943) == datetime.date(1943,4,27)
+    assert fete.DateCivile_(datetime.date(2010,4,4), 2010) == datetime.date(2010,11,21)
+    assert fete.priorite == 0
