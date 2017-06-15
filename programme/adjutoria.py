@@ -307,7 +307,7 @@ class FeteFixe(Fete):
             'jour':int(),
             }           
     
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Renvoie la date de l'année civile."""
         return datetime.date(annee,self.date_['mois'],self.date_['jour'])
         
@@ -327,7 +327,7 @@ class FeteFixeBissextile(Fete):
                 },
             }
             
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Renvoie la date de l'année civile."""
         if calendar.isleap(annee):
             return datetime.date(annee,self.date_['bissextile']['mois'],self.date_['bissextile']['jour'])
@@ -341,7 +341,7 @@ class FeteMobilePaques(Fete):
         Fete.__init__(self)
         self.date_=int() # ne comprend qu'un entier correspondant au nombre de jours par rapport à Pâques
     
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Calcule la date civile d'une fête mobile."""
         return paques + datetime.timedelta(self.date_)
     

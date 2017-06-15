@@ -94,4 +94,27 @@ def test_get_images(images):
     assert fete.images == fete._get_images() == "Yes"
     assert images.__getitem__.call_count == 2 and mock.call(fete._images) in images.__getitem__.call_args_list
     
+# test FeteFixe
+def test_DateCivile_FeteFixe():
+    fete = adjutoria.FeteFixe()
+    fete.date_['mois'] = 1
+    fete.date_['jour'] = 1
+    assert fete.DateCivile_(None,1962) == datetime.date(1962,1,1)
     
+# test FeteFixeBissextile
+
+def test_DateCivile_FeteFixeBissextile():
+    fete = adjutoria.FeteFixeBissextile()
+    fete.date_['bissextile']['mois'] = 2
+    fete.date_['bissextile']['jour'] = 29
+    fete.date_['ordinaire']['mois'] = 2
+    fete.date_['ordinaire']['jour'] = 28
+    assert fete.DateCivile_(None,2000) == datetime.date(2000,2,29)
+    assert fete.DateCivile_(None,2001) == datetime.date(2001,2,28)
+    
+#test FeteMobilePaques
+
+def test_DateCivile_FeteMobilePaques():
+    fete = adjutoria.FeteMobilePaques()
+    fete.date_ = -2
+    assert fete.DateCivile_(datetime.date(1962,4,22),1962) == datetime.date(1962,4,20)
