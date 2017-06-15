@@ -43,7 +43,7 @@ def test_eq():
 def test_copy():
     fete1 = fete_base()
     fete2 = fete1.copy()
-    assert fete1 == fete2 and fete1 is not fete2
+    assert fete1 == fete2 and not(fete1 is fete2)
 
 @mock.patch('adjutoria.Fete.DateCivile_')    
 def test_DateCivile(DateCivile_):
@@ -73,8 +73,25 @@ def test_temps_liturgique():
     assert mock.call(fete.date) in fete.parent.__getitem__.call_args_list
     assert fete.parent.__getitem__.call_count == 1
 
-    
-    
-    
+def test_set_transferee():
+    fete = fete_base()
+    fete.date = datetime.date(1962,1,1)
+    assert not fete.transferee and not fete.date_originelle
+    fete.transferee = True
+    assert fete.transferee and fete.date_originelle == datetime.date(1962,1,1) and fete.date == datetime.date(1962,1,2)
+    fete.transferee = True
+    assert fete.transferee and fete.date_originelle == datetime.date(1962,1,1) and fete.date == datetime.date(1962,1,3)
 
+@mock.patch('adjutoria.images')    
+def test_get_images(images):
+    images.get.return_value = None
+    fete = fete_base()
+    assert fete._images is '' and fete.images == fete._get_images() == None
+    fete._images = "Fete"
+    assert fete._images == "Fete" and fete.images == fete._get_images() == None
+    images.get.return_value = True
+    images.__getitem__.return_value = "Yes"
+    assert fete.images == fete._get_images() == "Yes"
+    assert images.__getitem__.call_count == 2 and mock.call(fete._images) in images.__getitem__.call_args_list
+    
     

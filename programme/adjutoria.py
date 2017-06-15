@@ -106,7 +106,7 @@ class Fete:
         else:
             raise TypeError("""{} is not a 'Fete' class, or any of her subclasses.""".format(autrefete))
         
-    def __hash__(self): # méthode très mauvaise, dont le résultat est changeant. Il faut trouver une autre solution.
+    def __hash__(self): # méthode très mauvaise, dont le résultat est changeant. Il faut trouver une autre solution. fonctionne cependant au sein d'une même instance
         """Méthode appellée par la fonction hash()"""
         hash_list = []
         for item in self.__dict__.values():
@@ -241,7 +241,7 @@ class Fete:
                         break
         return liste_match
     
-    def temps_liturgique(self):
+    def temps_liturgique(self): # TEST
         """Une fonction qui renvoie le temps liturgique"""
         if self._temps_liturgique == 'variable':
             date = self.date
@@ -270,7 +270,7 @@ class Fete:
     
     couleur = property(_get_couleur)
     
-    def _set_transferee(self,value):
+    def _set_transferee(self,value): # TEST
         """Une méthode qui modifie la valeur de self.transferee
         et fait les modifications nécessaires."""
         self._transferee = value
@@ -284,7 +284,7 @@ class Fete:
     
     transferee = property(_get_transferee,_set_transferee) # WARNING La propriété est de classe, non d'instance
     
-    def _get_images(self):
+    def _get_images(self): # TEST
         """Renvoie une liste d'images en recherchant dans le dossier images
         tout ce qui correspond à la liste contenue dans self._images.
         Si la liste est vide, renvoie None"""
