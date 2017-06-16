@@ -127,3 +127,32 @@ def test_DateCivile_FeteMobileDerniersDimanchesPentecote():
     assert fete.DateCivile_(datetime.date(1943,4,25), 1943) == datetime.date(1943,4,27)
     assert fete.DateCivile_(datetime.date(2010,4,4), 2010) == datetime.date(2010,11,21)
     assert fete.priorite == 0
+    
+# test FeteMobileAvent
+
+def test_DateCivile_FeteMobileAvent():
+    fete = adjutoria.FeteMobileAvent()
+    fete.date_ = 3
+    assert fete.DateCivile_(None,2001) == datetime.date(2001,12,20)
+    assert ('tuesday','jeudi','de Feria quinta') == (fete.nom_passager['english'], fete.nom_passager['francais'], fete.nom_passager['latina'])
+    fete2 = adjutoria.FeteMobileAvent()
+    fete.date_ = -1
+    assert fete.DateCivile_(None,2000) == datetime.date(2000,12,24) and fete._priorite == 0 and fete.commemoraison_privilegiee == -1
+    
+# test FeteMobileEpiphanie
+
+def test_DateCivile_FeteMobileEpiphanie():
+    fete = adjutoria.FeteMobileEpiphanie()
+    fete.date_ = 2
+    assert fete.DateCivile_(datetime.date(1900,4,15),1900) == datetime.date(1900,1,9)
+    fete.date_ = 40
+    assert fete.DateCivile_(datetime.date(1900,4,15),1900) == datetime.date(1900,2,11) == datetime.date(1900,4,15) - datetime.timedelta(63)
+    assert fete._priorite == 0 and fete.commemoraison_privilegiee == -1
+    
+def test_get_couleur_FeteMobileEpiphanie():
+    fete = adjutoria.FeteMobileEpiphanie()
+    fete._couleur = 'rose bonbon'
+    fete.date = datetime.date(2222,1,13)
+    assert fete._couleur == fete.couleur == 'rose bonbon'
+    fete.date = datetime.date(2222,1,15)
+    assert fete._couleur == 'rose bonbon' and fete.couleur == 'vert'

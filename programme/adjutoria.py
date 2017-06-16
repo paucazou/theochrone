@@ -345,14 +345,14 @@ class FeteMobilePaques(Fete):
         """Calcule la date civile d'une fête mobile."""
         return paques + datetime.timedelta(self.date_)
     
-class FeteMobileDerniersDimanchesPentecote(Fete): # TEST
+class FeteMobileDerniersDimanchesPentecote(Fete):
     """Une classe définissant les derniers dimanches après la Pentecôte, à partir du 23 ème."""
     
     def __init__(self):
         Fete.__init__(self)
         self.date_={} # un dictionnaire prenant pour clef le nombre de jours entre Pâques et le quatrième dimanche de l'Avent, et en valeur le nombre de jours entre Pâques et le jour de la fête.
     
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee):  # TEST
         """Calcule la date par rapport à Pâques et Noël."""
         ecart = officia.dimancheavant(datetime.date(annee,12,25)) - paques
         try:
@@ -366,9 +366,9 @@ class FeteMobileAvent(Fete):
     
     def __init__(self):
         Fete.__init__(self)
-        self.date_=int() # Un entier correspondant au nombre de jours par rapport au quatrième dimanche de l'Avent.
+        self.date_=int() # Un entier correspondant au nombre de jours par rapport au quatrième dimanche de l'Avent. + = avant, - = après # Incohérent
         
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Calcule la date civile en fonction du nombre de jours d'écart avec le quatrième dimanche de l'Avent."""
         retour= officia.dimancheavant(datetime.date(annee,12,25)) - datetime.timedelta(self.date_)
         self.nom_passager = {}
@@ -387,7 +387,7 @@ class FeteMobileEpiphanie(Fete):
         Fete.__init__(self)
         self.date_=int() # Un entier correspondant au nombre de jours après le premier dimanche après l'Epiphanie
     
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Calcule la date par rapport à Pâques et au premier dimanche après l'Epiphanie."""
         septuagesime = paques - datetime.timedelta(63)
         retour= officia.dimancheapres(datetime.date(annee,1,6)) + datetime.timedelta(self.date_)
@@ -397,7 +397,7 @@ class FeteMobileEpiphanie(Fete):
             self.commemoraison_privilegiee = -1
         return retour
     
-    def _get_couleur(self):
+    def _get_couleur(self): # TEST
         if self.date >= datetime.date(self.date.year,1,14):
             return 'vert'
         else:
