@@ -156,3 +156,15 @@ def test_get_couleur_FeteMobileEpiphanie():
     assert fete._couleur == fete.couleur == 'rose bonbon'
     fete.date = datetime.date(2222,1,15)
     assert fete._couleur == 'rose bonbon' and fete.couleur == 'vert'
+    
+# test FeteMobileMois
+def test_DateCivile_FeteMobileMois():
+     fete = adjutoria.FeteMobileMois()
+     fete.date_['mois'], fete.date_['jour'], fete.date_['ordre'] = 10, 1, 0
+     assert fete.DateCivile_(None,2000) == datetime.date(2000,10,3)
+     fete.date_['mois'], fete.date_['jour'], fete.date_['ordre'] = 10, 6, 0
+     assert fete.DateCivile_(None,2000) == datetime.date(2000,10,1)
+     fete.date_['mois'], fete.date_['jour'], fete.date_['ordre'] = 10, 2, -1
+     assert fete.DateCivile_(None,2000) == datetime.date(2000,10,25)
+     fete.date_['mois'], fete.date_['jour'], fete.date_['ordre'] = 10, 0, -1
+     assert fete.DateCivile_(None,2000) == datetime.date(2000,10,30)

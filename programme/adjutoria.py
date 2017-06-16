@@ -407,7 +407,7 @@ class FeteMobileEpiphanie(Fete):
 
 class FeteMobileMois(Fete):
     """Une classe définissant une fête qui se calcule en fonction de sa place dans un mois particulier.
-    self.date contient un dictionnaire à trois entrées : le numéro de mois, le jour de la semaine(0=lundi), et un chiffre représentant son ordre d'apparition dans le mois (0 représente la première semaine, -1 représente le dernier)
+    self.date contient un dictionnaire à trois entrées : le numéro de mois, le jour de la semaine(0=lundi), et un chiffre représentant son ordre d'apparition dans le mois (0 représente la première semaine, -1 représente la dernière)
     Exemple: { 'mois' : 10, 'jour': 6, 'ordre': 0} = premier dimanche du mois d'octobre."""
     
     def __init__(self):
@@ -418,7 +418,7 @@ class FeteMobileMois(Fete):
             'ordre' : -1,
             }
         
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Calcule la date civile."""
         jouran = calendar.monthcalendar(annee,self.date_['mois'])[self.date_['ordre']][self.date_['jour']]
         
