@@ -168,3 +168,32 @@ def test_DateCivile_FeteMobileMois():
      assert fete.DateCivile_(None,2000) == datetime.date(2000,10,25)
      fete.date_['mois'], fete.date_['jour'], fete.date_['ordre'] = 10, 0, -1
      assert fete.DateCivile_(None,2000) == datetime.date(2000,10,30)
+     
+     
+# test FeteFixeTransferableDimanche
+def test_DateCivile_FeteFixeTransferableDimanche():
+    fete = adjutoria.FeteFixeTransferableDimanche()
+    fete.date_['mois'], fete.date_['jour'] = 1,1
+    fete.ecart_dimanche = 0
+    fete.apres = True
+    assert fete.DateCivile_(None,1789) == datetime.date(1789,1,4)
+    fete.apres = False
+    assert fete.DateCivile_(None,1789) == datetime.date(1788,12,28)
+    fete.ecart_dimanche = 3
+    assert fete.DateCivile_(None,1789) == datetime.date(1788,12,7)
+    
+# test FeteMobileCivile
+def test_FeteMobileCivile():
+    fete = adjutoria.FeteMobileCivile()
+    fete.jour_de_semaine = 3
+    fete.date_['mois'], fete.date_['jour'] = 1,1
+    assert fete.DateCivile_(None,1789) == datetime.date(1788,12,31)
+    fete.jour_de_semaine = 4
+    assert fete.DateCivile_(None,1789) == datetime.date(1789,1,1)
+    
+# test Samedi
+def test_Samedi():
+    fete = adjutoria.Samedi()
+    assert fete.Est_ce_samedi(datetime.date(1715,1,12)) and fete.date == datetime.date(1715,1, 12)
+    for day in 7, 8, 9, 10, 11, 13:
+        assert not fete.Est_ce_samedi(datetime.date(1715,1,day))

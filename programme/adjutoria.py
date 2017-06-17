@@ -451,32 +451,33 @@ class FeteFixeTransferableDimanche(FeteFixe):
     
     def __init__(self):
         FeteFixe.__init__(self)
-        self.ecart_dimanche=int() # combien de dimanches d'écart
+        self.ecart_dimanche=int() # combien de dimanches d'écart ; 0 : le dimanche se trouve dans la même semaine
         self.apres=True # indique s'il faut voir le dimanche d'avant ou d'après
         
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Une fonction calculant la date civile."""
+        date_fixe = datetime.date(annee,self.date_['mois'],self.date_['jour'])
         if self.apres:
-            return datetime.date(officia.dimancheapres(self.date_) + datetime.timedelta(self.ecart_dimanche*7))
+            return officia.dimancheapres(date_fixe) + datetime.timedelta(self.ecart_dimanche*7)
         else:
-            return datetime.date(dimancheavant(self.date_) - datetime.timedelta(self.ecart_dimanche*7))
+            return officia.dimancheavant(date_fixe) - datetime.timedelta(self.ecart_dimanche*7)
         
 class FeteMobileCivile(FeteFixe):
     """Une classe pour toutes les fêtes qui dépendent d'un jour de l'année précis, mais mobiles dans la semaine"""
     
     def __init__(self):
         FeteFixe.__init__(self)
-        self.semaine = int() # un numéro correspondant au nombre de semaines d'écart
+        self.semaine = int() # un numéro correspondant au nombre de semaines d'écart # TODO useless ?
         self.jour_de_semaine=int() # un numéro correspondant au jour (0=dimanche)
         
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Une fonction calculant la date civile"""
         calendrier = calendar.Calendar(firstweekday=6)
         mois = calendrier.monthdatescalendar(annee,self.date_['mois'])
         for i,semaine in enumerate(mois):
             for jour in semaine:
                 if jour == datetime.date(annee,self.date_['mois'],self.date_['jour']):
-                    return mois[i+1][self.jour_de_semaine]        
+                    return mois[i][self.jour_de_semaine]     
         
 class FeteFerie(Fete):
     """Une classe définissant des jours de férie, comprenant une liste de dates en dehors des fêtes fixes."""
@@ -530,7 +531,7 @@ class FeteFerie(Fete):
 class Samedi(Fete):
     """Une fête définissant l'office de la sainte Vierge du samedi"""
     
-    def Est_ce_samedi(self,jour):
+    def Est_ce_samedi(self,jour): # TEST
         """Une fonction qui renvoie un booléen si le jour considéré est un samedi"""
         if datetime.date.isoweekday(jour) == 6:
             self.date = jour
