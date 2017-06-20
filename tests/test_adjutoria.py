@@ -220,3 +220,14 @@ def test_get_priorite_Defunts():
         else:
             assert fete._get_priorite() == 2100
     
+# test DimancheOctaveNoel
+@mock.patch('officia.dimancheapres')
+def test_DateCivile_DimancheOctaveNoel(dimancheapres):
+    fete = adjutoria.DimancheOctaveNoel()
+    dimancheapres.return_value = datetime.date(2000,1,1)
+    fete._priorite = 42
+    assert fete.DateCivile_(None,1999) == dimancheapres() and fete._priorite == 0
+    dimancheapres.return_value = datetime.date(1999,12,30)
+    fete._priorite = 42
+    assert fete.DateCivile_(None,1999) == dimancheapres() and fete._priorite == 42
+    

@@ -579,7 +579,7 @@ class DimancheOctaveNoel(Fete):
     def __init__(self):
         Fete.__init__(self)
         
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Calcule la date civile en fonction du premier dimanche après Noël."""
         if officia.dimancheapres(datetime.date(annee,12,25)) == datetime.date(annee + 1,1,1):
             self._priorite = 0
