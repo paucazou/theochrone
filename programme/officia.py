@@ -350,7 +350,7 @@ def renvoie_regex(retour,regex,liste):
                 else:
                     retour.regex[index].append(a)
     retour.regex['egal'] += de_cote
-    return retour
+    return retour.regex
 
 def affiche_temps_liturgique(objet,langue='francais'): #TEST
     """Une fonction capable d'afficher le temps liturgique"""

@@ -608,7 +608,7 @@ class JoursOctaveDeNoel(FeteFixe):
         for i,a in enumerate(self.date_):
             retour = FeteFixe()
             retour.__dict__ = copy.deepcopy(self.__dict__)
-            retour = officia.renvoie_regex(retour,regex,[i])
+            retour.regex = officia.renvoie_regex(retour,regex,[i])
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
             for langue in ('francais','latina','english'):
                 retour.nom[langue] = self.complements_nom[langue][i] + ' ' + self.nom_[langue]
@@ -653,7 +653,7 @@ class JoursAvent(FeteMobileAvent):
                 else:
                     retour.nom[langue] += self.nom_[langue][3]
                     semaine = 4
-            retour = officia.renvoie_regex(retour,regex,[retour.nom_passager[langue],semaine])
+            retour.regex = officia.renvoie_regex(retour,regex,[retour.nom_passager[langue],semaine])
             if retour.date.day > 16:
                 retour.degre = 2
                 retour._priorite = 1200
