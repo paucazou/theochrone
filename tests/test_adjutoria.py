@@ -192,8 +192,31 @@ def test_FeteMobileCivile():
     assert fete.DateCivile_(None,1789) == datetime.date(1789,1,1)
     
 # test Samedi
-def test_Samedi():
+def test_Samedi_Est_ce_samedi():
     fete = adjutoria.Samedi()
     assert fete.Est_ce_samedi(datetime.date(1715,1,12)) and fete.date == datetime.date(1715,1, 12)
     for day in 7, 8, 9, 10, 11, 13:
         assert not fete.Est_ce_samedi(datetime.date(1715,1,day))
+        
+# test TSNJ
+@mock.patch('calendar.monthcalendar')
+def test_DateCivile_TSNJ(month_patch):
+    fete = adjutoria.TSNJ()
+    fete.date_['mois'], fete.date_['jour'] = 1, 2
+    for i in range(2,6):
+        month_patch().__getitem__().__getitem__.return_value = i
+        assert fete.DateCivile_(None,2000) == datetime.date(2000,1,i) and fete.dimanche
+    for i in (1,6,7,8):
+        month_patch().__getitem__().__getitem__.return_value = i
+        assert fete.DateCivile_(None,2000) == datetime.date(2000,1,2) and not fete.dimanche
+        
+# test Defunts
+def test_get_priorite_Defunts():
+    fete = adjutoria.Defunts()
+    for i in range(1,8):
+        fete.date = datetime.date(2000,1,i)
+        if datetime.date.isoweekday(fete.date) == 7:
+            assert fete._get_priorite() == 1499
+        else:
+            assert fete._get_priorite() == 2100
+    

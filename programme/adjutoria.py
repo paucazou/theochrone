@@ -548,7 +548,7 @@ class TSNJ(FeteFixe):
         self.limite_basse=2
         self.limite_haute=5 # les limites correspondent à des jours pendant lesquels la fête est susceptible de tomber
         
-    def DateCivile_(self,paques,annee):
+    def DateCivile_(self,paques,annee): # TEST
         """Une fonction qui détermine la date pour une année précise."""
         dimanche=calendar.monthcalendar(annee,self.date_['mois'])[0][6]
         if dimanche <= self.limite_haute and dimanche >= self.limite_basse:
@@ -564,7 +564,7 @@ class Defunts(FeteFixe):
     def __init__(self):
         FeteFixe.__init__(self)
         
-    def _get_priorite(self):
+    def _get_priorite(self): # TEST
         """Détermine quelle sera la valeur de la priorité selon que le jour sera un dimanche ou non."""
         if datetime.date.isoweekday(self.date) != 7:
             return 2100
