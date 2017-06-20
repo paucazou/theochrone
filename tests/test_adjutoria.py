@@ -231,3 +231,20 @@ def test_DateCivile_DimancheOctaveNoel(dimancheapres):
     fete._priorite = 42
     assert fete.DateCivile_(None,1999) == dimancheapres() and fete._priorite == 42
     
+# test JoursOctaveDeNoel
+@mock.patch('officia.renvoie_regex')
+def test_DateCivile_JoursOctaveDeNoel(renvoi):
+    fetes = adjutoria.JoursOctaveDeNoel()
+    renvoi.return_value = [None]
+    j = 0
+    for fete,i in zip(fetes.DateCivile(None,1701),fetes.date_):
+        assert isinstance(fete,adjutoria.FeteFixe)
+        assert not(fete.__dict__ is fetes.__dict__)
+        assert fete.regex == [None]
+        assert fete.date == datetime.date(1701,12,i)
+        for langue in ('francais','latina','english'):
+            assert fete.nom[langue] == fetes.complements_nom[langue][j] + ' ' + fetes.nom_[langue]
+        j += 1
+    assert renvoi.call_count == j
+    
+    

@@ -338,7 +338,7 @@ def mois_lettre(mot,langue='english'): #TEST
      
 
 
-def renvoie_regex(retour,regex,liste):
+def renvoie_regex(retour,regex,liste): # est-ce qu'on ne pourrait pas la remplacer par un simple hardcopy ?
     retour.__dict__['regex'] = {}
     de_cote = []
     for index in regex:

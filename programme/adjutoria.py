@@ -600,7 +600,7 @@ class JoursOctaveDeNoel(FeteFixe):
         self.date_=[26,27,28,29,30,31]
         self.mois_ = 12
         
-    def DateCivile(self,paques,annee):
+    def DateCivile(self,paques,annee): # TEST
         """Renvoie une liste de dates"""
         objets = []
         regex = self.regex
