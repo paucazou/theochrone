@@ -34,6 +34,7 @@ def test_hash():
     fete = adjutoria.Fete()
     hache = hash(fete)
     attr_dict = fete.__dict__.copy()
+    assert not (attr_dict is fete.__dict__)
     del(attr_dict['parent'])
     assert hash(fete) == hache == hash(json.dumps(attr_dict,sort_keys=True))
     fete.parent = 1
