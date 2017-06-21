@@ -4,6 +4,7 @@
 import copy
 import calendar
 import datetime
+import json
 import officia
 import os
 import re
@@ -84,6 +85,8 @@ class Fete:
             } # les éléments propres de la regex, avant compilation
         self.regex=None# la regex véritable, après compilation avec la fonction à créer
         self.valeur=int() # the value returned by Correspondance
+        # parent
+        self.parent = None
 
     # Définitions de certaines méthodes spéciales
     def __str__(self):
@@ -106,7 +109,7 @@ class Fete:
         else:
             raise TypeError("""{} is not a 'Fete' class, or any of her subclasses.""".format(autrefete))
         
-    def __hash__(self): # méthode très mauvaise, dont le résultat est changeant. Il faut trouver une autre solution. fonctionne cependant au sein d'une même instance
+    def __hash__deprecated(self): # méthode très mauvaise, dont le résultat est changeant. Il faut trouver une autre solution. fonctionne cependant au sein d'une même instance
         """Méthode appellée par la fonction hash()"""
         hash_list = []
         for item in self.__dict__.values():
@@ -115,6 +118,14 @@ class Fete:
             else:
                 hash_list.append(item)
         return hash(str(hash_list))
+    
+    def __hash__(self): # TEST
+        """Method called by hash() function"""
+        parent = self.parent
+        del(self.parent)
+        hache = hash(json.dumps(self.__dict__,sort_keys=True))
+        self.parent = parent
+        return hache
         
     # Définitions de méthodes   
     def Votive(self):

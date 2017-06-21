@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
 #Deus, in adjutorium meum intende
+
 import datetime
+import json
 import os
 import pytest
 import sys
@@ -30,6 +32,12 @@ def test_lt():
     
 def test_hash():
     fete = adjutoria.Fete()
+    hache = hash(fete)
+    attr_dict = fete.__dict__.copy()
+    del(attr_dict['parent'])
+    assert hash(fete) == hache == hash(json.dumps(attr_dict,sort_keys=True))
+    fete.parent = 1
+    assert hash(fete) == hache == hash(json.dumps(attr_dict,sort_keys=True))
     
 def test_eq():
     fete1 = fete_base()
