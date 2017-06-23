@@ -640,7 +640,7 @@ class JoursAvent(FeteMobileAvent):
                         "latina": ['infra primam Hebdomadam Adventus', 'infra secondam Hebdomadam Adventus','infra tertiam Hebdomadam Adventus','infra quartam Hebdomadam Adventus'],
                         }
         
-    def DateCivile(self,paques,annee):
+    def DateCivile(self,paques,annee): # TEST
         """Renvoie une liste d'objets"""
         objets = []
         regex = self.regex

@@ -256,4 +256,32 @@ def test_DateCivile_JoursOctaveDeNoel(renvoi):
         j += 1
     assert renvoi.call_count == j
     
+# test JoursAvent
+@mock.patch('officia.renvoie_regex')
+def test_DateCivile_JoursAvent(renvoi):
+    fetes = adjutoria.JoursAvent()
+    renvoi.return_value = [None]
+    for fete, i in zip(fetes.DateCivile(None,1701), fetes.date_):
+        assert isinstance(fete,adjutoria.FeteMobileAvent)
+        assert fete.date == fete.DateCivile_(None,1701)
+        assert not(fete.__dict__ is fetes.__dict__)
+        assert fete.regex == [None]
+        for langue in ('francais','latina','english'):
+            if i > 14:
+                assert fetes.nom_[langue][0] in fete.nom[langue]
+                semaine = 1
+            elif 6 < i < 15:
+                assert fetes.nom_[langue][1] in fete.nom[langue]
+                semaine = 2
+            elif 0 < i < 7:
+                assert fetes.nom_[langue][2] in fete.nom[langue]
+                semaine = 3
+            else:
+                assert fetes.nom_[langue][3] in fete.nom[langue]
+                semaine = 4
+            if langue == 'francais':
+                    assert mock.call(fete,None,[fete.nom_passager[langue],semaine]) == renvoi.call_args_list[-1]
+        if fete.date.day > 16:
+                assert fete.degre == 2
+                assert fete._priorite == 1200
     
