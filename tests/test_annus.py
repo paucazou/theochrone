@@ -404,7 +404,7 @@ def test_selection(send_empty_liturgical_calendar):
     l._selection([],datetime.date(2000,1,1))
     assert l.year_data[2000][datetime.date(2000,1,1)][0].nom == 'saturday' and len(l.year_data[2000][datetime.date(2000,1,1)]) == 1
     l.saturday.Est_ce_samedi.return_value=False
-    l.feria.Dimanche_precedent.return_value=FakeFeast(nom='Feria')
+    l.feria.CreateFeria.return_value=FakeFeast(nom='Feria')
     l._selection([],datetime.date(2000,1,2))
     assert l.year_data[2000][datetime.date(2000,1,2)][0].nom == 'Feria' and len(l.year_data[2000][datetime.date(2000,1,2)]) == 1
     
