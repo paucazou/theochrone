@@ -282,7 +282,8 @@ class LiturgicalCalendar():
         """Iterator which uses self.unsafe_get function
         to yield items.
         start and stop are datetime.date objects.
-        reverse is an integer.
+        reverse is a bool.
+        If reverse is used, stop and start are reversed. # UNCLEAR
         """
         
         if not start:
@@ -458,7 +459,7 @@ class LiturgicalCalendar():
                 liste.append(self.saturday.copy())
                 liste[-1].parent = self
             else:
-                liste.append(self.feria.Dimanche_precedent(date,self))
+                liste.append(self.feria.CreateFeria(date,self))
             
         liste.sort(key=lambda x: x.priorite,reverse=True)
         
