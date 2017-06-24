@@ -9,6 +9,7 @@ import pytest
 import sys
 import dossier
 import unittest.mock as mock
+from test_annus import FakeFeast
 dossier.main()
 
 import adjutoria
@@ -200,6 +201,34 @@ def test_FeteMobileCivile():
     fete.jour_de_semaine = 4
     assert fete.DateCivile_(None,1789) == datetime.date(1789,1,1)
     
+# test FeteFerie
+
+def test_QuelNom():
+    pass
+
+def test_CreateFeria():
+    fetes = adjutoria.FeteFerie()
+    lcalendar = mock.MagicMock()
+    first = FakeFeast(dimanche=True)
+    first.link = '1link'
+    first.addendum = "1addendum"
+    first.propre = "1propre"
+    first.couleur = "1color"
+    first._temps_liturgique = '1ltime'
+    zero = FakeFeast()
+    zero.repris_en_ferie = False
+    lcalendar.unsafe_iter.return_value = (
+        False,[zero,first])
+    return_value = fetes.CreateFeria(datetime.date(2000,1,1),lcalendar)
+    assert (return_value.link, return_value.addendum, return_value.propre, return_value.couleur, return_value._temps_liturgique
+            ) == (first.link, first.addendum, first.propre, first.couleur, first._temps_liturgique)
+    assert isinstance(return_value,adjutoria.FeteFerie) and return_value.date == datetime.date(2000,1,1)
+    assert return_value.parent is lcalendar
+    assert mock.call(stop=datetime.date(2000,1,1),reverse=True) == lcalendar.unsafe_iter.call_args_list[-1]
+    first.temps_liturgique = 'epiphanie'
+    return_value = fetes.CreateFeria(datetime.date(2000,1,15),lcalendar)
+    assert return_value.couleur == 'vert' and return_value._temps_liturgique == 'apres_epiphanie'
+
 # test Samedi
 def test_Samedi_Est_ce_samedi():
     fete = adjutoria.Samedi()

@@ -539,7 +539,7 @@ class FeteFerie(Fete):
             except KeyError:
                 continue
             
-    def CreateFeria(self,day,lcalendar):
+    def CreateFeria(self,day,lcalendar): # TEST
         for feast_list in lcalendar.unsafe_iter(stop=day,reverse=True):
             if feast_list:
                 for office in feast_list:
