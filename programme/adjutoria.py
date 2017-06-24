@@ -504,9 +504,9 @@ class FeteFerie(Fete):
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
         return {'latina':'Feria ' + officia.nom_jour(jour,'latina').capitalize(),
                 'francais':officia.nom_jour(jour,'francais').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,'francais'),
-                'english':officia.nom_jour(jour,'english').capitalize()} # Comment dit on jour de férie en anglais ?
+                'english':officia.nom_jour(jour,'english').capitalize()} # Comment dit on jour de férie en anglais ? feria (Saturday ?)
     
-    def Dimanche_precedent(self,jour,Annee):
+    def Dimanche_precedent(self,jour,Annee): # DEPRECATED
         """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee.""" # changer cette aide
         curseur = jour
         boucle = True
@@ -538,7 +538,27 @@ class FeteFerie(Fete):
                         return nouveau
             except KeyError:
                 continue
-        
+            
+    def CreateFeria(self,day,lcalendar):
+        for feast_list in lcalendar.unsafe_iter(stop=day,reverse=True):
+            if feast_list:
+                for office in feast_list:
+                    if office.repris_en_ferie:
+                        nouveau = self.__class__()
+                        nouveau.date=day
+                        nouveau.propre = office.propre
+                        nouveau.link = office.link
+                        nouveau.addendum = office.addendum
+                        if day >= datetime.date(day.year,1,14) and office.temps_liturgique == 'epiphanie':
+                            nouveau._temps_liturgique = 'apres_epiphanie'
+                            nouveau._couleur = 'vert'
+                        else:
+                            nouveau._temps_liturgique = office._temps_liturgique
+                            nouveau._couleur = office.couleur
+                        nouveau.nom = nouveau.QuelNom(day)
+                        nouveau.parent = lcalendar
+                        return nouveau
+            
 class Samedi(Fete):
     """Une fête définissant l'office de la sainte Vierge du samedi"""
     
