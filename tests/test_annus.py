@@ -45,6 +45,7 @@ class FakeFeast(mock.MagicMock):
         
         self.dimanche = dimanche
         self.fete_du_Seigneur = fete_du_Seigneur
+        self.repris_en_ferie = True
         
         self.temporal = False
         self.sanctoral = True
