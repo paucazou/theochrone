@@ -203,8 +203,16 @@ def test_FeteMobileCivile():
     
 # test FeteFerie
 
-def test_QuelNom():
-    pass
+@mock.patch('officia.affiche_temps_liturgique')
+@mock.patch('officia.nom_jour')
+def test_QuelNom(Ltime_patch,Nday_patch):
+    Ltime_patch.return_value = 'feria'
+    Nday_patch.return_value = 'Liturgical time'
+    fete = adjutoria.FeteFerie()
+    return_value = fete.QuelNom(datetime.date(2017,6,20))
+    assert return_value['latina'] == 'Feria'
+    assert return_value['english'] == 'Feria'
+    assert return_value['francais'] == 'Feria de la férie du Liturgical time'
 
 @mock.patch('adjutoria.FeteFerie.QuelNom')
 def test_CreateFeria(name):

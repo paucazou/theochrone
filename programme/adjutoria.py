@@ -500,7 +500,7 @@ class FeteFerie(Fete):
         self.commemoraison_privilegiee=-1
         self.temporal = True
     
-    def QuelNom(self,jour):
+    def QuelNom(self,jour): # TEST
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
         return {'latina': officia.nom_jour(jour,'latina').capitalize(),
                 'francais':officia.nom_jour(jour,'francais').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,'francais'),
