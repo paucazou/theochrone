@@ -502,7 +502,7 @@ class FeteFerie(Fete):
     
     def QuelNom(self,jour):
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
-        return {'latina':'Feria ' + officia.nom_jour(jour,'latina').capitalize(),
+        return {'latina': officia.nom_jour(jour,'latina').capitalize(),
                 'francais':officia.nom_jour(jour,'francais').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,'francais'),
                 'english':officia.nom_jour(jour,'english').capitalize()} # Comment dit on jour de férie en anglais ? feria (Saturday ?)
     
