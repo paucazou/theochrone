@@ -206,7 +206,8 @@ def test_FeteMobileCivile():
 def test_QuelNom():
     pass
 
-def test_CreateFeria():
+@mock.patch('adjutoria.FeteFerie.QuelNom')
+def test_CreateFeria(name):
     fetes = adjutoria.FeteFerie()
     lcalendar = mock.MagicMock()
     first = FakeFeast(dimanche=True)
@@ -224,6 +225,7 @@ def test_CreateFeria():
             ) == (first.link, first.addendum, first.propre, first.couleur, first._temps_liturgique)
     assert isinstance(return_value,adjutoria.FeteFerie) and return_value.date == datetime.date(2000,1,1)
     assert return_value.parent is lcalendar
+    name.assert_called_with(datetime.date(2000,1,1))
     assert mock.call(stop=datetime.date(2000,1,1),reverse=True) == lcalendar.unsafe_iter.call_args_list[-1]
     first.temps_liturgique = 'epiphanie'
     return_value = fetes.CreateFeria(datetime.date(2000,1,15),lcalendar)
