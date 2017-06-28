@@ -63,6 +63,21 @@ def test_DateCivile(DateCivile_):
     assert DateCivile_.call_count == 1
     assert mock.call(datetime.date.today(),1962) in DateCivile_.call_args_list
     
+def test_weeknumber():
+    fete = adjutoria.Fete()
+    fete.date = datetime.date(2015,1,1)
+    assert fete.weeknumber() == 1 and fete.weeknumber(month=False,year=True) == 1
+    assert fete.weeknumber(month=False,year=False) == fete.weeknumber(month=True,year=True) == (1,1)
+    fete.date = datetime.date(2016,1,1)
+    assert fete.weeknumber() == 1 and fete.weeknumber(month=False,year=True) == 0
+    assert fete.weeknumber(month=False,year=False) == fete.weeknumber(month=True,year=True) == (1,0)
+    fete.date = datetime.date(2000,12,31)
+    assert fete.weeknumber(month=False,year=True) == 53
+    for day in (10,11,12,13,14,15,16):
+        fete.date = datetime.date(2016,1,day)
+        assert fete.weeknumber() == 3
+    
+    
 def test_paques():
     fete = fete_base()
     fete.date = datetime.date(1962,4,21)

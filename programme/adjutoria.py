@@ -10,6 +10,7 @@ import os
 import re
 from messages import adjutoria_messages as msg, args
 
+liturgiccal = calendar.Calendar(firstweekday=6)
 file_folder = os.path.dirname(os.path.abspath(__file__))
 if callable(args) or args.gui:
     import pickle
@@ -148,12 +149,12 @@ class Fete:
             self.date = self.DateCivile_(paques,annee)
         return self.date
     
-    def weeknumber(self,month=True,year=False):
+    def weeknumber(self,month=True,year=False): # TEST
         """Calcule à quelle semaine appartient la fête.
         Si month == True, renvoie la semaine dans le mois.
         Si year == True, renvoie la semaine dans l'année.
         Si tous les deux sont True or False,
-        renvoie une liste avec le mois puis l'année."""
+        renvoie une tuple avec le mois puis l'année."""
         wn = lambda x : [i + 1 for i, week in enumerate(liturgiccal.monthdayscalendar(x.year,x.month)) if x.day in week][0]
         wn = wn(self.date)        
         firstday = datetime.date(self.date.year, 1, 1)
