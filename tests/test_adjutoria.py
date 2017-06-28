@@ -76,6 +76,10 @@ def test_weeknumber():
     for day in (10,11,12,13,14,15,16):
         fete.date = datetime.date(2016,1,day)
         assert fete.weeknumber() == 3
+    fete.date = datetime.date(2017,1,1)
+    assert fete.weeknumber(year=True) == (1,1)
+    fete.date = datetime.date(2022,1,1)
+    assert fete.weeknumber(year=True) == (1,0)
     
     
 def test_paques():
