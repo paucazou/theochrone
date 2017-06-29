@@ -50,6 +50,8 @@ class Fete:
         
         self.temporal=False
         self.sanctoral=False
+        if selt.temporal:
+            self.station = str() # Station name, for temporal only
         self._temps_liturgique = 'variable' # un élément qui permet de connaître le temps liturgique
         
         self.link=str() # un lien vers Introibo, en attendant une classe spéciale textes.
