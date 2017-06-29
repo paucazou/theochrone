@@ -66,10 +66,12 @@ class Main(QMainWindow,SuperTranslator):
         self.W.onglets.W.tabPlus.bt_arbitrary.clicked.connect(self.useArbitrary)
         
     def processCommandLineArgs(self,args):
-        reverse, debut, fin = args
+        reverse, debut, fin, plus = args
         if reverse != 1:
             self.W.onglets.W.tab1.keyword.setText(' '.join(reverse))
             self.W.onglets.W.tab1.spinbox.setValue(debut.year)
+            if plus:
+                self.W.onglets.W.tab1.plus.setChecked(True)
             self.useKeyWord()
         elif debut == fin != current.toPyDate():
             self.useDate(QDate(debut.year,debut.month,debut.day))

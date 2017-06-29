@@ -294,7 +294,7 @@ class Fete:
         """Renvoie la valeur de self._transferee"""
         return self._transferee
     
-    transferee = property(_get_transferee,_set_transferee) # WARNING La propriété est de classe, non d'instance
+    transferee = property(_get_transferee,_set_transferee)
     
     def _get_images(self): # TEST
         """Renvoie une liste d'images en recherchant dans le dossier images

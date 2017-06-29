@@ -185,9 +185,9 @@ if args.navigateur:
         sys.exit(subprocess.run(['./navette_navigateur.py']))
 elif not os.isatty(0) or args.gui:
     from gui import main_window
-    app = main_window.App([args.INVERSE,debut,fin])
+    app = main_window.App([args.INVERSE,debut,fin,args.plus])
     sys.exit(app.exec_())
-    
+
 ### Définition de quelques variables ###  
 ordo=args.ordo
 
