@@ -508,8 +508,8 @@ def affichage(**kwargs):
             if kwargs['verbose'] or kwargs['couleur']:
                 sortie += """Couleur liturgique : {}. """.format(a.couleur)
             
-            if getattr(a,'station',False):
-                sortie += a.station[kwargs['langue']] + " "
+            if getattr(a,'station',False) and (kwargs['verbose'] or kwargs['station']):
+                sortie += """Station à {}. """.format(a.station[kwargs['langue']])
             
             if kwargs['verbose']:
                 sortie += a.addendum[kwargs['langue']]
