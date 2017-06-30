@@ -5,6 +5,14 @@ import enc
 import os
 import sys
 
+def exit():
+    anwer = input("Voulez-vous enregistrer: Y/n")
+    if answer != "n":
+        with enc.Preferences(file_name,'w') as file:
+            file.prefs = liste
+    sys.exit()
+
+
 os.chdir("Dossier d'objets")
 file_name = 'romanus_1962_dimanches.xml'
 with enc.Preferences(file_name,'r') as file:
@@ -23,9 +31,5 @@ for elt in liste[choice:]:
         fr_name = input("Rentrez le nom de la station")
         elt.station = {'latina':'','english':'','francais':fr_name}
     elif answer == '1':
-        anwer = input("Voulez-vous enregistrer: Y/n")
-        if answer != "n":
-            with enc.Preferences(file_name,'w') as file:
-                file.prefs = liste
-        sys.exit()
-    n+=1
+        exit()
+exit()
