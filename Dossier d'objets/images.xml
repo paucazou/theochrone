@@ -1,2 +1,21 @@
-<?xml version='1.0' encoding='utf-8'?>
-<dict><list key="telesphore"><Modele><dict key="attributs"><dict key="auteur"><str key="english" /><str key="francais" /><str key="latina" /></dict><str key="link">sanctoral/janvier/telesphore0.jpg</str><dict key="titre"><str key="english" /><str key="francais">Saint Télesphore</str><str key="latina" /></dict></dict><str key="classe">Images</str></Modele></list></dict>
+<?xml version="1.0" encoding="utf-8"?>
+<dict>
+  <list key="telesphore">
+    <Modele>
+      <dict key="attributs">
+        <dict key="auteur">
+          <str key="english"/>
+          <str key="francais"/>
+          <str key="latina"/>
+        </dict>
+        <str key="link">sanctoral/janvier/telesphore0.jpg</str>
+        <dict key="titre">
+          <str key="english"/>
+          <str key="francais">Saint Télesphore</str>
+          <str key="latina"/>
+        </dict>
+      </dict>
+      <str key="classe">Images</str>
+    </Modele>
+  </list>
+</dict>
