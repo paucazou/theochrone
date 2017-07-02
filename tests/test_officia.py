@@ -65,6 +65,17 @@ def test_datevalable():
     assert datevalable(['semaine','dernière'],lang) == (first_weekday, True, False, False)
     assert datevalable(['derniere','semaine'],lang) == (first_weekday, True, False, False)
     
+    if datetime.date.today().month < 12: # TODO essayer de patcher datetime.date.today, si possible
+        assert datevalable(['mois','prochain'],lang) == datevalable(['prochain','mois'],lang) == (
+            datetime.date(datetime.date.today().year,
+            datetime.date.today().month + 1,
+            1),
+            False,True,False)
+    else:
+        assert datevalable(['mois','prochain'],lang) == datevalable(['prochain','mois'],lang) == (
+            datetime.date(datetime.date.today().year + 1, 1, 1),False, True, False)
+        
+        
 def test_dimancheavant():
     for i in range(1,30):
         baseday = datetime.date(1900,1,i)
