@@ -138,7 +138,10 @@ def erreur(code,langue='english',exit=True):
 
 
 def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,annee_seule=False,exit=True):
-    """Function used to see whether a list can be converted into datetime or not"""
+    """Function used to see whether a list can be converted into datetime or not.
+    entree is a list of strings.
+    langue : a string with the language.
+    """
     aujourdhui=datetime.date.today()
     nonliturgiccal=calendar.Calendar()
     
