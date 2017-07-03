@@ -64,16 +64,26 @@ def test_datevalable():
             first_weekday = week[0] + datetime.timedelta(-7)
     assert datevalable(['semaine','dernière'],lang) == (first_weekday, True, False, False)
     assert datevalable(['derniere','semaine'],lang) == (first_weekday, True, False, False)
+        
+
+@mock.patch('officia.datetime')
+def test_datevalable_with_patch(date_patch):
+    class NewDate(datetime.date):
+        year = 1960
+        month = 1
+        day = 1
+        @classmethod
+        def today(cls):
+            return cls(cls.year,cls.month,cls.day)
+    date_patch.date = NewDate
     
-    if datetime.date.today().month < 12: # TODO essayer de patcher datetime.date.today, si possible
-        assert datevalable(['mois','prochain'],lang) == datevalable(['prochain','mois'],lang) == (
-            datetime.date(datetime.date.today().year,
-            datetime.date.today().month + 1,
-            1),
-            False,True,False)
-    else:
-        assert datevalable(['mois','prochain'],lang) == datevalable(['prochain','mois'],lang) == (
-            datetime.date(datetime.date.today().year + 1, 1, 1),False, True, False)
+    #french
+    lang = 'francais'
+    for i in range(1,12):
+        date_patch.date.month = i
+        assert datevalable(['mois','prochain'],lang) == datevalable(['prochain','mois'],lang) == (datetime.date(1960,i + 1,1),False,True,False)
+    date_patch.date.month = 12
+    assert datevalable(['mois','prochain'],lang) == datevalable(['prochain','mois'],lang) == (datetime.date(1961,1,1),False,True,False)
         
         
 def test_dimancheavant():
