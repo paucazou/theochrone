@@ -60,10 +60,21 @@ class Main(QMainWindow,SuperTranslator):
         
         self.W.onglets.W.tab1.cal.clicked[QDate].connect(self.useDate)
         self.W.onglets.W.tab1.kw_bouton.clicked.connect(self.useKeyWord)
+        self.W.onglets.W.tab1.keyword.returnPressed.connect(self.useKeyWord)
+        self.W.onglets.W.tab1.spinbox.editingFinished.connect(self.useKeyWord)
+        
         self.W.onglets.W.tabPlus.bt_week.clicked.connect(self.useWeek)
+        self.W.onglets.W.tabPlus.wy_spinbox.editingFinished.connect(self.useWeek)
+        
         self.W.onglets.W.tabPlus.bt_month.clicked.connect(self.useMonth)
+        self.W.onglets.W.tabPlus.my_spinbox.editingFinished.connect(self.useMonth)
+        
+        self.W.onglets.W.tabPlus.yy_spinbox.editingFinished.connect(self.useYear)
         self.W.onglets.W.tabPlus.bt_year.clicked.connect(self.useYear)
+        
         self.W.onglets.W.tabPlus.bt_arbitrary.clicked.connect(self.useArbitrary)
+        self.W.onglets.W.tabPlus.to.editingFinished.connect(self.useArbitrary)
+        self.W.onglets.W.tabPlus.frome.editingFinished.connect(self.useArbitrary)
         
     def processCommandLineArgs(self,args):
         reverse, debut, fin, plus = args
@@ -258,7 +269,7 @@ class Main(QMainWindow,SuperTranslator):
         self.W.arbre = Tree(YEAR,self.Annee)
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - {}'.format(str(year)))
-        officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=annee_seule)
+        officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=True)
         
     def useArbitrary(self):
         tab = self.W.onglets.W.tabPlus
