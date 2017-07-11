@@ -77,6 +77,11 @@
       </dict>
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Sainte-Marie-du-Transtévère</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
@@ -94,7 +99,7 @@
       <bool key="_transferee">False</bool>
       <dict key="addendum">
         <str key="english"/>
-        <str key="francais"/>
+        <str key="francais">Messe de Minuit : Station à l'autel de la Crèche. Messe de l'aurore : Station à Sainte-Anastasie.</str>
         <str key="latina"/>
       </dict>
       <bool key="celebree">True</bool>
@@ -148,6 +153,11 @@
       </dict>
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Sainte-Marie-Majeure</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
@@ -218,6 +228,11 @@
       </dict>
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Saint-Étienne au mont Cœlius</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
@@ -292,6 +307,11 @@
       </dict>
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Sainte-Marie-Majeure</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
@@ -364,6 +384,11 @@
       </dict>
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Saint-Paul-hors-les-murs</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
@@ -576,6 +601,11 @@
       </dict>
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Saint-Pierre</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
@@ -940,6 +970,11 @@
       </dict>
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Sainte-Marie-Majeure</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
@@ -1011,6 +1046,11 @@
       </dict>
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Saints-Apôtres</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
@@ -1082,6 +1122,11 @@
       </dict>
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Saint-Pierre</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
@@ -1152,6 +1197,11 @@
       </dict>
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
+      <dict key="station">
+        <str key="english"/>
+        <str key="francais">Sainte-Marie-Majeure</str>
+        <str key="latina"/>
+      </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
       <bool key="transferee">False</bool>
