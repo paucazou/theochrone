@@ -511,7 +511,7 @@ def affichage(**kwargs):
             if kwargs['verbose'] or kwargs['couleur']:
                 sortie += """Couleur liturgique : {}. """.format(a.couleur)
             
-            if getattr(a,'station',False) and (kwargs['verbose'] or kwargs['station']):
+            if getattr(a,'station',False) and (kwargs['verbose'] or kwargs.get('station',False)):
                 if 'Saints' == a.station[kwargs['langue']].split('-')[0]:
                     prep = 'aux'
                 else:
