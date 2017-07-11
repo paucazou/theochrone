@@ -14,7 +14,7 @@ def exit():
 
 
 os.chdir("Dossier d'objets")
-file_name = 'romanus_1962_dimanches.xml'
+file_name = 'romanus_1962_cycledenoel.xml'
 with enc.Preferences(file_name,'r') as file:
     liste = file.prefs
 
