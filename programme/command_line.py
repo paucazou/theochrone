@@ -65,6 +65,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':[],
             'long' : ['--show-texts'],
             },
+        'station':{
+            'short':['-I'],
+            'long':['--statio'],
+            },
         'langue':{
             'short':['-l'],
             'long' : ['--language'],
@@ -300,6 +304,7 @@ def args():
     affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected.
         Opens the introibo.fr page in a webbrowser.
         Works only with -r/--reverse (three results max) or an only date."""),action='store_true')
+    affichage.add_argument(*arguments['station']['short'],*arguments['station']['long'],dest='station',help=_("""if there is a statio, print it"""),action='store_true')
     affichage.add_argument('-l','--language', dest='langue', action=CoursDeLangue, help=_("""choose your language /!\ ONLY FRENCH AVAILABLE /!\ 
         Available languages :
         - French
