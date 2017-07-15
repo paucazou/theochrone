@@ -18,7 +18,7 @@ import settings
 os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
-from PyQt5.QtGui import QIcon, QTextDocument
+from PyQt5.QtGui import QFont, QIcon, QTextDocument
 from PyQt5.QtPrintSupport import QPrinter
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from translation import *
@@ -29,6 +29,7 @@ current = QDate().currentDate()
 calendrier = calendar.Calendar(firstweekday=6)
 months_tuple = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
 week_number = ("Première","Deuxième","Troisième","Quatrième","Cinquième","Sixième") # TODO TRANSLATION ?
+first_upper = lambda x : x[0].upper() + x[1:]
             
 class YearSpinbox(QSpinBox):
     """A class which defines a spinbox widget specifically to display a set of years from 1600 to 4100."""
@@ -556,10 +557,19 @@ class Table(QTableWidget,SuperTranslator):
     def __init__(self,liste,Annee,inverse=False):
         QTableWidget.__init__(self)
         SuperTranslator.__init__(self)
-        self.setColumnCount(6)
+        self.nbColumn = 8
+        self.setColumnCount(self.nbColumn)
         self.setRowCount(len(liste))
         self.inverse = inverse
         self.retranslateUI()
+        self.fontOmitted = QFont()
+        self.fontOmitted.setItalic(True)
+        self.tempOrSanct = {True:_('Table','Temporal'),False:_('Table','Sanctoral')}
+        self.classes = {1:_('Table','First Class'),
+                        2:_('Table','Second Class'),
+                        3:_('Table','Third Class'),
+                        4:_('Table','Fourth Class'),
+                        5:_('Table','Commemoration'),}
         
         if self.inverse:
             name_pos = 0
@@ -570,28 +580,40 @@ class Table(QTableWidget,SuperTranslator):
         for i, elt in enumerate(liste):
             self.setItem(i,name_pos,QTableWidgetItem(elt.nom['francais']))
             self.setItem(i,date_pos,QTableWidgetItem(str(elt.date)))
-            self.setItem(i,2,QTableWidgetItem(str(elt.degre)))
-            self.setItem(i,3,QTableWidgetItem(elt.couleur))
-            if elt.temporal:
-                temps = 'Temporal'
+            self.setItem(i,3,QTableWidgetItem(self.classes[elt.degre]))
+            self.setItem(i,4,QTableWidgetItem(elt.couleur.capitalize()))
+            self.setItem(i,5,QTableWidgetItem(self.tempOrSanct[elt.temporal]))
+            self.setItem(i,6,QTableWidgetItem(first_upper(officia.affiche_temps_liturgique(elt,'francais'))))
+            if elt.__dict__.get('station',False):
+                station=elt.station['francais']
             else:
-                temps = 'Sanctoral'
-            self.setItem(i,4,QTableWidgetItem(temps))
-            self.setItem(i,5,QTableWidgetItem(officia.affiche_temps_liturgique(elt,'francais').capitalize()))
+                station=''
+            self.setItem(i,7,QTableWidgetItem(station))
+            if elt.celebree:
+                status = _('Table','Celebrated')
+            elif elt.commemoraison:
+                status = _('Table','Commemorated')
+            elif elt.omission:
+                status = _('Table','Omitted')
+                
+            self.setItem(i,2,QTableWidgetItem(status))
+            if elt.omission:
+                for column in range(self.nbColumn):
+                    self.item(i,column).setFont(self.fontOmitted)
             
-        for i in range(6):
+        for i in range(self.nbColumn):
             self.resizeColumnToContents(i)
         self.horizontalHeader().setStretchLastSection(True)
         
         
     def retranslateUI(self):
         if self.inverse:
-            first_item = 'Name'
-            second_item = 'Date'
+            first_item = _("Table",'Name')
+            second_item = _("Table",'Date')
         else:
-            first_item = 'Date'
-            second_item = 'Name'
-        self.setHorizontalHeaderLabels([_("Table",first_item),_("Table",second_item),_("Table",'Class'),_("Table",'Colour'),_("Table",'Sanctoral/Temporal'),_("Table",'Time'),])
+            first_item = _("Table",'Date')
+            second_item = _("Table",'Name')
+        self.setHorizontalHeaderLabels([first_item,second_item,_('Table','Status'),_("Table",'Class'),_("Table",'Colour'),_("Table",'Sanctoral/Temporal'),_("Table",'Time'),_('Table','Station')])
        
         
     
