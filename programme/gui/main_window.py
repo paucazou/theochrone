@@ -509,16 +509,17 @@ class Tree(QTreeWidget,SuperTranslator):
     def __init__(self,data,Annee):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
-        self.Annee=Annee      
+        self.Annee=Annee  
+        self.W.itemsCreator = ItemsCreator(self)
         self.initUI(data)
         self.retranslateUI()
-        for i in range(6):
+        for i in range(8):
             self.resizeColumnToContents(i)
         self.header().setStretchLastSection(True)
         
     
     def initUI(self,data):
-        self.setColumnCount(5)
+        self.setColumnCount(7)
         self.populateTree(data,self.invisibleRootItem())
         
     def populateTree(self,data,parent):
@@ -540,17 +541,18 @@ class Tree(QTreeWidget,SuperTranslator):
                 child.setExpanded(True)
                 self.populateTree(item,child)
             else:
-                elt = item
+                """elt = item
                 if elt.temporal:
                     temps = 'Temporal'
                 else:
                     temps = 'Sanctoral'
                 child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,'francais').capitalize(),temps])
-        
+                """
+                self.W.itemsCreator.createLine(item,parent)
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
-        self.setHeaderLabels([_("Tree","Date/Name"),_("Tree","Class"),_("Tree","Colour"),_("Tree","Temporal/Sanctoral"),_("Tree","Time"),])
+        self.setHeaderLabels([_("Tree","Date/Name"),_('Tree','Status'),_("Tree","Class"),_("Tree","Colour"),_("Tree","Temporal/Sanctoral"),_("Tree","Time"),_('Tree','Station')])
         
 class Table(QTableWidget,SuperTranslator):
 
@@ -572,13 +574,13 @@ class Table(QTableWidget,SuperTranslator):
                         5:_('Table','Commemoration'),}
         
         if self.inverse:
-            name_pos = 0
-            date_pos = 1
+            self.name_pos, self.date_pos = 0, 1
         else:
-            name_pos = 1
-            date_pos = 0
+            self.name_pos, self.date_pos = 1, 0
+        self.W.itemsCreator = ItemsCreator(self)
         for i, elt in enumerate(liste):
-            self.setItem(i,name_pos,QTableWidgetItem(elt.nom['francais']))
+            self.W.itemsCreator.createLine(elt,itemLine=i)
+            """self.setItem(i,name_pos,QTableWidgetItem(elt.nom['francais']))
             self.setItem(i,date_pos,QTableWidgetItem(str(elt.date)))
             self.setItem(i,3,QTableWidgetItem(self.classes[elt.degre]))
             self.setItem(i,4,QTableWidgetItem(elt.couleur.capitalize()))
@@ -591,15 +593,21 @@ class Table(QTableWidget,SuperTranslator):
             self.setItem(i,7,QTableWidgetItem(station))
             if elt.celebree:
                 status = _('Table','Celebrated')
+            elif elt.commemoraison and elt.peut_etre_celebree:
+                status = _("Table","Can be celebrated or commemorated")
             elif elt.commemoraison:
                 status = _('Table','Commemorated')
             elif elt.omission:
                 status = _('Table','Omitted')
+            elif elt.peut_etre_celebree:
+                status = _("Table","Can be celebrated")
+            
                 
             self.setItem(i,2,QTableWidgetItem(status))
             if elt.omission:
                 for column in range(self.nbColumn):
-                    self.item(i,column).setFont(self.fontOmitted)
+                    self.item(i,column).setFont(self.fontOmitted)"""
+            
             
         for i in range(self.nbColumn):
             self.resizeColumnToContents(i)
@@ -613,7 +621,63 @@ class Table(QTableWidget,SuperTranslator):
         else:
             first_item = _("Table",'Date')
             second_item = _("Table",'Name')
-        self.setHorizontalHeaderLabels([first_item,second_item,_('Table','Status'),_("Table",'Class'),_("Table",'Colour'),_("Table",'Sanctoral/Temporal'),_("Table",'Time'),_('Table','Station')])
+        self.setHorizontalHeaderLabels([first_item,second_item,_('Table','Status'),_("Table",'Class'),_("Table",'Colour'),_("Table",'Temporal/Sanctoral'),_("Table",'Time'),_('Table','Station')])
+        
+        
+class ItemsCreator(SuperTranslator):
+    fontOmitted = QFont()
+    fontOmitted.setItalic(True)
+    
+    
+    def __init__(self,parent):
+        SuperTranslator.__init__(self)
+        self.parent = parent
+        self.retranslateUI()
+        
+    
+    def createLine(self,data,itemParent=None,itemLine=None):
+        texts = self.presentData(data)
+        if isinstance(self.parent,Tree):
+            child = QTreeWidgetItem(itemParent,[texts[0],*texts[2]])
+            if data.omission:
+                for i in range(8):
+                    child.setFont(i,self.fontOmitted)
+        else:
+            self.parent.setItem(itemLine,self.parent.name_pos,QTableWidgetItem(texts[0]))
+            self.parent.setItem(itemLine,self.parent.date_pos,QTableWidgetItem(texts[1]))
+            for i,elt in enumerate(texts[2]):
+                self.parent.setItem(itemLine,i+2,QTableWidgetItem(elt))
+            if data.omission:
+                for column in range(self.parent.nbColumn):
+                    self.parent,item(itemLine,column).setFont(self.fontOmitted)
+        
+    def presentData(self,data):
+        name = data.nom['francais']
+        date = str(data.date)
+        if data.celebree:
+            status = _('ItemsCreator','Celebrated')
+        elif data.commemoraison and data.peut_etre_celebree:
+            status = _("ItemsCreator","Can be celebrated or commemorated")
+        elif data.commemoraison:
+            status = _('ItemsCreator','Commemorated')
+        elif data.omission:
+            status = _('ItemsCreator','Omitted')
+        elif data.peut_etre_celebree:
+            status = _("ItemsCreator","Can be celebrated")
+        degree = self.classes[data.degre]
+        colour = data.couleur.capitalize()
+        temporsanct = self.tempOrSanct[data.temporal]
+        time = first_upper(officia.affiche_temps_liturgique(data,'francais'))
+        station = data.__dict__.get('station',{"francais":''})['francais']
+        return name, date, (status, degree, colour, temporsanct, time, station)
+        
+    def retranslateUI(self):
+        self.tempOrSanct = {True:_('ItemsCreator','Temporal'),False:_('ItemsCreator','Sanctoral')}
+        self.classes = {1:_('ItemsCreator','First Class'),
+                        2:_('ItemsCreator','Second Class'),
+                        3:_('ItemsCreator','Third Class'),
+                        4:_('ItemsCreator','Fourth Class'),
+                        5:_('ItemsCreator','Commemoration'),}
        
         
     
