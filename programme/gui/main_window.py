@@ -625,7 +625,8 @@ class Table(QTableWidget,SuperTranslator):
         
         
 class ItemsCreator(SuperTranslator):
-    fontOmitted = QFont()
+    """Convenient class for printing data in both Table and Tree Widgets"""
+    fontOmitted = QFont() # font used for feasts omitted
     fontOmitted.setItalic(True)
     
     
@@ -636,6 +637,7 @@ class ItemsCreator(SuperTranslator):
         
     
     def createLine(self,data,itemParent=None,itemLine=None):
+        """Creates a line of results in Tree or in Table"""
         texts = self.presentData(data)
         if isinstance(self.parent,Tree):
             child = QTreeWidgetItem(itemParent,[texts[0],*texts[2]])
@@ -649,9 +651,10 @@ class ItemsCreator(SuperTranslator):
                 self.parent.setItem(itemLine,i+2,QTableWidgetItem(elt))
             if data.omission:
                 for column in range(self.parent.nbColumn):
-                    self.parent,item(itemLine,column).setFont(self.fontOmitted)
+                    self.parent.item(itemLine,column).setFont(self.fontOmitted)
         
     def presentData(self,data):
+        """Presents the data as they will be printed on the screen"""
         name = data.nom['francais']
         date = str(data.date)
         if data.celebree:
@@ -664,6 +667,8 @@ class ItemsCreator(SuperTranslator):
             status = _('ItemsCreator','Omitted')
         elif data.peut_etre_celebree:
             status = _("ItemsCreator","Can be celebrated")
+        if data.transferee:
+            status += _("ItemsCreator"," & transferred from {}".format(data.date_originelle))
         degree = self.classes[data.degre]
         colour = data.couleur.capitalize()
         temporsanct = self.tempOrSanct[data.temporal]
