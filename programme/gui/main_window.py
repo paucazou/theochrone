@@ -18,8 +18,8 @@ import settings
 os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
-from PyQt5.QtGui import QFont, QIcon, QTextDocument
-from PyQt5.QtPrintSupport import QPrinter
+from PyQt5.QtGui import QFont, QIcon, QPainter, QTextDocument
+from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from translation import *
 
@@ -55,6 +55,7 @@ class Main(QMainWindow,SuperTranslator):
         QMainWindow.__init__(self)
         SuperTranslator.__init__(self)
         self.Annee = annus.LiturgicalCalendar()
+        self.ferryman = ExportResults(self)
         self.actions()
         self.initUI()
         self.processCommandLineArgs(args)
@@ -127,6 +128,7 @@ class Main(QMainWindow,SuperTranslator):
         # Print
         self.printAction = QAction(QIcon('icons/print.png'),'print',self) # https://www.iconfinder.com/icons/392497/print_printer_printing_icon#size=128
         self.printAction.setShortcut('Ctrl+P')
+        self.printAction.triggered.connect(self.printChildren)
         # PDF
         self.exportPDF = QAction(QIcon('icons/pdf.png'),'export as PDF',self) # https://www.iconfinder.com/icons/83290/file_pdf_icon#size=32
         self.exportPDF.triggered.connect(self.exportAsPDF)
@@ -292,6 +294,80 @@ class Main(QMainWindow,SuperTranslator):
             printer.setOutputFormat(QPrinter.PdfFormat)
             printer.setOutputFileName(dialog[0])
             self.centralWidget().render(printer) # Créer plutôt un modèle d'impression à partir des données de base, avec du texte brut. TODO
+            
+    def printResults(self):
+        printer = QPrinter(QPrinter.HighResolution)
+        printDialog = QPrintDialog(printer,self)
+        printDialog.setWindowTitle(_("Main","Print results"))
+        if printDialog[0]:
+            #print
+            painter = QPainter()
+            painter.begin(printer)
+            while True:
+                printer.newPage()
+            painter.end()
+            
+    def printChildren(self,parent=None):
+        if not parent:
+            parent = self.centralWidget().invisibleRootItem()
+        for i in range(parent.childCount()):
+            child = parent.child(i)
+            if child.columnCount() == 1:
+                print(child.text(0))
+            else:
+                print(*[child.text(j) for j in range(child.columnCount())])
+            if child.childCount():
+                self.printChildren(child)
+        
+class ExportResults(SuperTranslator):
+    """Gère tous les exports en d'autres formats.
+    For now : PDF, print"""
+    
+    def __init__(self,parent):
+        SuperTranslator.__init__(self)
+        self.parent = parent
+        self.printer = QPrinter(QPrinter.HighResolution)
+        self.printDialog = QPrintDialog(self.printer,self.parent)
+        self.personal_directory = os.path.expanduser('~')
+        self.retranslateUI()
+        
+    def exportToPrinter(self):
+        if self.printDialog.exec():
+            print('oui')
+            
+    def exportAsPDF(self):
+        dialog = QFileDialog.getSaveFileName(self,self.exportAsPdfTitle,self.personal_directory,self.typeFiles)
+        if dialog[0]:
+            printer = QPrinter(QPrinter.HighResolution)
+            printer.setOutputFormat(QPrinter.PdfFormat)
+            printer.setOutputFileName(dialog[0])
+            self.centralWidget().render(printer)
+    
+    def paintMaintTitle(self):
+        """Paint the main title, ie the research keywords"""
+        pass
+    
+    def paintIntermediateTitles(self):
+        """Paint the intermediate titles : years, months and weeks"""
+        pass
+    
+    def paintSubtitles(self):
+        """Paint subtitles : days"""
+        pass
+    
+    def paintHeaders(self):
+        """Paint headers of the widget"""
+        pass
+    
+    def paintFeasts(self):
+        """Paint feasts printed on the screen"""
+        pass
+    
+    def retranslateUI(self):
+        self.printDialog.setWindowTitle(_("ExportResults","Print results"))
+        self.exportAsPdfTitle = _("ExportResults","Export as PDF")
+        self.typeFiles = _("ExportResults",'Documents PDF (*.pdf)')
+    
         
 class Onglets(QWidget,SuperTranslator):
     """A class for a tab widget"""
