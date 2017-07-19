@@ -17,7 +17,7 @@ import officia
 import settings
 os.chdir(chemin)
 
-from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, Qt, QTranslator
+from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, QPoint, QRect, Qt, QTranslator
 from PyQt5.QtGui import QFont, QIcon, QPainter, QTextDocument
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
@@ -131,7 +131,7 @@ class Main(QMainWindow,SuperTranslator):
         self.printAction.triggered.connect(self.printChildren)
         # PDF
         self.exportPDF = QAction(QIcon('icons/pdf.png'),'export as PDF',self) # https://www.iconfinder.com/icons/83290/file_pdf_icon#size=32
-        self.exportPDF.triggered.connect(self.exportAsPDF)
+        self.exportPDF.triggered.connect(self.ferryman.exportAsPDF)
         self.exportPDF.setShortcut('Ctrl+E')
         # Exit
         self.exitAction = QAction(QIcon('icons/exit.png'),'exit_name',self)
@@ -320,13 +320,14 @@ class Main(QMainWindow,SuperTranslator):
                 self.printChildren(child)
         
 class ExportResults(SuperTranslator):
-    """Gère tous les exports en d'autres formats.
+    """Manage the exports in other formats.
     For now : PDF, print"""
     
     def __init__(self,parent):
         SuperTranslator.__init__(self)
         self.parent = parent
         self.printer = QPrinter(QPrinter.HighResolution)
+        self.painter = QPainter()
         self.printDialog = QPrintDialog(self.printer,self.parent)
         self.personal_directory = os.path.expanduser('~')
         self.retranslateUI()
@@ -336,16 +337,27 @@ class ExportResults(SuperTranslator):
             print('oui')
             
     def exportAsPDF(self):
-        dialog = QFileDialog.getSaveFileName(self,self.exportAsPdfTitle,self.personal_directory,self.typeFiles)
+        dialog = QFileDialog.getSaveFileName(self.parent,self.exportAsPdfTitle,self.personal_directory,self.typeFiles)
         if dialog[0]:
-            printer = QPrinter(QPrinter.HighResolution)
-            printer.setOutputFormat(QPrinter.PdfFormat)
-            printer.setOutputFileName(dialog[0])
-            self.centralWidget().render(printer)
+            self.printer.setOutputFormat(QPrinter.PdfFormat)
+            self.printer.setOutputFileName(dialog[0])
+            self.paintController()
+            
+    def paintController(self):
+        """Manage the main painting"""
+        self.page_rectangle = self.printer.pageRect()
+        self.painter.begin(self.printer)
+        self.paintMainTitle()
+        self.painter.end()
     
-    def paintMaintTitle(self):
+    def paintMainTitle(self):
         """Paint the main title, ie the research keywords"""
-        pass
+        title = self.parent.windowTitle()
+        rectangle_title = QRect(0,0,self.page_rectangle.right()-self.page_rectangle.left(),self.page_rectangle.height()/10)
+        self.painter.drawRect(rectangle_title)
+        self.painter.setFont(QFont('Arial',30)) # taille de la police à modifier selon le cas ? -> certains titres sont trop grands
+        
+        self.painter.drawText(rectangle_title,Qt.AlignCenter,title)
     
     def paintIntermediateTitles(self):
         """Paint the intermediate titles : years, months and weeks"""
