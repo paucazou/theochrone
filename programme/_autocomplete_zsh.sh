@@ -7,4 +7,4 @@ autoload -Uz compinit ; compinit
 _arguments -s \
 	'-r[Research by name]' \
 	'-m[Larger research]' \
-
+compdef _gnu_generic theochrone.py
