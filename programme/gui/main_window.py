@@ -17,8 +17,8 @@ import officia
 import settings
 os.chdir(chemin)
 
-from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, QPoint, QRect, Qt, QTranslator
-from PyQt5.QtGui import QFont, QIcon, QPainter, QTextDocument
+from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, QPoint, QRect, QSize, Qt, QTranslator
+from PyQt5.QtGui import QFont, QFontMetrics, QIcon, QPainter, QTextDocument
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from translation import *
@@ -344,18 +344,19 @@ class ExportResults(SuperTranslator):
             self.printer.setOutputFileName(dialog[0])
             self.paintController()
             
-    def paintController(self):
+    def paintController(self): # faire un tableau semblable à celui de la version web
         """Manage the main painting"""
         self.page_rectangle = self.printer.pageRect() # pas tout à fait : il faut le recréer
         self.painter.begin(self.printer)
         self.paintMainTitle()
+        self.paintHeaders(['Test 1','Test 2', 'Test 3', 'Autre information', 'Je ne sais pas quoi dire'])
         self.painter.end()
     
     def paintMainTitle(self):
         """Paint the main title, ie the research keywords"""
         title = self.parent.windowTitle()
         rectangle_title = QRect(0,0,self.page_rectangle.right()-self.page_rectangle.left(),self.page_rectangle.height()/10)
-        self.painter.setFont(QFont('Arial',25)) # taille de la police à modifier selon le cas ? -> certains titres sont trop grands
+        self.painter.setFont(QFont('Arial',25)) # taille de la police à modifier selon le cas ? -> certains titres sont trop grands -> Ou faire baisser d'un cran
         self.painter.drawText(rectangle_title,Qt.AlignCenter,title)
         self.currentPoint.setY(rectangle_title.bottom())
     
@@ -367,19 +368,30 @@ class ExportResults(SuperTranslator):
         """Paint subtitles : days"""
         pass
     
-    def paintHeaders(self,headers):
+    def paintHeaders(self,headers): # DEPRECATED
         """Paint headers of the widget.
         Headers is a list"""
-        rectangle_header
-    
+        size = self.createHRectangles(len(headers),8)
+        rectangle_header = QRect(self.currentPoint,size)
+        self.painter.setFont(QFont('Arial',15))
+        for head in headers:
+            self.painter.drawText(rectangle_header,Qt.AlignCenter,head)
+            self.currentPoint.setX(self.currentPoint.x() + rectangle_header.width())
+            rectangle_header = QRect(self.currentPoint,size)
+        self.currentPoint.setX(0)
+        self.currentPoint.setY(rectangle_header.bottom())
+            
     def paintFeasts(self):
         """Paint feasts printed on the screen"""
         pass
     
-    def createHRectangles(self,number):
+    def createHRectangles(self,number,percentage):
         """Returns the size of each rectangle.
-        QSize is found after dividing self.page_rectangle.width() by number"""
-        pass
+        QSize is found after dividing self.page_rectangle.width() by number
+        and self.page_rectangle.height() by percentage"""
+        width = self.page_rectangle.width() / number
+        height = percentage * self.page_rectangle.height() / 100
+        return QSize(width,height)
     
     def retranslateUI(self):
         self.printDialog.setWindowTitle(_("ExportResults","Print results"))
