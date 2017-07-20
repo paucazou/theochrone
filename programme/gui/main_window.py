@@ -328,6 +328,7 @@ class ExportResults(SuperTranslator):
         self.parent = parent
         self.printer = QPrinter(QPrinter.HighResolution)
         self.painter = QPainter()
+        self.currentPoint = QPoint(0,0)
         self.printDialog = QPrintDialog(self.printer,self.parent)
         self.personal_directory = os.path.expanduser('~')
         self.retranslateUI()
@@ -345,7 +346,7 @@ class ExportResults(SuperTranslator):
             
     def paintController(self):
         """Manage the main painting"""
-        self.page_rectangle = self.printer.pageRect()
+        self.page_rectangle = self.printer.pageRect() # pas tout à fait : il faut le recréer
         self.painter.begin(self.printer)
         self.paintMainTitle()
         self.painter.end()
@@ -354,10 +355,9 @@ class ExportResults(SuperTranslator):
         """Paint the main title, ie the research keywords"""
         title = self.parent.windowTitle()
         rectangle_title = QRect(0,0,self.page_rectangle.right()-self.page_rectangle.left(),self.page_rectangle.height()/10)
-        self.painter.drawRect(rectangle_title)
-        self.painter.setFont(QFont('Arial',30)) # taille de la police à modifier selon le cas ? -> certains titres sont trop grands
-        
+        self.painter.setFont(QFont('Arial',25)) # taille de la police à modifier selon le cas ? -> certains titres sont trop grands
         self.painter.drawText(rectangle_title,Qt.AlignCenter,title)
+        self.currentPoint.setY(rectangle_title.bottom())
     
     def paintIntermediateTitles(self):
         """Paint the intermediate titles : years, months and weeks"""
@@ -367,12 +367,18 @@ class ExportResults(SuperTranslator):
         """Paint subtitles : days"""
         pass
     
-    def paintHeaders(self):
-        """Paint headers of the widget"""
-        pass
+    def paintHeaders(self,headers):
+        """Paint headers of the widget.
+        Headers is a list"""
+        rectangle_header
     
     def paintFeasts(self):
         """Paint feasts printed on the screen"""
+        pass
+    
+    def createHRectangles(self,number):
+        """Returns the size of each rectangle.
+        QSize is found after dividing self.page_rectangle.width() by number"""
         pass
     
     def retranslateUI(self):
