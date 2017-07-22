@@ -17,8 +17,8 @@ import officia
 import settings
 os.chdir(chemin)
 
-from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLocale, QPoint, QRect, QSize, Qt, QTranslator
-from PyQt5.QtGui import QFont, QFontMetrics, QIcon, QPainter, QTextDocument
+from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, QLocale, QPoint, QRect, QSize, Qt, QTranslator
+from PyQt5.QtGui import QFont, QFontMetrics, QIcon, QPen, QPainter, QTextDocument
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from translation import *
@@ -333,6 +333,10 @@ class ExportResults(SuperTranslator):
         self.personal_directory = os.path.expanduser('~')
         self.retranslateUI()
         
+    def defineLook(self):
+        """Method which will be filled by a dialog window"""
+        self.font = 'Arial'
+        
     def exportToPrinter(self):
         if self.printDialog.exec():
             print('oui')
@@ -346,18 +350,41 @@ class ExportResults(SuperTranslator):
             
     def paintController(self): # faire un tableau semblable à celui de la version web
         """Manage the main painting"""
-        self.page_rectangle = self.printer.pageRect() # pas tout à fait : il faut le recréer
+        self.defineLook()
+        paper_rect = self.printer.paperRect()
+        self.printer.setFullPage(True)
+        self.left = paper_rect.left() + (paper_rect.width() *5/100)
+        self.top = paper_rect.top() + (paper_rect.height() *5/100)
+        self.right = paper_rect.right() - (paper_rect.width() *10/100)
+        self.bottom = paper_rect.bottom() - (paper_rect.height() *10/100)
+        self.page_rectangle = QRect(self.left,self.top,self.right,self.bottom)
+        
+        
+        pen = QPen(Qt.SolidLine)
+        pen.setWidth(20)
+        
         self.painter.begin(self.printer)
+        self.painter.setPen(pen)
+        self.painter.drawRect(self.page_rectangle)
         self.paintMainTitle()
-        self.paintHeaders(['Test 1','Test 2', 'Test 3', 'Autre information', 'Je ne sais pas quoi dire'])
         self.painter.end()
     
     def paintMainTitle(self):
         """Paint the main title, ie the research keywords"""
         title = self.parent.windowTitle()
-        rectangle_title = QRect(0,0,self.page_rectangle.right()-self.page_rectangle.left(),self.page_rectangle.height()/10)
-        self.painter.setFont(QFont('Arial',25)) # taille de la police à modifier selon le cas ? -> certains titres sont trop grands -> Ou faire baisser d'un cran
+        fontSize = 25
+        percentage = 10
+        while True:
+            rectangle_title = QRect(self.page_rectangle.left(),self.page_rectangle.top(),self.page_rectangle.width(),self.page_rectangle.height()/percentage)
+            fontCandidate = QFont(self.font,fontSize)
+            self.painter.setFont(fontCandidate)
+            if self.painter.boundingRect(QRect(),Qt.AlignCenter,title).width() < self.page_rectangle.width():
+                break
+            else:
+                fontSize -= 1
+                percentage += 1
         self.painter.drawText(rectangle_title,Qt.AlignCenter,title)
+        self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight()))
         self.currentPoint.setY(rectangle_title.bottom())
     
     def paintIntermediateTitles(self):
