@@ -18,7 +18,7 @@ import settings
 os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, QLocale, QPoint, QRect, QSize, Qt, QTranslator
-from PyQt5.QtGui import QFont, QFontMetrics, QIcon, QPen, QPainter, QTextDocument
+from PyQt5.QtGui import QColor, QFont, QFontMetrics, QIcon, QPen, QPainter, QTextDocument
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from translation import *
@@ -359,14 +359,21 @@ class ExportResults(SuperTranslator):
         self.bottom = paper_rect.bottom() - (paper_rect.height() *10/100)
         self.page_rectangle = QRect(self.left,self.top,self.right,self.bottom)
         
-        
+        self.currentPoint.setY(self.top)
+        self.currentPoint.setX(self.left)
         pen = QPen(Qt.SolidLine)
         pen.setWidth(20)
+        pen.setColor(QColor(Qt.blue))
         
         self.painter.begin(self.printer)
         self.painter.setPen(pen)
-        self.painter.drawRect(self.page_rectangle)
+        #self.painter.drawRect(self.page_rectangle)
+        pen.setColor(QColor(Qt.black))
+        self.painter.setPen(pen)
         self.paintMainTitle()
+        self.paintIntermediateTitles('2017 : janvier : sixième semaine')
+        self.paintSubtitles('Vendredi premier janvier 2017')
+        self.paintFeasts(('Classe','Statut','Couleur'),('Vendredi de la première semaine de Carême','Deuxième classe','Célébrée','Violet'))
         self.painter.end()
     
     def paintMainTitle(self):
@@ -378,6 +385,7 @@ class ExportResults(SuperTranslator):
             rectangle_title = QRect(self.page_rectangle.left(),self.page_rectangle.top(),self.page_rectangle.width(),self.page_rectangle.height()/percentage)
             fontCandidate = QFont(self.font,fontSize)
             self.painter.setFont(fontCandidate)
+            print("rectangle_title.height = {}\nrectangle_bounding_height = {}".format(rectangle_title.height(),self.painter.boundingRect(QRect(),Qt.AlignCenter,title).height())) # TODO aligner à gauche ?
             if self.painter.boundingRect(QRect(),Qt.AlignCenter,title).width() < self.page_rectangle.width():
                 break
             else:
@@ -387,13 +395,24 @@ class ExportResults(SuperTranslator):
         self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight()))
         self.currentPoint.setY(rectangle_title.bottom())
     
-    def paintIntermediateTitles(self):
+    def paintIntermediateTitles(self,title):
         """Paint the intermediate titles : years, months and weeks"""
-        pass
+        fontSize = 16
+        self.painter.setFont(QFont(self.font,fontSize))
+        rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*4/100)
+        self.painter.drawText(rectangle_title,Qt.AlignLeft + Qt.AlignVCenter,title)
+        self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight())) # changer le style, peut-être l'épaisseur aussi
+        self.currentPoint.setY(rectangle_title.bottom())
+        
     
-    def paintSubtitles(self):
+    def paintSubtitles(self,title):
         """Paint subtitles : days"""
-        pass
+        fontSize = 14
+        self.painter.setFont(QFont(self.font,fontSize))
+        rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*3/100)
+        self.painter.drawText(rectangle_title,Qt.AlignLeft + Qt.AlignVCenter,title)
+        self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight())) # changer le style, peut-être l'épaisseur aussi
+        self.currentPoint.setY(rectangle_title.bottom())
     
     def paintHeaders(self,headers): # DEPRECATED
         """Paint headers of the widget.
@@ -408,9 +427,27 @@ class ExportResults(SuperTranslator):
         self.currentPoint.setX(0)
         self.currentPoint.setY(rectangle_header.bottom())
             
-    def paintFeasts(self):
-        """Paint feasts printed on the screen"""
-        pass
+    def paintFeasts(self,headers,data,dry=False): # TODO dry
+        """Paint feasts printed on the screen.
+        headers and data are lists of strings.
+        If dry is set, return a QSize of the painting"""
+        fontSize = 12
+        left_center = Qt.AlignLeft + Qt.AlignVCenter
+        self.painter.setFont(QFont(self.font + ' Bold',fontSize))
+        rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*3/100)
+        self.painter.drawText(rectangle_title,left_center,data[0])
+        self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight())) # changer le style, peut-être l'épaisseur aussi
+        self.currentPoint.setY(rectangle_title.bottom())
+        
+        rectangle_size = self.createHRectangles(2,3)
+        for header, case in zip(headers,data[1:]):
+            box = QRect(self.currentPoint,rectangle_size)
+            self.painter.drawText(box,left_center,"{} : {}".format(header, case)) # TODO il faudra gérer les cas où le texte sera trop grand : retour à la ligne
+            if box.left() == self.page_rectangle.left():
+                self.currentPoint = box.topRight()
+            else:
+                self.currentPoint.setX(self.left)
+                self.currentPoint.setY(box.bottom())
     
     def createHRectangles(self,number,percentage):
         """Returns the size of each rectangle.
