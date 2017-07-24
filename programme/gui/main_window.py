@@ -354,7 +354,7 @@ class ExportResults(SuperTranslator):
     def formatTreeData(self,data,ndata,title=''):
         for key,value in data.items():
             if dic_depth(value) == 0:
-                ndata[title] = data
+                ndata[title[:-3]] = data
                 return ndata
             else:
                 title += key + " : "
@@ -411,15 +411,28 @@ class ExportResults(SuperTranslator):
         self.painter.setPen(pen)
         self.paintMainTitle()
         headers, data = self.extractData()
-        if dic_depth(data) == 1:
+        if dic_depth(data) == 456:
             for key, value in data.items():
                 self.paintSubtitles(key)
                 for item in value:
                     self.paintFeasts(headers,item)
+        self.iterPainter(data,headers)
         #self.paintIntermediateTitles('2017 : janvier : sixième semaine')
         #self.paintSubtitles('Vendredi premier janvier 2017')
         #self.paintFeasts(('Classe','Statut','Couleur'),('Vendredi de la première semaine de Carême','Deuxième classe','Célébrée','Violet'))
         self.painter.end()
+        
+    def iterPainter(self,data,headers):
+        """Iters into data to paint correctly titles and feasts"""
+        for key, value in data.items():
+            if dic_depth(data) == 1:
+                for key, value in data.items():
+                    self.paintSubtitles(key)
+                    for item in value:
+                        self.paintFeasts(headers,item)
+            else:
+                self.paintIntermediateTitles(key)
+                self.iterPainter(value,headers)
     
     def paintMainTitle(self):
         """Paint the main title, ie the research keywords"""
@@ -429,8 +442,7 @@ class ExportResults(SuperTranslator):
         while True:
             rectangle_title = QRect(self.page_rectangle.left(),self.page_rectangle.top(),self.page_rectangle.width(),self.page_rectangle.height()/percentage)
             fontCandidate = QFont(self.font,fontSize)
-            self.painter.setFont(fontCandidate)
-            print("rectangle_title.height = {}\nrectangle_bounding_height = {}".format(rectangle_title.height(),self.painter.boundingRect(QRect(),Qt.AlignCenter,title).height())) # TODO aligner à gauche ?
+            self.painter.setFont(fontCandidate) # TODO aligner à gauche ?
             if self.painter.boundingRect(QRect(),Qt.AlignCenter,title).width() < self.page_rectangle.width():
                 break
             else:
