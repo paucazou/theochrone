@@ -13,6 +13,7 @@ sys.path.append(programme)
 sys.path.append(chemin)
 import adjutoria
 import annus
+import collections
 import officia
 import settings
 os.chdir(chemin)
@@ -30,6 +31,8 @@ calendrier = calendar.Calendar(firstweekday=6)
 months_tuple = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
 week_number = ("Première","Deuxième","Troisième","Quatrième","Cinquième","Sixième") # TODO TRANSLATION ?
 first_upper = lambda x : x[0].upper() + x[1:]
+list_depth = lambda L: isinstance(L, list) and max(map(depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
+dic_depth = lambda d, depth=0: isinstance(d,dict) and max(dic_depth(v, depth+1) for k, v in d.items()) +1 #https://stackoverflow.com/questions/9538875/recursive-depth-of-python-dictionary
             
 class YearSpinbox(QSpinBox):
     """A class which defines a spinbox widget specifically to display a set of years from 1600 to 4100."""
@@ -333,6 +336,42 @@ class ExportResults(SuperTranslator):
         self.personal_directory = os.path.expanduser('~')
         self.retranslateUI()
         
+    def extractTreeData(self,parent=None):
+        """Returns the data as they appeared on the screen"""
+        data = collections.OrderedDict()
+        liste = []
+        for i in range(parent.childCount()):
+            child = parent.child(i)
+            if child.columnCount() == 1:
+                data[child.text(0)] = self.extractTreeData(parent=child)
+            else:
+                liste.append([child.text(j) for j in range(child.columnCount()) if child.text(j)])
+        if not liste:
+            return data
+        else:
+            return liste
+    
+    def formatTreeData(self,data,ndata,title=''):
+        for key,value in data.items():
+            if dic_depth(value) == 0:
+                ndata[title] = data
+                return ndata
+            else:
+                title += key + " : "
+                self.formatTreeData(value,ndata,title)
+        return ndata
+        
+            
+    def extractData(self):
+        if isinstance(self.parent.centralWidget(),Tree):
+            header_item = self.parent.centralWidget().headerItem()
+            headers = [ header_item.text(i) for i in range(header_item.columnCount()) ][1:]
+            data = self.extractTreeData(self.parent.centralWidget().invisibleRootItem())
+            if dic_depth(data) != 1:
+                data = self.formatTreeData(data,collections.OrderedDict())
+            print(data)
+        return headers, data
+        
     def defineLook(self):
         """Method which will be filled by a dialog window"""
         self.font = 'Arial'
@@ -371,9 +410,15 @@ class ExportResults(SuperTranslator):
         pen.setColor(QColor(Qt.black))
         self.painter.setPen(pen)
         self.paintMainTitle()
-        self.paintIntermediateTitles('2017 : janvier : sixième semaine')
-        self.paintSubtitles('Vendredi premier janvier 2017')
-        self.paintFeasts(('Classe','Statut','Couleur'),('Vendredi de la première semaine de Carême','Deuxième classe','Célébrée','Violet'))
+        headers, data = self.extractData()
+        if dic_depth(data) == 1:
+            for key, value in data.items():
+                self.paintSubtitles(key)
+                for item in value:
+                    self.paintFeasts(headers,item)
+        #self.paintIntermediateTitles('2017 : janvier : sixième semaine')
+        #self.paintSubtitles('Vendredi premier janvier 2017')
+        #self.paintFeasts(('Classe','Statut','Couleur'),('Vendredi de la première semaine de Carême','Deuxième classe','Célébrée','Violet'))
         self.painter.end()
     
     def paintMainTitle(self):
@@ -448,6 +493,8 @@ class ExportResults(SuperTranslator):
             else:
                 self.currentPoint.setX(self.left)
                 self.currentPoint.setY(box.bottom())
+        self.currentPoint.setX(self.left)
+        self.currentPoint.setY(box.bottom())
     
     def createHRectangles(self,number,percentage):
         """Returns the size of each rectangle.
@@ -675,7 +722,6 @@ class Multiple(QWidget,SuperTranslator):
 class Tree(QTreeWidget,SuperTranslator):
     """A class which defines the main widget used with multiple days"""
     
-    depth = lambda self,L: isinstance(L, list) and max(map(self.depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
     def __init__(self,data,Annee):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
