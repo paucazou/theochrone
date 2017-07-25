@@ -1942,7 +1942,7 @@
       <str key="link">http://introibo.fr/23-07-St-Apollinaire-eveque-et</str>
       <dict key="nom">
         <str key="english">Saint Apollinaris, Bishop and Martyr</str>
-        <str key="francais">Sainte Apollinaire, Évêque et Martyr</str>
+        <str key="francais">Saint Apollinaire, Évêque et Martyr</str>
         <str key="latina">Sancti Apollinaris, Episcopi et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
