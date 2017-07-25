@@ -357,8 +357,7 @@ class ExportResults(SuperTranslator):
                 ndata[title[:-3]] = data
                 return ndata
             else:
-                title += key + " : "
-                self.formatTreeData(value,ndata,title)
+                self.formatTreeData(value,ndata,title + key + " : ")
         return ndata
         
             
