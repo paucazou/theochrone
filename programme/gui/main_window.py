@@ -370,7 +370,7 @@ class ExportResults(SuperTranslator):
                 data = self.formatTreeData(data,collections.OrderedDict())
         else:
             table = self.parent.centralWidget()
-            headers = [ table.horizontalHeaderItem(i).text() for i in range(table.columnCount()) ]
+            headers = [ table.horizontalHeaderItem(i).text() for i in range(table.columnCount()) ][2:]
             nb_lines = table.rowCount()
             item = table.item
             data = {item(i,0).text():[] for i in range(nb_lines) if item(i,0) }
