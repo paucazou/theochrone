@@ -369,7 +369,6 @@ class ExportResults(SuperTranslator):
             data = self.extractTreeData(self.parent.centralWidget().invisibleRootItem())
             if dic_depth(data) != 1:
                 data = self.formatTreeData(data,collections.OrderedDict())
-            print(data)
         return headers, data
         
     def defineLook(self):
@@ -411,11 +410,6 @@ class ExportResults(SuperTranslator):
         self.painter.setPen(pen)
         self.paintMainTitle()
         headers, data = self.extractData()
-        if dic_depth(data) == 456:
-            for key, value in data.items():
-                self.paintSubtitles(key)
-                for item in value:
-                    self.paintFeasts(headers,item)
         self.iterPainter(data,headers)
         #self.paintIntermediateTitles('2017 : janvier : sixième semaine')
         #self.paintSubtitles('Vendredi premier janvier 2017')
@@ -426,14 +420,38 @@ class ExportResults(SuperTranslator):
         """Iters into data to paint correctly titles and feasts"""
         for key, value in data.items():
             if dic_depth(data) == 1:
-                for key, value in data.items():
-                    self.paintSubtitles(key)
-                    for item in value:
-                        self.paintFeasts(headers,item)
+                self.goonOrNewPage(2,len(value[0]))
+                self.paintSubtitles(key)
+                for item in value:
+                    self.goonOrNewPage(1,len(item))
+                    self.paintFeasts(headers,item)
             else:
+                nb_items = len([elt for elt in value.values()][0][0])
+                self.goonOrNewPage(3,nb_items)
                 self.paintIntermediateTitles(key)
                 self.iterPainter(value,headers)
     
+    def goonOrNewPage(self,level,nb_items):
+        """This method checks if there is enough place on the page.
+        If not, start a new page.
+        level is an int : 1 : only new feasts
+        2 : a feast + a subtitle
+        3 : a feast + a subtitle + an intermediate Title
+        nb_items : int : number of items to print"""
+        height = 0
+        available_place = self.bottom - self.currentPoint.y()
+        if level >= 1: # feast
+            height += self.page_rectangle.height()*3/100 # name of the feast
+            height += self.createHRectangles(2,3).height()*(nb_items + 1)/2 # every other item
+        if level >= 2: # feast + subtitle 
+            height += self.page_rectangle.height()*3/100
+        if level == 3: # feast + subtitle + intermediate title
+            height += self.page_rectangle.height()*4/100
+        if height > available_place:
+            self.printer.newPage()
+            self.currentPoint.setY(self.top)
+            self.currentPoint.setX(self.left)
+        
     def paintMainTitle(self):
         """Paint the main title, ie the research keywords"""
         title = self.parent.windowTitle()
