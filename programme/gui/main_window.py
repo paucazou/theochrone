@@ -368,6 +368,17 @@ class ExportResults(SuperTranslator):
             data = self.extractTreeData(self.parent.centralWidget().invisibleRootItem())
             if dic_depth(data) != 1:
                 data = self.formatTreeData(data,collections.OrderedDict())
+        else:
+            table = self.parent.centralWidget()
+            headers = [ table.horizontalHeaderItem(i).text() for i in range(table.columnCount()) ]
+            nb_lines = table.rowCount()
+            item = table.item
+            data = {item(i,0).text():[] for i in range(nb_lines) if item(i,0) }
+            print(data,headers)
+            for row in range(nb_lines):
+                data[item(row,0).text()].append(
+                    [item(row,i).text() for i in range(1,table.columnCount())]
+                     )        
         return headers, data
         
     def defineLook(self):
