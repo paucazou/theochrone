@@ -374,10 +374,9 @@ class ExportResults(SuperTranslator):
             nb_lines = table.rowCount()
             item = table.item
             data = {item(i,0).text():[] for i in range(nb_lines) if item(i,0) }
-            print(data,headers)
             for row in range(nb_lines):
                 data[item(row,0).text()].append(
-                    [item(row,i).text() for i in range(1,table.columnCount())]
+                    [item(row,i).text() for i in range(1,table.columnCount()) if item(row,i).text()]
                      )        
         return headers, data
         
@@ -512,22 +511,22 @@ class ExportResults(SuperTranslator):
         self.currentPoint.setX(0)
         self.currentPoint.setY(rectangle_header.bottom())
             
-    def paintFeasts(self,headers,data,dry=False): # TODO dry
+    def paintFeasts(self,headers,data):
         """Paint feasts printed on the screen.
-        headers and data are lists of strings.
-        If dry is set, return a QSize of the painting"""
+        headers and data are lists of strings."""
         fontSize = 12
-        left_center = Qt.AlignLeft + Qt.AlignVCenter
+        left_center = Qt.AlignLeft + Qt.AlignVCenter + Qt.TextWordWrap + Qt.TextDontClip
         self.painter.setFont(QFont(self.font + ' Bold',fontSize))
         rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*3/100)
         self.painter.drawText(rectangle_title,left_center,data[0])
         self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight())) # changer le style, peut-être l'épaisseur aussi
         self.currentPoint.setY(rectangle_title.bottom())
         
-        rectangle_size = self.createHRectangles(2,3)
-        for header, case in zip(headers,data[1:]):
-            box = QRect(self.currentPoint,rectangle_size)
-            self.painter.drawText(box,left_center,"{} : {}".format(header, case)) # TODO il faudra gérer les cas où le texte sera trop grand : retour à la ligne
+        rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
+        for i, tuple_ in enumerate(zip(headers,data[1:])):
+            header, case = tuple_
+            box = QRect(self.currentPoint,rectangle_sizes[i+1==len(data[1:])])
+            self.painter.drawText(box,left_center,"{} : {}".format(header, case))
             if box.left() == self.page_rectangle.left():
                 self.currentPoint = box.topRight()
             else:
