@@ -520,7 +520,7 @@ class ExportResults(SuperTranslator):
         rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*3/100)
         self.painter.drawText(rectangle_title,left_center,data[0])
         self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight())) # changer le style, peut-être l'épaisseur aussi
-        self.currentPoint.setY(rectangle_title.bottom())
+        self.currentPoint.setY(rectangle_title.bottom() + self.page_rectangle.height()*0.5/100)
         
         rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
         for i, tuple_ in enumerate(zip(headers,data[1:])):
