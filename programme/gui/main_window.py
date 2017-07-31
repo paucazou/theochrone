@@ -18,7 +18,7 @@ import officia
 import settings
 os.chdir(chemin)
 
-from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, QLocale, QPoint, QRect, QSize, Qt, QTranslator
+from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, QLocale, QPoint, QRect, QRectF, QSize, Qt, QTranslator
 from PyQt5.QtGui import QColor, QFont, QFontMetrics, QIcon, QPen, QPainter, QTextDocument
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
@@ -515,14 +515,15 @@ class ExportResults(SuperTranslator):
         """Paint feasts printed on the screen.
         headers and data are lists of strings."""
         fontSize = 12
-        left_center = Qt.AlignLeft + Qt.AlignVCenter + Qt.TextWordWrap + Qt.TextDontClip
+        left_center = Qt.AlignLeft + Qt.AlignVCenter # + Qt.TextWordWrap + Qt.TextDontClip
         self.painter.setFont(QFont(self.font + ' Bold',fontSize))
         rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*3/100)
         self.painter.drawText(rectangle_title,left_center,data[0])
         self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight())) # changer le style, peut-être l'épaisseur aussi
-        self.currentPoint.setY(rectangle_title.bottom() + self.page_rectangle.height()*0.5/100)
+        self.currentPoint.setY(rectangle_title.bottom())
         
         rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
+        self.paintInBoxes(headers,data[1:])
         for i, tuple_ in enumerate(zip(headers,data[1:])):
             header, case = tuple_
             box = QRect(self.currentPoint,rectangle_sizes[i+1==len(data[1:])])
@@ -534,7 +535,22 @@ class ExportResults(SuperTranslator):
                 self.currentPoint.setY(box.bottom())
         self.currentPoint.setX(self.left)
         self.currentPoint.setY(box.bottom())
-    
+        
+    def paintInBoxes(self,headers,data):
+        """Put the headers and the data according to their size"""
+        data = ["{} : {}".format(header, case) for header, case in zip(headers,data) ]
+        first_items, last_items = [], []
+        left_center = Qt.AlignLeft + Qt.AlignVCenter
+        rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
+        for candidate in data :
+            if self.painter.boundingRect(QRectF(),left_center,candidate).width() <= rectangle_sizes[0].width():
+                first_items.append(candidate)
+            else:
+                last_items.append((candidate,self.painter.boundingRect(QRectF(),left_center,candidate).width()/rectangle_sizes[1].width()))
+        last_items.sort(key=lambda x: len(x))
+        table = ['','']        
+        
+        
     def createHRectangles(self,number,percentage):
         """Returns the size of each rectangle.
         QSize is found after dividing self.page_rectangle.width() by number
@@ -807,14 +823,14 @@ class Tree(QTreeWidget,SuperTranslator):
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
-        self.setHeaderLabels([_("Tree","Date/Name"),_('Tree','Status'),_("Tree","Class"),_("Tree","Colour"),_("Tree","Temporal/Sanctoral"),_("Tree","Time"),_('Tree','Station')])
+        self.setHeaderLabels([_("Tree","Date/Name"),_('Tree','Status'),_("Tree","Class"),_("Tree","Colour"),_("Tree","Temporal/Sanctoral"),_("Tree","Time"),_('Tree','Station'),_('Table','Addendum')])
         
 class Table(QTableWidget,SuperTranslator):
 
     def __init__(self,liste,Annee,inverse=False):
         QTableWidget.__init__(self)
         SuperTranslator.__init__(self)
-        self.nbColumn = 8
+        self.nbColumn = 9
         self.setColumnCount(self.nbColumn)
         self.setRowCount(len(liste))
         self.inverse = inverse
@@ -876,7 +892,7 @@ class Table(QTableWidget,SuperTranslator):
         else:
             first_item = _("Table",'Date')
             second_item = _("Table",'Name')
-        self.setHorizontalHeaderLabels([first_item,second_item,_('Table','Status'),_("Table",'Class'),_("Table",'Colour'),_("Table",'Temporal/Sanctoral'),_("Table",'Time'),_('Table','Station')])
+        self.setHorizontalHeaderLabels([first_item,second_item,_('Table','Status'),_("Table",'Class'),_("Table",'Colour'),_("Table",'Temporal/Sanctoral'),_("Table",'Time'),_('Table','Station'),_('Table','Addendum')])
         
         
 class ItemsCreator(SuperTranslator):
@@ -910,6 +926,7 @@ class ItemsCreator(SuperTranslator):
         
     def presentData(self,data):
         """Presents the data as they will be printed on the screen"""
+        # TODO si erreur, que faire ?
         name = data.nom['francais']
         date = str(data.date)
         if data.celebree:
@@ -929,7 +946,8 @@ class ItemsCreator(SuperTranslator):
         temporsanct = self.tempOrSanct[data.temporal]
         time = first_upper(officia.affiche_temps_liturgique(data,'francais'))
         station = data.__dict__.get('station',{"francais":''})['francais']
-        return name, date, (status, degree, colour, temporsanct, time, station)
+        addendum = data.addendum['francais']
+        return name, date, (status, degree, colour, temporsanct, time, station, addendum)
         
     def retranslateUI(self):
         self.tempOrSanct = {True:_('ItemsCreator','Temporal'),False:_('ItemsCreator','Sanctoral')}
@@ -937,7 +955,7 @@ class ItemsCreator(SuperTranslator):
                         2:_('ItemsCreator','Second Class'),
                         3:_('ItemsCreator','Third Class'),
                         4:_('ItemsCreator','Fourth Class'),
-                        5:_('ItemsCreator','Commemoration'),}
+                        5:_('ItemsCreator','Commemoration')}
        
         
     
