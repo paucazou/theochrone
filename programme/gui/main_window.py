@@ -14,6 +14,7 @@ sys.path.append(chemin)
 import adjutoria
 import annus
 import collections
+import math
 import officia
 import settings
 os.chdir(chemin)
@@ -92,8 +93,10 @@ class Main(QMainWindow,SuperTranslator):
         elif debut == fin != current.toPyDate():
             self.useDate(QDate(debut.year,debut.month,debut.day))
         elif debut != fin:
-            self.W.onglets.W.tabPlus.frome.setDate(QDate(debut.year,debut.month,debut.day))
-            self.W.onglets.W.tabPlus.to.setDate(QDate(fin.year,fin.month,fin.day))
+            frome = self.W.onglets.W.tabPlus.frome
+            while frome.date().toPyDate() != debut:
+                frome.setDate(QDate(debut.year,debut.month,debut.day))
+                self.W.onglets.W.tabPlus.to.setDate(QDate(fin.year,fin.month,fin.day))
             self.useArbitrary()
             self.W.onglets.tabs.setCurrentIndex(1)
         
@@ -542,13 +545,13 @@ class ExportResults(SuperTranslator):
         first_items, last_items = [], []
         left_center = Qt.AlignLeft + Qt.AlignVCenter
         rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
-        for candidate in data :
-            if self.painter.boundingRect(QRectF(),left_center,candidate).width() <= rectangle_sizes[0].width():
-                first_items.append(candidate)
-            else:
-                last_items.append((candidate,self.painter.boundingRect(QRectF(),left_center,candidate).width()/rectangle_sizes[1].width()))
-        last_items.sort(key=lambda x: len(x))
-        table = ['','']        
+        for i,candidate in enumerate(data) :
+            if self.painter.boundingRect(QRectF(),left_center,candidate).width() > rectangle_sizes[0].width():
+                last_items.append((data.pop(i),self.painter.boundingRect(QRectF(),left_center,candidate).width()/rectangle_sizes[1].width()))
+        last_items.sort(key=lambda x: len(x[0]))
+        for elt, rate in last_items:
+            min_character = len(elt)/rate
+            print(min_character)
         
         
     def createHRectangles(self,number,percentage):
