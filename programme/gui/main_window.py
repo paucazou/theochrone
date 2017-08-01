@@ -82,7 +82,7 @@ class Main(QMainWindow,SuperTranslator):
         self.W.onglets.W.tabPlus.to.editingFinished.connect(self.useArbitrary)
         self.W.onglets.W.tabPlus.frome.editingFinished.connect(self.useArbitrary)
         
-    def processCommandLineArgs(self,args):
+    def processCommandLineArgs(self,args): 
         reverse, debut, fin, plus = args
         if reverse != 1:
             self.W.onglets.W.tab1.keyword.setText(' '.join(reverse))
@@ -518,7 +518,7 @@ class ExportResults(SuperTranslator):
         """Paint feasts printed on the screen.
         headers and data are lists of strings."""
         fontSize = 12
-        left_center = Qt.AlignLeft + Qt.AlignVCenter # + Qt.TextWordWrap + Qt.TextDontClip
+        left_center = Qt.AlignLeft + Qt.AlignVCenter + Qt.TextWordWrap + Qt.TextDontClip
         self.painter.setFont(QFont(self.font + ' Bold',fontSize))
         rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*3/100)
         self.painter.drawText(rectangle_title,left_center,data[0])
@@ -526,11 +526,15 @@ class ExportResults(SuperTranslator):
         self.currentPoint.setY(rectangle_title.bottom())
         
         rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
-        self.paintInBoxes(headers,data[1:])
         for i, tuple_ in enumerate(zip(headers,data[1:])):
-            header, case = tuple_
-            box = QRect(self.currentPoint,rectangle_sizes[i+1==len(data[1:])])
-            self.painter.drawText(box,left_center,"{} : {}".format(header, case))
+            text = "{} : {}".format(*tuple_)
+            last_items = []
+            if self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width() > rectangle_sizes[0].width():
+                print(text)
+                last_items.append((text,self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width()/rectangle_sizes[1].width()))
+                continue
+            box = QRect(self.currentPoint,rectangle_sizes[0])
+            self.painter.drawText(box,left_center,text)
             if box.left() == self.page_rectangle.left():
                 self.currentPoint = box.topRight()
             else:
@@ -538,21 +542,12 @@ class ExportResults(SuperTranslator):
                 self.currentPoint.setY(box.bottom())
         self.currentPoint.setX(self.left)
         self.currentPoint.setY(box.bottom())
-        
-    def paintInBoxes(self,headers,data):
-        """Put the headers and the data according to their size"""
-        data = ["{} : {}".format(header, case) for header, case in zip(headers,data) ]
-        first_items, last_items = [], []
-        left_center = Qt.AlignLeft + Qt.AlignVCenter
-        rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
-        for i,candidate in enumerate(data) :
-            if self.painter.boundingRect(QRectF(),left_center,candidate).width() > rectangle_sizes[0].width():
-                last_items.append((data.pop(i),self.painter.boundingRect(QRectF(),left_center,candidate).width()/rectangle_sizes[1].width()))
-        last_items.sort(key=lambda x: len(x[0]))
-        for elt, rate in last_items:
-            min_character = len(elt)/rate
-            print(min_character)
-        
+        if last_items:
+            last_items.sort(key=lambda x: len(x[0]))
+            for elt, rate in last_items:
+                box = QRect(self.currentPoint,self.createHRectangles(1,1.5+1.5*math.ceil(rate)))
+                self.painter.drawText(box,left_center,elt)
+                self.currentPoint = box.bottomLeft()        
         
     def createHRectangles(self,number,percentage):
         """Returns the size of each rectangle.
