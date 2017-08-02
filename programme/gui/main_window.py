@@ -398,7 +398,7 @@ class ExportResults(SuperTranslator):
             self.printer.setOutputFileName(dialog[0])
             self.paintController()
             
-    def paintController(self): # faire un tableau semblable à celui de la version web
+    def paintController(self):
         """Manage the main painting"""
         self.defineLook()
         paper_rect = self.printer.paperRect()
@@ -411,15 +411,10 @@ class ExportResults(SuperTranslator):
         
         self.currentPoint.setY(self.top)
         self.currentPoint.setX(self.left)
-        pen = QPen(Qt.SolidLine)
-        pen.setWidth(20)
-        pen.setColor(QColor(Qt.blue))
+        self.preparePen(20,Qt.SolidLine,Qt.blue)
         
         self.painter.begin(self.printer)
-        self.painter.setPen(pen)
         #self.painter.drawRect(self.page_rectangle)
-        pen.setColor(QColor(Qt.black))
-        self.painter.setPen(pen)
         self.paintMainTitle()
         headers, data = self.extractData()
         self.iterPainter(data,headers)
@@ -463,9 +458,16 @@ class ExportResults(SuperTranslator):
             self.printer.newPage()
             self.currentPoint.setY(self.top)
             self.currentPoint.setX(self.left)
+  
+    def preparePen(self,width,style,color=Qt.black):
+        pen = QPen(style)
+        pen.setColor(QColor(color))
+        pen.setWidth(width)
+        self.painter.setPen(pen)
         
     def paintMainTitle(self):
         """Paint the main title, ie the research keywords"""
+        self.preparePen(20,Qt.SolidLine)
         title = self.parent.windowTitle()
         fontSize = 25
         percentage = 10
@@ -484,6 +486,7 @@ class ExportResults(SuperTranslator):
     
     def paintIntermediateTitles(self,title):
         """Paint the intermediate titles : years, months and weeks"""
+        self.preparePen(15,Qt.SolidLine)
         fontSize = 16
         self.painter.setFont(QFont(self.font,fontSize))
         rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*4/100)
@@ -494,6 +497,7 @@ class ExportResults(SuperTranslator):
     
     def paintSubtitles(self,title):
         """Paint subtitles : days"""
+        self.preparePen(10,Qt.DashLine)
         fontSize = 14
         self.painter.setFont(QFont(self.font,fontSize))
         rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*3/100)
@@ -517,6 +521,7 @@ class ExportResults(SuperTranslator):
     def paintFeasts(self,headers,data):
         """Paint feasts printed on the screen.
         headers and data are lists of strings."""
+        self.preparePen(10,Qt.SolidLine,Qt.darkGray)
         fontSize = 12
         left_center = Qt.AlignLeft + Qt.AlignVCenter + Qt.TextWordWrap + Qt.TextDontClip
         self.painter.setFont(QFont(self.font + ' Bold',fontSize))
