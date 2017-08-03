@@ -14,6 +14,7 @@ sys.path.append(chemin)
 import adjutoria
 import annus
 import collections
+import error_windows
 import math
 import officia
 import settings
@@ -232,6 +233,8 @@ class Main(QMainWindow,SuperTranslator):
         else:
             plus = False
         selection = officia.inversons(keyword,self.Annee,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
+        if isinstance(selection[0],str):
+            return error_windows.ErrorWindow(selection[0])
         self.W.tableau = Table(selection,self.Annee,True)
         self.setCentralWidget(self.W.tableau)
         officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=[keyword])
