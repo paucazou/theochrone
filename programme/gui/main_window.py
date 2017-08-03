@@ -126,23 +126,27 @@ class Main(QMainWindow,SuperTranslator):
         
     def actions(self):
         """A function which defines actions in the main window"""
+        if sys.platform.startswith('darwin'):
+            ctrl = 'Cmd+'
+        else:
+            ctrl = 'Ctrl+'
         
         #File
         # Settings
         self.settingsAction = QAction(QIcon('icons/settings.png'),'settings',self) # icons https://www.iconfinder.com/icons/353407/cog_settings_icon#size=128
         self.settingsAction.triggered.connect(self.openSettings)
-        self.settingsAction.setShortcut('Ctr+S')
+        self.settingsAction.setShortcut(ctrl+'S')
         # Print
         self.printAction = QAction(QIcon('icons/print.png'),'print',self) # https://www.iconfinder.com/icons/392497/print_printer_printing_icon#size=128
-        self.printAction.setShortcut('Ctrl+P')
+        self.printAction.setShortcut(ctrl+'P')
         self.printAction.triggered.connect(self.printChildren)
         # PDF
         self.exportPDF = QAction(QIcon('icons/pdf.png'),'export as PDF',self) # https://www.iconfinder.com/icons/83290/file_pdf_icon#size=32
         self.exportPDF.triggered.connect(self.ferryman.exportAsPDF)
-        self.exportPDF.setShortcut('Ctrl+E')
+        self.exportPDF.setShortcut(ctrl+'E')
         # Exit
         self.exitAction = QAction(QIcon('icons/exit.png'),'exit_name',self)
-        self.exitAction.setShortcut('Ctrl+Q')
+        self.exitAction.setShortcut(ctrl+'Q')
         self.exitAction.triggered.connect(self.close)
         
         # Languages
