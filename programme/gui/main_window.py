@@ -104,6 +104,7 @@ class Main(QMainWindow,SuperTranslator):
     def menu(self):
         """A function which describes the menubar of the main window"""
         menubar = self.menuBar()
+        menubar.setNativeMenuBar(False)
         
         # File menu
         self.fileMenu = menubar.addMenu('file')
@@ -124,7 +125,7 @@ class Main(QMainWindow,SuperTranslator):
         # Help menu
         self.helpMenu = menubar.addMenu('help')
         
-    def actions(self):
+    def actions(self): # WARNING not available on os x
         """A function which defines actions in the main window"""
         if sys.platform.startswith('darwin'):
             ctrl = 'Cmd+'
