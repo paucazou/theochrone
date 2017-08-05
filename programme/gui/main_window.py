@@ -22,7 +22,7 @@ os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, QLocale, QPoint, QRect, QRectF, QSize, Qt, QTranslator
 from PyQt5.QtGui import QColor, QFont, QFontMetrics, QIcon, QPen, QPainter, QTextDocument
-from PyQt5.QtPrintSupport import QPrintDialog, QPrinter
+from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
 from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from translation import *
 
@@ -138,7 +138,7 @@ class Main(QMainWindow,SuperTranslator):
         # Print
         self.printAction = QAction(QIcon('icons/print.png'),'print',self) # https://www.iconfinder.com/icons/392497/print_printer_printing_icon#size=128
         self.printAction.setShortcut(ctrl+'P')
-        self.printAction.triggered.connect(self.printChildren)
+        self.printAction.triggered.connect(self.ferryman.exportToPrinter)
         # PDF
         self.exportPDF = QAction(QIcon('icons/pdf.png'),'export as PDF',self) # https://www.iconfinder.com/icons/83290/file_pdf_icon#size=32
         self.exportPDF.triggered.connect(self.ferryman.exportAsPDF)
@@ -342,6 +342,7 @@ class ExportResults(SuperTranslator):
         self.painter = QPainter()
         self.currentPoint = QPoint(0,0)
         self.printDialog = QPrintDialog(self.printer,self.parent)
+        self.printDialog.setWindowTitle(_('ExportResults','Print results'))
         self.personal_directory = os.path.expanduser('~')
         self.retranslateUI()
         
@@ -394,8 +395,14 @@ class ExportResults(SuperTranslator):
         self.font = 'Arial'
         
     def exportToPrinter(self):
-        if self.printDialog.exec():
-            print('oui')
+        preview = QPrintPreviewDialog(self.printer)
+        preview.paintRequested.connect(self.paintController)
+        preview.exec()
+        
+        if self.printDialog.exec() and False: # DEPRECATED
+            print('Printing...')
+            self.paintController()
+            print('Printing finished')
             
     def exportAsPDF(self):
         dialog = QFileDialog.getSaveFileName(self.parent,self.exportAsPdfTitle,self.personal_directory,self.typeFiles)
