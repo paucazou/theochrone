@@ -212,7 +212,7 @@ class Main(QMainWindow,SuperTranslator):
         self.rightDock.setWindowTitle(_('Main','Research'))
         
     def openSettings(self): # passer un argument concernant la langue choisie
-        self.W.settings = settings.SettingsWindow()
+        self.W.settings = settings.SettingsWindow(parent=self)
         
     def useDate(self,date):
         self.setWindowTitle('Theochrone - ' + date.toString())

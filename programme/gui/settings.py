@@ -19,10 +19,10 @@ _ = QCoreApplication.translate
 
 class SettingsWindow(QWidget,SuperTranslator):
     """Settings window"""
-    def __init__(self):
+    def __init__(self,parent):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
-        
+        self.parent = parent
         
         self.languages = ('english','francais','latina')
         self.initUI()
@@ -83,6 +83,9 @@ class SettingsWindow(QWidget,SuperTranslator):
         # Buttons
         self.ok.clicked.connect(self.saveSettings)
         self.cancel.clicked.connect(self.close)
+        
+        # geometry
+        self.move(self.parent.geometry().topLeft())
         self.show()
         
     def retranslateUI(self):
