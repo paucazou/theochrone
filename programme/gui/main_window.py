@@ -146,8 +146,8 @@ class Main(QMainWindow,SuperTranslator):
         self.exportPDF.triggered.connect(self.ferryman.exportAsPDF)
         self.exportPDF.setShortcut(ctrl+'D')
         # Excel
-        self.exportSpreadsheet = QAction(QIcon('icons/excel.png'),'export as spreadsheet',self)
-        self.exportSpreadsheet.triggered.connect(self.ferryman.exportToExcel)
+        self.exportSpreadsheet = QAction(QIcon('icons/spreadsheet.png'),'export to spreadsheet',self)
+        self.exportSpreadsheet.triggered.connect(self.ferryman.exportToSpreadsheet)
         self.exportSpreadsheet.setShortcut(ctrl+'X')
         # Exit
         self.exitAction = QAction(QIcon('icons/exit.png'),'exit_name',self)
@@ -380,13 +380,13 @@ class ExportResults(SuperTranslator):
     def extractData(self):
         if isinstance(self.parent.centralWidget(),Tree):
             header_item = self.parent.centralWidget().headerItem()
-            headers = [ header_item.text(i) for i in range(header_item.columnCount()) ][1:]
+            headers = [ header_item.text(i) for i in range(header_item.columnCount()) ]
             data = self.extractTreeData(self.parent.centralWidget().invisibleRootItem())
             if dic_depth(data) != 1:
                 data = self.formatTreeData(data,collections.OrderedDict())
         else:
             table = self.parent.centralWidget()
-            headers = [ table.horizontalHeaderItem(i).text() for i in range(table.columnCount()) ][2:]
+            headers = [ table.horizontalHeaderItem(i).text() for i in range(table.columnCount()) ]
             nb_lines = table.rowCount()
             item = table.item
             data = {item(i,0).text():[] for i in range(nb_lines) if item(i,0) }
@@ -396,9 +396,9 @@ class ExportResults(SuperTranslator):
                      )        
         return headers, data
         
-    def exportToExcel(self):
-        """Export current data to Excel"""
-        print(self.extractData)
+    def exportToSpreadsheet(self):
+        """Export current data to spreadsheet"""
+        print(self.extractData())
     
     
     def defineLook(self):
@@ -441,7 +441,7 @@ class ExportResults(SuperTranslator):
         #self.painter.drawRect(self.page_rectangle)
         self.paintMainTitle()
         headers, data = self.extractData()
-        self.iterPainter(data,headers)
+        self.iterPainter(data,headers[(isinstance(self.parent.centralWidget(),Table) + 1):])
         #self.paintIntermediateTitles('2017 : janvier : sixième semaine')
         #self.paintSubtitles('Vendredi premier janvier 2017')
         #self.paintFeasts(('Classe','Statut','Couleur'),('Vendredi de la première semaine de Carême','Deuxième classe','Célébrée','Violet'))
