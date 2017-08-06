@@ -6,6 +6,7 @@ import calendar
 import datetime
 import os.path
 import sys
+import xlwt
 
 chemin = os.path.dirname(os.path.abspath(__file__))
 programme = os.path.abspath(chemin + '/..')
@@ -112,6 +113,7 @@ class Main(QMainWindow,SuperTranslator):
         self.fileMenu.addAction(self.settingsAction)
         self.fileMenu.addAction(self.printAction)
         self.fileMenu.addAction(self.exportPDF)
+        self.fileMenu.addAction(self.exportSpreadsheet)
         self.fileMenu.addAction(self.exitAction)
         
         # Edit menu
@@ -142,7 +144,11 @@ class Main(QMainWindow,SuperTranslator):
         # PDF
         self.exportPDF = QAction(QIcon('icons/pdf.png'),'export as PDF',self) # https://www.iconfinder.com/icons/83290/file_pdf_icon#size=32
         self.exportPDF.triggered.connect(self.ferryman.exportAsPDF)
-        self.exportPDF.setShortcut(ctrl+'E')
+        self.exportPDF.setShortcut(ctrl+'D')
+        # Excel
+        self.exportSpreadsheet = QAction(QIcon('icons/excel.png'),'export as spreadsheet',self)
+        self.exportSpreadsheet.triggered.connect(self.ferryman.exportToExcel)
+        self.exportSpreadsheet.setShortcut(ctrl+'X')
         # Exit
         self.exitAction = QAction(QIcon('icons/exit.png'),'exit_name',self)
         self.exitAction.setShortcut(ctrl+'Q')
@@ -298,7 +304,7 @@ class Main(QMainWindow,SuperTranslator):
                                                               tab.to.date().toString()))
         officia.pdata(write=True,history='dates',debut=debut,fin=fin,fromto=True)
         
-    def exportAsPDF(self):
+    def exportAsPDF(self): # DEPRECATED
         personal_directory = os.path.expanduser('~')
         dialog = QFileDialog.getSaveFileName(self,'Export as PDF',personal_directory,'Documents PDF (*.pdf)')
         if dialog[0]:
@@ -307,7 +313,7 @@ class Main(QMainWindow,SuperTranslator):
             printer.setOutputFileName(dialog[0])
             self.centralWidget().render(printer) # Créer plutôt un modèle d'impression à partir des données de base, avec du texte brut. TODO
             
-    def printResults(self):
+    def printResults(self):# DEPRECATED
         printer = QPrinter(QPrinter.HighResolution)
         printDialog = QPrintDialog(printer,self)
         printDialog.setWindowTitle(_("Main","Print results"))
@@ -319,7 +325,7 @@ class Main(QMainWindow,SuperTranslator):
                 printer.newPage()
             painter.end()
             
-    def printChildren(self,parent=None):
+    def printChildren(self,parent=None): #DEPRECATED    
         if not parent:
             parent = self.centralWidget().invisibleRootItem()
         for i in range(parent.childCount()):
@@ -390,6 +396,11 @@ class ExportResults(SuperTranslator):
                      )        
         return headers, data
         
+    def exportToExcel(self):
+        """Export current data to Excel"""
+        print(self.extractData)
+    
+    
     def defineLook(self):
         """Method which will be filled by a dialog window"""
         self.font = 'Arial'
