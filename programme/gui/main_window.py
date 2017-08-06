@@ -398,7 +398,21 @@ class ExportResults(SuperTranslator):
         
     def exportToSpreadsheet(self):
         """Export current data to spreadsheet"""
-        print(self.extractData())
+        headers, data = self.extractData()
+        book = xlwt.Workbook()
+        sheet = book.add_sheet(self.parent.windowTitle())
+        for i, elt in enumerate(headers):
+            sheet.write(0,i,elt)
+        row = 1
+        print(data)
+        for key, value in data.items():
+            for elt in value:
+                sheet.write(row,0,key)
+                [sheet.write(row,i+1,text) for i, text in enumerate(elt)]
+                row += 1
+        dialog = QFileDialog.getSaveFileName(self.parent,self.exportAsSheetTitle,self.personal_directory,self.typeSheetFiles)
+        if dialog[0]:
+            book.save(dialog[0])
     
     
     def defineLook(self):
@@ -590,6 +604,8 @@ class ExportResults(SuperTranslator):
         self.printDialog.setWindowTitle(_("ExportResults","Print results"))
         self.exportAsPdfTitle = _("ExportResults","Export as PDF")
         self.typeFiles = _("ExportResults",'Documents PDF (*.pdf)')
+        self.exportAsSheetTitle = _('ExportResults','Export as spreadsheet')
+        self.typeSheetFiles = _("ExportResults",'Documents Excel (*.xls)')
     
         
 class Onglets(QWidget,SuperTranslator):
