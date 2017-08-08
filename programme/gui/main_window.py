@@ -396,7 +396,7 @@ class ExportResults(SuperTranslator):
                      )        
         return headers, data
         
-    def exportToSpreadsheet(self):
+    def exportToSpreadsheet(self):# TODO mettre les cases à la bonne taille, changer les dates en dates Excel
         """Export current data to spreadsheet"""
         headers, data = self.extractData()
         book = xlwt.Workbook()
@@ -404,16 +404,11 @@ class ExportResults(SuperTranslator):
         for i, elt in enumerate(headers):
             sheet.write(0,i,elt)
         row = 1
-        if isinstance(self.parent.centralWidget(),Tree):
-            self.spreadsheetlist = []
-            self.iterSpreadsheet(data)
-            [print(elt) for elt in self.spreadsheetlist]
-            return
-        for key, value in data.items():
-            for elt in value:
-                sheet.write(row,0,key)
-                [sheet.write(row,i+1,text) for i, text in enumerate(elt)]
-                row += 1
+        self.spreadsheetlist = []
+        self.iterSpreadsheet(data)
+        for elt in self.spreadsheetlist:
+            [sheet.write(row,i,text) for i, text in enumerate(elt)]
+            row += 1
         dialog = QFileDialog.getSaveFileName(self.parent,self.exportAsSheetTitle,self.personal_directory,self.typeSheetFiles)
         if dialog[0]:
             book.save(dialog[0])
