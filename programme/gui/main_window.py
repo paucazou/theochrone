@@ -404,7 +404,11 @@ class ExportResults(SuperTranslator):
         for i, elt in enumerate(headers):
             sheet.write(0,i,elt)
         row = 1
-        print(data)
+        if isinstance(self.parent.centralWidget(),Tree):
+            self.spreadsheetlist = []
+            self.iterSpreadsheet(data)
+            [print(elt) for elt in self.spreadsheetlist]
+            return
         for key, value in data.items():
             for elt in value:
                 sheet.write(row,0,key)
@@ -414,6 +418,13 @@ class ExportResults(SuperTranslator):
         if dialog[0]:
             book.save(dialog[0])
     
+    def iterSpreadsheet(self,raw_data):
+        """Recursive function which append data to self.spreadsheetlist"""
+        for key, value in raw_data.items():
+            if isinstance(value,list):
+                [self.spreadsheetlist.append([key] + elt) for elt in value]
+            else:
+                self.iterSpreadsheet(value)
     
     def defineLook(self):
         """Method which will be filled by a dialog window"""
