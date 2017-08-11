@@ -111,7 +111,7 @@ class Fete:
         else:
             raise TypeError("""{} is not a 'Fete' class, or any of her subclasses.""".format(autrefete))
         
-    def __hash__deprecated(self): # méthode très mauvaise, dont le résultat est changeant. Il faut trouver une autre solution. fonctionne cependant au sein d'une même instance
+    def __hash__web(self): # méthode très mauvaise, mais seule utilisable actuellement pour le web
         """Méthode appellée par la fonction hash()"""
         hash_list = []
         for item in self.__dict__.values():
@@ -121,8 +121,9 @@ class Fete:
                 hash_list.append(item)
         return hash(str(hash_list))
     
-    def __hash__(self): # TEST
+    def __hash__(self): # TEST pose problème pour les datetime
         """Method called by hash() function"""
+        print(self)
         parent = self.parent
         del(self.parent)
         hache = hash(json.dumps(self.__dict__,sort_keys=True))
@@ -308,7 +309,7 @@ class Fete:
         
     images = property(_get_images)
     
-    hache = property(__hash__)
+    hache = property(__hash__web)
     
 class FeteFixe(Fete):
     """Une classe définissant une fête fixe, c'est-à-dire dont la date ne change pas dans l'année."""
