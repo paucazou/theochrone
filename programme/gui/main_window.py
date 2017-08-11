@@ -568,18 +568,21 @@ class ExportResults(SuperTranslator):
         self.preparePen(10,Qt.SolidLine,Qt.darkGray)
         fontSize = 12
         left_center = Qt.AlignLeft + Qt.AlignVCenter + Qt.TextWordWrap + Qt.TextDontClip
-        self.painter.setFont(QFont(self.font + ' Bold',fontSize))
+        feastFont = QFont(self.font,fontSize)
+        feastFont.setBold(True)
+        self.painter.setFont(feastFont)
         rectangle_title = QRect(self.currentPoint.x(),self.currentPoint.y(),self.page_rectangle.width(),self.page_rectangle.height()*3/100)
         self.painter.drawText(rectangle_title,left_center,data[0])
-        self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight())) # changer le style, peut-être l'épaisseur aussi
+        self.painter.drawLine(QLineF(rectangle_title.bottomLeft(),rectangle_title.bottomRight()))
         self.currentPoint.setY(rectangle_title.bottom())
         
+        feastFont.setBold(False)
+        self.painter.setFont(feastFont)
         rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
         last_items = []
         for i, tuple_ in enumerate(zip(headers,data[1:])):
             text = "{} : {}".format(*tuple_)
             if self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width() > rectangle_sizes[0].width():
-                print(text)
                 last_items.append((text,self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width()/rectangle_sizes[1].width()))
                 continue
             box = QRect(self.currentPoint,rectangle_sizes[0])
