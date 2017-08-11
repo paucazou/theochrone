@@ -45,3 +45,23 @@ select::-ms-expand {
 {
     font-size: 4em;
 }
+
+/* Hide all Architecture specific HTML on page load */
+.unknown,
+.mobile,
+.arch32,
+.arch64 {
+    display: none;
+}
+
+/* Only display the content if the JS added a matching class to the HTML tag */
+html.unknown,
+html.mobile,
+html.arch32,
+html.arch64,
+html.unknown .unknown,
+html.mobile .mobile,
+html.arch32 .arch32,
+html.arch64 .arch64 {
+    display: block;
+}
