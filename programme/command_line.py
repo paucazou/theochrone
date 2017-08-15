@@ -15,6 +15,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
         },
         """
         # Main options
+        'TODAY': {
+            'short':[],
+            'long': ['--'],
+            },
         'DEPUIS':{
             'short':[],
             'long' : ['--from'],
@@ -137,7 +141,6 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'long':['--help'],
             }
         }
-
 
 class AutoCompleter():
     
@@ -277,6 +280,8 @@ def args():
                             after current one, and the year before current one.
                     All of these formats are also accepted by the --from and --to options. (See below)
                         """))
+    main.add_argument('--',dest='TODAY',action='store_true',help=_("""Convenient argument for Windows and OS X users.
+        Returns results for current date."""))
     main.add_argument('--from',dest='DEPUIS',nargs='*',default=1,help=_("""With --to option, --from option can be used to point out the beginning of the period you want to print.
                     Arguments accepted have exactly the same format as DATE (see above).
                     --from may be implied : if --to point out a date later than the current day,

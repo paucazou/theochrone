@@ -141,7 +141,7 @@ elif args.entree_historique:
         debut, fin = entree[1], entree[2]
         args.INVERSE = entree[3]
     
-elif args.DEPUIS == 1 and args.JUSQUE == 1:
+elif args.DEPUIS == 1 and args.JUSQUE == 1 or args.TODAY:
     date, semaine_seule, mois_seul, annee_seule = officia.datevalable(args.DATE,args.langue)
     debut, fin = officia.AtoZ(semaine_seule,mois_seul,annee_seule,date)
 else:
@@ -183,11 +183,11 @@ if args.navigateur:
         sys.exit(subprocess.run(['./navette_navigateur.py',str(debut.day),str(debut.month),str(debut.year)]))
     else:
         sys.exit(subprocess.run(['./navette_navigateur.py']))
-elif not os.isatty(0) or args.gui:
+elif not os.isatty(0) or args.gui or (len(sys.argv) <= 1 and not sys.platform.startswith('linux')):
     from gui import main_window
     app = main_window.App([args.INVERSE,debut,fin,args.plus])
     sys.exit(app.exec_())
-
+    
 ### Définition de quelques variables ###  
 ordo=args.ordo
 
