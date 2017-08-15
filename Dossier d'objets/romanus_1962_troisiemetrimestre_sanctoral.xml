@@ -4248,7 +4248,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">rouge</str>
-      <list key="_images"/>
+      <str key="_images"/>
       <int key="_priorite">100</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -4488,9 +4488,7 @@
     <str key="classe">FeteFixe</str>
     <dict key="attributs">
       <str key="_couleur">blanc</str>
-      <list key="_images">
-        <str>assomption</str>
-      </list>
+      <str key="_images">assomption</str>
       <int key="_priorite">2500</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
