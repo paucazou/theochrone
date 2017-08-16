@@ -31,7 +31,7 @@ from messages import args
 
 logger = phlog.consoleLog(10)
 logger.setLevel(phlog.logging.DEBUG)
-logger.info(args)
+logger.debug(args)
 ### Traitement des informations entrées par l'utilisateur ###
 if args.settings != None:
     if args.settings.lower() == "off":
