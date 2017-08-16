@@ -11,7 +11,7 @@ except ImportError:
 gettext.install('messages','./i18n')
 
 
-if main_name in ('theochrone.py','officia.py'):
+if main_name in ('theochrone.pyw','officia.py'):
     args = args()
     ### i18n ###
     loc = './i18n'

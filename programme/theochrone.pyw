@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3.5
 # -*-coding:Utf-8 -*
 #Deus, in adjutorium meum intende. Domine, ad adjuvandum me festina.
 
@@ -23,10 +23,15 @@ import annus
 import calendar
 import datetime
 import officia
+import phlog
 import subprocess
 import sys
 import webbrowser
 from messages import args
+
+logger = phlog.consoleLog(10)
+logger.setLevel(phlog.logging.DEBUG)
+logger.info(args)
 ### Traitement des informations entrées par l'utilisateur ###
 if args.settings != None:
     if args.settings.lower() == "off":
