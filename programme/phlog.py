@@ -11,7 +11,9 @@ formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 levels = (logging.CRITICAL, logging.ERROR, logging.WARNING, logging.INFO, logging.DEBUG)
 
 def consoleLog(level,logger=logging.getLogger()):
-    """Return logger. level is an int which must equal to logging levels."""
+    """Console only.
+    Return logger.
+    level is an int which must equal to logging levels."""
     if level not in levels:
         raise ValueError("Unknown level. Level must be CRITICAL : {}, ERROR : {}, WARNING : {}, INFO : {}, DEBUG : {}".format(*levels))
     stream_handler = logging.StreamHandler()
@@ -21,6 +23,9 @@ def consoleLog(level,logger=logging.getLogger()):
     return logger
 
 def fileLog(level,file_name='activity.log',logger=logging.getLogger()):
+    """File only.
+    Return logger.
+    level is an int which must equal to logging levels."""
     if level not in levels:
         raise ValueError("Unknown level. Level must be CRITICAL : {}, ERROR : {}, WARNING : {}, INFO : {}, DEBUG : {}".format(*levels))
     file_handler = logging.handlers.RotatingFileHandler(file_name,'a',1000000,1)
@@ -30,6 +35,19 @@ def fileLog(level,file_name='activity.log',logger=logging.getLogger()):
     return logger
 
 def allLog(level,file_name='activity.log',logger=logging.getLogger()):
+    """File and console.
+    Return logger.
+    level is an int which must equal to logging levels."""
     logger = consoleLog(level,logger)
     logger = fileLog(level,file_name,logger)
     return logger
+
+# convenient prepared loggers
+loggers = {}
+loggers['console'] = consoleLog(levels[-1],logging.getLogger('console'))
+loggers['file'] = fileLog(levels[-1],logger=logging.getLogger('file'))
+loggers['all'] = allLog(levels[-1],logger=logging.getLogger('all'))
+
+for value in loggers.values():
+    value.setLevel(levels[-1])
+

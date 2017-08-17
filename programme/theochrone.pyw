@@ -29,8 +29,7 @@ import sys
 import webbrowser
 from messages import args
 
-logger = phlog.consoleLog(10)
-logger.setLevel(phlog.logging.DEBUG)
+logger = phlog.loggers['console']
 logger.debug(args)
 ### Traitement des informations entrées par l'utilisateur ###
 if args.settings != None:
