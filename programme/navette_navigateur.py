@@ -8,7 +8,7 @@ import threading
 import webbrowser
 
 # in a bundle : leave the program if __file__ is not called by main program
-if getattr(sys,'frozen',False) and len(sys.argv) == 1:
+if getattr(sys,'frozen',False) and 'navette_navigateur.py' not in sys.argv[0]: # doesn't work
     sys.exit()    
 
 ### Thread classes ###

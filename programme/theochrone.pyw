@@ -11,8 +11,8 @@
 ### ###
 
 import os
-chemin = os.path.dirname(os.path.abspath(__file__))
-os.chdir(chemin)
+#chemin = os.path.dirname(os.path.abspath(__file__))
+#os.chdir(chemin)
 
 from command_line import AutoCompleter
 
