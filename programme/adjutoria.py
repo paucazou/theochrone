@@ -5,14 +5,16 @@ import copy
 import calendar
 import datetime
 import json
+import messages
 import officia
 import os
 import re
-from messages import adjutoria_messages as msg, args
+import sys
 
+msg = messages.translated_messages('adjutoria')
 liturgiccal = calendar.Calendar(firstweekday=6)
 file_folder = os.path.dirname(os.path.abspath(__file__))
-if callable(args) or args.gui:
+if messages.args.gui or not 'theochrone' in sys.argv[0]:
     import pickle
     with open(file_folder+'/data/images.pic','rb') as file:
         images = pickle.Unpickler(file).load() # Un dictionnaire, prenant pour clef Fete._images et pour valeur une liste d'objets imagines.Images

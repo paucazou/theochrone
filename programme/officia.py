@@ -3,15 +3,16 @@
 
 import calendar
 import datetime
+import messages
 import os
 import pickle
 import re
 import shutil
 import sys
 import unicodedata
-from messages import officia_messages as msg
-chemin = os.path.dirname(os.path.abspath(__file__))
 
+chemin = os.path.dirname(os.path.abspath(__file__))
+msg = messages.translated_messages('officia')
 # variables
 
 unites = (re.compile(r'(1(ere?)?|premiere?)'), # tenter de rajouter un : attention au |

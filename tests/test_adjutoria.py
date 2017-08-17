@@ -13,6 +13,7 @@ from test_annus import FakeFeast
 dossier.main()
 
 import adjutoria
+adjutoria.images = None
 
 def fete_base():
     fete1 = adjutoria.Fete()

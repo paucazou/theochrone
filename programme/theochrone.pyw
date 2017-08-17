@@ -197,7 +197,7 @@ elif not os.isatty(0) or args.gui or (len(sys.argv) <= 1 and not sys.platform.st
 ordo=args.ordo
 
 ### Analyse des fichiers ###
-#Annee = officia.fabrique_an(debut,fin,ordo,args.propre)
+#Annee = officia.fabrique_an(debut,fin,ordo,argsr.propre)
 Annee = annus.LiturgicalCalendar(args.propre,ordo)
 Annee(debut.year,fin.year)
 

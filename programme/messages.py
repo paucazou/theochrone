@@ -1,33 +1,42 @@
 #!/usr/bin/python3.5
 # -*-coding:Utf-8 -*
 """A file with arparse and i18n"""
-import argparse, gettext
+import argparse
+import gettext
+import os
 from command_line import args
-gettext.install('messages','./i18n')
+
+loc = os.path.dirname(os.path.abspath(__file__)) + '/i18n'
+gettext.install('messages',loc)
 
 
 args = args()
-### i18n ###
-loc = './i18n'
-francais = gettext.translation('messages',loc,languages=['fr'])
-english = gettext.translation('messages',loc,languages=['en'])
-latina = gettext.translation('messages',loc,languages=['la_LA'])
+def translated_messages(file_name,language=args.langue):
+    """Return messages translated as a dict
+    filename : string : name of the file which requires translation.
+    language : string : which language is required. default : args.langue"""
+    ### i18n ###
+    francais = gettext.translation('messages',loc,languages=['fr'])
+    english = gettext.translation('messages',loc,languages=['en'])
+    latina = gettext.translation('messages',loc,languages=['la_LA'])
 
-if args.langue == 'francais':
-    francais.install()
-elif args.langue == 'latina':
-    latina.install()
-else:
-    english.install()
+    if language == 'francais':
+        francais.install()
+    elif language == 'latina':
+        latina.install()
+    else:
+        english.install()
 
 
-### Messages ###
-theochrone_messages = {} # a dict with all the messages used in theochrone.py
-adjutoria_messages = {
-    _('francais'),
-    _('english'),
-    _('latina'),
-    } # a dict with all the messages used in adjutoria.py
-officia_messages = {}
+    ### Messages ###
+    messages = {}
+    messages['theochrone'] = {} # a dict with all the messages used in theochrone.py
+    messages['adjutoria'] = {
+        _('francais'),
+        _('english'),
+        _('latina'),
+        } # a dict with all the messages used in adjutoria.py
+    messages['officia'] = {}
+    return messages[file_name]
 
 
