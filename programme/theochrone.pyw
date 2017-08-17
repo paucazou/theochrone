@@ -24,6 +24,7 @@ import calendar
 import datetime
 import officia
 import phlog
+import shiptobrowser
 import subprocess
 import sys
 import webbrowser
@@ -180,13 +181,13 @@ elif args.INVERSE != 1:
 
 if args.navigateur:
     if mois_seul:
-        sys.exit(subprocess.run(['./navette_navigateur.py','mois',str(debut.month),str(debut.year)]))
+        sys.exit(shiptobrowser.openBrowser(search_type='month',date=debut))
     elif args.INVERSE != 1:
-        sys.exit(subprocess.run(['./navette_navigateur.py','inverse',str(debut.year),*args.INVERSE]))
+        sys.exit(shiptobrowser.openBrowser(search_type='reverse',date=debut,keywords=args.INVERSE))
     elif not semaine_seule and not mois_seul and not annee_seule and args.DEPUIS == 1 and args.JUSQUE == 1:
-        sys.exit(subprocess.run(['./navette_navigateur.py',str(debut.day),str(debut.month),str(debut.year)]))
+        sys.exit(shiptobrowser.openBrowser(search_type='day',date=debut))
     else:
-        sys.exit(subprocess.run(['./navette_navigateur.py']))
+        sys.exit(shiptobrowser.openBrowser())
 elif not os.isatty(0) or args.gui or (len(sys.argv) <= 1 and not sys.platform.startswith('linux')):
     from gui import main_window
     app = main_window.App([args.INVERSE,debut,fin,args.plus])
