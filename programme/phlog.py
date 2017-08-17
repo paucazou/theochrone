@@ -45,8 +45,8 @@ def allLog(level,file_name='activity.log',logger=logging.getLogger()):
 # convenient prepared loggers
 loggers = {}
 loggers['console'] = consoleLog(levels[-1],logging.getLogger('console'))
-loggers['file'] = fileLog(levels[-1],logger=logging.getLogger('file'))
-loggers['all'] = allLog(levels[-1],logger=logging.getLogger('all'))
+#loggers['file'] = fileLog(levels[-1],logger=logging.getLogger('file')) # This creates an empty file, even if not called...
+#loggers['all'] = allLog(levels[-1],logger=logging.getLogger('all'))
 
 for value in loggers.values():
     value.setLevel(levels[-1])
