@@ -24,7 +24,6 @@ print "for value in loggers.values(): value.setLevel(levels[0])" >> $progdir/phl
 print "import imagines" >> $progdir/theochrone.pyw # import imagines
 
 pyinstaller $progdir/theochrone.pyw \
-	$progdir/navette_navigateur.py \
 	--name $name \
 	$output \
 	--paths $progdir:$progdir/gui/:$progdir/web/ \
