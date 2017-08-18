@@ -340,19 +340,18 @@ def args():
         Doesn't work with -r/--reverse"""),action='store',default=0,const=1,type=int,nargs='?') # mettre toutes ces options dans un groupe exclusif avec -r/DATE, etc.
 
     system = parser.add_argument_group(_('System options'), description=_("Other options"))
-    system.add_argument('-b','--browser',dest='navigateur',help=_("""Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
+    system.add_argument("-b","--browser",dest="navigateur",help=_("""Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
         - --from/--to options
         - a complete week
         - a complete year
         - years before 1960, after 2100
         - every print option.
         If one of the previous args was entered, it will not result an error,
-        but the program will use default value."""),action='store_true')
+        but the program will use default value."""),action="store_true")
     system.add_argument(*arguments['gui']['short'],*arguments['gui']['long'],dest='gui',help=_("""Open Theochrone in a Graphical User Interface (GUI).
         This is the standard behaviour if Theochrone is opened in a file manager.
         You can pass all research types args."""),action='store_true')
     system.add_argument('--version', action='version',version='%(prog)s 0.1')
-    system.add_argument('--test',help='Do not run',action='store_true')
     system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
     system.add_argument(*arguments['settings']['long'],dest='settings',nargs='?',const='nothing',help=_("""Modify some settings of the program and exits. Following options are available :
         - ON/OFF : set settings and history ON (default) or OFF.
