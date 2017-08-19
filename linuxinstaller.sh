@@ -30,6 +30,7 @@ progdir=./programme
 #check some lines ; if lines were modified, stop the script
 ## theochrone.pyw
 theochrone=$(<$progdir/theochrone.pyw)
+line_theochrone0="import shiptobrowser"
 line_theochrone1="if args.navigateur:
     if mois_seul:
         sys.exit(shiptobrowser.openBrowser(search_type='month',date=debut))
@@ -40,8 +41,10 @@ line_theochrone1="if args.navigateur:
     else:
         sys.exit(shiptobrowser.openBrowser())
 el"
-if [[ $theochrone != *$line_theochrone1* ]]; then miss_exit $progdir/theochrone.pyw ; else
-print ${theochrone/$line_theochrone1/''} > $progdir/theochrone.pyw; fi
+if [[ $theochrone != *$line_theochrone0*$line_theochrone1* ]]; then miss_exit $progdir/theochrone.pyw ; else
+theochrone=${theochrone/$line_theochrone1/''}
+theochrone=${theochrone/$line_theochrone0/''}
+print $theochrone > $progdir/theochrone.pyw; fi
 ## command_line.py
 command_line=$(<$progdir/command_line.py)
 line_command_line1="'navigateur': {
