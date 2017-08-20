@@ -8,7 +8,12 @@
 fcm.miss_exit () {
     # use this if a file was modified and some lines must be changed manually
     # $1 -> name of the script modified
+    # $2 -> lines deprecated
     print $1 was modified. Please check the script before restart.
+    print Here are the lines modified :
+    print '#####################################################################'
+    print $2
+    print '#####################################################################'
     exit 1
     }
     
@@ -42,7 +47,7 @@ fcm.modify_lines () {
     original=$2
     new=$3
     
-    if [[ $file_data != *$original* ]]; then fcm.miss_exit $file ; else
+    if [[ $file_data != *$original* ]]; then fcm.miss_exit $file $original; else
     file_data=${file_data/$original/$new}
     fi
     print $file_data > $file
