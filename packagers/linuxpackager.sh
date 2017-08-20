@@ -1,14 +1,12 @@
 #!/bin/zsh
+# This script packages the program with the help of pyinstaller
+if [[ $PWD != *packagers ]] ; then print Please go to packagers dir ; exit 1 ; fi
+source commonpackagerfunctions.sh
 
-# functions
-miss_exit () {
-    print $1 was modified. Please check the script before restart.
-    exit 1
-    }
 
 # delete dist if exists
-if [[ -a dist ]] ; then rm -r dist ; fi
-if [[ -a tmp ]] ; then rm -r tmp ; fi
+cm.delete_if_exist dist
+cm.delete_if_exist tmp
 # parameters
 if [[ $1 == *file* ]] ; then # one file or one folder (default)
 	output="--onefile"
@@ -20,16 +18,13 @@ if [[ $2 == *32* ]] ; then # 32 bits or 64 bits (default)
 else
 	name=theochrone64
 fi
-# copy main folder to tmp
-dir=tmp
-mkdir $dir 
-cp -r ./programme/ $dir/programme
-cd $dir
-progdir=./programme
+
+cm.copy_and_cd
 
 #check some lines ; if lines were modified, stop the script
 ## theochrone.pyw
 theochrone=$(<$progdir/theochrone.pyw)
+line_theochrone0="import shiptobrowser"
 line_theochrone1="if args.navigateur:
     if mois_seul:
         sys.exit(shiptobrowser.openBrowser(search_type='month',date=debut))
@@ -40,8 +35,10 @@ line_theochrone1="if args.navigateur:
     else:
         sys.exit(shiptobrowser.openBrowser())
 el"
-if [[ $theochrone != *$line_theochrone1* ]]; then miss_exit $progdir/theochrone.pyw ; else
-print ${theochrone/$line_theochrone1/''} > $progdir/theochrone.pyw; fi
+if [[ $theochrone != *$line_theochrone0*$line_theochrone1* ]]; then miss_exit $progdir/theochrone.pyw ; else
+theochrone=${theochrone/$line_theochrone1/''}
+theochrone=${theochrone/$line_theochrone0/''}
+print $theochrone > $progdir/theochrone.pyw; fi
 ## command_line.py
 command_line=$(<$progdir/command_line.py)
 line_command_line1="'navigateur': {
@@ -73,7 +70,6 @@ pyinstaller $progdir/theochrone.pyw \
 	--add-binary $progdir/data/:./data/ \
 	--add-binary $progdir/i18n/:./i18n/ \
 	--add-binary $progdir/gui/icons/:./gui/icons/ \
-	--windowed \
 	--clean 
 
 pyinstaller $name.spec

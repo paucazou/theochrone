@@ -1,6 +1,5 @@
 #!/bin/zsh
-#This script is intended to be used through babun
-
+if [[ $PWD != *packagers ]] ; then print Please go to packagers dir ; exit 1 ; fi
 # functions
 miss_exit () {
     print $1 was modified. Please check the script before restart.
