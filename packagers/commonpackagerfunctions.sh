@@ -56,7 +56,7 @@ fcm.modify_lines () {
     
 fcm.add_lines () {
     # add lines ($2) at the end of the file ($1)
-    print $1 >> $2
+    print $2 >> $1
     print Lines added at the bottom of $1
     }
     
@@ -74,6 +74,7 @@ pcm_line_theochrone1="    if args.navigateur:
         else:
             sys.exit(shiptobrowser.openBrowser())
     el"
+pcm_line_theochrone1_sub='    '
 
 pcm_line_command_line1="'navigateur': {
             'short':['-b'],

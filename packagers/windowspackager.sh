@@ -29,7 +29,7 @@ fcm.add_lines $progdir/phlog.py $pcm_disable_logs
 theochrone=$progdir/theochrone.py
 mv $progdir/theochrone.pyw $theochrone
 fcm.modify_lines $theochrone $pcm_line_theochrone0
-fcm.modify_lines $theochrone $pcm_line_theochrone1
+fcm.modify_lines $theochrone $pcm_line_theochrone1 $pcm_line_theochrone1_sub
 cm=$progdir/command_line.py
 fcm.modify_lines $cm $pcm_line_command_line1
 fcm.modify_lines $cm $pcm_line_command_line2
