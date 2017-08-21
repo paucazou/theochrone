@@ -64,16 +64,16 @@ fcm.add_lines () {
 # parameters
 ## lines to delete
 pcm_line_theochrone0="import shiptobrowser"
-pcm_line_theochrone1="if args.navigateur:
-    if mois_seul:
-        sys.exit(shiptobrowser.openBrowser(search_type='month',date=debut))
-    elif args.INVERSE != 1:
-        sys.exit(shiptobrowser.openBrowser(search_type='reverse',date=debut,keywords=args.INVERSE))
-    elif not semaine_seule and not mois_seul and not annee_seule and args.DEPUIS == 1 and args.JUSQUE == 1:
-        sys.exit(shiptobrowser.openBrowser(search_type='day',date=debut))
-    else:
-        sys.exit(shiptobrowser.openBrowser())
-el"
+pcm_line_theochrone1="    if args.navigateur:
+        if mois_seul:
+            sys.exit(shiptobrowser.openBrowser(search_type='month',date=debut))
+        elif args.INVERSE != 1:
+            sys.exit(shiptobrowser.openBrowser(search_type='reverse',date=debut,keywords=args.INVERSE))
+        elif not semaine_seule and not mois_seul and not annee_seule and args.DEPUIS == 1 and args.JUSQUE == 1:
+            sys.exit(shiptobrowser.openBrowser(search_type='day',date=debut))
+        else:
+            sys.exit(shiptobrowser.openBrowser())
+    el"
 
 pcm_line_command_line1="'navigateur': {
             'short':['-b'],
