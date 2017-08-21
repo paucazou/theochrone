@@ -1,0 +1,3 @@
+pytest>=3.0
+pyinstaller>=3.2
+pynsist>=1.12
