@@ -196,15 +196,15 @@ def main():
         app = main_window.App([args.INVERSE,debut,fin,args.plus])
         sys.exit(app.exec_())
         
-    ### Définition de quelques variables ###  
+### Définition de quelques variables ###  
     ordo=args.ordo
 
-    ### Analyse des fichiers ###
+### Analyse des fichiers ###
     #Annee = officia.fabrique_an(debut,fin,ordo,argsr.propre)
     Annee = annus.LiturgicalCalendar(args.propre,ordo)
     Annee(debut.year,fin.year)
 
-    ### Affichage ###
+#### Affichage ###
 
     if args.INVERSE != 1: # des raisons aléatoires semblent s'appliquer...
         liste = officia.inversons(args.INVERSE,Annee,debut,fin,plus=args.plus,langue=args.langue,exit=True)
