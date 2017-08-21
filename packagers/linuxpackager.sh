@@ -19,48 +19,19 @@ else
 	name=theochrone64
 fi
 
-cm.copy_and_cd
-
-#check some lines ; if lines were modified, stop the script
-## theochrone.pyw
-theochrone=$(<$progdir/theochrone.pyw)
-line_theochrone0="import shiptobrowser"
-line_theochrone1="if args.navigateur:
-    if mois_seul:
-        sys.exit(shiptobrowser.openBrowser(search_type='month',date=debut))
-    elif args.INVERSE != 1:
-        sys.exit(shiptobrowser.openBrowser(search_type='reverse',date=debut,keywords=args.INVERSE))
-    elif not semaine_seule and not mois_seul and not annee_seule and args.DEPUIS == 1 and args.JUSQUE == 1:
-        sys.exit(shiptobrowser.openBrowser(search_type='day',date=debut))
-    else:
-        sys.exit(shiptobrowser.openBrowser())
-el"
-if [[ $theochrone != *$line_theochrone0*$line_theochrone1* ]]; then miss_exit $progdir/theochrone.pyw ; else
-theochrone=${theochrone/$line_theochrone1/''}
-theochrone=${theochrone/$line_theochrone0/''}
-print $theochrone > $progdir/theochrone.pyw; fi
-## command_line.py
-command_line=$(<$progdir/command_line.py)
-line_command_line1="'navigateur': {
-            'short':['-b'],
-            'long':['--browser'],
-            },"
-line_command_line2='system.add_argument("-b","--browser",dest="navigateur",help=_("""Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
-        - --from/--to options
-        - a complete week
-        - a complete year
-        - years before 1960, after 2100
-        - every print option.
-        If one of the previous args was entered, it will not result an error,
-        but the program will use default value."""),action="store_true")'
-if [[ $command_line != *$line_command_line1*$line_command_line2* ]]; then miss_exit $progdir/command_line.py ; else
-command_line=${command_line/$line_command_line1/''}
-command_line=${command_line/$line_command_line2/''}
-print $command_line > $progdir/command_line.py; fi
+fcm.copy_and_cd
+# modify some lines
+theochrone=$progdir/theochrone.py
+mv $progdir/theochrone.pyw $theochrone
+fcm.modify_lines $theochrone $pcm_line_theochrone0
+fcm.modify_lines $theochrone $pcm_line_theochrone1 $pcm_line_theochrone1_sub
+cm=$progdir/command_line.py
+fcm.modify_lines $cm $pcm_line_command_line1
+fcm.modify_lines $cm $pcm_line_command_line2
 
 # add some prod lines
-print "for value in loggers.values(): value.setLevel(levels[0])" >> $progdir/phlog.py # disable logs
-print "import imagines" >> $progdir/theochrone.pyw # import imagines
+fcm.add_lines $progdir/phlog.py $pcm_disable_logs
+fcm.add_lines $progdir/theochrone.pyw $pcm_import_imagines
 
 #pyinstaller
 pyinstaller $progdir/theochrone.pyw \
@@ -73,10 +44,9 @@ pyinstaller $progdir/theochrone.pyw \
 	--clean 
 
 pyinstaller $name.spec
-mv dist ..
-cd ..
-rm -r $dir # deleted temp files
-exit 0
+mv dist/* ../outputs/
+fcm.end_script
+
 #options disabled
 
 	--hidden-import html.parser \

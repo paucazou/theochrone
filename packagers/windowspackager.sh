@@ -44,5 +44,6 @@ print $output_file moved in outputs
 cd ../outputs/
 zip -r theochrone$bitness.zip $output_file
 print $output_file zipped
-rm $output_file
-print $output_file removed
+fcm.end_script
+
+

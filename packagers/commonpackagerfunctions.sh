@@ -59,7 +59,15 @@ fcm.add_lines () {
     print $2 >> $1
     print Lines added at the bottom of $1
     }
-    
+   
+fcm.end_script () {
+    # go back to packagers directory
+    # delete tmp directory
+    cd $pcm_packagers_path
+    rm -r $dir
+    print $dir removed
+    exit 0
+    }
 
 # parameters
 ## lines to delete
@@ -92,3 +100,7 @@ pcm_line_command_line2='system.add_argument("-b","--browser",dest="navigateur",h
 ## lines to add
 pcm_disable_logs="for value in loggers.values(): value.setLevel(levels[0])"
 pcm_import_imagines="import imagines"
+
+# packagers complete path
+if [[ $PWD != *packagers ]] ; then print Please go to packagers dir ; exit 1 ; fi
+pcm_packagers_path=$PWD
