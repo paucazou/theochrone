@@ -21,8 +21,8 @@ fi
 
 fcm.copy_and_cd
 # modify some lines
-theochrone=$progdir/theochrone.py
-mv $progdir/theochrone.pyw $theochrone
+theochrone=$progdir/theochrone.pyw
+#mv $progdir/theochrone.pyw $theochrone
 fcm.modify_lines $theochrone $pcm_line_theochrone0
 fcm.modify_lines $theochrone $pcm_line_theochrone1 $pcm_line_theochrone1_sub
 cm=$progdir/command_line.py
