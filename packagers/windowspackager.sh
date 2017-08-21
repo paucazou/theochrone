@@ -36,4 +36,13 @@ fcm.modify_lines $cm $pcm_line_command_line2
 
 pynsist $cfg
 
-mv build/nsis/*.exe ../outputs/
+cd build/nsis/
+output_file=`ls *.exe`
+popd
+mv build/nsis/$output_file ../outputs/
+print $output_file moved in outputs
+cd ../outputs/
+zip -r theochrone$bitness.zip $output_file
+print $output_file zipped
+rm $output_file
+print $output_file removed
