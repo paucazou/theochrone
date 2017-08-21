@@ -35,7 +35,16 @@ def home(request,
     - mots_clefs : a string used for research ;
     - plus : a bool used to know whether the research must be large, or not ;
     - annee : the year ;
-    """      
+    """
+    trunk = 'https://theochrone.000webhostapp.com/static/downloads/'
+    downloads = {'windows32':trunk + 'windows/theochrone32.zip',
+                 'windows64':trunk + 'windows/theochrone64.zip',
+                 'linux32':trunk + 'linux/theochrone32',
+                 'linux64':trunk + 'linux/theochrone64',
+                 'osx32':trunk + 'osx/theochrone32',
+                 'osx64':trunk + 'osx/theochrone64',
+                 'python':trunk + 'python/Theochrone.zip',
+                 } # list of downloads
     
     retour = ''
     deroule = {}

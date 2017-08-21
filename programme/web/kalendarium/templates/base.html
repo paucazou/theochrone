@@ -186,7 +186,7 @@
 								<h3 class="media-heading">Windows</h3>
 								<blockquote>
 									<p>Bien sûr, le Théochrone fonctionne sur Windows ! Téléchargez-le et utilisez-le, même hors connexion.</p>
-									<footer><a class="arch64" href="{% static "kalendarium/downloads/windows/Theochrone64.exe" %}" alt="Download Theochrone for Windows 64 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><a class="arch32 unknown" href="{% static "kalendarium/downloads/windows/Theochrone32.exe" %}" alt="Download Theochrone for Windows 32 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><span class="mobile">Theochrone is not yet available on mobile</span></footer>
+									<footer><a class="arch64" href="{{ downloads.windows64 }}" alt="Download Theochrone for Windows 64 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><a class="arch32 unknown" href="{{ downloads.windows32 }}" alt="Download Theochrone for Windows 32 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><span class="mobile">Theochrone is not yet available on mobile</span></footer>
 								</blockquote>
 							</div>
 						</div>
@@ -200,7 +200,7 @@
 								<h3 class="media-heading">Mac OS X</h3>
 								<blockquote>
 									<p>Vous avez un Mac ? Vous pouvez télécharger le Théochrone sur votre ordinateur : c'est compatible !</p>
-									<footer><a class="arch64" href="{% static "kalendarium/downloads/osx/Theochrone64" %}" alt="Download Theochrone for Mac OS X 64 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><a class="arch32 unknown" href="{% static "kalendarium/downloads/osx/Theochrone32" %}" alt="Download Theochrone for Mac OS X 32 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><span class="mobile">Theochrone is not yet available on mobile</span></footer>
+									<footer><a class="arch64" href="{{ downloads.osx64 }}" alt="Download Theochrone for Mac OS X 64 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><a class="arch32 unknown" href="{{ downloads.osx32 }}" alt="Download Theochrone for Mac OS X 32 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><span class="mobile">Theochrone is not yet available on mobile</span></footer>
 								</blockquote>
 							</div>
 						</div>
@@ -214,7 +214,7 @@
 								<h3 class="media-heading">Linux</h3>
 								<blockquote>
 									<p>Développé sur GNU/Linux, le Théochrone fonctionne merveilleusement sur... GNU/Linux ! Téléchargez-le pour l'utiliser partout.</p>
-									<footer><a class="arch64" href="{% static "kalendarium/downloads/linux/Theochrone64" %}" alt="Download Theochrone for GNU/Linux 64 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><a class="arch32 unknown" href="{% static "kalendarium/downloads/linux/Theochrone32" %}" alt="Download Theochrone for GNU/Linux 32 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><span class="mobile">Theochrone is not yet available on mobile</span></footer>
+									<footer><a class="arch64" href="{{ downloads.linux64 }}" alt="Download Theochrone for GNU/Linux 64 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><a class="arch32 unknown" href="{{ downloads.linux32 }}" alt="Download Theochrone for GNU/Linux 32 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><span class="mobile">Theochrone is not yet available on mobile</span></footer>
 								</blockquote>
 							</div>
 						</div>
@@ -230,7 +230,7 @@
 								<h3 class="media-heading">Python</h3>
 								<blockquote>
 									<p>Vous avez déjà un interpréteur Python (python3.5>) ? Vous pouvez télécharger une archive du Théochrone sans le superflu.</p>
-									<footer><a href="{% static "kalendarium/downloads/python/Theochrone.zip" %}" alt="Download Theochrone without Python interpreter">Télécharger <cite title="Source Title">(Version O.1)</cite></a></footer>
+									<footer><a href="{{ downloads.python }}" alt="Download Theochrone without Python interpreter">Télécharger <cite title="Source Title">(Version O.1)</cite></a></footer>
 								</blockquote>
 							</div>
 						</div>
