@@ -7,6 +7,7 @@ It sends tweets to others users to make them discover the theochrone # TODO
 It must be used with a crontab to be really useful."""
 
 import annus
+import argparse
 import datetime
 import officia
 import phlog
@@ -14,35 +15,43 @@ import tweepy
 import sys
 import time
 
+# arg parser
+
+parser = argparse.ArgumentParser(
+            prog='Theotweet',
+            formatter_class=argparse.RawTextHelpFormatter,
+            description=_("""A script which communicates with Twitter"""),
+            epilog=_("Please pray God for me."),
+            )
+
+parser.add_argument('auth_file',required=True,type=argparse.FileType('r'),help="Name of the file which contains tokens")
+parser.add_argument('-l','--log-level',dest="log_level",type=int,choices=range(-5,5),default=phlog.levels[-1],help="Importance level of the messages that should be printed in the log file")
+parse_args.add_argument('-f','--get-followers',dest='get_followers',nargs='*',help="Get the followers of the users screen name entered. Do not enter them with '@' in front of the screen names : @paucazou -> paucazou")
+
+args = parser.parse_args()
+
 # logger
 logger = phlog.fileLog(phlog.levels[-1],file_name='_theotweet.log')
 
-try:
-    lvl = phlog.levels[int(sys.argv[2])]
-    logger.setLevel(lvl)
-    logger.info("Log level : {}".format(lvl))
-except (IndexError, ValueError) as error:
-    logger.setLevel(phlog.levels[1])
 
-# Twitter auth
-if len(sys.argv) == 1:
-    logger.critical('File not specified')
-    sys.exit('File not specified')
-    
-with open(sys.argv[1]) as file:
-    accessers = file.read().split('\n')
+lvl = args.log_level
+logger.setLevel(lvl)
+logger.info("Log level : {}".format(lvl))
+
+# Twitter auth  
+
+accessers = args.auth_file.read().split('\n')
+args.auth_file.close()
 logger.debug('Authentication file opened')
     
 auth = tweepy.OAuthHandler(accessers[0],accessers[1])
 auth.set_access_token(accessers[2],accessers[3])
 api=tweepy.API(auth)
-logger.debug('Auth done')
-api.me()
+logger.debug('Auth completed')
 
 # Theochrone stuff
 liturgiccal = annus.LiturgicalCalendar('romanus',1962)
 language = 'francais'
-oldtoday=datetime.date.today() - datetime.timedelta(1)
 
 logger.debug('Theochrone loaded')
 
@@ -109,13 +118,43 @@ def update_status(users=[],texts=[]):
             for msg in new_msgs:
                 logger.debug('Msg splitted : {}'.format(msg))
                 api.update_status(msg+i) # retenter plus tard en cas d'erreur
+                
+def get_screen_names(user,unused_list,used_list):
+    """This function gets all the followers of a user (user)
+    and add them in unused_list ;
+    If a screen name is already present in unused_list or in used_list, does'nt add it.
+    Returns a list of new users."""
+    for follower in limit_handled(tweepy.Cursor(user.followers).items()):
+        follower = follower.screen_name
+        if follower not in unused_list and follower not in used_list:
+            unused_list.append(follower)
+            logger.info('{} added'.format(follower))
+    return unused_list
         
 def main():
     """The main function"""
-    today = datetime.date.today()
-    logger.info("New day : {}".format(today))
-    liturgiccal(today.year)
-    sendFeastsToUsers(api,today,liturgiccal)
+    if args.get_followers:
+        logger.info('Loading users files...')
+        files = {'_unused':[],'_used':[]}
+        for fname in files:
+            try:
+                with open(fname,'r') as f:
+                    files[fname] = f.read().split('\n')
+            except FileNotFoundError:
+                continue
+            
+        logger.info('Get followers...')
+        for sname in args.get_followers:
+            unused_list = get_screen_names(api.get_user(sname),files['_unused'],files['_used']) # rajouter un try, en cas d'erreur
+            
+        logger.info('Saving unused users file...')
+        with open(files['_unused','w') as f:
+            f.write('\n'.join(files['_unused']))
+    else:
+        today = datetime.date.today()
+        logger.info("New day : {}".format(today))
+        liturgiccal(today.year)
+        sendFeastsToUsers(api,today,liturgiccal)
     
 if __name__ == '__main__':
     logger.info('App launched')
