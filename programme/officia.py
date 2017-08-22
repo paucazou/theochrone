@@ -408,6 +408,7 @@ def affichage(**kwargs):
         sortie = affiche_jour(kwargs['date'],kwargs['langue']).capitalize() + ' :'
     else:
         sortie=''
+    return_value = []
     for a in kwargs['liste']:
         if a.omission and not kwargs['verbose'] and not kwargs['recherche']:
             """if sortie [-2:] == '\n': # ne marche toujours pas
@@ -521,6 +522,10 @@ def affichage(**kwargs):
             
             if kwargs['verbose']:
                 sortie += a.addendum[kwargs['langue']]
+            
+            if kwargs.get('split'):
+                return_value.append(sortie)
+                sortie = ''
                 
         elif kwargs['langue'] == 'english':
             erreur('01')
@@ -529,7 +534,9 @@ def affichage(**kwargs):
         """if a != kwargs['liste'][-1]:
             sortie += '\n'"""
             
-    return sortie
+    if not kwargs.get('split'):
+        return_value = sortie
+    return return_value
             
 
 
