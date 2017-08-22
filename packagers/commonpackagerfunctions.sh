@@ -35,6 +35,7 @@ fcm.copy_and_cd () {
     cd $dir
     print Change dir $dir
     progdir=./programme
+    fcm.delete_if_exist $progdir/_twit_auth
     }
     
 fcm.modify_lines () {
