@@ -5,8 +5,8 @@ source commonpackagerfunctions.sh
 
 
 # delete dist if exists
-cm.delete_if_exist dist
-cm.delete_if_exist tmp
+fcm.delete_if_exist dist
+fcm.delete_if_exist tmp
 # parameters
 if [[ $1 == *file* ]] ; then # one file or one folder (default)
 	output="--onefile"
@@ -44,6 +44,7 @@ pyinstaller $progdir/theochrone.pyw \
 	--clean 
 
 pyinstaller $name.spec
+fcm.delete_if_exist ../outputs/*$name*
 mv dist/* ../outputs/
 fcm.end_script
 
