@@ -17,7 +17,7 @@ fcm.miss_exit () {
     exit 1
     }
     
-fcm.delete_if_exist () {
+fcm.delete_if_exist () { # WARNING seems to do not work with * : * not expanded
     # use this to check if a file or dir exists and must be deleted
     # $1 -> file/dir path
     if [[ -a $1 ]] ; then rm -r $1 ; fi
