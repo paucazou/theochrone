@@ -5,6 +5,7 @@
 import calendar
 import datetime
 import os.path
+import platform
 import sys
 import xlwt
 
@@ -105,7 +106,7 @@ class Main(QMainWindow,SuperTranslator):
     def menu(self):
         """A function which describes the menubar of the main window"""
         menubar = self.menuBar()
-        if sys.platform.startswith('darwin'): # TODO make a special class for each platform ?
+        if sys.platform.startswith('darwin') or '32bit' in platform.architecture(): # TODO make a special class for each platform ?
             menubar.setNativeMenuBar(False)
         
         # File menu
