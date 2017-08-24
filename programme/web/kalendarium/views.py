@@ -122,7 +122,8 @@ def contact(request):
             message = form.cleaned_data['message']
             mail_list = ['paucazou@yahoo.fr',from_email]
             try:
-                send_mail(subject, message, from_email, mail_list)
+                send_mail(subject, message, from_email, ['paucazou@yahoo.fr'])
+                send_mail(subject, message, from_email, [from_email])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return home(request, contact_success = True)
