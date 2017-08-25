@@ -1,0 +1,6 @@
+<p> Le {{ data.0.date }} on fête :
+<ul>
+{% for feast in data %}
+<li> {{ feast.nom.francais }}</li>
+{% endfor %}
+</ul>

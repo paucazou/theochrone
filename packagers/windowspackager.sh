@@ -1,4 +1,6 @@
 #!/bin/zsh
+print You must first specify this : '# -*-coding:Latin-1 -* for Windows !!!!'
+exit 1
 # This script creates a windows installer with the help of pynsist
 # and installer.cfg
 if [[ $PWD != *packagers ]] ; then print Please go to packagers dir ; exit 1 ; fi

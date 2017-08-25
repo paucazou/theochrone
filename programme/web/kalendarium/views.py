@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect
 import datetime
 import os
 import sys
-import pickle
 from .forms import * 
 
 
@@ -128,3 +127,5 @@ def contact(request):
                 return HttpResponse('Invalid header found.')
             return home(request, contact_success = True)
     return home(request, contact_success = False)
+
+

@@ -130,7 +130,18 @@ def get_screen_names(user,unused_list,used_list):
             unused_list.append(follower)
             logger.info('{} added'.format(follower))
     return unused_list
-        
+       
+def spammer(number):
+    """This function sends ads to users already saved in _unused file
+    number is the number of users to whom ads will be sent"""
+    pass
+    
+def users_files(data=None,_unused=True,_used=True,read=True):
+    """Reads or writes _unused and _used files.
+    if read : returns dict with filename as key, and data as value"""
+    rw = ('w','r')[read]
+    
+    
 def main():
     """The main function"""
     if args.get_followers:
