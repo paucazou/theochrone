@@ -116,7 +116,7 @@ def contact(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
-            subject = form.cleaned_data['subject']
+            subject = '[Theochrone] ' + form.cleaned_data['subject']
             from_email = form.cleaned_data['sender']
             message = form.cleaned_data['message']
             mail_list = ['paucazou@yahoo.fr',from_email]
