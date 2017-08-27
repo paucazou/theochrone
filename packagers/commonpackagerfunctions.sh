@@ -37,6 +37,12 @@ fcm.copy_and_cd () {
     progdir=./programme
     fcm.delete_if_exist $progdir/_twit_auth
     fcm.delete_if_exist $progdir/_theotweet.log
+    fcm.delete_if_exist $progdir/shiptobrowser.py
+    fcm.delete_if_exist $progdir/deprecated_navette_navigateur.py
+    fcm.delete_if_exist $progdir/web
+    rm -r **/*~
+    rm -r **/.*
+    rm -r **/__pycache__
     }
     
 fcm.modify_lines () {
