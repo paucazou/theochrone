@@ -20,32 +20,6 @@ language = 'francais'
 def main(request):
     """The only view used by the whole app.
     Every other function inframe must redirect to this one"""
-    return HttpResponse("""<!DOCTYPE html>
-<html>
-<head></head>
-<body>
-
-<div id="demo">
-</div>
-
-
-<script>
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", "day", true);
-  xhttp.send();
-}
-loadDoc()
-</script>
-
-</body>
-</html>""")
     return render(request, 'spill/main.html',locals())
 
 def day(request):

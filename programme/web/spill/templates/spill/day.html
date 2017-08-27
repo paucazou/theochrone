@@ -1,6 +1,10 @@
-<p> Le {{ data.0.date }} on fête :
+<p> Aujourd'hui {{ data.0.date }} :
+{% if data.1 %}
 <ul>
 {% for feast in data %}
-<li> {{ feast.nom.francais }}</li>
+<li><a target='blank' href="{{ feast.link }}" id="text-mass" alt="Lien vers Introibo.fr">{{ feast.nom.francais }}{% if feast.commemoraison and not feast.peut_etre_celebree %} (mémoire){% elif feast.omission %} (omis){% endif %}</a></li>
 {% endfor %}
 </ul>
+{% else %}
+<br><br><a  target='blank' href="{{ data.0.link }}" id="text-mass" alt="Lien vers Introibo.fr">{{ data.0.nom.francais }}{% if data.0.commemoraison and not data.0.peut_etre_celebree %} (mémoire){% elif data.0.omission %} (omis){% endif %}</a>
+{% endif %}</p>
