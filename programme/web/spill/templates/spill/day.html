@@ -1,10 +1,26 @@
-<p> Aujourd'hui {{ data.0.date }} :
-{% if data.1 %}
-<ul>
+<style>
+.no-padding
+{
+    padding-right: 0;
+    padding-left: 0;
+}
+.little-bottom-margin
+{
+    margin-bottom: 0;
+}
+</style>
+
+<div class="container">
+    <div class="row little-bottom-margin well well-sm horizontal-align">
+        <div class="col-xs-1 no-padding"><a href="{{ link_to_yesterday }}" target="blank" id="yesterday" alt="Voir les résultats d'hier"><i class="fa fa-arrow-circle-o-left fa-align-bottom fa-2x pull-left" aria-hidden="true"></i></a></div>
+        <div class="col-xs-10 text-center align-top"><h5><a href="{{ link_to_day }}" target="blank" id="today" alt="Plus de détails">{{ day }}</a></h5></div>
+        <div class="col-xs-1 no-padding"><a href="{{ link_to_tomorrow }}" target="blank" id="tomorrow" alt="Voir les résultats de demain"><i class="fa fa-arrow-circle-o-right fa-2x pull-right" aria-hidden="true"></i></div>
+    </div>
+    <div class="row">
+        <div class="list-group">
 {% for feast in data %}
-<li><a target='blank' href="{{ feast.link }}" id="text-mass" alt="Lien vers Introibo.fr">{{ feast.nom.francais }}{% if feast.commemoraison and not feast.peut_etre_celebree %} (mémoire){% elif feast.omission %} (omis){% endif %}</a></li>
+<a class="list-group-item" target='blank' href="{{ feast.link }}" id="text-mass" alt="Lien vers Introibo.fr">{{ feast.nom.francais }}{% if feast.commemoraison and not feast.peut_etre_celebree %} (mémoire){% elif feast.omission %} (omis){% endif %}</a>
 {% endfor %}
-</ul>
-{% else %}
-<br><br><a  target='blank' href="{{ data.0.link }}" id="text-mass" alt="Lien vers Introibo.fr">{{ data.0.nom.francais }}{% if data.0.commemoraison and not data.0.peut_etre_celebree %} (mémoire){% elif data.0.omission %} (omis){% endif %}</a>
-{% endif %}</p>
+        </div>
+    </div>
+</div>

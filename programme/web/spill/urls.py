@@ -8,4 +8,5 @@ from . import views
 urlpatterns = [
     url(r"^main$",views.main),
     url(r'^day$',views.day),
+    url(r'^test$',views.test),
     ]
