@@ -8,13 +8,17 @@
 {
     margin-bottom: 0;
 }
+.black-link
+{
+    color: #423A3D;
+}
 </style>
 
 <div class="container">
     <div class="row little-bottom-margin well well-sm horizontal-align">
-        <div class="col-xs-1 no-padding"><a href="{{ link_to_yesterday }}" target="blank" id="yesterday" alt="Voir les résultats d'hier"><i class="fa fa-arrow-circle-o-left fa-align-bottom fa-2x pull-left" aria-hidden="true"></i></a></div>
-        <div class="col-xs-10 text-center align-top"><h5><a href="{{ link_to_day }}" target="blank" id="today" alt="Plus de détails">{{ day }}</a></h5></div>
-        <div class="col-xs-1 no-padding"><a href="{{ link_to_tomorrow }}" target="blank" id="tomorrow" alt="Voir les résultats de demain"><i class="fa fa-arrow-circle-o-right fa-2x pull-right" aria-hidden="true"></i></div>
+        <div class="col-xs-1 no-padding"><a href="{{ link_to_yesterday }}" target="blank" class="black-link" id="yesterday" alt="Voir les résultats d'hier"><i class="fa fa-arrow-circle-o-left fa-align-bottom fa-2x pull-left" aria-hidden="true"></i></a></div>
+        <div class="col-xs-10 text-center align-top"><h5><a href="{{ link_to_day }}" target="blank" id="today" class="black-link" alt="Plus de détails">{{ day }}</a></h5></div>
+        <div class="col-xs-1 no-padding"><a href="{{ link_to_tomorrow }}" target="blank" id="tomorrow" class="black-link" alt="Voir les résultats de demain"><i class="fa fa-arrow-circle-o-right fa-2x pull-right" aria-hidden="true"></i></a></div>
     </div>
     <div class="row">
         <div class="list-group">
