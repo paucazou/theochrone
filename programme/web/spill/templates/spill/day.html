@@ -15,12 +15,12 @@
 </style>
 <div class="container">
     <div class="row little-bottom-margin well well-sm horizontal-align">
-        <div class="col-xs-1 no-padding"><a href="#" onclick="loadDoc('{{ link_to_yesterday }}')" class="black-link" id="yesterday" alt="Feasts of the day before" title="Résultats du lendemain"><i class="fa fa-arrow-circle-o-left fa-align-bottom fa-2x pull-left" aria-hidden="true"></i></a></div>
+        <div class="col-xs-1 no-padding"><a href="#" onclick="loadDoc('{{ link_to_yesterday }}')" class="black-link" id="yesterday" alt="Feasts of the day before" title="Résultats de la veille"><i class="fa fa-arrow-circle-o-left fa-align-bottom fa-2x pull-left" aria-hidden="true"></i></a></div>
         <div class="col-xs-10 text-center align-top"><h5><a href="{{ link_to_day }}" target="blank" id="today" class="black-link" alt="More details on Theochrone" title="Plus de détails sur Theochrone.fr">{{ day }}</a></h5></div>
         <div class="col-xs-1 no-padding"><a href="#" onclick="loadDoc('{{ link_to_tomorrow }}')" id="tomorrow" class="black-link" alt="Feasts of the day after" title="Résultats du lendemain"><i class="fa fa-arrow-circle-o-right fa-2x pull-right" aria-hidden="true"></i></a></div>
     </div>
     <div class="row">
-        <div class="list-group">
+        <div class="list-group little-bottom-margin">
 {% for feast in data %}
 <a class="list-group-item" target='blank' href="{{ feast.link }}" id="text-mass" alt="Link to Introibo.fr" title="Textes de la messe et de l'office sur Introibo">{{ feast.nom.francais }}{% if feast.commemoraison and not feast.peut_etre_celebree %} (mémoire){% elif feast.omission %} (omis){% endif %}</a>
 {% endfor %}
