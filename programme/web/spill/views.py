@@ -76,7 +76,7 @@ def saveUrls(request):
     file_path = os.path.expanduser('~/.urlsinfo.log')
     answer='Error'
     if info.is_valid():
-        urlinfo = info.cleaned_data['urlinfo']
+        urlinfo = info.cleaned_data['urlinfo'].split('/')[2] + '\n'
         with open(file_path,'r') as file:
             lines = file.readlines()
         if urlinfo not in lines:
