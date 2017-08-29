@@ -9,4 +9,5 @@ urlpatterns = [
     url(r"^main$",views.main),
     url(r'^day$',views.day),
     url(r'^test$',views.test),
+    url(r'^saveurls$',views.saveUrls),
     ]

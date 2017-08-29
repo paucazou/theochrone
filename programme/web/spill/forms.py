@@ -8,3 +8,7 @@ class Dispatch(forms.Form):
     with AJAX"""
     pages_available = ('day','test')
     page = forms.ChoiceField(required=True,choices=[(item,item) for item in pages_available])
+
+class Info(forms.Form):
+    """Class used to collect data with AJAX"""
+    urlinfo = forms.CharField(required=True)

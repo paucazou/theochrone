@@ -15,13 +15,10 @@
 		<link href="{% static "kalendarium/css/style.css" %}" rel="stylesheet"></head>
 		
 <body>
-
 <div id="inside">
 </div>
-
-
 <script>
-function loadDoc() {
+function loadDoc(page) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -29,11 +26,16 @@ function loadDoc() {
       this.responseText;
     }
   };
-  xhttp.open("GET", "{{ page }}", true);
+  xhttp.open("GET", page, true);
   xhttp.send();
 }
-loadDoc()
-</script>
+loadDoc("{{ page }}")
 
+// Factoriser
+var xhttp = new XMLHttpRequest();
+var urlinfo = (window.location != window.parent.location) ? document.referrer: document.location.href;
+xhttp.open("GET", "saveurls?urlinfo=" + urlinfo, true);
+xhttp.send();
+</script>
 </body>
 </html>
