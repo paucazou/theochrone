@@ -1,0 +1,11 @@
+#theocontainer
+{
+    height: 0px;
+}
+
+#theowidget
+{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
