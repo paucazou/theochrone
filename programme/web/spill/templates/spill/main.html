@@ -12,29 +12,50 @@
 		<link href="{% static "kalendarium/fonts/font-awesome/css/font-awesome.css" %}" rel="stylesheet">
 
 		<!-- Worthy core CSS file -->
-		<link href="{% static "kalendarium/css/style.css" %}" rel="stylesheet"></head>
+		<link href="{% static "kalendarium/css/style.css" %}" rel="stylesheet">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		</head>
 <body>
 <div id="inside">
 </div>
 <script>
+var itheo = 1;
+var orurl = 1;
+var wHeight;
+
+function resizeContent(itheo,orurl){
+      itheo.postMessage("set container to 0px",orurl);
+      wHeight = $(document).height();
+     itheo.postMessage(wHeight,orurl); // vérifier que ce soit chargé
+};
 function loadDoc(page) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("inside").innerHTML =
-      this.responseText;
+      document.getElementById("inside").innerHTML = this.responseText;
+      resizeContent(itheo,orurl);
     }
   };
   xhttp.open("GET", page, true);
   xhttp.send();
-}
-loadDoc("{{ page }}")
+};
+loadDoc("{{ page }}");
+
+
+window.addEventListener("message", function(event){
+    if (event.data == "God sees you") {
+    itheo = event.source;
+    orurl = event.origin;
+    resizeContent(itheo,orurl);
+    }
+}, false);
 
 // Factoriser
-var xhttp = new XMLHttpRequest();
+/*var xhttp = new XMLHttpRequest();
 var urlinfo = (window.location != window.parent.location) ? document.referrer: document.location.href;
 xhttp.open("GET", "saveurls?urlinfo=" + urlinfo, true);
-xhttp.send();
+xhttp.send();*/
 </script>
 </body>
 </html>
