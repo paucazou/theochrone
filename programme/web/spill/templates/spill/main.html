@@ -40,7 +40,16 @@ function loadDoc(page) {
   xhttp.open("GET", page, true);
   xhttp.send();
 };
-loadDoc("{{ page }}");
+
+var start_page = "{{ page }}";
+if (start_page == "day") { // date set to locale
+var today = new Date;
+var d = today.getDate();
+var m = today.getMonth() + 1;
+var y = today.getFullYear();
+start_page = "day?date_seule_day=" + d + "&date_seule_month=" + m + "&date_seule_year=" + y;
+}
+loadDoc(start_page);
 
 
 window.addEventListener("message", function(event){
