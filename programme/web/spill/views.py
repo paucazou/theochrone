@@ -52,7 +52,7 @@ def create_module(request):
 
 def test(request):
     """A view to test functions online"""
-    return day(request)
+    return HttpResponse(str(request.META))
 
 def datetime_to_link(day,host,hashtag='',s='s'): # should be moved to officia
     """Take a datetime.date like object
@@ -97,6 +97,8 @@ def day_to_static(start,stop,path):
         link_to_day = datetime_to_link(day,host,hashtag)
         link_to_tomorrow = datetime_to_shtml(day + datetime.timedelta(1))
         link_to_yesterday = datetime_to_shtml(day - datetime.timedelta(1))
+        months = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
+        day = "{} {} {}".format(day.day,months[day.month],day.year)
         return render(request,'spill/day.html',locals())
     
     def datetime_to_shtml(day):
@@ -107,9 +109,11 @@ def day_to_static(start,stop,path):
         return """day{}-{}-{}.shtml""".format(day.year,day.month,day.day)
     
     lyear(start,stop)
+    req = django.http.request.HttpRequest()
+    req.META
     for data in lyear:
        day = data[0].date
-       answer = pseudo_day(django.http.request.HttpRequest(),data,day)
+       answer = pseudo_day(req,data,day)
        file_path = path + datetime_to_shtml(day)
        with open(file_path,'w') as file:
            file.write(answer.content.decode())
