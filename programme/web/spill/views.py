@@ -84,5 +84,38 @@ def saveUrls(request):
                 file.write(urlinfo+'\n')
         answer = 'Done'
     return HttpResponse(answer)
+
+def day_to_static(start,stop,path):
+    """This function return static pages corresponding to "day" views.
+    start and stop are years.
+    path is a directory with / at the end
+    This function should be used in a django shell : web/manage.py shell"""
+    import django.http
+    def pseudo_day(request,data,day):
+        """Imitates day behaviour in a static context"""
+        hashtag = "resultup"
+        link_to_day = datetime_to_link(day,host,hashtag)
+        link_to_tomorrow = datetime_to_shtml(day + datetime.timedelta(1))
+        link_to_yesterday = datetime_to_shtml(day - datetime.timedelta(1))
+        return render(request,'spill/day.html',locals())
+    
+    def datetime_to_shtml(day):
+        """day is a datetime like object.
+        This function returns a string as following :
+        'dayYYYY-MM-DD.shtml'
+        MM ans DD can be M and D if they are less than 10"""
+        return """day{}-{}-{}.shtml""".format(day.year,day.month,day.day)
+    
+    lyear(start,stop)
+    for data in lyear:
+       day = data[0].date
+       answer = pseudo_day(django.http.request.HttpRequest(),data,day)
+       file_path = path + datetime_to_shtml(day)
+       with open(file_path,'w') as file:
+           file.write(answer.content.decode())
+           
+       
+    
+    
             
             
