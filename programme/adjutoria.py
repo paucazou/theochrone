@@ -695,6 +695,26 @@ class JoursAvent(FeteMobileAvent):
                 retour._priorite = 1200
             yield retour
     
+class SeptEmber(Fete): # WARNING WARNING WARNING
+    """A class defined to fix an error. Must be changed asap"""
+    
+    def __init__(self,weekday=3):
+        Fete.__init__(self)
+        self.sunday = 3
+        self.month = 9
+        self.weekday = weekday # firstweekday = sunday = 0
+        
+    def DateCivile_(self,paques,annee):
+        """Method returning date"""
+        lcalendar = calendar.Calendar(firstweekday=6)
+        i = 0
+        for week in lcalendar.monthdayscalendar(annee,self.month):
+            if week[0] > 0:
+                i+=1
+            if i == 3:
+                return datetime.date(annee,self.month,week[self.weekday])
+        
+        
 
 
     
