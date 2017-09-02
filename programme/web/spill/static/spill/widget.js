@@ -17,7 +17,7 @@ window.addEventListener("message", function(event){
         if (event.data == "set container to 0px"){
             document.getElementById("theocontainer").style.height = "0px";
         } else {
-    document.getElementById("theocontainer").style.height = event.data+'px';
+    document.getElementById("theocontainer").style.height = event.data+'px'; // add one or two pixels
         }
     }
 }, false);
