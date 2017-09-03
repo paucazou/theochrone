@@ -9,9 +9,9 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -28,9 +28,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Octave-de-la-Nativite-1er-janvier</str>
       <dict key="nom">
-        <str key="english">Octave day of the Nativity</str>
-        <str key="francais">Octave de la Nativité du Seigneur</str>
-        <str key="latina">In Octava Nativitatis</str>
+        <str key="en">Octave day of the Nativity</str>
+        <str key="fr">Octave de la Nativité du Seigneur</str>
+        <str key="la">In Octava Nativitatis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -78,9 +78,9 @@
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Marie-du-Transtévère</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Marie-du-Transtévère</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -98,9 +98,9 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais">Messe de Minuit : Station à l'autel de la Crèche. Messe de l'aurore : Station à Sainte-Anastasie.</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Messe de Minuit : Station à l'autel de la Crèche. Messe de l'aurore : Station à Sainte-Anastasie.</str>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -117,9 +117,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Nativite-du-Seigneur-25-decembre</str>
       <dict key="nom">
-        <str key="english">Christmas</str>
-        <str key="francais">Nativité du Seigneur</str>
-        <str key="latina">In Nativitate Domini</str>
+        <str key="en">Christmas</str>
+        <str key="fr">Nativité du Seigneur</str>
+        <str key="la">In Nativitate Domini</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -154,9 +154,9 @@
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Marie-Majeure</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Marie-Majeure</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -174,9 +174,9 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -193,9 +193,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/St-Etienne-26-decembre</str>
       <dict key="nom">
-        <str key="english">Saint Stephen, protomartyr</str>
-        <str key="francais">Saint Étienne, protomartyr</str>
-        <str key="latina">Sancti Stephani Protomartyris</str>
+        <str key="en">Saint Stephen, protomartyr</str>
+        <str key="fr">Saint Étienne, protomartyr</str>
+        <str key="la">Sancti Stephani Protomartyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -229,9 +229,9 @@
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Étienne au mont Cœlius</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Étienne au mont Cœlius</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -249,9 +249,9 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -268,9 +268,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/St-Jean-27-decembre</str>
       <dict key="nom">
-        <str key="english">Saint John, aposte and evangelist</str>
-        <str key="francais">Saint Jean, apôtre et évangéliste</str>
-        <str key="latina">Sancti Joannis Apostoli et Evangelistae</str>
+        <str key="en">Saint John, aposte and evangelist</str>
+        <str key="fr">Saint Jean, apôtre et évangéliste</str>
+        <str key="la">Sancti Joannis Apostoli et Evangelistae</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -308,9 +308,9 @@
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Marie-Majeure</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Marie-Majeure</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -328,9 +328,9 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -347,9 +347,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Sts-Innocents-28-decembre</str>
       <dict key="nom">
-        <str key="english">Holy Innocents</str>
-        <str key="francais">Les Saints Innocents</str>
-        <str key="latina">Sanctorum Innocentium Martyrum</str>
+        <str key="en">Holy Innocents</str>
+        <str key="fr">Les Saints Innocents</str>
+        <str key="la">Sanctorum Innocentium Martyrum</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -385,9 +385,9 @@
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Paul-hors-les-murs</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Paul-hors-les-murs</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -405,9 +405,9 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -424,9 +424,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/29-decembre</str>
       <dict key="nom">
-        <str key="english">Saint Thomas of Canterbury</str>
-        <str key="francais">Saint Thomas de Cantorbéry</str>
-        <str key="latina">Sancti Thomae Episcopi et Martyris</str>
+        <str key="en">Saint Thomas of Canterbury</str>
+        <str key="fr">Saint Thomas de Cantorbéry</str>
+        <str key="la">Sancti Thomae Episcopi et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -477,9 +477,9 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -496,9 +496,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/31-decembre</str>
       <dict key="nom">
-        <str key="english">Saint Sylvester, Pope</str>
-        <str key="francais">Saint Sylvestre Premier, Pape et Confesseur</str>
-        <str key="latina">Sancti Silvestri I Papae et Confessoris</str>
+        <str key="en">Saint Sylvester, Pope</str>
+        <str key="fr">Saint Sylvestre Premier, Pape et Confesseur</str>
+        <str key="la">Sancti Silvestri I Papae et Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -549,9 +549,9 @@
       <str key="_temps_liturgique">epiphanie</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -568,9 +568,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Epiphanie-du-Seigneur-6-janvier</str>
       <dict key="nom">
-        <str key="english">Epiphany</str>
-        <str key="francais">Épiphanie du Seigneur</str>
-        <str key="latina">In Epiphania Domini</str>
+        <str key="en">Epiphany</str>
+        <str key="fr">Épiphanie du Seigneur</str>
+        <str key="la">In Epiphania Domini</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -602,9 +602,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Pierre</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Pierre</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -622,9 +622,9 @@
       <str key="_temps_liturgique">epiphanie</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -641,9 +641,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Bapteme-du-Seigneur-13-janvier</str>
       <dict key="nom">
-        <str key="english">Baptism of Our Lord Jesus Christ</str>
-        <str key="francais">Commémoraison du Baptême de Notre-Seigneur Jésus-Christ</str>
-        <str key="latina">In Commemoratione Baptismatis Domini Nostri Jesu Christi</str>
+        <str key="en">Baptism of Our Lord Jesus Christ</str>
+        <str key="fr">Commémoraison du Baptême de Notre-Seigneur Jésus-Christ</str>
+        <str key="la">In Commemoratione Baptismatis Domini Nostri Jesu Christi</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -697,15 +697,15 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
       <int key="commemoraison_privilegiee">80</int>
       <dict key="complements_nom">
-        <list key="english">
+        <list key="en">
           <str>Secund</str>
           <str>Third</str>
           <str>Fourth</str>
@@ -713,7 +713,7 @@
           <str>Sixth</str>
           <str>Seventh</str>
         </list>
-        <list key="francais">
+        <list key="fr">
           <str>Deuxième</str>
           <str>Troisième</str>
           <str>Quatrième</str>
@@ -721,7 +721,7 @@
           <str>Sixième</str>
           <str>Septième</str>
         </list>
-        <list key="latina">
+        <list key="la">
           <str>De Secunda</str>
           <str>De Tertia</str>
           <str>De Quarta</str>
@@ -747,14 +747,14 @@
       <str key="link">http://www.introibo.fr/Feries-dans-l-octave-de-la</str>
       <int key="mois_">12</int>
       <dict key="nom">
-        <str key="english">Days in the Octave of Christmas</str>
-        <str key="francais">Jours dans l'Octave de la Nativité</str>
-        <str key="latina">Dies infra Octavam Nativitatis</str>
+        <str key="en">Days in the Octave of Christmas</str>
+        <str key="fr">Jours dans l'Octave de la Nativité</str>
+        <str key="la">Dies infra Octavam Nativitatis</str>
       </dict>
       <dict key="nom_">
-        <str key="english">day in the Octave of Christmas</str>
-        <str key="francais">jour dans l'Octave de Noël</str>
-        <str key="latina">Die infra octavam Nativitatis</str>
+        <str key="en">day in the Octave of Christmas</str>
+        <str key="fr">jour dans l'Octave de Noël</str>
+        <str key="la">Die infra octavam Nativitatis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -804,9 +804,9 @@
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -841,24 +841,24 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/-Temps-de-l-Avent-</str>
       <dict key="nom">
-        <str key="english">Advent</str>
-        <str key="francais">Avent</str>
-        <str key="latina">Adventus</str>
+        <str key="en">Advent</str>
+        <str key="fr">Avent</str>
+        <str key="la">Adventus</str>
       </dict>
       <dict key="nom_">
-        <list key="english">
+        <list key="en">
           <str>of the first week of Advent</str>
           <str>of the second week of Advent</str>
           <str>of the third week of Advent</str>
           <str>of the fourth week of Advent</str>
         </list>
-        <list key="francais">
+        <list key="fr">
           <str>de la première semaine de l'Avent</str>
           <str>de la deuxième semaine de l'Avent</str>
           <str>de la troisième semaine de l'Avent</str>
           <str>de la quatrième semaine de l'Avent</str>
         </list>
-        <list key="latina">
+        <list key="la">
           <str>infra primam Hebdomadam Adventus</str>
           <str>infra secondam Hebdomadam Adventus</str>
           <str>infra tertiam Hebdomadam Adventus</str>
@@ -915,9 +915,9 @@
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -931,9 +931,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Mercredi-des-Quatre-Temps</str>
       <dict key="nom">
-        <str key="english">Ember Wednesday in Advent</str>
-        <str key="francais">Mercredi des Quatre-Temps d'Avent</str>
-        <str key="latina">Feria Quarta Quatuor Temporum Adventus</str>
+        <str key="en">Ember Wednesday in Advent</str>
+        <str key="fr">Mercredi des Quatre-Temps d'Avent</str>
+        <str key="la">Feria Quarta Quatuor Temporum Adventus</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -971,9 +971,9 @@
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Marie-Majeure</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Marie-Majeure</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -991,9 +991,9 @@
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1007,9 +1007,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Vendredi-des-Quatre-Temps</str>
       <dict key="nom">
-        <str key="english">Ember Friday in Advent</str>
-        <str key="francais">Vendredi des Quatre-Temps d'Avent</str>
-        <str key="latina">Feria Sexta Quatuor Temporum Adventus</str>
+        <str key="en">Ember Friday in Advent</str>
+        <str key="fr">Vendredi des Quatre-Temps d'Avent</str>
+        <str key="la">Feria Sexta Quatuor Temporum Adventus</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1047,9 +1047,9 @@
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saints-Apôtres</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saints-Apôtres</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -1067,9 +1067,9 @@
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1083,9 +1083,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Vendredi-des-Quatre-Temps</str>
       <dict key="nom">
-        <str key="english">Ember Saturday in Advent</str>
-        <str key="francais">Samedi des Quatre-Temps d'Avent</str>
-        <str key="latina">Sabbato Quatuor Temporum Adventus</str>
+        <str key="en">Ember Saturday in Advent</str>
+        <str key="fr">Samedi des Quatre-Temps d'Avent</str>
+        <str key="la">Sabbato Quatuor Temporum Adventus</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1123,9 +1123,9 @@
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Pierre</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Pierre</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -1143,9 +1143,9 @@
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1162,9 +1162,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Vigile-de-la-Nativite</str>
       <dict key="nom">
-        <str key="english">Christmas Eve</str>
-        <str key="francais">Vigile de la Nativité du Seigneur</str>
-        <str key="latina">In Vigilia Nativitatis Domini</str>
+        <str key="en">Christmas Eve</str>
+        <str key="fr">Vigile de la Nativité du Seigneur</str>
+        <str key="la">In Vigilia Nativitatis Domini</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1198,9 +1198,9 @@
       <bool key="repris_en_ferie">False</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Marie-Majeure</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Marie-Majeure</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -1218,9 +1218,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais">Commémoraison à la messe de l'aurore.</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Commémoraison à la messe de l'aurore.</str>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1236,9 +1236,9 @@
       <bool key="fete_du_Seigneur">False</bool>
       <str key="link">http://introibo.fr/Nativite-du-Seigneur-25-decembre#Aurore</str>
       <dict key="nom">
-        <str key="english">Saint Anastasia, Martyr</str>
-        <str key="francais">Sainte Anastasie, Martyre</str>
-        <str key="latina">Sanctae Anastasiae, Martyris</str>
+        <str key="en">Saint Anastasia, Martyr</str>
+        <str key="fr">Sainte Anastasie, Martyre</str>
+        <str key="la">Sanctae Anastasiae, Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>

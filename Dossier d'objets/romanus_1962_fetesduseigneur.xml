@@ -9,9 +9,9 @@
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -25,9 +25,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/La-Sainte-Famille-dimanche-apres-l</str>
       <dict key="nom">
-        <str key="english">Holy Family</str>
-        <str key="francais">La Sainte Famille</str>
-        <str key="latina">Sanctae Familiae Jesu, Mariae, Joseph</str>
+        <str key="en">Holy Family</str>
+        <str key="fr">La Sainte Famille</str>
+        <str key="la">Sanctae Familiae Jesu, Mariae, Joseph</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -77,9 +77,9 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -98,9 +98,9 @@
       <int key="limite_haute">5</int>
       <str key="link">http://www.introibo.fr/Tres-saint-Nom-de-Jesus-Dimanche</str>
       <dict key="nom">
-        <str key="english">Most Holy Name of Jesus</str>
-        <str key="francais">Très Saint Nom de Jésus</str>
-        <str key="latina">Sanctissimi Nominis Jesu</str>
+        <str key="en">Most Holy Name of Jesus</str>
+        <str key="fr">Très Saint Nom de Jésus</str>
+        <str key="la">Sanctissimi Nominis Jesu</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -153,9 +153,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -173,9 +173,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Dernier-Dimanche-d-Octobre-le</str>
       <dict key="nom">
-        <str key="english">Our Lord Jesus Christ King</str>
-        <str key="francais">Notre-Seigneur Jésus-Christ Roi</str>
-        <str key="latina">Domini nostri Jesu Christi Regis</str>
+        <str key="en">Our Lord Jesus Christ King</str>
+        <str key="fr">Notre-Seigneur Jésus-Christ Roi</str>
+        <str key="la">Domini nostri Jesu Christi Regis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -230,9 +230,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -246,9 +246,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Fete-de-la-Trinite</str>
       <dict key="nom">
-        <str key="english">Trinity Sunday</str>
-        <str key="francais">Fête de la Très Sainte Trinité</str>
-        <str key="latina">Dominica Sanctissimae Trinitatis</str>
+        <str key="en">Trinity Sunday</str>
+        <str key="fr">Fête de la Très Sainte Trinité</str>
+        <str key="la">Dominica Sanctissimae Trinitatis</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -297,9 +297,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -313,9 +313,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Fete-Dieu-ou-Fete-du-Tres-Saint</str>
       <dict key="nom">
-        <str key="english">Feast of Corpus Christi</str>
-        <str key="francais">Fête du Très Saint Corps du Christ</str>
-        <str key="latina">In Festo Sanctissimi Corporis Christi</str>
+        <str key="en">Feast of Corpus Christi</str>
+        <str key="fr">Fête du Très Saint Corps du Christ</str>
+        <str key="la">In Festo Sanctissimi Corporis Christi</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -370,9 +370,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -386,9 +386,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Fete-du-Sacre-Coeur</str>
       <dict key="nom">
-        <str key="english">Feast of the Sacred Heart</str>
-        <str key="francais">Fête du Très Saint Cœur de Jésus</str>
-        <str key="latina">In Festo Sacratissimi Corde Jesu</str>
+        <str key="en">Feast of the Sacred Heart</str>
+        <str key="fr">Fête du Très Saint Cœur de Jésus</str>
+        <str key="la">In Festo Sacratissimi Corde Jesu</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -442,9 +442,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais">Vérifier s'il s'agit bien d'une fête du Seigneur, et la transférer dans ce cas.</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Vérifier s'il s'agit bien d'une fête du Seigneur, et la transférer dans ce cas.</str>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -461,9 +461,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/06-08-Transfiguration-de-Notre</str>
       <dict key="nom">
-        <str key="english">Transfiguration of Our Lord Jesus Christ</str>
-        <str key="francais">Transfiguration de Notre Seigneur Jésus Christ</str>
-        <str key="latina">In Transfiguratione Domini Nostri Jesu Christi</str>
+        <str key="en">Transfiguration of Our Lord Jesus Christ</str>
+        <str key="fr">Transfiguration de Notre Seigneur Jésus Christ</str>
+        <str key="la">In Transfiguratione Domini Nostri Jesu Christi</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -512,9 +512,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -530,9 +530,9 @@
       <bool key="fete_du_Seigneur">True</bool>
       <str key="link">http://introibo.fr/14-09-Exaltation-de-la-Ste-Croix</str>
       <dict key="nom">
-        <str key="english">The Exaltation of the Holy Cross</str>
-        <str key="francais">Exaltation de la Sainte Croix</str>
-        <str key="latina">In Exaltatione Sanctae Crucis</str>
+        <str key="en">The Exaltation of the Holy Cross</str>
+        <str key="fr">Exaltation de la Sainte Croix</str>
+        <str key="la">In Exaltatione Sanctae Crucis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>

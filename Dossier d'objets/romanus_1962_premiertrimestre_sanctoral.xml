@@ -9,9 +9,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -27,9 +27,9 @@
       <bool key="fete_du_Seigneur">False</bool>
       <str key="link">http://introibo.fr/05-01-St-Telesphore-pape-et-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Telesphorus</str>
-        <str key="francais">Saint Télesphore</str>
-        <str key="latina">Sancti Telesphori</str>
+        <str key="en">Saint Telesphorus</str>
+        <str key="fr">Saint Télesphore</str>
+        <str key="la">Sancti Telesphori</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -75,9 +75,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -94,9 +94,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/11-01-St-Hygin-pape-et-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Hyginus</str>
-        <str key="francais">Saint Hygin</str>
-        <str key="latina">Sancti Hygini</str>
+        <str key="en">Saint Hyginus</str>
+        <str key="fr">Saint Hygin</str>
+        <str key="la">Sancti Hygini</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -142,9 +142,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -161,9 +161,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-01-St-Hilaire-eveque-confesseur</str>
       <dict key="nom">
-        <str key="english">Saint Hilary of Poitiers</str>
-        <str key="francais">Saint Hilaire, évêque, confesseur et docteur de l'Église</str>
-        <str key="latina">Sancti Hilarii Episcopi, Confessoris, Ecclesiae Doctoris</str>
+        <str key="en">Saint Hilary of Poitiers</str>
+        <str key="fr">Saint Hilaire, évêque, confesseur et docteur de l'Église</str>
+        <str key="la">Sancti Hilarii Episcopi, Confessoris, Ecclesiae Doctoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -218,9 +218,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -237,9 +237,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-01-St-Felix-pretre-et-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Felix of Nola</str>
-        <str key="francais">Saint Félix de Nole</str>
-        <str key="latina">Sancti Felicis Presbyteri et martyris</str>
+        <str key="en">Saint Felix of Nola</str>
+        <str key="fr">Saint Félix de Nole</str>
+        <str key="la">Sancti Felicis Presbyteri et martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -317,9 +317,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -336,9 +336,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/15-01-St-Paul-premier-ermite-et</str>
       <dict key="nom">
-        <str key="english">Saint Paul of Thebes</str>
-        <str key="francais">Saint Paul, premier ermite et Confesseur</str>
-        <str key="latina">Sancti Pauli Primi Eremitae et Confessoris</str>
+        <str key="en">Saint Paul of Thebes</str>
+        <str key="fr">Saint Paul, premier ermite et Confesseur</str>
+        <str key="la">Sancti Pauli Primi Eremitae et Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -423,9 +423,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -442,9 +442,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/15-01-St-Maur-abbe</str>
       <dict key="nom">
-        <str key="english">Saint Maurus, abbot</str>
-        <str key="francais">Saint Maur, abbé</str>
-        <str key="latina">Sancti Mauri Abbatis</str>
+        <str key="en">Saint Maurus, abbot</str>
+        <str key="fr">Saint Maur, abbé</str>
+        <str key="la">Sancti Mauri Abbatis</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -504,9 +504,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -523,9 +523,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/16-01-St-Marcel-Ier-pape-et-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Marcellus the First</str>
-        <str key="francais">Saint Marcel Premier, Pape et Martyr</str>
-        <str key="latina">Sancti Marcelli Primi, Papae et Martyris</str>
+        <str key="en">Saint Marcellus the First</str>
+        <str key="fr">Saint Marcel Premier, Pape et Martyr</str>
+        <str key="la">Sancti Marcelli Primi, Papae et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -589,9 +589,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -608,9 +608,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/17-01-St-Antoine-abbe</str>
       <dict key="nom">
-        <str key="english">Saint Anthony the Great</str>
-        <str key="francais">Saint Antoine, abbé</str>
-        <str key="latina">Sancti Antonii, Abbatis</str>
+        <str key="en">Saint Anthony the Great</str>
+        <str key="fr">Saint Antoine, abbé</str>
+        <str key="la">Sancti Antonii, Abbatis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -682,9 +682,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -701,9 +701,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/18-01-Ste-Prisque-vierge-et</str>
       <dict key="nom">
-        <str key="english">Saint Prisca</str>
-        <str key="francais">Sainte Prisque, Vierge et Martyre</str>
-        <str key="latina">Sanctae Priscae, Virginis et Martyris</str>
+        <str key="en">Saint Prisca</str>
+        <str key="fr">Sainte Prisque, Vierge et Martyre</str>
+        <str key="la">Sanctae Priscae, Virginis et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -759,9 +759,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -778,9 +778,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/19-01-Sts-Marius-Marthe-Audifax-et</str>
       <dict key="nom">
-        <str key="english">Saints Marius, Martha, Audifax et Abachum</str>
-        <str key="francais">Saints Marius, Marthe, Audifax et Abachus, Martyrs</str>
-        <str key="latina">Sanctorum Marii, Marthae, Audifacis et Abachum, Martyrum</str>
+        <str key="en">Saints Marius, Martha, Audifax et Abachum</str>
+        <str key="fr">Saints Marius, Marthe, Audifax et Abachus, Martyrs</str>
+        <str key="la">Sanctorum Marii, Marthae, Audifacis et Abachum, Martyrum</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -836,9 +836,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -855,9 +855,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/19-01-St-Canut-roi-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Canute of Denmark</str>
-        <str key="francais">Saint Canut, roi, martyr</str>
-        <str key="latina">Sancti Canuti, Regis et Martyris</str>
+        <str key="en">Saint Canute of Denmark</str>
+        <str key="fr">Saint Canut, roi, martyr</str>
+        <str key="la">Sancti Canuti, Regis et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -913,9 +913,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -932,9 +932,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/20-01-Sts-Fabien-pape-et-Sebastien</str>
       <dict key="nom">
-        <str key="english">Saints Fabian, Pope, and Sebastian</str>
-        <str key="francais">Saints Fabien, Pape, et Sébastien, Martyrs</str>
-        <str key="latina">Sanctorum Fabiani, Papae, et Sebastiani, Martyrum</str>
+        <str key="en">Saints Fabian, Pope, and Sebastian</str>
+        <str key="fr">Saints Fabien, Pape, et Sébastien, Martyrs</str>
+        <str key="la">Sanctorum Fabiani, Papae, et Sebastiani, Martyrum</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -986,9 +986,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1005,9 +1005,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/21-01-Ste-Agnes-vierge-et-martyre</str>
       <dict key="nom">
-        <str key="english">Saint Agnes of Rome, Virgin and Martyr</str>
-        <str key="francais">Sainte Agnès, Vierge et Martyre</str>
-        <str key="latina">Sanctae Agnetis, Virginis et Martyris</str>
+        <str key="en">Saint Agnes of Rome, Virgin and Martyr</str>
+        <str key="fr">Sainte Agnès, Vierge et Martyre</str>
+        <str key="la">Sanctae Agnetis, Virginis et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1075,9 +1075,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1094,9 +1094,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/22-01-Sts-Vincent-et-Anastase</str>
       <dict key="nom">
-        <str key="english">Saints Vincent and Anastasius</str>
-        <str key="francais">Saints Vincent et Anastase, martyrs</str>
-        <str key="latina">Sanctorum Vincentii et Anastasii, Martyrum</str>
+        <str key="en">Saints Vincent and Anastasius</str>
+        <str key="fr">Saints Vincent et Anastase, martyrs</str>
+        <str key="la">Sanctorum Vincentii et Anastasii, Martyrum</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1177,9 +1177,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1196,9 +1196,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/23-01-St-Raymond-de-Pegnafort</str>
       <dict key="nom">
-        <str key="english">Saint Raymond of Penyafort</str>
-        <str key="francais">Saint Raymond de Pegnafort, Confesseur</str>
-        <str key="latina">Sancti Raymundi de Peñafort Confessoris</str>
+        <str key="en">Saint Raymond of Penyafort</str>
+        <str key="fr">Saint Raymond de Pegnafort, Confesseur</str>
+        <str key="la">Sancti Raymundi de Peñafort Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -1259,9 +1259,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1278,9 +1278,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/23-01-Ste-Emerentienne-martyre</str>
       <dict key="nom">
-        <str key="english">Saint Emerentiana</str>
-        <str key="francais">Sainte Émérentienne, Vierge et Martyre</str>
-        <str key="latina">Sanctae Emerentianae, Virginis et Martyris</str>
+        <str key="en">Saint Emerentiana</str>
+        <str key="fr">Sainte Émérentienne, Vierge et Martyre</str>
+        <str key="la">Sanctae Emerentianae, Virginis et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -1328,9 +1328,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1347,9 +1347,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/24-01-St-Timothee-eveque-et-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Timothy</str>
-        <str key="francais">Saint Timothée, évêque et martyr</str>
-        <str key="latina">Sancti Timothei, Episcopi et martyris</str>
+        <str key="en">Saint Timothy</str>
+        <str key="fr">Saint Timothée, évêque et martyr</str>
+        <str key="la">Sancti Timothei, Episcopi et martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1410,9 +1410,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais">Mémoire de Saint Pierre.</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Mémoire de Saint Pierre.</str>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1429,9 +1429,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/25-01-Conversion-de-St-Paul-apotre</str>
       <dict key="nom">
-        <str key="english">Conversion of Paul the Apostle</str>
-        <str key="francais">Conversion de Saint Paul Apôtre</str>
-        <str key="latina">In Conversione Sancti Pauli Apostoli</str>
+        <str key="en">Conversion of Paul the Apostle</str>
+        <str key="fr">Conversion de Saint Paul Apôtre</str>
+        <str key="la">In Conversione Sancti Pauli Apostoli</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1482,9 +1482,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1501,9 +1501,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/26-01-St-Polycarpe-eveque-et</str>
       <dict key="nom">
-        <str key="english">Saint Polycarp</str>
-        <str key="francais">Saint Polycarpe, Évêque et Martyr</str>
-        <str key="latina">Sancti Polycarpi, Episcopi et Martyris</str>
+        <str key="en">Saint Polycarp</str>
+        <str key="fr">Saint Polycarpe, Évêque et Martyr</str>
+        <str key="la">Sancti Polycarpi, Episcopi et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1556,9 +1556,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1575,9 +1575,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/27-01-St-Jean-Chrysostome-eveque</str>
       <dict key="nom">
-        <str key="english">Saint John Chrysostom</str>
-        <str key="francais">Saint Jean Chrysostome, Évêque, Confesseur et Docteur de l'Église</str>
-        <str key="latina">Sancti Joannis Chrysostomi, Episcopi, Confessoris et Ecclesiae Doctoris</str>
+        <str key="en">Saint John Chrysostom</str>
+        <str key="fr">Saint Jean Chrysostome, Évêque, Confesseur et Docteur de l'Église</str>
+        <str key="la">Sancti Joannis Chrysostomi, Episcopi, Confessoris et Ecclesiae Doctoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1725,9 +1725,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1744,9 +1744,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/28-01-St-Pierre-Nolasque</str>
       <dict key="nom">
-        <str key="english">Saint Peter Nolasco</str>
-        <str key="francais">Saint Pierre Nolasque, Confesseur</str>
-        <str key="latina">Sancti Petri Nolasci, Confessoris</str>
+        <str key="en">Saint Peter Nolasco</str>
+        <str key="fr">Saint Pierre Nolasque, Confesseur</str>
+        <str key="la">Sancti Petri Nolasci, Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -1853,9 +1853,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais">Cette deuxième fête de Sainte Agnès est peut-être la survivance d'une ancienne octave.</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Cette deuxième fête de Sainte Agnès est peut-être la survivance d'une ancienne octave.</str>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1872,9 +1872,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/28-01-Ste-Agnes-vierge-et-martyre</str>
       <dict key="nom">
-        <str key="english">Saint Agnes, second time</str>
-        <str key="francais">Sainte Agnès, Vierge et Martyre, deuxième fête</str>
-        <str key="latina">Sanctae Agnetis, Virginis et Martyris, secundo</str>
+        <str key="en">Saint Agnes, second time</str>
+        <str key="fr">Sainte Agnès, Vierge et Martyre, deuxième fête</str>
+        <str key="la">Sanctae Agnetis, Virginis et Martyris, secundo</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -1942,9 +1942,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1961,9 +1961,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Saint-Francois-de-Sales</str>
       <dict key="nom">
-        <str key="english">Saint Francis de Sales</str>
-        <str key="francais">Saint François de Sales, Évêque, Confesseur et Docteur de l'Église</str>
-        <str key="latina">Sancti Francisci Salesii, Episcopi, Confessoris et Ecclesiae Doctoris</str>
+        <str key="en">Saint Francis de Sales</str>
+        <str key="fr">Saint François de Sales, Évêque, Confesseur et Docteur de l'Église</str>
+        <str key="la">Sancti Francisci Salesii, Episcopi, Confessoris et Ecclesiae Doctoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2042,9 +2042,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2061,9 +2061,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/30-01-Ste-Martine-vierge-et</str>
       <dict key="nom">
-        <str key="english">Saint Martina of Rome</str>
-        <str key="francais">Sainte Martine, Vierge et Martyre</str>
-        <str key="latina">Sanctae Martinae, Virginis et Martyris</str>
+        <str key="en">Saint Martina of Rome</str>
+        <str key="fr">Sainte Martine, Vierge et Martyre</str>
+        <str key="la">Sanctae Martinae, Virginis et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2114,9 +2114,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2133,9 +2133,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/31-01-St-Jean-Bosco-confesseur</str>
       <dict key="nom">
-        <str key="english">Saint John Bosco</str>
-        <str key="francais">Saint Jean Bosco, Confesseur</str>
-        <str key="latina">Sancti Joannis Bosco, Confessoris</str>
+        <str key="en">Saint John Bosco</str>
+        <str key="fr">Saint Jean Bosco, Confesseur</str>
+        <str key="la">Sancti Joannis Bosco, Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2280,9 +2280,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2299,9 +2299,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/01-02-St-Ignace-d-Antioche-eveque</str>
       <dict key="nom">
-        <str key="english">Saint Ignatius of Antioch</str>
-        <str key="francais">Saint Ignace d'Antioche, Évêque et Martyr</str>
-        <str key="latina">Sancti Ignatii, Episcopi et Martyris</str>
+        <str key="en">Saint Ignatius of Antioch</str>
+        <str key="fr">Saint Ignace d'Antioche, Évêque et Martyr</str>
+        <str key="la">Sancti Ignatii, Episcopi et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2367,9 +2367,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2386,9 +2386,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/La-Purification-de-la-Sainte</str>
       <dict key="nom">
-        <str key="english">Feast of the Purification of the Blessed Virgin Mary</str>
-        <str key="francais">La Purification de la Sainte Vierge Marie</str>
-        <str key="latina">In Purificatione Beatae Mariae Virginis</str>
+        <str key="en">Feast of the Purification of the Blessed Virgin Mary</str>
+        <str key="fr">La Purification de la Sainte Vierge Marie</str>
+        <str key="la">In Purificatione Beatae Mariae Virginis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2442,9 +2442,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2461,9 +2461,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/03-02-St-Blaise-eveque-et-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Blaise</str>
-        <str key="francais">Saint Blaise, Évêque et Martyr</str>
-        <str key="latina">Sancti Blasii, Episcopis et Martyris</str>
+        <str key="en">Saint Blaise</str>
+        <str key="fr">Saint Blaise, Évêque et Martyr</str>
+        <str key="la">Sancti Blasii, Episcopis et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2517,9 +2517,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2536,9 +2536,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/04-02-St-Andre-Corsini-eveque-et</str>
       <dict key="nom">
-        <str key="english">Saint Andrew Corsini</str>
-        <str key="francais">Saint André Corsini, Évêque et Confesseur</str>
-        <str key="latina">Sancti Andreae Corsini, Episcopis et Confessoris</str>
+        <str key="en">Saint Andrew Corsini</str>
+        <str key="fr">Saint André Corsini, Évêque et Confesseur</str>
+        <str key="la">Sancti Andreae Corsini, Episcopis et Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2638,9 +2638,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2657,9 +2657,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/05-02-Ste-Agathe-vierge-et-martyre</str>
       <dict key="nom">
-        <str key="english">Saint Agatha of Sicily</str>
-        <str key="francais">Sainte Agathe, Vierge et Martyre</str>
-        <str key="latina">Sanctae Agathae, Virginis et Martyris</str>
+        <str key="en">Saint Agatha of Sicily</str>
+        <str key="fr">Sainte Agathe, Vierge et Martyre</str>
+        <str key="la">Sanctae Agathae, Virginis et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2716,9 +2716,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2735,9 +2735,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/06-02-St-Tite-eveque-et-confesseur</str>
       <dict key="nom">
-        <str key="english">Saint Titus</str>
-        <str key="francais">Saint Tite, Évêque et Confesseur</str>
-        <str key="latina">Sancti Titi, Episcopis et Confessoris</str>
+        <str key="en">Saint Titus</str>
+        <str key="fr">Saint Tite, Évêque et Confesseur</str>
+        <str key="la">Sancti Titi, Episcopis et Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -2792,9 +2792,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2811,9 +2811,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/06-02-Ste-Dorothee-vierge-et</str>
       <dict key="nom">
-        <str key="english">Saint Dorothea of Caesarea</str>
-        <str key="francais">Sainte Dorothée, Vierge et Martyre</str>
-        <str key="latina">Sanctae Dorotheae, Virginis et Martyris</str>
+        <str key="en">Saint Dorothea of Caesarea</str>
+        <str key="fr">Sainte Dorothée, Vierge et Martyre</str>
+        <str key="la">Sanctae Dorotheae, Virginis et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -2872,9 +2872,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2891,9 +2891,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/07-02-St-Romuald-abbe</str>
       <dict key="nom">
-        <str key="english">Saint Romuald</str>
-        <str key="francais">Saint Romuald, Abbé</str>
-        <str key="latina">Sancti Romualdi, Abbatis</str>
+        <str key="en">Saint Romuald</str>
+        <str key="fr">Saint Romuald, Abbé</str>
+        <str key="la">Sancti Romualdi, Abbatis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2943,9 +2943,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2962,9 +2962,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/08-02-St-Jean-de-Matha-confesseur</str>
       <dict key="nom">
-        <str key="english">Saint John of Matha</str>
-        <str key="francais">Saint Jean de Matha, Confesseur</str>
-        <str key="latina">Sancti Joannis de Matha, Confessoris</str>
+        <str key="en">Saint John of Matha</str>
+        <str key="fr">Saint Jean de Matha, Confesseur</str>
+        <str key="la">Sancti Joannis de Matha, Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3110,9 +3110,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3129,9 +3129,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/09-02-St-Cyrille-d-Alexandrie</str>
       <dict key="nom">
-        <str key="english">Saint Cyril of Alexandria</str>
-        <str key="francais">Saint Cyrille d'Alexandrie, Évêque, Confesseur et Docteur de l'Église</str>
-        <str key="latina">Sancti Cyrilli, Episcopi Alexandrini, Confessoris et Ecclesiae Doctoris</str>
+        <str key="en">Saint Cyril of Alexandria</str>
+        <str key="fr">Saint Cyrille d'Alexandrie, Évêque, Confesseur et Docteur de l'Église</str>
+        <str key="la">Sancti Cyrilli, Episcopi Alexandrini, Confessoris et Ecclesiae Doctoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -3192,9 +3192,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3211,9 +3211,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/09-02-Ste-Apolline-vierge-et</str>
       <dict key="nom">
-        <str key="english">Saint Apollonia</str>
-        <str key="francais">Sainte Apolline, Vierge et Martyre</str>
-        <str key="latina">Sanctae Apolloniae, Virginis et Martyris</str>
+        <str key="en">Saint Apollonia</str>
+        <str key="fr">Sainte Apolline, Vierge et Martyre</str>
+        <str key="la">Sanctae Apolloniae, Virginis et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -3264,9 +3264,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3283,9 +3283,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/10-02-Ste-Scholastique-vierge</str>
       <dict key="nom">
-        <str key="english">Saint Scholastica</str>
-        <str key="francais">Sainte Scholastique, Vierge</str>
-        <str key="latina">Sanctae Scholasticae, Virginis</str>
+        <str key="en">Saint Scholastica</str>
+        <str key="fr">Sainte Scholastique, Vierge</str>
+        <str key="la">Sanctae Scholasticae, Virginis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3331,9 +3331,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3350,9 +3350,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/11-02-Apparition-de-la-Vierge</str>
       <dict key="nom">
-        <str key="english">Apparitions at Lourdes</str>
-        <str key="francais">Apparition de la Bienheureuse Vierge Marie</str>
-        <str key="latina">In Apparitione Beatae Mariae Virginis Immaculatae</str>
+        <str key="en">Apparitions at Lourdes</str>
+        <str key="fr">Apparition de la Bienheureuse Vierge Marie</str>
+        <str key="la">In Apparitione Beatae Mariae Virginis Immaculatae</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3409,9 +3409,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3428,9 +3428,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/12-02-Les-Sept-Saints-Fondateurs</str>
       <dict key="nom">
-        <str key="english">The Seven Founders of the Servite Order</str>
-        <str key="francais">Les Sept Saints Fondateurs de l'Ordre des Servites de la Bienheureuse Vierge Marie, Confesseurs</str>
-        <str key="latina">Sanctorum septem fundatorum Ordinis Servorum Beatae Mariae Virginis, Confessorum</str>
+        <str key="en">The Seven Founders of the Servite Order</str>
+        <str key="fr">Les Sept Saints Fondateurs de l'Ordre des Servites de la Bienheureuse Vierge Marie, Confesseurs</str>
+        <str key="la">Sanctorum septem fundatorum Ordinis Servorum Beatae Mariae Virginis, Confessorum</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3489,9 +3489,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3508,9 +3508,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/14-02-St-Valentin-pretre-et-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Valentine of Terni</str>
-        <str key="francais">Saint Valentin, Prêtre et Martyr</str>
-        <str key="latina">Sancti Valentini, Presbyteri et Martyris</str>
+        <str key="en">Saint Valentine of Terni</str>
+        <str key="fr">Saint Valentin, Prêtre et Martyr</str>
+        <str key="la">Sancti Valentini, Presbyteri et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3575,9 +3575,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3594,9 +3594,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/15-02-Sts-Faustin-et-Jovite</str>
       <dict key="nom">
-        <str key="english">Saints Jovita and Faustinus</str>
-        <str key="francais">Saints Faustin et Jovite, Martyrs</str>
-        <str key="latina">Sanctorum Faustini et Jovitae, Martyrum</str>
+        <str key="en">Saints Jovita and Faustinus</str>
+        <str key="fr">Saints Faustin et Jovite, Martyrs</str>
+        <str key="la">Sanctorum Faustini et Jovitae, Martyrum</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3653,9 +3653,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3672,9 +3672,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/18-02-St-Simeon-eveque-et-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Simeon of Jerusalem</str>
-        <str key="francais">Saint Siméon, Évêque et Martyr</str>
-        <str key="latina">Sancti Simeonis, Episcopi et Martyris</str>
+        <str key="en">Saint Simeon of Jerusalem</str>
+        <str key="fr">Saint Siméon, Évêque et Martyr</str>
+        <str key="la">Sancti Simeonis, Episcopi et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3746,9 +3746,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais">Commémoraison de saint Paul.</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Commémoraison de saint Paul.</str>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3765,9 +3765,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/La-Chaire-de-Saint-Pierre</str>
       <dict key="nom">
-        <str key="english">Feast of the Chair of Saint Peter</str>
-        <str key="francais">Chaire de Saint Pierre, Apôtre</str>
-        <str key="latina">Cathedrae Sancti Petri Apostoli</str>
+        <str key="en">Feast of the Chair of Saint Peter</str>
+        <str key="fr">Chaire de Saint Pierre, Apôtre</str>
+        <str key="la">Cathedrae Sancti Petri Apostoli</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3878,9 +3878,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3897,9 +3897,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/23-02-St-Pierre-Damien-eveque</str>
       <dict key="nom">
-        <str key="english">Saint Peter Damian</str>
-        <str key="francais">Saint Pierre Damien, Évêque, Confesseur et Docteur de l'Église</str>
-        <str key="latina">Sancti Petri Damiani, Episcopi, Confessoris et Ecclesiae Doctoris</str>
+        <str key="en">Saint Peter Damian</str>
+        <str key="fr">Saint Pierre Damien, Évêque, Confesseur et Docteur de l'Église</str>
+        <str key="la">Sancti Petri Damiani, Episcopi, Confessoris et Ecclesiae Doctoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4013,9 +4013,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4038,9 +4038,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/24-ou-25-02-St-Mathias</str>
       <dict key="nom">
-        <str key="english">Saint Matthias</str>
-        <str key="francais">Saint Mathias, Apôtre</str>
-        <str key="latina">Sancti Matthiae, Apostoli</str>
+        <str key="en">Saint Matthias</str>
+        <str key="fr">Saint Mathias, Apôtre</str>
+        <str key="la">Sancti Matthiae, Apostoli</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4090,9 +4090,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4115,9 +4115,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/27-02-ou-28-02-St-Gabriel-de-la</str>
       <dict key="nom">
-        <str key="english">Saint Gabriel of Our Lady of Sorrows</str>
-        <str key="francais">Saint Gabriel de la Vierge des Douleurs</str>
-        <str key="latina">Sancti Gabrielis a Virgine Perdolente, Confessoris</str>
+        <str key="en">Saint Gabriel of Our Lady of Sorrows</str>
+        <str key="fr">Saint Gabriel de la Vierge des Douleurs</str>
+        <str key="la">Sancti Gabrielis a Virgine Perdolente, Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4187,9 +4187,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4206,9 +4206,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/04-03-St-Casimir-confesseur</str>
       <dict key="nom">
-        <str key="english">Saint Casimir</str>
-        <str key="francais">Saint Casimir, Confesseur</str>
-        <str key="latina">Sancti Casimiri, Confessoris</str>
+        <str key="en">Saint Casimir</str>
+        <str key="fr">Saint Casimir, Confesseur</str>
+        <str key="la">Sancti Casimiri, Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4261,9 +4261,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4280,9 +4280,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/04-03-St-Lucius-Ier-pape-et-martyr</str>
       <dict key="nom">
-        <str key="english">Saint Lucius I</str>
-        <str key="francais">Saint Lucius Premier, Pape et Martyr</str>
-        <str key="latina">Sancti Lucii Primi, Papae et Martyris</str>
+        <str key="en">Saint Lucius I</str>
+        <str key="fr">Saint Lucius Premier, Pape et Martyr</str>
+        <str key="la">Sancti Lucii Primi, Papae et Martyris</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -4340,9 +4340,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4359,9 +4359,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/06-03-Stes-Perpetue-et-Felicite</str>
       <dict key="nom">
-        <str key="english">Saints Perpetua and Felicitas</str>
-        <str key="francais">Saintes Perpétue et Félicité, Martyres</str>
-        <str key="latina">Sanctarum Perpetuae et Felicitatis, Martyrum</str>
+        <str key="en">Saints Perpetua and Felicitas</str>
+        <str key="fr">Saintes Perpétue et Félicité, Martyres</str>
+        <str key="la">Sanctarum Perpetuae et Felicitatis, Martyrum</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4412,9 +4412,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4431,9 +4431,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/07-03-St-Thomas-d-Aquin-confesseur</str>
       <dict key="nom">
-        <str key="english">Saint Thomas Aquinas</str>
-        <str key="francais">Saint Thomas d'Aquin, Confesseur et Docteur de l'Église</str>
-        <str key="latina">Sancti Thomae de Aquino, Confessoris et Ecclesiae Doctoris</str>
+        <str key="en">Saint Thomas Aquinas</str>
+        <str key="fr">Saint Thomas d'Aquin, Confesseur et Docteur de l'Église</str>
+        <str key="la">Sancti Thomae de Aquino, Confessoris et Ecclesiae Doctoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4513,9 +4513,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4532,9 +4532,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/08-03-St-Jean-de-Dieu-confesseur</str>
       <dict key="nom">
-        <str key="english">Saint John of God</str>
-        <str key="francais">Saint Jean de Dieu, Confesseur</str>
-        <str key="latina">Sancti Joannis a Deo, Confessoris</str>
+        <str key="en">Saint John of God</str>
+        <str key="fr">Saint Jean de Dieu, Confesseur</str>
+        <str key="la">Sancti Joannis a Deo, Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4680,9 +4680,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4699,9 +4699,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/09-03-Ste-Francoise-Romaine-veuve</str>
       <dict key="nom">
-        <str key="english">Saint Frances of Rome</str>
-        <str key="francais">Sainte Françoise Romaine, Veuve</str>
-        <str key="latina">Sanctae Franciscae Romanae, Viduae</str>
+        <str key="en">Saint Frances of Rome</str>
+        <str key="fr">Sainte Françoise Romaine, Veuve</str>
+        <str key="la">Sanctae Franciscae Romanae, Viduae</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4754,9 +4754,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4773,9 +4773,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/10-03-Les-saints-Quarante-Martyrs</str>
       <dict key="nom">
-        <str key="english">Saints Forty Martyrs of Sebaste</str>
-        <str key="francais">Les Saints Quarante Martyrs</str>
-        <str key="latina">Sanctorum Quadraginta Martyrum</str>
+        <str key="en">Saints Forty Martyrs of Sebaste</str>
+        <str key="fr">Les Saints Quarante Martyrs</str>
+        <str key="la">Sanctorum Quadraginta Martyrum</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4826,9 +4826,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4845,9 +4845,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/12-03-St-Gregoire-le-Grand-pape</str>
       <dict key="nom">
-        <str key="english">Saint Gregroy the Great</str>
-        <str key="francais">Saint Grégoire le Grand, Pape, Confesseur et Docteur de l'Église</str>
-        <str key="latina">Sancti Gregorii Primi, Papae, Confessoris et Ecclesiae Doctoris</str>
+        <str key="en">Saint Gregroy the Great</str>
+        <str key="fr">Saint Grégoire le Grand, Pape, Confesseur et Docteur de l'Église</str>
+        <str key="la">Sancti Gregorii Primi, Papae, Confessoris et Ecclesiae Doctoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4920,9 +4920,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -4939,9 +4939,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/17-03-St-Patrice-Patrick-eveque-et</str>
       <dict key="nom">
-        <str key="english">Saint Patrick</str>
-        <str key="francais">Saint Patrice, Évêque et Confesseur</str>
-        <str key="latina">Sancti Patricii, Episcopi et Confessoris</str>
+        <str key="en">Saint Patrick</str>
+        <str key="fr">Saint Patrice, Évêque et Confesseur</str>
+        <str key="la">Sancti Patricii, Episcopi et Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -4999,9 +4999,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -5018,9 +5018,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/18-03-St-Cyrille-de-Jerusalem</str>
       <dict key="nom">
-        <str key="english">Saint Cyril of Jerusalem</str>
-        <str key="francais">Saint Cyrille de Jérusalem, Évêque de Jérusalem, Confesseur et Docteur de l'Église</str>
-        <str key="latina">Sancti Cyrilli Episcopi Hierosolymitani, Confessoris et Ecclesiae Doctoris</str>
+        <str key="en">Saint Cyril of Jerusalem</str>
+        <str key="fr">Saint Cyrille de Jérusalem, Évêque de Jérusalem, Confesseur et Docteur de l'Église</str>
+        <str key="la">Sancti Cyrilli Episcopi Hierosolymitani, Confessoris et Ecclesiae Doctoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -5081,9 +5081,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -5100,9 +5100,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/19-03-St-Joseph-epoux-de-la</str>
       <dict key="nom">
-        <str key="english">Saint Joseph, Husband of Mary</str>
-        <str key="francais">Saint Joseph, Époux de la Bienheureuse Vierge Marie, Confesseur</str>
-        <str key="latina">Sancti Joseph, Sponsi Beatae Mariae Virginis, Confessoris</str>
+        <str key="en">Saint Joseph, Husband of Mary</str>
+        <str key="fr">Saint Joseph, Époux de la Bienheureuse Vierge Marie, Confesseur</str>
+        <str key="la">Sancti Joseph, Sponsi Beatae Mariae Virginis, Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -5199,9 +5199,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -5218,9 +5218,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/21-03-St-Benoit-abbe</str>
       <dict key="nom">
-        <str key="english">Saint Benedict of Nursia</str>
-        <str key="francais">Saint Benoît, Abbé</str>
-        <str key="latina">Sancti Benedicti, Abbatis</str>
+        <str key="en">Saint Benedict of Nursia</str>
+        <str key="fr">Saint Benoît, Abbé</str>
+        <str key="la">Sancti Benedicti, Abbatis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -5293,9 +5293,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -5312,9 +5312,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/24-03-St-Gabriel-archange</str>
       <dict key="nom">
-        <str key="english">Saint Gabriel, Archangel</str>
-        <str key="francais">Saint Gabriel, Archange</str>
-        <str key="latina">Sancti Gabrielis, Archangeli</str>
+        <str key="en">Saint Gabriel, Archangel</str>
+        <str key="fr">Saint Gabriel, Archange</str>
+        <str key="la">Sancti Gabrielis, Archangeli</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -5374,9 +5374,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -5393,9 +5393,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/27-03-St-Jean-Damascene-confesseur</str>
       <dict key="nom">
-        <str key="english">Saint John of Damascus</str>
-        <str key="francais">Saint Jean Damascène, Confesseur et Docteur de l'Église</str>
-        <str key="latina">Sancti Joannis Damasceni, Confessoris et Ecclesiae Doctoris</str>
+        <str key="en">Saint John of Damascus</str>
+        <str key="fr">Saint Jean Damascène, Confesseur et Docteur de l'Église</str>
+        <str key="la">Sancti Joannis Damasceni, Confessoris et Ecclesiae Doctoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -5545,9 +5545,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -5564,9 +5564,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/28-03-St-Jean-de-Capistran</str>
       <dict key="nom">
-        <str key="english">Saint John of Capistrano</str>
-        <str key="francais">Saint Jean de Capistran, Confesseur</str>
-        <str key="latina">Sancti Joannis a Capistrano, Confessoris</str>
+        <str key="en">Saint John of Capistrano</str>
+        <str key="fr">Saint Jean de Capistran, Confesseur</str>
+        <str key="la">Sancti Joannis a Capistrano, Confessoris</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -5712,9 +5712,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais">Si des exercices de piété ont lieu en l'honneur de Notre-Dame des Sept Douleurs, on peut célébrer deux messes festives.</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Si des exercices de piété ont lieu en l'honneur de Notre-Dame des Sept Douleurs, on peut célébrer deux messes festives.</str>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -5728,9 +5728,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Vendredi-de-la-1ere-semaine-de-la</str>
       <dict key="nom">
-        <str key="english">Our Lady of Sorrows</str>
-        <str key="francais">Notre-Dame des Sept Douleurs</str>
-        <str key="latina">Septem Dolorum Beatae Mariae Virginis</str>
+        <str key="en">Our Lady of Sorrows</str>
+        <str key="fr">Notre-Dame des Sept Douleurs</str>
+        <str key="la">Septem Dolorum Beatae Mariae Virginis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -5781,9 +5781,9 @@
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -5800,9 +5800,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/25-03-Annonciation-de-la</str>
       <dict key="nom">
-        <str key="english">Annunciation of the Blessed Virgin Mary</str>
-        <str key="francais">Annonciation de la Bienheureuse Vierge Marie</str>
-        <str key="latina">In Annuntiatione Beatae Mariae Virginis</str>
+        <str key="en">Annunciation of the Blessed Virgin Mary</str>
+        <str key="fr">Annonciation de la Bienheureuse Vierge Marie</str>
+        <str key="la">In Annuntiatione Beatae Mariae Virginis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>

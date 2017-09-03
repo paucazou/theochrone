@@ -8,9 +8,9 @@
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -24,9 +24,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-Paque</str>
       <dict key="nom">
-        <str key="english">Easter</str>
-        <str key="francais">Dimanche de Pâques</str>
-        <str key="latina">Dominica Resurrectionis</str>
+        <str key="en">Easter</str>
+        <str key="fr">Dimanche de Pâques</str>
+        <str key="la">Dominica Resurrectionis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -65,9 +65,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Marie-Majeure</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Marie-Majeure</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -85,9 +85,9 @@
       <str key="_temps_liturgique">passion</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais">Les ornements sont rouges durant la procession précédant la messe</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Les ornements sont rouges durant la procession précédant la messe</str>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -101,9 +101,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-des-Rameaux</str>
       <dict key="nom">
-        <str key="english">Palm Sunday</str>
-        <str key="francais">Deuxième dimanche de la Passion, ou des Rameaux</str>
-        <str key="latina">Dominica II Passionis seu in Palmis</str>
+        <str key="en">Palm Sunday</str>
+        <str key="fr">Deuxième dimanche de la Passion, ou des Rameaux</str>
+        <str key="la">Dominica II Passionis seu in Palmis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -139,9 +139,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Jean-de-Latran</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Jean-de-Latran</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -159,9 +159,9 @@
       <str key="_temps_liturgique">passion</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -175,9 +175,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-la-Passion</str>
       <dict key="nom">
-        <str key="english">First Sunday of the Passion</str>
-        <str key="francais">Premier Dimanche de la Passion</str>
-        <str key="latina">Dominica I Passionis</str>
+        <str key="en">First Sunday of the Passion</str>
+        <str key="fr">Premier Dimanche de la Passion</str>
+        <str key="la">Dominica I Passionis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -210,9 +210,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Pierre</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Pierre</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -230,9 +230,9 @@
       <str key="_temps_liturgique">careme</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -246,9 +246,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/4eme-Dimanche-de-Careme</str>
       <dict key="nom">
-        <str key="english">Laetare Sunday</str>
-        <str key="francais">Quatrième Dimanche de Carême</str>
-        <str key="latina">Dominica Quarta in Quadragesima</str>
+        <str key="en">Laetare Sunday</str>
+        <str key="fr">Quatrième Dimanche de Carême</str>
+        <str key="la">Dominica Quarta in Quadragesima</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -284,9 +284,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Croix-de-Jérusalem</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Croix-de-Jérusalem</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -304,9 +304,9 @@
       <str key="_temps_liturgique">careme</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -320,9 +320,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/3eme-dimanche-de-Careme</str>
       <dict key="nom">
-        <str key="english">Third Sunday of Lent</str>
-        <str key="francais">Troisième Dimanche de Carême</str>
-        <str key="latina">Dominica Tertia in Quadragesima</str>
+        <str key="en">Third Sunday of Lent</str>
+        <str key="fr">Troisième Dimanche de Carême</str>
+        <str key="la">Dominica Tertia in Quadragesima</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -355,9 +355,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Laurent hors-les-murs</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Laurent hors-les-murs</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -375,9 +375,9 @@
       <str key="_temps_liturgique">careme</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -391,9 +391,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/2eme-dimanche-de-Careme</str>
       <dict key="nom">
-        <str key="english">Second Sunday of Lent</str>
-        <str key="francais">Deuxième Dimanche de Carême</str>
-        <str key="latina">Dominica Secunda in Quadragesima</str>
+        <str key="en">Second Sunday of Lent</str>
+        <str key="fr">Deuxième Dimanche de Carême</str>
+        <str key="la">Dominica Secunda in Quadragesima</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -423,9 +423,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Marie in Domnica</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Marie in Domnica</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -443,9 +443,9 @@
       <str key="_temps_liturgique">careme</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -459,9 +459,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/1er-Dimanche-de-Careme</str>
       <dict key="nom">
-        <str key="english">First Sunday of Lent</str>
-        <str key="francais">Premier Dimanche de Carême</str>
-        <str key="latina">Dominica Prima in Quadragesima</str>
+        <str key="en">First Sunday of Lent</str>
+        <str key="fr">Premier Dimanche de Carême</str>
+        <str key="la">Dominica Prima in Quadragesima</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -491,9 +491,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Jean-de-Latran</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Jean-de-Latran</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -511,9 +511,9 @@
       <str key="_temps_liturgique">septuagesime</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -527,9 +527,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-la-Quinquasegime</str>
       <dict key="nom">
-        <str key="english">Quinquagesima Sunday</str>
-        <str key="francais">Dimanche de la Quinquagésime</str>
-        <str key="latina">Dominica in Quinquagesima</str>
+        <str key="en">Quinquagesima Sunday</str>
+        <str key="fr">Dimanche de la Quinquagésime</str>
+        <str key="la">Dominica in Quinquagesima</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -562,9 +562,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Pierre</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Pierre</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -582,9 +582,9 @@
       <str key="_temps_liturgique">septuagesime</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -598,9 +598,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-la-Sexagesime</str>
       <dict key="nom">
-        <str key="english">Sexagesima Sunday</str>
-        <str key="francais">Dimanche de la Sexagésime</str>
-        <str key="latina">Dominica in Sexagesima</str>
+        <str key="en">Sexagesima Sunday</str>
+        <str key="fr">Dimanche de la Sexagésime</str>
+        <str key="la">Dominica in Sexagesima</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -633,9 +633,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Paul-hors-les-murs</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Paul-hors-les-murs</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -653,9 +653,9 @@
       <str key="_temps_liturgique">septuagesime</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -669,9 +669,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Dimanche-de-la-Septuagesime</str>
       <dict key="nom">
-        <str key="english">Septuagesima Sunday</str>
-        <str key="francais">Dimanche de la Septuagésime</str>
-        <str key="latina">Dominica in Septuagesima</str>
+        <str key="en">Septuagesima Sunday</str>
+        <str key="fr">Dimanche de la Septuagésime</str>
+        <str key="la">Dominica in Septuagesima</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -704,9 +704,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Laurent-hors-les-murs</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Laurent-hors-les-murs</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -724,9 +724,9 @@
       <str key="_temps_liturgique">epiphanie</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -740,9 +740,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/Messe-du-1er-dimanche-apres-l</str>
       <dict key="nom">
-        <str key="english">First Sunday after Epiphany</str>
-        <str key="francais">Premier Dimanche après l'Épiphanie</str>
-        <str key="latina">Dominica Prima post Epiphaniam</str>
+        <str key="en">First Sunday after Epiphany</str>
+        <str key="fr">Premier Dimanche après l'Épiphanie</str>
+        <str key="la">Dominica Prima post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -793,9 +793,9 @@
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -809,9 +809,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/2eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
-        <str key="english">Second Sunday after the Epiphany</str>
-        <str key="francais">Deuxième Dimanche après l'Épiphanie</str>
-        <str key="latina">Dominica Secundo post Epiphaniam</str>
+        <str key="en">Second Sunday after the Epiphany</str>
+        <str key="fr">Deuxième Dimanche après l'Épiphanie</str>
+        <str key="la">Dominica Secundo post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -862,9 +862,9 @@
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -878,9 +878,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/3eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
-        <str key="english">Third Sunday after the Epiphany</str>
-        <str key="francais">Troisième Dimanche après l'Épiphanie</str>
-        <str key="latina">Dominica Tertia post Epiphaniam</str>
+        <str key="en">Third Sunday after the Epiphany</str>
+        <str key="fr">Troisième Dimanche après l'Épiphanie</str>
+        <str key="la">Dominica Tertia post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -931,9 +931,9 @@
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -947,9 +947,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/4eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
-        <str key="english">Fourth Sunday after the Epiphany</str>
-        <str key="francais">Quatrième Dimanche après l'Épiphanie</str>
-        <str key="latina">Dominica Quarta post Epiphaniam</str>
+        <str key="en">Fourth Sunday after the Epiphany</str>
+        <str key="fr">Quatrième Dimanche après l'Épiphanie</str>
+        <str key="la">Dominica Quarta post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1000,9 +1000,9 @@
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1016,9 +1016,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/5eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
-        <str key="english">Fifth Sunday after the Epiphany</str>
-        <str key="francais">Cinquième Dimanche après l'Épiphanie</str>
-        <str key="latina">Dominica Quinta post Epiphaniam</str>
+        <str key="en">Fifth Sunday after the Epiphany</str>
+        <str key="fr">Cinquième Dimanche après l'Épiphanie</str>
+        <str key="la">Dominica Quinta post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1069,9 +1069,9 @@
       <str key="_temps_liturgique">apres_epiphanie</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1085,9 +1085,9 @@
       <str key="images_rep"/>
       <str key="link">http://introibo.fr/6eme-dimanche-apres-l-Epiphanie</str>
       <dict key="nom">
-        <str key="english">Sixth Sunday after the Epiphany</str>
-        <str key="francais">Sixième Dimanche après l'Épiphanie</str>
-        <str key="latina">Dominica Sexta post Epiphaniam</str>
+        <str key="en">Sixth Sunday after the Epiphany</str>
+        <str key="fr">Sixième Dimanche après l'Épiphanie</str>
+        <str key="la">Dominica Sexta post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1138,9 +1138,9 @@
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1154,9 +1154,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Dimanche-in-Albis</str>
       <dict key="nom">
-        <str key="english">Octave of Easter</str>
-        <str key="francais">Dimanche in Albis</str>
-        <str key="latina">Dominica in Albis in Octava Paschae</str>
+        <str key="en">Octave of Easter</str>
+        <str key="fr">Dimanche in Albis</str>
+        <str key="la">Dominica in Albis in Octava Paschae</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1193,9 +1193,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Pancrace</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Pancrace</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -1213,9 +1213,9 @@
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1229,9 +1229,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/2eme-Dimanche-apres-Paques</str>
       <dict key="nom">
-        <str key="english">Second Sunday after Easter</str>
-        <str key="francais">Deuxième dimanche après Pâques</str>
-        <str key="latina">Dominica Secunda post Pascha</str>
+        <str key="en">Second Sunday after Easter</str>
+        <str key="fr">Deuxième dimanche après Pâques</str>
+        <str key="la">Dominica Secunda post Pascha</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1279,9 +1279,9 @@
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1295,9 +1295,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/3eme-Dimanche-apres-Paques</str>
       <dict key="nom">
-        <str key="english">Third Sunday after Easter</str>
-        <str key="francais">Troisième Dimanche après Pâques</str>
-        <str key="latina">Dominica Tertia post Pascha</str>
+        <str key="en">Third Sunday after Easter</str>
+        <str key="fr">Troisième Dimanche après Pâques</str>
+        <str key="la">Dominica Tertia post Pascha</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1345,9 +1345,9 @@
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1361,9 +1361,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/4eme-Dimanche-apres-Paques</str>
       <dict key="nom">
-        <str key="english">Fourth Sunday after Easter</str>
-        <str key="francais">Quatrième Dimanche après Pâques</str>
-        <str key="latina">Dominica Quarta post Pascha</str>
+        <str key="en">Fourth Sunday after Easter</str>
+        <str key="fr">Quatrième Dimanche après Pâques</str>
+        <str key="la">Dominica Quarta post Pascha</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1411,9 +1411,9 @@
       <str key="_temps_liturgique">paques</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1427,9 +1427,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/5eme-Dimanche-apres-Paques</str>
       <dict key="nom">
-        <str key="english">Fifth Sunday after Easter</str>
-        <str key="francais">Cinquième Dimanche après Pâques</str>
-        <str key="latina">Dominica Quinta post Pascha</str>
+        <str key="en">Fifth Sunday after Easter</str>
+        <str key="fr">Cinquième Dimanche après Pâques</str>
+        <str key="la">Dominica Quinta post Pascha</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1477,9 +1477,9 @@
       <str key="_temps_liturgique">ascension</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1493,9 +1493,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Dimanche-pres-l-Ascension</str>
       <dict key="nom">
-        <str key="english">Sunday after Ascension</str>
-        <str key="francais">Dimanche après l'Ascension</str>
-        <str key="latina">Dominica post Ascensionem</str>
+        <str key="en">Sunday after Ascension</str>
+        <str key="fr">Dimanche après l'Ascension</str>
+        <str key="la">Dominica post Ascensionem</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1544,9 +1544,9 @@
       <str key="_temps_liturgique">octave_pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1560,9 +1560,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Dimanche-de-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Pentecost</str>
-        <str key="francais">Dimanche de la Pentecôte</str>
-        <str key="latina">Dominica Pentecostes</str>
+        <str key="en">Pentecost</str>
+        <str key="fr">Dimanche de la Pentecôte</str>
+        <str key="la">Dominica Pentecostes</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1595,9 +1595,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Pierre</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Pierre</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -1615,9 +1615,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1631,9 +1631,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Messe-du-1er-Dimanche-apres-la</str>
       <dict key="nom">
-        <str key="english">First Sunday after Pentecost</str>
-        <str key="francais">Premier Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Prima post Pentecosten</str>
+        <str key="en">First Sunday after Pentecost</str>
+        <str key="fr">Premier Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Prima post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">True</bool>
       <bool key="omission">False</bool>
@@ -1682,9 +1682,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1698,9 +1698,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/2eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Second Sunday after Pentecosten</str>
-        <str key="francais">Deuxième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Secunda post Pentecosten</str>
+        <str key="en">Second Sunday after Pentecosten</str>
+        <str key="fr">Deuxième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Secunda post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1749,9 +1749,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1765,9 +1765,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/3eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Third Sunday after Pentecost</str>
-        <str key="francais">Troisième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Tertia post Pentecosten</str>
+        <str key="en">Third Sunday after Pentecost</str>
+        <str key="fr">Troisième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Tertia post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1816,9 +1816,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1832,9 +1832,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/4eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Fourth Sunday after Pentecosten</str>
-        <str key="francais">Quatrième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Quarta post Pentecosten</str>
+        <str key="en">Fourth Sunday after Pentecosten</str>
+        <str key="fr">Quatrième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Quarta post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1883,9 +1883,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1899,9 +1899,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/5eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Fifth Sunday after Pentecosten</str>
-        <str key="francais">Cinquième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Quinta post Pentecosten</str>
+        <str key="en">Fifth Sunday after Pentecosten</str>
+        <str key="fr">Cinquième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Quinta post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -1950,9 +1950,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -1966,9 +1966,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/6eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Sixth Sunday after Pentecosten</str>
-        <str key="francais">Sixième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Sexta post Pentecosten</str>
+        <str key="en">Sixth Sunday after Pentecosten</str>
+        <str key="fr">Sixième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Sexta post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2017,9 +2017,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2033,9 +2033,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/7eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Seventh Sunday after Pentecosten</str>
-        <str key="francais">Septième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Septima post Pentecosten</str>
+        <str key="en">Seventh Sunday after Pentecosten</str>
+        <str key="fr">Septième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Septima post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2084,9 +2084,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2100,9 +2100,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/8eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Eighth Sunday after Pentecosten</str>
-        <str key="francais">Huitième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Octava post Pentecosten</str>
+        <str key="en">Eighth Sunday after Pentecosten</str>
+        <str key="fr">Huitième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Octava post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2151,9 +2151,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2167,9 +2167,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/10eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Tenth Sunday after Pentecosten</str>
-        <str key="francais">Dixième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Decima post Pentecosten</str>
+        <str key="en">Tenth Sunday after Pentecosten</str>
+        <str key="fr">Dixième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Decima post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2218,9 +2218,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2234,9 +2234,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/11eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Eleventh Sunday after Pentecosten</str>
-        <str key="francais">Onzième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Undecima post Pentecosten</str>
+        <str key="en">Eleventh Sunday after Pentecosten</str>
+        <str key="fr">Onzième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Undecima post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2285,9 +2285,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2301,9 +2301,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/12eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Twelfth Sunday after Pentecosten</str>
-        <str key="francais">Douzième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Duodecima post Pentecosten</str>
+        <str key="en">Twelfth Sunday after Pentecosten</str>
+        <str key="fr">Douzième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Duodecima post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2352,9 +2352,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2368,9 +2368,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/13eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Thirteenth Sunday after Pentecosten</str>
-        <str key="francais">Treizième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Decima tertia post Pentecosten</str>
+        <str key="en">Thirteenth Sunday after Pentecosten</str>
+        <str key="fr">Treizième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Decima tertia post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2419,9 +2419,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2435,9 +2435,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/14eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Fourteenth Sunday after Pentecosten</str>
-        <str key="francais">Quatorzième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Decima quarta post Pentecosten</str>
+        <str key="en">Fourteenth Sunday after Pentecosten</str>
+        <str key="fr">Quatorzième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Decima quarta post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2486,9 +2486,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2502,9 +2502,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/15eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Fifteenth Sunday after Pentecosten</str>
-        <str key="francais">Quinzième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Decima quinta post Pentecosten</str>
+        <str key="en">Fifteenth Sunday after Pentecosten</str>
+        <str key="fr">Quinzième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Decima quinta post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2553,9 +2553,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2569,9 +2569,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/16eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Sixteenth Sunday after Pentecosten</str>
-        <str key="francais">Seizième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Decima sexta post Pentecosten</str>
+        <str key="en">Sixteenth Sunday after Pentecosten</str>
+        <str key="fr">Seizième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Decima sexta post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2620,9 +2620,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2636,9 +2636,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/17eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Seventeenth Sunday after Pentecosten</str>
-        <str key="francais">Dix-septième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Decima septima post Pentecosten</str>
+        <str key="en">Seventeenth Sunday after Pentecosten</str>
+        <str key="fr">Dix-septième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Decima septima post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2687,9 +2687,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2703,9 +2703,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/18eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Eighteenth Sunday after Pentecosten</str>
-        <str key="francais">Dix-huitième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Decima octava post Pentecosten</str>
+        <str key="en">Eighteenth Sunday after Pentecosten</str>
+        <str key="fr">Dix-huitième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Decima octava post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2754,9 +2754,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2770,9 +2770,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/19eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Nineteenth Sunday after Pentecosten</str>
-        <str key="francais">Dix-neuvième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Decima nona post Pentecosten</str>
+        <str key="en">Nineteenth Sunday after Pentecosten</str>
+        <str key="fr">Dix-neuvième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Decima nona post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2821,9 +2821,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2837,9 +2837,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/20eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Twentieth Sunday after Pentecosten</str>
-        <str key="francais">Vingtième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Vigesima post Pentecosten</str>
+        <str key="en">Twentieth Sunday after Pentecosten</str>
+        <str key="fr">Vingtième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Vigesima post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2888,9 +2888,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2904,9 +2904,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/21eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Twenty-first Sunday after Pentecosten</str>
-        <str key="francais">Vingt-et-unième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Vigesima prima post Pentecosten</str>
+        <str key="en">Twenty-first Sunday after Pentecosten</str>
+        <str key="fr">Vingt-et-unième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Vigesima prima post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -2955,9 +2955,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -2971,9 +2971,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/22eme-Dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Twenty-second Sunday after Pentecosten</str>
-        <str key="francais">Vingt-deuxième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Vigesima secunda post Pentecosten</str>
+        <str key="en">Twenty-second Sunday after Pentecosten</str>
+        <str key="fr">Vingt-deuxième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Vigesima secunda post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3022,9 +3022,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3044,9 +3044,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/23eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Twenty-third Sunday after Pentecosten</str>
-        <str key="francais">Vingt-troisième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Vigesima tertia post Pentecosten</str>
+        <str key="en">Twenty-third Sunday after Pentecosten</str>
+        <str key="fr">Vingt-troisième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Vigesima tertia post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3095,9 +3095,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3116,9 +3116,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/3eme-Dimanche-restant-apres-l</str>
       <dict key="nom">
-        <str key="english">Third Sunday transferred after the Epiphany</str>
-        <str key="francais">Troisième Dimanche restant après l'Épiphanie</str>
-        <str key="latina">Dominica Tertia quae superfuit post Epiphaniam</str>
+        <str key="en">Third Sunday transferred after the Epiphany</str>
+        <str key="fr">Troisième Dimanche restant après l'Épiphanie</str>
+        <str key="la">Dominica Tertia quae superfuit post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3169,9 +3169,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais">Note : les regex ne vont pas fonctionner correctement</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Note : les regex ne vont pas fonctionner correctement</str>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3189,9 +3189,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/4eme-Dimanche-restant-apres-l</str>
       <dict key="nom">
-        <str key="english">Fourth Sunday transferred after the Epiphany</str>
-        <str key="francais">Quatrième Dimanche restant après l'Épiphanie</str>
-        <str key="latina">Dominica Quarta quae superfuit post Epiphaniam</str>
+        <str key="en">Fourth Sunday transferred after the Epiphany</str>
+        <str key="fr">Quatrième Dimanche restant après l'Épiphanie</str>
+        <str key="la">Dominica Quarta quae superfuit post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3242,9 +3242,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3261,9 +3261,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/5eme-Dimanche-restant-apres-l</str>
       <dict key="nom">
-        <str key="english">Fifth Sunday transferred after the Epiphany</str>
-        <str key="francais">Cinquième Dimanche restant après l'Épiphanie</str>
-        <str key="latina">Dominica Quinta quae superfuit post Epiphaniam</str>
+        <str key="en">Fifth Sunday transferred after the Epiphany</str>
+        <str key="fr">Cinquième Dimanche restant après l'Épiphanie</str>
+        <str key="la">Dominica Quinta quae superfuit post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3312,9 +3312,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3330,9 +3330,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/6eme-Dimanche-restant-apres-l</str>
       <dict key="nom">
-        <str key="english">Sixth Sunday transferred after the Epiphany</str>
-        <str key="francais">Sixième Dimanche restant après l'Épiphanie</str>
-        <str key="latina">Dominica Sexta quae superfuit post Epiphaniam</str>
+        <str key="en">Sixth Sunday transferred after the Epiphany</str>
+        <str key="fr">Sixième Dimanche restant après l'Épiphanie</str>
+        <str key="la">Dominica Sexta quae superfuit post Epiphaniam</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3381,9 +3381,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3404,9 +3404,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/24eme-et-dernier-dimanche-apres-la</str>
       <dict key="nom">
-        <str key="english">Twenty-fourth and last Sunday after Pentecosten</str>
-        <str key="francais">Vingt-quatrième et dernier Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Vigesima quarta et Ultima post Pentecosten</str>
+        <str key="en">Twenty-fourth and last Sunday after Pentecosten</str>
+        <str key="fr">Vingt-quatrième et dernier Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Vigesima quarta et Ultima post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3457,9 +3457,9 @@
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3473,9 +3473,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/1er-dimanche-de-l-Avent</str>
       <dict key="nom">
-        <str key="english">First Sunday of Advent</str>
-        <str key="francais">Premier Dimanche de l'Avent</str>
-        <str key="latina">Dominica Prima Adventus</str>
+        <str key="en">First Sunday of Advent</str>
+        <str key="fr">Premier Dimanche de l'Avent</str>
+        <str key="la">Dominica Prima Adventus</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3508,9 +3508,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Marie-Majeure</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Marie-Majeure</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -3528,9 +3528,9 @@
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3544,9 +3544,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/2eme-dimanche-de-l-Avent</str>
       <dict key="nom">
-        <str key="english">Second Sunday of Advent</str>
-        <str key="francais">Deuxième Dimanche de l'Avent</str>
-        <str key="latina">Dominica Secunda Adventus</str>
+        <str key="en">Second Sunday of Advent</str>
+        <str key="fr">Deuxième Dimanche de l'Avent</str>
+        <str key="la">Dominica Secunda Adventus</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3579,9 +3579,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Sainte-Croix-de-Jérusalem</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Sainte-Croix-de-Jérusalem</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -3599,9 +3599,9 @@
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3615,9 +3615,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/3eme-dimanche-de-l-Avent</str>
       <dict key="nom">
-        <str key="english">Third Sunday of Advent</str>
-        <str key="francais">Troisième Dimanche de l'Avent</str>
-        <str key="latina">Dominica Tertia Adventus</str>
+        <str key="en">Third Sunday of Advent</str>
+        <str key="fr">Troisième Dimanche de l'Avent</str>
+        <str key="la">Dominica Tertia Adventus</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3650,9 +3650,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saint-Pierre</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saint-Pierre</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -3670,9 +3670,9 @@
       <str key="_temps_liturgique">avent</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3686,9 +3686,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/4eme-dimanche-de-l-Avent</str>
       <dict key="nom">
-        <str key="english">Fourth Sunday of Advent</str>
-        <str key="francais">Quatrième Dimanche de l'Avent</str>
-        <str key="latina">Dominica Quarta Adventus</str>
+        <str key="en">Fourth Sunday of Advent</str>
+        <str key="fr">Quatrième Dimanche de l'Avent</str>
+        <str key="la">Dominica Quarta Adventus</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3721,9 +3721,9 @@
       <bool key="repris_en_ferie">True</bool>
       <bool key="sanctoral">False</bool>
       <dict key="station">
-        <str key="english"/>
-        <str key="francais">Saints-Apôtres</str>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr">Saints-Apôtres</str>
+        <str key="la"/>
       </dict>
       <bool key="temporal">True</bool>
       <str key="textes"/>
@@ -3741,9 +3741,9 @@
       <str key="_temps_liturgique">nativite</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3757,9 +3757,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/Dimanche-dans-l-Octave-de-la</str>
       <dict key="nom">
-        <str key="english">Sunday within the octave of Christmas</str>
-        <str key="francais">Dimanche dans l'Octave de la Nativité</str>
-        <str key="latina">Dominica infra Octavam Nativitatis</str>
+        <str key="en">Sunday within the octave of Christmas</str>
+        <str key="fr">Dimanche dans l'Octave de la Nativité</str>
+        <str key="la">Dominica infra Octavam Nativitatis</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -3809,9 +3809,9 @@
       <str key="_temps_liturgique">pentecote</str>
       <bool key="_transferee">False</bool>
       <dict key="addendum">
-        <str key="english"/>
-        <str key="francais"/>
-        <str key="latina"/>
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
       </dict>
       <bool key="celebree">True</bool>
       <bool key="commemoraison">False</bool>
@@ -3825,9 +3825,9 @@
       <str key="images_rep"/>
       <str key="link">http://www.introibo.fr/9eme-dimanche-apres-la-Pentecote</str>
       <dict key="nom">
-        <str key="english">Ninth Sunday after Pentecosten</str>
-        <str key="francais">Neuvième Dimanche après la Pentecôte</str>
-        <str key="latina">Dominica Nona post Pentecosten</str>
+        <str key="en">Ninth Sunday after Pentecosten</str>
+        <str key="fr">Neuvième Dimanche après la Pentecôte</str>
+        <str key="la">Dominica Nona post Pentecosten</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>

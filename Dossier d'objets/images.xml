@@ -4,15 +4,15 @@
     <Modele>
       <dict key="attributs">
         <dict key="auteur">
-          <str key="english"/>
-          <str key="francais"/>
-          <str key="latina"/>
+          <str key="en"/>
+          <str key="fr"/>
+          <str key="la"/>
         </dict>
         <str key="link">sanctoral/janvier/telesphore0.jpg</str>
         <dict key="titre">
-          <str key="english"/>
-          <str key="francais">Saint Télesphore</str>
-          <str key="latina"/>
+          <str key="en"/>
+          <str key="fr">Saint Télesphore</str>
+          <str key="la"/>
         </dict>
       </dict>
       <str key="classe">Images</str>
