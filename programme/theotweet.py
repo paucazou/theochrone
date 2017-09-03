@@ -51,7 +51,7 @@ logger.debug('Auth completed')
 
 # Theochrone stuff
 liturgiccal = annus.LiturgicalCalendar('romanus',1962)
-language = 'francais'
+language = 'fr'
 
 logger.debug('Theochrone loaded')
 

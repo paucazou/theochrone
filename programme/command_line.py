@@ -76,7 +76,7 @@ arguments = { # essayer d'ajouter les commandes de DATE
         'langue':{
             'short':['-l'],
             'long' : ['--language'],
-            'options': ['francais','english','latina'],
+            'options': ['fr','en','la'],
             },
         
         # Selection options
@@ -213,17 +213,17 @@ def default_language():
         pass
     langue = locale.getdefaultlocale()[0]
     if 'fr' in langue:
-        langue = 'francais'
+        langue = 'fr'
     else:
-        langue = 'english'
+        langue = 'en'
     return langue
 
 class CoursDeLangue(argparse.Action):
     """A class to set language name entered by user"""
     def __call__(self,parser,namespace,value,option_string=None):
-        language_available = { 'francais': (_('francais'),'fr'),
-                              'english':('en',_('english')),
-                              'latina':('la',_('latina'))}
+        language_available = { 'fr': (_('francais'),'fr'),
+                              'en':('en',_('english')),
+                              'la':('la',_('latina'))}
         def sans_accent(mot):
             """Prend des mots avec accents, cédilles, etc. et les renvoie sans, et en minuscules.""" # voir si on ne peut pas le mettre dans officia.
             return ''.join(c for c in unicodedata.normalize('NFD',mot.lower()) if unicodedata.category(c) != 'Mn')
@@ -232,7 +232,7 @@ class CoursDeLangue(argparse.Action):
             if value in values or value == key:
                 value = key
                 break
-        if value not in ('francais','latina','english'):
+        if value not in ('fr','la','en'):
             print(_("Language entered is not available. Default language will be used instead."))
             value = default_language()
         setattr(namespace,self.dest,value)
