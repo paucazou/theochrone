@@ -15,7 +15,7 @@ import annus
 import officia
 
 lyear = annus.LiturgicalCalendar()
-language = 'francais'
+language = 'fr'
 host = 'theochrone.fr'
 # Create your views here.
 

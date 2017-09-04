@@ -61,12 +61,12 @@ def home(request,
     else:
         titre = mots_clefs
         Annee(annee)
-        deroule[titre] = officia.inversons(mots_clefs,Annee,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='francais',exit=False,plus=plus)
+        deroule[titre] = officia.inversons(mots_clefs,Annee,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='fr',exit=False,plus=plus)
         inversion=True
 
     for value in deroule.values():
         for elt in value:
-            elt.temps_liturgique_ = "T" + officia.affiche_temps_liturgique(elt,langue='francais')[1:]
+            elt.temps_liturgique_ = "T" + officia.affiche_temps_liturgique(elt,langue='fr')[1:]
     deroule = sorted(deroule.items())
 
     return render(request,'kalendarium/accueil.html',locals())
