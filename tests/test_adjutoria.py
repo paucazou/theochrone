@@ -164,7 +164,7 @@ def test_DateCivile_FeteMobileAvent():
     fete = adjutoria.FeteMobileAvent()
     fete.date_ = 3
     assert fete.DateCivile_(None,2001) == datetime.date(2001,12,20)
-    assert ('tuesday','jeudi','de Feria quinta') == (fete.nom_passager['english'], fete.nom_passager['francais'], fete.nom_passager['latina'])
+    assert ('tuesday','jeudi','de Feria quinta') == (fete.nom_passager['en'], fete.nom_passager['fr'], fete.nom_passager['la'])
     fete2 = adjutoria.FeteMobileAvent()
     fete.date_ = -1
     assert fete.DateCivile_(None,2000) == datetime.date(2000,12,24) and fete._priorite == 0 and fete.commemoraison_privilegiee == -1
@@ -230,9 +230,9 @@ def test_QuelNom(Ltime_patch,Nday_patch):
     Nday_patch.return_value = 'Liturgical time'
     fete = adjutoria.FeteFerie()
     return_value = fete.QuelNom(datetime.date(2017,6,20))
-    assert return_value['latina'] == 'Feria'
-    assert return_value['english'] == 'Feria'
-    assert return_value['francais'] == 'Feria de la férie du Liturgical time'
+    assert return_value['la'] == 'Feria'
+    assert return_value['en'] == 'Feria'
+    assert return_value['fr'] == 'Feria de la férie du Liturgical time'
 
 @mock.patch('adjutoria.FeteFerie.QuelNom')
 def test_CreateFeria(name):
@@ -310,7 +310,7 @@ def test_DateCivile_JoursOctaveDeNoel(renvoi):
         assert not(fete.__dict__ is fetes.__dict__)
         assert fete.regex == [None]
         assert fete.date == datetime.date(1701,12,i)
-        for langue in ('francais','latina','english'):
+        for langue in ('fr','la','en'):
             assert fete.nom[langue] == fetes.complements_nom[langue][j] + ' ' + fetes.nom_[langue]
         j += 1
     assert renvoi.call_count == j
@@ -325,7 +325,7 @@ def test_DateCivile_JoursAvent(renvoi):
         assert fete.date == fete.DateCivile_(None,1701)
         assert not(fete.__dict__ is fetes.__dict__)
         assert fete.regex == [None]
-        for langue in ('francais','latina','english'):
+        for langue in ('fr','la','en'):
             if i > 14:
                 assert fetes.nom_[langue][0] in fete.nom[langue]
                 semaine = 1
@@ -338,7 +338,7 @@ def test_DateCivile_JoursAvent(renvoi):
             else:
                 assert fetes.nom_[langue][3] in fete.nom[langue]
                 semaine = 4
-            if langue == 'francais':
+            if langue == 'fr':
                     assert mock.call(fete,None,[fete.nom_passager[langue],semaine]) == renvoi.call_args_list[-1]
         if fete.date.day > 16:
                 assert fete.degre == 2

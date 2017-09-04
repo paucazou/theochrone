@@ -39,7 +39,7 @@ def test_datevalable():
             assert datevalable([str(day),'2','2015']) == (datetime.date(2015,2,day), False, False, False)
             
     # in french only
-    lang = 'francais'
+    lang = 'fr'
     
     assert datevalable(['demain'],lang)[0] == datetime.date.today() + datetime.timedelta(1)
     assert datevalable(['hier'],lang)[0] == datetime.date.today() - datetime.timedelta(1)
@@ -78,7 +78,7 @@ def test_datevalable_with_patch(date_patch):
     date_patch.date = NewDate
     
     #french
-    lang = 'francais'
+    lang = 'fr'
     for i in range(1,12):
         date_patch.date.month = i
         assert datevalable(['mois','prochain'],lang) == datevalable(['prochain','mois'],lang) == (datetime.date(1960,i + 1,1),False,True,False)
