@@ -24,7 +24,7 @@ class SettingsWindow(QWidget,SuperTranslator):
         SuperTranslator.__init__(self)
         self.parent = parent
         
-        self.languages = ('english','francais','latina')
+        self.languages = ('en','fr','la')
         self.initUI()
         self.retranslateUI()
     

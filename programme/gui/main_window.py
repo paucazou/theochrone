@@ -861,7 +861,7 @@ class Tree(QTreeWidget,SuperTranslator):
                 elif isinstance(key,int):
                     key = str(key)
                 else:
-                    key = officia.affiche_jour(key,'francais').capitalize()
+                    key = officia.affiche_jour(key,'fr').capitalize()
                 child = QTreeWidgetItem(parent,[key])
                 child.setExpanded(True)
                 self.populateTree(item,child)
@@ -871,7 +871,7 @@ class Tree(QTreeWidget,SuperTranslator):
                     temps = 'Temporal'
                 else:
                     temps = 'Sanctoral'
-                child=QTreeWidgetItem(parent,[elt.nom['francais'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,'francais').capitalize(),temps])
+                child=QTreeWidgetItem(parent,[elt.nom['fr'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,'fr').capitalize(),temps])
                 """
                 self.W.itemsCreator.createLine(item,parent)
         
@@ -905,14 +905,14 @@ class Table(QTableWidget,SuperTranslator):
         self.W.itemsCreator = ItemsCreator(self)
         for i, elt in enumerate(liste):
             self.W.itemsCreator.createLine(elt,itemLine=i)
-            """self.setItem(i,name_pos,QTableWidgetItem(elt.nom['francais']))
+            """self.setItem(i,name_pos,QTableWidgetItem(elt.nom['fr']))
             self.setItem(i,date_pos,QTableWidgetItem(str(elt.date)))
             self.setItem(i,3,QTableWidgetItem(self.classes[elt.degre]))
             self.setItem(i,4,QTableWidgetItem(elt.couleur.capitalize()))
             self.setItem(i,5,QTableWidgetItem(self.tempOrSanct[elt.temporal]))
-            self.setItem(i,6,QTableWidgetItem(first_upper(officia.affiche_temps_liturgique(elt,'francais'))))
+            self.setItem(i,6,QTableWidgetItem(first_upper(officia.affiche_temps_liturgique(elt,'fr'))))
             if elt.__dict__.get('station',False):
-                station=elt.station['francais']
+                station=elt.station['fr']
             else:
                 station=''
             self.setItem(i,7,QTableWidgetItem(station))
@@ -981,7 +981,7 @@ class ItemsCreator(SuperTranslator):
     def presentData(self,data):
         """Presents the data as they will be printed on the screen"""
         # TODO si erreur, que faire ?
-        name = data.nom['francais']
+        name = data.nom['fr']
         date = str(data.date)
         if data.celebree:
             status = _('ItemsCreator','Celebrated')
@@ -998,9 +998,9 @@ class ItemsCreator(SuperTranslator):
         degree = self.classes[data.degre]
         colour = data.couleur.capitalize()
         temporsanct = self.tempOrSanct[data.temporal]
-        time = first_upper(officia.affiche_temps_liturgique(data,'francais'))
-        station = data.__dict__.get('station',{"francais":''})['francais']
-        addendum = data.addendum['francais']
+        time = first_upper(officia.affiche_temps_liturgique(data,'fr'))
+        station = data.__dict__.get('station',{"fr":''})['fr']
+        addendum = data.addendum['fr']
         return name, date, (status, degree, colour, temporsanct, time, station, addendum)
         
     def retranslateUI(self):
