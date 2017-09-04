@@ -43,9 +43,9 @@ vingt = re.compile('(20|vingt)(.?eme)?')
 vingt1 = re.compile('(21|vingt.?.?(et)?.?.?un)(.?eme)?')
 dix = re.compile('(10|dix)(.?eme)?')
 
-semaine = {'francais':['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'],
-            'english': ['monday','tuesday','wednesday','tuesday','thursday','saturday','sunday'],
-            'latina': ['de Feria secunda','de Feria tertia','de Feria quarta','de Feria quinta', 'de Feria sexta','sabbato','dominica'],
+semaine = {'fr':['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'],
+            'en': ['monday','tuesday','wednesday','tuesday','thursday','saturday','sunday'],
+            'la': ['de Feria secunda','de Feria tertia','de Feria quarta','de Feria quinta', 'de Feria sexta','sabbato','dominica'],
                }
 mois = ('janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
     
@@ -54,7 +54,7 @@ liturgiccal=calendar.Calendar(firstweekday=6)
 weeknumber = lambda x : [i for i, week in enumerate(liturgiccal.monthdayscalendar(x.year,x.month)) if x.day in week][0] # first week = 0
 
 erreurs={
-    'francais':[
+    'fr':[
         ['Votre interpréteur de commandes n\'est pas compatible avec ce programme. Merci de rentrer la langue manuellement.',
          "Cette fonctionnalité n'a pas encore été implémentée."],
         ["L'année ne peut pas être inférieure à 1600.",
@@ -71,7 +71,7 @@ erreurs={
          "L'historique des recherches par mots-clefs n'a pas encore été renseigné. Merci de faire au moins une recherche.",
          "Il n'y a pas d'entrée correspondante dans l'historique. Tapez -H pour connaître les entrées disponibles.",],
         ],
-    'english':[
+    'en':[
         ['Your command-interpreter is not supported by this program.',
          'This functionality has not been implemented yet.'],
         ],
@@ -92,7 +92,7 @@ def modification(mots,langue): # TEST
     """Modify some words. 'mots' is a list of strings ; 'langue' refers to language to be used.
     Returns 'mots' modified."""
 
-    if langue == 'francais':
+    if langue == 'fr':
         for i,a in enumerate(mots):
                 if mots[i] == 'st':
                     mots[i] = 'saint'
@@ -118,18 +118,18 @@ def modification(mots,langue): # TEST
             mots_str = elt.sub(str(i + 1),mots_str)
         mots = mots_str.split('|')
     
-    else: # english
+    else: # en
         erreur('01')
     
     return mots
 
-def erreur(code,langue='english',exit=True):
+def erreur(code,langue='en',exit=True):
     """Une fonction qui renvoie un message d'erreur selon la langue et le code employé.
     Si le code commence par zéro, il faut le mettre entre guillemets."""
     message = erreurs[langue]
     for i in str(code):
         message = message[int(i)]
-    if langue == 'francais':
+    if langue == 'fr':
         if exit:
             sys.exit("Erreur n°{} : {} Tapez --help pour plus d'informations.".format(code,message))
         else:
@@ -138,7 +138,7 @@ def erreur(code,langue='english',exit=True):
         sys.exit("Error {} : {} Please type --help for more information.".format(code,message))
 
 
-def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,annee_seule=False,exit=True):
+def datevalable(entree,langue='fr',semaine_seule=False,mois_seul=False,annee_seule=False,exit=True):
     """Function used to see whether a list can be converted into datetime or not.
     entree is a list of strings.
     langue : a string with the language.
@@ -199,7 +199,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                 if day == date and hideux != wd:
                     erreur(15,langue,exit)
                         
-    if langue == 'francais':
+    if langue == 'fr':
         if len(passager) == 0:
             date = aujourdhui
             
@@ -302,7 +302,7 @@ def datevalable(entree,langue='francais',semaine_seule=False,mois_seul=False,ann
                     
         else: # erreur
             erreur(12,langue,exit)
-    else: # english
+    else: # en
         pass
     return date, semaine_seule, mois_seul, annee_seule
 
@@ -323,18 +323,18 @@ def AtoZ(semaine_seule,mois_seul,annee_seule,date): # TEST
     
     return debut, fin
 
-def mois_lettre(mot,langue='english'): #TEST
+def mois_lettre(mot,langue='en'): #TEST
     """Une fonction qui doit déterminer si le mot entré correspond à un mois. Si le mot entré correspond à un chiffre, renvoie le nom du mois ; si le mot entré est un nom de mois, vérifie qu'il en est un et renvoie le chiffre correspondant."""
     if isinstance(mot,str):
         mot = mot.lower()
-    if langue == 'francais':
+    if langue == 'fr':
         if isinstance(mot,int):
             return mois[mot - 1]
         for i,a in enumerate(mois):
             if mot.lower() in sans_accent(a):
                 return i + 1
         erreur(13,langue)
-    else: #default : english
+    else: #default : en
         for month_idx in range(1,13):
             if mot in calendar.month_name[month_idx].lower():
                 return True, str(month_idx)
@@ -356,10 +356,10 @@ def renvoie_regex(retour,regex,liste): # est-ce qu'on ne pourrait pas la remplac
     retour.regex['egal'] += de_cote
     return retour.regex
 
-def affiche_temps_liturgique(objet,langue='francais'): #TEST
+def affiche_temps_liturgique(objet,langue='fr'): #TEST
     """Une fonction capable d'afficher le temps liturgique"""
     sortie = 'erreur'
-    if langue == 'francais':
+    if langue == 'fr':
         if objet.temps_liturgique() == 'nativite':
             sortie = "temps de la Nativité (Temps de Noël)"
         elif objet.temps_liturgique() == 'epiphanie':
@@ -382,22 +382,22 @@ def affiche_temps_liturgique(objet,langue='francais'): #TEST
             sortie = "octave de la Pentecôte (Temps Pascal)"
         elif objet.temps_liturgique() == 'pentecote':
             sortie = "temps per Annum après la Pentecôte"
-    else: # english
+    else: # en
         pass
     return sortie
 
 def affiche_jour(date,langue): #TEST
     """Une fonction pour afficher le jour"""
-    if langue =='francais':
+    if langue =='fr':
         if date.day == 1:
             jour = 'premier'
         else:
             jour = date.day
         mois = mois_lettre(date.month,langue)
         sortie="""le {} {} {} {}""".format(nom_jour(date,langue),jour,mois,date.year)
-    elif kwargs['langue']=='english':
+    elif kwargs['langue']=='en':
         sortie="""on {}""".format(date)
-    elif kwargs['langue']=='latina':
+    elif kwargs['langue']=='la':
         sortie="""in {}""".format(date) # à développer
     
     return sortie
@@ -416,7 +416,7 @@ def affichage(**kwargs):
             continue
         elif sortie != '':
             sortie += "\n"
-        if kwargs['langue'] == 'francais':
+        if kwargs['langue'] == 'fr':
             if kwargs['verbose']:
                 if a.celebree:
                     attente = 'on célèbre '
@@ -434,7 +434,7 @@ def affichage(**kwargs):
                 else:
                     sortie += attente
                     
-                for i, mot in enumerate(a.nom['francais'].lower().split()): # TODO faire plutôt des regex : bien plus précis
+                for i, mot in enumerate(a.nom['fr'].lower().split()): # TODO faire plutôt des regex : bien plus précis
                     if [True for i in ('dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi','jour') if i in mot]:
                         sortie += 'le '
                         break
@@ -461,7 +461,7 @@ def affichage(**kwargs):
             if (kwargs['jour_semaine'] or kwargs['date_affichee']) and not kwargs['recherche'] and not kwargs['verbose']:
                 sortie += ': '
                 
-            sortie += a.nom['francais']
+            sortie += a.nom['fr']
             
             if not kwargs['verbose'] and a.commemoraison:
                 sortie += ' (Commémoraison)'
@@ -508,7 +508,7 @@ def affichage(**kwargs):
                     sortie += """Fête du Sanctoral. """
                     
             if kwargs['verbose'] or kwargs['temps_liturgique']:
-                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,'francais'))
+                sortie += """Temps liturgique : {}. """.format(affiche_temps_liturgique(a,'fr'))
                 
             if kwargs['verbose'] or kwargs['couleur']:
                 sortie += """Couleur liturgique : {}. """.format(a.couleur)
@@ -527,7 +527,7 @@ def affichage(**kwargs):
                 return_value.append(sortie)
                 sortie = ''
                 
-        elif kwargs['langue'] == 'english':
+        elif kwargs['langue'] == 'en':
             erreur('01')
         else: # latin
             pass
@@ -586,7 +586,7 @@ def weekyear(year,week=None): # TEST
     if week == None:
         return weeknumber
     if week < 0 or week > weeknumber:
-        erreur(17,langue='francais')
+        erreur(17,langue='fr')
     gap = datetime.timedelta(days = (week - 1)*7)
     start = firstday + gap
     end = firstday + gap + datetime.timedelta(6)
@@ -596,7 +596,7 @@ def weekyear(year,week=None): # TEST
 
 
 
-def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='francais',exit=True):
+def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='fr',exit=True):
     """Function which returns a list of feasts matching with mots_bruts. It takes six args:
     - mots_bruts : a string for the research ;
     - Annee : a LiturgicalCalendar object ;
@@ -722,7 +722,7 @@ def pdata(read=True,write=False,**kwargs):
         if kwargs['history'] == 'dates':
             if not write:
                 if not os.path.isfile(history_folder + '/dates'):
-                    erreur(30,'francais')               
+                    erreur(30,'fr')               
             with open(history_folder + '/dates',action) as dates:
                 if write:
                     if kwargs.get('semaine_seule',False):
@@ -759,7 +759,7 @@ def pdata(read=True,write=False,**kwargs):
         elif kwargs['history'] == 'reverse':
             if not write:
                 if not os.path.isfile(history_folder + '/keywords'):
-                    erreur(31,'francais')
+                    erreur(31,'fr')
             with open(history_folder + '/keywords',action) as keywords:
                 if write:
                     debut = kwargs['debut'].strftime("%Y-%m-%d")

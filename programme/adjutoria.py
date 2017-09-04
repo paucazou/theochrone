@@ -32,7 +32,7 @@ class Fete:
     """Classe mère de toutes les classes de fêtes.""" 
     def __init__(self,festivitas=''):
         """Liste des attributs"""
-        self.nom={'latina':festivitas,'francais':str(),'english':str()} # le nom dans diverses langues
+        self.nom={'la':festivitas,'fr':str(),'en':str()} # le nom dans diverses langues
         
         self.degre=int() # entre 1 et 5, 5 représentant une mémoire
         self._priorite=int()
@@ -52,15 +52,15 @@ class Fete:
         
         self.temporal=False
         self.sanctoral=False
-        #self.station = {'francais':'','latina':'','english':''} # Station name, for temporal only
+        #self.station = {'fr':'','la':'','en':''} # Station name, for temporal only
         self._temps_liturgique = 'variable' # un élément qui permet de connaître le temps liturgique
         
         self.link=str() # un lien vers Introibo, en attendant une classe spéciale textes.
         self.textes='' # Textes de la messe et des Vêpres, pour plus tard
         self._images='' # La clef qui doit être utilisée pour retrouver les images
-        self.addendum={'francais':'',
-                       'english':'',
-                       'latina':'',
+        self.addendum={'fr':'',
+                       'en':'',
+                       'la':'',
                        } # à ajouter à l'affichage. Par exemple, fête de la dédicace : priorité uniquement pour l'église en question.
 
         self.pal=False # pal=Pro aliquibus locis
@@ -95,10 +95,10 @@ class Fete:
     # Définitions de certaines méthodes spéciales
     def __str__(self):
         """Méthode affichant des informations sur l'objet grâce à print"""
-        return """{}, fête de {} classe selon le missel de {}.""".format(self.nom['latina'],self.degre,self.ordo)
+        return """{}, fête de {} classe selon le missel de {}.""".format(self.nom['la'],self.degre,self.ordo)
     def __repr__(self):
         """Méthode affichant le nom de l'objet"""
-        return self.nom['latina']
+        return self.nom['la']
     def __lt__(self,autrefete): # TEST
         """Méthode pour comparer les objets ensemble, et surtout pour les trier dans la liste (via un list.sort().)""" # Je crains que cette fonction ne serve à rien.
         if self.degre == autrefete.degre:
@@ -507,9 +507,9 @@ class FeteFerie(Fete):
     
     def QuelNom(self,jour): # TEST
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
-        return {'latina': officia.nom_jour(jour,'latina').capitalize(),
-                'francais':officia.nom_jour(jour,'francais').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,'francais'),
-                'english':officia.nom_jour(jour,'english').capitalize()} # Comment dit on jour de férie en anglais ? feria (Saturday ?)
+        return {'la': officia.nom_jour(jour,'la').capitalize(),
+                'fr':officia.nom_jour(jour,'fr').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,'fr'),
+                'en':officia.nom_jour(jour,'en').capitalize()} # Comment dit on jour de férie en anglais ? feria (Saturday ?)
     
     def Dimanche_precedent(self,jour,Annee): # DEPRECATED
         """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee.""" # changer cette aide
@@ -628,10 +628,10 @@ class JoursOctaveDeNoel(FeteFixe):
     
     def __init__(self):
         FeteFixe.__init__(self)
-        self.nom_={'francais':"jour dans l'Octave de Noël",'latina':'Die infra octavam Nativitatis','english':'day in the Octave of Christmas'} 
-        self.complements_nom={'francais':['Deuxième','Troisième','Quatrième','Cinquième','Sixième','Septième'],
-                              'latina': ['De Secunda','De Tertia','De Quarta','De Quinta', 'De Sexta','De Sabbato'],
-                              'english': ['Secund','Third','Fourth','Fifth','Sixth','Seventh',]
+        self.nom_={'fr':"jour dans l'Octave de Noël",'la':'Die infra octavam Nativitatis','en':'day in the Octave of Christmas'} 
+        self.complements_nom={'fr':['Deuxième','Troisième','Quatrième','Cinquième','Sixième','Septième'],
+                              'la': ['De Secunda','De Tertia','De Quarta','De Quinta', 'De Sexta','De Sabbato'],
+                              'en': ['Secund','Third','Fourth','Fifth','Sixth','Seventh',]
                               }
         self.date_=[26,27,28,29,30,31]
         self.mois_ = 12
@@ -646,7 +646,7 @@ class JoursOctaveDeNoel(FeteFixe):
             retour.__dict__ = copy.deepcopy(self.__dict__)
             retour.regex = officia.renvoie_regex(retour,regex,[i])
             retour.date = datetime.date(annee,self.mois_,self.date_[i])
-            for langue in ('francais','latina','english'):
+            for langue in ('fr','la','en'):
                 retour.nom[langue] = self.complements_nom[langue][i] + ' ' + self.nom_[langue]
             yield retour
 
@@ -660,9 +660,9 @@ class JoursAvent(FeteMobileAvent):
                       3,5,6,
                       8,9,10,11,12,13,
                       15,16,17,18,19,20,]
-        self.nom_ = {"francais":["de la première semaine de l'Avent","de la deuxième semaine de l'Avent","de la troisième semaine de l'Avent","de la quatrième semaine de l'Avent"],
-                        "english": ['of the first week of Advent','of the second week of Advent','of the third week of Advent','of the fourth week of Advent'],
-                        "latina": ['infra primam Hebdomadam Adventus', 'infra secondam Hebdomadam Adventus','infra tertiam Hebdomadam Adventus','infra quartam Hebdomadam Adventus'],
+        self.nom_ = {"fr":["de la première semaine de l'Avent","de la deuxième semaine de l'Avent","de la troisième semaine de l'Avent","de la quatrième semaine de l'Avent"],
+                        "en": ['of the first week of Advent','of the second week of Advent','of the third week of Advent','of the fourth week of Advent'],
+                        "la": ['infra primam Hebdomadam Adventus', 'infra secondam Hebdomadam Adventus','infra tertiam Hebdomadam Adventus','infra quartam Hebdomadam Adventus'],
                         }
         
     def DateCivile(self,paques,annee): # TEST
@@ -675,7 +675,7 @@ class JoursAvent(FeteMobileAvent):
             retour.__dict__ = copy.deepcopy(self.__dict__)
             retour.date_ = a
             retour.date = retour.DateCivile(paques,annee)
-            for langue in ('latina','english','francais'):
+            for langue in ('la','en','fr'):
                 retour.nom[langue] = retour.nom_passager[langue].capitalize() + ' '
                 if a > 14:
                     retour.nom[langue] += self.nom_[langue][0]
