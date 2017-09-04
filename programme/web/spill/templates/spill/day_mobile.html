@@ -1,0 +1,13 @@
+<style>
+a
+{
+    color: black;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+</style>
+
+<a href="{{ link_to_day }}" target="blank" id="today" class="black-link" alt="More details on Theochrone" title="Plus de détails sur Theochrone.fr">{{ day }}</a> : <a target='blank' href="{{ feast.link }}" id="text-mass" alt="Link to Introibo.fr" title="Textes de la messe et de l'office sur Introibo">{{ feast.nom.fr }}</a>

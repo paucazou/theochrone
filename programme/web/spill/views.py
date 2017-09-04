@@ -31,7 +31,6 @@ def main(request):
 
 def day(request):
     """Returns value for one date"""
-    # faire un forms pour la validation
     sentvalue = RechercheSimple(request.GET or None)
     if sentvalue.is_valid():
         day = sentvalue.cleaned_data['date_seule']
@@ -44,6 +43,23 @@ def day(request):
     link_to_tomorrow = datetime_to_param(day + datetime.timedelta(1))
     link_to_yesterday = datetime_to_param(day - datetime.timedelta(1))
     return render(request,'spill/day.html',locals())
+
+def day_mobile(request):
+    """Similar to 'day' func.
+    Should be use for mobile sites.
+    Returns only the first feast found, except if the feast is a feria."""
+    sentvalue = RechercheSimple(request.GET or None)
+    if sentvalue.is_valid():
+        day = sentvalue.cleaned_data['date_seule']
+    else:
+        day = datetime.date.today()
+    lyear(day.year)
+    data = lyear[day]
+    index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie'
+    feast = data[index]
+    hashtag = "resultup"
+    link_to_day = datetime_to_link(day,host,hashtag)
+    return render(request,'spill/day_mobile.html',locals())    
     
 def create_module(request):
     """A function to help customers
