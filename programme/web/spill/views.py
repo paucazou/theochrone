@@ -39,7 +39,7 @@ def day(request):
     lyear(day.year)
     data = lyear[day] # data of requested day
     hashtag = "resultup"
-    link_to_day = datetime_to_link(day,host,hashtag)
+    link_to_day = officia.datetime_to_link(day,host,hashtag)
     link_to_tomorrow = datetime_to_param(day + datetime.timedelta(1))
     link_to_yesterday = datetime_to_param(day - datetime.timedelta(1))
     return render(request,'spill/day.html',locals())
@@ -58,7 +58,7 @@ def day_mobile(request):
     index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie'
     feast = data[index]
     hashtag = "resultup"
-    link_to_day = datetime_to_link(day,host,hashtag)
+    link_to_day = officia.datetime_to_link(day,host,hashtag)
     return render(request,'spill/day_mobile.html',locals())    
     
 def create_module(request):
@@ -69,15 +69,6 @@ def create_module(request):
 def test(request):
     """A view to test functions online"""
     return HttpResponse(str(request.META))
-
-def datetime_to_link(day,host,hashtag='',s='s'): # should be moved to officia
-    """Take a datetime.date like object
-    and return a link to requested host.
-    Hashtag can be set to point to a specific id on the page
-    s is a s of https: default is 's'"""
-    link = "http{}://{}/kalendarium/date_seule?date_seule_day={}&date_seule_month={}&date_seule_year={}#{}".format(
-        s,host,day.day,day.month,day.year,hashtag)
-    return link
 
 def datetime_to_param(day):
     """Take a datetime.date like object
@@ -110,7 +101,7 @@ def day_to_static(start,stop,path):
     def pseudo_day(request,data,day):
         """Imitates day behaviour in a static context"""
         hashtag = "resultup"
-        link_to_day = datetime_to_link(day,host,hashtag)
+        link_to_day = officia.datetime_to_link(day,host,hashtag)
         link_to_tomorrow = datetime_to_shtml(day + datetime.timedelta(1))
         link_to_yesterday = datetime_to_shtml(day - datetime.timedelta(1))
         months = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')

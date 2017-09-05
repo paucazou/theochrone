@@ -776,13 +776,15 @@ def pdata(read=True,write=False,**kwargs):
                         history.append([datetime.datetime.strptime(jour,'%Y-%m-%d %H:%M:%S.%f')] +                                                                 [datetime.datetime.strptime(date,'%Y-%m-%d').date() for date in dates.split('|')] + [kw.replace('\n','').split()])
                     return history
     return True
-                    
-            
-
-
         
-        
-        
+def datetime_to_link(day,host,hashtag='',s='s'):
+    """Take a datetime.date like object
+    and return a link to requested host.
+    Hashtag can be set to point to a specific id on the page
+    s is a s of https: default is 's'"""
+    link = "http{}://{}/kalendarium/date_seule?date_seule_day={}&date_seule_month={}&date_seule_year={}#{}".format(
+        s,host,day.day,day.month,day.year,hashtag)
+    return link
         
         
         
