@@ -786,9 +786,22 @@ def datetime_to_link(day,host,hashtag='',s='s'):
         s,host,day.day,day.month,day.year,hashtag)
     return link
         
-        
-        
-        
+def month_to_link(day,host,diff=0,hashtag='',s='s'):
+    """Similar to datetime_to_link, but returns a link to a month.
+    diff : 0 == day.month
+    diff : 1 == day.month + 1
+    diff : -1 == day.month - 1"""
+    month = day.month + diff
+    year = day.year
+    if month > 12:
+        month = 1
+        year = year + 1
+    elif month < 1:
+        month = 12
+        year = year - 1
+    link = "http{}://{}/kalendarium/mois?annee={}&mois={}#{}".format(
+        s,host,year,month,hashtag)
+    return link
         
         
         
