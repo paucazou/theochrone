@@ -17,6 +17,7 @@ import adjutoria
 import officia
 
 Annee = annus.LiturgicalCalendar()
+host = "localhost:8000"
     
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
@@ -47,7 +48,10 @@ def home(request,
     
     retour = ''
     deroule = {}
-    if mots_clefs == '':        
+    if mots_clefs == '':
+        if debut == fin: # idem pour le mois; à mettre dans le template
+            next_item = officia.datetime_to_link(fin + datetime.timedelta(1),host,hashtag="resultup")
+            previous_item = officia.datetime_to_link(debut - datetime.timedelta(1),host,hashtag="resultup")
         date = debut
         Annee(date.year)
         while date <= fin:
