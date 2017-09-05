@@ -777,7 +777,7 @@ def pdata(read=True,write=False,**kwargs):
                     return history
     return True
         
-def datetime_to_link(day,host,hashtag='',s='s'):
+def datetime_to_link(day,host,hashtag='',s='s'): # peut-être à refactoriser pour y intégrer le gui
     """Take a datetime.date like object
     and return a link to requested host.
     Hashtag can be set to point to a specific id on the page
