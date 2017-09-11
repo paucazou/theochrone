@@ -65,3 +65,12 @@ html.arch32 .arch32,
 html.arch64 .arch64 {
     display: block;
 }
+
+.hsubmenu.closed {
+    display: none !important;
+}
+
+.hsubmenu.opened > a{
+    font-size: 15px !important; /* agrandir la taille minimale du menu */
+}
+
