@@ -25,6 +25,7 @@ function makeHSubmenuVisible(elt) {
 }
 
 $(document).click(function(event){
+    event.preventDefault();
     var hsubmenu_opened = document.getElementsByClassName("hsubmenu opened");
     console.log("hsubmenu_opened : ");
     console.log(hsubmenu_opened);
