@@ -10,6 +10,7 @@
 
 function makeHSubmenuVisible(elt) {
     var classname = elt.getAttribute('class').replace("hmenu ","");
+    elt.setAttribute('class',elt.getAttribute('class') + " opened");
     console.log(classname);
     var menu = document.getElementsByClassName("hsubmenu closed " + classname);
     console.log("menu : ");
@@ -42,7 +43,13 @@ $(document).click(function(event){
     var eclassname = event.target.getAttribute("class");
     //console.log(eclassname);
     if ( eclassname.indexOf("hmenu") > -1) {
+        var elt = event.target;
+        if ( eclassname.indexOf("opened") > - 1) {
+            elt.setAttribute('class',elt.getAttribute('class').replace(" opened",""));
+        }
+        else {            
         makeHSubmenuVisible(event.target);
+        }
     }
 }
             )
