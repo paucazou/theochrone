@@ -148,6 +148,13 @@ def contribute(request):
 def widget(request):
     """View for widget page"""
     title = "Installer le widget sur votre site"
+    fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"
+    files = ("widget_day","widget_day_mobile")
+    widgets = {}
+    whost = "theochrone.ga"
+    for filename in files:
+        with open(fpath + filename) as f:
+            widgets[filename] = f.read().format(whost)
     return render(request,'kalendarium/widget.html',locals())
 
 def download(request):

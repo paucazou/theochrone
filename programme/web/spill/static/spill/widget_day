@@ -1,1 +1,1 @@
-<div id="theocontainer"><link rel="stylesheet" type="text/css" href="https://theochrone.ga/static/spill/widget.css" /><iframe id="theowidget" alt="Theochrone widget" src="https://theochrone.ga/spill/main?page=day"></iframe><script src="https://theochrone.ga/static/spill/widget.js"></script></div>
+<div id="theocontainer"><link rel="stylesheet" type="text/css" href="https://{0}/static/spill/widget.css" /><iframe id="theowidget" alt="Theochrone widget" src="https://{0}/spill/main?page=day"></iframe><script src="https://{0}/static/spill/widget.js"></script></div>
