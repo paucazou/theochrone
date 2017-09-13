@@ -9,5 +9,6 @@ urlpatterns = [
         url(r"^mot_clef$",views.mc_transfert),
         url(r"^mois$",views.mois_transfert),
         url(r"^contact$", views.contact),
+        url(r"^widget$",views.widget),
         ]
 

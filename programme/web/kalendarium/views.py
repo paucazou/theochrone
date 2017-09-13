@@ -20,6 +20,8 @@ Annee = annus.LiturgicalCalendar()
 host = "localhost:8000"
 s=''
     
+# use online
+
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
          debut=datetime.date.today(),fin=datetime.date.today(),
@@ -118,6 +120,7 @@ def mois_transfert(request):
     else:
         return home(request, mois_entier=mois_entier)
     
+# contact
 def contact(request):
     """A function which takes the request arguments (POST) and returns the home function with success"""
     if request.method == 'GET':
@@ -136,5 +139,19 @@ def contact(request):
                 return HttpResponse('Invalid header found.')
             return home(request, contact_success = True)
     return home(request, contact_success = False)
+
+def contribute(request):
+    """Contribute and who are we view"""
+    pass
+
+# get Theochrone
+def widget(request):
+    """View for widget page"""
+    title = "Installer le widget sur votre site"
+    return render(request,'kalendarium/widget.html',locals())
+
+def download(request):
+    """View for download page"""
+    return render(request,'kalendarium/download.html',locals())
 
 
