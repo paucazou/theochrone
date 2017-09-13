@@ -1,0 +1,32 @@
+{% extends "base.html" %}{% load static %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="container" data-animation-effect="fadeIn">
+    <div class="space"></div>
+    <h1 id="main" class="title text-center">Widget <span>principal</span></h1>
+    <div class="space"></div>
+    <div class="row">
+        <div class="col-md-8">
+            <p>Vous pouvez tout à fait intégrer le Théochrone sur votre blogue ou sur votre site. Il vous suffit de copier le code suivant et de le coller sur votre site à l'endroit où vous voulez qu'il apparaisse. Un exemple vous est présenté à côté.</br>
+            Ce widget contient les informations essentielles : date, fêtes du jour, commémorations ou omissions si besoin; en outre, vous pouvez naviguer de jour en jour, obtenir les textes de la messe et de l'office en cliquant sur les fêtes, ou trouver plus de renseignement sur ce site en cliquant sur la date elle-même.</br>
+            Si vous voulez le personnaliser ou si vous rencontrez des problèmes, <a>contactez-nous !</a></br>
+<!--             <div class="space"></div> -->
+            <label for="message2">Code à copier/coller</label>
+            <textarea class="form-control" rows="3" id="message" placeholder="Message" name="message" required><div id="theocontainer"><link rel="stylesheet" type="text/css" href="https://theochrone.ga/static/spill/widget.css" /><iframe id="theowidget" alt="Theochrone widget" src="https://theochrone.ga/spill/main?page=day"></iframe><script src="https://theochrone.ga/static/spill/widget.js"></script></div></textarea>
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h3>Exemple</h3>
+            <div id="theocontainer"><link rel="stylesheet" type="text/css" href="https://theochrone.ga/static/spill/widget.css" /><iframe id="theowidget" alt="Theochrone widget" src="https://theochrone.ga/spill/main?page=day"></iframe><script src="https://theochrone.ga/static/spill/widget.js"></script></div>
+        </div>
+    </div>
+    <div class="space"></div>
+    <h1 id="mobile" class="title text-center">Widget <span>pour mobile</span></h1>
+    <div class="space"></div>
+    <div class="row">
+        <div class="col-md-12">
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
