@@ -10,4 +10,4 @@ _theochrone_completion() {
 if [[ $SHELL == /bin/zsh ]] ; then # TODO make a similar thing for fish, etc. 
 	autoload bashcompinit ; 
 	bashcompinit ; fi
-complete -F _theochrone_completion -o default theochrone.py
+complete -F _theochrone_completion -o default theochrone.pyw
