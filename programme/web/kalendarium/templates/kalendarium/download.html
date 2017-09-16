@@ -1,0 +1,107 @@
+{% extends "base.html" %}{% load static %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+        <!-- section start -->
+		<!-- ================ -->
+		<div class="section translucent-bg bg-image-2 pb-clear">
+			<div class="container object-non-visible" data-animation-effect="fadeIn">
+				<h1 id="download" class="title text-center">Télécharger</h1>
+				<div class="space"></div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="media testimonial">
+							<div class="media-left">
+								<img class="img-responsive" src="{% static "kalendarium/images/windows.png" %}" alt="Windows logo">
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading">Windows</h3>
+								<blockquote>
+									<p>Bien sûr, le Théochrone fonctionne sur Windows ! Téléchargez-le et utilisez-le, même hors connexion.</p>
+									<footer><a class="arch64" href="{{ downloads.windows64 }}" alt="Download Theochrone for Windows 64 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><a class="arch32 unknown" href="{{ downloads.windows32 }}" alt="Download Theochrone for Windows 32 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><span class="mobile">Theochrone is not yet available on mobile</span></footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="media testimonial">
+							<div class="media-left">
+								<img class="img-responsive" src="{% static "kalendarium/images/osx.png" %}" alt="Mac OS X logo">
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading">Mac OS X</h3>
+								<blockquote>
+									<p>Vous avez un Mac ? Vous pouvez télécharger le Théochrone sur votre ordinateur : c'est compatible !</p>
+									<footer><a class="arch64" href="{{ downloads.osx64 }}" alt="Download Theochrone for Mac OS X 64 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><a class="arch32 unknown" href="{{ downloads.osx32 }}" alt="Download Theochrone for Mac OS X 32 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><span class="mobile">Theochrone is not yet available on mobile</span></footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="media testimonial">
+							<div class="media-left">
+								<img class="img-responsive" src="{% static "kalendarium/images/tux.png" %}" alt="Tux Linux logo">
+							</div>
+							<div class="media-body">
+								<h3 class="media-heading">Linux</h3>
+								<blockquote>
+									<p>Développé sur GNU/Linux, le Théochrone fonctionne merveilleusement sur... GNU/Linux ! Téléchargez-le pour l'utiliser partout.</p>
+									<footer><a class="arch64" href="{{ downloads.linux64 }}" alt="Download Theochrone for GNU/Linux 64 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><a class="arch32 unknown" href="{{ downloads.linux32 }}" alt="Download Theochrone for GNU/Linux 32 bits">Télécharger <cite title="Source Title">(Version O.1)</cite></a><span class="mobile">Theochrone is not yet available on mobile</span></footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="media testimonial">
+							<div class="media-left">
+								<img class="img-responsive" src="{% static "kalendarium/images/python.png" %}" alt="Python logo">
+							</div>
+							<div class="media-body smooth-scroll">
+								<h3 class="media-heading">Python</h3>								
+								<blockquote>
+									<p><span class="label label-warning">Pour utilisateurs avertis</span><br>
+									Vous avez déjà un interpréteur Python (python3.5>) ? Vous pouvez télécharger une archive du Théochrone sans le superflu.</p>
+									<footer><a href="{{ downloads.python }}" alt="Download Theochrone without Python interpreter">Télécharger <cite title="Source Title">(Version O.1)</cite></a></footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="media testimonial">
+							<div class="media-left">
+								<img class="img-responsive" src="{% static "kalendarium/images/android.png" %}" alt="Android logo">
+							</div>
+							<div class="media-body smooth-scroll">
+								<h3 class="media-heading">Android</h3>
+								<blockquote>
+									<p>Nous cherchons des contributeurs pour développer une version Android !</p>
+									<footer><a href="#contribute">Contribuer</a></footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="media testimonial">
+							<div class="media-left">
+								<img class="img-responsive" src="{% static "kalendarium/images/ios.png" %}" alt="iOS logo">
+							</div>
+							<div class="media-body smooth-scroll">
+								<h3 class="media-heading">iOS</h3>
+								<blockquote>
+									<p>Nous cherchons des contributeurs pour développer une version iOS !</p>
+									<footer><a href="#contribute">Contribuer</a></footer>
+								</blockquote>
+							</div>
+						</div>
+					</div>
+                                </div>
+			</div>
+			
+		</div>
+		<!-- section end -->
+		
+   
+{% endblock %}
+
+		

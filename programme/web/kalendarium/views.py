@@ -159,6 +159,7 @@ def widget(request):
 
 def download(request):
     """View for download page"""
+    title = "Télécharger"
     return render(request,'kalendarium/download.html',locals())
 
 

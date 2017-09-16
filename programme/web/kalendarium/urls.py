@@ -10,5 +10,6 @@ urlpatterns = [
         url(r"^mois$",views.mois_transfert),
         url(r"^contact$", views.contact),
         url(r"^widget$",views.widget),
+        url(r"^download$",views.download),
         ]
 
