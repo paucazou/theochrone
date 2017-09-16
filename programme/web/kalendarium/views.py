@@ -142,7 +142,8 @@ def contact(request):
 
 def contribute(request):
     """Contribute and who are we view"""
-    pass
+    title = "Contribuer" # TODO changer le titre en fonction de l'endroit dans la page
+    return render(request,'kalendarium/contribute.html',locals())
 
 # get Theochrone
 def widget(request):
