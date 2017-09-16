@@ -26,7 +26,6 @@ function makeHSubmenuVisible(elt) {
 }
 
 $(document).click(function(event){
-    event.preventDefault();
     var hsubmenu_opened = document.getElementsByClassName("hsubmenu opened");
     console.log("hsubmenu_opened : ");
     console.log(hsubmenu_opened);
@@ -43,6 +42,7 @@ $(document).click(function(event){
     var eclassname = event.target.getAttribute("class");
     //console.log(eclassname);
     if ( eclassname.indexOf("hmenu") > -1) {
+        event.preventDefault();
         var elt = event.target;
         if ( eclassname.indexOf("opened") > - 1) {
             elt.setAttribute('class',elt.getAttribute('class').replace(" opened",""));
