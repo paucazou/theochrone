@@ -124,6 +124,7 @@ def contact(request):
     """A function which takes the request arguments (POST)
     and returns the view with success"""
     contact_success = False
+    titre = "Contact"
     if request.method == 'GET':
         form = ContactForm()
     else:

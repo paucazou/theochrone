@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r"^kalendarium/",include("kalendarium.urls")),
     url(r"^spill/",include("spill.urls")),
+    url(r"^help/",include("help.urls")),
 ]
