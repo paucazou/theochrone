@@ -25,8 +25,7 @@ s=''
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
          debut=datetime.date.today(),fin=datetime.date.today(),
-         mots_clefs='',plus=False,annee=datetime.date.today().year,
-         contact_success=False):
+         mots_clefs='',plus=False,annee=datetime.date.today().year):
     """A function which defines homepage. It is also used
     by other pages to print common code.
     It takes many arguments :
@@ -122,7 +121,9 @@ def mois_transfert(request):
     
 # contact
 def contact(request):
-    """A function which takes the request arguments (POST) and returns the home function with success"""
+    """A function which takes the request arguments (POST)
+    and returns the view with success"""
+    contact_success = False
     if request.method == 'GET':
         form = ContactForm()
     else:
@@ -137,8 +138,8 @@ def contact(request):
                 send_mail(subject, message, from_email, [from_email])
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
-            return home(request, contact_success = True)
-    return home(request, contact_success = False)
+            contact_success = True
+    return render(request,'kalendarium/contact.html',locals())
 
 def contribute(request):
     """Contribute and who are we view"""

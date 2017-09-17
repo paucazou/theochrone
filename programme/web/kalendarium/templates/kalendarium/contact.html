@@ -1,0 +1,54 @@
+{% extends "base.html" %}{% load static %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+
+			<div class="footer section">
+				<div class="container">
+					<h1 class="title text-center" id="contact">Contactez-nous !</h1>
+					<div class="space"></div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="footer-content">
+                                                                {% if contact_success %}<div class="alert alert-success">
+                                                                <strong><i class="fa fa-check-circle" aria-hidden="true"></i> Merci.</strong> Votre message nous est bien parvenu. Vous en recevrez copie sous peu. N'hésitez pas à vous servir à nouveau du Théochrone !
+                                                                </div>{% endif %}
+								<p class="large text-justify">Une question ? Une correction urgente (ou non ) ? Une suggestion ? Une proposition de collaboration ? Ou bien vous voulez tout simplement nous remercier (sait-on jamais ?)<br>
+								Quelle que soit votre raison, n'hésitez pas à nous contacter via ce formulaire.<br>
+								À ce jour, il n'est pas encore possible d'envoyer des pièces-jointes par ce moyen, mais vous pouvez toujours prendre un premier contact dont la réponse vous permettra de joindre des documents.<br>
+								Vous recevrez un copie de votre courriel. Attention, il peut se trouver dans le dossier qui rassemble les messages indésirables.</p>
+								<ul class="social-links">
+									<li class="facebook"><a target="_blank" href="https://www.facebook.com/theochrone"><i class="fa fa-facebook"></i></a></li>
+									<li class="twitter"><a target="_blank" href="https://twitter.com/theochroneFR"><i class="fa fa-twitter"></i></a></li>
+									<li class="github"><a target="_blank" href="https://github.com/paucazou/theochrone"><i class="fa fa-github"></i></a></li>
+                                                                </ul>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="footer-content">
+								<form role="form" id="footer-form" method='post' action="contact#contact">
+                                                                        {% csrf_token %}
+									<div class="form-group has-feedback">
+										<label class="sr-only" for="email2">Adresse</label>
+										<input type="email" class="form-control" id="sender" placeholder="Adresse courriel" name="sender" required>
+										<i class="fa fa-envelope form-control-feedback"></i>
+									</div>
+									<div class="form-group has-feedback">
+										<label class="sr-only" for="name2">Objet</label>
+										<input type="text" class="form-control" id="subject" placeholder="Objet" name="subject" required>
+										<i class="fa fa-comment form-control-feedback"></i>
+									</div>
+									<div class="form-group has-feedback">
+										<label class="sr-only" for="message2">Message</label>
+										<textarea class="form-control" rows="8" id="message" placeholder="Message" name="message" required></textarea>
+										<i class="fa fa-pencil form-control-feedback"></i>
+									</div>
+									<input type="submit" value="Envoyer" class="btn btn-default">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .footer end -->
+ 
+{% endblock %}
