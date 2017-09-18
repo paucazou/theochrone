@@ -7084,7 +7084,7 @@
       <None key="regex"/>
       <dict key="regex_">
         <list key="attribut">
-          <str>tolentino</str>
+          <str>tolentino?</str>
         </list>
         <list key="attribut_compose"/>
         <list key="egal"/>
