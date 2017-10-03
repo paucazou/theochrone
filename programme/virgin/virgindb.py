@@ -23,13 +23,18 @@
 import builtins
 import importlib
 import os
+import phlog
 import sqlite3
-from programme import phlog
+import virgin.slaves as slaves
 logger = phlog.loggers['console']
+
+# global paramaters
+first_bounds='[<'
+second_bounds='>]' # to parse lists and dicts.
 
 # Functions
 ## lambdas
-long_or_short = lambda string : [ShortStr,LongStr][len(string)>150](string)
+long_or_short = lambda string : [slaves.ShortStr,slaves.LongStr][len(string)>150](string)
 
 ## classic
 def type_of(item):
@@ -38,28 +43,32 @@ def type_of(item):
     if isinstance(item,str):
         item = long_or_short(item)
     return type(item)
+
+def parse_list(string_entered,first_bounds=first_bounds,second_bounds=second_bounds):
+    """Split a string into a list
+    Protects lists or dicts if there are inside it"""
+    list_returned = []
+    item = ""
+    split=True
+    for char in string_entered[1:-1]:
+        if char in first_bounds:
+            split = False
+        elif char in second_bounds:
+            split = True
+        elif split and char == ",":
+            list_returned.append(item)
+            item = ""
+        else:
+            item += char
+    list_returned.append(item) # for the last item
+    return list_returned
     
+def parse_dict(string_entered,first_bounds=first_bounds,second_bounds=second_bounds):
+    pass
+    
+# class
 
-# Classes
-        
-class ShortStr(str):
-    """A string whith len <= 150"""
-    def __init__(self,value):
-        if len(value) > 150:
-            raise ValueError("Length of string is greater than 150") # essayer de renvoyer un LongStr et vice versa TODO
-        str.__init__(self)
-        
-class LongStr(str):
-    """A string whith len > 150"""
-    def __init__(self,value):
-        if len(value) <= 150:
-            raise ValueError("Length of string is lower or equal to 150")
-        str.__init__(self)
-        
-builtins.ShortStr = ShortStr
-builtins.LongStr = LongStr
-
-class DBManager():
+class DBManager(): # on change tout
     """Manages the database"""
     
     def __init__(self,base,are_attributes_not_to_be_saved=True):
@@ -71,41 +80,147 @@ class DBManager():
         self._base_path = base
         self.are_attributes_not_to_be_saved = are_attributes_not_to_be_saved # useful for write only
         self.connect()
+        self.db.row_factory = sqlite3.Row
         self.cursor = self.db.cursor()
         if not already_exists:
             self._create_main()
         self.loaded_modules = {}
-        self.builtin = {
+        self.builtin = { # changer cela : un tuple (adapter,converter)
             list: self.adapt_list,
             tuple:self.adapt_list,
             dict:self.adapt_dict,
-            str:self.StrManager,
-            None:lambda x:x,
-            int:self.adapt_int_to_str,
-            bool:self.adapt_bool_to_str,
-            builtins.ShortStr:self.StrManager, # WARNING dev : on ipython3, custom classes defined in this scope are no more attainable if the file is changed !!! Please future self, don't panic and simply add these lines by hand.
-            builtins.LongStr:self.StrManager,
+            bool:(self.adapt_bool,self.convert_bool),
+            slaves.ShortStr:(self.adapt_str,self.convert_ShortStr), # WARNING dev : on ipython3, custom classes defined in this scope are no more attainable if the file is changed !!! Please future self, don't panic and simply add these lines by hand.
+            slaves.LongStr:(self.adapt_str,self.convert_LongStr),
             }
         
+        
+        # registering adaptaters
+        for key, value in self.builtin.items():
+            sqlite3.register_adapter(key,value[0])
+            sqlite3.register_converter(key.__name__,value[1])
+        
+        # adding special adaptaters that are used in lists, dicts, etc. only
+        self.builtin[int] = (self.adapt_int,self.convert_int) # adding int AFTER registered adaptaters, because these adaptaters are useless outside of lists, dicts, etc.
+        self.builtin[str] = (self.adapt_str,self.convert_str)
+        self.builtin[None] = (self.adapt_None,self.convert_None)
+            
         self.cursor.execute("""SELECT name,module FROM custypes""")
         custypes = self.cursor.fetchall()
         logger.debug(custypes)
         self.custypes = {custype:self.custom_saver for custype in custypes}
         self.alltypes = self.custypes.copy()
         self.alltypes.update(self.builtin)
-        sqlite3.register_adapter(list,self.adapt_list)
         
     def __del__(self):
         self.db.close()
         
+    # adapters / converters 
+    ## Lazy
+    def adapt_Lazy(self,lazy_thing):
+        """Adapt a lazy object to save it into db"""
+        return """lazy({}///{})""".format(self._saver(lazy_thing.value),lazy_thing.type)
+    
+    def convert_Lazy(self,string_entered):
+        """Convert a string_entered into a Lazy object"""
+        raw_data=string_entered.decode().replace("lazy(","").replace(")","")
+        raw_data, type_of_data = raw_data.split('///')
+        type_of_data = self._type_manager(string_entered = type_of_data)
+        return slaves.Lazy(db=self,
+                    raw_data = raw_data,
+                    type_of_data = type_of_data,
+                    )
+    
+    ## str
+    def adapt_str(self,string_entered):
+        table_name = string_entered.__class__.__name__
+        self.execute("""SELECT id FROM {} WHERE text = ?;""".format(table_name),(string_entered,))
+        try:
+            id = self.cursor.fetchone()[0]
+            logger.debug(id)
+        except TypeError:
+            id = self.get_new_id(table_name)
+            self.execute("""INSERT INTO {} VALUES (?,?);""".format(table_name),(id,string_entered))
+        return id 
+        
+    def convert_str(self,id_entered,table_name=None): # TODO un converter principal, les autres faisant appel à lui et lui donnant une base
+        if not table_name:
+            raise ValueError("A table name must be entered.")
+        return self.fetchone("""SELECT text FROM {} WHERE id = ?;""".format(table_name),(id_entered,))[0]
+    
+    ### LongStr
+    def convert_LongStr(self,id_entered):
+        return self.convert_str(id_entered,"LongStr")
+    ### ShortStr
+    def convert_ShortStr(self,id_entered):
+        return self.convert_str(id_entered,"ShortStr")
+    
+    ## bool
+    def adapt_bool(self,bool_entered):
+        return int(bool_entered)
+    
+    def convert_bool(self,int_entered):
+        return bool(int_entered)
+    
+    # None
+    def adapt_None(self,None_entered):
+        return 'None'
+    
+    def convert_None(self,string_entered):
+        return None
+    
+    #int
+    def adapt_int(self,int_entered):
+        return self.adapt_int_to_str(int_entered)
+    
+    def convert_int(self,string_entered):
+        return self.adapt_int_to_str(string_entered,restore=True)
+    
+    ## dict
+    def adapt_dict(self,dict_entered):
+        pairs = []
+        for key, value in dict_entered.items():
+            pair = """{}/{}:{}/{}""".format(
+                self._saver(key),self._type_manager(type_entered=type_of(key)),
+                self._saver(value),self._type_manager(type_entered=type_of(value)))
+            pairs.append(pair)
+        return """<{}>""".format(",".join(pairs))
+    
+    def convert_dict(self,string_entered):
+        pass
+    
+    ## list
+    def adapt_list(self,list_entered):
+        for i,item in enumerate(list_entered):
+            list_entered[i] = "{}/{}".format(
+                self._saver(item),
+                self._type_manager(type_entered=type_of(item))
+                )
+        return """[{}]""".format(','.join(list_entered))
+    
+    def convert_list(self,string_entered):
+        list_tmp = [ list_returned = list_entered[1,-1].split(',')
+                    for item in parse_list( string_entered[1,-1] ) ]
+        new_list = []
+        for elt in list_tmp:
+            type_of_elt = self._type_manager(string_entered=elt[1])
+            new_list.append(self._restore(elt[0]),type_of_elt)
+        return new_list
+    
     def close(self):
-        """close base and delete self"""
+        """close base"""
         self.db.close()
         
     def connect(self):
-        self.db = sqlite3.connect(self._base_path)
+        self.db = sqlite3.connect(self._base_path,detect_types = sqlite3.PARSE_DECLTYPES)
     
-    def adapt_list(self,list_entered):
+    def deprecated_adapt_list(self,list_entered,restore=False): # DEPRECATED
+        """Turn a list into text ;
+        if restore == True, turn list_entered into list"""
+        if restore:
+            list_returned = list_entered[1,-1].split(',')
+            return list_returned
+        
         for i,item in enumerate(list_entered):
             list_entered[i] = "{}/{}".format(
                 self._saver(item),
@@ -113,8 +228,13 @@ class DBManager():
                 )
         return """[{}]""".format(','.join(list_entered))
     
-    def adapt_dict(self,dict_entered):
-        """Save dict and dict like"""
+    def adapt_dict(self,dict_entered,restore=False): # DEPRECATED
+        """Save dict and dict like
+        if restore == True, turn dict_entered into dict""" # WARNING et si c'est un ordered dict ???
+        if restore:
+            dict_returned = dict_entered[1,-1].split(',')
+            return dict_returned
+        
         logger.debug("dict_entered = {}; type : {}".format(dict_entered,type_of(dict_entered)))
         dict_type = type_of(dict_entered)
         pairs = []
@@ -125,16 +245,18 @@ class DBManager():
             pairs.append(pair)
         return """<{}>""".format(",".join(pairs))
     
-    def adapt_int_to_str(self,int_entered):
+    def adapt_int_to_str(self,int_entered,restore=False):
         """This method is to save int as str.
         It should not be used outside of special savers
-        like adapt_dict or adapt_list"""
-        return str(int_entered)
+        like adapt_dict or adapt_list
+        If restore == True, return int from str"""
+        return (str,int)[restore](int_entered)
     
-    def adapt_bool_to_str(self,bool_entered):
+    def adapt_bool_to_str(self,bool_entered,restore=False): # DEPRECATED
         """Method which changes a bool to
-        its numeric value, and return it as a str"""
-        return str(int(bool_entered))
+        its numeric value, and return it as a str
+        if restore == True, return bool from a str (1 or 0)"""
+        return (str,bool)[restore](int(bool_entered))
         
     def _create_main(self): # TODO faire une table pour les images ?
         """Creates a virgin base with a main table.
@@ -157,7 +279,7 @@ class DBManager():
             id INTEGER PRIMARY KEY,
             text TEXT);""") # for strings > 150
         
-    def _str_manager(self,item,table_name):
+    def _str_manager(self,item,table_name): # DEPRECATED
         """Save strings"""
         self.execute("""SELECT id FROM {} WHERE text = ?;""".format(table_name),(item,))
         try:
@@ -168,12 +290,17 @@ class DBManager():
             self.execute("""INSERT INTO {} VALUES (?,?);""".format(table_name),(id,item))
         return id  
     
-    def StrManager(self,item):
-        """Save strings"""
+    def StrManager(self,item,str_type=None,restore=False): # DEPRECATED
+        """Save strings
+        if restore == True, restore strings
+        str_type is useful to restore strings.
+        It can be either ShortStr or LongStr"""
+        if restore:
+            self.execute("""SELECT text FROM {} WHERE id = ?;""".format(str_type.__name__),(item,))
+            return self.cursor.fetchone()[0]
         tables = ['ShortStr','LongStr']
         is_long = len(item) > 150
-        return self._str_manager(item,tables[is_long])
-        
+        return self._str_manager(item,tables[is_long])        
         
     def execute(self,*command):
         """Executes the command (any SQL command)
@@ -181,6 +308,12 @@ class DBManager():
         logger.debug(command)
         self.cursor.execute(*command)
         self.db.commit()
+        
+    def fetchone(self,*command):
+        """Similar to execute, but return
+        the result of self.cursor.fetchone()"""
+        self.cursor.execute(*command)
+        return self.cursor.fetchone()
         
     def get_last_id(self,table_name):
         """A method to get the last ID of a table"""
@@ -225,7 +358,7 @@ class DBManager():
             
         return self.alltypes[qtype](queuer)
     
-    def create_custom_class(self,qtype,model): # 
+    def create_custom_class(self,qtype,model): # TODO fonctions : lazy, ceux qui doivent être dans les parties regex et _regex TODO
         """Creates a custom class :
         save name of the class, the module in which it is (how ?)
         creates a table with the attributes"""
@@ -297,7 +430,7 @@ class DBManager():
     def _type_manager(self,type_entered=None,string_entered=None):
         """Manages types to save them as strings
         or return type from string as following:
-        module%#@type"""
+        module@type"""
         if type_entered:
             return "{}@{}".format(type_entered.__module__,type_entered.__name__)
         module, classe = string_entered.split("@")
@@ -324,6 +457,10 @@ class DBManager():
         self.restore(ordo=1962,propre='romanus') return
         all objects with ordo and propre attributes,
         and whose ordo == 1962, and propre == 'romanus'"""
+        pass
+    
+    def _restore(self,data_entered,type_entered=None):
+        """Restore data. type_entered is useful if it is not clear""" # WARNING
         pass
         
         
