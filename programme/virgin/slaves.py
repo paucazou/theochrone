@@ -37,18 +37,14 @@ class Lazy:
             raise ValueError("A Lazy object must have either a value or a DBManager")
         self.value = value
         self.db = db # db must be a DBManager object
-        self.raw_data = raw_data
-        self.type = type_of_data
-        if value:
-            type_entered = type_of(value)
-            self.type = "{}@{}".format(type_entered.__module__,type_entered.__name__)
+        self.raw_data = raw_data # raw_data must have following structure : data/module@type
         
     def __call__(self):
         """Returns object. Loads it if not already loaded"""
         if not self.value:
             self.db.connect()
             self.execute(command)
-            self.value = self.db._restore(self.raw_data,self.type)
+            self.value = self.db._restore_from_string(self.raw_data)
             self.db.close()
         return self.value
         
