@@ -3,9 +3,11 @@
 #Deus, in adjutorium meum intende
 """This module contains the converters and adapters
 virgindb."""
+
 # global paramaters
 first_bounds='[<'
 second_bounds='>]' # to parse lists and dicts.
+str_like_classes = ('ShortStr','LongStr','_Regex','Regex')
 
 # functions
 
@@ -59,6 +61,7 @@ class Adapter:
     used by DBManager to adapt and convert
     object to and from a database"""
     
+    
     def __init__(self,dbmanager):
         self.dbmanager = dbmanager
         
@@ -87,17 +90,18 @@ class Adapter:
             self.dbmanager.execute("""INSERT INTO {} VALUES (?,?);""".format(table_name),(id,string_entered))
         return id 
         
-    def convert_str(self,id_entered,table_name=None): # TODO un converter principal, les autres faisant appel à lui et lui donnant une base
+    def convert_str(self,id_entered,table_name=None):
         if not table_name:
             raise ValueError("A table name must be entered.")
         return self.dbmanager.fetchone("""SELECT text FROM {} WHERE id = ?;""".format(table_name),(id_entered,))[0]
-    
-    ### LongStr
+
+        
+    ### LongStr # WARNING useless if the loop above works
     def convert_LongStr(self,id_entered):
-        return self.dbmanager.convert_str(id_entered,"LongStr")
+        return self.convert_str(id_entered,"LongStr")
     ### ShortStr
     def convert_ShortStr(self,id_entered):
-        return self.dbmanager.convert_str(id_entered,"ShortStr")
+        return self.convert_str(id_entered,"ShortStr")
     
     ## bool
     def adapt_bool(self,bool_entered):
@@ -152,4 +156,16 @@ class Adapter:
         for elt in list_tmp:
             new_list.append(self.dbmanager._restore_from_string(elt))
         return new_list
+    
+    ## tuple
+    def convert_tuple(self,string_entered):
+        return tuple(self.convert_list(string_entered))
+                     
+# creating converters for string_like classes
+for class_name in str_like_classes:
+    def converter(self,id_entered):
+        return self.convert_str(id_entered,class_name)
+    method_name = 'convert_' + class_name
+    setattr(Adapter,method_name,converter)
+    
         

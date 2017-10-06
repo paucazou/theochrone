@@ -28,6 +28,16 @@ class LongStr(str):
             self.__init__(value)
         str.__init__(self)
         
+class _Regex(str):
+    """A class of strings used for regex"""
+    def __init__(self,value):
+        str.__init__(self)
+        
+class Regex(str):
+    """A class of regex"""
+    def __init__(self,value):
+        str.__init__(self)
+        
 class Lazy:
     """A Lazy object waits until it is called"""
     

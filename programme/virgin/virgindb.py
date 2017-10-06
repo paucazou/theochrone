@@ -48,6 +48,7 @@ class DBManager(): # on change tout
     
     def __init__(self,base,are_attributes_not_to_be_saved=True):
         """base is a pathlike object"""
+        self.adapters = adapters.Adapter(self)
         if not os.path.isfile(base):
             already_exists = False
         else:
@@ -62,9 +63,9 @@ class DBManager(): # on change tout
         self.loaded_modules = {}
         
         self.builtin = { # changer cela : un tuple (adapter,converter)
-            list: self.adapt_list,
-            tuple:self.adapt_list,
-            dict:self.adapt_dict,
+            list: (self.adapters.adapt_list,self.adapters.convert_list),
+            tuple:(self.adapters.adapt_list,self.adapters.convert_tuple),
+            dict:(self.adapters.adapt_dict,self.adapters.convert_dict),
             bool:(self.adapters.adapt_bool,self.adapters.convert_bool),
             slaves.ShortStr:(self.adapters.adapt_str,self.adapters.convert_ShortStr), # WARNING dev : on ipython3, custom classes defined in this scope are no more attainable if the file is changed !!! Please future self, don't panic and simply add these lines by hand.
             slaves.LongStr:(self.adapters.adapt_str,self.adapters.convert_LongStr),
@@ -129,7 +130,7 @@ class DBManager(): # on change tout
             pairs.append(pair)
         return """<{}>""".format(",".join(pairs))
     
-    def adapt_int_to_str(self,int_entered,restore=False):
+    def adapt_int_to_str(self,int_entered,restore=False): #DEPRECATED
         """This method is to save int as str.
         It should not be used outside of special savers
         like adapt_dict or adapt_list
@@ -154,14 +155,19 @@ class DBManager(): # on change tout
         self.execute("""CREATE TABLE custypes(
             id INTEGER PRIMARY KEY,
             name TEXT,
-            module TEXT,
-            types TEXT);""")
+            module TEXT);""")
         self.execute("""CREATE TABLE ShortStr( 
             id INTEGER PRIMARY KEY,
             text TEXT);""") # for strings <= 150
         self.execute("""CREATE TABLE LongStr(
             id INTEGER PRIMARY KEY,
             text TEXT);""") # for strings > 150
+        self.execute("""CREATE TABLE _Regex(
+            id INTEGER PRIMARY KEY,
+            text TEXT);""") # for strings used for regex
+        self.execute("""CREATE TABLE Regex(
+            id INTEGER PRIMARY KEY,
+            text TEXT);""") # for regex
         
     def _str_manager(self,item,table_name): # DEPRECATED
         """Save strings"""
@@ -233,48 +239,65 @@ class DBManager(): # on change tout
         if (qtype.__name__,qtype.__module__) in self.alltypes:
             del(self.alltypes[(qtype.__name__,qtype.__module__)])
             del(self.custypes[(qtype.__name__,qtype.__module__)])
-            self.custypes[qtype] = self.custom_saver
+            self.custypes[qtype] = (self.custom_saver,self.custom_restore)
             self.alltypes.update(self.custypes)
             
         if qtype not in self.alltypes: # posera pbm si modification d'une classe WARNING
             assert isinstance(queuer.__dict__,dict)
             self.create_custom_class(qtype,queuer)
             
-        return self.alltypes[qtype](queuer)
+        return self.alltypes[qtype][0](queuer)
     
-    def create_custom_class(self,qtype,model): # TODO fonctions : lazy, ceux qui doivent être dans les parties regex et _regex TODO
+    def create_custom_class(self,qtype,model):
         """Creates a custom class :
         save name of the class, the module in which it is (how ?)
         creates a table with the attributes"""
-
         # creating class table
+        
+        # creating lazy attributes
+        if 'lazy_objects' in model.__dir__():
+            for lazy_thing in model.lazy_objects():
+                model[lazy_thing] = slaves.Lazy(value = model[lazy_thing])
+
+        
         keys = list(sorted(model.__dict__.keys()))
         ## not counting some attributes
         if self.are_attributes_not_to_be_saved:
             keys = [ key for key in keys if key not in model.not_to_be_saved() ]
+        
         ## iterating over attributes
         command = """CREATE TABLE {}( id INTEGER PRIMARY KEY, {});""".format(
-            qtype.__name__, ', '.join([key + self.storing_type(type_of(model.__dict__[key])) for key in keys])
+            qtype.__name__, ', '.join([key +' '+ type_of(model.__dict__[key]).__name__ for key in keys])
             )
         self.execute(command)
-        ## set attributes types
+        """## set attributes types
         type_keys = {}
         for key in keys:
             type_keys[key] = self._type_manager(type_entered=type_of(model.__dict__[key]))
             
         types = '|'.join(
-            [key+'/'+value for key, value in type_keys.items() ])
+            [key+'/'+value for key, value in type_keys.items() ])"""
         primekey = self.get_new_id('custypes')
-        self.execute("""INSERT INTO custypes VALUES (?, ?, ?, ?);""",
-                     (primekey,qtype.__name__,qtype.__module__,types))
+        self.execute("""INSERT INTO custypes VALUES (?, ?, ?);""",
+                     (primekey,qtype.__name__,qtype.__module__))
         
         # adding class into custypes
-        self.custypes[qtype] = self.custom_saver
+        self.custypes[qtype] = (self.custom_saver,self.custom_restore)
         self.alltypes.update(self.custypes)
     
     def custom_saver(self,obj):
         """Sauvegarde les attributs dans la table prévue à cet effet.
         vérifier les attributs. Fait appel à saver si attribut n'est pas un int"""
+        if '_regex' in obj.__dict__:
+            for key,value in obj._regex:
+                obj._regex[key] = [slaves._Regex(item) for item in value ]
+            for key,value in obj.regex:
+                obj.regex[key] = [slaves.Regex(item) for item in value ]
+        
+        if 'lazy_objects' in obj.__dir__():
+            for lazy_thing in obj.lazy_objects():
+                obj[lazy_thing] = slaves.Lazy(value = model[lazy_thing])
+                
         table_name = type(obj).__name__
         attributes = obj.__dict__.copy() # supprimer à ce moment les attributs rejetés TODO
         assert obj.__dict__ is not attributes 
@@ -282,7 +305,7 @@ class DBManager(): # on change tout
         # get the columns names 
         #column_info = self.execute('SELECT * FROM {}'.format(table_name))
         #columns = list(map(lambda x : x[0], column_info.description)) # a list with the column names
-        types = self.get_columns_nt(table_name)
+        """types = self.get_columns_nt(table_name)
         columns = dict(item.split('/') for item in types.split('|'))
         columns = { key : self._type_manager(string_entered=value) for key, value in columns.items()}
         logger.debug(columns)
@@ -291,7 +314,7 @@ class DBManager(): # on change tout
                 item_type = columns[key]
                 if not type_of(value) == item_type:
                     raise TypeError("Attribute entered has not required type for this class :\ntype: {}\nvalue: {} has type: {}".format(item_type,value,type(value)))
-                attributes[key]=self._saver(value)
+                attributes[key]=self._saver(value)"""
         values = [primekey] + [ val for key,val in sorted(attributes.items()) ]
         command = """INSERT INTO {} VALUES ({}?);""".format(table_name,"?, "*(len(values) -1))
         self.execute(command,values) # TODO voir si on ne peut pas utiliser plutôt un dict, qui serait plus commode
@@ -343,9 +366,19 @@ class DBManager(): # on change tout
         and whose ordo == 1962, and propre == 'romanus'"""
         pass
     
-    def _restore(self,data_entered,type_entered):
-        """Restore data. type_entered is a type object.""" # WARNING
+    def custom_restore(self,data_entered,qtype):
         pass
+    
+    def _restore(self,data_entered,qtype):
+        """Restore data. qtype is a type object."""
+        
+        if (qtype.__name__,qtype.__module__) in self.alltypes:
+            del(self.alltypes[(qtype.__name__,qtype.__module__)])
+            del(self.custypes[(qtype.__name__,qtype.__module__)])
+            self.custypes[qtype] = (self.custom_saver,self.custom_restore)
+            self.alltypes.update(self.custypes)
+            
+        return self.alltypes[qtype][1](data_entered)
     
     def _restore_from_string(self,string_entered):
         """Restore data from a string with following
