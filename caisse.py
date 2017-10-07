@@ -102,12 +102,12 @@ def depart():
     if ajout != []:
         print('Vous avez créé des objets : ')
         for a in ajout:
-            print(a.nom['latina'])
+            print(a.nom['la'])
     if not correspondance:
         print('Vous avez modifié des objets : ')
         for a in objets:
             if a not in objets_ancien:
-                print(a.nom['latina'])
+                print(a.nom['la'])
     reponse = input("""Voulez-vous :
         - QUITTER sans enregistrer ?
         - ENREGISTRER puis quitter ?
@@ -278,7 +278,7 @@ def modification():
     if objets != []:
         menu_modif = {'title': "Modifier des objets", 'type': MENU, 'subtitle': "Choisissez l'objet que vous voulez modifier.",'options':[]}
         for a in objets:
-            menu_modif['options'].append({'title': a.nom['latina'], 'type': COMMAND, 'command': ajouter, ARGS: type(a).__name__, 'arg2':a.__dict__})
+            menu_modif['options'].append({'title': a.nom['la'], 'type': COMMAND, 'command': ajouter, ARGS: type(a).__name__, 'arg2':a.__dict__})
         menu(menu_modif,menus)
     else:
         print("""Vous n'avez actuellement aucun objet. Veuillez choisir un fichier à traiter ou enregistrer préalablement des objets avant de faire des modifications.""")
@@ -288,7 +288,7 @@ def supprimer(numero='NON'):
     global objets
     if numero != 'NON':
         print("""Êtes-vous sûr de vouloir supprimer l'objet {} ? \n
-              {}""".format(objets[numero].nom['latina'],objets[numero]))
+              {}""".format(objets[numero].nom['la'],objets[numero]))
         reponse = input("""oui/[NON]""")
         if reponse == 'oui':
             del(objets[numero])
@@ -299,7 +299,7 @@ def supprimer(numero='NON'):
         menu_suppr = {'title': "Supprimer des objets", 'type': MENU, 'subtitle': "Choisissez l'objet que vous voulez supprimer.",'options':[]}
         i = -1
         for a in objets:
-            menu_suppr['options'].append({'title': a.nom['latina'], 'type': COMMAND, 'command': supprimer, ARGS: i+1})
+            menu_suppr['options'].append({'title': a.nom['la'], 'type': COMMAND, 'command': supprimer, ARGS: i+1})
             i+=1
         menu(menu_suppr,menus,True) # attention, le retour à ce menu est trompeur : il n'est pas actualisé après suppression
     else:
@@ -379,9 +379,9 @@ def ajouter(modele,entrees={}):
                 print(erreur)
             
     while boucle:
-        nouveau.nom['latina'] = finput('Rentrez le nom de la fête en latin',nouveau.nom['latina'])
-        nouveau.nom['francais'] = finput('Rentrez le nom de la fête en français',nouveau.nom['francais'])
-        nouveau.nom['english'] = finput('Rentrez le nom de la fête en anglais',nouveau.nom['english'])
+        nouveau.nom['la'] = finput('Rentrez le nom de la fête en latin',nouveau.nom['la'])
+        nouveau.nom['fr'] = finput('Rentrez le nom de la fête en français',nouveau.nom['fr'])
+        nouveau.nom['en'] = finput('Rentrez le nom de la fête en anglais',nouveau.nom['en'])
         #nouveau.ordo=valider('Rentrez l\'année de l\'ordo de référence.',nouveau.ordo)
         #nouveau.propre = finput('Rentrez le propre de cette fête.',nouveau.propre)
         
@@ -520,7 +520,7 @@ def ajouter(modele,entrees={}):
                 proposition_repo += 'dimanches'
         #nouveau.images_rep = finput('Rentrez le dossier où se trouvent les images',proposition_repo)"""
         
-        nouveau.addendum['francais'] = finput('Avez-vous des choses à ajouter ? (Laissez vide sinon)',nouveau.addendum['francais'])
+        nouveau.addendum['fr'] = finput('Avez-vous des choses à ajouter ? (Laissez vide sinon)',nouveau.addendum['fr'])
         print("""Notre objet {} est construit. Voici ses caractéristiques :""".format(type(nouveau)))
         for a,b in sorted(nouveau.__dict__.items()):
             print(a,':',b)
