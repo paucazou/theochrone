@@ -7,7 +7,7 @@
 import logging
 import logging.handlers
 
-formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s') # essayer de rajouter la ligne, la fonction si possible
+formatter = logging.Formatter('%(filename)s :: %(funcName)s :: %(lineno)d :: %(levelname)s :: %(message)s') # essayer de rajouter la ligne, la fonction si possible
 levels = (logging.CRITICAL, logging.ERROR, logging.WARNING, logging.INFO, logging.DEBUG)
 
 def consoleLog(level,logger=logging.getLogger()):
