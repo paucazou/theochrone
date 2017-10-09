@@ -21,6 +21,7 @@
 # custom savers can be created with a new class containing a get and a set methods + a __call__ method. For a similar object, more than one get and set methods can be created for a different behaviour. An __init__ method should be created then to let the script know which method use, in which case. See DictManager for an example.
 
 import builtins
+import collections
 import importlib
 import os
 import phlog
@@ -85,9 +86,8 @@ class DBManager(): # on change tout
         self.cursor.execute("""SELECT name,module FROM custypes""")
         custypes = self.cursor.fetchall()
         logger.debug(custypes)
-        self.custypes = {custype:self.custom_saver for custype in custypes}
-        self.alltypes = self.custypes.copy()
-        self.alltypes.update(self.builtin)
+        self.custypes = {custype:(self.custom_saver,self.custom_restore) for custype in custypes}
+        self.alltypes = collections.ChainMap(self.builtin,self.custypes)
         
     def __del__(self):
         self.db.close()
@@ -148,10 +148,6 @@ class DBManager(): # on change tout
         main table consists in an ID, a name and and a type columns.
         The ID of the main object is the same in the whole database.
         The custypes is the table of custom types to which refers the type column of the main table"""
-        self.execute("""CREATE TABLE main(
-            id INTEGER PRIMARY KEY,
-            name TEXT,
-            type INTEGER);""") # is main useless ?
         self.execute("""CREATE TABLE custypes(
             id INTEGER PRIMARY KEY,
             name TEXT,
@@ -264,10 +260,10 @@ class DBManager(): # on change tout
         ## not counting some attributes
         if self.are_attributes_not_to_be_saved:
             keys = [ key for key in keys if key not in model.not_to_be_saved() ]
-        
+        table_name =  self._type_manager(qtype)
         ## iterating over attributes
         command = """CREATE TABLE {}( id INTEGER PRIMARY KEY, {});""".format(
-            qtype.__name__, ', '.join([key +' '+ type_of(model.__dict__[key]).__name__ for key in keys])
+            table_name, ', '.join([key +' '+ type_of(model.__dict__[key]).__name__ for key in keys])
             )
         self.execute(command)
         """## set attributes types
@@ -283,7 +279,7 @@ class DBManager(): # on change tout
         
         # adding class into custypes
         self.custypes[qtype] = (self.custom_saver,self.custom_restore)
-        self.alltypes.update(self.custypes)
+        self.add_custom_converter_and_adapter(qtype)
     
     def custom_saver(self,obj):
         """Sauvegarde les attributs dans la table prévue à cet effet.
@@ -298,7 +294,7 @@ class DBManager(): # on change tout
             for lazy_thing in obj.lazy_objects():
                 obj[lazy_thing] = slaves.Lazy(value = model[lazy_thing])
                 
-        table_name = type(obj).__name__
+        table_name = self._type_manager(type_entered=type_of(obj))
         attributes = obj.__dict__.copy() # supprimer à ce moment les attributs rejetés TODO
         assert obj.__dict__ is not attributes 
         primekey = self.get_new_id(table_name)
@@ -318,7 +314,7 @@ class DBManager(): # on change tout
         values = [primekey] + [ val for key,val in sorted(attributes.items()) ]
         command = """INSERT INTO {} VALUES ({}?);""".format(table_name,"?, "*(len(values) -1))
         self.execute(command,values) # TODO voir si on ne peut pas utiliser plutôt un dict, qui serait plus commode
-        return primekey
+        return """{}/{}""".format(primekey,table_name)
     
     def _load_module(self,module):
         """Load modules to load classes
@@ -366,17 +362,13 @@ class DBManager(): # on change tout
         and whose ordo == 1962, and propre == 'romanus'"""
         pass
     
-    def custom_restore(self,data_entered,qtype):
+    def custom_restore(self,data_entered):
         pass
     
     def _restore(self,data_entered,qtype):
         """Restore data. qtype is a type object."""
         
-        if (qtype.__name__,qtype.__module__) in self.alltypes:
-            del(self.alltypes[(qtype.__name__,qtype.__module__)])
-            del(self.custypes[(qtype.__name__,qtype.__module__)])
-            self.custypes[qtype] = (self.custom_saver,self.custom_restore)
-            self.alltypes.update(self.custypes)
+        self.update_custypes(qtype)
             
         return self.alltypes[qtype][1](data_entered)
     
@@ -386,6 +378,21 @@ class DBManager(): # on change tout
         str_data, sep, str_type = string_entered.rpartition('/')
         type_of_data = self._type_manager(string_entered=str_type)
         return self._restore(str_data,type_entered)
+    
+    def update_custypes(self,qtype):
+        """Change tuples in custypes to type"""
+        if (qtype.__name__,qtype.__module__) in self.alltypes:
+            del(self.alltypes[(qtype.__name__,qtype.__module__)])
+            del(self.custypes[(qtype.__name__,qtype.__module__)])
+            self.custypes[qtype] = (self.custom_saver,self.custom_restore)
+            self.add_custom_converter_and_adapter(qtype)
+            
+    def add_custom_converter_and_adapter(self,qtype):
+        """Add converter and adapter for a custom type"""
+        sqlite3.register_adapter(qtype,self.custom_saver)
+        complete_name = qtype.__module__ + '.' + qtype.__name__
+        sqlite3.register_converter(complete_name,self.custom_restore)
+        
         
         
         
