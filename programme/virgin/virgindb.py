@@ -86,6 +86,9 @@ class DBManager(): # on change tout
         self.cursor.execute("""SELECT name,module FROM custypes""")
         custypes = self.cursor.fetchall()
         logger.debug(custypes)
+        # registering custom converters
+        for type_name, type_module in custypes:
+            sqlite3.register_converter(type_name,self.custom_restore)
         self.custypes = {custype:(self.custom_saver,self.custom_restore) for custype in custypes}
         self.alltypes = collections.ChainMap(self.builtin,self.custypes)
         
@@ -363,7 +366,15 @@ class DBManager(): # on change tout
         pass
     
     def custom_restore(self,data_entered):
-        pass
+        """Restore a custom object entered"""
+        obj_id, useless_sep, table_name = data_entered.partition('/')
+        qtype = self._type_manager(string_entered=table_name)
+        self.update_custypes(qtype)
+        returned_obj = qtype()
+        attributes = dict(self.fetchone("""SELECT * FROM {};""".format(table_name)))
+        returned_obj.__dict__.update(attributes)
+        return returned_obj
+
     
     def _restore(self,data_entered,qtype):
         """Restore data. qtype is a type object."""
@@ -382,7 +393,6 @@ class DBManager(): # on change tout
     def update_custypes(self,qtype):
         """Change tuples in custypes to type"""
         if (qtype.__name__,qtype.__module__) in self.alltypes:
-            del(self.alltypes[(qtype.__name__,qtype.__module__)])
             del(self.custypes[(qtype.__name__,qtype.__module__)])
             self.custypes[qtype] = (self.custom_saver,self.custom_restore)
             self.add_custom_converter_and_adapter(qtype)
