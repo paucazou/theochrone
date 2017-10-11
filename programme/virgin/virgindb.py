@@ -73,10 +73,11 @@ class DBManager(): # on change tout
             bool:(self.adapters.adapt_bool,self.adapters.convert_bool),
             slaves.ShortStr:(self.adapters.adapt_str,self.adapters.convert_ShortStr), # WARNING dev : on ipython3, custom classes defined in this scope are no more attainable if the file is changed !!! Please future self, don't panic and simply add these lines by hand.
             slaves.LongStr:(self.adapters.adapt_str,self.adapters.convert_LongStr),
+            slaves.BaseDict:(self.adapters.adapt_BaseDict,self.adapters.convert_BaseDict),
             int:(self.adapters.adapt_int,self.adapters.convert_int),
             str:(self.adapters.adapt_str,self.adapters.convert_str),
             builtins.NoneType:(self.adapters.adapt_None,self.adapters.convert_None),
-            }
+            } # TODO rajouter dynamiquement les types venus de slaves TODO
         
         
         # registering adaptaters
@@ -189,7 +190,8 @@ class DBManager(): # on change tout
         else insert data with last id
         table_name : string
         data : sequence of objects without id ; must be in the right order
-        id : int"""
+        id : int
+        return id"""
         laine = len(data) # laine in french has similar pronunciation to len in globish : funny, isn't it ?
         if not id:
             id = self.get_new_id(table_name)
@@ -199,8 +201,9 @@ class DBManager(): # on change tout
             data.insert(0,id)
             command = """INSERT INTO {} values ({}?);""".format(table_name,"?, " * laine)
         self.execute(command,data)
+        return id
         
-    def restore_row(self,table_name,returned_type=dict,**where): # TODO ajouter les différents opérateurs
+    def restore_row(self,table_name,returned_type=dict,**where): # TODO faire une fonction similaire où il faudrait rentrer la ligne sql, dont le where serait modifié
         """restore data from table_name.
         where are named parameters where key is a column name
         and value is value requested. if where is empty, all values are returned
@@ -225,14 +228,15 @@ class DBManager(): # on change tout
         returned_list = []
         logger.debug(returned_type)
         for row_object in raw_data:
-            tmp_container = {}
-            for key,value in dict(row_object).items():
-                if type(value) not in base_types:
+            if returned_type is dict:
+                tmp_container = {}
+                for key,value in dict(row_object).items():
                     value = self._restore_from_string(value)
-                tmp_container[key] = value
+                    tmp_container[key] = value
             
-            if returned_type is not dict:
-                tmp_container = returned_type(tmp_container.values())
+            elif returned_type is not dict:
+                tmp_container = [self._restore_from_string(value) for value in row_object]
+                tmp_container = returned_type(tmp_container)                
             returned_list.append(tmp_container)
         return returned_list
         
@@ -283,7 +287,7 @@ class DBManager(): # on change tout
         
     def get_last_id(self,table_name):
         """A method to get the last ID of a table"""
-        self.execute("SELECT max(id) FROM {}".format(table_name))
+        self.cursor.execute("SELECT max(id) FROM {}".format(table_name))
         return self.cursor.fetchone()[0]
     
     def get_new_id(self,table_name):
@@ -291,13 +295,13 @@ class DBManager(): # on change tout
         last_id = self.get_last_id(table_name)
         return last_id + 1 if last_id else 1
     
-    def get_columns_nt(self,name):
+    def get_columns_nt(self,name): # DEPRECATED ?
         """A method to get the columns names and the types (nt)
         from custypes"""
-        self.execute("SELECT types FROM custypes WHERE name = ?;",(name,))
+        self.cursor.execute("SELECT types FROM custypes WHERE name = ?;",(name,))
         return self.cursor.fetchone()[0]
         
-    def saver(self,*queue):
+    def saver(self,*queue): # DEPRECATED ?
         """Save the objects in the database
         return list of ids"""
         ids = []
@@ -324,6 +328,17 @@ class DBManager(): # on change tout
             
         return self.alltypes[qtype][0](queuer)
     
+    def create_table_dict(self,model):
+        """The model is a BaseDict with every key inside,
+        and value with correct type"""
+        keys = list(sorted(model.keys()))
+        table_name = model.name
+        logger.debug(model.values())
+        command = """CREATE TABLE "{}"(id INTEGER PRIMARY KEY, {});""".format(
+            table_name,', '.join([key+' '+ self.storing_type(type(model[key])) for key in keys])
+        )
+        self.execute(command)
+        
     def create_custom_class(self,qtype,model):
         """Creates a custom class :
         save name of the class, the module in which it is (how ?)
@@ -359,7 +374,6 @@ class DBManager(): # on change tout
         
         # adding class into custypes
         self.custypes[qtype] = (self.custom_saver,self.custom_restore)
-        self.add_custom_converter_and_adapter(qtype)
     
     def custom_saver(self,obj):
         """Sauvegarde les attributs dans la table prévue à cet effet.
@@ -433,7 +447,7 @@ class DBManager(): # on change tout
             float:"REAL",
             bytes:"BLOB",
             }
-        return match.setdefault(type_entered,"TEXT")
+        return match.get(type_entered,"TEXT")
         
     
     def restore(self,**request):
@@ -469,6 +483,8 @@ class DBManager(): # on change tout
     def _restore_from_string(self,string_entered):
         """Restore data from a string with following
         structure : data/module@type"""
+        if not isinstance(string_entered,str):
+            return string_entered
         str_data, sep, str_type = string_entered.rpartition('/')
         type_of_data = self._type_manager(string_entered=str_type)
         logger.debug(string_entered)
@@ -482,7 +498,7 @@ class DBManager(): # on change tout
             self.custypes[qtype] = (self.custom_saver,self.custom_restore)
             self.add_custom_converter_and_adapter(qtype)
             
-    def add_custom_converter_and_adapter(self,qtype):
+    def add_custom_converter_and_adapter(self,qtype): # DEPRECATED
         """Add converter and adapter for a custom type"""
         sqlite3.register_adapter(qtype,self.custom_saver)
         complete_name = qtype.__module__ + '.' + qtype.__name__ # WARNING ne fonctionnera pas -> remplacer par module@type

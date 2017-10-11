@@ -38,6 +38,13 @@ class Regex(str):
     def __init__(self,value):
         str.__init__(self)
         
+class BaseDict(dict):
+    """A class to save a dict as a table"""
+    def __init__(self,name,**values):
+        """values is a sequence as used in dict"""
+        self.name = name
+        dict.__init__(self,values)
+        
 class Lazy:
     """A Lazy object waits until it is called"""
     

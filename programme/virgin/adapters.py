@@ -171,7 +171,21 @@ class Adapter:
             new_dict[self.dbmanager._restore_from_string(key)] = self.dbmanager._restore_from_string(value)
         return new_dict
     
-    ## list
+    ## BaseDict
+    def adapt_BaseDict(self,dict_entered):
+        """dict_entered must be a slaves.BaseDict"""
+        if not self.dbmanager.fetchone("SELECT name FROM sqlite_master WHERE TYPE='table' AND NAME=?;",(dict_entered.name,)):
+            self.dbmanager.create_table_dict(dict_entered)
+        id = self.dbmanager.save_row(dict_entered.name,[value for key, value in sorted(dict_entered.items())])
+        return "{}|{}".format(id,dict_entered.name)
+    
+    def convert_BaseDict(self,string_entered):
+        id,sep,table_name = string_entered.partition('|')
+        tmp_dico = self.dbmanager.restore_row(table_name,dict,id=int(id))[0]
+        del(tmp_dico['id'])
+        return tmp_dico
+    
+    # list
     def adapt_list(self,list_entered):
         for i,item in enumerate(list_entered):
             list_entered[i] = "{}/{}".format(
