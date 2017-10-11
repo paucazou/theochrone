@@ -19,7 +19,7 @@
 # all main objets have at least a reference (or are saved) in a table called 'main'. Main table is the entry of the whole database.
 #
 # custom savers can be created with a new class containing a get and a set methods + a __call__ method. For a similar object, more than one get and set methods can be created for a different behaviour. An __init__ method should be created then to let the script know which method use, in which case. See DictManager for an example.
-
+# TODO faire une fonction de création de table
 import builtins
 import collections
 import importlib
@@ -28,19 +28,22 @@ import phlog
 import sqlite3
 import virgin.adapters as adapters
 import virgin.slaves as slaves
+
 logger = phlog.loggers['console']
-
+type_of = adapters.type_of
+long_or_short = adapters.long_or_short
+builtins.NoneType = type(None)
+base_types = (int,float,bytes,builtins.NoneType)
 # Functions
-## lambdas
-long_or_short = lambda string : [slaves.ShortStr,slaves.LongStr][len(string)>150](string)
-
 ## classic
-def type_of(item):
-    """Return type of item
-    if item = str, return LongStr or ShortStr"""
-    if isinstance(item,str):
-        item = long_or_short(item)
-    return type(item)
+    
+def hash_n_point(string_entered):
+    """Change string_entered : replace "#" by ".",
+    and vice versa"""
+    chars = ('#','.')
+    chars = (chars,chars[::-1])
+    place = '.' in string_entered
+    return string_entered.replace(*chars[place])
     
 # class
 
@@ -70,21 +73,19 @@ class DBManager(): # on change tout
             bool:(self.adapters.adapt_bool,self.adapters.convert_bool),
             slaves.ShortStr:(self.adapters.adapt_str,self.adapters.convert_ShortStr), # WARNING dev : on ipython3, custom classes defined in this scope are no more attainable if the file is changed !!! Please future self, don't panic and simply add these lines by hand.
             slaves.LongStr:(self.adapters.adapt_str,self.adapters.convert_LongStr),
+            int:(self.adapters.adapt_int,self.adapters.convert_int),
+            str:(self.adapters.adapt_str,self.adapters.convert_str),
+            builtins.NoneType:(self.adapters.adapt_None,self.adapters.convert_None),
             }
         
         
         # registering adaptaters
-        for key, value in self.builtin.items():
+        """for key, value in self.builtin.items():
             sqlite3.register_adapter(key,value[0])
-            sqlite3.register_converter(key.__name__,value[1])
+            sqlite3.register_converter(key.__name__,value[1])"""
         
-        # adding special adaptaters that are used in lists, dicts, etc. only
-        self.builtin[int] = (self.adapters.adapt_int,self.adapters.convert_int) # adding int AFTER registered adaptaters, because these adaptaters are useless outside of lists, dicts, etc.
-        self.builtin[str] = (self.adapters.adapt_str,self.adapters.convert_str)
-        self.builtin[None] = (self.adapters.adapt_None,self.adapters.convert_None)
             
-        self.cursor.execute("""SELECT name,module FROM custypes""")
-        custypes = self.cursor.fetchall()
+        custypes = self.fetchall("""SELECT name,module FROM custypes""")
         logger.debug(custypes)
         # registering custom converters
         for type_name, type_module in custypes:
@@ -100,7 +101,7 @@ class DBManager(): # on change tout
         self.db.close()
         
     def connect(self):
-        self.db = sqlite3.connect(self._base_path,detect_types = sqlite3.PARSE_DECLTYPES)
+        self.db = sqlite3.connect(self._base_path)
     
     def deprecated_adapt_list(self,list_entered,restore=False): # DEPRECATED
         """Turn a list into text ;
@@ -168,6 +169,74 @@ class DBManager(): # on change tout
             id INTEGER PRIMARY KEY,
             text TEXT);""") # for regex
         
+    def create_table(self, table_name, items):
+        """Create a new table.
+        table_name : string
+        items : sequence of sequences of two items : name (str) and type
+        do not include id in items : it is already created by this method
+        example : self.create_table('customers',(('name',str),('age',int),('basket',list)))"""
+        values = ','.join(["{} {}".format(name,self.storing_type(qtype)) for name, qtype in items ])
+        command = """CREATE TABLE {} (
+        id INTEGER PRIMARY KEY,
+        {});""".format(table_name,values)
+        for name, qtype in items:
+            self.update_custypes(qtype)
+        self.execute(command)
+        
+    def save_row(self, table_name,data,id=0): # TODO update data
+        """Save a row into a table.
+        If row (ie, id) already exist, update it
+        else insert data with last id
+        table_name : string
+        data : sequence of objects without id ; must be in the right order
+        id : int"""
+        laine = len(data) # laine in french has similar pronunciation to len in globish : funny, isn't it ?
+        if not id:
+            id = self.get_new_id(table_name)
+            for i, elt in enumerate(data):
+                if type(elt) not in base_types:
+                    data[i] = "{}/{}".format(self._saver(elt),self._type_manager(type_entered=type_of(elt)))
+            data.insert(0,id)
+            command = """INSERT INTO {} values ({}?);""".format(table_name,"?, " * laine)
+        self.execute(command,data)
+        
+    def restore_row(self,table_name,returned_type=dict,**where): # TODO ajouter les différents opérateurs
+        """restore data from table_name.
+        where are named parameters where key is a column name
+        and value is value requested. if where is empty, all values are returned
+        returned_type is the type of the objects returned inside list returned.
+        types available : dict (default), list, tuple"""
+        # comment vérifier que ce qui a été rentré : on fait renvoyer None si on ne trouve pas ? Il faut un simulateur
+        command = """SELECT * FROM {}""".format(table_name)
+        if returned_type not in (dict,list,tuple):
+            raise TypeError("returned_type must be a dict, a list or a tuple")
+        logger.debug(where)
+        if where:
+            laine = len(where) - 1
+            command += ' WHERE {} = {}' + " AND {} = {}" *laine
+            list_of_replace = []
+            for key, value in where.items():
+                if type(value) not in base_types:
+                    pass # TODO simulateur
+                list_of_replace += [key,value]
+            command = command.format(*list_of_replace)
+        command += ';'
+        raw_data = self.fetchall(command)
+        returned_list = []
+        logger.debug(returned_type)
+        for row_object in raw_data:
+            tmp_container = {}
+            for key,value in dict(row_object).items():
+                if type(value) not in base_types:
+                    value = self._restore_from_string(value)
+                tmp_container[key] = value
+            
+            if returned_type is not dict:
+                tmp_container = returned_type(tmp_container.values())
+            returned_list.append(tmp_container)
+        return returned_list
+        
+        
     def _str_manager(self,item,table_name): # DEPRECATED
         """Save strings"""
         self.execute("""SELECT id FROM {} WHERE text = ?;""".format(table_name),(item,))
@@ -201,8 +270,16 @@ class DBManager(): # on change tout
     def fetchone(self,*command):
         """Similar to execute, but return
         the result of self.cursor.fetchone()"""
+        logger.debug(command)
         self.cursor.execute(*command)
         return self.cursor.fetchone()
+    
+    def fetchall(self,*command):
+        """Similar to fetchone, but return
+        the result fo self.cursor.fetchall()"""
+        logger.debug(command)
+        self.cursor.execute(*command)
+        return self.cursor.fetchall()
         
     def get_last_id(self,table_name):
         """A method to get the last ID of a table"""
@@ -265,9 +342,9 @@ class DBManager(): # on change tout
             keys = [ key for key in keys if key not in model.not_to_be_saved() ]
         table_name =  self._type_manager(qtype)
         ## iterating over attributes
-        command = """CREATE TABLE {}( id INTEGER PRIMARY KEY, {});""".format(
+        command = """CREATE TABLE "{}"( id INTEGER PRIMARY KEY, {});""".format(
             table_name, ', '.join([key +' '+ type_of(model.__dict__[key]).__name__ for key in keys])
-            )
+            ) # "" around table name are necessary to allow characters like #,., etc.
         self.execute(command)
         """## set attributes types
         type_keys = {}
@@ -341,19 +418,23 @@ class DBManager(): # on change tout
             return "{}@{}".format(type_entered.__module__,type_entered.__name__)
         module, classe = string_entered.split("@")
         return self._load_class(classe,module)
+    
+    def type_as_string(self,obj):
+        """Return type of obj as a string :
+        module@type"""
+        return self._type_manager(type_of(obj))
         
-    def storing_type(self, type_entered): # DEPRECATED
+    def storing_type(self, type_entered):
         """Return if the type must be saved as 
-        TEXT, INTEGER or BLOB
+        TEXT, REAL, INTEGER or BLOB
         """
-        as_text = (list,tuple,dict)
-        if type_entered in as_text:
-            sqtype = "TEXT"
-        elif isinstance(type_entered,bytes):
-            sqtype = "BLOB"
-        else:
-            sqtype = "INTEGER"
-        return " " + sqtype
+        match = {
+            int:"INTEGER",
+            float:"REAL",
+            bytes:"BLOB",
+            }
+        return match.setdefault(type_entered,"TEXT")
+        
     
     def restore(self,**request):
         """restore objects matching with request.
@@ -371,7 +452,9 @@ class DBManager(): # on change tout
         qtype = self._type_manager(string_entered=table_name)
         self.update_custypes(qtype)
         returned_obj = qtype()
-        attributes = dict(self.fetchone("""SELECT * FROM {};""".format(table_name)))
+        attributes = dict(
+            self.fetchone("""SELECT * FROM {} WHERE id = ?;""".format(table_name),(int(obj_id),)
+                          ))
         returned_obj.__dict__.update(attributes)
         return returned_obj
 
@@ -388,7 +471,9 @@ class DBManager(): # on change tout
         structure : data/module@type"""
         str_data, sep, str_type = string_entered.rpartition('/')
         type_of_data = self._type_manager(string_entered=str_type)
-        return self._restore(str_data,type_entered)
+        logger.debug(string_entered)
+        logger.debug(str_data)
+        return self._restore(str_data,type_of_data)
     
     def update_custypes(self,qtype):
         """Change tuples in custypes to type"""
@@ -400,8 +485,10 @@ class DBManager(): # on change tout
     def add_custom_converter_and_adapter(self,qtype):
         """Add converter and adapter for a custom type"""
         sqlite3.register_adapter(qtype,self.custom_saver)
-        complete_name = qtype.__module__ + '.' + qtype.__name__
+        complete_name = qtype.__module__ + '.' + qtype.__name__ # WARNING ne fonctionnera pas -> remplacer par module@type
         sqlite3.register_converter(complete_name,self.custom_restore)
+        
+    
         
         
         
