@@ -52,15 +52,37 @@ class Lazy:
         """Inits Lazy object."""
         if not db and not value:
             raise ValueError("A Lazy object must have either a value or a DBManager")
-        self.value = value
+        self._value = value
         self.db = db # db must be a DBManager object
         self.raw_data = raw_data # raw_data must have following structure : data/module@type
         
     def __call__(self):
         """Returns object. Loads it if not already loaded"""
-        if not self.value:
-            self.db.connect()
-            self.value = self.db._restore_from_string(self.raw_data)
-            self.db.close()
-        return self.value
+        if not self._value:
+            db_was_closed = False
+            if not self.db.db_connected:
+                db_was_closed = True
+                self.db.connect()
+            self._value = self.db._restore_from_string(self.raw_data)
+            if db_was_closed:
+                self.db.close()
+            del(self.db)
+        return self._value
+    
+    def __repr__(self):
+        """A Lazy object is waiting
+        if self._value is not accessible
+        Loaded after"""
+        is_waiting = not self._value
+        return "{} : {}".format(
+            ("Loaded","Waiting")[is_waiting],
+            (self._value,self.raw_data)[is_waiting])
+            
+    @property
+    def value(self):
+        return self.__call__()
+    
+    @value.setter
+    def value(self,value):
+        self._value = value
         

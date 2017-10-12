@@ -51,14 +51,13 @@ class DBManager(): # on change tout
     def __init__(self,base):
         """base is a pathlike object"""
         self.adapters = adapters.Adapter(self)
+        
         if not os.path.isfile(base):
             already_exists = False
         else:
             already_exists = True
         self._base_path = base
         self.connect()
-        self.db.row_factory = sqlite3.Row
-        self.cursor = self.db.cursor()
         if not already_exists:
             self._create_main()
         self.loaded_modules = {}
@@ -90,14 +89,22 @@ class DBManager(): # on change tout
         self.alltypes = collections.ChainMap(self.builtin,self.custypes)
         
     def __del__(self):
+        logger.info("DBManager is about to be deleted")
         self.db.close()
     
     def close(self):
         """close base"""
+        logger.info("Base is now closed")
         self.db.close()
+        self.db_connected = False
         
     def connect(self):
+        """Connect database."""
+        logger.info("Base is now connected")
         self.db = sqlite3.connect(self._base_path)
+        self.db.row_factory = sqlite3.Row
+        self.cursor = self.db.cursor()
+        self.db_connected = True
     
     def deprecated_adapt_list(self,list_entered,restore=False): # DEPRECATED
         """Turn a list into text ;
