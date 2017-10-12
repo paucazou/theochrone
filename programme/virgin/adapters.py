@@ -2,7 +2,7 @@
 # -*-coding:Utf-8 -*
 #Deus, in adjutorium meum intende
 """This module contains the converters and adapters
-virgindb."""
+for virgindb."""
 import phlog
 import virgin.slaves as slaves
 # global paramaters
@@ -95,11 +95,14 @@ class Adapter:
     ## Lazy
     def adapt_Lazy(self,lazy_thing):
         """Adapt a lazy object to save it into db"""
-        return """lazy({}/{})""".format(self.dbmanager._saver(lazy_thing.value),lazy_thing.type)
+        return """lazy({}/{})""".format(
+            self.dbmanager._saver(lazy_thing.value),
+            self.dbmanager._type_manager(type_entered=type_of(lazy_thing.value))
+            )
     
     def convert_Lazy(self,string_entered):
         """Convert a string_entered into a Lazy object"""
-        raw_data=string_entered.decode().replace("lazy(","").replace(")","")
+        raw_data=string_entered.replace("lazy(","").replace(")","")
         return slaves.Lazy(db=self.dbmanager,
                     raw_data = raw_data,
                     )
@@ -122,14 +125,6 @@ class Adapter:
         if not table_name:
             raise ValueError("A table name must be entered.")
         return self.dbmanager.fetchone("""SELECT text FROM {} WHERE id = ?;""".format(table_name),(id_entered,))[0]
-
-        
-    """### LongStr # WARNING useless if the loop above works
-    def convert_LongStr(self,id_entered):
-        return self.convert_str(id_entered,"LongStr")
-    ### ShortStr
-    def convert_ShortStr(self,id_entered):
-        return self.convert_str(id_entered,"ShortStr")"""
     
     ## bool
     def adapt_bool(self,bool_entered):
@@ -191,7 +186,7 @@ class Adapter:
             list_entered[i] = "{}/{}".format(
                 self.dbmanager._saver(item),
                 self.dbmanager._type_manager(type_entered=type_of(item))
-                ) # bug avec le _saver BUG pourquoi ???
+                ) 
         returned_value = """[{}]""".format(','.join(list_entered))
         logger.debug(returned_value)
         return returned_value

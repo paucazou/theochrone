@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
 #Deus, in adjutorium meum intende
-# This module defines some classes used by virgindb
+"""This module defines some classes used by virgindb"""
 
 # Classes
     
@@ -60,7 +60,6 @@ class Lazy:
         """Returns object. Loads it if not already loaded"""
         if not self.value:
             self.db.connect()
-            self.execute(command)
             self.value = self.db._restore_from_string(self.raw_data)
             self.db.close()
         return self.value
