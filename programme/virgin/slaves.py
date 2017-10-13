@@ -2,7 +2,7 @@
 # -*-coding:Utf-8 -*
 #Deus, in adjutorium meum intende
 """This module defines some classes used by virgindb"""
-
+from re import match
 # Classes
     
 class StrLike: # pretty useless, no ?
@@ -49,12 +49,18 @@ class Lazy:
     """A Lazy object waits until it is called"""
     
     def __init__(self,db=None,raw_data=None,type_of_data=None,value=None):
-        """Inits Lazy object."""
+        """Inits Lazy object.
+        Warning : type of db and
+        syntax of raw_data are not fully verified"""
         if not db and not value:
             raise ValueError("A Lazy object must have either a value or a DBManager")
-        self._value = value
+        if raw_data and not match(".+/[.\w]+@\w+$",raw_data):
+            raise SyntaxError("raw_data has incorrect syntax : " + raw_data)
+        if db and db.__class__.__name__ != "DBManager":
+            raise TypeError("db seems not to be a DBManager object")
         self.db = db # db must be a DBManager object
         self.raw_data = raw_data # raw_data must have following structure : data/module@type
+        self._value = value
         
     def __call__(self):
         """Returns object. Loads it if not already loaded"""
@@ -80,9 +86,11 @@ class Lazy:
             
     @property
     def value(self):
+        """Alias of __call__"""
         return self.__call__()
     
     @value.setter
     def value(self,value):
+        """Set self._value"""
         self._value = value
         
