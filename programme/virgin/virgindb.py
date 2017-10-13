@@ -32,20 +32,10 @@ type_of = adapters.type_of
 long_or_short = adapters.long_or_short
 builtins.NoneType = type(None)
 base_types = (int,float,bytes,builtins.NoneType)
-# Functions
-## classic
-    
-def hash_n_point(string_entered): #USELESS DEPRECATED
-    """Change string_entered : replace "#" by ".",
-    and vice versa"""
-    chars = ('#','.')
-    chars = (chars,chars[::-1])
-    place = '.' in string_entered
-    return string_entered.replace(*chars[place])
-    
+
 # class
 
-class DBManager(): # on change tout
+class DBManager():
     """Manages the database"""
     
     def __init__(self,base):
@@ -105,50 +95,6 @@ class DBManager(): # on change tout
         self.db.row_factory = sqlite3.Row
         self.cursor = self.db.cursor()
         self.db_connected = True
-    
-    def deprecated_adapt_list(self,list_entered,restore=False): # DEPRECATED
-        """Turn a list into text ;
-        if restore == True, turn list_entered into list"""
-        if restore:
-            list_returned = list_entered[1,-1].split(',')
-            return list_returned
-        
-        for i,item in enumerate(list_entered):
-            list_entered[i] = "{}/{}".format(
-                self._saver(item),
-                self._type_manager(type_entered=type_of(item)) # attention, il y a des bizarreries avec ShortStr
-                )
-        return """[{}]""".format(','.join(list_entered))
-    
-    def adapt_dict(self,dict_entered,restore=False): # DEPRECATED
-        """Save dict and dict like
-        if restore == True, turn dict_entered into dict""" # WARNING et si c'est un ordered dict ???
-        if restore:
-            dict_returned = dict_entered[1,-1].split(',')
-            return dict_returned
-        
-        logger.debug("dict_entered = {}; type : {}".format(dict_entered,type_of(dict_entered)))
-        dict_type = type_of(dict_entered)
-        pairs = []
-        for key, value in dict_entered.items():
-            pair = """{}/{}:{}/{}""".format(
-                self._saver(key),self._type_manager(type_entered=type_of(key)),
-                self._saver(value),self._type_manager(type_entered=type_of(value)))
-            pairs.append(pair)
-        return """<{}>""".format(",".join(pairs))
-    
-    def adapt_int_to_str(self,int_entered,restore=False): #DEPRECATED
-        """This method is to save int as str.
-        It should not be used outside of special savers
-        like adapt_dict or adapt_list
-        If restore == True, return int from str"""
-        return (str,int)[restore](int_entered)
-    
-    def adapt_bool_to_str(self,bool_entered,restore=False): # DEPRECATED
-        """Method which changes a bool to
-        its numeric value, and return it as a str
-        if restore == True, return bool from a str (1 or 0)"""
-        return (str,bool)[restore](int(bool_entered))
         
     def _create_main(self): # TODO faire une table pour les images ?
         """Creates a virgin base with a main table.
@@ -240,31 +186,7 @@ class DBManager(): # on change tout
                 tmp_container = [self._restore_from_string(value) for value in row_object]
                 tmp_container = returned_type(tmp_container)                
             returned_list.append(tmp_container)
-        return returned_list
-        
-        
-    def _str_manager(self,item,table_name): # DEPRECATED
-        """Save strings"""
-        self.execute("""SELECT id FROM {} WHERE text = ?;""".format(table_name),(item,))
-        try:
-            id = self.cursor.fetchone()[0]
-            logger.debug(id)
-        except TypeError:
-            id = self.get_new_id(table_name)
-            self.execute("""INSERT INTO {} VALUES (?,?);""".format(table_name),(id,item))
-        return id  
-    
-    def StrManager(self,item,str_type=None,restore=False): # DEPRECATED
-        """Save strings
-        if restore == True, restore strings
-        str_type is useful to restore strings.
-        It can be either ShortStr or LongStr"""
-        if restore:
-            self.execute("""SELECT text FROM {} WHERE id = ?;""".format(str_type.__name__),(item,))
-            return self.cursor.fetchone()[0]
-        tables = ['ShortStr','LongStr']
-        is_long = len(item) > 150
-        return self._str_manager(item,tables[is_long])        
+        return returned_list       
         
     def execute(self,*command):
         """Executes the command (any SQL command)
@@ -297,19 +219,6 @@ class DBManager(): # on change tout
         last_id = self.get_last_id(table_name)
         return last_id + 1 if last_id else 1
     
-    def get_columns_nt(self,name): # DEPRECATED
-        """A method to get the columns names and the types (nt)
-        from custypes"""
-        self.cursor.execute("SELECT types FROM custypes WHERE name = ?;",(name,))
-        return self.cursor.fetchone()[0]
-        
-    def saver(self,*queue): # DEPRECATED ?
-        """Save the objects in the database
-        return list of ids"""
-        ids = []
-        for queuer in queue:
-            ids.append(self._saver(queuer))
-        return ids
     
     def _saver(self,queuer):
         """Save queuer in base.
@@ -382,7 +291,7 @@ class DBManager(): # on change tout
         
         if 'lazy_objects' in obj.__dir__():
             for lazy_thing in obj.lazy_objects():
-                obj[lazy_thing] = slaves.Lazy(value = model[lazy_thing])
+                obj[lazy_thing] = slaves.Lazy(value = obj[lazy_thing])
                 
         if 'not_to_be_saved' in obj.__dir__():
             for key in obj.not_to_be_saved():
@@ -486,15 +395,7 @@ class DBManager(): # on change tout
         if (qtype.__name__,qtype.__module__) in self.alltypes:
             del(self.custypes[(qtype.__name__,qtype.__module__)])
             self.custypes[qtype] = (self.custom_saver,self.custom_restore)
-            
-    def add_custom_converter_and_adapter(self,qtype): # DEPRECATED
-        """Add converter and adapter for a custom type"""
-        sqlite3.register_adapter(qtype,self.custom_saver)
-        complete_name = qtype.__module__ + '.' + qtype.__name__ # WARNING ne fonctionnera pas -> remplacer par module@type
-        sqlite3.register_converter(complete_name,self.custom_restore)
-        
-    
-        
+
         
         
         

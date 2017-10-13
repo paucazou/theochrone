@@ -15,15 +15,13 @@ import dossier
 dossier.main()
 import virgin.slaves
 
-class DBManager(mock.MagicMock):
+class DBManager():
     """Class that mocks virgin.virgindb.DBManager"""
     def __init__(self):
-        mock.MagicMock.__init__(self)
         self.db_connected = True
         self.connect_call = 0
         self.close_call = 0
         self._restore_from_string_call = 0
-        self._del_call = 0
     
     def connect(self):
         self.connect_call+=1
@@ -33,9 +31,8 @@ class DBManager(mock.MagicMock):
     
     def _restore_from_string(self,something):
         self._restore_from_string_call+=1
+        return "Restored from string"
     
-    def __del__(self):
-        self._del_call+=1
 
 def test_StrLike():
     long_string = "l"*151
@@ -100,9 +97,34 @@ def test_Lazy_with_value_arg():
     assert obj.__call__.called
     
 def test_Lazy_repr():
-    pass
+    obj = Lazy(value = 1)
+    assert obj.__repr__() == "Loaded : 1"
+    obj = Lazy(db=DBManager(),raw_data="data/module@type")
+    assert obj.__repr__() == "Waiting : data/module@type"
 
 def test_Lazy_with_db_arg():
-    pass
+    with pytest.raises(SyntaxError):
+        Lazy(db=DBManager(),raw_data="")
+        Lazy(db=DBManager(),raw_data="data/module")
+        Lazy(db=DBManager(),raw_data="data/modu.le")        
+    with pytest.raises(TypeError):
+        Lazy(db=1,raw_data="data/module@type")
+    db = DBManager()
+    obj = Lazy(db=db,raw_data="data/mod.ule@type")
+    obj.db_connected=True
+    obj.__call__()
+    assert db.connect_call == db.close_call == 0
+    assert db._restore_from_string_call == 1
+    assert obj.value == "Restored from string"
+    assert 'db' not in obj.__dict__
+    
+    db=DBManager()
+    obj = Lazy(db=db,raw_data="data/mod.ule@type")
+    obj.db.db_connected=False
+    obj.__call__()
+    assert db.connect_call == db.close_call == db._restore_from_string_call == 1
+    assert obj.value == "Restored from string"
+    assert 'db' not in obj.__dict__
+    
     
 

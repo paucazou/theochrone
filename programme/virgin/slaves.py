@@ -79,8 +79,8 @@ class Lazy:
     
     def __repr__(self):
         """A Lazy object is waiting
-        if self._value is not accessible
-        Loaded after"""
+        if self._value is not directly accessible
+        Loaded if it is accessible without calling database"""
         is_waiting = not self._value
         return "{} : {}".format(
             ("Loaded","Waiting")[is_waiting],
