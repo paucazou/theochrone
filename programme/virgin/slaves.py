@@ -5,14 +5,14 @@
 from re import match
 # Classes
     
-class StrLike: # pretty useless, no ?
+class StrLike: # pretty useless, no ? # TEST
     """This class is used to select which subclass
     of str fit to the value"""
     def __new__(cls,value):
         assert isinstance(value,str)
         return [ShortStr,LongStr][len(value) > 150](value)
     
-class ShortStr(str):
+class ShortStr(str): # TEST
     """A string whith len <= 150"""
     def __init__(self,value):
         if len(value) > 150:
@@ -20,7 +20,7 @@ class ShortStr(str):
             self.__init__(value)
         str.__init__(self)
         
-class LongStr(str):
+class LongStr(str):# TEST
     """A string whith len > 150"""
     def __init__(self,value):
         if len(value) <= 150:
@@ -28,21 +28,23 @@ class LongStr(str):
             self.__init__(value)
         str.__init__(self)
         
-class _Regex(str):
+class _Regex(str):# TEST
     """A class of strings used for regex"""
     def __init__(self,value):
         str.__init__(self)
         
-class Regex(str):
+class Regex(str): # TEST
     """A class of regex"""
     def __init__(self,value):
         str.__init__(self)
         
-class BaseDict(dict):
+class BaseDict(dict): # TEST
     """A class to save a dict as a table"""
-    def __init__(self,name,**values):
+    def __init__(self,name,map_or_seq=None,**values):
         """values is a sequence as used in dict"""
         self.name = name
+        if map_or_seq:
+            values.update(dict(map_or_seq))
         dict.__init__(self,values)
         
 class Lazy:
@@ -57,7 +59,7 @@ class Lazy:
         if raw_data and not match(".+/[.\w]+@\w+$",raw_data):
             raise SyntaxError("raw_data has incorrect syntax : " + raw_data)
         if db and db.__class__.__name__ != "DBManager":
-            raise TypeError("db seems not to be a DBManager object")
+            raise TypeError("db doesn't seem to be a DBManager object")
         self.db = db # db must be a DBManager object
         self.raw_data = raw_data # raw_data must have following structure : data/module@type
         self._value = value
@@ -85,12 +87,12 @@ class Lazy:
             (self._value,self.raw_data)[is_waiting])
             
     @property
-    def value(self):
+    def value(self): #TEST
         """Alias of __call__"""
         return self.__call__()
     
-    @value.setter
-    def value(self,value):
+    @value.setter 
+    def value(self,value): #TEST
         """Set self._value"""
         self._value = value
         

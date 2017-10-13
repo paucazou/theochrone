@@ -999,6 +999,7 @@ static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_module[] = "__module__";
 static const char __pyx_k_name_2[] = "__name__";
 static const char __pyx_k_setter[] = "setter";
+static const char __pyx_k_update[] = "update";
 static const char __pyx_k_values[] = "values";
 static const char __pyx_k_LongStr[] = "LongStr";
 static const char __pyx_k_Regex_2[] = "Regex";
@@ -1018,6 +1019,7 @@ static const char __pyx_k_metaclass[] = "__metaclass__";
 static const char __pyx_k_Lazy_value[] = "Lazy.value";
 static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_is_waiting[] = "is_waiting";
+static const char __pyx_k_map_or_seq[] = "map_or_seq";
 static const char __pyx_k_Lazy___call[] = "Lazy.__call__";
 static const char __pyx_k_Lazy___init[] = "Lazy.__init__";
 static const char __pyx_k_Lazy___repr[] = "Lazy.__repr__";
@@ -1044,7 +1046,7 @@ static const char __pyx_k_A_class_of_strings_used_for_rege[] = "A class of strin
 static const char __pyx_k_A_class_to_save_a_dict_as_a_tabl[] = "A class to save a dict as a table";
 static const char __pyx_k_This_class_is_used_to_select_whi[] = "This class is used to select which subclass\n    of str fit to the value";
 static const char __pyx_k_This_module_defines_some_classes[] = "This module defines some classes used by virgindb";
-static const char __pyx_k_db_seems_not_to_be_a_DBManager_o[] = "db seems not to be a DBManager object";
+static const char __pyx_k_db_doesn_t_seem_to_be_a_DBManage[] = "db doesn't seem to be a DBManager object";
 static PyObject *__pyx_kp_s_A_Lazy_object_must_have_either_a;
 static PyObject *__pyx_kp_s_A_Lazy_object_waits_until_it_is;
 static PyObject *__pyx_kp_s_A_class_of_regex;
@@ -1084,7 +1086,7 @@ static PyObject *__pyx_n_s_cls;
 static PyObject *__pyx_n_s_connect;
 static PyObject *__pyx_n_s_db;
 static PyObject *__pyx_n_s_db_connected;
-static PyObject *__pyx_kp_s_db_seems_not_to_be_a_DBManager_o;
+static PyObject *__pyx_kp_s_db_doesn_t_seem_to_be_a_DBManage;
 static PyObject *__pyx_n_s_db_was_closed;
 static PyObject *__pyx_n_s_doc;
 static PyObject *__pyx_n_s_format;
@@ -1093,6 +1095,7 @@ static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_init;
 static PyObject *__pyx_n_s_is_waiting;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_map_or_seq;
 static PyObject *__pyx_n_s_match;
 static PyObject *__pyx_n_s_metaclass;
 static PyObject *__pyx_n_s_module;
@@ -1112,6 +1115,7 @@ static PyObject *__pyx_n_s_self;
 static PyObject *__pyx_n_s_setter;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_type_of_data;
+static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_value;
 static PyObject *__pyx_n_s_value_2;
 static PyObject *__pyx_n_s_values;
@@ -1121,7 +1125,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_8ShortStr___init__(CYTHON_U
 static PyObject *__pyx_pf_9programme_6virgin_6slaves_7LongStr___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_9programme_6virgin_6slaves_6_Regex___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_9programme_6virgin_6slaves_5Regex___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_9programme_6virgin_6slaves_8BaseDict___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_name, PyObject *__pyx_v_values); /* proto */
+static PyObject *__pyx_pf_9programme_6virgin_6slaves_8BaseDict___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_name, PyObject *__pyx_v_map_or_seq, PyObject *__pyx_v_values); /* proto */
 static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_db, PyObject *__pyx_v_raw_data, CYTHON_UNUSED PyObject *__pyx_v_type_of_data, PyObject *__pyx_v_value); /* proto */
 static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self); /* proto */
@@ -1137,22 +1141,23 @@ static PyObject *__pyx_tuple__11;
 static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_tuple__15;
 static PyObject *__pyx_tuple__17;
-static PyObject *__pyx_tuple__19;
+static PyObject *__pyx_tuple__18;
 static PyObject *__pyx_tuple__20;
-static PyObject *__pyx_tuple__22;
-static PyObject *__pyx_tuple__24;
-static PyObject *__pyx_tuple__26;
+static PyObject *__pyx_tuple__21;
+static PyObject *__pyx_tuple__23;
+static PyObject *__pyx_tuple__25;
+static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_codeobj__6;
 static PyObject *__pyx_codeobj__8;
 static PyObject *__pyx_codeobj__10;
 static PyObject *__pyx_codeobj__12;
 static PyObject *__pyx_codeobj__14;
 static PyObject *__pyx_codeobj__16;
-static PyObject *__pyx_codeobj__18;
-static PyObject *__pyx_codeobj__21;
-static PyObject *__pyx_codeobj__23;
-static PyObject *__pyx_codeobj__25;
-static PyObject *__pyx_codeobj__27;
+static PyObject *__pyx_codeobj__19;
+static PyObject *__pyx_codeobj__22;
+static PyObject *__pyx_codeobj__24;
+static PyObject *__pyx_codeobj__26;
+static PyObject *__pyx_codeobj__28;
 
 /* "programme/virgin/slaves.py":11
  *     """This class is used to select which subclass
@@ -1254,7 +1259,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_7StrLike___new__(CYTHON_UNU
  *         assert isinstance(value,str)
  *         return [ShortStr,LongStr][len(value) > 150](value)             # <<<<<<<<<<<<<<
  * 
- * class ShortStr(str):
+ * class ShortStr(str): # TEST
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_ShortStr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 13, __pyx_L1_error)
@@ -1344,7 +1349,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_7StrLike___new__(CYTHON_UNU
 }
 
 /* "programme/virgin/slaves.py":17
- * class ShortStr(str):
+ * class ShortStr(str): # TEST
  *     """A string whith len <= 150"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         if len(value) > 150:
@@ -1512,7 +1517,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_8ShortStr___init__(CYTHON_U
  *             self.__init__(value)
  *         str.__init__(self)             # <<<<<<<<<<<<<<
  * 
- * class LongStr(str):
+ * class LongStr(str):# TEST
  */
   __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyString_Type)), __pyx_n_s_init); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -1562,7 +1567,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_8ShortStr___init__(CYTHON_U
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "programme/virgin/slaves.py":17
- * class ShortStr(str):
+ * class ShortStr(str): # TEST
  *     """A string whith len <= 150"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         if len(value) > 150:
@@ -1586,7 +1591,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_8ShortStr___init__(CYTHON_U
 }
 
 /* "programme/virgin/slaves.py":25
- * class LongStr(str):
+ * class LongStr(str):# TEST
  *     """A string whith len > 150"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         if len(value) <= 150:
@@ -1754,7 +1759,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_7LongStr___init__(CYTHON_UN
  *             self.__init__(value)
  *         str.__init__(self)             # <<<<<<<<<<<<<<
  * 
- * class _Regex(str):
+ * class _Regex(str):# TEST
  */
   __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyString_Type)), __pyx_n_s_init); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -1804,7 +1809,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_7LongStr___init__(CYTHON_UN
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "programme/virgin/slaves.py":25
- * class LongStr(str):
+ * class LongStr(str):# TEST
  *     """A string whith len > 150"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         if len(value) <= 150:
@@ -1828,7 +1833,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_7LongStr___init__(CYTHON_UN
 }
 
 /* "programme/virgin/slaves.py":33
- * class _Regex(str):
+ * class _Regex(str):# TEST
  *     """A class of strings used for regex"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         str.__init__(self)
@@ -1908,7 +1913,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_6_Regex___init__(CYTHON_UNU
  *     def __init__(self,value):
  *         str.__init__(self)             # <<<<<<<<<<<<<<
  * 
- * class Regex(str):
+ * class Regex(str): # TEST
  */
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyString_Type)), __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -1958,7 +1963,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_6_Regex___init__(CYTHON_UNU
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "programme/virgin/slaves.py":33
- * class _Regex(str):
+ * class _Regex(str):# TEST
  *     """A class of strings used for regex"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         str.__init__(self)
@@ -1982,7 +1987,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_6_Regex___init__(CYTHON_UNU
 }
 
 /* "programme/virgin/slaves.py":38
- * class Regex(str):
+ * class Regex(str): # TEST
  *     """A class of regex"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         str.__init__(self)
@@ -2062,7 +2067,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_5Regex___init__(CYTHON_UNUS
  *     def __init__(self,value):
  *         str.__init__(self)             # <<<<<<<<<<<<<<
  * 
- * class BaseDict(dict):
+ * class BaseDict(dict): # TEST
  */
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyString_Type)), __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -2112,7 +2117,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_5Regex___init__(CYTHON_UNUS
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "programme/virgin/slaves.py":38
- * class Regex(str):
+ * class Regex(str): # TEST
  *     """A class of regex"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         str.__init__(self)
@@ -2136,9 +2141,9 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_5Regex___init__(CYTHON_UNUS
 }
 
 /* "programme/virgin/slaves.py":43
- * class BaseDict(dict):
+ * class BaseDict(dict): # TEST
  *     """A class to save a dict as a table"""
- *     def __init__(self,name,**values):             # <<<<<<<<<<<<<<
+ *     def __init__(self,name,map_or_seq=None,**values):             # <<<<<<<<<<<<<<
  *         """values is a sequence as used in dict"""
  *         self.name = name
  */
@@ -2150,6 +2155,7 @@ static PyMethodDef __pyx_mdef_9programme_6virgin_6slaves_8BaseDict_1__init__ = {
 static PyObject *__pyx_pw_9programme_6virgin_6slaves_8BaseDict_1__init__(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_self = 0;
   PyObject *__pyx_v_name = 0;
+  PyObject *__pyx_v_map_or_seq = 0;
   PyObject *__pyx_v_values = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -2157,12 +2163,14 @@ static PyObject *__pyx_pw_9programme_6virgin_6slaves_8BaseDict_1__init__(PyObjec
   __pyx_v_values = PyDict_New(); if (unlikely(!__pyx_v_values)) return NULL;
   __Pyx_GOTREF(__pyx_v_values);
   {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_name,0};
-    PyObject* values[2] = {0,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_self,&__pyx_n_s_name,&__pyx_n_s_map_or_seq,0};
+    PyObject* values[3] = {0,0,0};
+    values[2] = ((PyObject *)((PyObject *)Py_None));
     if (unlikely(__pyx_kwds)) {
       Py_ssize_t kw_args;
       const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
       switch (pos_args) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
         case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
         case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
         case  0: break;
@@ -2176,31 +2184,40 @@ static PyObject *__pyx_pw_9programme_6virgin_6slaves_8BaseDict_1__init__(PyObjec
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_name)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, 1); __PYX_ERR(0, 43, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 3, 1); __PYX_ERR(0, 43, __pyx_L3_error)
+        }
+        case  2:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_map_or_seq);
+          if (value) { values[2] = value; kw_args--; }
         }
       }
       if (unlikely(kw_args > 0)) {
         if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_values, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 43, __pyx_L3_error)
       }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
     } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        break;
+        default: goto __pyx_L5_argtuple_error;
+      }
     }
     __pyx_v_self = values[0];
     __pyx_v_name = values[1];
+    __pyx_v_map_or_seq = values[2];
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 43, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 43, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_values); __pyx_v_values = 0;
   __Pyx_AddTraceback("programme.virgin.slaves.BaseDict.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_9programme_6virgin_6slaves_8BaseDict___init__(__pyx_self, __pyx_v_self, __pyx_v_name, __pyx_v_values);
+  __pyx_r = __pyx_pf_9programme_6virgin_6slaves_8BaseDict___init__(__pyx_self, __pyx_v_self, __pyx_v_name, __pyx_v_map_or_seq, __pyx_v_values);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_values);
@@ -2208,85 +2225,171 @@ static PyObject *__pyx_pw_9programme_6virgin_6slaves_8BaseDict_1__init__(PyObjec
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9programme_6virgin_6slaves_8BaseDict___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_name, PyObject *__pyx_v_values) {
+static PyObject *__pyx_pf_9programme_6virgin_6slaves_8BaseDict___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_name, PyObject *__pyx_v_map_or_seq, PyObject *__pyx_v_values) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  int __pyx_t_4;
+  PyObject *__pyx_t_4 = NULL;
   PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
   __Pyx_RefNannySetupContext("__init__", 0);
 
   /* "programme/virgin/slaves.py":45
- *     def __init__(self,name,**values):
+ *     def __init__(self,name,map_or_seq=None,**values):
  *         """values is a sequence as used in dict"""
  *         self.name = name             # <<<<<<<<<<<<<<
- *         dict.__init__(self,values)
- * 
+ *         if map_or_seq:
+ *             values.update(dict(map_or_seq))
  */
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_name, __pyx_v_name) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
 
   /* "programme/virgin/slaves.py":46
  *         """values is a sequence as used in dict"""
  *         self.name = name
+ *         if map_or_seq:             # <<<<<<<<<<<<<<
+ *             values.update(dict(map_or_seq))
+ *         dict.__init__(self,values)
+ */
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_map_or_seq); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (__pyx_t_1) {
+
+    /* "programme/virgin/slaves.py":47
+ *         self.name = name
+ *         if map_or_seq:
+ *             values.update(dict(map_or_seq))             # <<<<<<<<<<<<<<
+ *         dict.__init__(self,values)
+ * 
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_update); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_INCREF(__pyx_v_map_or_seq);
+    __Pyx_GIVEREF(__pyx_v_map_or_seq);
+    PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_map_or_seq);
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)(&PyDict_Type)), __pyx_t_4, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_4 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+      __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+      if (likely(__pyx_t_4)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+        __Pyx_INCREF(__pyx_t_4);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
+      }
+    }
+    if (!__pyx_t_4) {
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_GOTREF(__pyx_t_2);
+    } else {
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_3)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_5};
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 47, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_4); __pyx_t_4 = NULL;
+        __Pyx_GIVEREF(__pyx_t_5);
+        PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_5);
+        __pyx_t_5 = 0;
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      }
+    }
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "programme/virgin/slaves.py":46
+ *         """values is a sequence as used in dict"""
+ *         self.name = name
+ *         if map_or_seq:             # <<<<<<<<<<<<<<
+ *             values.update(dict(map_or_seq))
+ *         dict.__init__(self,values)
+ */
+  }
+
+  /* "programme/virgin/slaves.py":48
+ *         if map_or_seq:
+ *             values.update(dict(map_or_seq))
  *         dict.__init__(self,values)             # <<<<<<<<<<<<<<
  * 
  * class Lazy:
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyDict_Type)), __pyx_n_s_init); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 46, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = NULL;
-  __pyx_t_4 = 0;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
-    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
-    if (likely(__pyx_t_3)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-      __Pyx_INCREF(__pyx_t_3);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)(&PyDict_Type)), __pyx_n_s_init); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_6 = NULL;
+  __pyx_t_7 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_6)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_6);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_2, function);
-      __pyx_t_4 = 1;
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+      __pyx_t_7 = 1;
     }
   }
   #if CYTHON_FAST_PYCALL
-  if (PyFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_self, __pyx_v_values};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
+  if (PyFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_self, __pyx_v_values};
+    __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GOTREF(__pyx_t_2);
   } else
   #endif
   #if CYTHON_FAST_PYCCALL
-  if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-    PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_self, __pyx_v_values};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
-    __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GOTREF(__pyx_t_1);
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+    PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_v_self, __pyx_v_values};
+    __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_GOTREF(__pyx_t_2);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 46, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 48, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (__pyx_t_3) {
-      __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
+    if (__pyx_t_6) {
+      __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_6); __pyx_t_6 = NULL;
     }
     __Pyx_INCREF(__pyx_v_self);
     __Pyx_GIVEREF(__pyx_v_self);
-    PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_4, __pyx_v_self);
+    PyTuple_SET_ITEM(__pyx_t_5, 0+__pyx_t_7, __pyx_v_self);
     __Pyx_INCREF(__pyx_v_values);
     __Pyx_GIVEREF(__pyx_v_values);
-    PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_v_values);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 46, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_7, __pyx_v_values);
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "programme/virgin/slaves.py":43
- * class BaseDict(dict):
+ * class BaseDict(dict): # TEST
  *     """A class to save a dict as a table"""
- *     def __init__(self,name,**values):             # <<<<<<<<<<<<<<
+ *     def __init__(self,name,map_or_seq=None,**values):             # <<<<<<<<<<<<<<
  *         """values is a sequence as used in dict"""
  *         self.name = name
  */
@@ -2295,10 +2398,11 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_8BaseDict___init__(CYTHON_U
   __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_AddTraceback("programme.virgin.slaves.BaseDict.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -2307,7 +2411,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_8BaseDict___init__(CYTHON_U
   return __pyx_r;
 }
 
-/* "programme/virgin/slaves.py":51
+/* "programme/virgin/slaves.py":53
  *     """A Lazy object waits until it is called"""
  * 
  *     def __init__(self,db=None,raw_data=None,type_of_data=None,value=None):             # <<<<<<<<<<<<<<
@@ -2374,7 +2478,7 @@ static PyObject *__pyx_pw_9programme_6virgin_6slaves_4Lazy_1__init__(PyObject *_
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 51, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__init__") < 0)) __PYX_ERR(0, 53, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2395,7 +2499,7 @@ static PyObject *__pyx_pw_9programme_6virgin_6slaves_4Lazy_1__init__(PyObject *_
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 51, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 1, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 53, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("programme.virgin.slaves.Lazy.__init__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2421,40 +2525,40 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy___init__(CYTHON_UNUSE
   PyObject *__pyx_t_8 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "programme/virgin/slaves.py":55
+  /* "programme/virgin/slaves.py":57
  *         Warning : type of db and
  *         syntax of raw_data are not fully verified"""
  *         if not db and not value:             # <<<<<<<<<<<<<<
  *             raise ValueError("A Lazy object must have either a value or a DBManager")
  *         if raw_data and not match(".+/[.\w]+@\w+$",raw_data):
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_db); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_db); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
   __pyx_t_3 = ((!__pyx_t_2) != 0);
   if (__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_value); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
   __pyx_t_2 = ((!__pyx_t_3) != 0);
   __pyx_t_1 = __pyx_t_2;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "programme/virgin/slaves.py":56
+    /* "programme/virgin/slaves.py":58
  *         syntax of raw_data are not fully verified"""
  *         if not db and not value:
  *             raise ValueError("A Lazy object must have either a value or a DBManager")             # <<<<<<<<<<<<<<
  *         if raw_data and not match(".+/[.\w]+@\w+$",raw_data):
  *             raise SyntaxError("raw_data has incorrect syntax : " + raw_data)
  */
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 56, __pyx_L1_error)
+    __PYX_ERR(0, 58, __pyx_L1_error)
 
-    /* "programme/virgin/slaves.py":55
+    /* "programme/virgin/slaves.py":57
  *         Warning : type of db and
  *         syntax of raw_data are not fully verified"""
  *         if not db and not value:             # <<<<<<<<<<<<<<
@@ -2463,20 +2567,20 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy___init__(CYTHON_UNUSE
  */
   }
 
-  /* "programme/virgin/slaves.py":57
+  /* "programme/virgin/slaves.py":59
  *         if not db and not value:
  *             raise ValueError("A Lazy object must have either a value or a DBManager")
  *         if raw_data and not match(".+/[.\w]+@\w+$",raw_data):             # <<<<<<<<<<<<<<
  *             raise SyntaxError("raw_data has incorrect syntax : " + raw_data)
  *         if db and db.__class__.__name__ != "DBManager":
  */
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_raw_data); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_raw_data); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
   if (__pyx_t_2) {
   } else {
     __pyx_t_1 = __pyx_t_2;
     goto __pyx_L7_bool_binop_done;
   }
-  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_match); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_match); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = NULL;
   __pyx_t_7 = 0;
@@ -2493,7 +2597,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy___init__(CYTHON_UNUSE
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_kp_s_w_w, __pyx_v_raw_data};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
@@ -2501,13 +2605,13 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy___init__(CYTHON_UNUSE
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
     PyObject *__pyx_temp[3] = {__pyx_t_6, __pyx_kp_s_w_w, __pyx_v_raw_data};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_7, 2+__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_GOTREF(__pyx_t_4);
   } else
   #endif
   {
-    __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_8 = PyTuple_New(2+__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     if (__pyx_t_6) {
       __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_6); __pyx_t_6 = NULL;
@@ -2518,40 +2622,40 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy___init__(CYTHON_UNUSE
     __Pyx_INCREF(__pyx_v_raw_data);
     __Pyx_GIVEREF(__pyx_v_raw_data);
     PyTuple_SET_ITEM(__pyx_t_8, 1+__pyx_t_7, __pyx_v_raw_data);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_3 = ((!__pyx_t_2) != 0);
   __pyx_t_1 = __pyx_t_3;
   __pyx_L7_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "programme/virgin/slaves.py":58
+    /* "programme/virgin/slaves.py":60
  *             raise ValueError("A Lazy object must have either a value or a DBManager")
  *         if raw_data and not match(".+/[.\w]+@\w+$",raw_data):
  *             raise SyntaxError("raw_data has incorrect syntax : " + raw_data)             # <<<<<<<<<<<<<<
  *         if db and db.__class__.__name__ != "DBManager":
- *             raise TypeError("db seems not to be a DBManager object")
+ *             raise TypeError("db doesn't seem to be a DBManager object")
  */
-    __pyx_t_4 = PyNumber_Add(__pyx_kp_s_raw_data_has_incorrect_syntax, __pyx_v_raw_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_4 = PyNumber_Add(__pyx_kp_s_raw_data_has_incorrect_syntax, __pyx_v_raw_data); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4);
     PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
     __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_SyntaxError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_SyntaxError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 58, __pyx_L1_error)
+    __PYX_ERR(0, 60, __pyx_L1_error)
 
-    /* "programme/virgin/slaves.py":57
+    /* "programme/virgin/slaves.py":59
  *         if not db and not value:
  *             raise ValueError("A Lazy object must have either a value or a DBManager")
  *         if raw_data and not match(".+/[.\w]+@\w+$",raw_data):             # <<<<<<<<<<<<<<
@@ -2560,80 +2664,80 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy___init__(CYTHON_UNUSE
  */
   }
 
-  /* "programme/virgin/slaves.py":59
+  /* "programme/virgin/slaves.py":61
  *         if raw_data and not match(".+/[.\w]+@\w+$",raw_data):
  *             raise SyntaxError("raw_data has incorrect syntax : " + raw_data)
  *         if db and db.__class__.__name__ != "DBManager":             # <<<<<<<<<<<<<<
- *             raise TypeError("db seems not to be a DBManager object")
+ *             raise TypeError("db doesn't seem to be a DBManager object")
  *         self.db = db # db must be a DBManager object
  */
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_db); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_v_db); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
   if (__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L10_bool_binop_done;
   }
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_db, __pyx_n_s_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_db, __pyx_n_s_class); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_name_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_name_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_DBManager, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyString_Equals(__pyx_t_5, __pyx_n_s_DBManager, Py_NE)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_1 = __pyx_t_3;
   __pyx_L10_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "programme/virgin/slaves.py":60
+    /* "programme/virgin/slaves.py":62
  *             raise SyntaxError("raw_data has incorrect syntax : " + raw_data)
  *         if db and db.__class__.__name__ != "DBManager":
- *             raise TypeError("db seems not to be a DBManager object")             # <<<<<<<<<<<<<<
+ *             raise TypeError("db doesn't seem to be a DBManager object")             # <<<<<<<<<<<<<<
  *         self.db = db # db must be a DBManager object
  *         self.raw_data = raw_data # raw_data must have following structure : data/module@type
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 60, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 62, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 60, __pyx_L1_error)
+    __PYX_ERR(0, 62, __pyx_L1_error)
 
-    /* "programme/virgin/slaves.py":59
+    /* "programme/virgin/slaves.py":61
  *         if raw_data and not match(".+/[.\w]+@\w+$",raw_data):
  *             raise SyntaxError("raw_data has incorrect syntax : " + raw_data)
  *         if db and db.__class__.__name__ != "DBManager":             # <<<<<<<<<<<<<<
- *             raise TypeError("db seems not to be a DBManager object")
+ *             raise TypeError("db doesn't seem to be a DBManager object")
  *         self.db = db # db must be a DBManager object
  */
   }
 
-  /* "programme/virgin/slaves.py":61
+  /* "programme/virgin/slaves.py":63
  *         if db and db.__class__.__name__ != "DBManager":
- *             raise TypeError("db seems not to be a DBManager object")
+ *             raise TypeError("db doesn't seem to be a DBManager object")
  *         self.db = db # db must be a DBManager object             # <<<<<<<<<<<<<<
  *         self.raw_data = raw_data # raw_data must have following structure : data/module@type
  *         self._value = value
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_db, __pyx_v_db) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_db, __pyx_v_db) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
 
-  /* "programme/virgin/slaves.py":62
- *             raise TypeError("db seems not to be a DBManager object")
+  /* "programme/virgin/slaves.py":64
+ *             raise TypeError("db doesn't seem to be a DBManager object")
  *         self.db = db # db must be a DBManager object
  *         self.raw_data = raw_data # raw_data must have following structure : data/module@type             # <<<<<<<<<<<<<<
  *         self._value = value
  * 
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_raw_data, __pyx_v_raw_data) < 0) __PYX_ERR(0, 62, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_raw_data, __pyx_v_raw_data) < 0) __PYX_ERR(0, 64, __pyx_L1_error)
 
-  /* "programme/virgin/slaves.py":63
+  /* "programme/virgin/slaves.py":65
  *         self.db = db # db must be a DBManager object
  *         self.raw_data = raw_data # raw_data must have following structure : data/module@type
  *         self._value = value             # <<<<<<<<<<<<<<
  * 
  *     def __call__(self):
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_value_2, __pyx_v_value) < 0) __PYX_ERR(0, 63, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_value_2, __pyx_v_value) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
 
-  /* "programme/virgin/slaves.py":51
+  /* "programme/virgin/slaves.py":53
  *     """A Lazy object waits until it is called"""
  * 
  *     def __init__(self,db=None,raw_data=None,type_of_data=None,value=None):             # <<<<<<<<<<<<<<
@@ -2657,7 +2761,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy___init__(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "programme/virgin/slaves.py":65
+/* "programme/virgin/slaves.py":67
  *         self._value = value
  * 
  *     def __call__(self):             # <<<<<<<<<<<<<<
@@ -2693,21 +2797,21 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
   PyObject *__pyx_t_7 = NULL;
   __Pyx_RefNannySetupContext("__call__", 0);
 
-  /* "programme/virgin/slaves.py":67
+  /* "programme/virgin/slaves.py":69
  *     def __call__(self):
  *         """Returns object. Loads it if not already loaded"""
  *         if not self._value:             # <<<<<<<<<<<<<<
  *             db_was_closed = False
  *             if not self.db.db_connected:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_value_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_value_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 69, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = ((!__pyx_t_2) != 0);
   if (__pyx_t_3) {
 
-    /* "programme/virgin/slaves.py":68
+    /* "programme/virgin/slaves.py":70
  *         """Returns object. Loads it if not already loaded"""
  *         if not self._value:
  *             db_was_closed = False             # <<<<<<<<<<<<<<
@@ -2716,24 +2820,24 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
  */
     __pyx_v_db_was_closed = 0;
 
-    /* "programme/virgin/slaves.py":69
+    /* "programme/virgin/slaves.py":71
  *         if not self._value:
  *             db_was_closed = False
  *             if not self.db.db_connected:             # <<<<<<<<<<<<<<
  *                 db_was_closed = True
  *                 self.db.connect()
  */
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_db); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_db); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_db_connected); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_db_connected); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 69, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_2 = ((!__pyx_t_3) != 0);
     if (__pyx_t_2) {
 
-      /* "programme/virgin/slaves.py":70
+      /* "programme/virgin/slaves.py":72
  *             db_was_closed = False
  *             if not self.db.db_connected:
  *                 db_was_closed = True             # <<<<<<<<<<<<<<
@@ -2742,16 +2846,16 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
  */
       __pyx_v_db_was_closed = 1;
 
-      /* "programme/virgin/slaves.py":71
+      /* "programme/virgin/slaves.py":73
  *             if not self.db.db_connected:
  *                 db_was_closed = True
  *                 self.db.connect()             # <<<<<<<<<<<<<<
  *             self._value = self.db._restore_from_string(self.raw_data)
  *             if db_was_closed:
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_db); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_db); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_connect); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_connect); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 73, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -2765,16 +2869,16 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
         }
       }
       if (__pyx_t_1) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 73, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
-        __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 73, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "programme/virgin/slaves.py":69
+      /* "programme/virgin/slaves.py":71
  *         if not self._value:
  *             db_was_closed = False
  *             if not self.db.db_connected:             # <<<<<<<<<<<<<<
@@ -2783,19 +2887,19 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
  */
     }
 
-    /* "programme/virgin/slaves.py":72
+    /* "programme/virgin/slaves.py":74
  *                 db_was_closed = True
  *                 self.db.connect()
  *             self._value = self.db._restore_from_string(self.raw_data)             # <<<<<<<<<<<<<<
  *             if db_was_closed:
  *                 self.db.close()
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_db); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_db); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_restore_from_string); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_restore_from_string); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_raw_data); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 72, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_raw_data); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 74, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_1))) {
@@ -2808,14 +2912,14 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
       }
     }
     if (!__pyx_t_6) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_4);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_5};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -2824,29 +2928,29 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
         PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_5};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       } else
       #endif
       {
-        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 74, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_6); __pyx_t_6 = NULL;
         __Pyx_GIVEREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_t_5);
         __pyx_t_5 = 0;
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_value_2, __pyx_t_4) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_value_2, __pyx_t_4) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "programme/virgin/slaves.py":73
+    /* "programme/virgin/slaves.py":75
  *                 self.db.connect()
  *             self._value = self.db._restore_from_string(self.raw_data)
  *             if db_was_closed:             # <<<<<<<<<<<<<<
@@ -2856,16 +2960,16 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
     __pyx_t_2 = (__pyx_v_db_was_closed != 0);
     if (__pyx_t_2) {
 
-      /* "programme/virgin/slaves.py":74
+      /* "programme/virgin/slaves.py":76
  *             self._value = self.db._restore_from_string(self.raw_data)
  *             if db_was_closed:
  *                 self.db.close()             # <<<<<<<<<<<<<<
  *             del(self.db)
  *         return self._value
  */
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_db); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_db); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_close); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 74, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_close); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 76, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -2879,16 +2983,16 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
         }
       }
       if (__pyx_t_1) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       } else {
-        __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "programme/virgin/slaves.py":73
+      /* "programme/virgin/slaves.py":75
  *                 self.db.connect()
  *             self._value = self.db._restore_from_string(self.raw_data)
  *             if db_was_closed:             # <<<<<<<<<<<<<<
@@ -2897,16 +3001,16 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
  */
     }
 
-    /* "programme/virgin/slaves.py":75
+    /* "programme/virgin/slaves.py":77
  *             if db_was_closed:
  *                 self.db.close()
  *             del(self.db)             # <<<<<<<<<<<<<<
  *         return self._value
  * 
  */
-    if (__Pyx_PyObject_DelAttrStr(__pyx_v_self, __pyx_n_s_db) < 0) __PYX_ERR(0, 75, __pyx_L1_error)
+    if (__Pyx_PyObject_DelAttrStr(__pyx_v_self, __pyx_n_s_db) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
 
-    /* "programme/virgin/slaves.py":67
+    /* "programme/virgin/slaves.py":69
  *     def __call__(self):
  *         """Returns object. Loads it if not already loaded"""
  *         if not self._value:             # <<<<<<<<<<<<<<
@@ -2915,7 +3019,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
  */
   }
 
-  /* "programme/virgin/slaves.py":76
+  /* "programme/virgin/slaves.py":78
  *                 self.db.close()
  *             del(self.db)
  *         return self._value             # <<<<<<<<<<<<<<
@@ -2923,13 +3027,13 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
  *     def __repr__(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_value_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 76, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_value_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 78, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "programme/virgin/slaves.py":65
+  /* "programme/virgin/slaves.py":67
  *         self._value = value
  * 
  *     def __call__(self):             # <<<<<<<<<<<<<<
@@ -2952,7 +3056,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_2__call__(CYTHON_UNUS
   return __pyx_r;
 }
 
-/* "programme/virgin/slaves.py":78
+/* "programme/virgin/slaves.py":80
  *         return self._value
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -2989,20 +3093,20 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUS
   int __pyx_t_8;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "programme/virgin/slaves.py":82
+  /* "programme/virgin/slaves.py":84
  *         if self._value is not accessible
  *         Loaded after"""
  *         is_waiting = not self._value             # <<<<<<<<<<<<<<
  *         return "{} : {}".format(
  *             ("Loaded","Waiting")[is_waiting],
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_value_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_value_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 82, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 84, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_is_waiting = (!__pyx_t_2);
 
-  /* "programme/virgin/slaves.py":83
+  /* "programme/virgin/slaves.py":85
  *         Loaded after"""
  *         is_waiting = not self._value
  *         return "{} : {}".format(             # <<<<<<<<<<<<<<
@@ -3010,31 +3114,31 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUS
  *             (self._value,self.raw_data)[is_waiting])
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__3, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s__3, __pyx_n_s_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "programme/virgin/slaves.py":84
+  /* "programme/virgin/slaves.py":86
  *         is_waiting = not self._value
  *         return "{} : {}".format(
  *             ("Loaded","Waiting")[is_waiting],             # <<<<<<<<<<<<<<
  *             (self._value,self.raw_data)[is_waiting])
  * 
  */
-  __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_tuple__4, __pyx_v_is_waiting, int, 1, __Pyx_PyBool_FromLong, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_tuple__4, __pyx_v_is_waiting, int, 1, __Pyx_PyBool_FromLong, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "programme/virgin/slaves.py":85
+  /* "programme/virgin/slaves.py":87
  *         return "{} : {}".format(
  *             ("Loaded","Waiting")[is_waiting],
  *             (self._value,self.raw_data)[is_waiting])             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_value_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_value_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_raw_data); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_raw_data); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5);
@@ -3042,7 +3146,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUS
   PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_6);
   __pyx_t_5 = 0;
   __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_GetItemInt_Tuple(__pyx_t_7, __pyx_v_is_waiting, int, 1, __Pyx_PyBool_FromLong, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetItemInt_Tuple(__pyx_t_7, __pyx_v_is_waiting, int, 1, __Pyx_PyBool_FromLong, 0, 1, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -3060,7 +3164,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUS
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_4, __pyx_t_6};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3070,7 +3174,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUS
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
     PyObject *__pyx_temp[3] = {__pyx_t_7, __pyx_t_4, __pyx_t_6};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_8, 2+__pyx_t_8); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3078,7 +3182,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUS
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -3089,7 +3193,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUS
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_8, __pyx_t_6);
     __pyx_t_4 = 0;
     __pyx_t_6 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -3098,7 +3202,7 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUS
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "programme/virgin/slaves.py":78
+  /* "programme/virgin/slaves.py":80
  *         return self._value
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -3122,10 +3226,10 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_4__repr__(CYTHON_UNUS
   return __pyx_r;
 }
 
-/* "programme/virgin/slaves.py":88
+/* "programme/virgin/slaves.py":90
  * 
  *     @property
- *     def value(self):             # <<<<<<<<<<<<<<
+ *     def value(self): #TEST             # <<<<<<<<<<<<<<
  *         """Alias of __call__"""
  *         return self.__call__()
  */
@@ -3153,15 +3257,15 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_6value(CYTHON_UNUSED 
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("value", 0);
 
-  /* "programme/virgin/slaves.py":90
- *     def value(self):
+  /* "programme/virgin/slaves.py":92
+ *     def value(self): #TEST
  *         """Alias of __call__"""
  *         return self.__call__()             # <<<<<<<<<<<<<<
  * 
  *     @value.setter
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_call); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_call); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -3174,10 +3278,10 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_6value(CYTHON_UNUSED 
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3185,10 +3289,10 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_6value(CYTHON_UNUSED 
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "programme/virgin/slaves.py":88
+  /* "programme/virgin/slaves.py":90
  * 
  *     @property
- *     def value(self):             # <<<<<<<<<<<<<<
+ *     def value(self): #TEST             # <<<<<<<<<<<<<<
  *         """Alias of __call__"""
  *         return self.__call__()
  */
@@ -3206,10 +3310,10 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_6value(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "programme/virgin/slaves.py":93
+/* "programme/virgin/slaves.py":95
  * 
  *     @value.setter
- *     def value(self,value):             # <<<<<<<<<<<<<<
+ *     def value(self,value): #TEST             # <<<<<<<<<<<<<<
  *         """Set self._value"""
  *         self._value = value
  */
@@ -3244,11 +3348,11 @@ static PyObject *__pyx_pw_9programme_6virgin_6slaves_4Lazy_9value(PyObject *__py
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_value)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("value", 1, 2, 2, 1); __PYX_ERR(0, 93, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("value", 1, 2, 2, 1); __PYX_ERR(0, 95, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "value") < 0)) __PYX_ERR(0, 93, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "value") < 0)) __PYX_ERR(0, 95, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -3261,7 +3365,7 @@ static PyObject *__pyx_pw_9programme_6virgin_6slaves_4Lazy_9value(PyObject *__py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("value", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 93, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("value", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 95, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("programme.virgin.slaves.Lazy.value", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -3279,18 +3383,18 @@ static PyObject *__pyx_pf_9programme_6virgin_6slaves_4Lazy_8value(CYTHON_UNUSED 
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("value", 0);
 
-  /* "programme/virgin/slaves.py":95
- *     def value(self,value):
+  /* "programme/virgin/slaves.py":97
+ *     def value(self,value): #TEST
  *         """Set self._value"""
  *         self._value = value             # <<<<<<<<<<<<<<
  * 
  */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_value_2, __pyx_v_value) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_value_2, __pyx_v_value) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
 
-  /* "programme/virgin/slaves.py":93
+  /* "programme/virgin/slaves.py":95
  * 
  *     @value.setter
- *     def value(self,value):             # <<<<<<<<<<<<<<
+ *     def value(self,value): #TEST             # <<<<<<<<<<<<<<
  *         """Set self._value"""
  *         self._value = value
  */
@@ -3369,7 +3473,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_connect, __pyx_k_connect, sizeof(__pyx_k_connect), 0, 0, 1, 1},
   {&__pyx_n_s_db, __pyx_k_db, sizeof(__pyx_k_db), 0, 0, 1, 1},
   {&__pyx_n_s_db_connected, __pyx_k_db_connected, sizeof(__pyx_k_db_connected), 0, 0, 1, 1},
-  {&__pyx_kp_s_db_seems_not_to_be_a_DBManager_o, __pyx_k_db_seems_not_to_be_a_DBManager_o, sizeof(__pyx_k_db_seems_not_to_be_a_DBManager_o), 0, 0, 1, 0},
+  {&__pyx_kp_s_db_doesn_t_seem_to_be_a_DBManage, __pyx_k_db_doesn_t_seem_to_be_a_DBManage, sizeof(__pyx_k_db_doesn_t_seem_to_be_a_DBManage), 0, 0, 1, 0},
   {&__pyx_n_s_db_was_closed, __pyx_k_db_was_closed, sizeof(__pyx_k_db_was_closed), 0, 0, 1, 1},
   {&__pyx_n_s_doc, __pyx_k_doc, sizeof(__pyx_k_doc), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
@@ -3378,6 +3482,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_n_s_is_waiting, __pyx_k_is_waiting, sizeof(__pyx_k_is_waiting), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_map_or_seq, __pyx_k_map_or_seq, sizeof(__pyx_k_map_or_seq), 0, 0, 1, 1},
   {&__pyx_n_s_match, __pyx_k_match, sizeof(__pyx_k_match), 0, 0, 1, 1},
   {&__pyx_n_s_metaclass, __pyx_k_metaclass, sizeof(__pyx_k_metaclass), 0, 0, 1, 1},
   {&__pyx_n_s_module, __pyx_k_module, sizeof(__pyx_k_module), 0, 0, 1, 1},
@@ -3397,6 +3502,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_setter, __pyx_k_setter, sizeof(__pyx_k_setter), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_type_of_data, __pyx_k_type_of_data, sizeof(__pyx_k_type_of_data), 0, 0, 1, 1},
+  {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
   {&__pyx_n_s_value, __pyx_k_value, sizeof(__pyx_k_value), 0, 0, 1, 1},
   {&__pyx_n_s_value_2, __pyx_k_value_2, sizeof(__pyx_k_value_2), 0, 0, 1, 1},
   {&__pyx_n_s_values, __pyx_k_values, sizeof(__pyx_k_values), 0, 0, 1, 1},
@@ -3404,10 +3510,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 87, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 56, __pyx_L1_error)
-  __pyx_builtin_SyntaxError = __Pyx_GetBuiltinName(__pyx_n_s_SyntaxError); if (!__pyx_builtin_SyntaxError) __PYX_ERR(0, 58, __pyx_L1_error)
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) __PYX_ERR(0, 89, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_builtin_SyntaxError = __Pyx_GetBuiltinName(__pyx_n_s_SyntaxError); if (!__pyx_builtin_SyntaxError) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 62, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3417,36 +3523,36 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "programme/virgin/slaves.py":56
+  /* "programme/virgin/slaves.py":58
  *         syntax of raw_data are not fully verified"""
  *         if not db and not value:
  *             raise ValueError("A Lazy object must have either a value or a DBManager")             # <<<<<<<<<<<<<<
  *         if raw_data and not match(".+/[.\w]+@\w+$",raw_data):
  *             raise SyntaxError("raw_data has incorrect syntax : " + raw_data)
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_A_Lazy_object_must_have_either_a); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_A_Lazy_object_must_have_either_a); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 58, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "programme/virgin/slaves.py":60
+  /* "programme/virgin/slaves.py":62
  *             raise SyntaxError("raw_data has incorrect syntax : " + raw_data)
  *         if db and db.__class__.__name__ != "DBManager":
- *             raise TypeError("db seems not to be a DBManager object")             # <<<<<<<<<<<<<<
+ *             raise TypeError("db doesn't seem to be a DBManager object")             # <<<<<<<<<<<<<<
  *         self.db = db # db must be a DBManager object
  *         self.raw_data = raw_data # raw_data must have following structure : data/module@type
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_db_seems_not_to_be_a_DBManager_o); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_db_doesn_t_seem_to_be_a_DBManage); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "programme/virgin/slaves.py":84
+  /* "programme/virgin/slaves.py":86
  *         is_waiting = not self._value
  *         return "{} : {}".format(
  *             ("Loaded","Waiting")[is_waiting],             # <<<<<<<<<<<<<<
  *             (self._value,self.raw_data)[is_waiting])
  * 
  */
-  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_n_s_Loaded, __pyx_n_s_Waiting); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 84, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(2, __pyx_n_s_Loaded, __pyx_n_s_Waiting); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
@@ -3463,7 +3569,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_new, 11, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 11, __pyx_L1_error)
 
   /* "programme/virgin/slaves.py":17
- * class ShortStr(str):
+ * class ShortStr(str): # TEST
  *     """A string whith len <= 150"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         if len(value) > 150:
@@ -3475,7 +3581,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_init, 17, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 17, __pyx_L1_error)
 
   /* "programme/virgin/slaves.py":25
- * class LongStr(str):
+ * class LongStr(str):# TEST
  *     """A string whith len > 150"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         if len(value) <= 150:
@@ -3487,7 +3593,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_init, 25, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 25, __pyx_L1_error)
 
   /* "programme/virgin/slaves.py":33
- * class _Regex(str):
+ * class _Regex(str):# TEST
  *     """A class of strings used for regex"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         str.__init__(self)
@@ -3499,7 +3605,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_init, 33, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 33, __pyx_L1_error)
 
   /* "programme/virgin/slaves.py":38
- * class Regex(str):
+ * class Regex(str): # TEST
  *     """A class of regex"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         str.__init__(self)
@@ -3511,79 +3617,82 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_init, 38, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 38, __pyx_L1_error)
 
   /* "programme/virgin/slaves.py":43
- * class BaseDict(dict):
+ * class BaseDict(dict): # TEST
  *     """A class to save a dict as a table"""
- *     def __init__(self,name,**values):             # <<<<<<<<<<<<<<
+ *     def __init__(self,name,map_or_seq=None,**values):             # <<<<<<<<<<<<<<
  *         """values is a sequence as used in dict"""
  *         self.name = name
  */
-  __pyx_tuple__15 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_name, __pyx_n_s_values); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_tuple__15 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_name, __pyx_n_s_map_or_seq, __pyx_n_s_values); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
-  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(2, 0, 3, 0, CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_init, 43, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_codeobj__16 = (PyObject*)__Pyx_PyCode_New(3, 0, 4, 0, CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__15, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_init, 43, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__16)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(1, ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
 
-  /* "programme/virgin/slaves.py":51
+  /* "programme/virgin/slaves.py":53
  *     """A Lazy object waits until it is called"""
  * 
  *     def __init__(self,db=None,raw_data=None,type_of_data=None,value=None):             # <<<<<<<<<<<<<<
  *         """Inits Lazy object.
  *         Warning : type of db and
  */
-  __pyx_tuple__17 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_db, __pyx_n_s_raw_data, __pyx_n_s_type_of_data, __pyx_n_s_value); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 51, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__17);
-  __Pyx_GIVEREF(__pyx_tuple__17);
-  __pyx_codeobj__18 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__17, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_init, 51, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__18)) __PYX_ERR(0, 51, __pyx_L1_error)
-  __pyx_tuple__19 = PyTuple_Pack(4, ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 51, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__19);
-  __Pyx_GIVEREF(__pyx_tuple__19);
+  __pyx_tuple__18 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_db, __pyx_n_s_raw_data, __pyx_n_s_type_of_data, __pyx_n_s_value); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(5, 0, 5, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_init, 53, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_tuple__20 = PyTuple_Pack(4, ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_None), ((PyObject *)Py_None)); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "programme/virgin/slaves.py":65
+  /* "programme/virgin/slaves.py":67
  *         self._value = value
  * 
  *     def __call__(self):             # <<<<<<<<<<<<<<
  *         """Returns object. Loads it if not already loaded"""
  *         if not self._value:
  */
-  __pyx_tuple__20 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_db_was_closed); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(0, 65, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__20);
-  __Pyx_GIVEREF(__pyx_tuple__20);
-  __pyx_codeobj__21 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__20, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_call, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__21)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_db_was_closed); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 67, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__21);
+  __Pyx_GIVEREF(__pyx_tuple__21);
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_call, 67, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 67, __pyx_L1_error)
 
-  /* "programme/virgin/slaves.py":78
+  /* "programme/virgin/slaves.py":80
  *         return self._value
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         """A Lazy object is waiting
  *         if self._value is not accessible
  */
-  __pyx_tuple__22 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_is_waiting); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 78, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__22);
-  __Pyx_GIVEREF(__pyx_tuple__22);
-  __pyx_codeobj__23 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__22, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_repr, 78, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__23)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_is_waiting); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 80, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_repr, 80, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 80, __pyx_L1_error)
 
-  /* "programme/virgin/slaves.py":88
+  /* "programme/virgin/slaves.py":90
  * 
  *     @property
- *     def value(self):             # <<<<<<<<<<<<<<
+ *     def value(self): #TEST             # <<<<<<<<<<<<<<
  *         """Alias of __call__"""
  *         return self.__call__()
  */
-  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 88, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__24);
-  __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_value, 88, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__25);
+  __Pyx_GIVEREF(__pyx_tuple__25);
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_value, 90, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 90, __pyx_L1_error)
 
-  /* "programme/virgin/slaves.py":93
+  /* "programme/virgin/slaves.py":95
  * 
  *     @value.setter
- *     def value(self,value):             # <<<<<<<<<<<<<<
+ *     def value(self,value): #TEST             # <<<<<<<<<<<<<<
  *         """Set self._value"""
  *         self._value = value
  */
-  __pyx_tuple__26 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_value); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 93, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__26);
-  __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_value, 93, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_value); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_partage_scripts_projet_lit, __pyx_n_s_value, 95, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -3719,7 +3828,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":8
  * # Classes
  * 
- * class StrLike: # pretty useless, no ?             # <<<<<<<<<<<<<<
+ * class StrLike: # pretty useless, no ? # TEST             # <<<<<<<<<<<<<<
  *     """This class is used to select which subclass
  *     of str fit to the value"""
  */
@@ -3741,7 +3850,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":8
  * # Classes
  * 
- * class StrLike: # pretty useless, no ?             # <<<<<<<<<<<<<<
+ * class StrLike: # pretty useless, no ? # TEST             # <<<<<<<<<<<<<<
  *     """This class is used to select which subclass
  *     of str fit to the value"""
  */
@@ -3754,7 +3863,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":15
  *         return [ShortStr,LongStr][len(value) > 150](value)
  * 
- * class ShortStr(str):             # <<<<<<<<<<<<<<
+ * class ShortStr(str): # TEST             # <<<<<<<<<<<<<<
  *     """A string whith len <= 150"""
  *     def __init__(self,value):
  */
@@ -3769,7 +3878,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   __Pyx_GOTREF(__pyx_t_3);
 
   /* "programme/virgin/slaves.py":17
- * class ShortStr(str):
+ * class ShortStr(str): # TEST
  *     """A string whith len <= 150"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         if len(value) > 150:
@@ -3783,7 +3892,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":15
  *         return [ShortStr,LongStr][len(value) > 150](value)
  * 
- * class ShortStr(str):             # <<<<<<<<<<<<<<
+ * class ShortStr(str): # TEST             # <<<<<<<<<<<<<<
  *     """A string whith len <= 150"""
  *     def __init__(self,value):
  */
@@ -3798,7 +3907,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":23
  *         str.__init__(self)
  * 
- * class LongStr(str):             # <<<<<<<<<<<<<<
+ * class LongStr(str):# TEST             # <<<<<<<<<<<<<<
  *     """A string whith len > 150"""
  *     def __init__(self,value):
  */
@@ -3813,7 +3922,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   __Pyx_GOTREF(__pyx_t_3);
 
   /* "programme/virgin/slaves.py":25
- * class LongStr(str):
+ * class LongStr(str):# TEST
  *     """A string whith len > 150"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         if len(value) <= 150:
@@ -3827,7 +3936,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":23
  *         str.__init__(self)
  * 
- * class LongStr(str):             # <<<<<<<<<<<<<<
+ * class LongStr(str):# TEST             # <<<<<<<<<<<<<<
  *     """A string whith len > 150"""
  *     def __init__(self,value):
  */
@@ -3842,7 +3951,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":31
  *         str.__init__(self)
  * 
- * class _Regex(str):             # <<<<<<<<<<<<<<
+ * class _Regex(str):# TEST             # <<<<<<<<<<<<<<
  *     """A class of strings used for regex"""
  *     def __init__(self,value):
  */
@@ -3857,7 +3966,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   __Pyx_GOTREF(__pyx_t_3);
 
   /* "programme/virgin/slaves.py":33
- * class _Regex(str):
+ * class _Regex(str):# TEST
  *     """A class of strings used for regex"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         str.__init__(self)
@@ -3871,7 +3980,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":31
  *         str.__init__(self)
  * 
- * class _Regex(str):             # <<<<<<<<<<<<<<
+ * class _Regex(str):# TEST             # <<<<<<<<<<<<<<
  *     """A class of strings used for regex"""
  *     def __init__(self,value):
  */
@@ -3886,7 +3995,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":36
  *         str.__init__(self)
  * 
- * class Regex(str):             # <<<<<<<<<<<<<<
+ * class Regex(str): # TEST             # <<<<<<<<<<<<<<
  *     """A class of regex"""
  *     def __init__(self,value):
  */
@@ -3901,7 +4010,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   __Pyx_GOTREF(__pyx_t_3);
 
   /* "programme/virgin/slaves.py":38
- * class Regex(str):
+ * class Regex(str): # TEST
  *     """A class of regex"""
  *     def __init__(self,value):             # <<<<<<<<<<<<<<
  *         str.__init__(self)
@@ -3915,7 +4024,7 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":36
  *         str.__init__(self)
  * 
- * class Regex(str):             # <<<<<<<<<<<<<<
+ * class Regex(str): # TEST             # <<<<<<<<<<<<<<
  *     """A class of regex"""
  *     def __init__(self,value):
  */
@@ -3930,9 +4039,9 @@ PyMODINIT_FUNC PyInit_slaves(void)
   /* "programme/virgin/slaves.py":41
  *         str.__init__(self)
  * 
- * class BaseDict(dict):             # <<<<<<<<<<<<<<
+ * class BaseDict(dict): # TEST             # <<<<<<<<<<<<<<
  *     """A class to save a dict as a table"""
- *     def __init__(self,name,**values):
+ *     def __init__(self,name,map_or_seq=None,**values):
  */
   __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -3945,23 +4054,24 @@ PyMODINIT_FUNC PyInit_slaves(void)
   __Pyx_GOTREF(__pyx_t_3);
 
   /* "programme/virgin/slaves.py":43
- * class BaseDict(dict):
+ * class BaseDict(dict): # TEST
  *     """A class to save a dict as a table"""
- *     def __init__(self,name,**values):             # <<<<<<<<<<<<<<
+ *     def __init__(self,name,map_or_seq=None,**values):             # <<<<<<<<<<<<<<
  *         """values is a sequence as used in dict"""
  *         self.name = name
  */
   __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_8BaseDict_1__init__, 0, __pyx_n_s_BaseDict___init, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_4, __pyx_tuple__17);
   if (PyObject_SetItem(__pyx_t_3, __pyx_n_s_init, __pyx_t_4) < 0) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "programme/virgin/slaves.py":41
  *         str.__init__(self)
  * 
- * class BaseDict(dict):             # <<<<<<<<<<<<<<
+ * class BaseDict(dict): # TEST             # <<<<<<<<<<<<<<
  *     """A class to save a dict as a table"""
- *     def __init__(self,name,**values):
+ *     def __init__(self,name,map_or_seq=None,**values):
  */
   __pyx_t_4 = __Pyx_Py3ClassCreate(__pyx_t_1, __pyx_n_s_BaseDict, __pyx_t_2, __pyx_t_3, NULL, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -3971,86 +4081,86 @@ PyMODINIT_FUNC PyInit_slaves(void)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "programme/virgin/slaves.py":48
+  /* "programme/virgin/slaves.py":50
  *         dict.__init__(self,values)
  * 
  * class Lazy:             # <<<<<<<<<<<<<<
  *     """A Lazy object waits until it is called"""
  * 
  */
-  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_Lazy, __pyx_n_s_Lazy, (PyObject *) NULL, __pyx_n_s_programme_virgin_slaves, __pyx_kp_s_A_Lazy_object_waits_until_it_is); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare((PyObject *) NULL, __pyx_empty_tuple, __pyx_n_s_Lazy, __pyx_n_s_Lazy, (PyObject *) NULL, __pyx_n_s_programme_virgin_slaves, __pyx_kp_s_A_Lazy_object_waits_until_it_is); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "programme/virgin/slaves.py":51
+  /* "programme/virgin/slaves.py":53
  *     """A Lazy object waits until it is called"""
  * 
  *     def __init__(self,db=None,raw_data=None,type_of_data=None,value=None):             # <<<<<<<<<<<<<<
  *         """Inits Lazy object.
  *         Warning : type of db and
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_1__init__, 0, __pyx_n_s_Lazy___init, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__18)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_1__init__, 0, __pyx_n_s_Lazy___init, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__19)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__19);
-  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 51, __pyx_L1_error)
+  __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_1, __pyx_tuple__20);
+  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 53, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "programme/virgin/slaves.py":65
+  /* "programme/virgin/slaves.py":67
  *         self._value = value
  * 
  *     def __call__(self):             # <<<<<<<<<<<<<<
  *         """Returns object. Loads it if not already loaded"""
  *         if not self._value:
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_3__call__, 0, __pyx_n_s_Lazy___call, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__21)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_3__call__, 0, __pyx_n_s_Lazy___call, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__22)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_call, __pyx_t_1) < 0) __PYX_ERR(0, 65, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_call, __pyx_t_1) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "programme/virgin/slaves.py":78
+  /* "programme/virgin/slaves.py":80
  *         return self._value
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
  *         """A Lazy object is waiting
  *         if self._value is not accessible
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_5__repr__, 0, __pyx_n_s_Lazy___repr, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__23)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_5__repr__, 0, __pyx_n_s_Lazy___repr, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__24)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_repr, __pyx_t_1) < 0) __PYX_ERR(0, 78, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_repr, __pyx_t_1) < 0) __PYX_ERR(0, 80, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "programme/virgin/slaves.py":88
+  /* "programme/virgin/slaves.py":90
  * 
  *     @property
- *     def value(self):             # <<<<<<<<<<<<<<
+ *     def value(self): #TEST             # <<<<<<<<<<<<<<
  *         """Alias of __call__"""
  *         return self.__call__()
  */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_7value, 0, __pyx_n_s_Lazy_value, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_7value, 0, __pyx_n_s_Lazy_value, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "programme/virgin/slaves.py":87
+  /* "programme/virgin/slaves.py":89
  *             (self._value,self.raw_data)[is_waiting])
  * 
  *     @property             # <<<<<<<<<<<<<<
- *     def value(self):
+ *     def value(self): #TEST
  *         """Alias of __call__"""
  */
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_property, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_property, __pyx_t_3, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_value, __pyx_t_1) < 0) __PYX_ERR(0, 88, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_value, __pyx_t_1) < 0) __PYX_ERR(0, 90, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "programme/virgin/slaves.py":92
+  /* "programme/virgin/slaves.py":94
  *         return self.__call__()
  * 
  *     @value.setter             # <<<<<<<<<<<<<<
- *     def value(self,value):
+ *     def value(self,value): #TEST
  *         """Set self._value"""
  */
   __pyx_t_3 = PyObject_GetItem(__pyx_t_2, __pyx_n_s_value);
@@ -4058,20 +4168,20 @@ PyMODINIT_FUNC PyInit_slaves(void)
     PyErr_Clear();
     __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_value);
   }
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 92, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_setter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_setter); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 94, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "programme/virgin/slaves.py":93
+  /* "programme/virgin/slaves.py":95
  * 
  *     @value.setter
- *     def value(self,value):             # <<<<<<<<<<<<<<
+ *     def value(self,value): #TEST             # <<<<<<<<<<<<<<
  *         """Set self._value"""
  *         self._value = value
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_9value, 0, __pyx_n_s_Lazy_value, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__27)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_9programme_6virgin_6slaves_4Lazy_9value, 0, __pyx_n_s_Lazy_value, NULL, __pyx_n_s_programme_virgin_slaves, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -4084,14 +4194,14 @@ PyMODINIT_FUNC PyInit_slaves(void)
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4100,38 +4210,38 @@ PyMODINIT_FUNC PyInit_slaves(void)
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_3};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 92, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 94, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_GIVEREF(__pyx_t_3);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 94, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_value, __pyx_t_1) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
+  if (PyObject_SetItem(__pyx_t_2, __pyx_n_s_value, __pyx_t_1) < 0) __PYX_ERR(0, 95, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "programme/virgin/slaves.py":48
+  /* "programme/virgin/slaves.py":50
  *         dict.__init__(self,values)
  * 
  * class Lazy:             # <<<<<<<<<<<<<<
  *     """A Lazy object waits until it is called"""
  * 
  */
-  __pyx_t_1 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Lazy, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Py3ClassCreate(((PyObject*)&__Pyx_DefaultClassType), __pyx_n_s_Lazy, __pyx_empty_tuple, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Lazy, __pyx_t_1) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_Lazy, __pyx_t_1) < 0) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
