@@ -72,10 +72,7 @@ class DBManager():
             
         custypes = self.fetchall("""SELECT name,module FROM custypes""")
         logger.debug(custypes)
-        # registering custom converters
-        for type_name, type_module in custypes:
-            sqlite3.register_converter(type_name,self.custom_restore)
-        self.custypes = {custype:(self.custom_saver,self.custom_restore) for custype in custypes}
+        self.custypes = {tuple(custype):(self.custom_saver,self.custom_restore) for custype in custypes}
         self.alltypes = collections.ChainMap(self.builtin,self.custypes)
         
     def __del__(self):
@@ -132,23 +129,25 @@ class DBManager():
             self.update_custypes(qtype)
         self.execute(command)
         
-    def save_row(self, table_name,id=0,*data): # TODO update data
+    def save_row(self, table_name,*data,id=0): # TODO update data
         """Save a row into a table.
         If row (ie, id) already exist, update it
         else insert data with last id
         table_name : string
+        data : objects without id ; must be in the right order  
         id : int
-        data : objects without id ; must be in the right order        
         return id"""
         laine = len(data) # laine in french has similar pronunciation to len in globish : funny, isn't it ?
+        new_data = []
         if not id:
             id = self.get_new_id(table_name)
-            for i, elt in enumerate(data):
+            for elt in data:
                 if type(elt) not in base_types:
-                    data[i] = "{}/{}".format(self._saver(elt),self._type_manager(type_entered=type_of(elt)))
-            data.insert(0,id)
+                    elt = "{}/{}".format(self._saver(elt),self._type_manager(type_entered=type_of(elt)))
+                new_data.append(elt)
+            new_data.insert(0,id)
             command = """INSERT INTO {} values ({}?);""".format(table_name,"?, " * laine)
-        self.execute(command,data)
+        self.execute(command,new_data)
         return id
         
     def restore_row(self,table_name,returned_type=dict,**where): # TODO faire une fonction similaire où il faudrait rentrer la ligne sql, dont le where serait modifié
@@ -227,11 +226,7 @@ class DBManager():
         qtype = type_of(queuer)
         logger.debug(qtype)
         
-        if (qtype.__name__,qtype.__module__) in self.alltypes:
-            del(self.alltypes[(qtype.__name__,qtype.__module__)])
-            del(self.custypes[(qtype.__name__,qtype.__module__)])
-            self.custypes[qtype] = (self.custom_saver,self.custom_restore)
-            self.alltypes.update(self.custypes)
+        self.update_custypes(qtype)
             
         if qtype not in self.alltypes: # posera pbm si modification d'une classe WARNING
             if not isinstance(queuer.__dict__,dict):
@@ -286,6 +281,8 @@ class DBManager():
         if '_regex' in obj.__dict__:
             for key,value in obj._regex:
                 obj._regex[key] = [slaves._Regex(item) for item in value ]
+                
+        if 'regex' in obj.__dict__:
             for key,value in obj.regex:
                 obj.regex[key] = [slaves.Regex(item) for item in value ]
         
@@ -392,8 +389,9 @@ class DBManager():
     
     def update_custypes(self,qtype):
         """Change tuples in custypes to type"""
-        if (qtype.__name__,qtype.__module__) in self.alltypes:
-            del(self.custypes[(qtype.__name__,qtype.__module__)])
+        type_tuple = (qtype.__name__,qtype.__module__)
+        if type_tuple in self.alltypes:
+            del(self.custypes[type_tuple])
             self.custypes[qtype] = (self.custom_saver,self.custom_restore)
 
         

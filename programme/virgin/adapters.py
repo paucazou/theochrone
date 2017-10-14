@@ -171,7 +171,7 @@ class Adapter:
         """dict_entered must be a slaves.BaseDict"""
         if not self.dbmanager.fetchone("SELECT name FROM sqlite_master WHERE TYPE='table' AND NAME=?;",(dict_entered.name,)):
             self.dbmanager.create_table_dict(dict_entered)
-        id = self.dbmanager.save_row(dict_entered.name,[value for key, value in sorted(dict_entered.items())])
+        id = self.dbmanager.save_row(dict_entered.name,*(value for key, value in sorted(dict_entered.items())))
         return "{}|{}".format(id,dict_entered.name)
     
     def convert_BaseDict(self,string_entered):
