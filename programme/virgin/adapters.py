@@ -23,7 +23,7 @@ def type_of(item):
         item = long_or_short(item)
     return type(item)
 
-def bytes_to_str(string_entered):
+def bytes_to_str(string_entered): # DEPRECATED
     """Change string_entered to str
     if string_entered is a bytes string"""
     if isinstance(string_entered,bytes):
@@ -35,6 +35,8 @@ def parse_list(string_entered,first_bounds=first_bounds,second_bounds=second_bou
     Protects lists or dicts if there are inside it""" # TODO voir s'il ne vaut pas mieux utiliser ast.literal_eval
     logger.debug(string_entered)
     list_returned = []
+    if string_entered == "[]": # if empty list
+        return list_returned
     item = ""
     level = 0
     for char in string_entered[1:-1]:
@@ -54,6 +56,8 @@ def parse_dict(string_entered,first_bounds=first_bounds,second_bounds=second_bou
     """Similar to parse_list, except
     that this one is for dict"""
     dict_returned = {}
+    if string_entered == "<>": # if empty dict
+        return dict_returned
     level = 0
     temp_item = ''
     key = ''
@@ -148,7 +152,7 @@ class Adapter:
         return self.dbmanager.adapt_int_to_str(string_entered,restore=True)
     
     # dict
-    def adapt_dict(self,dict_entered):
+    def adapt_dict(self,dict_entered): # BUG dict vide
         pairs = []
         for key, value in dict_entered.items():
             pair = """{}/{}:{}/{}""".format(
@@ -158,7 +162,6 @@ class Adapter:
         return """<{}>""".format(",".join(pairs))
     
     def convert_dict(self,string_entered):
-        string_entered = bytes_to_str(string_entered)
         dict_tmp = parse_dict(string_entered)
         logger.debug(dict_tmp)
         new_dict = {}
@@ -181,7 +184,7 @@ class Adapter:
         return tmp_dico
     
     # list
-    def adapt_list(self,list_entered):
+    def adapt_list(self,list_entered): 
         for i,item in enumerate(list_entered):
             list_entered[i] = "{}/{}".format(
                 self.dbmanager._saver(item),
@@ -192,7 +195,6 @@ class Adapter:
         return returned_value
     
     def convert_list(self,string_entered):
-        string_entered = bytes_to_str(string_entered)
         list_tmp = parse_list(string_entered)
         new_list = []
         for elt in list_tmp:
