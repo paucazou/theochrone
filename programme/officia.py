@@ -349,7 +349,7 @@ def renvoie_regex(retour,regex,liste): # est-ce qu'on ne pourrait pas la remplac
         retour.regex[index]=[]
         for a in regex[index]:
             for elt in liste:
-                if a.match(str(elt)):
+                if re.match(a,str(elt)):
                     de_cote.append(a)
                 else:
                     retour.regex[index].append(a)

@@ -9,8 +9,9 @@ import pickle
 
 chemin = os.path.dirname(os.path.abspath(__file__))
 
-fichiers=(
-    'romanus_1962_dimanches.pic',
+fichiers=('romanus_1962_.pkl',)
+""""
+    'romanus_1962_dimanches.pic', 
     'romanus_1962_fetesduseigneur.pic',
     'romanus_1962_cycledenoel.pic',
     'romanus_1962_cycledepaques.pic',
@@ -18,8 +19,8 @@ fichiers=(
     'romanus_1962_deuxiemetrimestre_sanctoral.pic',
     'romanus_1962_troisiemetrimestre_sanctoral.pic',
     'romanus_1962_quatriemetrimestre_sanctoral.pic',
-    #'gallicanus_1962_dimanches.pic',
-    )
+    #'gallicanus_1962_dimanches.pic',""" # DEPRECATED
+    
 
 latinus={
     'romanus':{
@@ -84,16 +85,16 @@ class LiturgicalCalendar():
         """Method used only when creating the instance.
         It loads raw data following the 'proper' and the 'ordo' requested.
         Returns a tuple whith the whole data"""
-        tmp = list()
+        tmp = []
         for fichier in [file for file in fichiers if file.split('_')[1] == str(ordo) and self.trouve(proper,file.split('_')[0])]:
             with open(chemin + '/data/' + fichier, 'rb') as file:
                 pic=pickle.Unpickler(file)
                 tmp += pic.load()
-        self.raw_data = tmp
+        *self.raw_data,self.saturday,self.feria = tmp # TODO trouver un moyen plus sûr de faire passer la férie et le samedi
         
-        with open(chemin + '/data/samedi_ferie.pic','rb') as file:
+        """with open(chemin + '/data/samedi_ferie.pic','rb') as file:
             pic=pickle.Unpickler(file)
-            self.saturday, self.feria = pic.load()        
+            self.saturday, self.feria = pic.load()    """    
     
     def _put_in_year(self, year): # TEST
         """A method which puts feasts in the year"""
