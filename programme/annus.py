@@ -393,7 +393,7 @@ class LiturgicalCalendar():
         opponent = liste[0]
 
         # Cas de 'new_comer' ayant la même self.personne que 'opponent'
-        if new_comer.personne == opponent.personne:
+        if new_comer.personne.intersection(opponent.personne):
             liste.append(new_comer)
         # Cas de 'new_comer' et 'opponent' tous deux transférés
         elif new_comer.transferee and opponent.transferee:

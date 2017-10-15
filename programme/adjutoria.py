@@ -43,7 +43,7 @@ class Fete:
         self._couleur='blanc' # vert par défaut 
         self.date_='' # un élément qui permet de calculer la date
 
-        self.personne='deuxieme' # indique quel saint ou personne divine est célébrée. Très important pour le classement.
+        self.personne={'deuxieme'} # set with the names of the saints of the feast # TODO make a set of all the names
         self.fete_du_Seigneur=False
         
         self.occurrence_perpetuelle=False # Pour toutes les fêtes souffrant d'une occurrence perpetuelle avec une autre fête.
@@ -180,10 +180,14 @@ class Fete:
     
     def Correspondance(self,mots,mots_separes,plus):
         """Fonction qui renvoie un chiffre de correspondance entre les mots rentrés et les regex"""
+        if self.regex and isinstance(self.regex['annexes'][0],str):
+            for index in self.regex:
+                self.regex[index] = [ re.compile(elt) for elt in self.regex[index] ]
+                    
         niveau = 0
         if isinstance(self,FeteFerie):
             return niveau
-        for index in self.regex:
+        for index in self.regex:            
             if 'compose' in index:
                 i=0
                 while i + 1 < len(self.regex[index]):

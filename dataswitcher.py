@@ -172,12 +172,31 @@ def main(pkl_file_name):
         prepare_data(pkl_file_name)
         )
 
+def modify_in_obj(function,pattern='.*',auto_saved=False):
+    """This function applies function
+    to every file matching pattern.
+    If pattern == None : every file
+    function is a custom function which takes
+    one parameter : a Feast like object
+    auto_saved : if True, objects are saved in their
+    own file just after function has called the whole file"""
+    list_of_files = [file for file in xml_files if re.match(pattern,file) ]
+    for file in list_of_files:
+        logger.debug(file)
+        with enc.Preferences(file,'r') as f:
+            list_of_obj = f.prefs
+        for obj in list_of_obj:
+            function(obj)
+        if auto_saved:
+            with enc.Preferences(file,'w') as f:
+                f.prefs = list_of_obj
+
 logger.warning(
     """
     Hello ! I'm the logger. I'm pretty useless,
     but I love to print weird things on the screen.
     If you can read that, that means that the module
     is completely loaded, which is a good thing.
-    If you wan to silent me, please just type :
+    If you want to silent me, please just type :
     dataswitcher.logger.disabled = True
     Happy pickling !""")
