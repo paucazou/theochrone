@@ -9,10 +9,10 @@ import enc
 import os
 import pickle
 import programme.officia as officia
-import programme.phlog as phlog
 import re
+import readline
 
-logger = phlog.loggers['console']
+logger = enc.logger
 xml_folder = "theoXML/"
 xml_files = [] # a list of all the files in xml
 file_pattern = re.compile('^[^\.]+.xml$')
@@ -175,7 +175,7 @@ def main(pkl_file_name):
 def modify_in_obj(function,pattern='.*',auto_saved=False):
     """This function applies function
     to every file matching pattern.
-    If pattern == None : every file
+    If pattern == '.*' (default) : every file
     function is a custom function which takes
     one parameter : a Feast like object
     auto_saved : if True, objects are saved in their
@@ -190,6 +190,16 @@ def modify_in_obj(function,pattern='.*',auto_saved=False):
         if auto_saved:
             with enc.Preferences(file,'w') as f:
                 f.prefs = list_of_obj
+                
+def finput(prompt='>>> ', text=''):
+    text = str(text)
+    def hook():
+        readline.insert_text(text)
+        readline.redisplay()
+    readline.set_pre_input_hook(hook)
+    result = input(prompt + '\n')
+    readline.set_pre_input_hook()
+    return result
 
 logger.warning(
     """
