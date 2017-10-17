@@ -50,3 +50,20 @@ class MartyrologiumParser(html.parser.HTMLParser):
         self.texts = [ re.sub(r"([^.])(\xa0|\n)",r'\1',elt) for elt in self.texts ]
 
 
+class MartyrologyParser(html.parser.HTMLParser):
+    def __init__(self):
+        self.start = False # if True, start returning text
+        self.current_date = 0 
+        self.texts = [''] # a list of the texts for each day
+        html.parser.HTMLParser.__init__(self)
+
+    def handle_data(self,data):
+        if 'This Day' in data:
+            self.start = True
+            self.current_date += 1
+            self.texts.append('')
+        if self.start:
+            self.texts[self.current_date] += data
+        if 'Thanks be to God' in data:
+            self.start = False
+
