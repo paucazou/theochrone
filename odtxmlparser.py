@@ -9,6 +9,7 @@ from dataswitcher import finput
 import polyglot.detect as polydet
 import xml.etree.ElementTree as eltree
 import lxml.etree
+import unittest.mock as mock
 
 no_error_parser = lxml.etree.XMLParser(recover = True)
 
@@ -18,7 +19,12 @@ def _detect_language(string):
     as following : 'la','fr'.
     If automatic detection can't be made,
     user input is required"""
-    string_detector = polydet.Detector(string)
+    try:
+        string_detector = polydet.Detector(string)
+    except polydet.base.UnknownLanguage:
+        string_detector = mock.MagicMock() # worst idea ever
+        string_detector.reliable = False
+        string_detector.language.confidence = 0
     if string_detector.language.confidence < 90 or not string_detector.reliable:
         answer = ''
         if 'En lune de...' in string:
@@ -28,6 +34,15 @@ def _detect_language(string):
         while answer not in ('la','fr'):
             print(string)
             suggestion = ['',string_detector.language.code][string_detector.language.code in ('la','fr')]
+            if suggestion == '':
+                languages_found = {lang.code for lang in string_detector.languages if lang.code in ('la','fr')}
+                if len(languages_found) != 1:
+                    suggestion = ''
+            if suggestion == '':
+                if set(string.lower().split()).intersection({'saint','sainte','saintes','saints','confesseur','vierge','vierges'}):
+                    suggestion = 'fr'
+                else:
+                    suggestion = 'la'                    
             answer = finput("Quelle est la langue de ce passage ? fr/la\n",suggestion)
         return answer
     return string_detector.language.code

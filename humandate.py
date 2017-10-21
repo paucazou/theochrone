@@ -7,10 +7,6 @@ correct dates in requested language"""
 
 languages_available = {'fr','en'}
 
-months = {'fr':('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
-          'la':('',)
-          }
-
 def main(lang,item,item_type):
     """This function returns the
     returned value of function matching 
