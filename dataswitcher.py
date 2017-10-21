@@ -201,6 +201,16 @@ def finput(prompt='>>> ', text=''):
     readline.set_pre_input_hook()
     return result
 
+def xml_to_pkl(name):
+    """Takes an xml file and convert it to pickle file.
+    Input must be a name without suffix, which exists in the theoXML folder
+    Put the output to data folder"""
+    path = os.path.dirname(enc.__file__) + '/'
+    with enc.Preferences(path + 'theoXML/' + name + '.xml','r') as f:
+        data = f.prefs
+    with open(path + 'programme/data/' + name + '.pkl','bw') as f:
+        pickle.Pickler(f).dump(data)
+    
 logger.warning(
     """
     Hello ! I'm the logger. I'm pretty useless,
