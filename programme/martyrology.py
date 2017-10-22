@@ -5,9 +5,13 @@
 
 
 import calendar
+import collections
+import fuzzywuzzy.fuzz as fuzz
 import humandate
 import os
 import pickle
+
+TextResult = collections.namedtuple("TextResult",("title","main","last_sentence"))
 
 class Martyrology:
     """The Roman Martyrology.
@@ -40,7 +44,8 @@ class Martyrology:
         base = self._get_data(language)['data'][date.month-1][i-1]
         day_formatted = humandate.main(language,date.day,'day')
         first_line = self._first_line[language].format(day_formatted,humandate.months[language][date.month])
-        return "{}\n{}\n{}".format(first_line,base,
+        return TextResult(first_line,
+                          base,
                 self._last_line[language])
 
     def _get_data(self,language):
@@ -55,4 +60,14 @@ class Martyrology:
         """Return appropriate credits for
         requested language"""
         return self._get_data(language)['credits']
+    
+    def find(tokens,lang,max_nb_returned=5):
+        """Look into the texts and returned
+        a list of the texts matching best with tokens entered. Best first.
+        Items of the list are TextResult objects.
+        lang = a string definining which language should be use.
+        max_nb_returned = an int which specifies the max number
+        of results returned"""
+        results = []
+        return results
 
