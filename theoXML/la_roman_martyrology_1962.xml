@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<dict><str key="credits">La Porte Latine - MJCF Paris Sud</str><list key="data"><list><str>Circumcísio Dómini nostri Jesu Christi, et Octáva Nativitátis ejúsdem.      
+<dict><str key="credits">La Porte Latine - MJCF Paris Sud</str><list key="faithful_departed"><str>Commemorátio ómnium Fidélium Defunctórum.</str><str>      
+            Hac die Commemorátio ómnium Fidélium Defunctórum; in qua commúnis pia Mater Ecclésia, postquam univérsos fílios suos jam in cælo lætántes cóngruis stúduit celebráre præcóniis, mox et omnes adhuc in Purgatório geméntes válidis apud Dóminum et Sponsum Christum sátagit suffrágiis adjuváre, ut quam cítius váleant ad societátem supernórum cívium perveníre.</str></list>
+
+<list key="data"><list><str>Circumcísio Dómini nostri Jesu Christi, et Octáva Nativitátis ejúsdem.      
 Romæ pássio sanctæ Martínæ, Vírginis et Mártyris; quæ, sub Alexándro Imperatóre, divérsis tormentórum genéribus cruciáta, tandem, gládio percússa, martyrii palmam adépta est. Ipsíus vero festum tértio Kaléndas Februárii recólitur.      
 Cæsaréæ, in Cappadócia, deposítio sancti Basilíi, cognoménto Magni, Epíscopi, Confessóris et Ecclésiæ Doctóris; qui, témpore Valéntis Imperatóris, doctrína et sapiéntia insignítus omnibúsque virtútibus exornátus, mirabíliter effúlsit, et Ecclésiam advérsus Ariános et Macedoniános inexpugnábili constántia deféndit. Ejus autem festívitas potíssimum ágitur décimo octávo Kaléndas Júlii, quo die Epíscopus ordinátus est.      
 Apud montem Senárium, in Etrúria, natális sancti Bonfílii Confessóris, e septem Fundatóribus Ordinis Servórum beátæ Maríæ Vírginis, quam cum idem impénse coluísset, ab ipsa in cælum repénte evocátus est. Illíus porro ac Sociórum festum prídie Idus Februárii celebrátur.      
@@ -367,7 +370,7 @@ Tudérti, in Umbria, sancti Benígni, Presbyteri et Mártyris; qui, Diocletiáni
 Melitínæ, in Arménia, sancti Polyéucti Mártyris, qui in persecutióne Décii multa passus, martyrii corónam adéptus est.      
 Lugdúni, in Gállia, sancti Juliáni Mártyris.      
 Ravénnæ sanctárum Fuscæ Vírginis, ejúsque nutrícis Mauræ; quæ, Décio imperánte, multa sub Quinctiáno Præside perpéssæ, demum, gládio transfíxæ, martyrium consummárunt.      
-Lugdúni, in Gállia, sancti Stéphani, Epíscopi et Confessóris. At Lyons in France, St. Stephen, bishop and confessor.       
+Lugdúni, in Gállia, sancti Stéphani, Epíscopi et Confessóris.       
 Reáte sancti Stéphani Abbátis, miræ patiéntiæ viri; in cujus tránsitu (ut refert beátus Gregórius Papa) sancti Angeli, céteris étiam vidéntibus, adfuérunt.      
 </str><str>Romæ, via Flamínia, natális sancti Valentíni, Presbyteri et Mártyris, qui, post multa sanitátum et doctrínæ insígnia, fústibus cæsus et decollátus est, sub Cláudio Cǽsare.      
 Ibídem deposítio sancti Cyrílli, Epíscopi et Confessóris; qui, una cum sancto Methódio, simíliter Epíscopo et fratre suo, cujus dies natális octávo Idus Aprílis recensétur, multas Slávicas gentes earúmque Reges ad fidem Christi perdúxit. Horum tamen Sanctórum festívitas Nonis Júlii celebrátur.      
@@ -449,7 +452,7 @@ Romæ sancti Polycárpi Presbyteri, qui, cum beáto Sebastiáno, plúrimos ad Ch
 Híspali, in Hispánia, sancti Floréntii Confessóris.      
 Tudérti, in Umbria, sanctæ Románæ Vírginis, quæ, a sancto Silvéstro Papa baptizáta, in antris et spelúncis cæléstem vitam duxit, et miraculórum glória cláruit.      
 In Anglia sanctæ Milbúrgis Vírginis, fíliæ Regis Merciórum.      
-</str><str>In Judǽa natális sancti Matthíæ Apóstoli, qui, post Ascensiónem Dómini ab Apóstolis in Judæ proditóris locum sorte eléctus, pro Evangélii prædicatióne martyrium passus est. In Judea, the birthday of St. Matthias the Apostle.      
+</str><str>In Judǽa natális sancti Matthíæ Apóstoli, qui, post Ascensiónem Dómini ab Apóstolis in Judæ proditóris locum sorte eléctus, pro Evangélii prædicatióne martyrium passus est.    
 Romæ sanctæ Primitívæ Mártyris.      
 Rotómagi pássio sancti Prætextáti, Epíscopi et Mártyris.      
 Cæsaréæ, in Cappadócia, sancti Sérgii Mártyris, cujus gesta præclára habéntur.      
@@ -1200,7 +1203,7 @@ Nannéte, in Británnia minóre, beatórum Mártyrum Donatiáni et Rogatiáni fr
 In Istria sanctórum Mártyrum Zoélli, Servílii, Felícis, Silváni, et Dióclis.      
 Eódem die sanctórum Mártyrum Melétii, ducis exércitus, ac Sociórum ejus ducentórum et quinquagínta duórum mílitum; qui divérso mortis génere martyrium complevérunt.      
 Item sanctárum Mártyrum Susánnæ, Marciánæ et Palládiæ, eorúndem mílitum uxórum, quæ, una cum párvulis suis, confráctæ sunt.      
-Medioláni sancti Robustiáni Mártyris. At Milan, St. Robustian, martyr.       
+Medioláni sancti Robustiáni Mártyris.      
 Bríxiæ sanctæ Afræ Mártyris, quæ sub Hadriáno Imperatóre passa est.      
 In monastério Lirinénsi, in Gállia, sancti Vincéntii Presbyteri, doctrína et sanctitáte conspícui.      
 Marróchii, in Africa, beáti Joánnis de Prado, Sacerdótis ex Ordine Minórum et Mártyris; qui, in prædicatióne Evangélii, post víncula, cárceres, flagélla plurimáque ália torménta, pro Christo fórtiter toleráta, per ignem martyrium consummávit.      
@@ -2520,7 +2523,7 @@ Item sanctórum Saturníni et Lupi.
 Cæsaréæ, in Palæstína, sanctæ Fortunátæ, Vírginis et Mártyris, ac prædicatórum Mártyrum Carpónii, Evarísti et Prisciáni soróris; quæ, in persecutióne Diocletiáni, post equúleum, ignes, béstias et ália torménta superáta, spíritum Deo réddidit. Ipsíus corpus póstea Neápolim, in Campánia, delátum fuit.      
 Tudérti, in Umbria, sancti Fortunáti Epíscopi, qui (ut beátus Gregórius Papa refert) in immúndis spirítibus effugándis imménsæ grátia virtútis emícuit.      
 Herbípoli, in Germánia, sancti Burchárdi, qui fuit primus illíus civitátis Epíscopus.      
-Brugis Flandrórum sancti Donatiáni, Rheménsis Epíscopi. At Bruges in Belgium, St. Donatian, bishop of Rheims.       
+Brugis Flandrórum sancti Donatiáni, Rheménsis Epíscopi.
 Tréviris sancti Rústici Epíscopi.      
 Lugdúni, in Gállia, sancti Justi, Epíscopi et Confessóris, miræ sanctitátis et prophétici spíritus viri; qui, Episcopátu demísso, in erémum Ægypti, una cum Lectóre suo Viatóre, secéssit, ibíque, cum áliquot annos próximam Angelis egísset vitam, et dignus suórum labórum finis advenísset, corónam justítiæ perceptúrus migrávit ad Dóminum. Ipsíus sanctum corpus, una cum óssibus beáti Viatóris, qui ejúsdem Epíscopi fúerat miníster, Lugdúnum póstea quarto Nonas Septémbris delátum fuit.      
 Eódem die deposítio beáti Domínici Loricáti.      
@@ -2689,9 +2692,7 @@ Bajócis, in Gállia, sancti Vigóris Epíscopi, témpore Childebérti, Francór
 Andégavi, in Gállia, deposítio sancti Licínii Epíscopi, venerábilis sanctitátis viri.      
 Tíbure sancti Severíni Mónachi.      
 Lyricánti, in Wastinénsi Gálliæ território, sancti Maturíni Confessóris.      
-</str><str>Commemorátio ómnium Fidélium Defunctórum.      
-Si dies secunda Novembris incidat in Dominicam, prædicta verba leguntur primo loco, die sequenti.      
-Pœtovióne, in Pannónia superióre, natális sancti Victoríni, ejúsdem civitátis Epíscopi, qui, post multa édita scripta (ut sanctus Hierónymus testátur), in persecutióne Diocletiáni, martyrio coronátus est.      
+</str><str>Pœtovióne, in Pannónia superióre, natális sancti Victoríni, ejúsdem civitátis Epíscopi, qui, post multa édita scripta (ut sanctus Hierónymus testátur), in persecutióne Diocletiáni, martyrio coronátus est.      
 Tergéste pássio beáti Justi, qui in eádem persecutióne, sub Manátio Præside, martyrium consummávit.      
 Sebáste, in Arménia, sanctórum Cartérii, Styríaci, Tobíæ, Eudóxii, Agápii et Sociórum Mártyrum, sub Licínio Imperatóre.      
 In Pérside sanctórum Mártyrum Acíndyni, Pegásii, Aphthónii, Elpidíphori et Anempodísti, cum plúrimis Sóciis.      
@@ -2701,10 +2702,7 @@ Laodicéæ, in Syria, sancti Theódoti Epíscopi, qui non solum verbis, sed rebu
 Viénnæ, in Gállia, sancti Geórgii Epíscopi.      
 In monastério Agaunénsi, in Gállia, sancti Ambrósii Abbátis.      
 Cyri, in Syria, sancti Marciáni Confessóris.      
-</str><str>In ipsa die Commemorationis omnium Fidelium Defunctorum, antequam legantur Nonæ:      
-Hac die Commemorátio ómnium Fidélium Defunctórum; in qua commúnis pia Mater Ecclésia, postquam univérsos fílios suos jam in cælo lætántes cóngruis stúduit celebráre præcóniis, mox et omnes adhuc in Purgatório geméntes válidis apud Dóminum et Sponsum Christum sátagit suffrágiis adjuváre, ut quam cítius váleant ad societátem supernórum cívium perveníre.      
-Postea dicitur: Tértio, vel Prídie Nonas Novémbris, Luna..., et continuatur Lectio usque ad finem, more solito.      
-Medioláni natália sancti Cároli Borromæi Cardinális, Epíscopi Mediolanénsis et Confessóris, quem, sanctitáte conspícuum et miráculis clarum, Paulus Papa Quintus in Sanctórum númerum rétulit. Ipsíus tamen festívitas sequénti die celebrátur.      
+</str><str>Medioláni natália sancti Cároli Borromæi Cardinális, Epíscopi Mediolanénsis et Confessóris, quem, sanctitáte conspícuum et miráculis clarum, Paulus Papa Quintus in Sanctórum númerum rétulit. Ipsíus tamen festívitas sequénti die celebrátur.      
 Eódem die natális quoque sancti Quarti, Apostolórum discípuli.      
 Vitérbii sanctórum Mártyrum Valentíni Presbyteri, et Hilárii Diáconi, qui, in persecutióne Maximiáni, ob Christi fidem, cum saxi póndere in Tíberim præcipitáti et inde ab Angelo divínitus erépti, demum, abscíssis cervícibus, corónam martyrii percepérunt.      
 Cæsaréæ, in Cappadocia, sanctórum Mártyrum Germáni, Theóphili, Cæsárii et Vitális; qui, in persecutióne Deciána, óptime duxérunt martyrium.      

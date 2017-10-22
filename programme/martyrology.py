@@ -39,9 +39,14 @@ class Martyrology:
         """date is a datetime.date like object.
         Return text for requested day and locale"""
         i = date.day
-        if date.month == 2 and date.day >= 25 and calendar.isleap(date.year):
+        if date.month == 2 and date.day >= 25 and calendar.isleap(date.year): # leap years : 25, 26, 27, 28 & 29 of February
             i -=1
+        if date.day == 2 and date.month == 11 and date.isoweekday() == 7: # All faithful departed commemoration
+            
         base = self._get_data(language)['data'][date.month-1][i-1]
+        
+        if date.month == 11 and ((date.day == 2 and date.isoweekday() != 7) or (date.day == 3 and date.isoweekday() == 1)):
+            base = self._get_data(language)['faithful_departed'] + base
         day_formatted = humandate.main(language,date.day,'day')
         first_line = self._first_line[language].format(day_formatted,humandate.months[language][date.month])
         return TextResult(first_line,
