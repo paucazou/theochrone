@@ -604,14 +604,20 @@ class Defunts(FeteFixe):
     def __init__(self):
         FeteFixe.__init__(self)
         
-    def _get_priorite(self): # TEST
+    def _get_priorite(self): # TEST probably useless
         """Détermine quelle sera la valeur de la priorité selon que le jour sera un dimanche ou non."""
         if datetime.date.isoweekday(self.date) != 7:
             return 2100
         else:
             return 1499 # càd juste en-dessous d'un dimanche de deuxième classe
         
-    priorite=property(_get_priorite)
+    def DateCivile_(self,paques,annee):
+        base_date = FeteFixe.DateCivile_(self,paques,annee)
+        if base_date.isoweekday() == 7:
+            base_date = base_date + datetime.timedelta(1)
+        return base_date
+        
+    priorite=property(_get_priorite) # probably useless
     
 class DimancheOctaveNoel(Fete):
     """Une classe définisssant les fêtes mobiles après Noël."""
