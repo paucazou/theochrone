@@ -614,6 +614,8 @@ class Defunts(FeteFixe):
     def DateCivile_(self,paques,annee):
         base_date = FeteFixe.DateCivile_(self,paques,annee)
         if base_date.isoweekday() == 7:
+            self._transferee = True
+            self.date_originelle = base_date 
             base_date = base_date + datetime.timedelta(1)
         return base_date
         
