@@ -209,11 +209,25 @@ def main():
 #### Affichage ###
 
     if args.INVERSE != 1: # des raisons aléatoires semblent s'appliquer...
-        liste = officia.inversons(args.INVERSE,Annee,debut,fin,plus=args.plus,langue=args.langue,exit=True)
-        if args.textes and len(liste) < 4:
-            for fete in liste:
-                webbrowser.open_new_tab(fete.link)
-        print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,Annee=Annee,langue=args.langue,date=debut,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station))
+        if args.martyrology:
+            results = roman_martyrology.kw(args.INVERSE,args.langue,5) # TODO ajouter le ratio ou le nb max d'items
+            for res in results:
+                print(res.title)
+                if res.matching_line > 0:
+                    print(*res.main[:res.matching_line],sep='\n')
+                sys.stdout.write("\033[1;31m") # print red
+                print(res.main[res.matching_line])
+                sys.stdout.write("\033[0;0m") # print white
+                if res.matching_line + 1 != len(res.main):
+                    print(*res.main[res.matching_line + 1:],sep='\n')
+                print(res.last_sentence,'\n')
+        else:
+            liste = officia.inversons(args.INVERSE,Annee,debut,fin,plus=args.plus,langue=args.langue,exit=True)
+            if args.textes and len(liste) < 4:
+                for fete in liste:
+                    webbrowser.open_new_tab(fete.link)
+                    
+            print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,Annee=Annee,langue=args.langue,date=debut,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station))
     else:
         if args.textes and debut == fin:
             for fete in Annee[debut]:

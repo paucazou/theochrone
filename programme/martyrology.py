@@ -17,7 +17,7 @@ logger = phlog.loggers['console']
 
 file_path = os.path.dirname(os.path.abspath(__file__)) + '/'
 
-TextResult = collections.namedtuple("TextResult",("title","main","last_sentence"))
+TextResult = collections.namedtuple("TextResult",("title","main","last_sentence",'matching_line'))
 TextRatio = collections.namedtuple("TextRatio",("month","day","matching_line",'ratio'))
 
 class Martyrology:
@@ -48,9 +48,10 @@ class Martyrology:
                 file.split('_')[0] : data_path + file
                 for file in files_list} 
 
-    def daytext(self,date,language):
+    def daytext(self,date,language,matching_line=None):
         """date is a datetime.date like object.
-        Return text for requested day and locale"""
+        Return text for requested day and locale
+        matching_line is needed if kw called daytext"""
         i = date.day
         if date.month == 2 and date.day >= 25 and calendar.isleap(date.year): # leap years : 25, 26, 27, 28 & 29 of February
             i -=1
@@ -62,7 +63,8 @@ class Martyrology:
         first_line = self._first_line[language].format(day_formatted,humandate.months[language][date.month])
         return TextResult(first_line,
                           base,
-                self._last_line[language])
+                self._last_line[language],
+                matching_line)
 
     def _get_data(self,language):
         """Loads data if necessary.
@@ -102,11 +104,11 @@ class Martyrology:
         results.sort(key=lambda item:item.ratio,reverse=True)
         return [result for result in results if result.ratio >= min_ratio][:max_nb_returned]
     
-    def kw(self,tokens,lang,max_nb_returned = 5,min_ratio = 80,year = datetime.date.today().year): # WARNING commemoration of faithful_departed can not be find by this way
+    def kw(self,tokens,lang,max_nb_returned = -1,min_ratio = 80,year = datetime.date.today().year): # WARNING commemoration of faithful_departed can not be find by this way
         """Wrapper of self._raw_kw. Return a list of the texts
-        Items of the list are TextResult objects.
+        Items of the list are TextResult objects including index of matching line.
         year is an int"""
         results = self._raw_kw(tokens,lang,max_nb_returned)
-        return [ (self.daytext(datetime.date(year,item.month,item.day),lang),item.matching_line) for item in results ]
+        return [ self.daytext(datetime.date(year,item.month,item.day),lang,item.matching_line) for item in results ]
         
 
