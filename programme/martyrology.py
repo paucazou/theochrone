@@ -7,15 +7,18 @@
 import calendar
 import collections
 import datetime
-import fuzzywuzzy.fuzz as fuzz
+import fuzzer
 import humandate
 import os
 import pickle
+import phlog
+
+logger = phlog.loggers['console']
 
 file_path = os.path.dirname(os.path.abspath(__file__)) + '/'
 
 TextResult = collections.namedtuple("TextResult",("title","main","last_sentence"))
-TextRatio = collections.namedtuple("TextRatio",("month","day",'ratio'))
+TextRatio = collections.namedtuple("TextRatio",("month","day","matching_line",'ratio'))
 
 class Martyrology:
     """The Roman Martyrology.
@@ -74,29 +77,36 @@ class Martyrology:
         requested language"""
         return self._get_data(language)['credits']
     
-    def _raw_kw(self,tokens,lang,max_nb_returned):
+    def _raw_kw(self,tokens,lang,max_nb_returned=-1,min_ratio=0):
         """Look into the texts and returned
         a list of indices of the texts matching best with tokens entered.
         Best first.
-        tokens = a string with keywords
+        tokens = a list of keywords
         lang = a string definining which language should be use.
         max_nb_returned = an int which specifies the max number
-        of results returned"""
-        tokens = tokens.lower()
+        of results returned. -1 = all
+        min_ratio = an int or a float which specifies the minimum ratio
+        of results returned. 0 = all
+        """
         results = []
-        sort_function = (fuzz.partial_token_sort_ratio,fuzz.partial_ratio)[len(tokens.split()) == 1] # pas encore au point
-        for i,month in enumerate(self._get_data(lang)['data']):
-            for j,day in enumerate(month):
-                day = ' '.join(day).lower()
-                results.append(TextRatio(i+1,j+1,sort_function(tokens,day)))
+        for i, month in enumerate(self._get_data(lang)['data']):
+            for j, day in enumerate(month):
+                day = [line.lower() for line in day]
+                day_ratio = 0
+                for k,line in enumerate(day):
+                    line_ratio = fuzzer.token_fuzzer(tokens,line)
+                    if line_ratio > day_ratio:
+                        day_ratio = line_ratio
+                        matching_line = k
+                results.append(TextRatio(i+1,j+1,matching_line,day_ratio))
         results.sort(key=lambda item:item.ratio,reverse=True)
-        return results[:max_nb_returned]
+        return [result for result in results if result.ratio >= min_ratio][:max_nb_returned]
     
-    def kw(self,tokens,lang,max_nb_returned = 5,year = datetime.date.today().year): # WARNING commemoration of faithful_departed can not be find by this way
+    def kw(self,tokens,lang,max_nb_returned = 5,min_ratio = 80,year = datetime.date.today().year): # WARNING commemoration of faithful_departed can not be find by this way
         """Wrapper of self._raw_kw. Return a list of the texts
         Items of the list are TextResult objects.
         year is an int"""
         results = self._raw_kw(tokens,lang,max_nb_returned)
-        return [ self.daytext(datetime.date(year,item.month,item.day),lang) for item in results ]
+        return [ (self.daytext(datetime.date(year,item.month,item.day),lang),item.matching_line) for item in results ]
         
 
