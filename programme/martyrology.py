@@ -6,6 +6,7 @@
 
 import calendar
 import collections
+import datetime
 import fuzzywuzzy.fuzz as fuzz
 import humandate
 import os
@@ -65,20 +66,29 @@ class Martyrology:
         requested language"""
         return self._get_data(language)['credits']
     
-    def find(self,tokens,lang,max_nb_returned=5):
+    def _raw_kw(self,tokens,lang,max_nb_returned):
         """Look into the texts and returned
-        a list of the texts matching best with tokens entered. Best first.
-        Items of the list are TextResult objects.
+        a list of indices of the texts matching best with tokens entered.
+        Best first.
         tokens = a string with keywords
         lang = a string definining which language should be use.
         max_nb_returned = an int which specifies the max number
         of results returned"""
+        tokens = tokens.lower()
         results = []
-        sort_function = (fuzz.partial_token_sort_ratio,fuzz.partial_ratio)[len(tokens.split()) == 1]
+        sort_function = (fuzz.partial_token_sort_ratio,fuzz.partial_ratio)[len(tokens.split()) == 1] # pas encore au point
         for i,month in enumerate(self._get_data(lang)['data']):
             for j,day in enumerate(month):
-                day = ' '.join(day)
-                results.append(TextRatio(i,j,sort_function(tokens,day)))
+                day = ' '.join(day).lower()
+                results.append(TextRatio(i+1,j+1,sort_function(tokens,day)))
         results.sort(key=lambda item:item.ratio,reverse=True)
-        return results[:max_nb_returned] # TODO à finir : renvoyer les textes eux-mêmes
+        return results[:max_nb_returned]
+    
+    def kw(self,tokens,lang,max_nb_returned = 5,year = datetime.date.today().year): # WARNING commemoration of faithful_departed can not be find by this way
+        """Wrapper of self._raw_kw. Return a list of the texts
+        Items of the list are TextResult objects.
+        year is an int"""
+        results = self._raw_kw(tokens,lang,max_nb_returned)
+        return [ self.daytext(datetime.date(year,item.month,item.day),lang) for item in results ]
+        
 
