@@ -12,6 +12,8 @@ import humandate
 import os
 import pickle
 
+file_path = os.path.dirname(os.path.abspath(__file__)) + '/'
+
 TextResult = collections.namedtuple("TextResult",("title","main","last_sentence"))
 TextRatio = collections.namedtuple("TextRatio",("month","day",'ratio'))
 
@@ -26,15 +28,21 @@ class Martyrology:
         'fr':"V. Et ailleurs, beaucoup d'autres saints martyrs, confesseurs et saintes vierges. Chœur. R. Rendons grâces à Dieu.",
         'la':"V. Et álibi aliórum plurimórum sanctórum Mártyrum et Confessórum, atque sanctárum Vírginum. Chorus. R. Deo grátias. ",
             } # a dict of the last lines
+    name = {
+        'fr':'Martyrologe Romain',
+        'la':'Romanum Martyrologium',
+        'en':'Roman Martyrology',
+        }
 
     def __init__(self,date=1962):
         """Inits the class.
         date is the edition selected.
         Loads names of files"""
+        data_path = file_path + 'data/'
         pattern = "roman_martyrology_{}.pkl".format(date)
-        files_list = [file for file in os.listdir('data') if pattern in file]
+        files_list = [file for file in os.listdir(data_path) if pattern in file]
         self._data = { 
-                file.split('_')[0] : 'data/' + file
+                file.split('_')[0] : data_path + file
                 for file in files_list} 
 
     def daytext(self,date,language):

@@ -22,6 +22,7 @@ autocomplete.autocomplete()
 import annus
 import calendar
 import datetime
+import martyrology
 import officia
 import phlog
 import shiptobrowser
@@ -203,6 +204,7 @@ def main():
     #Annee = officia.fabrique_an(debut,fin,ordo,argsr.propre)
     Annee = annus.LiturgicalCalendar(args.propre,ordo)
     Annee(debut.year,fin.year)
+    roman_martyrology = martyrology.Martyrology(args.ordo)
 
 #### Affichage ###
 
@@ -219,6 +221,9 @@ def main():
         date = debut
         while True:
             print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=False,                   liste=Annee[date],Annee=Annee,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station))
+            if args.martyrology:
+                first_line,text,last_line = roman_martyrology.daytext(date,args.langue)
+                print('\n',roman_martyrology.name[args.langue],*text,last_line,sep='\n')
             date = date + datetime.timedelta(1)
             if date <= fin:
                 print('')
