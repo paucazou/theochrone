@@ -69,6 +69,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':[],
             'long' : ['--show-texts'],
             },
+        'martyrology':{
+            'short':['-M'],
+            'long':['--show-martyrology'],
+            },
         'station':{
             'short':['-I'],
             'long':['--statio'],
@@ -295,7 +299,8 @@ def args():
     main.add_argument('-r','--reverse',dest='INVERSE',nargs='*',default=1,help=_("""Alpha. Does not work properly.
         Reverse is to be a way to find and print feast by entering their names as arguments,
         ex : -r Easter, -r 21 Sunday after Pentecost,...
-        Every other options are available with this one."""))
+        Every other options are available with this one.
+        With -M option, search is done inside the Roman Martyrology"""))
 
     affichage = parser.add_argument_group(_('Print options'),description=_("Convenient options for printing results"))
     affichage.add_argument('-v','--verbose', help=_("make theochrone more verbose. Equals to -cdstwLD, and more."),action='store_true')
@@ -309,6 +314,7 @@ def args():
     affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected.
         Opens the introibo.fr page in a webbrowser.
         Works only with -r/--reverse (three results max) or an only date."""),action='store_true')
+    affichage.add_argument(*arguments['martyrology']['short'],*arguments['martyrology']['long'],dest="martyrology",help=_("""Print the Roman Martyrology for period requested"""),action='store_true')
     affichage.add_argument(*arguments['station']['short'],*arguments['station']['long'],dest='station',help=_("""if there is a statio, print it"""),action='store_true')
     affichage.add_argument('-l','--language', dest='langue', action=CoursDeLangue, help=_("""choose your language /!\ ONLY FRENCH AVAILABLE /!\ 
         Available languages :
