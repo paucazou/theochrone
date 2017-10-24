@@ -9,7 +9,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h1 id="result" class="title text-center">{% if martyrology and not inversion%}{{ main_title }}{% else %}Résultats{% endif %}</h1>
-						{% if mois_seul or martyrology %}
+						{% if mois_seul or martyrology and not inversion %}
          <nav aria-label="...">
             <ul class="pager">
                 <li class="previous"><a href="{{ previous_item }}"><span aria-hidden="true">&larr;</span> Précédent</a></li>
