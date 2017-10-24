@@ -18,17 +18,16 @@
         </nav>
         {% endif %}
         {% if martyrology %}
-        {% for daytext in result %}
-        <h3>{{ daytext.title }}</h3>
-        {% for line in daytext.main %}
-<!--    si c'est matching line, rajouter class="lead"      -->
-        <blockquote class="blockquote">
-        <p>{% if forloop.counter0 == daytext.matching_line %}<mark>{{ line }}</mark>{% else %}{{ line }}{% endif %}</p>
-        {% endfor %}
-        <p>{{ daytext.last_sentence }}</p>
-        <footer class="blockquote-footer">Merci à <cite title="Source Title">{{ credits }}</cite></footer>
-        </blockquote>
-        {% endfor %}
+            {% for daytext in result %}
+                <h3>{{ daytext.title }}</h3>
+                <blockquote class="blockquote">
+                    {% for line in daytext.main %}
+                        <p>{% if forloop.counter0 == daytext.matching_line %}<mark>{{ line }}</mark>{% else %}{{ line }}{% endif %}</p>
+                    {% endfor %}
+                    <p>{{ daytext.last_sentence }}</p>
+                    <footer class="blockquote-footer">Crédits : <cite title="Source Title">{{ credits }}</cite></footer>
+                </blockquote>
+            {% endfor %}
         {% else %}       
             {% for date,jour in deroule %}
             <h3>{{ date }}</h3>
