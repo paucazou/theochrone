@@ -105,6 +105,7 @@ class Martyrology:
         return [result for result in results if result.ratio >= min_ratio][:max_nb_returned]
     
     def kw(self,tokens,lang,max_nb_returned = -1,min_ratio = 80,year = datetime.date.today().year): # WARNING commemoration of faithful_departed can not be find by this way
+    # BUG rechercher un mot-clef le jour de la commémoration des fidèles défunts pose un problème dans le nombre de lignes... Il faut trouver un autre système.
         """Wrapper of self._raw_kw. Return a list of the texts
         Items of the list are TextResult objects including index of matching line.
         year is an int"""

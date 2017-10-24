@@ -139,7 +139,8 @@ def martyrology_kw(request,recherche_mot_clef=None):
     """Return martyrology for a keyword reseach"""
     inversion = martyrology = True
     keywords = recherche_mot_clef.cleaned_data['recherche']
-    result = martyrology_instance.kw(keywords.split(),'fr',max_nb_returned=5,year=recherche_mot_clef.cleaned_data['annee'])
+    max_nb_returned = [10,5][not recherche_mot_clef.cleaned_data['plus']]
+    result = martyrology_instance.kw(keywords.split(),'fr',max_nb_returned=max_nb_returned,year=recherche_mot_clef.cleaned_data['annee'])
     mois_entier=MoisEntier(None)
     recherche_simple=RechercheSimple(None)
     hashtag = 'resultup'
