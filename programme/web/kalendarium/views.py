@@ -14,8 +14,10 @@ programme = os.path.abspath(chemin + '/../..')
 sys.path.append(programme)
 import annus
 import adjutoria
+import martyrology
 import officia
 
+martyrology_instance = martyrology.Martyrology()
 Annee = annus.LiturgicalCalendar()
 host = "localhost:8000"
 s=''
@@ -38,16 +40,6 @@ def home(request,
     - plus : a bool used to know whether the research must be large, or not ;
     - annee : the year ;
     """
-    trunk = 'https://theochrone.000webhostapp.com/static/downloads/'
-    downloads = {'windows32':trunk + 'windows/theochrone32.zip',
-                 'windows64':trunk + 'windows/theochrone64.zip',
-                 'linux32':trunk + 'linux/theochrone32',
-                 'linux64':trunk + 'linux/theochrone64',
-                 'osx32':trunk + 'osx/theochrone32',
-                 'osx64':trunk + 'osx/theochrone64',
-                 'python':trunk + 'python/Theochrone.zip',
-                 } # list of downloads
-    
     retour = ''
     deroule = {}
     if mots_clefs == '':
@@ -85,21 +77,29 @@ def mc_transfert(request):
     """A function which takes the request argument (GET) and returns the home function with the results of a research by name"""
     recherche_mot_clef = RechercheMotClef(request.GET or None)
     if recherche_mot_clef.is_valid():
-        mots_clefs = recherche_mot_clef.cleaned_data['recherche']
-        plus = recherche_mot_clef.cleaned_data['plus']
-        annee = recherche_mot_clef.cleaned_data['annee']
-        return home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,annee=annee)
+        if recherche_mot_clef.cleaned_data['martyrology']:
+            result = martyrology_kw(request,recherche_mot_clef)
+        else:
+            mots_clefs = recherche_mot_clef.cleaned_data['recherche']
+            plus = recherche_mot_clef.cleaned_data['plus']
+            annee = recherche_mot_clef.cleaned_data['annee']
+            result = home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,annee=annee)
     else:
-        return home(request, recherche_mot_clef)
+        result = home(request, recherche_mot_clef)
+    return result
         
 def date_transfert(request):
     """A function which takes the request arguments (GET) and returns the home function with the results of a research by date"""
     recherche_simple = RechercheSimple(request.GET or None)
     if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
-        return home(request,recherche_simple=recherche_simple,debut=date,fin=date)
+        if recherche_simple.cleaned_data['martyrology']:
+            result = martyrology_date(request,date,recherche_simple)
+        else:
+            result = home(request,recherche_simple=recherche_simple,debut=date,fin=date)
     else:
-        return home(request,recherche_simple=recherche_simple)
+        result = home(request,recherche_simple=recherche_simple)
+    return result
 
 def mois_transfert(request):
     """A function which takes the request arguments (GET) and returns the home function with the results of a research of a complete month"""
@@ -118,6 +118,34 @@ def mois_transfert(request):
         return home(request,mois_entier=mois_entier,mois_seul=True,debut=debut,fin=fin)
     else:
         return home(request, mois_entier=mois_entier)
+    
+def martyrology_date(request,date=None,recherche_simple=None):
+    """Return martyrology for a date"""
+    if not date:
+        return home(request)
+    result = (martyrology_instance.daytext(date,'fr'),) # a tuple in order to iterate in template
+    martyrology = True
+    recherche_mot_clef=RechercheMotClef(None)
+    mois_entier=MoisEntier(None)
+    hashtag = 'resultup'
+    next_item = officia.datetime_to_link(date + datetime.timedelta(1),host,'on',hashtag,s)
+    previous_item = officia.datetime_to_link(date - datetime.timedelta(1),host,'on',hashtag,s)
+    main_title = martyrology_instance.name['fr']
+    credits = martyrology_instance.credits('fr')
+    titre = "Martyrologe romain : {}".format(result[0].title)
+    return render(request,'kalendarium/accueil.html',locals())
+
+def martyrology_kw(request,recherche_mot_clef=None):
+    """Return martyrology for a keyword reseach"""
+    inversion = martyrology = True
+    keywords = recherche_mot_clef.cleaned_data['recherche']
+    result = martyrology_instance.kw(keywords.split(),'fr',max_nb_returned=5,year=recherche_mot_clef.cleaned_data['annee'])
+    mois_entier=MoisEntier(None)
+    recherche_simple=RechercheSimple(None)
+    hashtag = 'resultup'
+    credits = martyrology_instance.credits('fr')
+    titre = "Martyrologe romain : {}".format(keywords)
+    return render(request,'kalendarium/accueil.html',locals())
     
 # contact
 def contact(request):
@@ -163,6 +191,15 @@ def widget(request):
 def download(request):
     """View for download page"""
     title = "Télécharger"
+    trunk = 'https://theochrone.000webhostapp.com/static/downloads/'
+    downloads = {'windows32':trunk + 'windows/theochrone32.zip',
+                 'windows64':trunk + 'windows/theochrone64.zip',
+                 'linux32':trunk + 'linux/theochrone32',
+                 'linux64':trunk + 'linux/theochrone64',
+                 'osx32':trunk + 'osx/theochrone32',
+                 'osx64':trunk + 'osx/theochrone64',
+                 'python':trunk + 'python/Theochrone.zip',
+                 } # list of downloads
     return render(request,'kalendarium/download.html',locals())
 
 

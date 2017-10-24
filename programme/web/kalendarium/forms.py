@@ -16,6 +16,7 @@ class RechercheSimple(forms.Form):
                                      'class' : "form-control"}),
                                  required = True,label="Choisissez une date",initial = datetime.date.today
                                  )
+    martyrology = forms.BooleanField(label="Afficher le Martyrologe Romain",required=False)
 
 class RechercheMotClef(forms.Form):
     """A class which defines a form for a research by key words"""
@@ -25,6 +26,7 @@ class RechercheMotClef(forms.Form):
     recherche = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'},),
         label="Entrez vos mots-clefs",required=True)
     plus = forms.BooleanField(label="Recherche large",required=False)
+    martyrology = forms.BooleanField(label="Rechercher dans le Martyrologe Romain",required=False)
 
 class MoisEntier(forms.Form):
     """A class which defines a form for a reserch of a complete month"""

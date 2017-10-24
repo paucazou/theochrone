@@ -8,8 +8,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h1 id="result" class="title text-center">Résultats</h1>
-						{% if mois_seul %}
+						<h1 id="result" class="title text-center">{% if martyrology and not inversion%}{{ main_title }}{% else %}Résultats{% endif %}</h1>
+						{% if mois_seul or martyrology %}
          <nav aria-label="...">
             <ul class="pager">
                 <li class="previous"><a href="{{ previous_item }}"><span aria-hidden="true">&larr;</span> Précédent</a></li>
@@ -17,6 +17,19 @@
             </ul>
         </nav>
         {% endif %}
+        {% if martyrology %}
+        {% for daytext in result %}
+        <h3>{{ daytext.title }}</h3>
+        {% for line in daytext.main %}
+<!--    si c'est matching line, rajouter class="lead"      -->
+        <blockquote class="blockquote">
+        <p>{% if forloop.counter0 == daytext.matching_line %}<mark>{{ line }}</mark>{% else %}{{ line }}{% endif %}</p>
+        {% endfor %}
+        <p>{{ daytext.last_sentence }}</p>
+        <footer class="blockquote-footer">Merci à <cite title="Source Title">{{ credits }}</cite></footer>
+        </blockquote>
+        {% endfor %}
+        {% else %}       
             {% for date,jour in deroule %}
             <h3>{{ date }}</h3>
             <div id="value">     <div class="panel-group">           
@@ -77,6 +90,7 @@
             
                     
          {% endfor %} 
+        {% endif %}
          {% if not inversion %}
          <nav aria-label="...">
             <ul class="pager">
@@ -85,6 +99,7 @@
             </ul>
         </nav>
         {% endif %}
+<!--          trop d'espace : des div inutiles ?-->
         </div></div></div></div>
         <!-- section end -->
         <!-- section start -->
