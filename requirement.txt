@@ -1,3 +1,4 @@
 Django>=1.10.1
 PyQt5>=5.7.1
 xlwt>=1.2.1
+Levenshtein>=0.12.0

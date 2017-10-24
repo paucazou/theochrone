@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*-coding:Utf-8 -*
 #Deus, in adjutorium meum intende
-import fuzzywuzzy.fuzz as fuzz
+import Levenshtein
 import re
 
 def token_fuzzer(tokens,text):
@@ -19,7 +19,7 @@ def token_fuzzer(tokens,text):
     for token in tokens:
         token_ratio = 0
         for word in text:
-            word_ratio = fuzz.ratio(token,word)
+            word_ratio = Levenshtein.ratio(token,word)
             if word_ratio > token_ratio:
                 token_ratio = word_ratio
             if word_ratio == 100:
