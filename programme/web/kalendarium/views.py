@@ -133,6 +133,7 @@ def martyrology_date(request,date=None,recherche_simple=None):
     main_title = martyrology_instance.name['fr']
     credits = martyrology_instance.credits('fr')
     titre = "Martyrologe romain : {}".format(result[0].title)
+    result_len = len(result)
     return render(request,'kalendarium/accueil.html',locals())
 
 def martyrology_kw(request,recherche_mot_clef=None):
@@ -146,6 +147,7 @@ def martyrology_kw(request,recherche_mot_clef=None):
     hashtag = 'resultup'
     credits = martyrology_instance.credits('fr')
     titre = "Martyrologe romain : {}".format(keywords)
+    result_len = len(result)
     return render(request,'kalendarium/accueil.html',locals())
     
 # contact

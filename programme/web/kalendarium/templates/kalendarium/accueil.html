@@ -19,7 +19,14 @@
         {% endif %}
         {% if martyrology %}
             {% for daytext in result %}
-                <h3>{{ daytext.title }}</h3>
+            <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" href="#martyrology{{ forloop.counter0 }}">{{ daytext.title }}</a>
+      </h4>
+    </div>
+    <div id="martyrology{{ forloop.counter0 }}" class="panel-collapse collapse {% if result_len == 1 %}in{% endif %}">
+      <div class="panel-body">
                 <blockquote class="blockquote">
                     {% for line in daytext.main %}
                         <p>{% if forloop.counter0 == daytext.matching_line %}<mark>{{ line }}</mark>{% else %}{{ line }}{% endif %}</p>
@@ -27,6 +34,7 @@
                     <p>{{ daytext.last_sentence }}</p>
                     <footer class="blockquote-footer">Crédits : <cite title="Source Title">{{ credits }}</cite></footer>
                 </blockquote>
+    </div></div></div>
             {% endfor %}
         {% else %}       
             {% for date,jour in deroule %}
