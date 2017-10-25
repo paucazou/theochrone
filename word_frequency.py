@@ -43,5 +43,15 @@ def infer_spaces(string,words,wordcost,maxword):
         assert c == cost[i]
         out.append(string[i-k:i])
         i -= k
+    
+    # trying to prevent some common errors
+    if not [ elt for elt in out if len(elt) > 2 ]:
+        return string
+    nout = []
+    for i,elt in enumerate(out):
+        if len(out[i-1]) == 1:
+            elt = out[i-1] + elt
+            del(nout[-1])
+        nout.append(elt)
 
     return " ".join(reversed(out))

@@ -89,7 +89,7 @@ class Martyrology:
         of results returned. -1 = all
         min_ratio = an int or a float which specifies the minimum ratio
         of results returned. 0 = all
-        """
+        """ # essayer d'ajouter word frequency sur les mots de plus de dix caractères TODO essayer de tenir compte de l'ordre dans lequel se présente les tokens -> une prime avec partial ? -> non, car on supprime certains mots sans importance ; regarder la proximité ? noter l'index du mot, et l'index d'un autre. voir s'ils sont proches ? TODO
         results = []
         for i, month in enumerate(self._get_data(lang)['data']):
             for j, day in enumerate(month):
