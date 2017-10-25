@@ -63,7 +63,10 @@ def home(request,
     else:
         titre = mots_clefs
         Annee(annee)
-        deroule[titre] = officia.inversons(mots_clefs,Annee,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='fr',exit=False,plus=plus)
+        try:
+            deroule[titre] = officia.inversons(mots_clefs,Annee,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='fr',exit=True,plus=plus)
+        except SystemExit:
+            deroule[titre] = []
         inversion=True
 
     for value in deroule.values():
