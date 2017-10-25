@@ -7,7 +7,7 @@
 import calendar
 import collections
 import datetime
-import fuzzer
+import matcher
 import humandate
 import os
 import pickle
@@ -91,12 +91,13 @@ class Martyrology:
         of results returned. 0 = all
         """ # essayer d'ajouter word frequency sur les mots de plus de dix caractères TODO essayer de tenir compte de l'ordre dans lequel se présente les tokens -> une prime avec partial ? -> non, car on supprime certains mots sans importance ; regarder la proximité ? noter l'index du mot, et l'index d'un autre. voir s'ils sont proches ? TODO
         results = []
+        token_matcher = matcher.Matcher(tokens)
         for i, month in enumerate(self._get_data(lang)['data']):
             for j, day in enumerate(month):
                 day = [line.lower() for line in day]
                 day_ratio = 0
                 for k,line in enumerate(day):
-                    line_ratio = fuzzer.token_fuzzer(tokens,line)
+                    line_ratio = token_matcher.fuzzer(line)
                     if line_ratio > day_ratio:
                         day_ratio = line_ratio
                         matching_line = k
