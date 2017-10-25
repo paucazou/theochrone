@@ -14,7 +14,10 @@ class Matcher:
     
     def __init__(self,tokens):
         """tokens are a list of strings"""
-        self.tokens = {token.lower() for token in tokens if len(token) > 2}
+        tokens = " ".join(tokens)
+        tokens = re.sub("""[\.,;?:!"]""","",tokens) 
+        tokens = re.sub("""[-']""",' ',tokens)
+        self.tokens = {token.lower() for token in tokens.split() if len(token) > 2}
         self.token_nb = len(self.tokens)
         self._best_score = {token:0 for token in self.tokens } # save the best fuzz score 
 
@@ -49,7 +52,7 @@ class Matcher:
         if with_distance_ratio: # taking distance in count
             distance_ratio = self.word_distance(token_pos)
             if final_ratio > 0.85 and distance_ratio >= 0.0001:
-                logger.debug('{} : {}'.format(tokens,text))
+                logger.debug('{} : {}'.format(self.tokens,text))
             final_ratio -= distance_ratio
             
         return final_ratio
