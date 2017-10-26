@@ -9,6 +9,7 @@ import enc
 import os
 import pickle
 import programme.officia as officia
+import programme.splitter as splitter
 import re
 import readline
 
@@ -208,6 +209,20 @@ def xml_to_pkl(name):
     path = os.path.dirname(enc.__file__) + '/'
     with enc.Preferences(path + 'theoXML/' + name + '.xml','r') as f:
         data = f.prefs
+    with open(path + 'programme/data/' + name + '.pkl','bw') as f:
+        pickle.Pickler(f).dump(data)
+    
+def to_dic_word_frequency(name):
+    """Loads an xml file name, without suffix)
+    which is {word:word_frequency}
+    Builds a tuple(words,{word:wordcost},maxword)
+    Save it as a pkl file"""
+    path = os.path.dirname(enc.__file__) + '/'
+    with enc.Preferences(path + 'theoXML/' + name + '.xml','r') as f:
+        data = f.prefs
+    if not isinstance(data,dict):
+        raise ValueError("Please enter a dict")
+    data = splitter.build_cost_dic(data)
     with open(path + 'programme/data/' + name + '.pkl','bw') as f:
         pickle.Pickler(f).dump(data)
     

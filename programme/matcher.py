@@ -3,8 +3,11 @@
 #Deus, in adjutorium meum intende
 """This module contains the Matcher class"""
 import Levenshtein
+import os
 import phlog
+import pickle
 import re
+import splitter
 
 logger = phlog.loggers['console']
 
@@ -12,14 +15,14 @@ class Matcher:
     """Implements the functions for a good research
     for specified tokens"""
     
-    def __init__(self,tokens):
-        """tokens are a list of strings"""
-        tokens = " ".join(tokens)
-        tokens = re.sub("""[\.,;?:!"]""","",tokens) 
-        tokens = re.sub("""[-']""",' ',tokens)
-        self.tokens = {token.lower() for token in tokens.split() if len(token) > 2}
-        self.token_nb = len(self.tokens)
-        self._best_score = {token:0 for token in self.tokens } # save the best fuzz score 
+    _word_frequency_dic = {} # {lang:tuple(words,wordcost,maxword)}
+    
+    def __init__(self,tokens,lang):
+        """tokens are a list of strings
+        lang = a language code (fr,en,es...)"""
+        self.lang = lang
+        self._set_tokens(tokens) # set self.tokens
+        self.reset_scores() # save the best fuzz score 
 
     def fuzzer(self,text,with_distance_ratio=True):
         """Return the ratio for self.tokens
@@ -57,7 +60,7 @@ class Matcher:
             
         return final_ratio
 
-    def word_distance(self,token_pos):
+    def word_distance(self,token_pos): # can't really discover approximate words -> try with fuzz ?
         """Takes token_pos dict, the number of tokens (self.token_nb)
         and return the distance ratio :
         if ratio is equal to token_nb = 0
@@ -84,12 +87,59 @@ class Matcher:
         
         return distance_ratio
     
+    def is_score_low(self,floor=0.85):
+        """Checks the height of self._best_score
+        and return True if one of the score is under
+        floor."""
+        return True if min(self._best_score.values()) < floor else False
     
-
-
-
-"""
-au cas où un mot n'ait pas atteint le score de 0.5 une seule fois :
-on fait appel à word_frequency (changer ce nom inadapté), et, en cas de nouvelle string, on relance la recherche
-"""
+    def reset_scores(self):
+        """Reset best score to 0"""
+        self._best_score = {token:0 for token in self.tokens }
+        
+    def splitter(self,floor=0.85):
+        """In this method, tokens with best score under floor
+        are considered to lack some spaces.
+        This method modifies them with the help of self._word_frequency_dic, which is
+        a tuple(words,{word:wordcost},maxword}
+        If they are really modified, return True
+        If not, return False"""
+        temp_tokens = { token for token in self.tokens if self._best_score[token] < floor}
+        self.tokens.difference_update(temp_tokens)
+        logger.debug(temp_tokens)
+        ntokens = set()
+        for token in temp_tokens:
+            token = splitter.infer_spaces(token,*self._call_word_frequency_dic())
+            logger.debug(token)
+            ntokens.add(token)
+        if not temp_tokens or ntokens == temp_tokens:
+            are_tokens_modified = False
+        else:
+            self._set_tokens(ntokens,True)
+            are_tokens_modified = True
+            logger.debug(self.tokens)
+        return are_tokens_modified
+    
+    def _call_word_frequency_dic(self):
+        """Loads the dictionary of words frequency
+        and update cls._word_frequency_dic for self.lang"""
+        if self.lang not in self._word_frequency_dic:
+            path = os.path.dirname(splitter.__file__) + '/'
+            with open(path + '/data/' + self.lang + '_word_frequency.pkl','rb') as file:
+                self._word_frequency_dic[self.lang] = pickle.Unpickler(file).load()
+        return self._word_frequency_dic[self.lang]
+            
+    def _set_tokens(self,tokens,update=False):
+        """Create self.tokens or update them
+        Set self.token_nb also"""
+        tokens = " ".join(tokens)
+        tokens = re.sub("""[\.,;?:!"]""","",tokens) 
+        tokens = re.sub("""[-']""",' ',tokens)
+        tokens = {token.lower() for token in tokens.split() if len(token) > 2}
+        if update:
+            self.tokens.update(tokens)
+        else:
+            self.tokens = tokens
+        self.token_nb = len(self.tokens)
+        
 

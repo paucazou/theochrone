@@ -89,9 +89,9 @@ class Martyrology:
         of results returned. -1 = all
         min_ratio = an int or a float which specifies the minimum ratio
         of results returned. 0 = all
-        """ # essayer d'ajouter word frequency sur les mots de plus de dix caractères TODO essayer de tenir compte de l'ordre dans lequel se présente les tokens -> une prime avec partial ? -> non, car on supprime certains mots sans importance ; regarder la proximité ? noter l'index du mot, et l'index d'un autre. voir s'ils sont proches ? TODO
+        """
         results = []
-        token_matcher = matcher.Matcher(tokens)
+        token_matcher = matcher.Matcher(tokens,lang)
         for i, month in enumerate(self._get_data(lang)['data']):
             for j, day in enumerate(month):
                 day = [line.lower() for line in day]
@@ -103,6 +103,9 @@ class Martyrology:
                         matching_line = k
                 results.append(TextRatio(i+1,j+1,matching_line,day_ratio))
         results.sort(key=lambda item:item.ratio,reverse=True)
+        if token_matcher.is_score_low():
+            if token_matcher.splitter():
+                results = self._raw_kw(token_matcher.tokens,lang,max_nb_returned,min_ratio)
         return [result for result in results if result.ratio >= min_ratio][:max_nb_returned]
     
     def kw(self,tokens,lang,max_nb_returned = -1,min_ratio = 80,year = datetime.date.today().year): # WARNING commemoration of faithful_departed can not be find by this way

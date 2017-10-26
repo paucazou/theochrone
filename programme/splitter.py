@@ -9,6 +9,7 @@ from math import log
 def build_cost_dic(dic):
     """Takes a dict with words as keys,
     frequency as value and return
+    words (list), wordcost {word:wordcost} and word with maxlength
     """
     words = [key for key in sorted(dic,key=dic.get,reverse=True)]
     wordcost = dict((key, log((i+1) * log(len(words)))) for i, key in enumerate(words))
