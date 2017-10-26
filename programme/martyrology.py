@@ -30,6 +30,7 @@ class Martyrology:
     _last_line = {
         'fr':"V. Et ailleurs, beaucoup d'autres saints martyrs, confesseurs et saintes vierges. Chœur. R. Rendons grâces à Dieu.",
         'la':"V. Et álibi aliórum plurimórum sanctórum Mártyrum et Confessórum, atque sanctárum Vírginum. Chorus. R. Deo grátias. ",
+        'en':"And elsewhere in divers places, many other holy martyrs, confessors, and holy virgins. R. Thanks be to God.",
             } # a dict of the last lines
     name = {
         'fr':'Martyrologe Romain',

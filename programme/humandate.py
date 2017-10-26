@@ -8,7 +8,8 @@ correct dates in requested language"""
 languages_available = {'fr','en','la'}
 
 months = {'fr':('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'),
-          'la':('','Januarii', 'Februarii', 'Martii', 'Aprilis', 'Maii', 'Junii', 'Julii', 'Augusti', 'Septembtis', 'Octobris', 'Novembris', 'Decembris')
+          'la':('','Januarii', 'Februarii', 'Martii', 'Aprilis', 'Maii', 'Junii', 'Julii', 'Augusti', 'Septembtis', 'Octobris', 'Novembris', 'Decembris'),
+          'en':('', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
           }
 
 def main(lang,item,item_type):

@@ -33,8 +33,8 @@ class Matcher:
         tokens matching in the text must be taken in account"""
         token_pos = { token: {'index':0,'score':0} for token in self.tokens }
         
-        text = re.sub("""[\.,;?:!"]""","",text) 
-        text = re.sub("""[-']""",' ',text)
+        #text = re.sub("""[]""","",text) 
+        text = re.sub("""[\.,;?:!"-']""",' ',text)
         text = [word for word in text.lower().split() if len(word) > 2 ]
         ratio = 0
         for token in self.tokens:
