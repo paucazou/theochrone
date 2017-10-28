@@ -72,3 +72,58 @@ def test_credits(get_data_method):
     assert mock.call(lang) in get_data_method.call_args_list
     assert mock.call('credits') in get_data_method().__getitem__.call_args_list
     
+@mock.patch('martyrology.Martyrology._get_data')
+@mock.patch('martyrology.matcher.Matcher')    
+def test_raw_kw(mock_matcher,get_data_method):
+    matcher_instance = mock_matcher()
+    matcher_instance.is_score_low.return_value = False
+    matcher_instance.fuzzer.return_value = 1
+    lines = ['a','ba','caa','daaa','bbaaa','ccaaaa',]
+    get_data_method('lang').__getitem__.return_value = [[['a','ba','caa']],[['daaa','bbaaa','ccaaaa']],]
+    tokens = ['token1','token2']
+    lang = 'ja'
+    m=martyrology.Martyrology()
+    res = m._raw_kw(tokens,lang)
+    mock_matcher.assert_called_with(tokens,lang)
+    get_data_method.assert_called_with(lang)
+    assert get_data_method().__getitem__.call_args_list == [mock.call('data')]
+    assert matcher_instance.fuzzer.call_count == 6
+    assert matcher_instance.fuzzer.call_args_list == [mock.call(elt) for elt in lines]
+    assert matcher_instance.is_score_low.call_count == 1
+    
+    
+    get_data_method('lang').__getitem__.return_value = [[['a','ba','caa']],[['daaa','bbaaa','ccaaaa']],[['c','b','j']],[['h','b','r','t']]]
+    matcher_instance.fuzzer = lambda x : len(x)
+    res = m._raw_kw(tokens,lang,max_nb_returned = 3)
+    assert res[0].ratio == 6 and res[1].ratio == 3
+    assert len(res) == 3
+    
+    res = m._raw_kw(tokens,lang,min_ratio = 3)
+    assert len(res) == 2
+    assert res[0].ratio >= res[1].ratio >= 3
+    
+    def is_score_low(x=[2]):
+        x[0] -= 1
+        return x[0]
+    
+    matcher_instance.is_score_low = is_score_low
+    matcher_instance.fuzzer = mock.MagicMock()
+    matcher_instance.fuzzer.return_value = 0.85
+    res = m._raw_kw(tokens,lang)
+    assert matcher_instance.splitter.call_count == 1
+    assert matcher_instance.fuzzer.call_count == 13*2    
+    
+@mock.patch('martyrology.Martyrology.daytext')
+@mock.patch('martyrology.Martyrology._raw_kw')
+def test_kw(_raw_kw,daytext):
+    item = mock.MagicMock()
+    item.month = 1
+    item.day = 10
+    item.matching_line = 2
+    _raw_kw.return_value = [item]
+    m=martyrology.Martyrology()
+    tokens = ['token1','token2']
+    lang = 'ja'
+    m.kw(tokens,lang,year=2000)
+    _raw_kw.assert_called_once_with(tokens,lang,-1,80)
+    daytext.assert_called_once_with(datetime.date(2000,item.month,item.day),lang,item.matching_line)

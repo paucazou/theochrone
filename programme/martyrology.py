@@ -80,7 +80,7 @@ class Martyrology:
         requested language"""
         return self._get_data(language)['credits']
     
-    def _raw_kw(self,tokens,lang,max_nb_returned=-1,min_ratio=0):
+    def _raw_kw(self,tokens,lang,max_nb_returned=-1,min_ratio=0): # TEST
         """Look into the texts and returned
         a list of indices of the texts matching best with tokens entered.
         Best first.
@@ -107,14 +107,15 @@ class Martyrology:
         if token_matcher.is_score_low():
             if token_matcher.splitter():
                 results = self._raw_kw(token_matcher.tokens,lang,max_nb_returned,min_ratio)
-        return [result for result in results if result.ratio >= min_ratio][:max_nb_returned]
+        results = [result for result in results if result.ratio >= min_ratio]
+        return results if max_nb_returned == -1 else results[:max_nb_returned]
     
-    def kw(self,tokens,lang,max_nb_returned = -1,min_ratio = 80,year = datetime.date.today().year): # WARNING commemoration of faithful_departed can not be find by this way
+    def kw(self,tokens,lang,max_nb_returned = -1,min_ratio = 80,year = datetime.date.today().year):# TEST # WARNING commemoration of faithful_departed can not be find by this way
     # BUG rechercher un mot-clef le jour de la commémoration des fidèles défunts pose un problème dans le nombre de lignes... Il faut trouver un autre système.
         """Wrapper of self._raw_kw. Return a list of the texts
         Items of the list are TextResult objects including index of matching line.
         year is an int"""
-        results = self._raw_kw(tokens,lang,max_nb_returned)
+        results = self._raw_kw(tokens,lang,max_nb_returned,min_ratio)
         return [ self.daytext(datetime.date(year,item.month,item.day),lang,item.matching_line) for item in results ]
         
 
