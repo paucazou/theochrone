@@ -211,6 +211,7 @@ def main():
     if args.INVERSE != 1: # des raisons aléatoires semblent s'appliquer...
         if args.martyrology:
             results = roman_martyrology.kw(args.INVERSE,args.langue,5) # TODO ajouter le ratio ou le nb max d'items
+            print(roman_martyrology.name[args.langue])
             for res in results:
                 print(res.title)
                 if res.matching_line > 0:

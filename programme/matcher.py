@@ -35,7 +35,7 @@ class Matcher:
         
         #text = re.sub("""[]""","",text) 
         text = re.sub("""[\.,;?:!"-']""",' ',text)
-        text = [word for word in text.lower().split() if len(word) > 2 ]
+        text = [word for word in text.lower().split() if len(word) > 2 ] # supprimer le lower ? -> problème : pour fuzzer, janvier et panvier ont le même ratio pour Janvier...
         ratio = 0
         for token in self.tokens:
             token_ratio = 0
