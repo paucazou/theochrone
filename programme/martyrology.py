@@ -38,7 +38,7 @@ class Martyrology:
         'en':'Roman Martyrology',
         }
 
-    def __init__(self,date=1962):
+    def __init__(self,date=1962): # TEST
         """Inits the class.
         date is the edition selected.
         Loads names of files"""
@@ -49,7 +49,7 @@ class Martyrology:
                 file.split('_')[0] : data_path + file
                 for file in files_list} 
 
-    def daytext(self,date,language,matching_line=None):
+    def daytext(self,date,language,matching_line=None): # TEST
         """date is a datetime.date like object.
         Return text for requested day and locale
         matching_line is needed if kw called daytext"""
@@ -67,7 +67,7 @@ class Martyrology:
                 self._last_line[language],
                 matching_line)
 
-    def _get_data(self,language):
+    def _get_data(self,language): # TEST
         """Loads data if necessary.
         Return self._data[language]"""
         if isinstance(self._data[language],str):
@@ -75,7 +75,7 @@ class Martyrology:
                 self._data[language] = pickle.Unpickler(f).load()
         return self._data[language] # _data = {lang:{credits:str,data:[month:[day,day...]]}}
 
-    def credits(self,language):
+    def credits(self,language): # TEST
         """Return appropriate credits for
         requested language"""
         return self._get_data(language)['credits']
