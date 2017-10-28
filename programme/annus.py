@@ -142,6 +142,7 @@ class LiturgicalCalendar():
         date = datetime.date(year,1,1)
         for date, day in self.year_data[year].items():
             self._selection(day,date)
+        
     
     @staticmethod
     def create_empty_year(year): #TEST

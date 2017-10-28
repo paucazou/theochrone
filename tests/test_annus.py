@@ -31,9 +31,9 @@ class FakeFeast(mock.MagicMock):
         self.date = None
         self.date_ = date
         if not personne:
-            self.personne = str(FakeFeast.personne_list[-1]) + str(random.randrange(500))
+            self.personne = set([str(random.randrange(500))]) #str(FakeFeast.personne_list[-1]) + 
         else:
-            self.personne = personne
+            self.personne = {(personne,)}
         FakeFeast.personne_list.append(self.personne)
         
         if not nom:
@@ -94,7 +94,7 @@ def FakeFeast_basic_iterator(year=1962):
 @pytest.fixture
 def send_empty_liturgical_calendar(mock_open,mock_unpickler):
     mock_load = mock.MagicMock()
-    mock_load.load.return_value=[FakeFeast(),FakeFeast()]
+    mock_load.load.return_value=[FakeFeast(),FakeFeast(),FakeFeast()]
     mock_unpickler.return_value = mock_load
     return annus.LiturgicalCalendar()
 
