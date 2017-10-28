@@ -128,8 +128,10 @@ class Fete:
         print(self)
         parent = self.parent
         del(self.parent)
+        personne = self.personne
+        self.personne = str(self.personne)
         hache = hash(json.dumps(self.__dict__,sort_keys=True))
-        self.parent = parent
+        self.parent, self.personne = parent, personne        
         return hache
         
     # Définitions de méthodes   

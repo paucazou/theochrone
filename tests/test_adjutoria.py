@@ -38,6 +38,7 @@ def test_hash():
     attr_dict = fete.__dict__.copy()
     assert not (attr_dict is fete.__dict__)
     del(attr_dict['parent'])
+    attr_dict['personne'] = str(attr_dict['personne'])
     assert hash(fete) == hache == hash(json.dumps(attr_dict,sort_keys=True))
     fete.parent = 1
     assert hash(fete) == hache == hash(json.dumps(attr_dict,sort_keys=True))
