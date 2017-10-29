@@ -125,5 +125,5 @@ def test_kw(_raw_kw,daytext):
     tokens = ['token1','token2']
     lang = 'ja'
     m.kw(tokens,lang,year=2000)
-    _raw_kw.assert_called_once_with(tokens,lang,-1,80)
+    _raw_kw.assert_called_once_with(tokens,lang,-1,.80)
     daytext.assert_called_once_with(datetime.date(2000,item.month,item.day),lang,item.matching_line)
