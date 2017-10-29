@@ -16,6 +16,7 @@ class Matcher:
     for specified tokens"""
     
     _word_frequency_dic = {} # {lang:tuple(words,wordcost,maxword)}
+    regex = re.compile(r"(?ui)\W") # https://github.com/seatgeek/fuzzywuzzy/blob/master/fuzzywuzzy/string_processing.py
     
     def __init__(self,tokens,lang):
         """tokens are a list of strings
@@ -33,7 +34,8 @@ class Matcher:
         tokens matching in the text must be taken in account"""
         token_pos = { token: {'index':0,'score':0} for token in self.tokens }
         
-        text = re.sub("""[\.,;?:!"-']""",' ',text)
+        #text = re.sub("""[\.,;?:!"-']""",' ',text)
+        text = self.regex.sub(" ",text)
         text = [word for word in text.lower().split() if len(word) > 2 ]
         ratio = 0
         for token in self.tokens:
@@ -132,7 +134,8 @@ class Matcher:
         """Create self.tokens or update them
         Set self.token_nb also"""
         tokens = " ".join(tokens)
-        tokens = re.sub("""[\.,;?:!-']""",' ',tokens)
+        #tokens = re.sub("""[\.,;?:!-']""",' ',tokens)
+        tokens = self.regex.sub(" ",tokens)
         tokens = {token.lower() for token in tokens.split() if len(token) > 2}
         if update:
             self.tokens.update(tokens)
