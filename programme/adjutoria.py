@@ -176,18 +176,13 @@ class Fete:
         else:
             return wy
         
-    def DaysSince(self,feast,lang='en'):
+    def DaysSince(self,feast,lang='en'): # BUG pour les fêtes après le début de l'année liturgique, ne fonctionne pas correctement
         """Return number of days since feast
         feast must be the name matching with lang in the Calendar"""
         if not self.date:
             return None
-        limits = []
-        for year in range(self.date.year-1,self.date.year + 1):
-            for day in self.parent.unsafe_iter(start=datetime.date(year,11,15),stop=datetime.date(year,12,15)):
-                if isinstance(day,FeteMobileAvent):
-                    limits.append(day)
-                    
-        feasts_dates = { f.nom[lang]:f.date for day in self.parent.unsafe_iter(*limits) if day for f in day }
+        year = [self.date.year+1,self.date.year][self.parent.isdayinlyear(self.date,self.date.year)]
+        feasts_dates = { f.nom[lang]:f.date for day in self.parent.liturgicalYear(year) for f in day }
         return self.date - feasts_dates.get(feast,datetime.timedelta(0))
     
     def WeeksSince(self,feast,lang='en'):
@@ -556,7 +551,7 @@ class FeteFerie(Fete):
                         nouveau.date=jour
                         nouveau.propre = office.propre
                         nouveau.link = office.link
-                        nouveau.addendum = office.addendum
+                        nouveau.dimanche = False
                         if jour >= datetime.date(jour.year,1,14) and office.temps_liturgique == 'epiphanie':
                             nouveau._temps_liturgique = 'apres_epiphanie'
                             nouveau._couleur = 'vert'
@@ -578,10 +573,10 @@ class FeteFerie(Fete):
                 for office in feast_list:
                     if office.repris_en_ferie:
                         nouveau = self.__class__()
-                        nouveau.date=day
+                        nouveau.date = day
                         nouveau.propre = office.propre
                         nouveau.link = office.link
-                        nouveau.addendum = office.addendum
+                        #nouveau.addendum = office.addendum
                         if day >= datetime.date(day.year,1,14) and office.temps_liturgique == 'epiphanie':
                             nouveau._temps_liturgique = 'apres_epiphanie'
                             nouveau._couleur = 'vert'
