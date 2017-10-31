@@ -370,6 +370,23 @@ class LiturgicalCalendar():
                     retour[year] = self.listed_year(year)
             return retour
     
+    def liturgicalYear(self,year):
+        """Return the whole liturgical year for specified year
+        dict(date:[feast,feast,...])"""
+        self.__call__(year-1,year)
+        limits = []
+        for i in range(year-1,year+1):
+            for day in self.unsafe_iter(datetime.date(i,11,21),datetime.date(i,12,8)):
+                for feast in day:
+                    if feast.nom['en'] == 'First Sunday of Advent':
+                        limits.append(feast.date)
+                        break
+        limits[1] = limits[1] - datetime.timedelta(1)
+        return self.unsafe_iter(*limits)
+    
+    def isdayinlyear(self,day,year):
+        """Return True if day is in liturgical year"""
+        return True if day in ( elt[0].date for elt in self.liturgicalYear(year)) else False            
     
     def _move(self,new_comer,date): #TEST
         """Move 'new_comer' if necessary, and put it at the right date.
