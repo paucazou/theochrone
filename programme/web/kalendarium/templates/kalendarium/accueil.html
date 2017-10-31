@@ -84,6 +84,9 @@
             <th>Temps liturgique</th><td>{{ fete.temps_liturgique_ }}</td></tr>
         <tr>
             <th>Fête transférée</th><td>{% if fete.transferee %}Oui, du {{ fete.date_originelle }}.{% else %}Non{% endif %}</td></tr>
+        {% if fete.addendum.fr %}
+        <tr>
+            <th>Autres informations</th><td>{{ fete.addendum.fr }}</td></tr>{% endif %}
     </tbody></table>
       
       
