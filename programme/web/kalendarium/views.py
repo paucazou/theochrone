@@ -71,7 +71,15 @@ def home(request,
 
     for value in deroule.values():
         for elt in value:
-            elt.temps_liturgique_ = "T" + officia.affiche_temps_liturgique(elt,langue='fr')[1:]
+            liturgical_time = officia.affiche_temps_liturgique(elt,langue='fr')
+            elt.temps_liturgique_ = liturgical_time[0].upper() + liturgical_time[1:]
+            if elt.dimanche and elt.WeeksSince('Trinity Sunday') > 0:
+                nb = str(elt.WeeksSince('Trinity Sunday'))
+                if nb == 1:
+                    nb = nb + 'er'
+                else:
+                    nb = nb + 'ème'
+                elt.addendum['fr'] = "Anciennement : {} dimanche après la Trinité. ".format(nb) + elt.addendum['fr']
     deroule = sorted(deroule.items())
 
     return render(request,'kalendarium/accueil.html',locals())
