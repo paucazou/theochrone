@@ -175,6 +175,28 @@ class Fete:
             return wn
         else:
             return wy
+        
+    def DaysSince(self,feast,lang='en'):
+        """Return number of days since feast
+        feast must be the name matching with lang in the Calendar"""
+        if not self.date:
+            return None
+        limits = []
+        for year in range(self.date.year-1,self.date.year + 1):
+            for day in self.parent.unsafe_iter(start=datetime.date(year,11,15),stop=datetime.date(year,12,15)):
+                if isinstance(day,FeteMobileAvent):
+                    limits.append(day)
+                    
+        feasts_dates = { f.nom[lang]:f.date for day in self.parent.unsafe_iter(*limits) if day for f in day }
+        return self.date - feasts_dates.get(feast,datetime.timedelta(0))
+    
+    def WeeksSince(self,feast,lang='en'):
+        """Convenient function which return
+        result of DaysSince method converted
+        in weeks
+        WARNING number of weeks is rounded lower"""
+        return int(self.DaysSince(feast,lang).days / 7)
+        
     
     def DatePaques(self,paques,annee): # TEST
         """Une fonction qui calcule le nombre de jours par rapport à Pâques"""
