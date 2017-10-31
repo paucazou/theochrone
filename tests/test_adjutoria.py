@@ -250,8 +250,8 @@ def test_CreateFeria(name):
     lcalendar.unsafe_iter.return_value = (
         False,[zero,first])
     return_value = fetes.CreateFeria(datetime.date(2000,1,1),lcalendar)
-    assert (return_value.link, return_value.addendum, return_value.propre, return_value.couleur, return_value._temps_liturgique
-            ) == (first.link, first.addendum, first.propre, first.couleur, first._temps_liturgique)
+    assert (return_value.link, return_value.propre, return_value.couleur, return_value._temps_liturgique
+            ) == (first.link, first.propre, first.couleur, first._temps_liturgique)
     assert isinstance(return_value,adjutoria.FeteFerie) and return_value.date == datetime.date(2000,1,1)
     assert return_value.parent is lcalendar
     name.assert_called_with(datetime.date(2000,1,1))
