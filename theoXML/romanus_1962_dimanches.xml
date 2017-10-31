@@ -1732,7 +1732,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -1801,7 +1801,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 1er Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -1870,7 +1870,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 2ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -1939,7 +1939,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 3ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2008,7 +2008,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 4ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2077,7 +2077,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 5ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2146,7 +2146,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 6ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2215,7 +2215,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 8ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2284,7 +2284,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 9ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2353,7 +2353,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 10ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2422,7 +2422,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 11ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2491,7 +2491,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 12ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2560,7 +2560,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 13ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2629,7 +2629,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 14ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2698,7 +2698,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 15ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2767,7 +2767,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 16ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2836,7 +2836,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 17ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2905,7 +2905,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 18ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -2974,7 +2974,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 19ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -3043,7 +3043,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 20ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -3112,7 +3112,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 21ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -3187,7 +3187,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 2ème Dimanche après l'Octave de l'Épiphanie</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -3263,7 +3263,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 3ème Dimanche après l'Octave de l'Épiphanie</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -3338,7 +3338,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 4ème Dimanche après l'Octave de l'Épiphanie</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -3410,7 +3410,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 5ème Dimanche après l'Octave de l'Épiphanie</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -3481,7 +3481,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 22ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
@@ -3921,7 +3921,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Anciennement, 7ème Dimanche après l'Octave de la Trinité</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
