@@ -88,7 +88,7 @@ class Matcher:
         
         return distance_ratio
     
-    def is_score_low(self,floor=0.85):
+    def is_score_low(self,floor=0.85): # TEST
         """Checks the height of self._best_score
         and return True if one of the score is under
         floor."""
