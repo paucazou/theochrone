@@ -5,7 +5,7 @@ If you want your name to be removed of this list, or if you want to figure on th
 
 ## Persons
 * Clair-Loup S. *Without him, nothing would have happen*
-* Henri A. de V. * Especially for the idea of the Roman Martyrology*
+* Henri A. de V. *Especially for the idea of the Roman Martyrology*
 * Philippe M.
 * Father Eric I.
 * Father Guillaume de Tanouarn
@@ -20,4 +20,4 @@ If you want your name to be removed of this list, or if you want to figure on th
 ## Newspapers
 * La Nef
 
-*... and thanks be to the Eternal God, His saints and His angels*
+*... and thanks be to the Eternal God, His saints and His angels.*
