@@ -40,7 +40,8 @@ but any language is accepted, even Papuan language or Sindarin !
   * pictures for every feast
   * local calendars (especially diocesan)
   * older versions of the martyrology
-  * other latin rites, like Sarum, or the Mozarabic
+  * other latin rites, like Sarum, or the Mozarabic 
+Do not hesitate to look at the **issues** ! 
 We also like suggestions. Two important features have been suggested and are now implemented:
 * the widget
 * the Roman Martyrology
