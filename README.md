@@ -47,6 +47,8 @@ Do not hesitate to look at the **issues** !
 We also like suggestions. Two important features have been suggested and are now implemented:
 * the widget
 * the Roman Martyrology 
+
+
 **We really listen to your desires and requests, so feel free to suggest or ask us something new.**
 ## Languages and Frameworks
 If you're interested in some form of collaboration, do not hesitate to have a look at this list. 
