@@ -41,11 +41,13 @@ but any language is accepted, even Papuan language or Sindarin !
   * local calendars (especially diocesan)
   * older versions of the martyrology
   * other latin rites, like Sarum, or the Mozarabic 
+
 Do not hesitate to look at the **issues** ! 
+
 We also like suggestions. Two important features have been suggested and are now implemented:
 * the widget
-* the Roman Martyrology
-**We really listen to your desires and requests, so feel free to suggest or ask us something new.***
+* the Roman Martyrology 
+**We really listen to your desires and requests, so feel free to suggest or ask us something new.**
 ## Languages and Frameworks
 If you're interested in some form of collaboration, do not hesitate to have a look at this list. 
 Also, this list may change one day, especially if you put forward something else.
@@ -58,5 +60,9 @@ Also, this list may change one day, especially if you put forward something else
 * GUI: *PyQt5*
 * Others:
   * Bash/Zsh
+### Introduce other language
+You want to contribute to Theochrone but you want to use your personal favorite language ? You're welcome, *but...*
+* if it is a interpreted language, like PHP, Perl, Ruby, be sure that it is worth to add a whole new interpreter ; your contribution must be very huge : a new important feature, at least. Indeed, imagine the weight of the program with two or more interpreters...
+* if it is a compiled language, like C, Go, Rust, be sure that your module can be compiled on major architectures and OSes.
 ## Version
 Latest version is 0.3.0
