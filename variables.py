@@ -78,11 +78,13 @@ derniers_dimanches_apres_pentecote = [
     ['Nombre de jours entre Pâques et le quatrième dimanche de l\'Avent','Vingt-troisième','Troisième restant','Quatrième restant','Cinquième restant','Sixième restant','Vingt-quatrième'],
     [238,0,0,0,0,0,210],
     [245,210,0,0,0,0,217],
-    [252,210,217,0,0,0,224],
-    [259,210,217,224,0,0,231],
-    [266,210,217,224,231,0,238],
+    [252,210,0,0,0,217,224],
+    [259,210,0,0,217,224,231],
+    [266,210,0,217,224,231,238],
     [273,210,217,224,231,238,245]
     ]
+
+
 
 codes_erreurs = {
     0 : 'Système',
