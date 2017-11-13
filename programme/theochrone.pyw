@@ -26,7 +26,6 @@ import martyrology
 import officia
 import phlog
 import shiptobrowser
-import subprocess
 import sys
 import webbrowser
 from messages import args
