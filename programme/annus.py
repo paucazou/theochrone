@@ -265,7 +265,7 @@ class LiturgicalCalendar():
             entre=cls.remonte(liste[a],entre,a)
         return entre
     
-    def unsafe_get(self,date): #TEST
+    def unsafe_get(self,date): #TEST # TODO make a class views ?
         """Return a list of feasts if 'date' exists in self.year_data.
         If not, tries to return from self.previous_year_data
         or self.next_year_data, else False"""
@@ -409,9 +409,12 @@ class LiturgicalCalendar():
         
         #Faut-il déplacer ?
         opponent = liste[0]
-
+        
+        # Case of a new_comer.pal == True -> Pro Aliquibus Locis
+        if new_comer.pal:
+            liste.append(new_comer)
         # Cas de 'new_comer' ayant la même self.personne que 'opponent'
-        if new_comer.personne.intersection(opponent.personne):
+        elif new_comer.personne.intersection(opponent.personne):
             liste.append(new_comer)
         # Cas de 'new_comer' et 'opponent' tous deux transférés
         elif new_comer.transferee and opponent.transferee:
@@ -551,7 +554,9 @@ class LiturgicalCalendar():
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
                 liste[hideux].peut_etre_celebree=True
-                if elt.personne == tmp.personne:
+                if elt.pal:
+                    liste[hideux].peut_etre_celebree = True
+                elif elt.personne == tmp.personne:
                     liste[hideux].omission = True
                     liste[hideux].peut_etre_celebree = False
                 elif commemoraison < 2 and (elt.sanctoral or (elt.temporal and commemoraison_temporal == False)):
