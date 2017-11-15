@@ -27,7 +27,7 @@ parser = argparse.ArgumentParser(
         )
 
 parser.add_argument('-x','--xtopic', help="transform xml files in pickle ones fastly",action='store_true')
-parser.add_argument('-i','--indent', help="indent all xml files in Dossier d'objets",action='store_true')
+parser.add_argument('-i','--indent', help="indent all xml files in theoXML",action='store_true')
 parser.add_argument('-d','--debug', help="debug the script",action='store_true')
 parser.add_argument('-a','--add',help="Add new attribute to all the objects previously saved",action='store_true')
 args = parser.parse_args()
@@ -41,9 +41,9 @@ MENU = "menu"
 COMMAND = "command"
 EQUAL = "equal"
 ARGS = 'args'
-dossier="./Dossier d'objets/"
+dossier="./theoXML/"
 
-if os.getcwd().split('/')[-1] == 'programme' or os.getcwd().split('/')[-1] == "Dossier d'objets":
+if os.getcwd().split('/')[-1] == 'programme' or os.getcwd().split('/')[-1] == "theoXML":
     os.chdir('..')
      
 def menu(donnee,parent=None,direct_exit=False,renvoi=False):
@@ -237,7 +237,7 @@ def CompileRegex(objet):
 def choix_fichier():
     global fichier
     global objets_ancien
-    os.chdir("./Dossier d'objets")
+    os.chdir("./theoXML")
     subprocess.run(['ls'])
     readline.parse_and_bind("tab: complete")
     fichier=finput("""Entrez le nom du fichier. Si ce fichier n'existe pas, il sera automatiquement créé. """)
@@ -312,7 +312,7 @@ def sauvegarde():
     global fichier
     if fichier == 'non':
         choix_fichier()
-    os.chdir("./Dossier d'objets")
+    os.chdir("./theoXML")
     if ajout != []:
         print("""Voici les objets ajoutés : """)
         for a in ajout:
@@ -404,7 +404,7 @@ def ajouter(modele,entrees={}):
         #nouveau.occurrence_perpetuelle = valider('La fête souffre-t-elle d\'une occurrence perpétuelle avec une autre fête ?',nouveau.occurrence_perpetuelle,'bool')
         #nouveau.dimanche = valider('La fête tombe-t-elle un dimanche ?',nouveau.dimanche,'bool')
         #nouveau.repris_en_ferie = valider('La fête est-elle reprise en férie ?',nouveau.repris_en_ferie,'bool')
-        #nouveau.fete_du_Seigneur = valider('La fête est-elle une fête du Seigneur ?',nouveau.fete_du_Seigneur,'bool')
+        nouveau.fete_du_Seigneur = valider('La fête est-elle une fête du Seigneur ?',nouveau.fete_du_Seigneur,'bool')
         #nouveau.temporal = valider('La fête fait-elle partie du Temporal ?', nouveau.temporal,'bool')
         nouveau.temporal = False
         nouveau.sanctoral = False
@@ -428,6 +428,8 @@ def ajouter(modele,entrees={}):
                 
         nouveau._couleur = finput('Rentrez la couleur de la fête.',nouveau._couleur)
         nouveau.link = finput('Merci de rentrer le lien vers les textes sur le site Introibo.fr',nouveau.link)
+        if nouveau.personne == {"deuxieme"}:
+            nouveau.personne = ""
         nouveau.personne = finput("""Quelle personne est célébrée dans cette fête ?
             Règles :
             1 - Pour les personnes divines :
@@ -442,7 +444,7 @@ def ajouter(modele,entrees={}):
                     Ex : jean_baptiste, jean_apotre, jean_croix, jean_chrysostome, jean_aumonier, jean_avila...
                 Prénoms composés :
                     Ex : jean-marie, jean-pierre.
-            S'il y a plusieurs personnes, séparez les noms par des espaces.""",nouveau.personne)
+            S'il y a plusieurs personnes, séparez les noms par des espaces."""," ".join(nouveau.personne))
         nouveau.personne = set(nouveau.personne.split())
         
         """for key, value in sorted(nouveau.regex_.items()):
@@ -450,7 +452,7 @@ def ajouter(modele,entrees={}):
             for a in value:
                 prerempli += a +' '
             nouveau.regex_[key] = finput("Rentrez les mots-clefs de la partie '{}'. N'oubliez pas de les séparer par des blancs.".format(key),prerempli).lower().split()"""
-        nouveau.regex_ = finput("""Please enter tokens for research""",nouveau.regex_)
+        nouveau.tokens_ = finput("""Please enter tokens for research""",nouveau.tokens_)
         
         if modele == 'FeteFixe' or modele == 'FeteMobileCivile':
             nouveau.date_['mois'] = valider('Rentrez le numéro du mois',nouveau.date_['mois'])
@@ -596,8 +598,8 @@ menus = {
     }
      
 def dossier_d_objets():
-    """Une fonction qui charge le contenu des fichiers xml de Dossier d'objets"""
-    os.chdir("./Dossier d'objets")
+    """Une fonction qui charge le contenu des fichiers xml de theoXML"""
+    os.chdir("./theoXML")
     liste = subprocess.run(['ls'],stdout=subprocess.PIPE)
     liste = liste.stdout.decode().split('\n')
     fichiers = {}
@@ -628,7 +630,7 @@ if args.xtopic:
             pic.dump(tmp)
 elif args.indent:
     fichiers = dossier_d_objets()
-    os.chdir("./Dossier d'objets")
+    os.chdir("./theoXML")
     for fichier in fichiers:
         os.system('cat ' + fichier + '|xmllint --format - > tMpXmL && cat tMpXmL > ' + fichier + '&& rm tMpXmL')
 elif args.add:
