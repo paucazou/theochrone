@@ -88,6 +88,8 @@ class Fete:
                     'refus_faible':[],                    
             } # les éléments propres de la regex, avant compilation
         self.regex=None# la regex véritable, après compilation avec la fonction à créer
+        self.tokens_="" # tokens entered by hand for research by keywords
+        self.tokens=None # actual tokens used for research by keywords
         self.valeur=int() # the value returned by Correspondance
         # parent
         self.parent = None
