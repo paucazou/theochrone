@@ -650,4 +650,264 @@
     </dict>
     <str key="classe">FeteFixe</str>
   </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">rouge</str>
+      <str key="_images">invention_croix</str>
+      <int key="_priorite">50</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">3</int>
+        <int key="mois">5</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">6</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">True</bool>
+      <str key="link">http://introibo.fr/-Messes-en-certains-lieux-Pro-</str>
+      <dict key="nom">
+        <str key="en">On the Finding of the Holy Cross</str>
+        <str key="fr">Invention de la Sainte Croix</str>
+        <str key="la">In Inventione Sanctae Crucis</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">True</bool>
+      <None key="parent"/>
+      <set key="personne">
+        <str>deuxieme</str>
+      </set>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques"/>
+        <list key="titre"/>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">False</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <None key="tokens"/>
+      <str key="tokens_">invention sainte croix</str>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <str key="_images">jean_porte_latine</str>
+      <int key="_priorite">50</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">6</int>
+        <int key="mois">5</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">6</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/-Messes-en-certains-lieux-Pro-</str>
+      <dict key="nom">
+        <str key="en">Saint John, Apostle and Evangelist, Before the Latin Gate</str>
+        <str key="fr">Saint Jean devant la Porte latine</str>
+        <str key="la">Sancti Joannis, Apostolis et Evangelistae, ante Portam Latinam</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">True</bool>
+      <None key="parent"/>
+      <set key="personne">
+        <str>jean_apotre</str>
+      </set>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques"/>
+        <list key="titre"/>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">False</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <None key="tokens"/>
+      <str key="tokens_">saint jean porte latine martyre apotre evangeliste pathmos</str>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <str key="_images">dominique_savio</str>
+      <int key="_priorite">50</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">6</int>
+        <int key="mois">5</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">6</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/-Messes-en-certains-lieux-Pro-</str>
+      <dict key="nom">
+        <str key="en">Saint Dominic Savio, Confessor</str>
+        <str key="fr">Saint Dominique Savio, Confesseur</str>
+        <str key="la">Sancti Dominici Savio, Confessoris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">True</bool>
+      <None key="parent"/>
+      <set key="personne">
+        <str>dominique_savio</str>
+      </set>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques"/>
+        <list key="titre"/>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">False</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <None key="tokens"/>
+      <str key="tokens_">saint dominique savio</str>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
+  <Modele>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <str key="_images">marie_reine_saints_mere_belle_dilection</str>
+      <int key="_priorite">50</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">8</int>
+        <int key="mois">5</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">6</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/-Messes-en-certains-lieux-Pro-</str>
+      <dict key="nom">
+        <str key="en">Our Lady, Queen of All Saints and Mother of Fair Love</str>
+        <str key="fr">Bienheureuse Vierge Marie, Reine de tous les Saints et Mère de la Belle Dilection</str>
+        <str key="la">Beatae Mariae Virginis, Reginae Sanctorum omnium et Matris pulchrae dilectionis</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">True</bool>
+      <None key="parent"/>
+      <set key="personne">
+        <str>marie</str>
+      </set>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">romanus</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques"/>
+        <list key="titre"/>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">False</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <None key="tokens"/>
+      <str key="tokens_">notre dame marie reine tous saints mere belle dilection</str>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+    <str key="classe">FeteFixe</str>
+  </Modele>
 </list>
