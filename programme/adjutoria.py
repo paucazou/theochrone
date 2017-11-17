@@ -727,6 +727,17 @@ class JoursAvent(FeteMobileAvent):
                 retour.degre = 2
                 retour._priorite = 1200
             yield retour
+            
+class MotherOfMercy(FeteMobileMois):
+    """A feast which is calculated compared to a day of a month"""
+    def __init__(self):
+        FeteMobileMois.__init__(self)
+        self.date_['distance'] = 0 # how many days compared to the base
+        
+    def DateCivile_(self,easter,year):
+        base = FeteMobileMois.DateCivile_(self,easter,year)
+        return base + datetime.timedelta(self.date_['distance'])
+            
     
 class SeptEmber(Fete): # WARNING WARNING WARNING
     """A class defined to fix an error. Must be changed asap"""
