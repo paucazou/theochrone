@@ -24,9 +24,9 @@ parser = argparse.ArgumentParser(
             epilog=_("Please pray God for me."),
             )
 
-parser.add_argument('auth_file',required=True,type=argparse.FileType('r'),help="Name of the file which contains tokens")
+parser.add_argument('auth_file',type=argparse.FileType('r'),help="Name of the file which contains tokens")
 parser.add_argument('-l','--log-level',dest="log_level",type=int,choices=range(-5,5),default=phlog.levels[-1],help="Importance level of the messages that should be printed in the log file")
-parse_args.add_argument('-f','--get-followers',dest='get_followers',nargs='*',help="Get the followers of the users screen name entered. Do not enter them with '@' in front of the screen names : @paucazou -> paucazou")
+parser.add_argument('-f','--get-followers',dest='get_followers',nargs='*',help="Get the followers of the users screen name entered. Do not enter them with '@' in front of the screen names : @paucazou -> paucazou")
 
 args = parser.parse_args()
 
@@ -159,7 +159,7 @@ def main():
             unused_list = get_screen_names(api.get_user(sname),files['_unused'],files['_used']) # rajouter un try, en cas d'erreur
             
         logger.info('Saving unused users file...')
-        with open(files['_unused','w') as f:
+        with open(files['_unused'],'w') as f:
             f.write('\n'.join(files['_unused']))
     else:
         today = datetime.date.today()
