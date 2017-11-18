@@ -495,7 +495,7 @@ class LiturgicalCalendar():
         if tmp.dimanche or tmp.fete_du_Seigneur and datetime.date.isoweekday(date) == 7:
             if 1650 > tmp.priorite >= 900:
                 for hideux, elt in enumerate(liste):
-                    if (elt.commemoraison_privilegiee > 0 or 1650 > elt.priorite >= 900) and commemoraison < 1 and elt.dimanche == False and elt.fete_du_Seigneur == False:
+                    if not tmp.personne.intersection(elt.personne) and (elt.commemoraison_privilegiee > 0 or 1650 > elt.priorite >= 900) and commemoraison < 1 and elt.dimanche == False and elt.fete_du_Seigneur == False:
                         commemoraison += 1
                         liste[hideux].celebree = False
                         liste[hideux].omission = False
