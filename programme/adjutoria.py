@@ -508,7 +508,7 @@ class FeteMobileCivile(FeteFixe):
     
     def __init__(self):
         FeteFixe.__init__(self)
-        self.semaine = int() # un numéro correspondant au nombre de semaines d'écart # TODO useless ?
+        self.semaine = int() # un numéro correspondant au nombre de semaines d'écart
         self.jour_de_semaine=int() # un numéro correspondant au jour (0=dimanche)
         
     def DateCivile_(self,paques,annee): # TEST
@@ -518,7 +518,11 @@ class FeteMobileCivile(FeteFixe):
         for i,semaine in enumerate(mois):
             for jour in semaine:
                 if jour == datetime.date(annee,self.date_['mois'],self.date_['jour']):
-                    return mois[i][self.jour_de_semaine]     
+                    date_returned = mois[i][self.jour_de_semaine]  
+                    if date_returned == datetime.date(annee,self.date_['mois'],self.date_['jour']):
+                        date_returned = date_returned + datetime.timedelta(self.semaine*7)
+                    return date_returned
+                
         
 class FeteFerie(Fete):
     """Une classe définissant des jours de férie, comprenant une liste de dates en dehors des fêtes fixes."""
