@@ -510,7 +510,7 @@ class LiturgicalCalendar():
         elif tmp.priorite >= 1650:
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
-                if elt.personne == tmp.personne:
+                if elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                 elif elt.commemoraison_privilegiee > 0 and commemoraison == 0:
                     liste[hideux].commemoraison=True
@@ -522,7 +522,7 @@ class LiturgicalCalendar():
         elif tmp.priorite >= 900:
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
-                if elt.personne == tmp.personne:
+                if elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                     liste[hideux].celebree = False
                 elif commemoraison == 0:
@@ -535,7 +535,9 @@ class LiturgicalCalendar():
         elif tmp.priorite >= 400:
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
-                if elt.personne == tmp.personne:
+                if elt.pal and elt.personne.intersection(tmp.personne):
+                    elt.peut_etre_celebree = True
+                if elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                     liste[hideux].celebree = False
                 elif commemoraison < 2 and (elt.sanctoral or (elt.temporal and commemoraison_temporal == False)):
@@ -556,7 +558,7 @@ class LiturgicalCalendar():
                 liste[hideux].peut_etre_celebree=True
                 if elt.pal:
                     liste[hideux].peut_etre_celebree = True
-                elif elt.personne == tmp.personne:
+                elif elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                     liste[hideux].peut_etre_celebree = False
                 elif commemoraison < 2 and (elt.sanctoral or (elt.temporal and commemoraison_temporal == False)):
