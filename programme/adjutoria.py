@@ -728,7 +728,7 @@ class JoursAvent(FeteMobileAvent):
                 retour._priorite = 1200
             yield retour
             
-class MotherOfMercy(FeteMobileMois):
+class FeastMonthDayCompared(FeteMobileMois):
     """A feast which is calculated compared to a day of a month"""
     def __init__(self):
         FeteMobileMois.__init__(self)

@@ -489,10 +489,12 @@ def ajouter(modele,entrees={}):
             nouveau.date_ = valider('Rentrez le nombre de jour par rapport au premier dimanche après Noël. Avant ce dimanche = négatif.',nouveau.date_)
         elif modele == 'FeteMobileEpiphanie':
             nouveau.date_ = valider('Rentrez le nombre de jour par rapport au premier dimanche après l\'Épiphanie. Avant ce dimanche = négatif.',nouveau.date_)
-        elif modele == 'FeteMobileMois':
+        elif modele == 'FeteMobileMois' or modele == 'FeastMonthDayCompared':
             nouveau.date_['mois'] = valider('Rentrez le numéro du mois',nouveau.date_['mois'])
             nouveau.date_['jour'] = valider('Rentrez le numéro du jour de la semaine (lundi = 0)',nouveau.date_['jour'])
             nouveau.date_['ordre'] = valider("Rentrez le rang du jour par rapport au mois. 0 = premier, -1 = dernier.",nouveau.date_['ordre'])
+            if modele == "FeastMonthDayCompared":
+                nouveau.date_['distance'] = valider("Enter number of days compared to base. before = negative",nouveau.date_['distance'])
         elif modele == 'FeteFixeTransferablePaques':
             print("""Informations concernant la date de base :""")
             nouveau.date_['mois'] = valider('Rentrez le numéro du mois',nouveau.date_['mois'])
@@ -579,6 +581,7 @@ menus = {
          {'title': 'Fêtes par rapport à Noël', 'type': COMMAND, 'command': ajouter, ARGS: 'FeteMobileNoel'},
          {'title': 'Fêtes par rapport à l\'Epiphanie', 'type': COMMAND, 'command': ajouter, ARGS: 'FeteMobileEpiphanie'},
          {'title': 'Fête en fonction du mois', 'type': COMMAND, 'command': ajouter, ARGS: 'FeteMobileMois'},
+         {'title': "Fête en fonction d'un jour dans le mois", 'type': COMMAND, 'command': ajouter, ARGS: 'FeastMonthDayCompared'},
          {'title': 'Fête fixe transférable par rapport à Pâques', 'type': COMMAND, 'command': ajouter, ARGS: 'FeteFixeTransferablePaques'},
          {'title': 'Fête fixe transférable un dimanche', 'type': COMMAND, 'command': ajouter, ARGS: 'FeteFixeTransferableDimanche'},
          {'title': 'Férie ordinaire', 'type': COMMAND, 'command': ajouter, ARGS: 'FeteFerie'},
@@ -587,7 +590,8 @@ menus = {
          {'title': 'Défunts', 'type': COMMAND, 'command': ajouter, ARGS: 'Defunts'},
          {'title': 'Jours dans l\'Octave de Noël', 'type': COMMAND, 'command': ajouter, ARGS: 'JoursOctaveDeNoel'},
          {'title': 'Jours de l\'Avent', 'type': COMMAND, 'command': ajouter, ARGS: 'JoursAvent'},
-         {'title': 'Fête un jour de semaine par rapport à une date civile', 'type': COMMAND, 'command': ajouter, ARGS: 'FeteMobileCivile'}
+         {'title': 'Fête un jour de semaine par rapport à une date civile', 'type': COMMAND, 'command': ajouter, ARGS: 'FeteMobileCivile'},
+         
          ]
      },
     { 'title': "Modifier des éléments", 'type': COMMAND, 'command': modification },
