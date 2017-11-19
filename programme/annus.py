@@ -95,7 +95,7 @@ class LiturgicalCalendar():
         # managing feasts which have also a Pro Aliquibus Locis mass
         other_pal = []
         for elt in self.raw_data:
-            if elt.pal and elt._priorite > 50:
+            if elt.pal and elt.priorite > 50:
                 # managing pal mass
                 pal_elt = elt.copy()
                 pal_elt._priorite, pal_elt.degre = 50, 6
@@ -491,7 +491,7 @@ class LiturgicalCalendar():
         commemoraison = 0 # max 2
         commemoraison_temporal=False
         
-        if len(liste) == 0 or liste[0]._priorite <= 100:
+        if len(liste) == 0 or liste[0].priorite <= 100:
             self.saturday.date = date
             if self.saturday.Est_ce_samedi(date):
                 liste.append(self.saturday.copy())
