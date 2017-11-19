@@ -491,7 +491,7 @@ class LiturgicalCalendar():
         commemoraison = 0 # max 2
         commemoraison_temporal=False
         
-        if len(liste) == 0 or liste[0].degre == 5:
+        if len(liste) == 0 or liste[0]._priorite <= 100:
             self.saturday.date = date
             if self.saturday.Est_ce_samedi(date):
                 liste.append(self.saturday.copy())
@@ -553,7 +553,8 @@ class LiturgicalCalendar():
                 liste[hideux].celebree=False
                 if elt.pal and elt.personne.intersection(tmp.personne):
                     elt.peut_etre_celebree = True
-                if elt.personne.intersection(tmp.personne):
+                    elt.omission = False
+                elif elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                     liste[hideux].celebree = False
                 elif commemoraison < 2 and (elt.sanctoral or (elt.temporal and commemoraison_temporal == False)):
@@ -574,6 +575,7 @@ class LiturgicalCalendar():
                 liste[hideux].peut_etre_celebree=True
                 if elt.pal:
                     liste[hideux].peut_etre_celebree = True
+                    liste[hideux].omission = False
                 elif elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                     liste[hideux].peut_etre_celebree = False
