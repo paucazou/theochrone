@@ -92,6 +92,22 @@ class LiturgicalCalendar():
                 tmp += pic.load()
         *self.raw_data,self.saturday,self.feria = tmp # TODO trouver un moyen plus sûr de faire passer la férie et le samedi
         
+        # managing feasts which have also a Pro Aliquibus Locis mass
+        other_pal = []
+        for elt in self.raw_data:
+            if elt.pal and elt._priorite > 50:
+                # managing pal mass
+                pal_elt = elt.copy()
+                pal_elt._priorite, pal_elt.degre = 50, 6
+                pal_elt.temporal = pal_elt.sanctoral = False
+                pal_elt.link = pal_elt.pal_link
+                # setting pal of elt to False
+                elt.pal = False
+                
+                other_pal.append(pal_elt)
+        # add pal masses to self.raw_data
+        self.raw_data.extend(other_pal)
+        
         """with open(chemin + '/data/samedi_ferie.pic','rb') as file:
             pic=pickle.Unpickler(file)
             self.saturday, self.feria = pic.load()    """    
