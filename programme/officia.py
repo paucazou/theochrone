@@ -410,7 +410,7 @@ def affichage(**kwargs):
         sortie=''
     return_value = []
     for a in kwargs['liste']:
-        if a.omission and not kwargs['verbose'] and not kwargs['recherche']:
+        if a.omission and not kwargs['verbose'] and not kwargs['recherche'] or (a.pal and not kwargs.get('pal',False)):
             """if sortie [-2:] == '\n': # ne marche toujours pas
                 sortie = sortie[:-2]"""
             continue
@@ -450,6 +450,7 @@ def affichage(**kwargs):
                     if i > 2:
                         break
             
+            
             if kwargs['date_affichee'] and not kwargs['verbose'] and not kwargs['recherche']:
                 sortie += """{}/{}/{} """.format(kwargs['date'].day,kwargs['date'].month,kwargs['date'].year)
                 if kwargs['jour_semaine']:
@@ -463,6 +464,9 @@ def affichage(**kwargs):
                 
             sortie += a.nom['fr']
             
+            if a.pal:
+                sortie += " (messe Pro Aliquibus Locis)"
+                
             if not kwargs['verbose'] and a.commemoraison:
                 sortie += ' (Commémoraison)'
             elif not kwargs['verbose'] and kwargs['recherche'] and a.omission:
@@ -488,7 +492,7 @@ def affichage(**kwargs):
                     sortie += """Fête de troisième classe. """
                 elif a.degre == 4:
                     sortie += """Fête de quatrième classe. """
-                else:
+                elif a.degre == 5:
                     sortie += """Commémoraison. """
                     
             if kwargs['verbose'] or kwargs['transfert']:                    
@@ -504,7 +508,7 @@ def affichage(**kwargs):
             if kwargs['verbose'] or kwargs['temporal_ou_sanctoral']:
                 if a.temporal:
                     sortie += """Fête du Temps. """
-                else:
+                elif a.sanctoral:
                     sortie += """Fête du Sanctoral. """
                     
             if kwargs['verbose'] or kwargs['temps_liturgique']:
