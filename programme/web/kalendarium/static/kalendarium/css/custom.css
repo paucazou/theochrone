@@ -81,3 +81,8 @@ html.arch64 .arch64 {
     color : white !important;
 }
 
+a[name="title-link"]
+{
+    color : #333333;
+}
+
