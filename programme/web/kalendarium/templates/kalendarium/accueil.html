@@ -73,7 +73,7 @@
         <tr>
             <th>Ordo</th><td>{{ fete.ordo }}</td></tr>
         <tr>
-            <th>Célébration</th><td>Cette messe{% if fete.peut_etre_celebree %} peut être célébrée{% if fete.commemoraison %} ou commémorée{% endif %}{% else %} est {% if fete.celebree or fete.peut_etre_celebree %}célébrée{% endif %}{% if fete.commemoraison %}commémorée{% endif %}{% if fete.omission %}omise{% endif %}{% endif %}.
+            <th>Célébration</th><td>Cette fête{% if fete.peut_etre_celebree %} peut être célébrée{% if fete.commemoraison %} ou commémorée{% endif %}{% else %} est {% if fete.celebree or fete.peut_etre_celebree %}célébrée{% endif %}{% if fete.commemoraison %}commémorée{% endif %}{% if fete.omission %}omise{% endif %}{% endif %}.
         {% if fete.degre <= 5 %}
         <tr>
           <th>Classe</th><td>{% if fete.degre == 5 %}Commémoraison{% else%}{{ fete.degre }}{% endif %}</td></tr>{% endif %}
