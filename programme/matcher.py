@@ -29,7 +29,7 @@ class Matcher:
         """Return the ratio for self.tokens
         againt text.
         text : str
-        return an int as ratio, between 0 to 100
+        return a float as ratio, between 0 to 1
         with_distance_ratio = if the distance between
         tokens matching in the text must be taken in account"""
         token_pos = { token: {'index':0,'score':0} for token in self.tokens }
