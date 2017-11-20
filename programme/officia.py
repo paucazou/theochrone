@@ -4,6 +4,7 @@
 import calendar
 import datetime
 import messages
+import matcher
 import os
 import pickle
 import re
@@ -625,6 +626,9 @@ def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='fr',exit=True):
     mots_str=''
     for a in mots:
         mots_str += a
+    
+    # creating Matcher object
+    matching_machine = matcher.Matcher(mots,'fr')
         
     boucle = True
     date = debut
@@ -635,7 +639,11 @@ def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='fr',exit=True):
     while date <= fin:
         try:
             for fete in Annee[date]:
-                fete.valeur = fete.Correspondance(mots_str,mots,plus)
+                if not fete.__dict__.get('tokens_',False):
+                    fete.valeur = fete.Correspondance(mots_str,mots,plus)
+                else:
+                    fete.valeur = matching_machine.fuzzer(fete.tokens_,False) # WARNING using tokens_ because fete.tokens are not ready ; please replace it when ready WARNING
+                    fete.valeur = fete.valeur*60 # hack to delete when all feasts will use tokens_ instead of regex_
                 if fete.valeur >= 50:
                     retenus.append(fete)
         except KeyError:
