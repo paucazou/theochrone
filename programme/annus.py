@@ -526,7 +526,9 @@ class LiturgicalCalendar():
         elif tmp.priorite >= 1650:
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
-                if elt.personne.intersection(tmp.personne):
+                if elt.pal:
+                    liste[hideux].omission = True
+                elif elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                 elif elt.commemoraison_privilegiee > 0 and commemoraison == 0:
                     liste[hideux].commemoraison=True
@@ -538,7 +540,9 @@ class LiturgicalCalendar():
         elif tmp.priorite >= 900:
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
-                if elt.personne.intersection(tmp.personne):
+                if elt.pal:
+                    liste[hideux].omission = True
+                elif elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                     liste[hideux].celebree = False
                 elif commemoraison == 0:
@@ -567,7 +571,7 @@ class LiturgicalCalendar():
                     liste[hideux].commemoraison=False
                     liste[hideux].omission=True
         
-        elif tmp.priorite >= 200: # TODO Bien vérifier si le cas est juste
+        elif tmp.priorite >= 200:
             tmp.celebree=False
             tmp.peut_etre_celebree=True
             for hideux,elt in enumerate(liste):
