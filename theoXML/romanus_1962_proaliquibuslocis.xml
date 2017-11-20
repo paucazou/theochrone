@@ -775,7 +775,7 @@
       <bool key="temporal">False</bool>
       <str key="textes"/>
       <None key="tokens"/>
-      <str key="tokens_">saint jean porte latine martyre apotre evangeliste pathmos</str>
+      <str key="tokens_">saint jean porte latine martyre apotre evangeliste patmos</str>
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
