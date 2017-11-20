@@ -26,7 +26,7 @@ s=''
 
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
-         debut=datetime.date.today(),fin=datetime.date.today(),
+         debut=datetime.date.today(),fin=datetime.date.today(),pal=False,
          mots_clefs='',plus=False,annee=datetime.date.today().year):
     """A function which defines homepage. It is also used
     by other pages to print common code.
@@ -97,10 +97,11 @@ def date_transfert(request):
     recherche_simple = RechercheSimple(request.GET or None)
     if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
+        pal = recherche_simple.cleaned_data['pal']
         if recherche_simple.cleaned_data['martyrology']:
             result = martyrology_date(request,date,recherche_simple)
         else:
-            result = home(request,recherche_simple=recherche_simple,debut=date,fin=date)
+            result = home(request,recherche_simple=recherche_simple,debut=date,fin=date,pal=pal)
     else:
         result = home(request,recherche_simple=recherche_simple)
     return result

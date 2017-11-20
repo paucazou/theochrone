@@ -43,13 +43,14 @@
             title="Cliquez pour lire l'intégralité des textes de la messe du jour sur Divinum Officium" alt="Mass texts of the day in user language on Divinum Officium" target="_blank" name="title-link">{{ date }}</a>
             </h3>
             <div id="value">     <div class="panel-group">           
-                    {% for fete in jour %} 
+                    {% for fete in jour %}
+                    {% if not fete.pal or fete.pal and pal %}
                     
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a class="collapsed" data-toggle="collapse" href="#{{ fete.hache }}">{{ fete.nom.fr }}{% if inversion %}
-                        - {{ fete.date }} {% endif %}</a>
+                        - {{ fete.date }} {% endif %}{% if fete.pal %} (messe <em>Pro Aliquibus Locis</em>){% endif %}</a>
       </h4>
     </div>
     <div id="{{ fete.hache }}" class="panel-collapse collapse">
@@ -72,9 +73,10 @@
         <tr>
             <th>Ordo</th><td>{{ fete.ordo }}</td></tr>
         <tr>
-            <th>Célébration</th><td>Cette fête{% if fete.peut_etre_celebree %} peut être célébrée{% if fete.commemoraison %} ou commémorée{% endif %}{% else %} est {% if fete.celebree or fete.peut_etre_celebree %}célébrée{% endif %}{% if fete.commemoraison %}commémorée{% endif %}{% if fete.omission %}omise{% endif %}{% endif %}.
+            <th>Célébration</th><td>Cette messe{% if fete.peut_etre_celebree %} peut être célébrée{% if fete.commemoraison %} ou commémorée{% endif %}{% else %} est {% if fete.celebree or fete.peut_etre_celebree %}célébrée{% endif %}{% if fete.commemoraison %}commémorée{% endif %}{% if fete.omission %}omise{% endif %}{% endif %}.
+        {% if fete.degre <= 5 %}
         <tr>
-          <th>Classe</th><td>{% if fete.degre == 5 %}Commémoraison{% else%}{{ fete.degre }}{% endif %}</td></tr>
+          <th>Classe</th><td>{% if fete.degre == 5 %}Commémoraison{% else%}{{ fete.degre }}{% endif %}</td></tr>{% endif %}
         <tr>
             <th>Couleur liturgique</th><td>{{ fete.couleur.capitalize }}</td></tr>
         
@@ -98,10 +100,11 @@
       <div class="panel-footer"><a target="_blank" href="{{ fete.link }}">Textes de la messe et de l'office sur Introibo.fr</a></div>
     </div>
   </div>
+  {% endif %}
 {% endfor %}</div>
             </div>
             
-                    
+            
          {% endfor %} 
         {% endif %}
          {% if not inversion %}

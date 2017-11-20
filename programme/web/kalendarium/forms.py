@@ -16,6 +16,7 @@ class RechercheSimple(forms.Form):
                                      'class' : "form-control"}),
                                  required = True,label="Choisissez une date",initial = datetime.date.today
                                  )
+    pal = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
     martyrology = forms.BooleanField(label="Afficher le Martyrologe Romain",required=False)
 
 class RechercheMotClef(forms.Form):
