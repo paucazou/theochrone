@@ -27,6 +27,7 @@ class RechercheMotClef(forms.Form):
     recherche = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'},),
         label="Entrez vos mots-clefs",required=True)
     plus = forms.BooleanField(label="Recherche large",required=False)
+    pal = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
     martyrology = forms.BooleanField(label="Rechercher dans le Martyrologe Romain",required=False)
 
 class MoisEntier(forms.Form):
@@ -38,6 +39,8 @@ class MoisEntier(forms.Form):
                                      'class' : "form-control"}),
                               max_value=12,min_value=1,required = True,
                               initial = datetime.date.today().month)
+    pal = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
+    
     
 class ContactForm(forms.Form):
     """A class which defines a contact form"""

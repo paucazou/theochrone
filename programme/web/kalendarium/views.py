@@ -87,7 +87,8 @@ def mc_transfert(request):
             mots_clefs = recherche_mot_clef.cleaned_data['recherche']
             plus = recherche_mot_clef.cleaned_data['plus']
             annee = recherche_mot_clef.cleaned_data['annee']
-            result = home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,annee=annee)
+            pal = recherche_mot_clef.cleaned_data['pal']
+            result = home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,pal=pal,annee=annee)
     else:
         result = home(request, recherche_mot_clef)
     return result
@@ -113,6 +114,7 @@ def mois_transfert(request):
         mois = mois_entier.cleaned_data['mois']
         annee = mois_entier.cleaned_data['annee']
         debut = datetime.date(annee,mois,1)
+        pal = mois_entier.cleaned_data['pal']
         i=31
         while True:
             try:
@@ -120,7 +122,7 @@ def mois_transfert(request):
                 break
             except ValueError:
                 i -= 1
-        return home(request,mois_entier=mois_entier,mois_seul=True,debut=debut,fin=fin)
+        return home(request,mois_entier=mois_entier,mois_seul=True,pal=pal,debut=debut,fin=fin)
     else:
         return home(request, mois_entier=mois_entier)
     
