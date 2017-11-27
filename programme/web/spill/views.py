@@ -39,7 +39,7 @@ def day(request):
     lyear(day.year)
     data = lyear[day] # data of requested day
     hashtag = "resultup"
-    link_to_day = officia.datetime_to_link(day,host,hashtag)
+    link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag)
     link_to_tomorrow = datetime_to_param(day + datetime.timedelta(1))
     link_to_yesterday = datetime_to_param(day - datetime.timedelta(1))
     return render(request,'spill/day.html',locals())
@@ -58,7 +58,7 @@ def day_mobile(request):
     index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie'
     feast = data[index]
     hashtag = "resultup"
-    link_to_day = officia.datetime_to_link(day,host,hashtag)
+    link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag)
     return render(request,'spill/day_mobile.html',locals())    
     
 def create_module(request):
@@ -92,36 +92,43 @@ def saveUrls(request):
         answer = 'Done'
     return HttpResponse(answer)
 
-def day_to_static(start,stop,path):
+def day_to_static(start,stop,path,mobile=False): # TODO gérer les PAL en js directement dans les gabarits -> imposé pour la version mobile
     """This function return static pages corresponding to "day" views.
     start and stop are years.
     path is a directory with / at the end
     This function should be used in a django shell : web/manage.py shell"""
     import django.http
-    def pseudo_day(request,data,day):
+    def pseudo_day(request,data,day,mobile):
         """Imitates day behaviour in a static context"""
         hashtag = "resultup"
-        link_to_day = officia.datetime_to_link(day,host,hashtag)
-        link_to_tomorrow = datetime_to_shtml(day + datetime.timedelta(1))
-        link_to_yesterday = datetime_to_shtml(day - datetime.timedelta(1))
+        link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag)
+        if not mobile:
+            link_to_tomorrow = datetime_to_shtml(day + datetime.timedelta(1))
+            link_to_yesterday = datetime_to_shtml(day - datetime.timedelta(1))
         months = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
         day = "{} {} {}".format(day.day,months[day.month],day.year)
-        return render(request,'spill/day.html',locals())
+        # for mobile version
+        if mobile:
+            index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie' # doesn't work
+            feast = data[index]
+        # return
+        return render(request,('spill/day.html','spill/day_mobile.html')[mobile],locals())
     
-    def datetime_to_shtml(day):
+    def datetime_to_shtml(day,mobile=False):
         """day is a datetime like object.
         This function returns a string as following :
         'dayYYYY-MM-DD.shtml'
         MM ans DD can be M and D if they are less than 10"""
-        return """day{}-{}-{}.shtml""".format(day.year,day.month,day.day)
+        return """{}day{}-{}-{}.shtml""".format(('','mob')[mobile],
+            day.year,day.month,day.day)
     
     lyear(start,stop)
     req = django.http.request.HttpRequest()
     req.META
     for data in lyear:
        day = data[0].date
-       answer = pseudo_day(req,data,day)
-       file_path = path + datetime_to_shtml(day)
+       answer = pseudo_day(req,data,day,mobile)
+       file_path = path + datetime_to_shtml(day,mobile)
        with open(file_path,'w') as file:
            file.write(answer.content.decode())
            
