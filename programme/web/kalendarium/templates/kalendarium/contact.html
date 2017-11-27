@@ -1,5 +1,12 @@
 {% extends "base.html" %}{% load static %}
 {% block title %}{{ title }}{% endblock %}
+{% block helpmenu %}
+<li class="hmenu contact"><a href="#" class="hmenu contact">Contact <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+<li class="hsubmenu closed contact"><a href="#">Qui sommes-nous ?</a></li>
+<li class="hsubmenu closed contact"><a href="#contact">Envoyer un message</a></li>
+<li class="hsubmenu closed contact"><a href="#">Contribuer</a></li>
+<li class="hsubmenu closed contact"><a href="#">Nos partenaires</a></li>
+{% endblock helpmenu %}
 {% block content %}
 
 			<div class="footer section">

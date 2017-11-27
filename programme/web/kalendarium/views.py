@@ -193,9 +193,10 @@ def widget(request):
     files = ("widget_day","widget_day_mobile")
     widgets = {}
     whost = "theochrone.ga"
+    whost = "localhost:8000" # dev TODO
     for filename in files:
         with open(fpath + filename) as f:
-            widgets[filename] = f.read().format(whost)
+            widgets[filename] = f.read().format(whost).replace("https","http") # replace : dev TODO
     return render(request,'kalendarium/widget.html',locals())
 
 def download(request):

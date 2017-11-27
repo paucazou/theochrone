@@ -100,26 +100,22 @@
 												<li><a href="#help">Aide</a></li>
 												<li><a href="#contribute">Contribuer</a></li>-->
 												<!--<li><a href="#contact">Contact</a></li>-->
-												<li class="hmenu online"><a href="#" class="hmenu online">Utiliser en ligne <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-												<li class="hsubmenu closed online"><a href="#">Rechercher</a></li>
-												<li class="hsubmenu closed online"><a href="#">Résultats</a></li>
+												{% block onlinemenu %}<li class="hmenu online"><a href="#" class="hmenu online">Utiliser en ligne <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+												<li class="hsubmenu closed online"><a href="../kalendarium/accueil#research">Rechercher</a></li>
+												<li class="hsubmenu closed online"><a href="../kalendarium/accueil#resultup">Résultats</a></li>
+												{% endblock onlinemenu %}
 												
-												<li class="hmenu gettheo"><a href="#" class="hmenu gettheo">Obtenir le Théochrone... <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-												<li class="hsubmenu closed gettheo"><a href="#">sur votre ordinateur</a></li>
-												<li class="hsubmenu closed gettheo"><a href="#">sur votre site</a></li>
+												<li><a href="../kalendarium/widget#widget">Widget</a></li>
+												<li><a href="../kalendarium/download#download">Télécharger</a></li>
 												
-												<li class="hmenu contact"><a href="#" class="hmenu contact">Contact <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-												<li class="hsubmenu closed contact"><a href="#">Qui sommes-nous ?</a></li>
-												<li class="hsubmenu closed contact"><a href="#">Envoyer un message</a></li>
-												<li class="hsubmenu closed contact"><a href="#">Contribuer</a></li>
-												<li class="hsubmenu closed contact"><a href="#">Nos partenaires</a></li>
+												<li class="help"><a href="../help/main#help" class="help">Aide</a></li>
 												
-												<li class="hmenu help"><a href="#" class="hmenu help">Aide... <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-												<li class="hsubmenu closed help"><a href="#">de la version en ligne </a></li>
-												<li class="hsubmenu closed help"><a href="#">pour le widget</a></li>
-												<li class="hsubmenu closed help"><a href="#">au téléchargement</a></li>
-												<li class="hsubmenu closed help"><a href="#">de l'interface graphique</a></li>
-												<li class="hsubmenu closed help"><a href="#">de la ligne de commandes</a></li>
+												{% block helpmenu %}
+												<li><a href="../kalendarium/contact#contact">Contact</a></li>
+												{% endblock helpmenu %}
+												
+												
+												
 												<!--<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu navbar-nav navbar-inverse">

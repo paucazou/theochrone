@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% load static %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
-<div class="container" data-animation-effect="fadeIn">
+<div id="widget" class="container" data-animation-effect="fadeIn">
     <div class="space"></div>
     <h1 id="main" class="title text-center">Widget <span>principal</span></h1>
     <div class="row">
@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-4">
         <h3>Exemple</h3>
-        {{ widgets.widget_day_mobile | safe }}
+        say : {{ widgets.widget_day_mobile | safe }}
         </div>
     </div>
 </div>

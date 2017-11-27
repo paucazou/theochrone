@@ -1,6 +1,11 @@
-
 {% extends "base.html" %}{% load static %}
 {% block title %}{{ titre }} {% endblock %}
+
+{% block onlinemenu %}
+<li><a href="#result">Résultats</a></li>
+<li><a href="#research">Recherche</a></li>
+{% endblock onlinemenu %}
+
 {% block content %}
 <!-- section start -->
 		<!-- ================ -->
