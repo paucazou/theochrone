@@ -34,6 +34,7 @@ def day(request):
     sentvalue = RechercheSimple(request.GET or None)
     if sentvalue.is_valid():
         day = sentvalue.cleaned_data['date_seule']
+        pal = sentvalue.cleaned_data['pal']
     else:
         day = datetime.date.today()
     lyear(day.year)
@@ -109,7 +110,7 @@ def day_to_static(start,stop,path,mobile=False): # TODO gérer les PAL en js dir
         day = "{} {} {}".format(day.day,months[day.month],day.year)
         # for mobile version
         if mobile:
-            index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie' # doesn't work
+            index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie'
             feast = data[index]
         # return
         return render(request,('spill/day.html','spill/day_mobile.html')[mobile],locals())
