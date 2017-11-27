@@ -108,6 +108,9 @@ def day_to_static(start,stop,path,mobile=False): # TODO gérer les PAL en js dir
             link_to_yesterday = datetime_to_shtml(day - datetime.timedelta(1))
         months = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
         day = "{} {} {}".format(day.day,months[day.month],day.year)
+        # add special classes for static files
+        static_file = True
+        pal = True
         # for mobile version
         if mobile:
             index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie'

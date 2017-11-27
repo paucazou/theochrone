@@ -12,6 +12,12 @@
 {
     color: #423A3D;
 }
+{% if static_file %}
+.pal
+{
+    display: none;
+}
+{% endif %}
 </style>
 <div class="container">
     <div class="row little-bottom-margin well well-sm horizontal-align">
@@ -23,9 +29,10 @@
         <div class="list-group little-bottom-margin">
 {% for feast in data %}
 {% if not feast.pal or feast.pal and pal %}
-<a class="list-group-item" target='blank' href="{{ feast.link }}" id="text-mass" alt="Link to Introibo.fr" title="Textes de la messe et de l'office sur Introibo">{{ feast.nom.fr }}{% if feast.pal %} (messe <em>Pro Aliquibus Locis</em>){% endif %}{% if feast.commemoraison and not feast.peut_etre_celebree %} (mémoire){% elif feast.omission %} (omis){% endif %}</a>
+<a class="list-group-item {% if feast.pal and static_file %}pal{% endif %}" target='blank' href="{{ feast.link }}" name="text-mass" alt="Link to Introibo.fr" title="Textes de la messe et de l'office sur Introibo">{{ feast.nom.fr }}{% if feast.pal %} (messe <em>Pro Aliquibus Locis</em>){% endif %}{% if feast.commemoraison and not feast.peut_etre_celebree %} (mémoire){% elif feast.omission %} (omis){% endif %}</a>
 {% endif %}
 {% endfor %}
         </div>
     </div>
 </div>
+
