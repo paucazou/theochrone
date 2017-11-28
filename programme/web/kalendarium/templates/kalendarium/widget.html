@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-4">
             <h3>Exemple</h3>
-            {{ widgets.widget_day | safe }} <!-- BUG height : 0px; pose problème -> problème de postMessage surtout : origin == null Aussi, le widget est coupé. -->
+            <div id="widget_example">{{ widgets.widget_day | safe }}</div> <!-- BUG height : 0px; pose problème -> problème de postMessage surtout : origin == null Aussi, le widget est coupé. -->
         </div>
     </div>
     <div class="space"></div>
@@ -50,7 +50,10 @@ $( "#palbut" ).click(function() { // TODO essayer de remplacer cet id par un nam
         url_to_change = new_url.join("&");
         } // remove part of url
     text_area[13] = url_to_change; // setting the url
-    $("#mainwidget").val(text_area.join('"')); // filling the textarea
+    text_area = text_area.join('"');
+    $("#mainwidget").val(text_area); // filling the textarea
+    $("#widget_example").html(text_area) ;
+    console.log($("#widget_example").html());
 });
 </script>
     
