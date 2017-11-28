@@ -7,11 +7,14 @@
     <div class="row">
         <div class="col-md-8">
             <h3>Code à copier/coller</h3>
-            <textarea class="form-control" rows="3" id="message" placeholder="Message" name="message" required>{{ widgets.widget_day }}</textarea>
+            <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" id="palbut" insert="pal=on">
+            Inclure les messes <em>Pro Aliquibus Locis</em>
+            </button>
+            <textarea class="form-control" rows="3" id="mainwidget" placeholder="Message" name="message" required>{{ widgets.widget_day }}</textarea>
         </div>
         <div class="col-md-4">
             <h3>Exemple</h3>
-            {{ widgets.widget_day | safe }} <!-- BUG height : 0px; pose problème. Aussi, le widget est coupé. -->
+            {{ widgets.widget_day | safe }} <!-- BUG height : 0px; pose problème -> problème de postMessage surtout : origin == null Aussi, le widget est coupé. -->
         </div>
     </div>
     <div class="space"></div>
@@ -19,13 +22,36 @@
     <div class="row">
         <div class="col-md-8">
         <h3>Code à copier/coller</h3>
-        <textarea class="form-control" rows="3" id="message" placeholder="Message" name="message" required>{{ widgets.widget_day_mobile }}</textarea>
+        <textarea class="form-control" rows="3" id="mobmessage" placeholder="Message" name="message" required>{{ widgets.widget_day_mobile }}</textarea>
         </div>
         <div class="col-md-4">
         <h3>Exemple</h3>
-        say : {{ widgets.widget_day_mobile | safe }}
+        {{ widgets.widget_day_mobile | safe }}
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$( "#palbut" ).click(function() { // TODO essayer de remplacer cet id par un name plus large, lorsqu'il y aura d'autres boutons // changer l'exemple en même temps
+    var text_area = $("#mainwidget").val().split('"'); // text area value
+    var insertion = $("#palbut").attr("insert"); // part of url to add
+    var url_to_change = text_area[13]; // main url
+    if ( url_to_change.indexOf(insertion) == -1){
+        url_to_change += '&' + insertion;
+        } // add part of url
+    else {
+        url_to_change = url_to_change.split('&');
+        var new_url = [];
+        for (i=0;i < url_to_change.length; i++){
+            if (url_to_change[i] != insertion){
+            new_url.push(url_to_change[i]);}
+            }
+        url_to_change = new_url.join("&");
+        } // remove part of url
+    text_area[13] = url_to_change; // setting the url
+    $("#mainwidget").val(text_area.join('"')); // filling the textarea
+});
+</script>
     
 {% endblock %}
