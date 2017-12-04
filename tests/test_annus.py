@@ -49,6 +49,7 @@ class FakeFeast(mock.MagicMock):
         
         self.temporal = False
         self.sanctoral = True
+        self.pal = False
         
         self.peut_etre_celebree=False
         self.transferee=False
