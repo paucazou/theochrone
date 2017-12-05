@@ -163,6 +163,12 @@ def contact(request):
     and returns the view with success"""
     contact_success = False
     titre = "Contact"
+    other_apps = (
+        ('Divinum Officium, le plus complet','http://divinumofficium.com/'),
+        ('Chant grégorien','http://www.chantgregorien.free.fr/calendrier/calend.php'),
+        ('Evangelizo','http://ordoweb.evangelizo.org/ordo//calendar/2'),
+        ('1962 Ordo (FSSPX)','https://1962ordo.today/'),
+        )
     if request.method == 'GET':
         form = ContactForm()
     else:
