@@ -167,8 +167,14 @@ def contact(request):
         ('Divinum Officium, le plus complet','http://divinumofficium.com/'),
         ('Chant grégorien','http://www.chantgregorien.free.fr/calendrier/calend.php'),
         ('Evangelizo','http://ordoweb.evangelizo.org/ordo//calendar/2'),
-        ('1962 Ordo (FSSPX)','https://1962ordo.today/'),
+        ('1962 Ordo (FSSPX, en anglais)','https://1962ordo.today/'),
         )
+    partners = (
+        ('Tradinews','http://tradinews.blogspot.fr/'),
+        ('Metablog','https://ab2t.blogspot.fr/'),
+        ('Le Salon Beige','http://lesalonbeige.blogs.com/my_weblog/web.html#theocontainer'),
+        ('BLH Land','http://www.blh-land.fr/#theocontainer'),
+        ) # Mettre cela ailleurs. Où ? TODO
     if request.method == 'GET':
         form = ContactForm()
     else:
