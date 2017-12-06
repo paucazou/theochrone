@@ -66,20 +66,20 @@ html.arch64 .arch64 {
     display: block;
 }
 
-.hsubmenu.closed {
-    display: none !important;
-}
 
-.hsubmenu.opened > a{
-/*     transition: 0.5s; */
-    font-size: 17px !important; /* agrandir la taille minimale du menu */
+.hsubmenu {
+    font-size: 17px !important;
     color: #55acee !important;
 }
 
-.hsubmenu.opened > a:hover {
-/*     transition: 0.5s; */
-    color : white !important;
+.hsubmenu[disabled='true']{
+    display: none !important;
 }
+
+.hsubmenu:hover {
+    color: white !important;
+}
+
 
 a[name="title-link"]
 {

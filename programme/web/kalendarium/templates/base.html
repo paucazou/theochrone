@@ -100,9 +100,9 @@
 												<li><a href="#help">Aide</a></li>
 												<li><a href="#contribute">Contribuer</a></li>-->
 												<!--<li><a href="#contact">Contact</a></li>-->
-												{% block onlinemenu %}<li class="hmenu online"><a href="#" class="hmenu online">Utiliser en ligne <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-												<li class="hsubmenu closed online"><a href="../kalendarium/accueil#research">Rechercher</a></li>
-												<li class="hsubmenu closed online"><a href="../kalendarium/accueil#resultup">Résultats</a></li>
+												{% block onlinemenu %}<li><a href="#" class="hmenu" children="online" disabled="true">Utiliser en ligne <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+												<li><a href="../kalendarium/accueil#research" class="hsubmenu" menu-parent="online" disabled="true">Rechercher</a></li>
+												<li><a href="../kalendarium/accueil#resultup" class="hsubmenu" menu-parent="online" disabled="true">Résultats</a></li>
 												{% endblock onlinemenu %}
 												
 												<li><a href="../kalendarium/widget#widget">Widget</a></li>
@@ -114,21 +114,7 @@
 												<li><a href="../kalendarium/contact#contact">Contact</a></li>
 												{% endblock helpmenu %}
 												
-												
-												
-												<!--<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu navbar-nav navbar-inverse">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                </ul>
-                </li>-->
-                <!-- nouveau menu : - utiliser en ligne (résultats, recherche)
-                                    - obtenir le Theochrone (télécharger, mettre sur son site)
-                                    - Contact (qui sommes-nous, contact, contribuer)
-                                    - Aide (aide de la version en ligne, widget, au téléchargement, gui, cli)
-                                    - faire de l'icône un lien vers l'accueil -->
+                                                                                            
 											</ul>
 										</div>
 
