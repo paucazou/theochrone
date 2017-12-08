@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-4">
             <h3>Exemple</h3>
-            <div id="widget_example">{{ widgets.widget_day | safe }}</div> <!-- BUG height : 0px; pose problème -> problème de postMessage surtout : origin == null Aussi, le widget est coupé. -->
+            <div id="widget_example">{{ widgets.widget_day | safe }}</div> {# BUG height : 0px; pose problème -> problème de postMessage surtout : origin == null Aussi, le widget est coupé. #}
         </div>
     </div>
     <div class="space"></div>
