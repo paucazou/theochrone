@@ -37,7 +37,7 @@
                 //-----------------------------------------------
                 // Found here : https://stackoverflow.com/questions/21203111/bootstrap-3-collapsed-menu-doesnt-close-on-click
                 $(".navbar-nav li a").click(function(event) {
-                    if (!$(this).parent().hasClass('hmenu')) // changed dropdown by hmenu
+                    if (!$(this).hasClass('hmenu')) // changed dropdown by hmenu
                         $(".navbar-collapse").collapse('hide');
                 });
 
