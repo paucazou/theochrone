@@ -169,14 +169,31 @@
                             <h1 class="title text-center" id="whoarewe">Qui <span>sommes-nous ?</span></h1>
                             <div class="space"></div>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-8"><p class="lead text-justify">Le Théochrone a été créé et est principalement maintenu par Philippe Aucazou, professeur de français, poète et jeune père de famille. Vous pouvez le retrouver sur son blogue de poésie religieuse, <a href="http://philippeaucazou.wordpress.com" title="Aller sur O Crux Ave Spes Unica" alt="Lien vers O Crux Ave Spes Unica" target="_blank">O Crux Ave Spes Unica</a>.
+                                    <br>L'une des pièces maîtresses du programme, toutefois, a été créée par l'un de ses proches, lequel l'a également conseillé sur plusieurs choix techniques.</p>
+                                    <div class="space"></div>
+                                    <div class="well">
+                                            Mais le Théochrone, ce pourrait aussi être... vous ! Rejoignez-notre équipe, pour un développement plus rapide, plus puissant, plus vaste !
+                                        </div>
                                     </div>
-                                    <div class="col-sm-6">{# une image #}
+                                    <div class="col-sm-4"><img class="img-responsive img-rounded" src="{% static "kalendarium/images/chevalier_genoux.png" %}" alt="Chevalier en prière" title="Chevalier en prière">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         </div>
+                <!-- section start -->
+		<!-- ================ -->
+		<div class="default-bg space black">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<h1 class="text-center">Proposez votre aide !</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- section end -->
                         <div class=" section">
                         <div class="container">
                             <h1 class="title text-center" id="partners">Nos <span>partenaires</span></h1> {# remplacer par un collapse #}
@@ -184,10 +201,10 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                     <h2>Widget</h2>
-                                    Nous avons le plaisir de collaborer avec plusieurs sites et blogues sur lesquels vous pouvez retrouver notre widget. En voici la liste non exhaustive :<br>
+                                    Nous avons le plaisir de collaborer avec plusieurs sites et blogues sur lesquels vous pouvez retrouver <a href="widget#widget" title="Code du widget" alt="Lien vers le code du widget">notre widget</a>. En voici la liste non exhaustive :<br>
                                     <ul class="list-unstyled">
                                     {% for website, url in partners %}
-                                    <li><i class="fa fa-caret-right pr-10 text-colored"></i><a href="{{ url }}" alt="{{ website }}" title="Aller sur {{ website }}">{{ website }}</a></li>
+                                    <li><i class="fa fa-caret-right pr-10 text-colored"></i><a href="{{ url }}" alt="{{ website }}" target="_blank" title="Aller sur {{ website }}">{{ website }}</a></li>
                                     {% endfor %}
                                     </ul>
                                     </div>
@@ -197,14 +214,35 @@
 									<div class="panel panel-default">
 										<div class="panel-heading" role="tab" id="headingOne">
 											<h4 class="panel-title">
-												<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+												<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 													Metablog
 												</a>
 											</h4>
 										</div>
-										<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+										<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 											<div class="panel-body">
-												<a href="http://ab2t.blogspot.fr/2017/08/philippe-aucazou-tant-de-choses.html" alt="Metablog" title="Interview de Philippe Aucazou au sujet du Theochrone">Metablog : <em>Philippe Aucazou : «Tant de choses existent en ligne... L'idée est de mettre du lien entre elles»</em></a> {# mettre l'article entier #}
+												<h3><a href="http://ab2t.blogspot.fr/2017/08/philippe-aucazou-tant-de-choses.html" alt="Metablog" title="Interview de Philippe Aucazou au sujet du Theochrone">Metablog : <em>Philippe Aucazou : «Tant de choses existent en ligne... L'idée est de mettre du lien entre elles»</em></a></h3>
+												 <em>Les visiteurs du MetaBlog auront remarqué la petite fenêtre (en haut à droite de chaque page), qui indique le calendrier. Cette nouveauté est due à Philippe Aucazou, qui nous présente ici ce qu'il nomme le «théochrone».</em>
+   
+<h4>Vous proposez un « théochrone » - de quoi s’agit-il ?</h4>
+
+    C’est un calendrier liturgique universel. Divers règles régissent le calcul du comput (computus) ecclésiastique. Ces règles sont simples, il suffit de les donner à l’ordinateur (computer), qui détermine ensuite le calendrier, sans limitation de temps.
+
+<h4>Bien – cependant, divers sites le proposent déjà.</h4>
+
+    Bien sûr. Une particularité du « théochrone » est de proposer une recherche par date, par l’intitulé des fêtes. Une autre particularité est d’envoyer, pour chaque fête, vers des ressources en ligne – typiquement, vers les pages d’introibo qui donnent les textes de la liturgie, ainsi que leur commentaire par les plus grands : Dom Guéranger, Pius Parsch, le Bienheureux Schuster.
+
+<h4>Et tout cela, donc, en cliquant depuis votre site ?</h4>
+
+    Depuis votre site également, puisque vous avez installé notre ‘widget’. Il s’agit d’un petit morceau de code à placer sur une page pour que s’y affiche le principal, à savoir la date et ses fêtes. En cliquant sur chaque fête vous arrivez sur les textes du jour, sur des pages extérieures. En cliquant sur les flèches, vous faites défiler le calendrier. En cliquant sur la date, vous arrivez sur le site propre au théochrone, pour divers recherches.
+
+<h4>C’est d’une simplicité désarmante… et efficace.</h4>
+
+    Tant de choses existent en ligne. L'idée est de mettre du lien entre elles. Ce calendrier peut se voir comme un tuyau entre les visiteurs de blogs traditionalistes et les sites de liturgie. Amis blogueurs, contactez-nous et nous vous envoyons le code.
+
+<h4>Votre idée semble assez aboutie.</h4>
+
+    Oui et non. Nous l’avons dit, ce calendrier se veut universel. Les possibilités d’enrichissement sont encore importantes. En amont, par ajout de spécificités locales du comput – et en aval en donnant accès à plus de textes, ceux du bréviaire par exemple.
 											</div>
 										</div>
 									</div>
@@ -218,7 +256,7 @@
 										</div>
 										<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
 											<div class="panel-body">
-												À la page 42 de son numéro 296 d'octobre 2017, La Nef nous a consacré une brève <a href="http://www.lanef.net/t_article/breves-du-n0296-d-octobre-2017-26391.asp?page=1" alt="La Nef" title="Lien vers la brève de La Nef">consultable en ligne :</a><a href="{% static "kalendarium/images/lanef29642.pdf" %}"><img src="{% static "kalendarium/images/lanef29642.pdf" %}" alt="La Nef n° 292 page 42. Brève du Théochrone" title="Cliquer pour agrandir"></a>
+												À la page 42 de son numéro 296 d'octobre 2017, La Nef nous a consacré une brève <a href="http://www.lanef.net/t_article/breves-du-n0296-d-octobre-2017-26391.asp?page=1" alt="La Nef" title="Lien vers la brève de La Nef">consultable en ligne :</a><a href="{% static "kalendarium/images/lanef29642.png" %}"><img src="{% static "kalendarium/images/lanef29642.png" %}" alt="La Nef n° 292 page 42. Brève du Théochrone" title="Cliquer pour agrandir"></a>
 											</div>
 										</div>
 									</div>
@@ -230,19 +268,31 @@
                                 </div>
                             </div>
                         </div></div>
+                        <!-- section start -->
+		<!-- ================ -->
+		<div class="default-bg space black">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<h1 class="text-center">Installez le widget sur votre site !</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- section end -->
                         <div class="section">
                         <div class="container">
                             <h1 class="title text-center">D'autres calendriers liturgiques <span>perpétuels</span></h1>
                             <div class="space"></div>
                                 <div class="row">
-                                    <div class="col-sm-6">Il existe un grand nombre d'applications proposant des fonctionnalités similaires à celles du Théochrone. En voici une liste.
-                                    <ul>
+                                    <div class="col-sm-8">Il existe un grand nombre d'applications proposant des fonctionnalités similaires à celles du Théochrone. En voici une liste.
+                                    <ul class="list-unstyled">
                                     {% for website, url in other_apps %}
-                                    <li><a href="{{ url }}" alt="{{ website }}" title="Aller sur {{ website }}">{{ website }}</a></li>
+                                    <li><i class="fa fa-caret-right pr-10 text-colored"></i><a href="{{ url }}" alt="{{ website }}" target="_blank" title="Aller sur {{ website }}">{{ website }}</a></li>
                                     {% endfor %}
                                     </ul>
                                     </div>
-                                    <div class="col-sm-6"> {# une image #}
+                                    <div class="col-sm-4"> <img class="img-responsive img-rounded" src="{% static "kalendarium/images/copistes.jpg" %}" alt="Moines copistes" title="Moines copistes">
                                     </div>
                                 </div>
                             </div>
