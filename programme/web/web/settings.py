@@ -133,7 +133,7 @@ STATICFILES_DIRS= [
 
 EMAIL_HOST = 'smtp-theochrone.alwaysdata.net'
 EMAIL_HOST_USER = 'theochrone@alwaysdata.net'
-EMAIL_HOST_PASSWORD = 'PRIVATE'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
 
