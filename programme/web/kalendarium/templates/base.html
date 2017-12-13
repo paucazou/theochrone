@@ -7,7 +7,7 @@
 	<head>
                 <meta charset="utf-8" />
 		<title>Theochrone : {% block title %}{% endblock %}</title>
-		<meta name="description" content="Theochrone. A Liturgical Calendar for Tridentine Rite.">
+		<meta name="description" content="Theochrone. Calendrier liturgique pour le rit tridentin">
 		<meta name="author" content="Philippe Aucazou">
 
 		<!-- Mobile Meta -->
@@ -100,39 +100,21 @@
 												<li><a href="#help">Aide</a></li>
 												<li><a href="#contribute">Contribuer</a></li>-->
 												<!--<li><a href="#contact">Contact</a></li>-->
-												<li class="hmenu online"><a href="#" class="hmenu online">Utiliser en ligne <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-												<li class="hsubmenu closed online"><a href="#">Rechercher</a></li>
-												<li class="hsubmenu closed online"><a href="#">Résultats</a></li>
+												{% block onlinemenu %}<li><a href="#" class="hmenu" children="online" disabled="true">Utiliser en ligne <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+												<li><a href="../kalendarium/accueil#research" class="hsubmenu" menu-parent="online" disabled="true">Rechercher</a></li>
+												<li><a href="../kalendarium/accueil#resultup" class="hsubmenu" menu-parent="online" disabled="true">Résultats</a></li>
+												{% endblock onlinemenu %}
 												
-												<li class="hmenu gettheo"><a href="#" class="hmenu gettheo">Obtenir le Théochrone... <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-												<li class="hsubmenu closed gettheo"><a href="#">sur votre ordinateur</a></li>
-												<li class="hsubmenu closed gettheo"><a href="#">sur votre site</a></li>
+												<li><a href="../kalendarium/widget#widget">Widget</a></li>
+												<li><a href="../kalendarium/download#download">Télécharger</a></li>
 												
-												<li class="hmenu contact"><a href="#" class="hmenu contact">Contact <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-												<li class="hsubmenu closed contact"><a href="#">Qui sommes-nous ?</a></li>
-												<li class="hsubmenu closed contact"><a href="#">Envoyer un message</a></li>
-												<li class="hsubmenu closed contact"><a href="#">Contribuer</a></li>
-												<li class="hsubmenu closed contact"><a href="#">Nos partenaires</a></li>
+												<li class="help"><a href="../help/main#help" class="help">Aide</a></li>
 												
-												<li class="hmenu help"><a href="#" class="hmenu help">Aide... <i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
-												<li class="hsubmenu closed help"><a href="#">de la version en ligne </a></li>
-												<li class="hsubmenu closed help"><a href="#">pour le widget</a></li>
-												<li class="hsubmenu closed help"><a href="#">au téléchargement</a></li>
-												<li class="hsubmenu closed help"><a href="#">de l'interface graphique</a></li>
-												<li class="hsubmenu closed help"><a href="#">de la ligne de commandes</a></li>
-												<!--<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu navbar-nav navbar-inverse">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                </ul>
-                </li>-->
-                <!-- nouveau menu : - utiliser en ligne (résultats, recherche)
-                                    - obtenir le Theochrone (télécharger, mettre sur son site)
-                                    - Contact (qui sommes-nous, contact, contribuer)
-                                    - Aide (aide de la version en ligne, widget, au téléchargement, gui, cli)
-                                    - faire de l'icône un lien vers l'accueil -->
+												{% block helpmenu %}
+												<li><a href="../kalendarium/contact#contact">Contact</a></li>
+												{% endblock helpmenu %}
+												
+                                                                                            
 											</ul>
 										</div>
 

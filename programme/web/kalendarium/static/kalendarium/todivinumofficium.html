@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <title>Redirecting to Divinum Officium...</title>
+ </head>
+ <body>
+    <form name="mainform" action="http://divinumofficium.com/cgi-bin/" method="post" target="_self">
+	<input type="hidden" name="date" value="">
+	<input type="hidden" name="lang2" value="French">
+	<input type="hidden" value="Submit">
+    </form>
+    <a href="#" onclick="document.forms[0].submit()">You should automatically be redirected to a new page, if not please click here.</a>
+   <script>
+var langs = {"fr":"French","en":"English","la":"Latin","ma":"Magyar","it":"Italiano","de":"Deutsch","po":"Polski","es":"Spanish"};
+var offices = {"mass":"missa/missa.pl","office":"horas/officium.pl"};
+var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v}); // GET parameters; source = https://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
+var lang = params['lang'];
+var month = params['month'];
+var day = params['day'];
+var year = params['year'];
+var office = params['office'];
+console.log(params);
+
+// filling the form with GET data
+var mainform = document.forms[0];
+mainform['date'].value = month + "-" + day + "-" + year;
+mainform['lang2'].value = langs[lang];
+mainform.action += offices[office];
+console.log(mainform.action);
+// submitting form
+mainform.submit()
+   </script>
+ </body>
+</html>
+<!-- 
+	TODO list
+	- correctly manage languages
+	- correctly manage offices in order to redirect to each office properly
+-->

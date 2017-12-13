@@ -26,7 +26,7 @@ s=''
 
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
-         debut=datetime.date.today(),fin=datetime.date.today(),
+         debut=datetime.date.today(),fin=datetime.date.today(),pal=False,
          mots_clefs='',plus=False,annee=datetime.date.today().year):
     """A function which defines homepage. It is also used
     by other pages to print common code.
@@ -87,7 +87,8 @@ def mc_transfert(request):
             mots_clefs = recherche_mot_clef.cleaned_data['recherche']
             plus = recherche_mot_clef.cleaned_data['plus']
             annee = recherche_mot_clef.cleaned_data['annee']
-            result = home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,annee=annee)
+            pal = recherche_mot_clef.cleaned_data['pal']
+            result = home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,pal=pal,annee=annee)
     else:
         result = home(request, recherche_mot_clef)
     return result
@@ -97,10 +98,11 @@ def date_transfert(request):
     recherche_simple = RechercheSimple(request.GET or None)
     if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
+        pal = recherche_simple.cleaned_data['pal']
         if recherche_simple.cleaned_data['martyrology']:
             result = martyrology_date(request,date,recherche_simple)
         else:
-            result = home(request,recherche_simple=recherche_simple,debut=date,fin=date)
+            result = home(request,recherche_simple=recherche_simple,debut=date,fin=date,pal=pal)
     else:
         result = home(request,recherche_simple=recherche_simple)
     return result
@@ -112,6 +114,7 @@ def mois_transfert(request):
         mois = mois_entier.cleaned_data['mois']
         annee = mois_entier.cleaned_data['annee']
         debut = datetime.date(annee,mois,1)
+        pal = mois_entier.cleaned_data['pal']
         i=31
         while True:
             try:
@@ -119,7 +122,7 @@ def mois_transfert(request):
                 break
             except ValueError:
                 i -= 1
-        return home(request,mois_entier=mois_entier,mois_seul=True,debut=debut,fin=fin)
+        return home(request,mois_entier=mois_entier,mois_seul=True,pal=pal,debut=debut,fin=fin)
     else:
         return home(request, mois_entier=mois_entier)
     
@@ -160,6 +163,18 @@ def contact(request):
     and returns the view with success"""
     contact_success = False
     titre = "Contact"
+    other_apps = (
+        ('Divinum Officium, le plus complet','http://divinumofficium.com/'),
+        ('Chant grégorien','http://www.chantgregorien.free.fr/calendrier/calend.php'),
+        ('Evangelizo','http://ordoweb.evangelizo.org/ordo//calendar/2'),
+        ('1962 Ordo (FSSPX, en anglais)','https://1962ordo.today/'),
+        )
+    partners = (
+        ('Tradinews','http://tradinews.blogspot.fr/'),
+        ('Metablog','https://ab2t.blogspot.fr/'),
+        ('Le Salon Beige','http://lesalonbeige.blogs.com/my_weblog/web.html#theocontainer'),
+        ('BLH Land','http://www.blh-land.fr/#theocontainer'),
+        ) # Mettre cela ailleurs. Où ? TODO
     if request.method == 'GET':
         form = ContactForm()
     else:
@@ -190,9 +205,10 @@ def widget(request):
     files = ("widget_day","widget_day_mobile")
     widgets = {}
     whost = "theochrone.ga"
+    #whost = "localhost:8000" # dev TODO
     for filename in files:
         with open(fpath + filename) as f:
-            widgets[filename] = f.read().format(whost)
+            widgets[filename] = f.read().format(whost)#.replace("https","http") # replace : dev TODO
     return render(request,'kalendarium/widget.html',locals())
 
 def download(request):

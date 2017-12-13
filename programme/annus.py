@@ -92,6 +92,22 @@ class LiturgicalCalendar():
                 tmp += pic.load()
         *self.raw_data,self.saturday,self.feria = tmp # TODO trouver un moyen plus sûr de faire passer la férie et le samedi
         
+        # managing feasts which have also a Pro Aliquibus Locis mass
+        other_pal = []
+        for elt in self.raw_data:
+            if elt.pal and elt.priorite > 50:
+                # managing pal mass
+                pal_elt = elt.copy()
+                pal_elt._priorite, pal_elt.degre = 50, 6
+                pal_elt.temporal = pal_elt.sanctoral = False
+                pal_elt.link = pal_elt.pal_link
+                # setting pal of elt to False
+                elt.pal = False
+                
+                other_pal.append(pal_elt)
+        # add pal masses to self.raw_data
+        self.raw_data.extend(other_pal)
+        
         """with open(chemin + '/data/samedi_ferie.pic','rb') as file:
             pic=pickle.Unpickler(file)
             self.saturday, self.feria = pic.load()    """    
@@ -475,7 +491,7 @@ class LiturgicalCalendar():
         commemoraison = 0 # max 2
         commemoraison_temporal=False
         
-        if len(liste) == 0 or liste[0].degre == 5:
+        if len(liste) == 0 or liste[0].priorite <= 100:
             self.saturday.date = date
             if self.saturday.Est_ce_samedi(date):
                 liste.append(self.saturday.copy())
@@ -510,7 +526,9 @@ class LiturgicalCalendar():
         elif tmp.priorite >= 1650:
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
-                if elt.personne.intersection(tmp.personne):
+                if elt.pal:
+                    liste[hideux].omission = True
+                elif elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                 elif elt.commemoraison_privilegiee > 0 and commemoraison == 0:
                     liste[hideux].commemoraison=True
@@ -522,7 +540,9 @@ class LiturgicalCalendar():
         elif tmp.priorite >= 900:
             for hideux,elt in enumerate(liste):
                 liste[hideux].celebree=False
-                if elt.personne.intersection(tmp.personne):
+                if elt.pal:
+                    liste[hideux].omission = True
+                elif elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                     liste[hideux].celebree = False
                 elif commemoraison == 0:
@@ -537,7 +557,8 @@ class LiturgicalCalendar():
                 liste[hideux].celebree=False
                 if elt.pal and elt.personne.intersection(tmp.personne):
                     elt.peut_etre_celebree = True
-                if elt.personne.intersection(tmp.personne):
+                    elt.omission = False
+                elif elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                     liste[hideux].celebree = False
                 elif commemoraison < 2 and (elt.sanctoral or (elt.temporal and commemoraison_temporal == False)):
@@ -550,7 +571,7 @@ class LiturgicalCalendar():
                     liste[hideux].commemoraison=False
                     liste[hideux].omission=True
         
-        elif tmp.priorite >= 200: # TODO Bien vérifier si le cas est juste
+        elif tmp.priorite >= 200:
             tmp.celebree=False
             tmp.peut_etre_celebree=True
             for hideux,elt in enumerate(liste):
@@ -558,6 +579,7 @@ class LiturgicalCalendar():
                 liste[hideux].peut_etre_celebree=True
                 if elt.pal:
                     liste[hideux].peut_etre_celebree = True
+                    liste[hideux].omission = False
                 elif elt.personne.intersection(tmp.personne):
                     liste[hideux].omission = True
                     liste[hideux].peut_etre_celebree = False

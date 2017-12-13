@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><!-- Web Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700,300&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
+
+		<!-- Bootstrap core CSS -->
+		<link href="/static/kalendarium/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+		<!-- Font Awesome CSS -->
+		<link href="/static/kalendarium/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+		<!-- Worthy core CSS file -->
+		<link href="/static/kalendarium/css/style.css" rel="stylesheet">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		</head>
+<body>
+<span id="inside">
+</span>
+<script>
+
+function loadDoc(page) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    // putting widget in inside span
+    document.getElementById("inside").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", page, true);
+  xhttp.send();
+};
+
+var today = new Date;
+var d = today.getDate();
+var m = today.getMonth() + 1;
+var y = today.getFullYear();
+start_page = "mobday" + y + "-" + m + "-" + d + ".shtml";
+
+loadDoc(start_page);
+</script>
+</body>
+</html>

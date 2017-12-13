@@ -77,6 +77,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':['-I'],
             'long':['--statio'],
             },
+        'pal':{
+            'short':['-a'],
+            'long':['--pal'],
+            },
         'langue':{
             'short':['-l'],
             'long' : ['--language'],
@@ -311,6 +315,7 @@ def args():
     affichage.add_argument('-s','--temporsanct',dest='temporal_ou_sanctoral', help=_('print whether the feast belongs to the sanctorum or de tempore'), action='store_true')
     affichage.add_argument('-L','--liturgical-time', dest='temps_liturgique',help=_('print to which liturgical time the feast belongs to'),action='store_true')
     affichage.add_argument('-D','--print-date',dest='date_affichee',help=_('print date'),action='store_true')
+    affichage.add_argument(*arguments['pal']['short'],*arguments['pal']['long'],dest="pal",help=_("""Include Pro Aliquibus Locis masses in results."""),action="store_true")
     affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected.
         Opens the introibo.fr page in a webbrowser.
         Works only with -r/--reverse (three results max) or an only date."""),action='store_true')
@@ -358,7 +363,7 @@ def args():
     system.add_argument(*arguments['gui']['short'],*arguments['gui']['long'],dest='gui',help=_("""Open Theochrone in a Graphical User Interface (GUI).
         This is the standard behaviour if Theochrone is opened in a file manager.
         You can pass all research types args."""),action='store_true')
-    system.add_argument('--version', action='version',version='%(prog)s 0.1')
+    system.add_argument('--version', action='version',version='%(prog)s 0.4.0')
     system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
     system.add_argument(*arguments['settings']['long'],dest='settings',nargs='?',const='nothing',help=_("""Modify some settings of the program and exits. Following options are available :
         - ON/OFF : set settings and history ON (default) or OFF.

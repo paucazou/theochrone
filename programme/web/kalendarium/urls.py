@@ -11,6 +11,5 @@ urlpatterns = [
         url(r"^contact$", views.contact),
         url(r"^widget$",views.widget),
         url(r"^download$",views.download),
-        url(r"^contribute$",views.contribute),
         ]
 

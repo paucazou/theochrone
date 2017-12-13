@@ -1,4 +1,4 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head><!-- Web Fonts -->
@@ -6,13 +6,13 @@
 		<link href='https://fonts.googleapis.com/css?family=Raleway:700,400,300' rel='stylesheet' type='text/css'>
 
 		<!-- Bootstrap core CSS -->
-		<link href="{% static "kalendarium/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+		<link href="/static/kalendarium/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 		<!-- Font Awesome CSS -->
-		<link href="{% static "kalendarium/fonts/font-awesome/css/font-awesome.css" %}" rel="stylesheet">
+		<link href="/static/kalendarium/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
 
 		<!-- Worthy core CSS file -->
-		<link href="{% static "kalendarium/css/style.css" %}" rel="stylesheet">
+		<link href="/static/kalendarium/css/style.css" rel="stylesheet">
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		</head>
@@ -23,41 +23,49 @@
 var itheo = 1;
 var orurl = 1;
 var wHeight;
+var pal;
 
 function resizeContent(itheo,orurl){
       itheo.postMessage("set container to 0px",orurl);
       wHeight = $(document).height();
      itheo.postMessage(wHeight,orurl); // vérifier que ce soit chargé
 };
-
 function loadDoc(page) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {    
-    // resize content
-      document.getElementById("inside").innerHTML = this.responseText;
+    if (this.readyState == 4 && this.status == 200) {
+    // putting widget in inside div
+    document.getElementById("inside").innerHTML = this.responseText;
+    // make pal visible if pal is on
+    console.log(pal);
+    if ( pal == 'on' ) {
+        var pal_masses = document.getElementById('inside').getElementsByClassName("pal");
+        console.log(pal_masses);
+        for (i=0; i < pal_masses.length; i++){
+            pal_masses[i].style.display = 'inline';
+        }
+    }
+      // resize content
       resizeContent(itheo,orurl);
     }
   };
   xhttp.open("GET", page, true);
   xhttp.send();
 };
-
-var start_page = "{{ page }}";
-if (start_page == "day") { // date set to locale
 var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v}); // GET parameters; source = https://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
 
+var start_page = "day";// date set to locale
 var today = new Date;
 var d = today.getDate();
 var m = today.getMonth() + 1;
 var y = today.getFullYear();
-var pal = params['pal'];
-start_page = "day?date_seule_day=" + d + "&date_seule_month=" + m + "&date_seule_year=" + y;
+pal = params['pal'];
+start_page = "day" + y + "-" + m + "-" + d + ".shtml";
 
 if (pal == "on"){ // if Pro Aliquibus Locis is requested by user
-start_page += "&pal=on";
+start_page += "?pal=on";
 }
-}
+
 loadDoc(start_page);
 
 
@@ -69,11 +77,6 @@ window.addEventListener("message", function(event){
     }
 }, false);
 
-// Factoriser
-/*var xhttp = new XMLHttpRequest();
-var urlinfo = (window.location != window.parent.location) ? document.referrer: document.location.href;
-xhttp.open("GET", "saveurls?urlinfo=" + urlinfo, true);
-xhttp.send();*/
 </script>
 </body>
 </html>

@@ -4,6 +4,7 @@
 import calendar
 import datetime
 import messages
+import matcher
 import os
 import pickle
 import re
@@ -410,7 +411,7 @@ def affichage(**kwargs):
         sortie=''
     return_value = []
     for a in kwargs['liste']:
-        if a.omission and not kwargs['verbose'] and not kwargs['recherche']:
+        if a.omission and not kwargs['verbose'] and not kwargs['recherche'] or (a.pal and not kwargs.get('pal',False)):
             """if sortie [-2:] == '\n': # ne marche toujours pas
                 sortie = sortie[:-2]"""
             continue
@@ -450,6 +451,7 @@ def affichage(**kwargs):
                     if i > 2:
                         break
             
+            
             if kwargs['date_affichee'] and not kwargs['verbose'] and not kwargs['recherche']:
                 sortie += """{}/{}/{} """.format(kwargs['date'].day,kwargs['date'].month,kwargs['date'].year)
                 if kwargs['jour_semaine']:
@@ -463,6 +465,9 @@ def affichage(**kwargs):
                 
             sortie += a.nom['fr']
             
+            if a.pal:
+                sortie += " (messe Pro Aliquibus Locis)"
+                
             if not kwargs['verbose'] and a.commemoraison:
                 sortie += ' (Commémoraison)'
             elif not kwargs['verbose'] and kwargs['recherche'] and a.omission:
@@ -488,7 +493,7 @@ def affichage(**kwargs):
                     sortie += """Fête de troisième classe. """
                 elif a.degre == 4:
                     sortie += """Fête de quatrième classe. """
-                else:
+                elif a.degre == 5:
                     sortie += """Commémoraison. """
                     
             if kwargs['verbose'] or kwargs['transfert']:                    
@@ -504,7 +509,7 @@ def affichage(**kwargs):
             if kwargs['verbose'] or kwargs['temporal_ou_sanctoral']:
                 if a.temporal:
                     sortie += """Fête du Temps. """
-                else:
+                elif a.sanctoral:
                     sortie += """Fête du Sanctoral. """
                     
             if kwargs['verbose'] or kwargs['temps_liturgique']:
@@ -621,6 +626,9 @@ def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='fr',exit=True):
     mots_str=''
     for a in mots:
         mots_str += a
+    
+    # creating Matcher object
+    matching_machine = matcher.Matcher(mots,'fr')
         
     boucle = True
     date = debut
@@ -631,7 +639,11 @@ def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='fr',exit=True):
     while date <= fin:
         try:
             for fete in Annee[date]:
-                fete.valeur = fete.Correspondance(mots_str,mots,plus)
+                if not fete.__dict__.get('tokens_',False):
+                    fete.valeur = fete.Correspondance(mots_str,mots,plus)
+                else:
+                    fete.valeur = matching_machine.fuzzer(fete.tokens_,False) # WARNING using tokens_ because fete.tokens are not ready ; please replace it when ready WARNING
+                    fete.valeur = fete.valeur*60 # hack to delete when all feasts will use tokens_ instead of regex_
                 if fete.valeur >= 50:
                     retenus.append(fete)
         except KeyError:
