@@ -3,7 +3,7 @@ var ifratheo = document.getElementById("theowidget");
 // switch to static
 var static_url = "https://theochrone.ga/static/shtml/main.shtml"
 var params = ifratheo.src.split('?');
-ifratheo.src = static_url + static_url;
+ifratheo.src = static_url;
 console.log(ifratheo.src);
 var bsurl = "https://theochrone.ga";
 var surl = bsurl + "/static/shtml/main.shtml";
