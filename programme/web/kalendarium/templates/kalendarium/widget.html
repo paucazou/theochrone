@@ -33,6 +33,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+// show the widget when the page is loaded. HACK
+$("#widget_example").html($("#mainwidget").val())
+// if user click on "Include Pro Aliquibus Locis Masses"
 $( "#palbut" ).click(function() { // TODO essayer de remplacer cet id par un name plus large, lorsqu'il y aura d'autres boutons // changer l'exemple en même temps
     var text_area = $("#mainwidget").val().split('"'); // text area value
     var insertion = $("#palbut").attr("insert"); // part of url to add
