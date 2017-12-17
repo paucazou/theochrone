@@ -42,7 +42,7 @@ function loadDoc(page) {
         var pal_masses = document.getElementById('inside').getElementsByClassName("pal");
         console.log(pal_masses);
         for (i=0; i < pal_masses.length; i++){
-            pal_masses[i].style.display = 'inline';
+            pal_masses[i].style.display = 'block';
         }
     }
       // resize content
