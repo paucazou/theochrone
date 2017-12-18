@@ -33,7 +33,7 @@ def main(new_version: str) -> None:
     return None
 
 files_data = (
-    FileData('programme/command_line.py',"""\tsystem.add_argument('--version', action='version',version='%(prog)s {}')""","""'--version', action='version',version='"""),
+    FileData('programme/command_line.py',4*' '+"""system.add_argument('--version', action='version',version='%(prog)s {}')""","""'--version', action='version',version='"""),
     FileData('README.md','Latest version is {}','Latest version is')
     )
 
