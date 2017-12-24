@@ -6,9 +6,10 @@ If you want your name to be removed of this list, or if you want to figure on th
 ## Persons
 * Clair-Loup S. *Without him, nothing would have happen*
 * Henri A. de V. *Especially for the idea of the Roman Martyrology*
-* Philippe M.
+* Philippe Maxence *Especially for the idea of the export to Outlook calendars*
 * Father Eric I.
-* Father Guillaume de Tanouarn
+* Father Guillaume de Tanoüarn
+* Father Claude B.
 
 ## Blogs and websites
 * Tradinews *Especially for the idea of the widget*
