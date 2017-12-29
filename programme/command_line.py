@@ -143,6 +143,16 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'long': ['--previous'],
             },
         
+        # Export options
+        'export':{
+                'short': ['-e'],
+                'long': ['--export'],
+                },
+        'output': {
+                'short': ['-O'],
+                'long': ['--output'],
+                },
+        
         # Help
         'help':{
             'short':['-h'],
@@ -350,6 +360,11 @@ def args():
     NnPenemies.add_argument(*arguments['precedent']['short'],*arguments['precedent']['long'],dest='precedent',help=_("""Research for the previous item.
         Works the same way as --next, on the other side. See above.
         Doesn't work with -r/--reverse"""),action='store',default=0,const=1,type=int,nargs='?') # mettre toutes ces options dans un groupe exclusif avec -r/DATE, etc.
+
+    export = parser.add_argument_group(_("Export options"),description=_("Export results to file in a specific format"))
+    export.add_argument(*arguments['export']['long'],*arguments['export']['short'],dest='export',choices=['csv','ics'],action='store',help=_("""Select which file format you want to use. Available: ics, csv"""))
+    output_required = '--export' in sys.argv or '-e' in sys.argv # WARNING if changes in args # https://stackoverflow.com/questions/19414060/argparse-required-argument-y-if-x-is-present
+    export.add_argument(*arguments['output']['long'],*arguments['output']['short'],dest='output',action='store',required=output_required,help=_("Path to the destination. If you want a suffix, please add it."))
 
     system = parser.add_argument_group(_('System options'), description=_("Other options"))
     system.add_argument("-b","--browser",dest="navigateur",help=_("""Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
