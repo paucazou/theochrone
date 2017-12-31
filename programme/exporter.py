@@ -11,6 +11,7 @@ import ics
 import officia
 import textwrap
 
+
 def _data_wrapper(feast, lang: str, rank: int) -> tuple:
     """Extract data from feast, which is a Fete or Fete like object.
     rank is the rank of the feast in the day
@@ -61,9 +62,9 @@ def _data_wrapper(feast, lang: str, rank: int) -> tuple:
     
     return feast.nom[lang], description, fdate 
 
-def main(start: int,stop: int,file_path: str,lang: str,
+def main(start: datetime.date,stop: datetime.date,file_path: str,lang: str,
            proper='romanus', ordo=1962, file_ext='ics', **options) -> bool:
-    """Turn data into a file from year start to year stop.
+    """Turn data into a file from start to stop.
     proper & ordo select data sent
     options are named arguments with a bool as value
     Valid options are : 'pal' (Pro Aliquibus Locis) # include martyrology ? TODO
@@ -82,18 +83,18 @@ def main(start: int,stop: int,file_path: str,lang: str,
         raise ValueError("{} is not a valid type. Please select a valid one: {}".format(file_ext,*types.keys()))
     # collecting data
     liturgycal = annus.LiturgicalCalendar(proper=proper,ordo=ordo)
-    liturgycal(start,stop)
+    liturgycal(start.year,stop.year)
     # dispatching to custom function
-    types[file_ext](file_path, lang, liturgycal, **options)
+    types[file_ext](start,stop,file_path, lang, liturgycal, **options)
     return True
 
-def _to_ics(file_path: str, lang: str,
+def _to_ics(start: datetime.date, stop: datetime.date, file_path: str, lang: str,
         liturgycal, **options) -> bool:
     """Turn data into a ics file.
     liturgycal is a liturgical calendar with requested start and stop
     Return True"""
     calendar = ics.Calendar()
-    for day in liturgycal:
+    for day in liturgycal[start:stop]:
         for i, feast in enumerate(day):
             if not feast.pal or options.get('pal',False):
                 event = ics.Event()
@@ -107,7 +108,7 @@ def _to_ics(file_path: str, lang: str,
 
 
 
-def _to_csv(file_path: str,lang: str,
+def _to_csv(start: datetime.date, stop: datetime.date, file_path: str,lang: str,
            liturgycal, **options) -> bool:
     """Turn data into a csv file.
     liturgycal is a liturgical calendar with requested start and stop
@@ -118,7 +119,7 @@ def _to_csv(file_path: str,lang: str,
     writer = csv.DictWriter(csv_file,fieldnames=fields,dialect='excel')
     writer.writeheader()
     # writing data
-    for day in liturgycal:
+    for day in liturgycal[start:stop]:
         for i,feast in enumerate(day):
             if not feast.pal or options.get('pal',False):
                 description = _data_wrapper(feast,lang,i)[1]
