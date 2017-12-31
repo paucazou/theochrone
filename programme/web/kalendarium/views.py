@@ -19,7 +19,7 @@ import officia
 
 martyrology_instance = martyrology.Martyrology()
 Annee = annus.LiturgicalCalendar()
-host = "localhost:8000"
+host = os.environ.get("THEHOST")
 s=''
     
 # use online
