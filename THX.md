@@ -1,12 +1,13 @@
 # Thanks
 *This list contains names of persons, blogs, websites, newspaper, etc., who helped, more or less, to develop the Theochrone.
 Thank you to all of them.
+
 If you want your name to be removed of this list, or if you want to figure on this list, please contact us.*
 
 ## Persons
 * Clair-Loup S. *Without him, nothing would have happen*
 * Henri A. de V. *Especially for the idea of the Roman Martyrology*
-* Philippe Maxence *Especially for the idea of the export to Outlook calendars*
+* Philippe Maxence *Especially for the idea of the export to Outlook calendars and the help he provided at this occasion*
 * Father Eric I.
 * Father Guillaume de Tanoüarn
 * Father Claude B.

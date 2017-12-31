@@ -44,10 +44,10 @@ but any language is accepted, even Papuan language or Sindarin !
 
 Do not hesitate to look at the **issues** ! 
 
-We also like suggestions. Two important features have been suggested and are now implemented:
+We also like suggestions. Three important features have been suggested and are now implemented:
 * the widget
 * the Roman Martyrology 
-
+* the export to calendars like Outlook, Google Calendar or iCal
 
 **We really listen to your desires and requests, so feel free to suggest or ask us something new.**
 ## Languages and Frameworks
