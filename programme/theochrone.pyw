@@ -182,6 +182,16 @@ def main():
     elif args.INVERSE != 1:
         officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=args.INVERSE)
 
+    ### export
+    if args.export:
+        import exporter
+        exporter.main(debut,fin,
+                args.output,
+                args.langue,
+                proper=args.propre,ordo=args.ordo,
+                file_ext=args.export,
+                pal=args.pal)
+
     if args.navigateur:
         if mois_seul:
             sys.exit(shiptobrowser.openBrowser(search_type='month',date=debut))
