@@ -3704,7 +3704,7 @@
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
 				<str key="en"/>
-				<str key="fr"/>
+				<str key="fr">Il est aussi possible de se servir du rose comme couleur liturgique à la place du violet.</str>
 				<str key="la"/>
 			</dict>
 			<bool key="celebree">True</bool>
