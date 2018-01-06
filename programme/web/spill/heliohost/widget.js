@@ -5,7 +5,8 @@ var static_url = "https://theochrone.ga/static/shtml/main.shtml"
 var params = ifratheo.src.split('?');
 //ifratheo.src = static_url;
 console.log(ifratheo.src);
-var bsurl = "https://theochrone.ga";
+var suffix = ifratheo.src.split('.')[1].split('/')[0];
+var bsurl = "https://theochrone."+suffix;
 var surl = bsurl + "/static/shtml/main.shtml?" + params[1];
 console.log(surl);
 ifratheo.src = surl;
