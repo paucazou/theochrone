@@ -204,7 +204,7 @@ def widget(request):
     fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"
     files = ("widget_day","widget_day_mobile")
     widgets = {}
-    whost = "theochrone.ga"
+    whost = "theochrone.fr"
     #whost = "localhost:8000" # dev TODO
     for filename in files:
         with open(fpath + filename) as f:
