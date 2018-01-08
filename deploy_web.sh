@@ -14,6 +14,9 @@ cd web
 print Please put shtml in the right repertory. Do not forget base widget nor light widget !
 ./manage.py shell
 
+print "DEBUG = False" >> ./web/settings.py
+print "ALLOWED_HOSTS = ['theochrone.fr','www.theochrone.fr','theochrone.ga','www.theochrone.ga']" >> ./web/settings.py
+
 cd ../../ # returning to _deploy_tmp
 scp -P 22 theochrone@ssh-theochrone-alwaysdata.net:/home/theochrone/_twit_auth ./programme/
 scp -P 22 -r programme theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/

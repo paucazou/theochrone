@@ -28,7 +28,7 @@ SECRET_KEY = get_random_string(50, 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lasna','localhost','testserver']
+ALLOWED_HOSTS = ['lasna','localhost','testserver','palantire']
 
 
 # Application definition
