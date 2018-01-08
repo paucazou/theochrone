@@ -3,6 +3,37 @@
 ## What is Theochrone ?
 Theochrone is a liturgical calendar for the Traditional Rite. You can enter a date, and it gives you the feasts for this date, with their class, liturgical time, colour, and much more. You can also search a feast by keywords. Many other options are available.
 
+## New features available in v0.5.0
+- [ ] widget available in english.
+- [ ] local propers :
+  - [ ] France;
+  - [ ] USA;
+  - [ ] England;
+  - [ ] Wales;
+  - [ ] Scotland;
+  - [ ] Canada;
+  - [ ] Brazil;
+  - [ ] Poland;
+  - [ ] Spain;
+  - [ ] Portugal;
+  - [ ] Australia;
+  - [ ] New Zealand;
+- [ ] local propers available on:
+  - [ ] website;
+  - [ ] widget;
+  - [ ] CLI;
+  - [ ] Gui;
+- [ ] update GUI to support new features.
+- [ ] export data to files:
+  - [x] Formats:
+    - [x] CSV;
+    - [x] ICS;
+  - [ ] Availability:
+    - [x] CLI;
+    - [ ] website;
+    - [ ] GUI;
+
+
 ## Core Features
 * The roman calendar of 1962, accessible by dates or by keywords. A range of dates, or a period (a week or a month, for instance), is also a good option to have a better look.
 * The calendar is connected to a website which provides the texts for the mass and the office of the feast.
