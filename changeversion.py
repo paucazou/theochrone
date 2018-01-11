@@ -34,7 +34,8 @@ def main(new_version: str) -> None:
 
 files_data = (
     FileData('programme/command_line.py',4*' '+"""system.add_argument('--version', action='version',version='%(prog)s {}')""","""'--version', action='version',version='"""),
-    FileData('README.md','Latest version is {}','Latest version is')
+    FileData('README.md','Latest version is {}','Latest version is'),
+    FileData('README.md','## New features available in {}','## New features available in'),
     )
 
 parser = argparse.ArgumentParser(description="Change version of the soft in different places")
