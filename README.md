@@ -71,6 +71,7 @@ Latest version is 0.5.0
 ## New features available in v0.5.0
 - [ ] widget available in english.
 - [ ] local propers :
+  - [ ] America;
   - [ ] France;
   - [ ] USA;
   - [ ] England;
