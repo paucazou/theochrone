@@ -1,0 +1,412 @@
+<?xml version="1.0" ?>
+<list>
+	
+  
+	<Modele>
+		
+    
+		<str key="classe">FeteFixe</str>
+		
+    
+		<dict key="attributs">
+			
+      
+			<str key="_couleur">blanc</str>
+			
+      
+			<str key="_images">jeanne_arc</str>
+			
+      
+			<int key="_priorite">1100</int>
+			
+      
+			<str key="_temps_liturgique">variable</str>
+			
+      
+			<bool key="_transferee">False</bool>
+			
+      
+			<dict key="addendum">
+				
+        
+				<str key="en"/>
+				
+        
+				<str key="fr"/>
+				
+        
+				<str key="la"/>
+				
+      
+			</dict>
+			
+      
+			<bool key="celebree">True</bool>
+			
+      
+			<bool key="commemoraison">False</bool>
+			
+      
+			<int key="commemoraison_privilegiee">0</int>
+			
+      
+			<None key="date"/>
+			
+      
+			<dict key="date_">
+				
+        
+				<int key="jour">30</int>
+				
+        
+				<int key="mois">5</int>
+				
+      
+			</dict>
+			
+      
+			<None key="date_originelle"/>
+			
+      
+			<int key="degre">2</int>
+			
+      
+			<bool key="dimanche">False</bool>
+			
+      
+			<bool key="fete_du_Seigneur">False</bool>
+			
+      
+			<str key="link">http://introibo.fr/Sainte-Jeanne-d-Arc-vierge#inter1</str>
+			
+      
+			<dict key="nom">
+				
+        
+				<str key="en">Saint Joan of Arc, Virgin, Secondary Patroness of France</str>
+				
+        
+				<str key="fr">Sainte Jeanne d'Arc, Vierge, Patronne secondaire de la France</str>
+				
+        
+				<str key="la">Sanctae Joannae de Arc, Virginis, Patronae Secundariae Galliae</str>
+				
+      
+			</dict>
+			
+      
+			<bool key="occurrence_perpetuelle">False</bool>
+			
+      
+			<bool key="omission">False</bool>
+			
+      
+			<int key="ordo">1962</int>
+			
+      
+			<bool key="pal">False</bool>
+			
+      
+			<None key="parent"/>
+			
+      
+			<set key="personne">
+				
+        
+				<str>jeanne_arc</str>
+				
+      
+			</set>
+			
+      
+			<bool key="peut_etre_celebree">False</bool>
+			
+      
+			<bool key="peut_etre_votive">False</bool>
+			
+      
+			<str key="propre">gallicanus</str>
+			
+      
+			<None key="regex"/>
+			
+      
+			<dict key="regex_">
+				
+        
+				<list key="attribut"/>
+				
+        
+				<list key="attribut_compose"/>
+				
+        
+				<list key="egal"/>
+				
+        
+				<list key="hyperonyme"/>
+				
+        
+				<list key="nom"/>
+				
+        
+				<list key="nom_compose"/>
+				
+        
+				<list key="refus_faible"/>
+				
+        
+				<list key="refus_fort"/>
+				
+        
+				<list key="syntaxiques"/>
+				
+        
+				<list key="titre"/>
+				
+      
+			</dict>
+			
+      
+			<bool key="repris_en_ferie">False</bool>
+			
+      
+			<bool key="sanctoral">True</bool>
+			
+      
+			<bool key="temporal">False</bool>
+			
+      
+			<str key="textes"/>
+			
+      
+			<None key="tokens"/>
+			
+      
+			<str key="tokens_">sainte jeanne arc patronne secondaire france pucelle orleans</str>
+			
+      
+			<int key="valeur">0</int>
+			
+      
+			<bool key="votive">False</bool>
+			
+    
+		</dict>
+		
+  
+	</Modele>
+	
+
+	<Modele>
+		
+		
+		<dict key="attributs">
+			
+			
+			<str key="_couleur">blanc</str>
+			
+			
+			<str key="_images">therese_lisieux</str>
+			
+			
+			<int key="_priorite">1100</int>
+			
+			
+			<str key="_temps_liturgique">variable</str>
+			
+			
+			<bool key="_transferee">False</bool>
+			
+			
+			<dict key="addendum">
+				
+				
+				<str key="en"/>
+				
+				
+				<str key="fr"/>
+				
+				
+				<str key="la"/>
+				
+			
+			</dict>
+			
+			
+			<bool key="celebree">True</bool>
+			
+			
+			<bool key="commemoraison">False</bool>
+			
+			
+			<int key="commemoraison_privilegiee">0</int>
+			
+			
+			<None key="date"/>
+			
+			
+			<dict key="date_">
+				
+				
+				<int key="jour">3</int>
+				
+				
+				<int key="mois">10</int>
+				
+			
+			</dict>
+			
+			
+			<None key="date_originelle"/>
+			
+			
+			<int key="degre">2</int>
+			
+			
+			<bool key="dimanche">False</bool>
+			
+			
+			<bool key="fete_du_Seigneur">False</bool>
+			
+			
+			<str key="link">http://introibo.fr/03-10-Ste-Therese-de-l-Enfant</str>
+			
+			
+			<dict key="nom">
+				
+				
+				<str key="en">Saint Theresa of the Child Jesus, Virgin, Secondary Patroness of France</str>
+				
+				
+				<str key="fr">Sainte Thérèse de l'Enfant-Jésus, Vierge, Patronne secondaire de la France</str>
+				
+				
+				<str key="la">Sanctae Teresiae a Jesu Infante, Virginis, Patronae Secundariae Galliae</str>
+				
+			
+			</dict>
+			
+			
+			<bool key="occurrence_perpetuelle">False</bool>
+			
+			
+			<bool key="omission">False</bool>
+			
+			
+			<int key="ordo">1962</int>
+			
+			
+			<bool key="pal">False</bool>
+			
+			
+			
+			
+			<set key="personne">
+				
+				
+				<str>therese_lisieux</str>
+				
+			
+			</set>
+			
+			
+			<bool key="peut_etre_celebree">False</bool>
+			
+			
+			<bool key="peut_etre_votive">False</bool>
+			
+			
+			<str key="propre">gallicanus</str>
+			
+			
+			<None key="regex"/>
+			
+			
+			<dict key="regex_"/>
+				
+			
+			
+			<bool key="repris_en_ferie">False</bool>
+			
+			
+			<bool key="sanctoral">True</bool>
+			
+			
+			<bool key="temporal">False</bool>
+			<str key="tokens_">sainte therese enfant jesus face patronne secondaire france lisieux</str>
+			
+			
+			<str key="textes"/>
+			
+			
+			<int key="valeur">0</int>
+			
+			
+			<bool key="votive">False</bool>
+			
+		
+		</dict>
+		
+		
+		<str key="classe">FeteFixe</str>
+		
+	
+	</Modele>
+	
+	
+	<Modele>
+		<dict key="attributs">
+			<str key="_couleur">blanc</str>
+			<str key="_images">assomption</str>
+			<int key="_priorite">2501</int>
+			<str key="_temps_liturgique">variable</str>
+			<bool key="_transferee">False</bool>
+			<dict key="addendum">
+				<str key="en"/>
+				<str key="fr"/>
+				<str key="la"/>
+			</dict>
+			<bool key="celebree">True</bool>
+			<bool key="commemoraison">False</bool>
+			<int key="commemoraison_privilegiee">90</int>
+			<None key="date"/>
+			<dict key="date_">
+				<int key="jour">15</int>
+				<int key="mois">8</int>
+			</dict>
+			<None key="date_originelle"/>
+			<int key="degre">1</int>
+			<bool key="dimanche">False</bool>
+			<bool key="fete_du_Seigneur">False</bool>
+			<str key="images_rep">sanctoral/aout</str>
+			<str key="link">http://introibo.fr/15-08-Assomption-de-la-T-Ste</str>
+			<dict key="nom">
+				<str key="en">Assumption of the Blessed Virgin Mary, Principal Patroness of France</str>
+				<str key="fr">Assomption de la Bienheureuse Vierge Marie, Patronne principale de la France</str>
+				<str key="la">In Assumptione Beatae Mariae Virginis, Patronae primae Galliae</str>
+			</dict>
+			<bool key="occurrence_perpetuelle">False</bool>
+			<bool key="omission">False</bool>
+			<int key="ordo">1962</int>
+			<bool key="pal">False</bool>
+			<set key="personne">
+				<str>marie</str>
+			</set>
+			<bool key="peut_etre_celebree">False</bool>
+			<bool key="peut_etre_votive">False</bool>
+			<str key="propre">gallicanus</str>
+			<None key="regex"/>
+			<dict key="regex_"/>
+			<bool key="repris_en_ferie">False</bool>
+			<bool key="sanctoral">True</bool>
+			<bool key="temporal">False</bool>
+			<str key="textes"/>
+			<str key='tokens_'>Assomption sainte bienheureuse vierge marie patronne principale france</str>
+			<int key="valeur">0</int>
+			<bool key="votive">False</bool>
+		</dict>
+		<str key="classe">FeteFixe</str>
+	</Modele>
+	
+
+</list>
