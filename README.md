@@ -85,8 +85,6 @@ Latest version is 0.5.0
 ## New features available in v0.5.0
 - [ ] widget available in english.
 - [ ] local propers :
-  - [ ] America;
-  - [ ] Latin America;
   - [x] France;
   - [ ] USA;
   - [ ] England;
@@ -97,8 +95,8 @@ Latest version is 0.5.0
   - [ ] Poland;
   - [ ] Spain;
   - [ ] Portugal;
-  - [ ] Australia;
-  - [ ] New Zealand;
+  - [x] Australia;
+  - [x] New Zealand;
 - [ ] local propers available on:
   - [ ] website;
   - [ ] widget;
