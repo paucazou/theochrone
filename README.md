@@ -25,6 +25,20 @@ The command-line interface (CLI), available with every GUI, is the fastest and t
 For more info, type in a terminal after downloading the program:
     theochrone --help
 
+## Install from GitHub
+1. Clone or download repository.
+2. Open a console/terminal in the folder where you can find your clone/downloaded file.
+3. Unzip it if necessary.
+4. Install python3.5 or greater if it is not yet done. Please consult the documentation for your own OS and architecture on http://python.org/.
+5. Enter following commands:
+```shell
+python pip -e requirements.txt # in many OSes, you should enter python3 instead of python
+python pip -e dev_requirement.txt # only if you want to contribute to the project
+python -c "import dataswitcher; dataswitcher.main('romanus_1962')"
+```
+> Note that the version you download from Github may be broken. Feel free to contribute to fix the issue !
+
+
 ## Who are we ?
 Unfortunately, 'we' are mainly one person : Philippe Aucazou, a young french catholic. However, many persons have helped us : do not hesitate to take a look at our THX.md file. You can also join us and contribute : we have **HUGE** needs in many domains, including programming, translating, and resources.
 ## Contribute
@@ -72,7 +86,8 @@ Latest version is 0.5.0
 - [ ] widget available in english.
 - [ ] local propers :
   - [ ] America;
-  - [ ] France;
+  - [ ] Latin America;
+  - [x] France;
   - [ ] USA;
   - [ ] England;
   - [ ] Wales;
