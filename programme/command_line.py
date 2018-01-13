@@ -91,7 +91,9 @@ arguments = { # essayer d'ajouter les commandes de DATE
         'propre': {
             'short':['-p',],
             'long':['--proper','--rite',],
-            'options':['romanus','all',]
+            'options':['roman',
+                'american','australian','brazilian','canadian','english','french','newzelander','polish','portuguese','scottish','spanish','welsh',
+                'all',]
             },
         'ordo': {
             'short':['-o'],

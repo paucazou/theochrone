@@ -9,7 +9,7 @@ import pickle
 
 chemin = os.path.dirname(os.path.abspath(__file__))
 
-fichiers=('romanus_1962_.pkl',)
+fichiers=('roman_1962_.pkl',)
 """"
     'romanus_1962_dimanches.pic', 
     'romanus_1962_fetesduseigneur.pic',
