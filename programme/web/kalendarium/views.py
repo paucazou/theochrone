@@ -26,7 +26,7 @@ s=''
 
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
-         debut=datetime.date.today(),fin=datetime.date.today(),pal=False,
+         debut=None,fin=None,pal=False,
          mots_clefs='',plus=False,annee=datetime.date.today().year):
     """A function which defines homepage. It is also used
     by other pages to print common code.
@@ -42,6 +42,10 @@ def home(request,
     """
     retour = ''
     deroule = {}
+    if debut == None:
+        debut = datetime.date.today()
+    if fin == None:
+        fin = datetime.date.today()
     if mots_clefs == '':
         hashtag = 'resultup'
         if debut == fin: #à mettre dans le template
