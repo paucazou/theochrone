@@ -408,5 +408,66 @@
 		<str key="classe">FeteFixe</str>
 	</Modele>
 	
+<Modele>
+		<str key="classe">FeteFixeTransferableDimanche</str>
+		<dict key="attributs">
+			<str key="_couleur">blanc</str>
+			<list key="_images"/>
+			<int key="_priorite">2600</int>
+			<str key="_temps_liturgique">epiphanie</str>
+			<bool key="_transferee">False</bool>
+			<dict key="addendum">
+				<str key="en"/>
+				<str key="fr"/>
+				<str key="la"/>
+			</dict>
+			<bool key="celebree">True</bool>
+			<bool key="commemoraison">False</bool>
+			<int key="commemoraison_privilegiee">90</int>
+			<None key="date"/>
+			<dict key="date_">
+				<int key="jour">6</int>
+				<int key="mois">1</int>
+			</dict>
+			<bool key="date_originelle">False</bool>
+			<int key="degre">1</int>
+			<bool key="dimanche">False</bool>
+			<bool key="fete_du_Seigneur">True</bool>
+			<str key="images_rep"/>
+			<str key="link">http://www.introibo.fr/Epiphanie-du-Seigneur-6-janvier</str>
+			<dict key="nom">
+				<str key="en">Solemnity of the Epiphany</str>
+				<str key="fr">Solennité de l'Épiphanie du Seigneur</str>
+				<str key="la">Solemnitas Epiphaniae Domini</str>
+			</dict>
+			<bool key="occurrence_perpetuelle">False</bool>
+			<bool key="omission">False</bool>
+			<int key="ordo">1962</int>
+			<bool key="pal">False</bool>
+			<set key="personne">
+				<str>deuxieme</str>
+			</set>
+			<bool key="peut_etre_celebree">False</bool>
+			<bool key="peut_etre_votive">False</bool>
+			<str key="propre">gallicanus</str>
+			<None key="regex"/>
+			<dict key="regex_"/>
+			<int key="ecart">0</int>
+			<bool key="apres">True</bool>
+			<str key="tokens_">solennite epiphanie seigneur</str>
+			<bool key="repris_en_ferie">True</bool>
+			<bool key="sanctoral">False</bool>
+			<dict key="station">
+				<str key="en"/>
+				<str key="fr">Saint-Pierre</str>
+				<str key="la"/>
+			</dict>
+			<bool key="temporal">True</bool>
+			<str key="textes"/>
+			<bool key="transferee">False</bool>
+			<int key="valeur">0</int>
+			<bool key="votive">False</bool>
+		</dict>
+	</Modele>
 
 </list>
