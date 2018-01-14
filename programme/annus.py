@@ -9,7 +9,7 @@ import pickle
 
 chemin = os.path.dirname(os.path.abspath(__file__))
 
-fichiers=('romanus_1962_.pkl',)
+fichiers=('roman_1962_.pkl',)
 """"
     'romanus_1962_dimanches.pic', 
     'romanus_1962_fetesduseigneur.pic',
@@ -63,7 +63,7 @@ class LiturgicalCalendar():
     from outside the class"""
     instances = []
     
-    def __init__(self, proper='romanus',ordo=1962):
+    def __init__(self, proper='roman',ordo=1962):
         """Init of the instance"""
         self.once_called = [] # A list containing hash of methods once called
         self._load_raw_data(proper,ordo) # tuple which contains the data extracted from files

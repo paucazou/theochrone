@@ -58,7 +58,7 @@ class FakeFeast(mock.MagicMock):
         self.omission=False
         self.commemoraison=False
         
-        self.proper = 'romanus'
+        self.proper = 'roman'
         self.ordo = 1962
         
     def __repr__(self):
