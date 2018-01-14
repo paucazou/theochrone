@@ -16,7 +16,7 @@
 4
 5
 
->>> liste = ('latinus','romanus','gallicanus','lugdunensis','parisianus','italianus','dominicanus','cartusiensis','visigothica','ambrosianus','cisterciensis','bracarenses')
+>>> liste = ('latin','roman','french','lugdunensis','parisianus','italian','dominicanus','cartusiensis','visigothica','ambrosianus','cisterciensis','bracarenses')
 >>> for a in liste:
 ...     for b in liste:
 ...             L.trouve(a,b)
