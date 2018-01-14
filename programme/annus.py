@@ -22,16 +22,28 @@ fichiers=('roman_1962_.pkl',)
     #'gallicanus_1962_dimanches.pic',""" # DEPRECATED
     
 
-latinus={
-    'romanus':{
-        'gallicanus':{
+latin={
+    'roman':{
+        'australian':{},
+        'american': {},
+        'brazilian': {},
+        'canadian': {},
+        'english': {},
+        'french':{
             'lugdunensis':{},
             'parisianus':{},
             },
-        'italianus':{},
+        'new-zealander':{},
+        'polish': {},
+        'portuguese' : {},
+        'scottish': {},
+        'spanish': {},
+        'welsh': {},
+
+        'italian':{},
         'testis':{}, # a test proper, only used with the --test arg.
         },
-        'dominicanus':{},
+        'dominicanus':{}, # TODO translate them in english
         'cartusiensis': {},
         'visigothica':{},
         'ambrosianus':{},
@@ -259,20 +271,20 @@ class LiturgicalCalendar():
         return datetime.date(year,month,day)
     
     @classmethod
-    def trouve(cls,entre,cherche,liste=latinus): # TEST
+    def trouve(cls,entre,cherche,liste=latin): # TEST
         """Returns a boolean. Find if the propre 'entre' matches whith the propre 'cherche' in the 'liste'."""
         if entre == cherche:
             return True
         else:
             sortie=entre
-            while sortie != 'latinus':
+            while sortie != 'latin':
                 sortie=cls.remonte(liste, sortie)
                 if sortie == cherche:
                     return True
         return False
     
     @classmethod
-    def remonte(cls,liste, entre, nom='latinus'): #TEST
+    def remonte(cls,liste, entre, nom='latin'): #TEST
         """Function used in the 'trouve' function. Find the proper which is before the 'entre' one in the 'liste'."""
         if entre in liste.keys():
             entre=nom
@@ -427,7 +439,7 @@ class LiturgicalCalendar():
         opponent = liste[0]
         
         # Case of a new_comer.pal == True -> Pro Aliquibus Locis
-        if new_comer.pal:
+        if new_comer.pal: # NOT TESTED
             liste.append(new_comer)
         # Cas de 'new_comer' ayant la même self.personne que 'opponent'
         elif new_comer.personne.intersection(opponent.personne):
@@ -460,8 +472,8 @@ class LiturgicalCalendar():
                 self._move(opponent,date + datetime.timedelta(1))
             else:
                 liste.append(new_comer)
-        elif self.proper != 'romanus' and (new_comer.occurrence_perpetuelle or opponent.occurrence_perpetuelle):
-            premier_dimanche_avent = dimancheapres(datetime.date(year,12,25)) - datetime.timedelta(28)
+        elif self.proper != 'roman' and (new_comer.occurrence_perpetuelle or opponent.occurrence_perpetuelle):
+            premier_dimanche_avent = officia.dimancheapres(datetime.date(year,12,25)) - datetime.timedelta(28)
             # Cas de 'new_comer' fête de seconde classe empêchée perpétuellement # WARNING pourquoi la valeur self.transferee n'est-elle pas modifiée en-dessous ? WARNING
             if new_comer.priorite > 800 and opponent.priorite > 800 and opponent.priorite > new_comer.priorite and not new_comer.dimanche:
                 new_comer.date = new_comer.date + datetime.timedelta(1)
