@@ -91,7 +91,7 @@ Latest version is 0.5.0
   - [ ] Wales;
   - [ ] Scotland;
   - [ ] Canada;
-  - [ ] Brazil;
+  - [x] Brazil;
   - [ ] Poland;
   - [ ] Spain;
   - [ ] Portugal;
