@@ -90,7 +90,7 @@ Latest version is 0.5.0
   - [ ] England;
   - [ ] Wales;
   - [ ] Scotland;
-  - [ ] Canada;
+  - [x] Canada;
   - [x] Brazil;
   - [ ] Poland;
   - [ ] Spain;
