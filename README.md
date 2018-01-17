@@ -95,7 +95,7 @@ Latest version is 0.5.0
   - [x] Brazil;
   - [ ] Poland;
   - [ ] Spain;
-  - [ ] Portugal;
+  - [x] Portugal;
   - [x] Australia;
   - [x] New Zealand;
 - [ ] local propers available on:
