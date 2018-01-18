@@ -60,6 +60,7 @@ priorites={ # classement des priorités dans le missel de 62
     300:"Office de sainte Marie le samedi",
     200:"Féries de IVème classe",
     #Fin de la quatrième classe
+    # Certaines commémoraisons sont supérieures à 100 pour des raisons de priorité entre elles. Elles ne doivent pas dépasser 110 (cf. annus.py -> _selection().
     100:"commémoraisons",
     }
 

@@ -9,7 +9,7 @@ import pickle
 
 chemin = os.path.dirname(os.path.abspath(__file__))
 
-fichiers=('roman_1962_.pkl',)
+fichiers=('romanus_1962_.pkl',)
 """"
     'romanus_1962_dimanches.pic', 
     'romanus_1962_fetesduseigneur.pic',
@@ -491,7 +491,7 @@ class LiturgicalCalendar():
         commemoraison = 0 # max 2
         commemoraison_temporal=False
         
-        if len(liste) == 0 or liste[0].priorite <= 100:
+        if len(liste) == 0 or liste[0].priorite <= 110:
             self.saturday.date = date
             if self.saturday.Est_ce_samedi(date):
                 liste.append(self.saturday.copy())
