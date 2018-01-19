@@ -186,11 +186,12 @@ def main():
     if args.export:
         import exporter
         exporter.main(debut,fin,
-                args.output,
                 args.langue,
+                args.output,
                 proper=args.propre,ordo=args.ordo,
                 file_ext=args.export,
                 pal=args.pal)
+        print('Export completed')
 
     if args.navigateur:
         if mois_seul:

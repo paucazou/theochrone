@@ -63,9 +63,10 @@ def _data_wrapper(feast, lang: str, rank: int) -> tuple:
     
     return feast.nom[lang], description, fdate 
 
-def main(start: datetime.date,stop: datetime.date,file_path: str,lang: str,
-           proper='romanus', ordo=1962, file_ext='ics', **options) -> bool:
+def main(start: datetime.date,stop: datetime.date, lang: str,
+           stream, proper='roman', ordo=1962, file_ext='ics', **options) -> bool:
     """Turn data into a file from start to stop.
+    stream is a stream where data will be written
     proper & ordo select data sent
     options are named arguments with a bool as value
     Valid options are : 'pal' (Pro Aliquibus Locis) # include martyrology ? TODO
@@ -86,13 +87,14 @@ def main(start: datetime.date,stop: datetime.date,file_path: str,lang: str,
     liturgycal = annus.LiturgicalCalendar(proper=proper,ordo=ordo)
     liturgycal(start.year,stop.year)
     # dispatching to custom function
-    types[file_ext](start,stop,file_path, lang, liturgycal, **options)
+    types[file_ext](start,stop,lang, liturgycal,stream, **options)
     return True
 
-def _to_ics(start: datetime.date, stop: datetime.date, file_path: str, lang: str,
-        liturgycal, **options) -> bool:
+def _to_ics(start: datetime.date, stop: datetime.date, lang: str,
+        liturgycal, stream, **options) -> bool:
     """Turn data into a ics file.
     liturgycal is a liturgical calendar with requested start and stop
+    stream is a stream where ics calendar will be written
     Return True"""
     calendar = ics.Calendar()
     for day in liturgycal[start:stop]:
@@ -104,20 +106,20 @@ def _to_ics(start: datetime.date, stop: datetime.date, file_path: str, lang: str
                 event.description = raw_data[1]
                 event.begin = raw_data[2]
                 calendar.events.append(event)
-    with open(file_path,'w') as f:
-        f.writelines(calendar)
+    stream.writelines(calendar)
+    return True
 
 
 
-def _to_csv(start: datetime.date, stop: datetime.date, file_path: str,lang: str,
-           liturgycal, **options) -> bool:
+def _to_csv(start: datetime.date, stop: datetime.date, lang: str,
+           liturgycal, stream, **options) -> bool:
     """Turn data into a csv file.
     liturgycal is a liturgical calendar with requested start and stop
+    stream is a stream where csv will be written
     Return True"""
     # formatting csv writer
     fields = ['Subject','Description','Start Date','End Date']
-    csv_file = open(file_path,'w',newline='')
-    writer = csv.DictWriter(csv_file,fieldnames=fields,dialect='excel')
+    writer = csv.DictWriter(stream,fieldnames=fields,dialect='excel')
     writer.writeheader()
     # writing data
     for day in liturgycal[start:stop]:
@@ -129,7 +131,6 @@ def _to_csv(start: datetime.date, stop: datetime.date, file_path: str,lang: str,
                         'Start Date': feast.date.strftime('%x'), # not safe, cause it depends on locale # WARNING 
                         'End Date':feast.date.strftime('%x')}
                 writer.writerow(data)
-    csv_file.close()
     return True # return file as string ? as iostream ? TODO
 
 

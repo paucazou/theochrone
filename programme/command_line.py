@@ -368,7 +368,7 @@ def args():
         any date, --pal, --ordo, --proper"""))
     export.add_argument(*arguments['export']['long'],*arguments['export']['short'],dest='export',choices=['csv','ics'],action='store',help=_("""Select which file format you want to use. Available: ics, csv"""))
     output_required = '--export' in sys.argv or '-e' in sys.argv # WARNING if changes in args # https://stackoverflow.com/questions/19414060/argparse-required-argument-y-if-x-is-present
-    export.add_argument(*arguments['output']['long'],*arguments['output']['short'],dest='output',action='store',required=output_required,help=_("Path to the destination. If you want a suffix, please add it."))
+    export.add_argument(*arguments['output']['long'],*arguments['output']['short'],dest='output',action='store',required=output_required,type=argparse.FileType('w'),help=_("Path to the destination. If you want a suffix, please add it."))
 
     system = parser.add_argument_group(_('System options'), description=_("Other options"))
     system.add_argument("-b","--browser",dest="navigateur",help=_("""Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
