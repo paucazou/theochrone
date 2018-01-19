@@ -191,6 +191,7 @@ def main():
                 proper=args.propre,ordo=args.ordo,
                 file_ext=args.export,
                 pal=args.pal)
+        args.output.close()
         print('Export completed')
 
     if args.navigateur:
