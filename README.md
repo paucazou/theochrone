@@ -83,7 +83,8 @@ You want to contribute to Theochrone but you want to use your personal favorite 
 ## Version
 Latest version is 0.5.0
 ## New features available in v0.5.0
-- [ ] widget available in english.
+- [x] widget available in english.
+  - [ ] Rework feria days names in english
 - [ ] CLI available in english.
 - [ ] local propers :
   - [x] France;
