@@ -1,3 +1,15 @@
+{% load filters %}
+{% load i18n %}
+{# variables #}
+{% trans "Feasts of the day before" as yesterday %}
+{% trans "Feasts of the day after" as tomorrow %}
+{% trans "More details on Theochrone" as more_details %}
+{% trans "Texts of the Mass and the Divine Office" as mass_link %}
+{% trans "mass" as mass %}
+{% trans "Memory" as memory %}
+{% trans "Omitted" as omitted %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
 <style>
 .no-padding
 {
@@ -20,19 +32,19 @@
 {% endif %}
 </style>
 <div class="container">
+	<span>{% if lang in data.0.nom.keys %}oui{% endif %}</span>
     <div class="row little-bottom-margin well well-sm horizontal-align">
-        <div class="col-xs-1 no-padding"><a href="#" onclick="loadDoc('{{ link_to_yesterday }}')" class="black-link" id="yesterday" alt="Feasts of the day before" title="Résultats de la veille"><i class="fa fa-arrow-circle-o-left fa-align-bottom fa-2x pull-left" aria-hidden="true"></i></a></div>
-        <div class="col-xs-10 text-center align-top"><h5><a href="{{ link_to_day }}" target="blank" id="today" class="black-link" alt="More details on Theochrone" title="Plus de détails sur Theochrone.fr">{{ day }}</a></h5></div>
-        <div class="col-xs-1 no-padding"><a href="#" onclick="loadDoc('{{ link_to_tomorrow }}')" id="tomorrow" class="black-link" alt="Feasts of the day after" title="Résultats du lendemain"><i class="fa fa-arrow-circle-o-right fa-2x pull-right" aria-hidden="true"></i></a></div>
+	    <div class="col-xs-1 no-padding"><a href="#" onclick="loadDoc('{{ link_to_yesterday }}')" class="black-link" id="yesterday" alt="{{ yesterday }}" title="{{ yesterday }}"><i class="fa fa-arrow-circle-o-left fa-align-bottom fa-2x pull-left" aria-hidden="true"></i></a></div>
+	    <div class="col-xs-10 text-center align-top"><h5><a href="{{ link_to_day }}" target="blank" id="today" class="black-link" alt="{{ more_details }}" title="{{ more_details }}">{{ day }}</a></h5></div>
+	    <div class="col-xs-1 no-padding"><a href="#" onclick="loadDoc('{{ link_to_tomorrow }}')" id="tomorrow" class="black-link" alt="{{ tomorrow }}" title="{{ tomorrow }}"><i class="fa fa-arrow-circle-o-right fa-2x pull-right" aria-hidden="true"></i></a></div>
     </div>
     <div class="row">
         <div class="list-group little-bottom-margin">
 {% for feast in data %}
 {% if not feast.pal or feast.pal and pal %}
-<a class="list-group-item {% if feast.pal and static_file %}pal{% endif %}" target='blank' href="{{ feast.link }}" name="text-mass" alt="Link to Introibo.fr" title="Textes de la messe et de l'office sur Introibo">{{ feast.nom.fr }}{% if feast.pal %} (messe <em>Pro Aliquibus Locis</em>){% endif %}{% if feast.commemoraison and not feast.peut_etre_celebree %} (mémoire){% elif feast.omission %} (omis){% endif %}</a>
+<a class="list-group-item {% if feast.pal and static_file %}pal{% endif %}" target='blank' href="{{ feast.link }}" name="text-mass" alt="{{ mass_link }}" title="{{ mass_link }}">{{ feast.nom|key:lang.code|defkey:'en' }}{% if feast.pal %} ({{ mass }} <em>Pro Aliquibus Locis</em>){% endif %}{% if feast.commemoraison and not feast.peut_etre_celebree %} ({{ memory }}){% elif feast.omission %} ({{ omitted }}){% endif %}</a>
 {% endif %}
 {% endfor %}
         </div>
     </div>
 </div>
-
