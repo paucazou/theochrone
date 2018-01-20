@@ -9,4 +9,14 @@ def get_item(dictionary, key):
     If key doesn't exist, return False.
     Usage: {{ dictionary|key:NAME }} where NAME can be a variable
     WARNING no space are allowed between the name of the dictionary and the key"""
-    return dictionary.get(key,False)
+    return dictionary, dictionary.get(key,False)
+
+@register.filter(name="defkey")
+def defkey(pack, default):
+    """Takes a tuple of a dict and a value (pack).
+    If value is False, return the value matching with key in default.
+    Usage: {{ dictionary|key:NAME|defkey:DEFAULT }}
+    Please be careful to spaces
+    Useful if defkey is a variable and not a litteral string"""
+    dictionary, returned_value = pack
+    return returned_value if returned_value else dictionary.get(default)
