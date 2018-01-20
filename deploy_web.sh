@@ -11,6 +11,8 @@ rm -r gui
 
 mv images/fetes web/kalendarium/static/ # for the images of saints
 cd web
+print Compiling translation files...
+django-admin compilemessages
 print Please put shtml in the right repertory. Do not forget base widget nor light widget !
 ./manage.py shell
 
