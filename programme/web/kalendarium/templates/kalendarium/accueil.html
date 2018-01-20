@@ -45,7 +45,7 @@
             {% for date,jour in deroule %}
             <h3><a
             href="{% static "kalendarium/todivinumofficium.html" %}?day={{ date.day }}&month={{ date.month }}&year={{ date.year }}&lang=fr&office=mass"
-            title="Cliquez pour lire l'intégralité des textes de la messe du jour sur Divinum Officium" alt="Mass texts of the day in user language on Divinum Officium" target="_blank" name="title-link">{{ date | date:"l j E Y" | capfirst }}</a>
+	    title="Cliquez pour lire l'intégralité des textes de la messe du jour sur Divinum Officium" alt="Mass texts of the day in user language on Divinum Officium" target="_blank" name="title-link">{{ date | date:"l j E Y" | capfirst }}{# problème puisqu'on change de langue de base TODO #}</a>
             </h3>
             <div id="value">     <div class="panel-group">           
                     {% for fete in jour %}
