@@ -9,7 +9,7 @@ def get_item(dictionary, key):
     If key doesn't exist, return a tuple containing the dictionary and a KeyError.
     Usage: {{ dictionary|key:NAME }} where NAME can be a variable
     WARNING no space are allowed between the name of the dictionary and the key"""
-    return dictionary.get(key,(dictionary,KeyError(key))
+    return dictionary.get(key,(dictionary,KeyError(key)))
 
 @register.filter(name="defkey")
 def defkey(returned_value, default):
