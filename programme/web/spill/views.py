@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils.translation import get_language_from_request
 from django.views.decorators.clickjacking import xframe_options_exempt
 
 import datetime
@@ -38,12 +39,13 @@ def day(request):
     else:
         day = datetime.date.today()
         pal = False
+    lang = get_language_from_request(request)
     lyear(day.year)
     data = lyear[day] # data of requested day
     hashtag = "resultup"
     link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag)
-    link_to_tomorrow = datetime_to_param(day + datetime.timedelta(1),pal)
-    link_to_yesterday = datetime_to_param(day - datetime.timedelta(1),pal)
+    link_to_tomorrow = datetime_to_param(day + datetime.timedelta(1),lang,pal=pal)
+    link_to_yesterday = datetime_to_param(day - datetime.timedelta(1),lang,pal=pal)
     return render(request,'spill/day.html',locals())
 
 def day_mobile(request):
@@ -72,11 +74,11 @@ def test(request):
     """A view to test functions online"""
     return HttpResponse(str(request.META))
 
-def datetime_to_param(day,pal=False):
+def datetime_to_param(day,lang,proper='roman',pal=False):
     """Take a datetime.date like object
     return a link to requested host"""
-    link = "day?date_seule_day={}&date_seule_month={}&date_seule_year={}&pal={}".format(
-        day.day,day.month,day.year,pal)
+    link = "../{}/spill/day?date_seule_day={}&date_seule_month={}&date_seule_year={}&pal={}".format(
+            lang,day.day,day.month,day.year,pal)
     return link
 
 def saveUrls(request):

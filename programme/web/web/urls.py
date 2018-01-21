@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from . import views
+
 
 urlpatterns = [
     url(r"^$", views.renvoi),
@@ -24,3 +26,9 @@ urlpatterns = [
     url(r"^spill/",include("spill.urls")),
     url(r"^help/",include("help.urls")),
 ]
+
+translated_urls = i18n_patterns(
+        url(r'^spill/',include('spill.translated_urls')),
+        )
+
+urlpatterns.extend(translated_urls)
