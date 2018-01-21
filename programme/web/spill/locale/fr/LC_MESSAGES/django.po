@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-20 07:00+0100\n"
+"POT-Creation-Date: 2018-01-21 15:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,30 +18,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: templates/spill/day.html:4
+#: spill/templates/spill/day.html:4
 msgid "Feasts of the day before"
 msgstr "Fêtes de la veille"
 
-#: templates/spill/day.html:5
+#: spill/templates/spill/day.html:5
 msgid "Feasts of the day after"
 msgstr "Fêtes du lendemain"
 
-#: templates/spill/day.html:6
+#: spill/templates/spill/day.html:6 spill/templates/spill/day_mobile.html:4
 msgid "More details on Theochrone"
 msgstr "Plus de détails sur le site du Théochrone"
 
-#: templates/spill/day.html:7
+#: spill/templates/spill/day.html:7 spill/templates/spill/day_mobile.html:5
 msgid "Texts of the Mass and the Divine Office"
 msgstr "Textes de la messe et de l'office"
 
-#: templates/spill/day.html:8
+#: spill/templates/spill/day.html:8 spill/templates/spill/day_mobile.html:6
 msgid "mass"
 msgstr "messe"
 
-#: templates/spill/day.html:9
+#: spill/templates/spill/day.html:9
 msgid "Memory"
 msgstr "Mémoire"
 
-#: templates/spill/day.html:10
+#: spill/templates/spill/day.html:10
 msgid "Omitted"
 msgstr "Omis"
