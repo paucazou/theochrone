@@ -6,3 +6,12 @@ def main(request): # TODO
     app is made"""
     titre = "Aide"
     return render(request,'help/whole.html',locals())
+
+def _populate(model,tree):
+    children = model.helparticle_set.all()
+    tree.append(model)
+    for child in children:
+        tree = _populate(child,tree)
+    if children:
+        tree.append('STOP')
+    return tree
