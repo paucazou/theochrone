@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['lasna','localhost','testserver','palantire']
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,6 +127,11 @@ USE_TZ = True
 LOCALE_PATHS = [
         os.path.normpath("../spill/locale/"),
         ]
+LANGUAGES = (
+        ('en','English'),
+        ('fr','French'),
+        )
+
 
 
 # Static files (CSS, JavaScript, Images)
