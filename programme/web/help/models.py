@@ -1,12 +1,11 @@
 from django.db import models
+VERSION = '0.5.0'
 
 # Create your models here.
 class HelpArticle(models.Model):
     title = models.CharField(max_length=30)
     parent = models.ForeignKey('self',on_delete=models.SET_NULL,blank=True,null=True)
-    version_major = models.PositiveSmallIntegerField()
-    version_minor = models.PositiveSmallIntegerField()
-    version_patch = models.PositiveSmallIntegerField()
+    version = models.CharField(max_length=len(VERSION),default=VERSION)
     modification_date = models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=False)
     slug = models.SlugField(max_length=30)
