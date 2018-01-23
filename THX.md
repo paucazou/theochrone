@@ -11,6 +11,8 @@ Thank you to all of them.*
 * Father Eric I.
 * Father Guillaume de Tanoüarn
 * Father Claude B.
+* Aleth S. *English translations*
+* Br Stephen
 
 ## Blogs and websites
 * Tradinews *Especially for the idea of the widget*
