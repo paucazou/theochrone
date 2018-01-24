@@ -6,4 +6,5 @@ from . import views
 
 urlpatterns = [
         url(r"^main$",views.main),
+        url(r"^read/<int:id>-<slug:slug>$",views.read),
         ]
