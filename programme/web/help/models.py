@@ -13,6 +13,10 @@ class HelpArticle(models.Model):
     text = models.TextField() # the text of the article
     short_description = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name = "Help Article"
+        ordering = ['title']
+
     def __str__(self):
         return self.title
     
