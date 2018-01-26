@@ -357,35 +357,37 @@ def renvoie_regex(retour,regex,liste): # est-ce qu'on ne pourrait pas la remplac
     retour.regex['egal'] += de_cote
     return retour.regex
 
-def affiche_temps_liturgique(objet,langue='fr'): #TEST
-    """Une fonction capable d'afficher le temps liturgique"""
-    sortie = 'erreur'
-    if langue == 'fr':
-        if objet.temps_liturgique() == 'nativite':
-            sortie = "temps de la Nativité (Temps de Noël)"
-        elif objet.temps_liturgique() == 'epiphanie':
-            sortie = "temps de l'Épiphanie (Temps de Noël)"
-        elif objet.temps_liturgique() == 'avent':
-            sortie = "temps de l'Avent"
-        elif objet.temps_liturgique() == 'apres_epiphanie':
-            sortie = "temps per Annum après l'Épiphanie"
-        elif objet.temps_liturgique() == 'septuagesime':
-            sortie = "temps de la Septuagésime"
-        elif objet.temps_liturgique() == 'careme':
-            sortie = "temps du Carême proprement dit (Temps du Carême)"
-        elif objet.temps_liturgique() == 'passion':
-            sortie = "temps de la Passion (Temps du Carême)"
-        elif objet.temps_liturgique() == 'paques':
-            sortie = "temps de Pâques (Temps Pascal)"
-        elif objet.temps_liturgique() == 'ascension':
-            sortie = "temps de l'Ascension (Temps Pascal)"
-        elif objet.temps_liturgique() == 'octave_pentecote':
-            sortie = "octave de la Pentecôte (Temps Pascal)"
-        elif objet.temps_liturgique() == 'pentecote':
-            sortie = "temps per Annum après la Pentecôte"
-    else: # en
-        pass
-    return sortie
+def affiche_temps_liturgique(elt,lang='fr'): #TEST
+    """Return liturgical season"""
+    seasons = {'fr': {
+	'nativite': "temps de la Nativité (Temps de Noël)",
+        'epiphanie': "temps de l'Épiphanie (Temps de Noël)",
+        'avent': "temps de l'Avent",
+        'apres_epiphanie': "temps per Annum après l'Épiphanie",
+        'septuagesime': "temps de la Septuagésime",
+        'careme': "temps du Carême proprement dit (Temps du Carême)",
+        'passion': "temps de la Passion (Temps du Carême)",
+        'paques': "temps de Pâques (Temps Pascal)",
+        'ascension': "temps de l'Ascension (Temps Pascal)",
+        'octave_pentecote': "octave de la Pentecôte (Temps Pascal)",
+        'pentecote': "temps per Annum après la Pentecôte",
+            },
+        'en' : {
+            'avent': 'Season of Advent',
+            'nativite': 'Christmastide (Season of Christmas)',
+            'epiphanie': 'Epiphanytide (Season of Christmas)',
+            'apres_epiphanie': 'Season per annum after Epiphany',
+            'septuagesime': 'Season of Septuagesima',
+            'careme': 'Lent (Season of Lent)',
+            'passion': 'Passiontide (Season of Lent)',
+            'paques': 'Eastertide (Season of Easter)',
+            'ascension': 'Ascensiontide (Season of Easter',
+            'octave_pentecote': 'Octave of Pentecost (Season of Easter)',
+            'pentecote': 'Season per annum after Pentecost',
+            },
+        }
+
+    return seasons[lang][elt.temps_liturgique()]
 
 def affiche_jour(date,langue): #TEST
     """Une fonction pour afficher le jour"""

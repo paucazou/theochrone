@@ -536,9 +536,14 @@ class FeteFerie(Fete):
     
     def QuelNom(self,jour): # TEST
         """Une fonction qui renvoie le nom qui doit être donné au jour de férie."""
+        # for english translation
+        season = officia.affiche_temps_liturgique(self,'en')
+        if season.startswith('Season'):
+            season = 'the ' + season
         return {'la': officia.nom_jour(jour,'la').capitalize(),
                 'fr':officia.nom_jour(jour,'fr').capitalize() + ' de la férie du ' + officia.affiche_temps_liturgique(self,'fr'),
-                'en':officia.nom_jour(jour,'en').capitalize()} # Comment dit on jour de férie en anglais ? feria (Saturday ?)
+                'en':"Ferial {} of {}".format(officia.nom_jour(jour,'en').capitalize(),season)
+                } # Comment dit on jour de férie en anglais ? feria (Saturday ?)
     
     def Dimanche_precedent(self,jour,Annee): # DEPRECATED
         """Une fonction qui renvoie le dimanche précédent, si la férie est attestée, et change son nom, sa classe, priorite, et commemoraison_privilegiee.""" # changer cette aide
