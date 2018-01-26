@@ -54,9 +54,9 @@ def translated_messages(file_name,language=args.langue):
     language : string : which language is required. default : args.langue"""
     ### i18n ###
     languages = {
-    'fr' : gettext.translation('messages',loc,languages=['fr'])
-    'en' : gettext.translation('messages',loc,languages=['en'])
-    'la' : gettext.translation('messages',loc,languages=['la_LA'])
+    'fr' : gettext.translation('messages',loc,languages=['fr']),
+    'en' : gettext.translation('messages',loc,languages=['en']),
+    'la' : gettext.translation('messages',loc,languages=['la_LA']),
     }
 
     languages[language].install()
