@@ -304,7 +304,9 @@ def datevalable(entree,langue='fr',semaine_seule=False,mois_seul=False,annee_seu
         else: # erreur
             erreur(12,langue,exit)
     else: # en
-        pass
+        date = datetime.date.today() # TODO
+        semaine_seule = mois_seul = annee_seule = False
+
     return date, semaine_seule, mois_seul, annee_seule
 
 def AtoZ(semaine_seule,mois_seul,annee_seule,date): # TEST
@@ -336,6 +338,8 @@ def mois_lettre(mot,langue='en'): #TEST
                 return i + 1
         erreur(13,langue)
     else: #default : en
+        if isinstance(mot,int):
+            return calendar.month_name[mot]
         for month_idx in range(1,13):
             if mot in calendar.month_name[month_idx].lower():
                 return True, str(month_idx)
@@ -398,17 +402,23 @@ def affiche_jour(date,langue): #TEST
             jour = date.day
         mois = mois_lettre(date.month,langue)
         sortie="""le {} {} {} {}""".format(nom_jour(date,langue),jour,mois,date.year)
-    elif kwargs['langue']=='en':
-        sortie="""on {}""".format(date)
+    elif langue=='en':
+        month = mois_lettre(date.month,langue)
+        sortie="""on {}, {} {} {}""".format(nom_jour(date,langue).capitalize(),date.day,month,date.year)
     elif kwargs['langue']=='la':
         sortie="""in {}""".format(date) # à développer
     
     return sortie
 
+def upper_first(string):
+    """Uppers the first letter only,
+    without lowering the others"""
+    return string[0].upper() + string[1:]
+
 def affichage(**kwargs):
     """Une fonction destinée à l'affichage des résultats."""
     if kwargs['verbose'] and not kwargs['recherche']:
-        sortie = affiche_jour(kwargs['date'],kwargs['langue']).capitalize() + ' :'
+        sortie = upper_first(affiche_jour(kwargs['date'],kwargs['langue'])) + ' :'
     else:
         sortie=''
     return_value = []
@@ -534,12 +544,8 @@ def affichage(**kwargs):
                 return_value.append(sortie)
                 sortie = ''
                 
-        elif kwargs['langue'] == 'en':
-            erreur('01')
-        else: # latin
+        else: # en
             pass
-        """if a != kwargs['liste'][-1]:
-            sortie += '\n'"""
             
     if not kwargs.get('split'):
         return_value = sortie
