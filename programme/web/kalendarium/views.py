@@ -75,7 +75,7 @@ def home(request,
 
     for value in deroule.values():
         for elt in value:
-            liturgical_time = officia.affiche_temps_liturgique(elt,langue='fr')
+            liturgical_time = officia.affiche_temps_liturgique(elt,lang='fr')
             elt.temps_liturgique_ = liturgical_time[0].upper() + liturgical_time[1:]
     deroule = sorted(deroule.items())
 
