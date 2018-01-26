@@ -8,6 +8,7 @@ class HelpArticle(models.Model):
     version = models.CharField(max_length=len(VERSION),default=VERSION)
     modification_date = models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=False)
+    arbitrary_order = models.IntegerField(default=0)
     slug = models.SlugField(max_length=30)
 
     text = models.TextField() # the text of the article
@@ -15,7 +16,7 @@ class HelpArticle(models.Model):
 
     class Meta:
         verbose_name = "Help Article"
-        ordering = ['title']
+        ordering = ['arbitrary_order','title']
 
     def __str__(self):
         return self.title

@@ -3,9 +3,8 @@ from .models import HelpArticle
 
 # Create your views here.
 def main(request): # TODO
-    """this view only return the help till a complete
-    app is made"""
-    root_articles = HelpArticle.objects.filter(Children__isnull=True)
+    """This view return the menu of the app and loads the home page of Help"""
+    root_articles = HelpArticle.objects.defer('text').filter(Children__isnull=True,published__exact=True)
     tree = [] # list to render
     for elt in root_articles:
         tree = _populate(elt,tree)
@@ -18,7 +17,7 @@ def read(request,id):
     return
 
 def _populate(model,tree):
-    children = model.Children.all()
+    children = model.Children.defer('text').filter(published__exact=True)
     tree.append(model)
     for child in children:
         tree = _populate(child,tree)
