@@ -34,7 +34,7 @@ For more info, type in a terminal after downloading the program:
 ```shell
 python pip -e requirements.txt # in many OSes, you should enter python3 instead of python
 python pip -e dev_requirement.txt # only if you want to contribute to the project
-python -c "import dataswitcher; dataswitcher.main('romanus_1962')"
+python -c "import dataswitcher; dataswitcher.main('roman_1962')"
 ```
 > Note that the version you download from Github may be broken. Feel free to contribute to fix the issue !
 
@@ -86,6 +86,7 @@ Latest version is 0.5.0
 - [x] widget available in english.
   - [x] Rework ferial days names in english
 - [ ] CLI available in english.
+  - [x] rework translation full system
 - [ ] local propers :
   - [x] France;
   - [ ] USA;
