@@ -81,4 +81,19 @@ def test_get(install_mock,underscore_mock):
     with pytest.raises(AttributeError):
         elt.get('allah','en')
 
-    
+@mock.patch('gettext.NullTranslations.install')
+def test_setLang(install_mock):
+    """test setLang method"""
+    langs = {
+            'en':gettext.translation('messages',localedir='/',fallback=True),
+            'fr':gettext.translation('messages',localedir='/',fallback=True)}
+    elt = MessagesTranslator(langs, 'en')
+    elt.setLang('en')
+    install_mock.assert_not_called()
+    elt.setLang('fr')
+    assert langs['fr'].install.call_count == 1
+    elt.setLang('fr')
+    assert langs['fr'].install.call_count == 1
+    elt.setLang('es')
+    assert langs['en'].install.call_count == 2
+

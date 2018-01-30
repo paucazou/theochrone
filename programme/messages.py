@@ -39,9 +39,7 @@ class MessagesTranslator: # TEST
 
     def get(self,message: str,lang: str): # TEST
         """return a translation of the message in the requested lang"""
-        if lang != self.current_lang:
-            self.current_lang = ('en',lang)[lang in self.langs]
-            self.langs.get(lang,self.langs['en']).install() # TODO maybe save the translations in a dict when first loaded
+        self.setLang(lang)
         return _(getattr(self,message))
 
     def markToTranslate(self,value: str,attribute: str) -> str: # TEST
@@ -53,6 +51,13 @@ class MessagesTranslator: # TEST
         Command-line: xgettext -kmarkToTranslate -j -o OUTPUT INPUT"""
         self.__setattr__(attribute,value)
         return value
+
+    def setLang(self,lang: str): # TEST
+        """Install 'lang' translation"""
+        if lang != self.current_lang:
+            self.current_lang = ('en',lang)[lang in self.langs]
+            self.langs.get(lang,self.langs['en']).install() # TODO maybe save the translations in a dict when first loaded
+
 
 def translated_messages(file_name,language=args.langue):
     """Return messages translated as a dict
@@ -77,5 +82,10 @@ def translated_messages(file_name,language=args.langue):
         } # a dict with all the messages used in adjutoria.py
     messages['officia'] = { 
             }
+    dateparse_msg = MessagesTranslator(langs=languages,lang=language)
+    dateparse_msg.markToTranslate('today','today')
+
+    messages['dateparse'] = dateparse_msg
+    
     return messages[file_name]
 
