@@ -15,18 +15,20 @@ args = args()
 class MessagesTranslator: # TEST
     """This class manages the translation of the messages on the fly.
     Please do not include strings related to the content of the Fete objects themselves"""
+
+    months = {
+                'en':['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                'fr':['', 'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+                }
+    weekdays = {
+                'en':['','Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                'fr':['','dimanche','lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
+                }
+
     def __init__(self,langs, lang: str): # TEST
         """langs is a dict with str as keys matching with a gettext.translation"""
         self.current_lang = lang
         self.langs = langs
-        self.months = {
-                'en':['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                'fr':['', 'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
-                }
-        self.weekdays = {
-                'en':['','Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                'fr':['','dimanche','lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
-                }
 
     def __getattr__(self,attribute: str): # TEST
         """Unsafe way to get a translation.
