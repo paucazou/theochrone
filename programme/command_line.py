@@ -231,12 +231,10 @@ def default_language():
             return f.read()
     except FileNotFoundError:
         pass
-    langue = locale.getdefaultlocale()[0]
-    if 'fr' in langue:
-        langue = 'fr'
-    else:
-        langue = 'en'
-    return langue
+    lang = locale.getdefaultlocale()[0].split('_')[0]
+    if lang not in arguments['langue']['options']:
+        lang = 'en'
+    return lang
 
 class CoursDeLangue(argparse.Action):
     """A class to set language name entered by user"""
@@ -252,7 +250,7 @@ class CoursDeLangue(argparse.Action):
             if value in values or value == key:
                 value = key
                 break
-        if value not in ('fr','la','en'):
+        if value not in arguments['langue']['options']:
             print(_("Language entered is not available. Default language will be used instead."))
             value = default_language()
         setattr(namespace,self.dest,value)
