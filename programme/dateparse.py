@@ -12,6 +12,8 @@ import messages
 import subprocess
 import sys
 
+calendar.setfirstweekday(calendar.SUNDAY)
+
 msg = messages.translated_messages('dateparse')
 today = datetime.date.today()
 TimeSpan = collections.namedtuple('TimeSpan',('start','stop'))
@@ -109,26 +111,6 @@ class _DateParser:
         except ValueError:
             raise self.type_error
 
-    def getMonthName(self,number='all') -> str:
-        """Get month name in current locale
-        if number == 'all', return the list of months"""
-        return _getTimeUnitName('month',number)
-
-    def getDayName(self,number='all') -> str:
-        """Get weekday name in current locale
-        if number == 'all', return the list of days"""
-        return _getTimeUnitName('day',number)
-
-    def _getTimeUnitName(self,unit: str, number='all') -> str:
-        """Get a time unit name, day or month, in current locale
-        if number == 'all', return the list of days"""
-        locale = get_locale(self.lang)
-        unit_name = {
-                'day':calendar.day_name,
-                'month':calendar.month_name,
-                }[unit]
-        with calendar.different_locale(locale) as cdl:
-            return unit_name[number] if number != 'all' else unit_name[:]
 
 
 class EnUsDateParser(_DateParser):
@@ -150,17 +132,3 @@ def dateparser_factory(input: list, lang: str) -> _DateParser:
             }
     return parsers[lang](input,lang)
 
-def get_locale(lang: str) -> str:
-    """Get locale available in the system"""
-    if sys.platform != 'win32':
-        locales_availables = subprocess.run(['locale','-a'],stdout=subprocess.PIPE).stdout.decode().split('\n')
-        for locale in locales_availables:
-            if lang in locale.lower(): # TODO à améliorer s'il faut regarder la localisation en plus
-                return locale
-        else:
-            raise ValueError('The locale requested is not available: {}. Please install it or use your default one'.format(lang))
-    else:
-        return lang #WONT WORK
-      
-
-    

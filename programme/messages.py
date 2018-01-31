@@ -19,6 +19,14 @@ class MessagesTranslator: # TEST
         """langs is a dict with str as keys matching with a gettext.translation"""
         self.current_lang = lang
         self.langs = langs
+        self.months = {
+                'en':['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                'fr':['', 'janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+                }
+        self.weekdays = {
+                'en':['','Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                'fr':['','dimanche','lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
+                }
 
     def __getattr__(self,attribute: str): # TEST
         """Unsafe way to get a translation.
@@ -61,7 +69,7 @@ class MessagesTranslator: # TEST
 
 def translated_messages(file_name,language=args.langue):
     """Return messages translated as a dict
-    filename : string : name of the file which requires translation.
+    filename : string : name of the file which requires translation. May be shared data.
     language : string : which language is required. default : args.langue"""
     ### i18n ###
     languages = {
@@ -82,10 +90,17 @@ def translated_messages(file_name,language=args.langue):
         } # a dict with all the messages used in adjutoria.py
     messages['officia'] = { 
             }
+    
+
+
     dateparse_msg = MessagesTranslator(langs=languages,lang=language)
     dateparse_msg.markToTranslate('today','today')
+    dateparse_msg.markToTranslate('tomorrow','tomorrow')
+    dateparse_msg.markToTranslate('yesterday','yesterday')
+    dateparse_msg.markToTranslate('week','week')
 
     messages['dateparse'] = dateparse_msg
+    messages['weekday_names'] = weekday_names
     
     return messages[file_name]
 
