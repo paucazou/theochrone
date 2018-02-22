@@ -58,6 +58,14 @@ $( "#palbut" ).click(function() { // TODO essayer de remplacer cet id par un nam
     $("#widget_example").html(text_area) ;
     console.log($("#widget_example").html());
 });
+// if user click on a texterea: select it
+var textereas = document.querySelectorAll('textarea');
+for (var i=0;i<textereas.length;i++) {
+	var elt = textereas[i];
+	elt.addEventListener('click',function (event) {
+		event.target.select();
+	});
+}
 </script>
     
 {% endblock %}
