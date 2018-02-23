@@ -26,7 +26,7 @@ var wHeight;
 
 function resizeContent(itheo,orurl){
       itheo.postMessage("set container to 0px",orurl);
-      wHeight = $(document).height();
+      wHeight = $(document).height(); // envoyer la offsetHeight plutôt ? TODO 
      itheo.postMessage(wHeight,orurl); // vérifier que ce soit chargé
 };
 
