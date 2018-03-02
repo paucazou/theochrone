@@ -1028,7 +1028,7 @@
 			<bool key="dimanche">False</bool>
 			<bool key="fete_du_Seigneur">False</bool>
 			<str key="images_rep"/>
-			<str key="link">http://www.introibo.fr/Vendredi-de-la-2eme-semaine-de-Careme</str>
+			<str key="link">http://www.introibo.fr/Vendredi-de-la-2eme-semaine-de</str>
 			<dict key="nom">
 				<str key="en">Friday of the second week in Lent</str>
 				<str key="fr">Vendredi de la deuxième semaine de Carême</str>
@@ -1103,7 +1103,7 @@
 			<bool key="dimanche">False</bool>
 			<bool key="fete_du_Seigneur">False</bool>
 			<str key="images_rep"/>
-			<str key="link">http://www.introibo.fr/Samedi-de-la-2eme-semaine-de-Careme</str>
+			<str key="link">http://www.introibo.fr/Samedi-de-la-2eme-semaine-de</str>
 			<dict key="nom">
 				<str key="en">Saturday of the second week in Lent</str>
 				<str key="fr">Samedi de la deuxième semaine de Carême</str>
@@ -1477,7 +1477,7 @@
 			<bool key="dimanche">False</bool>
 			<bool key="fete_du_Seigneur">False</bool>
 			<str key="images_rep"/>
-			<str key="link">http://www.introibo.fr/Vendredi-de-la-3eme-semaine-de-Careme</str>
+			<str key="link">http://www.introibo.fr/Vendredi-de-la-3eme-semaine-de</str>
 			<dict key="nom">
 				<str key="en">Friday of the third week in Lent</str>
 				<str key="fr">Vendredi de la troisième semaine de Carême</str>
@@ -1552,7 +1552,7 @@
 			<bool key="dimanche">False</bool>
 			<bool key="fete_du_Seigneur">False</bool>
 			<str key="images_rep"/>
-			<str key="link">http://www.introibo.fr/Samedi-de-la-3eme-semaine-de-Careme</str>
+			<str key="link">http://www.introibo.fr/Samedi-de-la-3eme-semaine-de</str>
 			<dict key="nom">
 				<str key="en">Saturday of the third week in Lent</str>
 				<str key="fr">Samedi de la troisième semaine de Carême</str>
@@ -1930,7 +1930,7 @@
 			<bool key="dimanche">False</bool>
 			<bool key="fete_du_Seigneur">False</bool>
 			<str key="images_rep"/>
-			<str key="link">http://www.introibo.fr/Vendredi-de-la-4eme-semaine-de-Careme</str>
+			<str key="link">http://www.introibo.fr/Vendredi-de-la-4eme-semaine-de</str>
 			<dict key="nom">
 				<str key="en">Friday of the fourth week in Lent</str>
 				<str key="fr">Vendredi de la quatrième semaine de Carême</str>
@@ -2008,7 +2008,7 @@
 			<bool key="dimanche">False</bool>
 			<bool key="fete_du_Seigneur">False</bool>
 			<str key="images_rep"/>
-			<str key="link">http://www.introibo.fr/Samedi-de-la-4eme-semaine-de-Careme</str>
+			<str key="link">http://www.introibo.fr/Samedi-de-la-4eme-semaine-de</str>
 			<dict key="nom">
 				<str key="en">Saturday of the fourth week in Lent</str>
 				<str key="fr">Samedi de la quatrième semaine de Carême</str>
