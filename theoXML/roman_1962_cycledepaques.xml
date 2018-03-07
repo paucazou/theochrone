@@ -1327,7 +1327,7 @@
 			<bool key="dimanche">False</bool>
 			<bool key="fete_du_Seigneur">False</bool>
 			<str key="images_rep"/>
-			<str key="link">http://www.introibo.fr/Mercredi-de-la-3eme-semaine-de-Careme</str>
+			<str key="link">http://www.introibo.fr/Mercredi-de-la-3eme-semaine-de</str>
 			<dict key="nom">
 				<str key="en">Wednesday of the third week in Lent</str>
 				<str key="fr">Mercredi de la troisième semaine de Carême</str>
