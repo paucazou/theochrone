@@ -89,7 +89,7 @@ Latest version is 0.5.0
   - [x] rework translation full system
 - [ ] local propers :
   - [x] France;
-  - [ ] USA;
+  - [x] USA;
   - [ ] England;
   - [ ] Wales;
   - [x] Scotland;
