@@ -95,8 +95,8 @@ Latest version is 0.5.0
   - [x] Scotland;
   - [x] Canada;
   - [x] Brazil;
-  - [ ] Poland;
-  - [ ] Spain;
+  - [x] Poland;
+  - [x] Spain;
   - [x] Portugal;
   - [x] Australia;
   - [x] New Zealand;
