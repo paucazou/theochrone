@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<list>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <str key="_images">david_menevie</str>
+      <int key="_priorite">1800</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">90</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">1</int>
+        <int key="mois">3</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">1</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr</str>
+      <dict key="nom">
+        <str key="en">Saint David Bishop and Confessor, Principal Patron of Wales</str>
+        <str key="fr">Saint David de Ménevie, Évêque et Confesseur, Patron Principal du Pays de Galles</str>
+        <str key="la">Sancti Davidi, Episcopi et Confessoris, Primi Patroni Cambriae</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <None key="parent"/>
+      <set key="personne">
+        <str>david_menevie</str>
+      </set>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">welsh</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques"/>
+        <list key="titre"/>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <None key="tokens"/>
+      <str key="tokens_">saint confesseur eveque patron principal pays galles david menevie yvi</str>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
+</list>
