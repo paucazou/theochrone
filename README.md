@@ -87,11 +87,11 @@ Latest version is 0.5.0
   - [x] Rework ferial days names in english
 - [ ] CLI available in english.
   - [x] rework translation full system
-- [ ] local propers :
+- [x] local propers :
   - [x] France;
   - [x] USA;
-  - [ ] England;
-  - [ ] Wales;
+  - [x] England;
+  - [x] Wales;
   - [x] Scotland;
   - [x] Canada;
   - [x] Brazil;
