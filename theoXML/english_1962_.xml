@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <list>
   <Modele>
-    <str key="classe">FeteFixe</str>
     <dict key="attributs">
-      <str key="_couleur">blanc</str>
-      <str key="_images">david_menevie</str>
+      <str key="_couleur">rouge</str>
+      <str key="_images">georges_lydda</str>
       <int key="_priorite">1800</int>
       <str key="_temps_liturgique">variable</str>
       <bool key="_transferee">False</bool>
@@ -18,18 +17,18 @@
       <int key="commemoraison_privilegiee">90</int>
       <None key="date"/>
       <dict key="date_">
-        <int key="jour">1</int>
-        <int key="mois">3</int>
+        <int key="jour">23</int>
+        <int key="mois">4</int>
       </dict>
       <None key="date_originelle"/>
       <int key="degre">1</int>
       <bool key="dimanche">False</bool>
       <bool key="fete_du_Seigneur">False</bool>
-      <str key="link">http://introibo.fr</str>
+      <str key="link">http://introibo.fr/23-04-St-Georges-martyr</str>
       <dict key="nom">
-        <str key="en">Saint David Bishop and Confessor, Principal Patron of Wales</str>
-        <str key="fr">Saint David de Ménevie, Évêque et Confesseur, Patron Principal du Pays de Galles</str>
-        <str key="la">Sancti Davidi, Episcopi et Confessoris, Primi Patroni Cambriae</str>
+        <str key="en">Saint George Martyr, Principal Patron of England</str>
+        <str key="fr">Saint Georges de Lydda, Martyr, Patron Principal de l'Angleterre</str>
+        <str key="la">Sancti Georgii, Martyris, Primi Patroni Angliae</str>
       </dict>
       <bool key="occurrence_perpetuelle">False</bool>
       <bool key="omission">False</bool>
@@ -37,11 +36,11 @@
       <bool key="pal">False</bool>
       <None key="parent"/>
       <set key="personne">
-        <str>david_menevie</str>
+        <str>georges_lydda</str>
       </set>
       <bool key="peut_etre_celebree">False</bool>
       <bool key="peut_etre_votive">False</bool>
-      <str key="propre">welsh</str>
+      <str key="propre">english</str>
       <None key="regex"/>
       <dict key="regex_">
         <list key="attribut"/>
@@ -60,9 +59,10 @@
       <bool key="temporal">False</bool>
       <str key="textes"/>
       <None key="tokens"/>
-      <str key="tokens_">saint confesseur eveque patron principal pays galles david menevie yvi</str>
+      <str key="tokens_">saint georges lydda principal patron angleterre martyr</str>
       <int key="valeur">0</int>
       <bool key="votive">False</bool>
     </dict>
+    <str key="classe">FeteFixe</str>
   </Modele>
 </list>
