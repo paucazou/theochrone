@@ -141,10 +141,11 @@ def prepare_data(pkl_file_name):
         with enc.Preferences(xml_file) as file:
             tmp_list = file.prefs
         if 'samedi_ferie' in xml_file:
-            end_of_list = tmp_list
+            #end_of_list = tmp_list
+            obj_list += tmp_list
         else:
             obj_list += tmp_list
-    obj_list += end_of_list
+    #obj_list += end_of_list
     # compile regex
     logger.info("Compile regex")
     [CompileRegex(obj) for obj in obj_list]
@@ -164,14 +165,16 @@ def data_pickler(pkl_file_name,obj_list):
         pickler.dump(obj_list)
     return file_path
 
-def main(pkl_file_name):
+def main(*propers,ordo='1962'):
     """What did you think ? It is the main function,
     which calls every other one in this module.
     Unfortunately, it will not give you a coffee."""
-    return data_pickler(
-        pkl_file_name,
-        prepare_data(pkl_file_name)
-        )
+    for proper in propers:
+        pkl_file_name = "{}_{}".format(proper,ordo)
+        data_pickler(
+            pkl_file_name,
+            prepare_data(pkl_file_name)
+            )
 
 def modify_in_obj(function,pattern='.*',auto_saved=False):
     """This function applies function

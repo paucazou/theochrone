@@ -16,6 +16,7 @@ The website provides you basic tools: search by date, by keywords and for a whol
 The Widget provides very limited infos, but can be a great feature on a website. For an example, see here : https://tradinews.blogspot.fr#theocontainer
 #### Web Services
 **Not yet available**
+
 We want to create a Rest API to give you a complete control over the raw data. 
 Why is it unaivalable now ? Web Services are really costly in term of resources. We need money to afford better servers. **We also haven't got enough time to make it** and we need help to create this API. Feel free to contribute.
 ### Graphical User Interface (GUI)
@@ -34,7 +35,7 @@ For more info, type in a terminal after downloading the program:
 ```shell
 python pip -e requirements.txt # in many OSes, you should enter python3 instead of python
 python pip -e dev_requirement.txt # only if you want to contribute to the project
-python -c "import dataswitcher; dataswitcher.main('roman_1962')"
+python -c "import dataswitcher; dataswitcher.main('roman','american','english','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','australian','new-zealander',ordo='1962')"
 ```
 > Note that the version you download from Github may be broken. Feel free to contribute to fix the issue !
 
