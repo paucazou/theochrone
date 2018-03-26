@@ -135,17 +135,17 @@ def prepare_data(pkl_file_name):
     - deletes useless attributes (such as regex_)
     - returns the list. At the end of the list, saturday of the Virgin Mary, and Ferie"""
     obj_list = [] # list which will be returned with all the files
+    end_of_list = [] # this is necessary because feria and Virgin Saturday MUST be a the end
     # load
     for xml_file in [elt for elt in xml_files if pkl_file_name in elt ]:
         logger.debug(xml_file)
         with enc.Preferences(xml_file) as file:
             tmp_list = file.prefs
         if 'samedi_ferie' in xml_file:
-            #end_of_list = tmp_list
-            obj_list += tmp_list
+            end_of_list = tmp_list
         else:
             obj_list += tmp_list
-    #obj_list += end_of_list
+    obj_list += end_of_list
     # compile regex
     logger.info("Compile regex")
     [CompileRegex(obj) for obj in obj_list]
