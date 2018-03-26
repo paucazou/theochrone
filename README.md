@@ -105,6 +105,7 @@ Latest version is 0.5.0
   - [ ] website;
   - [ ] widget;
   - [ ] CLI;
+    - [ ] print proper name on screen if requested
   - [ ] Gui;
 - [ ] update GUI to support new features.
 - [ ] export data to files:
