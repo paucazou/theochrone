@@ -165,10 +165,20 @@ def data_pickler(pkl_file_name,obj_list):
         pickler.dump(obj_list)
     return file_path
 
-def main(*propers,ordo='1962'):
+def main(**kwargs):
     """What did you think ? It is the main function,
     which calls every other one in this module.
-    Unfortunately, it will not give you a coffee."""
+    Unfortunately, it will not give you a coffee.
+    """
+    if kwargs.get('propers') == 'all':
+        propers = ['roman','american','english','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','australian','new-zealander']
+    elif 'proper' in kwargs:
+        propers = [v for k,v in kwargs.items() if 'proper' in k]
+    else:
+        propers = ['roman']
+
+    ordo = kwargs.get('ordo','1962')
+
     for proper in propers:
         pkl_file_name = "{}_{}".format(proper,ordo)
         data_pickler(

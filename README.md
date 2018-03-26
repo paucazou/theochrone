@@ -35,7 +35,7 @@ For more info, type in a terminal after downloading the program:
 ```shell
 python pip -e requirements.txt # in many OSes, you should enter python3 instead of python
 python pip -e dev_requirement.txt # only if you want to contribute to the project
-python -c "import dataswitcher; dataswitcher.main('roman','american','english','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','australian','new-zealander',ordo='1962')"
+python -c "import dataswitcher; dataswitcher.main(propers='all',ordo='1962')"
 ```
 > Note that the version you download from Github may be broken. Feel free to contribute to fix the issue !
 
