@@ -4,12 +4,25 @@
 
 import calendar
 import datetime
+import officia # not really useful; just to compute sunday before
 import os
 import pickle
 
 chemin = os.path.dirname(os.path.abspath(__file__))
 
-fichiers=('roman_1962_.pkl',)
+fichiers=('roman_1962_.pkl',
+        'australian_1962_.pkl',
+        'american_1962_.pkl',
+        'brazilian_1962_.pkl',
+        'canadian_1962_.pkl',
+        'english_1962_.pkl',
+        'french_1962_.pkl',
+        'new_zealander_1962_.pkl',
+        'polish_1962_.pkl',
+        'portuguese_1962_.pkl',
+        'scottish_1962_.pkl',
+        'welsh_1962_.pkl',
+        )
 """"
     'romanus_1962_dimanches.pic', 
     'romanus_1962_fetesduseigneur.pic',
@@ -97,12 +110,13 @@ class LiturgicalCalendar():
         """Method used only when creating the instance.
         It loads raw data following the 'proper' and the 'ordo' requested.
         Returns a tuple whith the whole data"""
-        tmp = []
+        self.raw_data = []
         for fichier in [file for file in fichiers if file.split('_')[1] == str(ordo) and self.trouve(proper,file.split('_')[0])]:
             with open(chemin + '/data/' + fichier, 'rb') as file:
                 pic=pickle.Unpickler(file)
-                tmp += pic.load()
-        *self.raw_data,self.saturday,self.feria = tmp # TODO trouver un moyen plus sûr de faire passer la férie et le samedi
+                self.raw_data += pic.load()
+                if 'roman' in fichier:
+                    *self.raw_data,self.saturday,self.feria = self.raw_data # TODO trouver un moyen plus sûr de faire passer la férie et le samedi 
         
         # managing feasts which have also a Pro Aliquibus Locis mass
         other_pal = []
@@ -134,6 +148,7 @@ class LiturgicalCalendar():
                 elt.parent = self
                 self._move(elt,date)
             else:
+                if elt.DateCivile(easter,year) is None: import pdb;pdb.set_trace()
                 for a in elt.DateCivile(easter,year):
                     a.parent = self
                     self._move(a,a.date)
@@ -250,7 +265,7 @@ class LiturgicalCalendar():
         return """LiturgicalYear. Ordo : {}. Proper : {}. Years already loaded : {}.""".format(self.ordo,self.proper,', '.join([ str(year) for year in self.year_names]))
     
     @staticmethod
-    def easter(year): #TEST
+    def easter(year): #TEST # TODO maybe save the dates found in a list and return this value if requested twice or more
         """Return a datetime.date object with the Easter date of the year. The function is only available between 1583 and 4100.
         I didn't write this function, but I found it here : http://python.jpvweb.com/mesrecettespython/doku.php?id=date_de_paques """
         a=year//100
@@ -421,6 +436,7 @@ class LiturgicalCalendar():
         new_comer: a Fete class ;
         date: a datetime.date ;
         """
+        easter = self.easter(date.year)
         if date.year in self.year_names:
             liste = self.year_data[date.year][date]
         elif date.year in self.previous_year_names:
@@ -473,7 +489,7 @@ class LiturgicalCalendar():
             else:
                 liste.append(new_comer)
         elif self.proper != 'roman' and (new_comer.occurrence_perpetuelle or opponent.occurrence_perpetuelle):
-            premier_dimanche_avent = officia.dimancheapres(datetime.date(year,12,25)) - datetime.timedelta(28)
+            premier_dimanche_avent = officia.dimancheapres(datetime.date(date.year,12,25)) - datetime.timedelta(28)
             # Cas de 'new_comer' fête de seconde classe empêchée perpétuellement # WARNING pourquoi la valeur self.transferee n'est-elle pas modifiée en-dessous ? WARNING
             if new_comer.priorite > 800 and opponent.priorite > 800 and opponent.priorite > new_comer.priorite and not new_comer.dimanche:
                 new_comer.date = new_comer.date + datetime.timedelta(1)
@@ -483,7 +499,7 @@ class LiturgicalCalendar():
                 opponent.date = opponent.date + datetime.timedelta(1)
                 self._move(opponent,date + datetime.timedelta(1))
             # Cas de 'new_comer' fête de troisième classe particulière empêchée perpétuellement 
-            elif not date - paques >= datetime.timedelta(-46) and not date - paques < datetime.timedelta(0) and not new_comer.date < datetime.date(year,12,25) and not new_comer.date >= premier_dimanche_avent:
+            elif not date - easter >= datetime.timedelta(-46) and not date - easter < datetime.timedelta(0) and not new_comer.date < datetime.date(date.year,12,25) and not new_comer.date >= premier_dimanche_avent:
                 if new_comer.priorite <= 700 and new_comer.priorite >= 550 and new_comer.priorite < opponent.priorite and not new_comer.dimanche:
                     new_comer.date = new_comer.date + datetime.timedelta(1)
                     self._move(new_comer, date + datetime.timedelta(1))
