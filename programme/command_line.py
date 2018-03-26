@@ -49,6 +49,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':['-w'],
             'long' : ['--weekday'],
             },
+        'print_proper':{
+            'short':['-R'],
+            'long': ['print-proper'],
+            },
         'transfert':{
             'short':['-t'],
             'long' : ['--transfert'],
@@ -93,7 +97,7 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'long':['--proper','--rite',],
             'options':['roman',
                 'american','australian','brazilian','canadian','english','french','newzealander','polish','portuguese','scottish','spanish','welsh',
-                'all',]
+                ]
             },
         'ordo': {
             'short':['-o'],
@@ -325,6 +329,7 @@ def args():
     affichage.add_argument('-s','--temporsanct',dest='temporal_ou_sanctoral', help=_('print whether the feast belongs to the sanctorum or de tempore'), action='store_true')
     affichage.add_argument('-L','--liturgical-time', dest='temps_liturgique',help=_('print to which liturgical time the feast belongs to'),action='store_true')
     affichage.add_argument('-D','--print-date',dest='date_affichee',help=_('print date'),action='store_true')
+    affichage.add_argument(*arguments['print_proper']['short'],*arguments['print_proper']['long'],dest='print_proper',help=_("""Prints the name of the proper of the feasts on screen"""),action="store_true")
     affichage.add_argument(*arguments['pal']['short'],*arguments['pal']['long'],dest="pal",help=_("""Include Pro Aliquibus Locis masses in results."""),action="store_true")
     affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected.
         Opens the introibo.fr page in a webbrowser.
