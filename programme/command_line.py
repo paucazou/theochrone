@@ -51,7 +51,7 @@ arguments = { # essayer d'ajouter les commandes de DATE
             },
         'print_proper':{
             'short':['-R'],
-            'long': ['print-proper'],
+            'long': ['--print-proper'],
             },
         'transfert':{
             'short':['-t'],
