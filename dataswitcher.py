@@ -171,7 +171,7 @@ def main(**kwargs):
     Unfortunately, it will not give you a coffee.
     """
     if kwargs.get('propers') == 'all':
-        propers = ['roman','american','english','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','australian','new-zealander']
+        propers = ['roman','american','english','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','australian','newzealander']
     elif 'proper' in kwargs:
         propers = [v for k,v in kwargs.items() if 'proper' in k]
     else:
