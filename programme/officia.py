@@ -536,6 +536,9 @@ def affichage(**kwargs):
                 else:
                     prep = 'à'
                 sortie += """Station {} {}. """.format(prep,a.station[kwargs['langue']])
+
+            if kwargs.get('print_proper') or kwargs.get('verbose'):
+                sortie += 'Propre : {}. '.format(a.propre)
             
             if kwargs['verbose']:
                 sortie += a.addendum[kwargs['langue']]
