@@ -728,6 +728,7 @@ class JoursAvent(FeteMobileAvent):
                 elif a > 0 and a < 7:
                     retour.nom[langue] += self.nom_[langue][2]
                     semaine = 3
+                    retour.addendum['fr'] = 'Durant cette semaine, on peut utiliser le rose.'
                 else:
                     retour.nom[langue] += self.nom_[langue][3]
                     semaine = 4
@@ -749,7 +750,7 @@ class FeastMonthDayCompared(FeteMobileMois):
             
     
 class SeptEmber(Fete): # WARNING WARNING WARNING
-    """A class defined to fix an error. Must be changed asap"""
+    """A class defined to fix an error. Must be changed asap""" # months later, well... no change ! ;-)
     
     def __init__(self,weekday=3):
         Fete.__init__(self)
