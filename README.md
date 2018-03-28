@@ -49,6 +49,7 @@ Maybe you can give us a little bit of help ? We need you in these domains:
   * spanish
   * italian
   * portuguese
+
 but any language is accepted, even Papuan language or Sindarin !
 * programming, especially the **frontend** and the **GUI**
 * researching resources, including:
@@ -57,7 +58,7 @@ but any language is accepted, even Papuan language or Sindarin !
   * older versions of the martyrology
   * other latin rites, like Sarum, or the Mozarabic 
 
-Do not hesitate to look at the **issues** ! 
+Do not hesitate to look at the **[issues](https://github.com/paucazou/theochrone/issues/)** ! 
 
 We also like suggestions. Three important features have been suggested and are now implemented:
 * the widget
@@ -78,7 +79,7 @@ Also, this list may change one day, especially if you put forward something else
 * Others:
   * Bash/Zsh
 ### Introduce other language
-You want to contribute to Theochrone but you want to use your personal favorite language ? You're welcome, *but...*
+You want to contribute to Theochrone but you want to use your personal favorite language? You're welcome, *but...*
 * if it is an interpreted language, like PHP, Perl, Ruby, be sure that it is worth to add a whole new interpreter ; your contribution must be very huge : a new important feature, at least. Indeed, imagine the weight of the program with two or more interpreters...
 * if it is a compiled language, like C, Go, Rust, be sure that your module can be compiled on major architectures and OSes.
 ## Version
@@ -104,8 +105,8 @@ Latest version is 0.5.0
 - [ ] local propers available on:
   - [ ] website;
   - [ ] widget;
-  - [ ] CLI;
-    - [ ] print proper name on screen if requested
+  - [x] CLI;
+    - [x] print proper name on screen if requested
   - [ ] Gui;
 - [ ] update GUI to support new features.
 - [ ] export data to files:
@@ -117,3 +118,5 @@ Latest version is 0.5.0
     - [ ] website;
     - [ ] GUI;
 - [ ] a new convenient help app
+- [ ] varia:
+  - [x] add the rose colour into details of the third week of advent (optional liturgical colour)
