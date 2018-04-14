@@ -107,7 +107,7 @@ Latest version is 0.5.0
   - [ ] widget;
   - [x] CLI;
     - [x] print proper name on screen if requested
-  - [ ] Gui;
+  - [x] Gui;
 - [ ] update GUI to support new features.
 - [ ] export data to files:
   - [x] Formats:
