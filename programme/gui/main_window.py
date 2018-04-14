@@ -61,7 +61,8 @@ class Main(QMainWindow,SuperTranslator):
         
         QMainWindow.__init__(self)
         SuperTranslator.__init__(self)
-        self.Annee = annus.LiturgicalCalendar()
+
+        self.__calendars = {}
         self.ferryman = ExportResults(self)
         self.actions()
         self.initUI()
@@ -176,7 +177,7 @@ class Main(QMainWindow,SuperTranslator):
         
         # widgets
         # main widget
-        self.arbre = QTreeWidget()
+        self.arbre = QTreeWidget() # TODO seems to be useless...
         # widgets on the right
         self.rightDock = QDockWidget('right_dock',self)
         self.W.onglets = Onglets()
@@ -190,7 +191,7 @@ class Main(QMainWindow,SuperTranslator):
         self.statusBar()
 
         # toolbar
-        self.W.mainToolbar = ToolBar()
+        self.W.mainToolbar = ToolBar(self)
         self.addToolBar(self.W.mainToolbar)
         self.pal = self.W.mainToolbar.pal
         
@@ -205,7 +206,6 @@ class Main(QMainWindow,SuperTranslator):
         self.show()
         
     def retranslateUI(self):
-        SuperTranslator.retranslateUI(self)
         
         #menu
         self.fileMenu.setTitle(_('Main','File'))
@@ -226,6 +226,24 @@ class Main(QMainWindow,SuperTranslator):
         self.chooseLanguageFrench.setText(_('Main','French'))
         self.chooseLanguageEnglish.setText(_('Main','English'))
 
+        # propers
+        self.propers = [
+                ('roman'         ,_('Toolbar','Roman')),
+                ('australian'    ,_('Toolbar','Australian')),
+                ('brazilian'     ,_('Toolbar','Brazilian')),
+                ('canadian'      ,_('Toolbar','Canadian')),
+                ('english'       ,_('Toolbar','English')),
+                ('french'        ,_('Toolbar','French')),
+                ('new_zealander' ,_('Toolbar','New-Zealander')),
+                ('polish'        ,_('Toolbar','Polish')),
+                ('portuguese'    ,_('Toolbar','Portuguese')),
+                ('scottish'      ,_('Toolbar','Scottish')),
+                ('spanish'       ,_('Toolbar','Spanish')),
+                ('welsh'         ,_('Toolbar','Welsh'),),
+                ]
+        self.propersDict = collections.OrderedDict(self.propers) # a convenient way to access to names of propers
+        SuperTranslator.retranslateUI(self) # must be called at the end, because some data must be shared with children
+
         
         #initUI
         #widgets on the right
@@ -233,14 +251,24 @@ class Main(QMainWindow,SuperTranslator):
         
     def openSettings(self): # passer un argument concernant la langue choisie
         self.W.settings = settings.SettingsWindow(parent=self)
+
+    def getCalendar(self,proper='roman',ordo=1962) -> annus.LiturgicalCalendar:
+        """Get a liturgical calendar with requested values.
+        The calendar may or not be already set"""
+        if proper not in self.__calendars:
+            self.__calendars[proper] = annus.LiturgicalCalendar(proper=proper,ordo=ordo)
+        return self.__calendars[proper]
         
     def useDate(self,date):
         self.setWindowTitle('Theochrone - ' + date.toString())
         debut = fin = date.toPyDate()
-        self.Annee(debut.year)
-        selection = self.Annee[debut]
+        proper_id = self.W.mainToolbar.selectProper.currentIndex()
+        proper = self.propers[proper_id][0] # zero match with the name of the proper
+        calendar = self.getCalendar(proper)
+        calendar(debut.year)
+        selection = calendar[debut]
         are_pro_aliquibus_locis_requested = self.pal.isChecked()
-        self.tableau = Table(self,selection,self.Annee,pal=are_pro_aliquibus_locis_requested)
+        self.tableau = Table(self,selection,calendar,pal=are_pro_aliquibus_locis_requested)
         self.setCentralWidget(self.tableau)
         officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
@@ -355,10 +383,12 @@ class Main(QMainWindow,SuperTranslator):
 
 class ToolBar(QToolBar,SuperTranslator):
     """This class manages the toolbar"""
-    def __init__(self):
+    def __init__(self,parent):
         """Inits the toolbar"""
         QToolBar.__init__(self)
         SuperTranslator.__init__(self)
+
+        self.parent = parent # main window
         self.initUI()
 
     def initUI(self):
@@ -395,22 +425,7 @@ class ToolBar(QToolBar,SuperTranslator):
         self.previousButtonAction.setText(_('Main','Previous'))
         ##widgets
         # propers
-        self.propers = [
-                ('roman'         ,_('Toolbar','Roman')),
-                ('australian'    ,_('Toolbar','Australian')),
-                ('brazilian'     ,_('Toolbar','Brazilian')),
-                ('canadian'      ,_('Toolbar','Canadian')),
-                ('english'       ,_('Toolbar','English')),
-                ('french'        ,_('Toolbar','French')),
-                ('new_zealander' ,_('Toolbar','New-Zealander')),
-                ('polish'        ,_('Toolbar','Polish')),
-                ('portuguese'    ,_('Toolbar','Portuguese')),
-                ('scottish'      ,_('Toolbar','Scottish')),
-                ('spanish'       ,_('Toolbar','Spanish')),
-                ('welsh'         ,_('Toolbar','Welsh'),),
-                ]
-        self.propersDict = collections.OrderedDict(self.propers) # a convenient way to access to names of propers
-        for proper in self.propers:
+        for proper in self.parent.propers:
             self.selectProper.addItem(proper[1])
         
 class ExportResults(SuperTranslator):
@@ -1096,7 +1111,7 @@ class ItemsCreator(SuperTranslator):
         colour = data.couleur.capitalize()
         temporsanct = self.tempOrSanct[data.temporal]
         time = first_upper(officia.affiche_temps_liturgique(data,'fr'))
-        proper = self.mainWindow.W.mainToolbar.propersDict[data.propre]
+        proper = self.mainWindow.propersDict[data.propre]
         station = data.__dict__.get('station',{"fr":''})['fr']
         addendum = data.addendum['fr']
         return name, date, (status, degree, colour, temporsanct, time, proper, station, addendum)
