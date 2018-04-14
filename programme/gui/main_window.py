@@ -25,7 +25,7 @@ os.chdir(chemin)
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, QLocale, QPoint, QRect, QRectF, QSize, Qt, QTranslator
 from PyQt5.QtGui import QColor, QFont, QFontMetrics, QIcon, QPen, QPainter, QTextDocument
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
-from PyQt5.QtWidgets import QAction, QApplication, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QAction, QApplication, QButtonGroup, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSizePolicy, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QToolBar, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from translation import *
 
 
@@ -162,6 +162,13 @@ class Main(QMainWindow,SuperTranslator):
         self.chooseLanguageFrench = QAction(QIcon('icons/french.png'),'choose_french',self)
         ## English
         self.chooseLanguageEnglish = QAction(QIcon('icons/english.png'),'choose_english',self)
+
+    def setToolBar(self):
+        """Set the toolbar. It defines both actions
+        and widgets in the toolbar."""
+
+        self.mainToolbar = self.addToolBar('Main Toolbar')
+
                                            
         
     def initUI(self):
@@ -181,6 +188,11 @@ class Main(QMainWindow,SuperTranslator):
         
         # statusbar
         self.statusBar()
+
+        # toolbar
+        self.W.mainToolbar = ToolBar()
+        self.addToolBar(self.W.mainToolbar)
+        self.pal = self.W.mainToolbar.pal
         
         # main features
         self.setGeometry(QStyle.alignedRect(Qt.LeftToRight,Qt.AlignCenter,self.size(),App.desktop().availableGeometry()))
@@ -213,6 +225,7 @@ class Main(QMainWindow,SuperTranslator):
         self.chooseLanguageLatin.setText(_('Main','Latin'))
         self.chooseLanguageFrench.setText(_('Main','French'))
         self.chooseLanguageEnglish.setText(_('Main','English'))
+
         
         #initUI
         #widgets on the right
@@ -226,7 +239,8 @@ class Main(QMainWindow,SuperTranslator):
         debut = fin = date.toPyDate()
         self.Annee(debut.year)
         selection = self.Annee[debut]
-        self.tableau = Table(selection,self.Annee)
+        are_pro_aliquibus_locis_requested = self.pal.isChecked()
+        self.tableau = Table(selection,self.Annee,pal=are_pro_aliquibus_locis_requested)
         self.setCentralWidget(self.tableau)
         officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
@@ -245,7 +259,7 @@ class Main(QMainWindow,SuperTranslator):
         selection = officia.inversons(keyword,self.Annee,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
         if isinstance(selection[0],str):
             return error_windows.ErrorWindow(selection[0])
-        self.W.tableau = Table(selection,self.Annee,True)
+        self.W.tableau = Table(selection,self.Annee,inverse=True,pal=self.pal.isChecked())
         self.setCentralWidget(self.W.tableau)
         officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=[keyword])
             
@@ -256,7 +270,7 @@ class Main(QMainWindow,SuperTranslator):
         week = tab.week_combo.currentIndex()
         self.Annee(year)
         WEEK = self.Annee.weekmonth(year,month,week)
-        self.W.arbre = Tree(WEEK,self.Annee)
+        self.W.arbre = Tree(WEEK,self.Annee,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         if months_tuple[month][0] in ('a','o'):
             preposition = "d'"
@@ -274,7 +288,7 @@ class Main(QMainWindow,SuperTranslator):
         month = tab.month_combo.currentIndex() + 1
         self.Annee(year)
         MONTH = self.Annee.listed_month(year, month)
-        self.W.arbre = Tree(MONTH,self.Annee)
+        self.W.arbre = Tree(MONTH,self.Annee,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
         #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
@@ -288,7 +302,7 @@ class Main(QMainWindow,SuperTranslator):
         year = tab.yy_spinbox.value()
         self.Annee(year)
         YEAR = self.Annee.listed_year(year)
-        self.W.arbre = Tree(YEAR,self.Annee)
+        self.W.arbre = Tree(YEAR,self.Annee,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - {}'.format(str(year)))
         officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=True)
@@ -299,7 +313,7 @@ class Main(QMainWindow,SuperTranslator):
         fin = tab.to.date().toPyDate()
         self.Annee(debut.year,fin.year)
         RANGE = self.Annee.listed_arbitrary(debut,fin)
-        self.W.arbre = Tree(RANGE,self.Annee)
+        self.W.arbre = Tree(RANGE,self.Annee,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
                                                               tab.to.date().toString()))
@@ -337,6 +351,49 @@ class Main(QMainWindow,SuperTranslator):
                 print(*[child.text(j) for j in range(child.columnCount())])
             if child.childCount():
                 self.printChildren(child)
+
+
+class ToolBar(QToolBar,SuperTranslator):
+    """This class manages the toolbar"""
+    def __init__(self):
+        """Inits the toolbar"""
+        QToolBar.__init__(self)
+        SuperTranslator.__init__(self)
+        self.initUI()
+
+    def initUI(self):
+        """Fill the toolbar"""
+        # set a spacer in order to right align some widgets, if useful
+        spacer = QWidget()
+        spacer.setSizePolicy(QSizePolicy.Expanding,QSizePolicy.Expanding)
+
+        ## actions in Toolbar
+        self.nextButtonAction = QAction(QIcon('icons/next.png'),'next',self) #https://www.iconfinder.com/icons/308956/arrow_next_icon#size=256
+        self.previousButtonAction = QAction(QIcon('icons/previous.png'),'previous',self) #https://www.iconfinder.com/icons/308957/arrow_previous_icon#size=256
+
+        ## widgets in Toolbar
+        self.selectProper = QComboBox() # fill it with propers available
+
+        self.pal = QCheckBox('Include Pro Aliquibus Locis')
+        self.martyrologium = QCheckBox('Search in Roman Martyrology')
+       
+        ## set actions in Toolbar
+        self.addAction(self.previousButtonAction)
+        self.addAction(self.nextButtonAction)
+
+        self.addWidget(self.selectProper)
+        self.addWidget(self.pal)
+        self.addWidget(self.martyrologium) 
+
+
+
+
+    def retranslateUI(self):
+        """Retranslate the toolbar"""
+        ##actions
+        self.nextButtonAction.setText(_('Main','Next'))
+        self.previousButtonAction.setText(_('Main','Previous'))
+        ##widgets
         
 class ExportResults(SuperTranslator):
     """Manage the exports in other formats.
@@ -831,10 +888,14 @@ class Multiple(QWidget,SuperTranslator):
 class Tree(QTreeWidget,SuperTranslator):
     """A class which defines the main widget used with multiple days"""
     
-    def __init__(self,data,Annee):
+    def __init__(self,data,Annee,pal=False):
+        """Inits the tree.
+        data is a list of lists of feasts.
+        pal determines wether or not pro aliquibus feasts are included."""
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
         self.Annee=Annee  
+        self.pal = pal
         self.W.itemsCreator = ItemsCreator(self)
         self.initUI(data)
         self.retranslateUI()
@@ -873,7 +934,8 @@ class Tree(QTreeWidget,SuperTranslator):
                     temps = 'Sanctoral'
                 child=QTreeWidgetItem(parent,[elt.nom['fr'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,'fr').capitalize(),temps])
                 """
-                self.W.itemsCreator.createLine(item,parent)
+                if not item.pal or item.pal and self.pal:
+                    self.W.itemsCreator.createLine(item,parent)
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
@@ -881,9 +943,20 @@ class Tree(QTreeWidget,SuperTranslator):
         
 class Table(QTableWidget,SuperTranslator):
 
-    def __init__(self,liste,Annee,inverse=False):
+    def __init__(self,liste,Annee,inverse=False,pal=False):
+        """Set the table.
+        liste is a list of feasts.
+        Annee is a annus.LiturgicalCalendar.
+        inverse determines wether keyword research is set (True) or not (False)
+        pal determines wether Masses Pro Aliquibus Locis are requested (True) or not (False)
+        """
+
         QTableWidget.__init__(self)
         SuperTranslator.__init__(self)
+
+        if not pal:
+            #Masses pro aliquibus locis are deleted if not requested
+            liste = [feast for feast in liste if not feast.pal]
         self.nbColumn = 9
         self.setColumnCount(self.nbColumn)
         self.setRowCount(len(liste))
@@ -896,7 +969,8 @@ class Table(QTableWidget,SuperTranslator):
                         2:_('Table','Second Class'),
                         3:_('Table','Third Class'),
                         4:_('Table','Fourth Class'),
-                        5:_('Table','Commemoration'),}
+                        5:_('Table','Commemoration'),
+                        6:_('Table','Mass Pro Aliquibus Locis'),}
         
         if self.inverse:
             self.name_pos, self.date_pos = 0, 1
@@ -1009,7 +1083,8 @@ class ItemsCreator(SuperTranslator):
                         2:_('ItemsCreator','Second Class'),
                         3:_('ItemsCreator','Third Class'),
                         4:_('ItemsCreator','Fourth Class'),
-                        5:_('ItemsCreator','Commemoration')}
+                        5:_('ItemsCreator','Commemoration'),
+                        6:_('ItemsCreator','Mass Pro Aliquibus Locis'),}
        
         
     
