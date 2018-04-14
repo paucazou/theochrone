@@ -240,7 +240,7 @@ class Main(QMainWindow,SuperTranslator):
         self.Annee(debut.year)
         selection = self.Annee[debut]
         are_pro_aliquibus_locis_requested = self.pal.isChecked()
-        self.tableau = Table(selection,self.Annee,pal=are_pro_aliquibus_locis_requested)
+        self.tableau = Table(self,selection,self.Annee,pal=are_pro_aliquibus_locis_requested)
         self.setCentralWidget(self.tableau)
         officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
@@ -259,7 +259,7 @@ class Main(QMainWindow,SuperTranslator):
         selection = officia.inversons(keyword,self.Annee,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
         if isinstance(selection[0],str):
             return error_windows.ErrorWindow(selection[0])
-        self.W.tableau = Table(selection,self.Annee,inverse=True,pal=self.pal.isChecked())
+        self.W.tableau = Table(self,selection,self.Annee,inverse=True,pal=self.pal.isChecked())
         self.setCentralWidget(self.W.tableau)
         officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=[keyword])
             
@@ -270,7 +270,7 @@ class Main(QMainWindow,SuperTranslator):
         week = tab.week_combo.currentIndex()
         self.Annee(year)
         WEEK = self.Annee.weekmonth(year,month,week)
-        self.W.arbre = Tree(WEEK,self.Annee,self.pal.isChecked())
+        self.W.arbre = Tree(self,WEEK,self.Annee,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         if months_tuple[month][0] in ('a','o'):
             preposition = "d'"
@@ -288,7 +288,7 @@ class Main(QMainWindow,SuperTranslator):
         month = tab.month_combo.currentIndex() + 1
         self.Annee(year)
         MONTH = self.Annee.listed_month(year, month)
-        self.W.arbre = Tree(MONTH,self.Annee,self.pal.isChecked())
+        self.W.arbre = Tree(self,MONTH,self.Annee,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
         #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
@@ -302,7 +302,7 @@ class Main(QMainWindow,SuperTranslator):
         year = tab.yy_spinbox.value()
         self.Annee(year)
         YEAR = self.Annee.listed_year(year)
-        self.W.arbre = Tree(YEAR,self.Annee,self.pal.isChecked())
+        self.W.arbre = Tree(self,YEAR,self.Annee,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - {}'.format(str(year)))
         officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=True)
@@ -313,7 +313,7 @@ class Main(QMainWindow,SuperTranslator):
         fin = tab.to.date().toPyDate()
         self.Annee(debut.year,fin.year)
         RANGE = self.Annee.listed_arbitrary(debut,fin)
-        self.W.arbre = Tree(RANGE,self.Annee,self.pal.isChecked())
+        self.W.arbre = Tree(self,RANGE,self.Annee,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
                                                               tab.to.date().toString()))
@@ -394,6 +394,24 @@ class ToolBar(QToolBar,SuperTranslator):
         self.nextButtonAction.setText(_('Main','Next'))
         self.previousButtonAction.setText(_('Main','Previous'))
         ##widgets
+        # propers
+        self.propers = [
+                ('roman'         ,_('Toolbar','Roman')),
+                ('australian'    ,_('Toolbar','Australian')),
+                ('brazilian'     ,_('Toolbar','Brazilian')),
+                ('canadian'      ,_('Toolbar','Canadian')),
+                ('english'       ,_('Toolbar','English')),
+                ('french'        ,_('Toolbar','French')),
+                ('new_zealander' ,_('Toolbar','New-Zealander')),
+                ('polish'        ,_('Toolbar','Polish')),
+                ('portuguese'    ,_('Toolbar','Portuguese')),
+                ('scottish'      ,_('Toolbar','Scottish')),
+                ('spanish'       ,_('Toolbar','Spanish')),
+                ('welsh'         ,_('Toolbar','Welsh'),),
+                ]
+        self.propersDict = collections.OrderedDict(self.propers) # a convenient way to access to names of propers
+        for proper in self.propers:
+            self.selectProper.addItem(proper[1])
         
 class ExportResults(SuperTranslator):
     """Manage the exports in other formats.
@@ -888,12 +906,14 @@ class Multiple(QWidget,SuperTranslator):
 class Tree(QTreeWidget,SuperTranslator):
     """A class which defines the main widget used with multiple days"""
     
-    def __init__(self,data,Annee,pal=False):
+    def __init__(self,parent,data,Annee,pal=False):
         """Inits the tree.
         data is a list of lists of feasts.
         pal determines wether or not pro aliquibus feasts are included."""
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
+
+        self.parent = parent # mainWindow
         self.Annee=Annee  
         self.pal = pal
         self.W.itemsCreator = ItemsCreator(self)
@@ -939,11 +959,11 @@ class Tree(QTreeWidget,SuperTranslator):
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
-        self.setHeaderLabels([_("Tree","Date/Name"),_('Tree','Status'),_("Tree","Class"),_("Tree","Colour"),_("Tree","Temporal/Sanctoral"),_("Tree","Time"),_('Tree','Station'),_('Table','Addendum')])
+        self.setHeaderLabels([_("Tree","Date/Name"),_('Tree','Status'),_("Tree","Class"),_("Tree","Colour"),_("Tree","Temporal/Sanctoral"),_("Tree","Time"),_('Tree','Proper'),_('Tree','Station'),_('Tree','Addendum')])
         
 class Table(QTableWidget,SuperTranslator):
 
-    def __init__(self,liste,Annee,inverse=False,pal=False):
+    def __init__(self,parent,liste,Annee,inverse=False,pal=False):
         """Set the table.
         liste is a list of feasts.
         Annee is a annus.LiturgicalCalendar.
@@ -954,10 +974,12 @@ class Table(QTableWidget,SuperTranslator):
         QTableWidget.__init__(self)
         SuperTranslator.__init__(self)
 
+        self.parent = parent
+
         if not pal:
             #Masses pro aliquibus locis are deleted if not requested
             liste = [feast for feast in liste if not feast.pal]
-        self.nbColumn = 9
+        self.nbColumn = 10 
         self.setColumnCount(self.nbColumn)
         self.setRowCount(len(liste))
         self.inverse = inverse
@@ -1020,7 +1042,7 @@ class Table(QTableWidget,SuperTranslator):
         else:
             first_item = _("Table",'Date')
             second_item = _("Table",'Name')
-        self.setHorizontalHeaderLabels([first_item,second_item,_('Table','Status'),_("Table",'Class'),_("Table",'Colour'),_("Table",'Temporal/Sanctoral'),_("Table",'Time'),_('Table','Station'),_('Table','Addendum')])
+        self.setHorizontalHeaderLabels([first_item,second_item,_('Table','Status'),_("Table",'Class'),_("Table",'Colour'),_("Table",'Temporal/Sanctoral'),_("Table",'Time'),_("Table",'Proper'),_('Table','Station'),_('Table','Addendum')])
         
         
 class ItemsCreator(SuperTranslator):
@@ -1032,6 +1054,7 @@ class ItemsCreator(SuperTranslator):
     def __init__(self,parent):
         SuperTranslator.__init__(self)
         self.parent = parent
+        self.mainWindow = parent.parent
         self.retranslateUI()
         
     
@@ -1073,9 +1096,10 @@ class ItemsCreator(SuperTranslator):
         colour = data.couleur.capitalize()
         temporsanct = self.tempOrSanct[data.temporal]
         time = first_upper(officia.affiche_temps_liturgique(data,'fr'))
+        proper = self.mainWindow.W.mainToolbar.propersDict[data.propre]
         station = data.__dict__.get('station',{"fr":''})['fr']
         addendum = data.addendum['fr']
-        return name, date, (status, degree, colour, temporsanct, time, station, addendum)
+        return name, date, (status, degree, colour, temporsanct, time, proper, station, addendum)
         
     def retranslateUI(self):
         self.tempOrSanct = {True:_('ItemsCreator','Temporal'),False:_('ItemsCreator','Sanctoral')}
