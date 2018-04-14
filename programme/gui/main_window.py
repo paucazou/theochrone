@@ -258,17 +258,26 @@ class Main(QMainWindow,SuperTranslator):
         if proper not in self.__calendars:
             self.__calendars[proper] = annus.LiturgicalCalendar(proper=proper,ordo=ordo)
         return self.__calendars[proper]
+
+    def getCalendarLoaded(self,start: int, end=None) -> annus.LiturgicalCalendar:
+        """Wrapper of getCalendar. Loads years requested (start,end).
+        proper is selected thanks to the QComboBox selectProper
+        """
+        proper_id = self.W.mainToolbar.selectProper.currentIndex()
+        proper = self.propers[proper_id][0] # zero match with the name of the proper
+        lcalendar = self.getCalendar(proper)
+        if end is None:
+            end = start
+        lcalendar(start,end)
+        return lcalendar
         
     def useDate(self,date):
         self.setWindowTitle('Theochrone - ' + date.toString())
         debut = fin = date.toPyDate()
-        proper_id = self.W.mainToolbar.selectProper.currentIndex()
-        proper = self.propers[proper_id][0] # zero match with the name of the proper
-        calendar = self.getCalendar(proper)
-        calendar(debut.year)
-        selection = calendar[debut]
+        lcalendar = self.getCalendarLoaded(start=debut.year)
+        selection = lcalendar[debut]
         are_pro_aliquibus_locis_requested = self.pal.isChecked()
-        self.tableau = Table(self,selection,calendar,pal=are_pro_aliquibus_locis_requested)
+        self.tableau = Table(self,selection,lcalendar,pal=are_pro_aliquibus_locis_requested)
         self.setCentralWidget(self.tableau)
         officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
@@ -279,15 +288,15 @@ class Main(QMainWindow,SuperTranslator):
         self.setWindowTitle('Theochrone - ' + keyword)
         annee = self.W.onglets.W.tab1.spinbox.value()
         debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
-        self.Annee(debut.year)
+        lcalendar = self.getCalendarLoaded(debut.year)
         if self.W.onglets.W.tab1.plus.isChecked():
             plus = True
         else:
             plus = False
-        selection = officia.inversons(keyword,self.Annee,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
+        selection = officia.inversons(keyword,lcalendar,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
         if isinstance(selection[0],str):
             return error_windows.ErrorWindow(selection[0])
-        self.W.tableau = Table(self,selection,self.Annee,inverse=True,pal=self.pal.isChecked())
+        self.W.tableau = Table(self,selection,lcalendar,inverse=True,pal=self.pal.isChecked())
         self.setCentralWidget(self.W.tableau)
         officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=[keyword])
             
@@ -296,9 +305,9 @@ class Main(QMainWindow,SuperTranslator):
         year = tab.wy_spinbox.value()
         month = tab.monthweek_combo.currentIndex() + 1
         week = tab.week_combo.currentIndex()
-        self.Annee(year)
-        WEEK = self.Annee.weekmonth(year,month,week)
-        self.W.arbre = Tree(self,WEEK,self.Annee,self.pal.isChecked())
+        lcalendar = self.getCalendarLoaded(year)
+        WEEK = lcalendar.weekmonth(year,month,week)
+        self.W.arbre = Tree(self,WEEK,lcalendar,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         if months_tuple[month][0] in ('a','o'):
             preposition = "d'"
@@ -314,9 +323,9 @@ class Main(QMainWindow,SuperTranslator):
         tab = self.W.onglets.W.tabPlus
         year = tab.my_spinbox.value()
         month = tab.month_combo.currentIndex() + 1
-        self.Annee(year)
-        MONTH = self.Annee.listed_month(year, month)
-        self.W.arbre = Tree(self,MONTH,self.Annee,self.pal.isChecked())
+        lcalendar = self.getCalendarLoaded(year)
+        MONTH = lcalendar.listed_month(year, month)
+        self.W.arbre = Tree(self,MONTH,lcalendar,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
         #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
@@ -328,9 +337,9 @@ class Main(QMainWindow,SuperTranslator):
     def useYear(self):
         tab = self.W.onglets.W.tabPlus
         year = tab.yy_spinbox.value()
-        self.Annee(year)
-        YEAR = self.Annee.listed_year(year)
-        self.W.arbre = Tree(self,YEAR,self.Annee,self.pal.isChecked())
+        lcalendar = self.getCalendarLoaded(year)
+        YEAR = lcalendar.listed_year(year)
+        self.W.arbre = Tree(self,YEAR,lcalendar,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - {}'.format(str(year)))
         officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=True)
@@ -339,9 +348,9 @@ class Main(QMainWindow,SuperTranslator):
         tab = self.W.onglets.W.tabPlus
         debut = tab.frome.date().toPyDate()
         fin = tab.to.date().toPyDate()
-        self.Annee(debut.year,fin.year)
-        RANGE = self.Annee.listed_arbitrary(debut,fin)
-        self.W.arbre = Tree(self,RANGE,self.Annee,self.pal.isChecked())
+        lcalendar = self.getCalendarLoaded(debut.year,fin.year)
+        RANGE = lcalendar.listed_arbitrary(debut,fin)
+        self.W.arbre = Tree(self,RANGE,lcalendar,self.pal.isChecked())
         self.setCentralWidget(self.W.arbre)
         self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
                                                               tab.to.date().toString()))
