@@ -17,6 +17,7 @@ import adjutoria
 import annus
 import collections
 import error_windows
+import display_martyrology 
 import math
 import officia
 import settings
@@ -54,6 +55,7 @@ class App(QApplication):
         self.translator.load(QLocale(),"gui",'.','./i18n','.qm') # TODO : sélection de la langue dans cet ordre : settings, locale, puis choix.
         self.execute = Main(args)
 
+
 class Main(QMainWindow,SuperTranslator):
     """Main window"""
     def __init__(self,args):
@@ -85,6 +87,7 @@ class Main(QMainWindow,SuperTranslator):
         self.W.onglets.W.tabPlus.bt_arbitrary.clicked.connect(self.useArbitrary)
         self.W.onglets.W.tabPlus.to.editingFinished.connect(self.useArbitrary)
         self.W.onglets.W.tabPlus.frome.editingFinished.connect(self.useArbitrary)
+        # DEBUG
         
     def processCommandLineArgs(self,args): 
         reverse, debut, fin, plus = args
@@ -164,11 +167,6 @@ class Main(QMainWindow,SuperTranslator):
         ## English
         self.chooseLanguageEnglish = QAction(QIcon('icons/english.png'),'choose_english',self)
 
-    def setToolBar(self):
-        """Set the toolbar. It defines both actions
-        and widgets in the toolbar."""
-
-        self.mainToolbar = self.addToolBar('Main Toolbar')
 
                                            
         
@@ -194,6 +192,10 @@ class Main(QMainWindow,SuperTranslator):
         self.W.mainToolbar = ToolBar(self)
         self.addToolBar(self.W.mainToolbar)
         self.pal = self.W.mainToolbar.pal
+        self.martyrology_box = self.W.mainToolbar.martyrology_box
+
+        #Roman Martyrology
+        self.W.martyrology = display_martyrology.DisplayMartyrology(self)
         
         # main features
         self.setGeometry(QStyle.alignedRect(Qt.LeftToRight,Qt.AlignCenter,self.size(),App.desktop().availableGeometry()))
@@ -272,14 +274,17 @@ class Main(QMainWindow,SuperTranslator):
         return lcalendar
         
     def useDate(self,date):
-        self.setWindowTitle('Theochrone - ' + date.toString())
         debut = fin = date.toPyDate()
-        lcalendar = self.getCalendarLoaded(start=debut.year)
-        selection = lcalendar[debut]
-        are_pro_aliquibus_locis_requested = self.pal.isChecked()
-        self.tableau = Table(self,selection,lcalendar,pal=are_pro_aliquibus_locis_requested)
-        self.setCentralWidget(self.tableau)
-        officia.pdata(write=True,history='dates',debut=debut,fin=fin)
+        if self.martyrology_box.isChecked():
+            self.W.martyrology(debut)
+        else:
+            self.setWindowTitle('Theochrone - ' + date.toString())
+            lcalendar = self.getCalendarLoaded(start=debut.year)
+            selection = lcalendar[debut]
+            are_pro_aliquibus_locis_requested = self.pal.isChecked()
+            self.tableau = Table(self,selection,lcalendar,pal=are_pro_aliquibus_locis_requested)
+            self.setCentralWidget(self.tableau)
+            officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
     def useKeyWord(self):
         keyword = self.W.onglets.W.tab1.keyword.text()
@@ -307,54 +312,72 @@ class Main(QMainWindow,SuperTranslator):
         week = tab.week_combo.currentIndex()
         lcalendar = self.getCalendarLoaded(year)
         WEEK = lcalendar.weekmonth(year,month,week)
-        self.W.arbre = Tree(self,WEEK,lcalendar,self.pal.isChecked())
-        self.setCentralWidget(self.W.arbre)
-        if months_tuple[month][0] in ('a','o'):
-            preposition = "d'"
+        if self.martyrology_box.isChecked():
+            week = sorted(WEEK.keys())
+            self.W.martyrology(week[0],week[-1])
         else:
-            preposition = "de "
-        self.setWindowTitle('Theochrone - {} semaine {}{} {}'.format(
-            week_number[week], preposition,
-            months_tuple[month],str(year)))
-        debut, fin = sorted(WEEK)[0], sorted(WEEK)[-1]
-        officia.pdata(write=True,history='dates',debut=debut,fin=fin,semaine_seule=True)
-        
+            self.W.arbre = Tree(self,WEEK,lcalendar,self.pal.isChecked())
+            self.setCentralWidget(self.W.arbre)
+            if months_tuple[month][0] in ('a','o'):
+                preposition = "d'"
+            else:
+                preposition = "de "
+            self.setWindowTitle('Theochrone - {} semaine {}{} {}'.format(
+                week_number[week], preposition,
+                months_tuple[month],str(year)))
+            debut, fin = sorted(WEEK)[0], sorted(WEEK)[-1]
+            officia.pdata(write=True,history='dates',debut=debut,fin=fin,semaine_seule=True)
+            
     def useMonth(self):
         tab = self.W.onglets.W.tabPlus
         year = tab.my_spinbox.value()
         month = tab.month_combo.currentIndex() + 1
-        lcalendar = self.getCalendarLoaded(year)
-        MONTH = lcalendar.listed_month(year, month)
-        self.W.arbre = Tree(self,MONTH,lcalendar,self.pal.isChecked())
-        self.setCentralWidget(self.W.arbre)
-        self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
-        #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
-        debut = datetime.date(year,month,1)
-        fin_day = calendar.monthrange(year,month)[1]
-        fin = datetime.date(year,month,fin_day)
-        officia.pdata(write=True,history='dates',debut=debut,fin=fin,mois_seul=True)
+        if self.martyrology_box.isChecked():
+            last_day_of_month = calendar.monthrange(year,month)[1]
+            self.W.martyrology(
+                    datetime.date(year,month,1),
+                    datetime.date(year,month,last_day_of_month))
+        else:
+            lcalendar = self.getCalendarLoaded(year)
+            MONTH = lcalendar.listed_month(year, month)
+            self.W.arbre = Tree(self,MONTH,lcalendar,self.pal.isChecked())
+            self.setCentralWidget(self.W.arbre)
+            self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
+            #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
+            debut = datetime.date(year,month,1)
+            fin_day = calendar.monthrange(year,month)[1]
+            fin = datetime.date(year,month,fin_day)
+            officia.pdata(write=True,history='dates',debut=debut,fin=fin,mois_seul=True)
         
     def useYear(self):
         tab = self.W.onglets.W.tabPlus
         year = tab.yy_spinbox.value()
-        lcalendar = self.getCalendarLoaded(year)
-        YEAR = lcalendar.listed_year(year)
-        self.W.arbre = Tree(self,YEAR,lcalendar,self.pal.isChecked())
-        self.setCentralWidget(self.W.arbre)
-        self.setWindowTitle('Theochrone - {}'.format(str(year)))
-        officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=True)
+        if self.martyrology_box.isChecked():
+            self.W.martyrology(
+                    datetime.date(year,1,1),
+                    datetime.date(year,12,31))
+        else:
+            lcalendar = self.getCalendarLoaded(year)
+            YEAR = lcalendar.listed_year(year)
+            self.W.arbre = Tree(self,YEAR,lcalendar,self.pal.isChecked())
+            self.setCentralWidget(self.W.arbre)
+            self.setWindowTitle('Theochrone - {}'.format(str(year)))
+            officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=True)
         
     def useArbitrary(self):
         tab = self.W.onglets.W.tabPlus
         debut = tab.frome.date().toPyDate()
         fin = tab.to.date().toPyDate()
-        lcalendar = self.getCalendarLoaded(debut.year,fin.year)
-        RANGE = lcalendar.listed_arbitrary(debut,fin)
-        self.W.arbre = Tree(self,RANGE,lcalendar,self.pal.isChecked())
-        self.setCentralWidget(self.W.arbre)
-        self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
-                                                              tab.to.date().toString()))
-        officia.pdata(write=True,history='dates',debut=debut,fin=fin,fromto=True)
+        if self.martyrology_box.isChecked():
+            self.W.martyrology(debut,fin)
+        else:
+            lcalendar = self.getCalendarLoaded(debut.year,fin.year)
+            RANGE = lcalendar.listed_arbitrary(debut,fin)
+            self.W.arbre = Tree(self,RANGE,lcalendar,self.pal.isChecked())
+            self.setCentralWidget(self.W.arbre)
+            self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
+                                                                  tab.to.date().toString()))
+            officia.pdata(write=True,history='dates',debut=debut,fin=fin,fromto=True)
         
     def exportAsPDF(self): # DEPRECATED
         personal_directory = os.path.expanduser('~')
@@ -414,7 +437,7 @@ class ToolBar(QToolBar,SuperTranslator):
         self.selectProper = QComboBox() # fill it with propers available
 
         self.pal = QCheckBox('Include Pro Aliquibus Locis')
-        self.martyrologium = QCheckBox('Search in Roman Martyrology')
+        self.martyrology_box = QCheckBox('Search in Roman Martyrology')
        
         ## set actions in Toolbar
         self.addAction(self.previousButtonAction)
@@ -422,7 +445,7 @@ class ToolBar(QToolBar,SuperTranslator):
 
         self.addWidget(self.selectProper)
         self.addWidget(self.pal)
-        self.addWidget(self.martyrologium) 
+        self.addWidget(self.martyrology_box) 
 
 
 
