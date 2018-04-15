@@ -288,22 +288,27 @@ class Main(QMainWindow,SuperTranslator):
         
     def useKeyWord(self):
         keyword = self.W.onglets.W.tab1.keyword.text()
+        annee = self.W.onglets.W.tab1.spinbox.value()
         if keyword == '':
             return
-        self.setWindowTitle('Theochrone - ' + keyword)
-        annee = self.W.onglets.W.tab1.spinbox.value()
-        debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
-        lcalendar = self.getCalendarLoaded(debut.year)
-        if self.W.onglets.W.tab1.plus.isChecked():
-            plus = True
+
+        if self.martyrology_box.isChecked():
+            keyword = keyword.split()
+            self.W.martyrology(annee,kw=keyword)
         else:
-            plus = False
-        selection = officia.inversons(keyword,lcalendar,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
-        if isinstance(selection[0],str):
-            return error_windows.ErrorWindow(selection[0])
-        self.W.tableau = Table(self,selection,lcalendar,inverse=True,pal=self.pal.isChecked())
-        self.setCentralWidget(self.W.tableau)
-        officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=[keyword])
+            self.setWindowTitle('Theochrone - ' + keyword)
+            debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
+            lcalendar = self.getCalendarLoaded(debut.year)
+            if self.W.onglets.W.tab1.plus.isChecked():
+                plus = True
+            else:
+                plus = False
+            selection = officia.inversons(keyword,lcalendar,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
+            if isinstance(selection[0],str):
+                return error_windows.ErrorWindow(selection[0])
+            self.W.tableau = Table(self,selection,lcalendar,inverse=True,pal=self.pal.isChecked())
+            self.setCentralWidget(self.W.tableau)
+            officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=[keyword])
             
     def useWeek(self):
         tab=self.W.onglets.W.tabPlus
