@@ -14,7 +14,7 @@ import translation
 _ = QC.QCoreApplication.translate
 
 
-#TODO : FROM CLI AND PRINTER
+#TODO : FROM CLI -> export grisé pour spreadsheet
 
 class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
     """Class that displays the roman martyrology"""

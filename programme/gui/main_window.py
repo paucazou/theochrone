@@ -555,7 +555,10 @@ class ExportResults(SuperTranslator):
         
     def exportToPrinter(self):
         preview = QPrintPreviewDialog(self.printer)
-        preview.paintRequested.connect(self.paintController)
+        if isinstance(self.parent.centralWidget(),display_martyrology.DisplayMartyrology):
+            preview.paintRequested.connect(self.parent.centralWidget().print)
+        else:
+            preview.paintRequested.connect(self.paintController)
         preview.exec()
         
         if self.printDialog.exec() and False: # DEPRECATED
@@ -568,7 +571,10 @@ class ExportResults(SuperTranslator):
         if dialog[0]:
             self.printer.setOutputFormat(QPrinter.PdfFormat)
             self.printer.setOutputFileName(dialog[0])
-            self.paintController()
+            if isinstance(self.parent.centralWidget(),display_martyrology.DisplayMartyrology):
+                self.parent.centralWidget().print(self.printer)
+            else:
+                self.paintController()
             
     def paintController(self):
         """Manage the main painting"""
