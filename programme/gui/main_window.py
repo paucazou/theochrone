@@ -294,7 +294,9 @@ class Main(QMainWindow,SuperTranslator):
 
         if self.martyrology_box.isChecked():
             keyword = keyword.split()
-            self.W.martyrology(annee,kw=keyword)
+            max_result = self.W.onglets.W.tab1.max_result.value()
+            rate = self.W.onglets.W.tab1.rate_result.value()
+            self.W.martyrology(annee,kw=keyword,max_result=max_result,rate=rate)
         else:
             self.setWindowTitle('Theochrone - ' + keyword)
             debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
@@ -452,7 +454,45 @@ class ToolBar(QToolBar,SuperTranslator):
         self.addWidget(self.pal)
         self.addWidget(self.martyrology_box) 
 
+        self.connect()
 
+
+    def connect(self):
+        """Connect widgets between them"""
+        self.pal.clicked.connect(self.setUncheckedMartyrology)
+        self.martyrology_box.clicked.connect(self.martyrologyCheckedActions)
+        pass
+
+    def setUncheckedMartyrology(self):
+        """Wrapper. Uncheck the martyrology checkbox"""
+        if self.pal.isChecked():
+            self.martyrology_box.setChecked(False)
+            self.martyrologyCheckedActions()
+            self.pal.setChecked(True) # a bit silly... but self.martyrologyCheckedActions set unchecked just before...
+
+    def martyrologyCheckedActions(self):
+        """When toggled on, martyrology set or unset
+        following things:
+        - desactivate pro aliquibus locis
+        - des/activate plus button in keyword research
+        - des/activate a slidebar in kw research
+        - des/activate a spinbox in kw research
+        - set inactive the export to spreadsheet entry in file menu
+        """
+        one_tab = self.parent.W.onglets.W.tab1
+        on = True if self.martyrology_box.isChecked() else False
+
+        self.pal.setChecked(False) # always False: if it is checked, it is uncheck, else, no matter
+        one_tab.plus.setVisible(not on)
+        one_tab.max_result.setVisible(on)
+        one_tab.rate_result.setVisible(on)
+        one_tab.rate_result_label.setVisible(on)
+        one_tab.max_result_label.setVisible(on)
+
+        self.parent.exportSpreadsheet.setEnabled(not on)
+
+            
+            
 
 
     def retranslateUI(self):
@@ -803,7 +843,9 @@ class Unique(QWidget,SuperTranslator):
         self.gb_day.setLayout(self.day_layout)
         
         self.kw_layout = QVBoxLayout()
-        self.slider_layout = QHBoxLayout()
+        self.year_bouton_kw_layout = QHBoxLayout()
+        self.rate_result_layout = QHBoxLayout()
+        self.max_result_layout = QHBoxLayout()
         
         self.gb_kw = QGroupBox("Search for keywords")
         
@@ -812,14 +854,36 @@ class Unique(QWidget,SuperTranslator):
         
         self.plus = QCheckBox('More results',self)
         self.kw_layout.addWidget(self.plus)
+
+        self.rate_result_label = QLabel("Minimum rate: ")
+        self.rate_result_layout.addWidget(self.rate_result_label)
+        self.rate_result_label.hide()
+        self.rate_result = QSlider(Qt.Horizontal,self) # for martyrology
+        self.rate_result.setMinimum(0)
+        self.rate_result.setMaximum(100)
+        self.rate_result.setValue(80)
+        self.rate_result_layout.addWidget(self.rate_result)
+        self.rate_result.setVisible(False)
+
+        self.max_result_label = QLabel("Max results: ")
+        self.max_result_layout.addWidget(self.max_result_label)
+        self.max_result_label.hide()
+        self.max_result = QSpinBox(self) # for martyrology
+        self.max_result.setMinimum(1)
+        self.max_result.setMaximum(366)
+        self.max_result.setValue(5)
+        self.max_result_layout.addWidget(self.max_result)
+        self.max_result.setVisible(False)
         
         self.spinbox = YearSpinbox()        
         self.kw_bouton = QPushButton('kw_button',self)
         
-        self.slider_layout.addWidget(self.spinbox)
-        self.slider_layout.addWidget(self.kw_bouton)
+        self.year_bouton_kw_layout.addWidget(self.spinbox)
+        self.year_bouton_kw_layout.addWidget(self.kw_bouton)
         
-        self.kw_layout.addLayout(self.slider_layout) 
+        self.kw_layout.addLayout(self.rate_result_layout)
+        self.kw_layout.addLayout(self.max_result_layout)
+        self.kw_layout.addLayout(self.year_bouton_kw_layout) 
         self.gb_kw.setLayout(self.kw_layout)
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.gb_day)

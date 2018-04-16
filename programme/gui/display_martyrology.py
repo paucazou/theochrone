@@ -25,13 +25,14 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         self.parent = parent # main window
         self.initUI()
 
-    def __call__(self,start: datetime.date,end=None,kw=None):
+    def __call__(self,start: datetime.date,end=None,kw=None,max_result=5,rate=80):
         """Function called to display martyrology
         start must be an int if used with kw.
         Lang is found in locale
-        if kw is not None, it is a list of keywords"""
+        if kw is not None, it is a list of keywords
+        max_result and rate are used only with keywords"""
         if kw is not None:
-            text, title = self._kw_search(kw,start)
+            text, title = self._kw_search(kw,start,max_result,rate)
         else:
             text, title = self._date_search(start,end)
 
@@ -40,11 +41,14 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         self.parent.setWindowTitle(title)
         self.parent.setCentralWidget(self)
 
-    def _kw_search(self,kw: list, year:int) -> tuple:
+    def _kw_search(self,kw: list, year: int, max_result: int, rate: 80) -> tuple:
         """Handles the keyword research.
+        max_result determines the max number of texts returned.
+        rate determines the minimum matching rate.
         return the text and the title to set"""
         lang = self.locale().bcp47Name()
-        results = self.martyrology.kw(kw,lang,year=year)
+        rate = rate/100
+        results = self.martyrology.kw(kw,lang,max_nb_returned=max_result,min_ratio=rate,year=year)
         title = " ".join(kw)
         text = ""
         for elt in results:
@@ -78,19 +82,15 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         highlight can be set to highlight daytext.matching_line"""
         double_nline = "<br><br>"
         black_line = "<hr />"
+        paragraph = '<p>{}</p>'
         text = ""
 
         text += "<h1>{}</h1>".format(daytext.title)
-        if not highlight:
-            text += double_nline.join(daytext.main) 
-        else:
-            for i,line in enumerate(daytext.main):
-                if i == daytext.matching_line:
-                    text += "<b>{}</b>".format(line)
-                else:
-                    text += line
-                text += double_nline
-        text += double_nline + daytext.last_sentence
+        for i,line in enumerate(daytext.main):
+            if i == daytext.matching_line:
+                line = "<b>{}</b>".format(line)
+            text += paragraph.format(line)
+        text += paragraph.format(daytext.last_sentence)
 
         text += black_line
         return text
