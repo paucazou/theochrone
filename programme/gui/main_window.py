@@ -90,7 +90,13 @@ class Main(QMainWindow,SuperTranslator):
         # DEBUG
         
     def processCommandLineArgs(self,args): 
-        reverse, debut, fin, plus = args
+        args, debut, fin = args
+        reverse, plus = args.INVERSE, args.plus
+        self.pal.setChecked(args.pal)
+        if args.martyrology:
+            self.martyrology_box.setChecked(args.martyrology) # BUG does not launch martyrologyCheckedActions
+            self.W.mainToolbar.martyrologyCheckedActions()
+        self.W.mainToolbar.selectProper.setCurrentText(self.propersDict[args.propre])
         if reverse != 1:
             self.W.onglets.W.tab1.keyword.setText(' '.join(reverse))
             self.W.onglets.W.tab1.spinbox.setValue(debut.year)
@@ -305,8 +311,8 @@ class Main(QMainWindow,SuperTranslator):
                 plus = True
             else:
                 plus = False
-            selection = officia.inversons(keyword,lcalendar,debut,fin,exit=False,plus=plus) # plantage en cas de recherche sans résultat...
-            if isinstance(selection[0],str):
+            selection = officia.inversons(keyword,lcalendar,debut,fin,exit=False,plus=plus) 
+            if isinstance(selection[0],str):#BUG : list index out of range. research: 2018, spanish, patron
                 return error_windows.ErrorWindow(selection[0])
             self.W.tableau = Table(self,selection,lcalendar,inverse=True,pal=self.pal.isChecked())
             self.setCentralWidget(self.W.tableau)
@@ -461,7 +467,6 @@ class ToolBar(QToolBar,SuperTranslator):
         """Connect widgets between them"""
         self.pal.clicked.connect(self.setUncheckedMartyrology)
         self.martyrology_box.clicked.connect(self.martyrologyCheckedActions)
-        pass
 
     def setUncheckedMartyrology(self):
         """Wrapper. Uncheck the martyrology checkbox"""
