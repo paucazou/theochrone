@@ -24,27 +24,30 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         self.parent = parent # main window
         self.initUI()
 
-    def __call__(self,start: datetime.date,end=None,kw=None,max_result=5,rate=80):
+    def __call__(self,start: datetime.date,end=None,kw=None,max_result=5,rate=80,span=None):
         """Function called to display martyrology
         start must be an int if used with kw.
         Lang is found in locale
         if kw is not None, it is a list of keywords
-        max_result and rate are used only with keywords"""
+        max_result and rate are used only with keywords
+        span is used to change the state of main window.
+        If set, it is a string: day, week, month, year, arbitrary"""
         if kw is not None:
-            text, title = self._kw_search(kw,start,max_result,rate)
+            text, title, state = self._kw_search(kw,start,max_result,rate)
         else:
-            text, title = self._date_search(start,end)
+            text, title, state = self._date_search(start,end,span)
 
         # setting display
         self.setHtml(text)
         self.parent.setWindowTitle(title)
-        self.parent.setCentralWidget(self)
+        self.parent.setCentralWidget(self,type="martyrology",**state)
 
     def _kw_search(self,kw: list, year: int, max_result: int, rate: 80) -> tuple:
         """Handles the keyword research.
         max_result determines the max number of texts returned.
         rate determines the minimum matching rate.
-        return the text and the title to set"""
+        return the text and the title to set
+        return the state of the main window"""
         lang = self.locale().bcp47Name()
         rate = rate/100
         results = self.martyrology.kw(kw,lang,max_nb_returned=max_result,min_ratio=rate,year=year)
@@ -52,12 +55,17 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         text = ""
         for elt in results:
             text += self._format_text(elt,highlight=True)
-        return text, title
+
+        # changing main window state
+        state = { "kw":True, "year":year,"data":results}
+
+        return text, title, state
         
 
-    def _date_search(self,start: datetime.date,end=None) -> tuple:
+    def _date_search(self,start: datetime.date,end=None,span=None) -> tuple:
         """Function that set the text with a date research.
-        return the text and the title to set."""
+        return the text and the title to set.
+        span: look to docstring of __call__ method."""
         lang = self.locale().bcp47Name()
         if end is None:
             title = self._title + str(start)
@@ -66,13 +74,18 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
             title = self._title + str(start) + ' -> ' + str(end)
 
         text = '' # text which will be displayed
+        data = [] # list of all the texts for each day requested
 
         while start <= end:
-            daytext = self.martyrology.daytext(start,lang)
-            text += self._format_text(daytext)
+            data.append(self.martyrology.daytext(start,lang))
+            text += self._format_text(data[-1])
             start += datetime.timedelta(1)
 
-        return text, title
+        #changing main window state
+        self.parent.state(type="martyrology",kw=False,start=start,end=end,data=data,span=span)
+        state = { "kw":False, "start": start, "end": end, "data": data, "span": span}
+
+        return text, title, span
 
 
     def _format_text(self,daytext: martyrology_module.TextResult,highlight=False) -> str:

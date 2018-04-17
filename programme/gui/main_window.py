@@ -27,6 +27,7 @@ from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, 
 from PyQt5.QtGui import QColor, QFont, QFontMetrics, QIcon, QPen, QPainter, QTextDocument
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
 from PyQt5.QtWidgets import QAction, QApplication, QButtonGroup, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSizePolicy, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QToolBar, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
+from state import State
 from translation import *
 
 
@@ -65,6 +66,7 @@ class Main(QMainWindow,SuperTranslator):
         SuperTranslator.__init__(self)
 
         self.__calendars = {}
+        self.state = State() # state of the central widget
         self.ferryman = ExportResults(self)
         self.actions()
         self.initUI()
@@ -278,18 +280,31 @@ class Main(QMainWindow,SuperTranslator):
             end = start
         lcalendar(start,end)
         return lcalendar
+
+    def setCentralWidget(self,widget,**kwargs):
+        """Set the central widget.
+        Pass kwargs to the state object.
+        Modifies things linked to the change
+        of this state"""
+        QMainWindow.setCentralWidget(self,widget)
+        self.state(**kwargs)
+
+        on = (self.state.type == "martyrology")
+        self.exportSpreadsheet.setEnabled(not on)
+
         
     def useDate(self,date):
         debut = fin = date.toPyDate()
+        span = "day"
         if self.martyrology_box.isChecked():
-            self.W.martyrology(debut)
+            self.W.martyrology(debut,span=span)
         else:
             self.setWindowTitle('Theochrone - ' + date.toString())
             lcalendar = self.getCalendarLoaded(start=debut.year)
             selection = lcalendar[debut]
             are_pro_aliquibus_locis_requested = self.pal.isChecked()
             self.tableau = Table(self,selection,lcalendar,pal=are_pro_aliquibus_locis_requested)
-            self.setCentralWidget(self.tableau)
+            self.setCentralWidget(self.tableau,type="date",span=span,data=selection)
             officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
     def useKeyWord(self):
@@ -315,10 +330,11 @@ class Main(QMainWindow,SuperTranslator):
             if isinstance(selection[0],str):#BUG : list index out of range. research: 2018, spanish, patron
                 return error_windows.ErrorWindow(selection[0])
             self.W.tableau = Table(self,selection,lcalendar,inverse=True,pal=self.pal.isChecked())
-            self.setCentralWidget(self.W.tableau)
+            self.setCentralWidget(self.W.tableau,type="kw",year=annee,data=selection)
             officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=[keyword])
             
     def useWeek(self):
+        span = "week"
         tab=self.W.onglets.W.tabPlus
         year = tab.wy_spinbox.value()
         month = tab.monthweek_combo.currentIndex() + 1
@@ -327,10 +343,10 @@ class Main(QMainWindow,SuperTranslator):
         WEEK = lcalendar.weekmonth(year,month,week)
         if self.martyrology_box.isChecked():
             week = sorted(WEEK.keys())
-            self.W.martyrology(week[0],week[-1])
+            self.W.martyrology(week[0],week[-1],span=span)
         else:
             self.W.arbre = Tree(self,WEEK,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre)
+            self.setCentralWidget(self.W.arbre,type="date",span=span,data=WEEK)
             if months_tuple[month][0] in ('a','o'):
                 preposition = "d'"
             else:
@@ -342,6 +358,7 @@ class Main(QMainWindow,SuperTranslator):
             officia.pdata(write=True,history='dates',debut=debut,fin=fin,semaine_seule=True)
             
     def useMonth(self):
+        span = "month"
         tab = self.W.onglets.W.tabPlus
         year = tab.my_spinbox.value()
         month = tab.month_combo.currentIndex() + 1
@@ -349,12 +366,13 @@ class Main(QMainWindow,SuperTranslator):
             last_day_of_month = calendar.monthrange(year,month)[1]
             self.W.martyrology(
                     datetime.date(year,month,1),
-                    datetime.date(year,month,last_day_of_month))
+                    datetime.date(year,month,last_day_of_month),
+                    span=span)
         else:
             lcalendar = self.getCalendarLoaded(year)
             MONTH = lcalendar.listed_month(year, month)
             self.W.arbre = Tree(self,MONTH,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre)
+            self.setCentralWidget(self.W.arbre,type="date",span=span,data=MONTH)
             self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
             #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
             debut = datetime.date(year,month,1)
@@ -363,31 +381,34 @@ class Main(QMainWindow,SuperTranslator):
             officia.pdata(write=True,history='dates',debut=debut,fin=fin,mois_seul=True)
         
     def useYear(self):
+        span="year"
         tab = self.W.onglets.W.tabPlus
         year = tab.yy_spinbox.value()
         if self.martyrology_box.isChecked():
             self.W.martyrology(
                     datetime.date(year,1,1),
-                    datetime.date(year,12,31))
+                    datetime.date(year,12,31),
+                    span=span)
         else:
             lcalendar = self.getCalendarLoaded(year)
             YEAR = lcalendar.listed_year(year)
             self.W.arbre = Tree(self,YEAR,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre)
+            self.setCentralWidget(self.W.arbre,type="date",span=span,data=YEAR)
             self.setWindowTitle('Theochrone - {}'.format(str(year)))
             officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=True)
         
     def useArbitrary(self):
+        span="arbitrary"
         tab = self.W.onglets.W.tabPlus
         debut = tab.frome.date().toPyDate()
         fin = tab.to.date().toPyDate()
         if self.martyrology_box.isChecked():
-            self.W.martyrology(debut,fin)
+            self.W.martyrology(debut,fin,span=span)
         else:
             lcalendar = self.getCalendarLoaded(debut.year,fin.year)
             RANGE = lcalendar.listed_arbitrary(debut,fin)
             self.W.arbre = Tree(self,RANGE,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre)
+            self.setCentralWidget(self.W.arbre,type="date",span=span,data=RANGE)
             self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
                                                                   tab.to.date().toString()))
             officia.pdata(write=True,history='dates',debut=debut,fin=fin,fromto=True)
@@ -487,14 +508,13 @@ class ToolBar(QToolBar,SuperTranslator):
         one_tab = self.parent.W.onglets.W.tab1
         on = True if self.martyrology_box.isChecked() else False
 
-        self.pal.setChecked(False) # always False: if it is checked, it is uncheck, else, no matter
+        self.pal.setChecked(False) 
         one_tab.plus.setVisible(not on)
         one_tab.max_result.setVisible(on)
         one_tab.rate_result.setVisible(on)
         one_tab.rate_result_label.setVisible(on)
         one_tab.max_result_label.setVisible(on)
 
-        self.parent.exportSpreadsheet.setEnabled(not on)
 
             
             
