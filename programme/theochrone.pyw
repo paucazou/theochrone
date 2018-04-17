@@ -205,7 +205,7 @@ def main():
             sys.exit(shiptobrowser.openBrowser())
     elif not os.isatty(0) or args.gui or (len(sys.argv) <= 1 and not sys.platform.startswith('linux')):
         from gui import main_window
-        app = main_window.App([args.INVERSE,debut,fin,args.plus])
+        app = main_window.App([args,debut,fin])
         sys.exit(app.exec_())
         
 ### Définition de quelques variables ###  
@@ -215,7 +215,8 @@ def main():
     #Annee = officia.fabrique_an(debut,fin,ordo,argsr.propre)
     Annee = annus.LiturgicalCalendar(args.propre,ordo)
     Annee(debut.year,fin.year)
-    roman_martyrology = martyrology.Martyrology(args.ordo)
+    if args.martyrology:
+        roman_martyrology = martyrology.Martyrology(args.ordo)
 
 #### Affichage ###
 
