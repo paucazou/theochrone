@@ -68,7 +68,7 @@ class Main(QMainWindow,SuperTranslator):
         SuperTranslator.__init__(self)
 
         self.__calendars = {}
-        self.state = State() # state of the central widget
+        self.state = State(self) # state of the central widget
         self.ferryman = ExportResults(self)
         self.actions()
         self.initUI()
@@ -314,7 +314,7 @@ class Main(QMainWindow,SuperTranslator):
             selection = lcalendar[debut]
             pal = self.pal.isChecked()
             self.tableau = Table(self,selection,lcalendar,pal=pal)
-            self.setCentralWidget(self.tableau,type="date",start=debut,end=fin,span=span,data=selection,pal=pal,proper=lcalendar.proper,ordo=lcalendar.ordo)
+            self.setCentralWidget(self.tableau,type="date",span=span,data=selection,pal=pal)
             officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
     def useKeyWord(self):
@@ -357,7 +357,7 @@ class Main(QMainWindow,SuperTranslator):
             self.W.martyrology(start,end,span=span)
         else:
             self.W.arbre = Tree(self,WEEK,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre,type="date",start=start,end=end,span=span,data=WEEK,pal=self.pal.isChecked(),proper=lcalendar.proper,ordo=lcalendar.ordo)
+            self.setCentralWidget(self.W.arbre,type="date",span=span,data=WEEK,pal=self.pal.isChecked())
             if months_tuple[month][0] in ('a','o'):
                 preposition = "d'"
             else:
@@ -381,7 +381,7 @@ class Main(QMainWindow,SuperTranslator):
             lcalendar = self.getCalendarLoaded(year)
             MONTH = lcalendar.listed_month(year, month)
             self.W.arbre = Tree(self,MONTH,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre,type="date",start=start,end=end,span=span,data=MONTH,pal=self.pal.isChecked(),proper=lcalendar.proper,ordo=lcalendar.ordo)
+            self.setCentralWidget(self.W.arbre,type="date",span=span,data=MONTH,pal=self.pal.isChecked())
             self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
             #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
             debut = datetime.date(year,month,1)
@@ -401,7 +401,7 @@ class Main(QMainWindow,SuperTranslator):
             lcalendar = self.getCalendarLoaded(year)
             YEAR = lcalendar.listed_year(year)
             self.W.arbre = Tree(self,YEAR,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre,type="date",start=start,end=end,span=span,data=YEAR,pal=self.pal.isChecked(),proper=lcalendar.proper,ordo=lcalendar.ordo)
+            self.setCentralWidget(self.W.arbre,type="date",span=span,data=YEAR,pal=self.pal.isChecked())
             self.setWindowTitle('Theochrone - {}'.format(str(year)))
             officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=True)
         
