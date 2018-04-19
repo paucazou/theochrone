@@ -85,7 +85,7 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         self.parent.state(type="martyrology",kw=False,start=start,end=end,data=data,span=span)
         state = { "kw":False, "start": start, "end": end, "data": data, "span": span}
 
-        return text, title, span
+        return text, title, state
 
 
     def _format_text(self,daytext: martyrology_module.TextResult,highlight=False) -> str:

@@ -374,7 +374,7 @@ class Main(QMainWindow,SuperTranslator):
         year = tab.my_spinbox.value()
         month = tab.month_combo.currentIndex() + 1
         start = datetime.date(year,month,1)
-        end = calendar.monthrange(year,month)[-1]
+        end = datetime.date(year,month,calendar.monthrange(year,month)[-1])
         if self.martyrology_box.isChecked():
             self.W.martyrology(start,end,span=span)
         else:
@@ -474,6 +474,7 @@ class ToolBar(QToolBar,SuperTranslator):
         ## actions in Toolbar
         self.nextButtonAction = QAction(QIcon('icons/next.png'),'next',self) #https://www.iconfinder.com/icons/308956/arrow_next_icon#size=256
         self.previousButtonAction = QAction(QIcon('icons/previous.png'),'previous',self) #https://www.iconfinder.com/icons/308957/arrow_previous_icon#size=256
+        # TODO add a reload button ? 
 
         ## widgets in Toolbar
         self.selectProper = QComboBox() # fill it with propers available
@@ -496,6 +497,8 @@ class ToolBar(QToolBar,SuperTranslator):
         """Connect widgets between them"""
         self.pal.clicked.connect(self.setUncheckedMartyrology)
         self.martyrology_box.clicked.connect(self.martyrologyCheckedActions)
+        self.nextButtonAction.triggered.connect(self.parent.state.next)
+        self.previousButtonAction.triggered.connect(self.parent.state.previous)
 
     def setUncheckedMartyrology(self):
         """Wrapper. Uncheck the martyrology checkbox"""
