@@ -116,7 +116,7 @@ Latest version is 0.5.0
   - [ ] Availability:
     - [x] CLI;
     - [ ] website;
-    - [ ] GUI;
+    - [x] GUI;
 - [ ] a new convenient help app
 - [ ] varia:
   - [x] add the rose colour into details of the third week of advent (optional liturgical colour)
