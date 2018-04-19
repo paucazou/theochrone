@@ -7,6 +7,7 @@ import datetime
 import os.path
 import platform
 import sys
+import webbrowser
 import xlwt
 
 chemin = os.path.dirname(os.path.abspath(__file__))
@@ -1096,6 +1097,7 @@ class Tree(QTreeWidget,SuperTranslator):
         for i in range(8):
             self.resizeColumnToContents(i)
         self.header().setStretchLastSection(True)
+        self.itemDoubleClicked.connect(self.url)
         
     
     def initUI(self,data):
@@ -1130,6 +1132,11 @@ class Tree(QTreeWidget,SuperTranslator):
                 """
                 if not item.pal or item.pal and self.pal:
                     self.W.itemsCreator.createLine(item,parent)
+
+    def url(self,child):
+        """Opens a new tab in default webbrowser
+        at the url of child"""
+        webbrowser.open_new_tab(child.url)
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
@@ -1149,6 +1156,7 @@ class Table(QTableWidget,SuperTranslator):
         SuperTranslator.__init__(self)
 
         self.parent = parent
+        self.cellDoubleClicked.connect(self.url)
 
         if not pal:
             #Masses pro aliquibus locis are deleted if not requested
@@ -1207,6 +1215,14 @@ class Table(QTableWidget,SuperTranslator):
         for i in range(self.nbColumn):
             self.resizeColumnToContents(i)
         self.horizontalHeader().setStretchLastSection(True)
+
+    def url(self,row: int):
+        """Opens a new tab in default webbrowser
+        for requested feast."""
+        print(row)
+        child = self.item(row,0)
+        print(child.text())
+        webbrowser.open_new_tab(child.url)
         
         
     def retranslateUI(self):
@@ -1231,12 +1247,12 @@ class ItemsCreator(SuperTranslator):
         self.mainWindow = parent.parent
         self.retranslateUI()
         
-    
     def createLine(self,data,itemParent=None,itemLine=None):
         """Creates a line of results in Tree or in Table"""
         texts = self.presentData(data)
         if isinstance(self.parent,Tree):
             child = QTreeWidgetItem(itemParent,[texts[0],*texts[2]])
+            child.url = data.link
             if data.omission:
                 for i in range(8):
                     child.setFont(i,self.fontOmitted)
@@ -1245,6 +1261,7 @@ class ItemsCreator(SuperTranslator):
             self.parent.setItem(itemLine,self.parent.date_pos,QTableWidgetItem(texts[1]))
             for i,elt in enumerate(texts[2]):
                 self.parent.setItem(itemLine,i+2,QTableWidgetItem(elt))
+            self.parent.item(itemLine,0).url = data.link
             if data.omission:
                 for column in range(self.parent.nbColumn):
                     self.parent.item(itemLine,column).setFont(self.fontOmitted)
