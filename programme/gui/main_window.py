@@ -28,7 +28,7 @@ os.chdir(chemin)
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, QLocale, QPoint, QRect, QRectF, QSize, Qt, QTranslator
 from PyQt5.QtGui import QColor, QFont, QFontMetrics, QIcon, QPen, QPainter, QTextDocument
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
-from PyQt5.QtWidgets import QAction, QApplication, QButtonGroup, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSizePolicy, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QToolBar, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QAbstractItemView, QAction, QApplication, QButtonGroup, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSizePolicy, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QToolBar, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from state import State
 from translation import *
 
@@ -1156,6 +1156,8 @@ class Table(QTableWidget,SuperTranslator):
         SuperTranslator.__init__(self)
 
         self.parent = parent
+        self.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.setEditTriggers(QAbstractItemView.NoEditTriggers) # no edition possible
         self.cellDoubleClicked.connect(self.url)
 
         if not pal:
