@@ -17,6 +17,7 @@ import adjutoria
 import annus
 import collections
 import error_windows
+import exporter
 import display_martyrology 
 import math
 import officia
@@ -127,6 +128,7 @@ class Main(QMainWindow,SuperTranslator):
         self.fileMenu.addAction(self.printAction)
         self.fileMenu.addAction(self.exportPDF)
         self.fileMenu.addAction(self.exportSpreadsheet)
+        self.fileMenu.addAction(self.exportIcs)
         self.fileMenu.addAction(self.exitAction)
         
         # Edit menu
@@ -159,9 +161,13 @@ class Main(QMainWindow,SuperTranslator):
         self.exportPDF.triggered.connect(self.ferryman.exportAsPDF)
         self.exportPDF.setShortcut(ctrl+'D')
         # Excel
-        self.exportSpreadsheet = QAction(QIcon('icons/spreadsheet.png'),'export to spreadsheet',self)
+        self.exportSpreadsheet = QAction(QIcon('icons/spreadsheet.png'),'Export to spreadsheet',self)
         self.exportSpreadsheet.triggered.connect(self.ferryman.exportToSpreadsheet)
         self.exportSpreadsheet.setShortcut(ctrl+'X')
+        # ICS
+        self.exportIcs = QAction(QIcon('icons/ics.png'),'Export as ICS calendar',self)
+        self.exportIcs.triggered.connect(self.ferryman.exportToIcs)
+        self.exportIcs.setShortcut(ctrl+'I')
         # Exit
         self.exitAction = QAction(QIcon('icons/exit.png'),'exit_name',self)
         self.exitAction.setShortcut(ctrl+'Q')
@@ -289,8 +295,11 @@ class Main(QMainWindow,SuperTranslator):
         QMainWindow.setCentralWidget(self,widget)
         self.state(**kwargs)
 
-        on = (self.state.type == "martyrology")
+        on = (self.state.type == "martyrology") # on is a bool which is set many times
         self.exportSpreadsheet.setEnabled(not on)
+
+        on = (self.state.type in ("kw","martyrology"))
+        #self.exportIcs.setEnabled(not on)
 
         
     def useDate(self,date):
@@ -302,9 +311,9 @@ class Main(QMainWindow,SuperTranslator):
             self.setWindowTitle('Theochrone - ' + date.toString())
             lcalendar = self.getCalendarLoaded(start=debut.year)
             selection = lcalendar[debut]
-            are_pro_aliquibus_locis_requested = self.pal.isChecked()
-            self.tableau = Table(self,selection,lcalendar,pal=are_pro_aliquibus_locis_requested)
-            self.setCentralWidget(self.tableau,type="date",span=span,data=selection)
+            pal = self.pal.isChecked()
+            self.tableau = Table(self,selection,lcalendar,pal=pal)
+            self.setCentralWidget(self.tableau,type="date",start=debut,end=fin,span=span,data=selection,pal=pal,proper=lcalendar.proper,ordo=lcalendar.ordo)
             officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
     def useKeyWord(self):
@@ -341,12 +350,13 @@ class Main(QMainWindow,SuperTranslator):
         week = tab.week_combo.currentIndex()
         lcalendar = self.getCalendarLoaded(year)
         WEEK = lcalendar.weekmonth(year,month,week)
+        week_dates = sorted(WEEK.keys())
+        start, end = week_dates[0],week_dates[-1]
         if self.martyrology_box.isChecked():
-            week = sorted(WEEK.keys())
-            self.W.martyrology(week[0],week[-1],span=span)
+            self.W.martyrology(start,end,span=span)
         else:
             self.W.arbre = Tree(self,WEEK,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre,type="date",span=span,data=WEEK)
+            self.setCentralWidget(self.W.arbre,type="date",start=start,end=end,span=span,data=WEEK,pal=self.pal.isChecked(),proper=lcalendar.proper,ordo=lcalendar.ordo)
             if months_tuple[month][0] in ('a','o'):
                 preposition = "d'"
             else:
@@ -362,17 +372,15 @@ class Main(QMainWindow,SuperTranslator):
         tab = self.W.onglets.W.tabPlus
         year = tab.my_spinbox.value()
         month = tab.month_combo.currentIndex() + 1
+        start = datetime.date(year,month,1)
+        end = calendar.monthrange(year,month)[-1]
         if self.martyrology_box.isChecked():
-            last_day_of_month = calendar.monthrange(year,month)[1]
-            self.W.martyrology(
-                    datetime.date(year,month,1),
-                    datetime.date(year,month,last_day_of_month),
-                    span=span)
+            self.W.martyrology(start,end,span=span)
         else:
             lcalendar = self.getCalendarLoaded(year)
             MONTH = lcalendar.listed_month(year, month)
             self.W.arbre = Tree(self,MONTH,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre,type="date",span=span,data=MONTH)
+            self.setCentralWidget(self.W.arbre,type="date",start=start,end=end,span=span,data=MONTH,pal=self.pal.isChecked(),proper=lcalendar.proper,ordo=lcalendar.ordo)
             self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
             #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
             debut = datetime.date(year,month,1)
@@ -384,16 +392,15 @@ class Main(QMainWindow,SuperTranslator):
         span="year"
         tab = self.W.onglets.W.tabPlus
         year = tab.yy_spinbox.value()
+        start = datetime.date(year,1,1)
+        end = datetime.date(year,12,31)
         if self.martyrology_box.isChecked():
-            self.W.martyrology(
-                    datetime.date(year,1,1),
-                    datetime.date(year,12,31),
-                    span=span)
+            self.W.martyrology(start,end,span=span)
         else:
             lcalendar = self.getCalendarLoaded(year)
             YEAR = lcalendar.listed_year(year)
             self.W.arbre = Tree(self,YEAR,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre,type="date",span=span,data=YEAR)
+            self.setCentralWidget(self.W.arbre,type="date",start=start,end=end,span=span,data=YEAR,pal=self.pal.isChecked(),proper=lcalendar.proper,ordo=lcalendar.ordo)
             self.setWindowTitle('Theochrone - {}'.format(str(year)))
             officia.pdata(write=True,history='dates',debut=datetime.date(year,1,1),fin=datetime.date(year,12,31),annee_seule=True)
         
@@ -408,7 +415,7 @@ class Main(QMainWindow,SuperTranslator):
             lcalendar = self.getCalendarLoaded(debut.year,fin.year)
             RANGE = lcalendar.listed_arbitrary(debut,fin)
             self.W.arbre = Tree(self,RANGE,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre,type="date",span=span,data=RANGE)
+            self.setCentralWidget(self.W.arbre,type="date",start=debut,end=fin,span=span,data=RANGE,pal=self.pal.isChecked(),proper=lcalendar.proper,ordo=lcalendar.ordo)
             self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
                                                                   tab.to.date().toString()))
             officia.pdata(write=True,history='dates',debut=debut,fin=fin,fromto=True)
@@ -588,6 +595,24 @@ class ExportResults(SuperTranslator):
                     [item(row,i).text() for i in range(1,table.columnCount()) if item(row,i).text()]
                      )        
         return headers, data
+
+    def exportToIcs(self):
+        """Export data to the ICS format, useful
+        for Outlook/Google/Thunderbird calendars."""
+        dialog = QFileDialog.getSaveFileName(self.parent,self.exportAsIcsTitle,self.personal_directory,self.typeIcsFiles)
+        if dialog[0]:
+            file = open(dialog[0],'w')
+            state = self.parent.state
+
+            exporter.main(state.start,state.end, # dates
+                    self.parent.locale().bcp47Name(), # lang
+                    file,
+                    proper=state.proper,ordo=state.ordo,
+                    file_ext="ics",
+                    pal=state.pal) # options
+            file.close()
+
+
         
     def exportToSpreadsheet(self):# TODO mettre les cases à la bonne taille, changer les dates en dates Excel
         """Export current data to spreadsheet"""
@@ -815,6 +840,8 @@ class ExportResults(SuperTranslator):
         self.typeFiles = _("ExportResults",'Documents PDF (*.pdf)')
         self.exportAsSheetTitle = _('ExportResults','Export as spreadsheet')
         self.typeSheetFiles = _("ExportResults",'Documents Excel (*.xls)')
+        self.exportAsIcsTitle = _("ExportResults","Export as ICS file")
+        self.typeIcsFiles = _("ExportResults","Documents ICS (*.ics)")
     
         
 class Onglets(QWidget,SuperTranslator):
