@@ -76,10 +76,11 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         text = '' # text which will be displayed
         data = [] # list of all the texts for each day requested
 
-        while start <= end:
-            data.append(self.martyrology.daytext(start,lang))
+        cursor = start
+        while cursor <= end:
+            data.append(self.martyrology.daytext(cursor,lang))
             text += self._format_text(data[-1])
-            start += datetime.timedelta(1)
+            cursor += datetime.timedelta(1)
 
         #changing main window state
         self.parent.state(type="martyrology",kw=False,start=start,end=end,data=data,span=span)
