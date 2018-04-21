@@ -94,11 +94,12 @@ class Main(QMainWindow,SuperTranslator):
         # DEBUG
         
     def processCommandLineArgs(self,args): 
+        # TODO if we got enough time, try to detect week, month and year and use matching boxes
         args, debut, fin = args
         reverse, plus = args.INVERSE, args.plus
         self.pal.setChecked(args.pal)
         if args.martyrology:
-            self.martyrology_box.setChecked(args.martyrology) # BUG does not launch martyrologyCheckedActions
+            self.martyrology_box.setChecked(args.martyrology) 
             self.W.mainToolbar.martyrologyCheckedActions()
         self.W.mainToolbar.selectProper.setCurrentText(self.propersDict[args.propre])
         if reverse != 1:
@@ -162,11 +163,11 @@ class Main(QMainWindow,SuperTranslator):
         self.exportPDF.triggered.connect(self.ferryman.exportAsPDF)
         self.exportPDF.setShortcut(ctrl+'D')
         # Excel
-        self.exportSpreadsheet = QAction(QIcon('icons/spreadsheet.png'),'Export to spreadsheet',self)
+        self.exportSpreadsheet = QAction(QIcon('icons/spreadsheet.svg'),'Export to spreadsheet',self)
         self.exportSpreadsheet.triggered.connect(self.ferryman.exportToSpreadsheet)
         self.exportSpreadsheet.setShortcut(ctrl+'X')
         # ICS
-        self.exportIcs = QAction(QIcon('icons/ics.png'),'Export as ICS calendar',self)
+        self.exportIcs = QAction(QIcon('icons/ics.svg'),'Export as ICS calendar',self)
         self.exportIcs.triggered.connect(self.ferryman.exportToIcs)
         self.exportIcs.setShortcut(ctrl+'I')
         # Exit
@@ -357,7 +358,7 @@ class Main(QMainWindow,SuperTranslator):
             self.W.martyrology(start,end,span=span)
         else:
             self.W.arbre = Tree(self,WEEK,lcalendar,self.pal.isChecked())
-            self.setCentralWidget(self.W.arbre,type="date",span=span,data=WEEK,pal=self.pal.isChecked())
+            self.setCentralWidget(self.W.arbre,type="date",span=span,data=WEEK,weeknb=week,pal=self.pal.isChecked())
             if months_tuple[month][0] in ('a','o'):
                 preposition = "d'"
             else:
@@ -976,7 +977,7 @@ class Multiple(QWidget,SuperTranslator):
         self.wy_spinbox = YearSpinbox()
         self.wy_spinbox.valueChanged.connect(self.change_weeks)
         self.monthweek_combo = QComboBox()
-        self.monthweek_combo.activated.connect(self.change_weeks)
+        self.monthweek_combo.currentIndexChanged.connect(self.change_weeks)
         self.week_combo = QComboBox()
         self.bt_week = QPushButton("OK")
         self.week_top_layout.addWidget(self.wy_spinbox)
@@ -1069,6 +1070,8 @@ class Multiple(QWidget,SuperTranslator):
                 
     def change_weeks(self):
         """This method changes the week combo and set it to current week if possible"""
+        if getattr(self,"weeknames","Not already set") == "Not already set":
+            return # disgusting way of doing that...
         self.week_combo.clear()
         month_requested = self.monthweek_combo.currentIndex() + 1
         year_requested = self.wy_spinbox.value()
