@@ -108,8 +108,8 @@ class Main(QMainWindow,SuperTranslator):
             if plus:
                 self.W.onglets.W.tab1.plus.setChecked(True)
             self.useKeyWord()
-        elif debut == fin != current.toPyDate():
-            self.useDate(QDate(debut.year,debut.month,debut.day))
+        elif debut == fin:
+            self.useDate(QDate(debut))
         elif debut != fin:
             frome = self.W.onglets.W.tabPlus.frome
             while frome.date().toPyDate() != debut:
@@ -217,7 +217,6 @@ class Main(QMainWindow,SuperTranslator):
         self.setGeometry(QStyle.alignedRect(Qt.LeftToRight,Qt.AlignCenter,self.size(),App.desktop().availableGeometry()))
         self.retranslateUI() # voir si on ne la met pas carrément dans l'app, qui hériterait elle aussi de SuperTranslator
         # default settings
-        self.useDate(current)
         self.W.onglets.W.tabPlus.month_combo.setCurrentIndex(current.month() - 1)
         self.W.onglets.W.tabPlus.monthweek_combo.setCurrentIndex(current.month() - 1)
         self.W.onglets.W.tabPlus.change_weeks()
@@ -307,6 +306,7 @@ class Main(QMainWindow,SuperTranslator):
     def useDate(self,date):
         debut = fin = date.toPyDate()
         span = "day"
+        print(self.martyrology_box.isChecked())
         if self.martyrology_box.isChecked():
             self.W.martyrology(debut,span=span)
         else:
