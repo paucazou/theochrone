@@ -108,7 +108,7 @@ Latest version is 0.5.0
   - [x] CLI;
     - [x] print proper name on screen if requested
   - [x] Gui;
-- [ ] update GUI to support new features.
+- [x] update GUI to support new features.
 - [ ] export data to files:
   - [x] Formats:
     - [x] CSV;
