@@ -21,6 +21,9 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
 
     def __init__(self,parent):
         QW.QTextEdit.__init__(self)
+        translation.SuperTranslator.__init__(self)
+        translation.SuperTranslator.retranslateUI(self)
+
         self.parent = parent # main window
         self.initUI()
 
@@ -68,10 +71,13 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         span: look to docstring of __call__ method."""
         lang = self.locale().bcp47Name()
         if end is None:
-            title = self._title + str(start)
+            title = self._title + self.localizedDate(day=start)
             end = start
         else:
-            title = self._title + str(start) + ' -> ' + str(end)
+            title = "{}{} -> {}".format(
+                    self._title,
+                    self.localizedDate(day=start),
+                    self.localizedDate(day=end))
 
         text = '' # text which will be displayed
         data = [] # list of all the texts for each day requested
