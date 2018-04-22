@@ -36,8 +36,6 @@ from translation import *
 _ = QCoreApplication.translate # a name more convenient
 current = QDate().currentDate()
 calendrier = calendar.Calendar(firstweekday=6)
-months_tuple = ('','janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
-week_number = ("Première","Deuxième","Troisième","Quatrième","Cinquième","Sixième") # TODO TRANSLATION ?
 first_upper = lambda x : x[0].upper() + x[1:]
 list_depth = lambda L: isinstance(L, list) and max(map(depth, L),default=0)+1 #http://stackoverflow.com/questions/6039103/counting-deepness-or-the-deepest-level-a-nested-list-goes-to 
 dic_depth = lambda d, depth=0: isinstance(d,dict) and max(dic_depth(v, depth+1) for k, v in d.items()) +1 #https://stackoverflow.com/questions/9538875/recursive-depth-of-python-dictionary
@@ -259,6 +257,7 @@ class Main(QMainWindow,SuperTranslator):
                 ('welsh'         ,_('Toolbar','Welsh'),),
                 ]
         self.propersDict = collections.OrderedDict(self.propers) # a convenient way to access to names of propers
+
         SuperTranslator.retranslateUI(self) # must be called at the end, because some data must be shared with children
 
         
@@ -310,7 +309,7 @@ class Main(QMainWindow,SuperTranslator):
         if self.martyrology_box.isChecked():
             self.W.martyrology(debut,span=span)
         else:
-            self.setWindowTitle('Theochrone - ' + date.toString())
+            self.setWindowTitle('Theochrone - ' + self.localizedDate(day=debut))
             lcalendar = self.getCalendarLoaded(start=debut.year)
             selection = lcalendar[debut]
             pal = self.pal.isChecked()
@@ -359,13 +358,12 @@ class Main(QMainWindow,SuperTranslator):
         else:
             self.W.arbre = Tree(self,WEEK,lcalendar,self.pal.isChecked())
             self.setCentralWidget(self.W.arbre,type="date",span=span,data=WEEK,weeknb=week,pal=self.pal.isChecked())
-            if months_tuple[month][0] in ('a','o'):
+            if self.months_translated1[month][0] in ('a','o'):
                 preposition = "d'"
             else:
                 preposition = "de "
-            self.setWindowTitle('Theochrone - {} semaine {}{} {}'.format(
-                week_number[week], preposition,
-                months_tuple[month],str(year)))
+            self.setWindowTitle('Theochrone - {}'.format(self.localizedDate(
+                week=week+1,month=month,year=year)))
             debut, fin = sorted(WEEK)[0], sorted(WEEK)[-1]
             officia.pdata(write=True,history='dates',debut=debut,fin=fin,semaine_seule=True)
             
@@ -383,7 +381,8 @@ class Main(QMainWindow,SuperTranslator):
             MONTH = lcalendar.listed_month(year, month)
             self.W.arbre = Tree(self,MONTH,lcalendar,self.pal.isChecked())
             self.setCentralWidget(self.W.arbre,type="date",span=span,data=MONTH,pal=self.pal.isChecked())
-            self.setWindowTitle('Theochrone - {} {}'.format(months_tuple[month].capitalize(),str(year)))
+            self.setWindowTitle('Theochrone - {}'.format(
+                self.localizedDate(month=month,year=year)))
             #debut = next(iter(sorted(next(iter(MONTH.values()))))) # Do you know this is horrible and useless ?
             debut = datetime.date(year,month,1)
             fin_day = calendar.monthrange(year,month)[1]
@@ -418,43 +417,11 @@ class Main(QMainWindow,SuperTranslator):
             RANGE = lcalendar.listed_arbitrary(debut,fin)
             self.W.arbre = Tree(self,RANGE,lcalendar,self.pal.isChecked())
             self.setCentralWidget(self.W.arbre,type="date",start=debut,end=fin,span=span,data=RANGE,pal=self.pal.isChecked(),proper=lcalendar.proper,ordo=lcalendar.ordo)
-            self.setWindowTitle('Theochrone - du {} au {}'.format(tab.frome.date().toString(),
-                                                                  tab.to.date().toString()))
+            self.setWindowTitle('Theochrone - {} -> {}'.format(
+                self.localizedDate(day=debut),
+                self.localizedDate(day=fin)))
             officia.pdata(write=True,history='dates',debut=debut,fin=fin,fromto=True)
         
-    def exportAsPDF(self): # DEPRECATED
-        personal_directory = os.path.expanduser('~')
-        dialog = QFileDialog.getSaveFileName(self,'Export as PDF',personal_directory,'Documents PDF (*.pdf)')
-        if dialog[0]:
-            printer = QPrinter(QPrinter.HighResolution)
-            printer.setOutputFormat(QPrinter.PdfFormat)
-            printer.setOutputFileName(dialog[0])
-            self.centralWidget().render(printer) # Créer plutôt un modèle d'impression à partir des données de base, avec du texte brut. TODO
-            
-    def printResults(self):# DEPRECATED
-        printer = QPrinter(QPrinter.HighResolution)
-        printDialog = QPrintDialog(printer,self)
-        printDialog.setWindowTitle(_("Main","Print results"))
-        if printDialog[0]:
-            #print
-            painter = QPainter()
-            painter.begin(printer)
-            while True:
-                printer.newPage()
-            painter.end()
-            
-    def printChildren(self,parent=None): #DEPRECATED    
-        if not parent:
-            parent = self.centralWidget().invisibleRootItem()
-        for i in range(parent.childCount()):
-            child = parent.child(i)
-            if child.columnCount() == 1:
-                print(child.text(0))
-            else:
-                print(*[child.text(j) for j in range(child.columnCount())])
-            if child.childCount():
-                self.printChildren(child)
-
 
 class ToolBar(QToolBar,SuperTranslator):
     """This class manages the toolbar"""
@@ -1041,12 +1008,12 @@ class Multiple(QWidget,SuperTranslator):
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
         months = (_("Multiple","January"),_("Multiple","February"),_("Multiple","March"),_("Multiple","April"),_("Multiple","May"),_("Multiple","June"),
-                     _("Multiple","July"),_("Multiple","August"),_("Multiple","September"),_("Multiple","October"),_("Multiple","November"),_("Multiple","December"))
+                     _("Multiple","July"),_("Multiple","August"),_("Multiple","September"),_("Multiple","October"),_("Multiple","November"),_("Multiple","December")) # DEPRECATED
         
         self.gb_week.setTitle(_("Multiple","Search for a whole week"))
         for month in months:
             self.monthweek_combo.addItem(month)
-        self.weeknames = (_("Multiple","First"),_("Multiple","Second"),_("Multiple","Third"),_("Multiple","Fourth"),_("Multiple","Fifth"),_("Multiple","Sixth"))
+        self.weeknames = (_("Multiple","First"),_("Multiple","Second"),_("Multiple","Third"),_("Multiple","Fourth"),_("Multiple","Fifth"),_("Multiple","Sixth")) # DEPRECATED
         
         self.gb_month.setTitle(_("Multiple","Search for a whole month"))
         for month in months:
@@ -1070,13 +1037,11 @@ class Multiple(QWidget,SuperTranslator):
                 
     def change_weeks(self):
         """This method changes the week combo and set it to current week if possible"""
-        if getattr(self,"weeknames","Not already set") == "Not already set":
-            return # disgusting way of doing that...
         self.week_combo.clear()
         month_requested = self.monthweek_combo.currentIndex() + 1
         year_requested = self.wy_spinbox.value()
         month = calendrier.monthdayscalendar(year_requested,month_requested)
-        for i, name in zip(month, self.weeknames):
+        for i, name in zip(month, self.ordinary_numbers_translated0):
             self.week_combo.addItem("{} week".format(name))
         if year_requested == current.year() and month_requested == current.month():
             for i, week in enumerate(month):
@@ -1118,9 +1083,9 @@ class Tree(QTreeWidget,SuperTranslator):
             if isinstance(item,dict):
                 if isinstance(key,tuple):
                     if key[1] == 'week':
-                        key = """{} semaine""".format(week_number[key[0]])
+                        key = """{} semaine""".format(self.ordinary_numbers_translated0[key[0]])
                     else:
-                        key = months_tuple[key[0]].capitalize()
+                        key = self.months_translated1[key[0]].capitalize()
                 elif isinstance(key,int):
                     key = str(key)
                 else:
@@ -1129,13 +1094,6 @@ class Tree(QTreeWidget,SuperTranslator):
                 child.setExpanded(True)
                 self.populateTree(item,child)
             else:
-                """elt = item
-                if elt.temporal:
-                    temps = 'Temporal'
-                else:
-                    temps = 'Sanctoral'
-                child=QTreeWidgetItem(parent,[elt.nom['fr'],str(elt.degre),elt.couleur,officia.affiche_temps_liturgique(elt,'fr').capitalize(),temps])
-                """
                 if not item.pal or item.pal and self.pal:
                     self.W.itemsCreator.createLine(item,parent)
 
@@ -1191,34 +1149,6 @@ class Table(QTableWidget,SuperTranslator):
         self.W.itemsCreator = ItemsCreator(self)
         for i, elt in enumerate(liste):
             self.W.itemsCreator.createLine(elt,itemLine=i)
-            """self.setItem(i,name_pos,QTableWidgetItem(elt.nom['fr']))
-            self.setItem(i,date_pos,QTableWidgetItem(str(elt.date)))
-            self.setItem(i,3,QTableWidgetItem(self.classes[elt.degre]))
-            self.setItem(i,4,QTableWidgetItem(elt.couleur.capitalize()))
-            self.setItem(i,5,QTableWidgetItem(self.tempOrSanct[elt.temporal]))
-            self.setItem(i,6,QTableWidgetItem(first_upper(officia.affiche_temps_liturgique(elt,'fr'))))
-            if elt.__dict__.get('station',False):
-                station=elt.station['fr']
-            else:
-                station=''
-            self.setItem(i,7,QTableWidgetItem(station))
-            if elt.celebree:
-                status = _('Table','Celebrated')
-            elif elt.commemoraison and elt.peut_etre_celebree:
-                status = _("Table","Can be celebrated or commemorated")
-            elif elt.commemoraison:
-                status = _('Table','Commemorated')
-            elif elt.omission:
-                status = _('Table','Omitted')
-            elif elt.peut_etre_celebree:
-                status = _("Table","Can be celebrated")
-            
-                
-            self.setItem(i,2,QTableWidgetItem(status))
-            if elt.omission:
-                for column in range(self.nbColumn):
-                    self.item(i,column).setFont(self.fontOmitted)"""
-            
             
         for i in range(self.nbColumn):
             self.resizeColumnToContents(i)

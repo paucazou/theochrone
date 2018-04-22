@@ -31,23 +31,21 @@ class SuperTranslator():
     def __init__(self):
         """This method only defines a ReTranslateBox object which is called 'W'. This attribute can only store widgets with a 'retranslateUI' method, i.e. from objects which inherit of this class"""
         self.W = ReTranslateBox()
-        
-    def retranslateUI(self):
-        """This method calls every 'retranslateUI' methods of the 'W' attribute.
-        This method should be overloaded by every widget which contains
-        widgets to be immediately retranslated
-        (i.e., which are not custom widgets).
-        It also contains some utilities that can be accessed from the class inherited.
-        User shouldn't forget to call this function if necessary in the function itself :
-        SuperTranslator.retranslateUI()"""
-        self.ordinary_numbers_translated = ('',
+        self.setUtilities()
+
+    def setUtilities(self):
+        """Set translated strings that can be used in many places.
+        """
+        self.ordinary_numbers_translated0 = (
 	    _('SuperTranslator','First'),
 	    _('SuperTranslator','Second'),
 	    _('SuperTranslator','Third'),
 	    _('SuperTranslator','Fourth'),
 	    _('SuperTranslator','Fifth'),
 	    _('SuperTranslator','Sixth'))
-        self.weekdays_translated = (
+        self.ordinary_numbers_translated1 = ('',) + self.ordinary_numbers_translated0
+
+        self.weekdays_translated0 = (
                 _('SuperTranslator','Monday'),
                 _('SuperTranslator','Tuesday'),
                 _('SuperTranslator','Wednesday'),
@@ -55,7 +53,9 @@ class SuperTranslator():
                 _('SuperTranslator','Friday'),
                 _('SuperTranslator','Saturday'),
                 _('SuperTranslator','Sunday'))
-        self.months_translated = (
+        self.weekdays_translated1 = ('',) + self.weekdays_translated0
+
+        self.months_translated0 = (
 	    _('SuperTranslator','January'),
 	    _('SuperTranslator','February'),
 	    _('SuperTranslator','March'),
@@ -68,9 +68,19 @@ class SuperTranslator():
             _('SuperTranslator','October'),
 	    _('SuperTranslator','November'),
 	    _('SuperTranslator','December'))
+        self.months_translated1 = ('',) + self.months_translated0
+
         self.week_sentence = _("SuperTranslator","{} week of {} {}")#format(number,month,year)
 
-
+        
+    def retranslateUI(self):
+        """This method calls every 'retranslateUI' methods of the 'W' attribute.
+        This method should be overloaded by every widget which contains
+        widgets to be immediately retranslated
+        (i.e., which are not custom widgets).
+        User shouldn't forget to call this function if necessary in the function itself :
+        SuperTranslator.retranslateUI()"""
+        self.setUtilities()
 
         for a in self.W:
             a.retranslateUI()
@@ -81,14 +91,14 @@ class SuperTranslator():
         Options allowed:
                 - day: datetime.date
                 - week: 1..6 (must match with number of weeks in month)
-                - month: 0..11
+                - month: 1..12
                 - year: 1600..4100
         """
         lang = self.locale().bcp47Name() # doesn't work if class inherited is not a QWidget
         if "day" in kwargs:
             day = kwargs['day']
-            weekday = self.weekdays_translated[day.weekday()]
-            month = self.months_translated[day.month-1]
+            weekday = self.weekdays_translated0[day.weekday()]
+            month = self.months_translated1[day.month]
             if lang == "fr":
                 day_nb = day.day if day.day > 1 else "1er"
                 return "{} {} {} {}".format(
@@ -99,12 +109,12 @@ class SuperTranslator():
 
         elif "week" in kwargs:
             return self.week_sentence.format(
-                    self.ordinary_numbers_translated[kwargs['week']],
-                    self.months_translated[kwargs['month']],
+                    self.ordinary_numbers_translated1[kwargs['week']],
+                    self.months_translated1[kwargs['month']],
                     kwargs['year'])
         elif 'month' in kwargs:
             return "{} {}".format(
-                    self.months_translated[kwargs['month']],
+                    self.months_translated1[kwargs['month']],
                     kwargs['year'])
         else:
             raise KeyError("No key match with requested arguments")
