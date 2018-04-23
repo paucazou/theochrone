@@ -120,3 +120,4 @@ Latest version is 0.5.0
 - [ ] a new convenient help app
 - [ ] varia:
   - [x] add the rose colour into details of the third week of advent (optional liturgical colour)
+  - [ ] add proper in user preferences
