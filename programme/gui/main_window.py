@@ -1254,7 +1254,7 @@ class ItemsCreator(SuperTranslator):
         if data.transferee:
             status += _("ItemsCreator"," & transferred from {}".format(self.localizedDate(data.date_originelle)))
         degree = self.classes[data.degre]
-        colour = data.couleur.capitalize() # english ???
+        colour = officia.liturgical_colour(data,self.lang).capitalize() # english ???
         temporsanct = self.tempOrSanct[data.temporal]
         time = first_upper(officia.affiche_temps_liturgique(data,self.lang))
         proper = self.mainWindow.propersDict[data.propre]
