@@ -53,17 +53,18 @@ class App(QApplication):
         QApplication.__init__(self, args)
         self.translator = QTranslator()
         self.installTranslator(self.translator)
-        self.translator.load(QLocale(),"gui",'.','./i18n','.qm') # TODO : sélection de la langue dans cet ordre : settings, locale, puis choix.
-        self.execute = Main(args)
+        self.execute = Main(self,args)
 
 
 class Main(QMainWindow,SuperTranslator):
     """Main window"""
-    def __init__(self,args):
+    def __init__(self,parent,args):
         """Function which initializes the main window"""
         
         QMainWindow.__init__(self)
         SuperTranslator.__init__(self)
+
+        self.parent = parent
 
         self.__calendars = {}
         self.state = State(self) # state of the central widget
@@ -72,7 +73,7 @@ class Main(QMainWindow,SuperTranslator):
         self.initUI()
         self.processCommandLineArgs(args)
         
-        self.W.onglets.W.tab1.cal.clicked[QDate].connect(self.useDate)
+        self.W.onglets.W.tab1.cal.clicked.connect(self.useDate)
         self.W.onglets.W.tab1.kw_bouton.clicked.connect(self.useKeyWord)
         self.W.onglets.W.tab1.keyword.returnPressed.connect(self.useKeyWord)
         self.W.onglets.W.tab1.spinbox.editingFinished.connect(self.useKeyWord)
@@ -96,6 +97,7 @@ class Main(QMainWindow,SuperTranslator):
         args, debut, fin = args
         reverse, plus = args.INVERSE, args.plus
         self.pal.setChecked(args.pal)
+
         if args.martyrology:
             self.martyrology_box.setChecked(args.martyrology) 
             self.W.mainToolbar.martyrologyCheckedActions()
@@ -107,7 +109,8 @@ class Main(QMainWindow,SuperTranslator):
                 self.W.onglets.W.tab1.plus.setChecked(True)
             self.useKeyWord()
         elif debut == fin:
-            self.useDate(QDate(debut))
+            self.W.onglets.W.tab1.cal.setSelectedDate(QDate(debut))
+            self.useDate()
         elif debut != fin:
             frome = self.W.onglets.W.tabPlus.frome
             while frome.date().toPyDate() != debut:
@@ -115,6 +118,11 @@ class Main(QMainWindow,SuperTranslator):
                 self.W.onglets.W.tabPlus.to.setDate(QDate(fin.year,fin.month,fin.day))
             self.useArbitrary()
             self.W.onglets.tabs.setCurrentIndex(1)
+
+        if args.langue == 'fr':
+            self.setLocaleFr()
+        else:
+            self.setLocaleEn()
         
     def menu(self):
         """A function which describes the menubar of the main window"""
@@ -132,16 +140,16 @@ class Main(QMainWindow,SuperTranslator):
         self.fileMenu.addAction(self.exitAction)
         
         # Edit menu
-        self.editMenu = menubar.addMenu('edit')
+        #self.editMenu = menubar.addMenu('edit')
         
         # Language menu (change on the fly)
         self.languageMenu = menubar.addMenu('language')
-        self.languageMenu.addAction(self.chooseLanguageLatin)
+        #self.languageMenu.addAction(self.chooseLanguageLatin)
         self.languageMenu.addAction(self.chooseLanguageFrench)
         self.languageMenu.addAction(self.chooseLanguageEnglish)
         
         # Help menu
-        self.helpMenu = menubar.addMenu('help')
+        #self.helpMenu = menubar.addMenu('help')
         
     def actions(self): # WARNING not available on os x
         """A function which defines actions in the main window"""
@@ -175,11 +183,13 @@ class Main(QMainWindow,SuperTranslator):
         
         # Languages
         ## Latin
-        self.chooseLanguageLatin = QAction(QIcon('icons/latin.png'),'choose_latin',self) # à lier dans la classe App pour changer de langue
+        #self.chooseLanguageLatin = QAction(QIcon('icons/latin.png'),'choose_latin',self) # à lier dans la classe App pour changer de langue
         ## French
         self.chooseLanguageFrench = QAction(QIcon('icons/french.png'),'choose_french',self)
+        self.chooseLanguageFrench.triggered.connect(self.setLocaleFr)
         ## English
         self.chooseLanguageEnglish = QAction(QIcon('icons/english.png'),'choose_english',self)
+        self.chooseLanguageEnglish.triggered.connect(self.setLocaleEn)
 
 
                                            
@@ -192,7 +202,7 @@ class Main(QMainWindow,SuperTranslator):
         self.arbre = QTreeWidget() # TODO seems to be useless...
         # widgets on the right
         self.rightDock = QDockWidget('right_dock',self)
-        self.W.onglets = Onglets()
+        self.W.onglets = Onglets(self)
         self.rightDock.setWidget(self.W.onglets)
         self.addDockWidget(Qt.RightDockWidgetArea,self.rightDock)
         
@@ -224,20 +234,22 @@ class Main(QMainWindow,SuperTranslator):
         
         #menu
         self.fileMenu.setTitle(_('Main','File'))
-        self.editMenu.setTitle(_('Main','Edit'))
+        #self.editMenu.setTitle(_('Main','Edit'))
         self.languageMenu.setTitle(_('Main','Language'))
-        self.helpMenu.setTitle(_('Main','Help'))
+        #self.helpMenu.setTitle(_('Main','Help'))
         
         #actions
         self.settingsAction.setText(_('Main','Settings'))
         
         self.printAction.setText(_('Main','Print'))
         self.exportPDF.setText(_('Main','Export as PDF'))
+        self.exportSpreadsheet.setText(_('Main','Export as spreadsheet'))
+        self.exportIcs.setText(_('Main','Export as ICS calendar'))
         
         self.exitAction.setText(_('Main','Exit'))
         self.exitAction.setStatusTip(_('Main','Exit the app'))
         
-        self.chooseLanguageLatin.setText(_('Main','Latin'))
+        #self.chooseLanguageLatin.setText(_('Main','Latin'))
         self.chooseLanguageFrench.setText(_('Main','French'))
         self.chooseLanguageEnglish.setText(_('Main','English'))
 
@@ -265,6 +277,23 @@ class Main(QMainWindow,SuperTranslator):
         #widgets on the right
         self.rightDock.setWindowTitle(_('Main','Research'))
         
+    def _selectLanguage(self,loc=SuperTranslator.enLocale):
+        """Select another language for the app."""
+        self.setLocale(loc)
+        self.lang = self.locale().bcp47Name()
+        self.parent.translator.load(QLocale(),"gui",'.','./i18n','.qm') 
+        #TODO reload translation of core app
+        self.retranslateUI()
+        self.state.reload()
+    
+    def setLocaleFr(self):
+        """Set fr as main language"""
+        self._selectLanguage(self.frLocale)
+
+    def setLocaleEn(self):
+        """Set en as main language"""
+        self._selectLanguage(self.enLocale)
+
     def openSettings(self): # passer un argument concernant la langue choisie
         self.W.settings = settings.SettingsWindow(parent=self)
 
@@ -302,10 +331,10 @@ class Main(QMainWindow,SuperTranslator):
         #self.exportIcs.setEnabled(not on)
 
         
-    def useDate(self,date):
+    def useDate(self):
+        date = self.W.onglets.W.tab1.cal.selectedDate()
         debut = fin = date.toPyDate()
         span = "day"
-        print(self.martyrology_box.isChecked())
         if self.martyrology_box.isChecked():
             self.W.martyrology(debut,span=span)
         else:
@@ -336,7 +365,7 @@ class Main(QMainWindow,SuperTranslator):
                 plus = True
             else:
                 plus = False
-            selection = officia.inversons(keyword,lcalendar,debut,fin,exit=False,plus=plus) 
+            selection = officia.inversons(keyword,lcalendar,debut,fin,exit=False,plus=plus,langue=self.lang) 
             if isinstance(selection[0],str):#BUG : list index out of range. research: 2018, spanish, patron
                 return error_windows.ErrorWindow(selection[0])
             self.W.tableau = Table(self,selection,lcalendar,inverse=True,pal=self.pal.isChecked())
@@ -358,10 +387,6 @@ class Main(QMainWindow,SuperTranslator):
         else:
             self.W.arbre = Tree(self,WEEK,lcalendar,self.pal.isChecked())
             self.setCentralWidget(self.W.arbre,type="date",span=span,data=WEEK,weeknb=week,pal=self.pal.isChecked())
-            if self.months_translated1[month][0] in ('a','o'):
-                preposition = "d'"
-            else:
-                preposition = "de "
             self.setWindowTitle('Theochrone - {}'.format(self.localizedDate(
                 week=week+1,month=month,year=year)))
             debut, fin = sorted(WEEK)[0], sorted(WEEK)[-1]
@@ -505,6 +530,8 @@ class ToolBar(QToolBar,SuperTranslator):
         self.nextButtonAction.setText(_('Main','Next'))
         self.previousButtonAction.setText(_('Main','Previous'))
         ##widgets
+        self.pal.setText(_('Toolbar','Include Pro Aliquibus Locis'))
+        self.martyrology_box.setText(_('ToolBar','Search in Roman Martyrology'))
         # propers
         for proper in self.parent.propers:
             self.selectProper.addItem(proper[1])
@@ -623,11 +650,6 @@ class ExportResults(SuperTranslator):
             preview.paintRequested.connect(self.paintController)
         preview.exec()
         
-        if self.printDialog.exec() and False: # DEPRECATED
-            print('Printing...')
-            self.paintController()
-            print('Printing finished')
-            
     def exportAsPDF(self):
         dialog = QFileDialog.getSaveFileName(self.parent,self.exportAsPdfTitle,self.personal_directory,self.typeFiles)
         if dialog[0]:
@@ -819,9 +841,10 @@ class ExportResults(SuperTranslator):
 class Onglets(QWidget,SuperTranslator):
     """A class for a tab widget"""
     
-    def __init__(self):
+    def __init__(self,parent):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
+        self.parent = parent
         self.initUI()
         
        
@@ -829,8 +852,8 @@ class Onglets(QWidget,SuperTranslator):
         
         # main widgets
         self.tabs = QTabWidget()
-        self.W.tab1 = Unique()
-        self.W.tabPlus = Multiple()
+        self.W.tab1 = Unique(self)
+        self.W.tabPlus = Multiple(self)
         
         self.tabs.addTab(self.W.tab1,"1")
         self.tabs.addTab(self.W.tabPlus,"+")
@@ -847,9 +870,10 @@ class Onglets(QWidget,SuperTranslator):
 class Unique(QWidget,SuperTranslator):
     """A class wich defines a widget with two types of research : for one date and for key-words."""
     
-    def __init__(self):
+    def __init__(self,parent):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
+        self.parent = parent
         self.initUI()
         
     def initUI(self):
@@ -859,7 +883,6 @@ class Unique(QWidget,SuperTranslator):
         
         self.cal = QCalendarWidget(self)
         self.cal.setGridVisible(True)
-        self.cal.setFirstDayOfWeek(0)
         self.cal.setMinimumDate(QDate(1600,1,1))
         self.cal.setMaximumDate(QDate(4100,12,31))
 
@@ -918,21 +941,26 @@ class Unique(QWidget,SuperTranslator):
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
+
+        self.cal.setLocale(self.locale())
+        self.cal.setFirstDayOfWeek(7)
         
         self.gb_day.setTitle(_('Unique','Search for an only day'))
         self.gb_kw.setTitle(_('Unique',"Search by keywords"))
+        self.rate_result_label.setText(_("Unique","Minimum rate: "))
+        self.max_result_label.setText(_("Unique","Maximum results: "))
         self.keyword.setPlaceholderText(_("Unique","Enter keywords here"))
         self.plus.setText(_('Unique','More results'))
         self.kw_bouton.setText(_('Unique','OK'))
         
-        self.cal.setLocale(QLocale()) # à mettre dans la toute première fonction
         
 class Multiple(QWidget,SuperTranslator):
     """A class which defines widgets with multiple results : research by week, month, year, or arbitrary"""
     
-    def __init__(self):
+    def __init__(self,parent):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
+        self.parent = parent
         self.initUI()
         
     def initUI(self):   
@@ -1007,25 +1035,25 @@ class Multiple(QWidget,SuperTranslator):
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
-        months = (_("Multiple","January"),_("Multiple","February"),_("Multiple","March"),_("Multiple","April"),_("Multiple","May"),_("Multiple","June"),
-                     _("Multiple","July"),_("Multiple","August"),_("Multiple","September"),_("Multiple","October"),_("Multiple","November"),_("Multiple","December")) # DEPRECATED
+
+        # set ok buttons text
+        OK = _("Multiple","OK")
+        for button in (self.bt_week,self.bt_month,self.bt_year,self.bt_arbitrary):
+            button.setText(OK)
         
         self.gb_week.setTitle(_("Multiple","Search for a whole week"))
-        for month in months:
+        for month in self.months_translated0:
             self.monthweek_combo.addItem(month)
-        self.weeknames = (_("Multiple","First"),_("Multiple","Second"),_("Multiple","Third"),_("Multiple","Fourth"),_("Multiple","Fifth"),_("Multiple","Sixth")) # DEPRECATED
         
         self.gb_month.setTitle(_("Multiple","Search for a whole month"))
-        for month in months:
+        for month in self.months_translated0:
             self.month_combo.addItem(month) # set current in main initUI
         
         self.gb_year.setTitle(_("Multiple","Search for a whole year"))
-        self.bt_year.setText(_("Multiple","OK"))
         
         self.gb_arbritrary.setTitle(_("Multiple","Search for arbitrary dates"))
         self.frome_label.setText(_("Multiple","Select the earlier date : "))
         self.to_label.setText(_("Multiple","Select the later date : "))
-        self.bt_arbitrary.setText(_("Multiple","OK"))
         
     def isgreater(self,date):
         """This method tests wether 'frome' date is greater than 'to' date, and sets dates if necessary"""
@@ -1059,7 +1087,9 @@ class Tree(QTreeWidget,SuperTranslator):
         QWidget.__init__(self)
         SuperTranslator.__init__(self)
 
+        self.translateStrings()
         self.parent = parent # mainWindow
+        self.lang = parent.lang
         self.Annee=Annee  
         self.pal = pal
         self.W.itemsCreator = ItemsCreator(self)
@@ -1083,13 +1113,16 @@ class Tree(QTreeWidget,SuperTranslator):
             if isinstance(item,dict):
                 if isinstance(key,tuple):
                     if key[1] == 'week':
-                        key = """{} semaine""".format(self.ordinary_numbers_translated0[key[0]])
+                        key = """{} {}""".format(
+                                self.ordinary_numbers_translated0[key[0]],
+                                self.week_translated)
                     else:
                         key = self.months_translated1[key[0]].capitalize()
                 elif isinstance(key,int):
                     key = str(key)
                 else:
-                    key = officia.affiche_jour(key,'fr').capitalize()
+                    #key = officia.affiche_jour(key,self.lang).capitalize()
+                    key = self.localizedDate(day=key).capitalize()
                 child = QTreeWidgetItem(parent,[key])
                 child.setExpanded(True)
                 self.populateTree(item,child)
@@ -1101,6 +1134,11 @@ class Tree(QTreeWidget,SuperTranslator):
         """Opens a new tab in default webbrowser
         at the url of child"""
         webbrowser.open_new_tab(child.url)
+
+    def translateStrings(self):
+        """Translate some strings"""
+        self.week_translated = _("Tree","week")
+
         
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
@@ -1120,6 +1158,7 @@ class Table(QTableWidget,SuperTranslator):
         SuperTranslator.__init__(self)
 
         self.parent = parent
+        self.lang = parent.lang
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.setEditTriggers(QAbstractItemView.NoEditTriggers) # no edition possible
         self.cellDoubleClicked.connect(self.url)
@@ -1134,13 +1173,6 @@ class Table(QTableWidget,SuperTranslator):
         self.retranslateUI()
         self.fontOmitted = QFont()
         self.fontOmitted.setItalic(True)
-        self.tempOrSanct = {True:_('Table','Temporal'),False:_('Table','Sanctoral')}
-        self.classes = {1:_('Table','First Class'),
-                        2:_('Table','Second Class'),
-                        3:_('Table','Third Class'),
-                        4:_('Table','Fourth Class'),
-                        5:_('Table','Commemoration'),
-                        6:_('Table','Mass Pro Aliquibus Locis'),}
         
         if self.inverse:
             self.name_pos, self.date_pos = 0, 1
@@ -1157,13 +1189,12 @@ class Table(QTableWidget,SuperTranslator):
     def url(self,row: int):
         """Opens a new tab in default webbrowser
         for requested feast."""
-        print(row)
         child = self.item(row,0)
-        print(child.text())
         webbrowser.open_new_tab(child.url)
         
         
     def retranslateUI(self):
+        self.tempOrSanct = {True:_('Table','Temporal'),False:_('Table','Sanctoral')}
         if self.inverse:
             first_item = _("Table",'Name')
             second_item = _("Table",'Date')
@@ -1182,6 +1213,7 @@ class ItemsCreator(SuperTranslator):
     def __init__(self,parent):
         SuperTranslator.__init__(self)
         self.parent = parent
+        self.lang = parent.lang
         self.mainWindow = parent.parent
         self.retranslateUI()
         
@@ -1206,9 +1238,9 @@ class ItemsCreator(SuperTranslator):
         
     def presentData(self,data):
         """Presents the data as they will be printed on the screen"""
-        # TODO si erreur, que faire ?
-        name = data.nom['fr']
+        name = data.nom[self.lang]
         date = str(data.date)
+        date = self.localizedDate(day=data.date)
         if data.celebree:
             status = _('ItemsCreator','Celebrated')
         elif data.commemoraison and data.peut_etre_celebree:
@@ -1220,14 +1252,14 @@ class ItemsCreator(SuperTranslator):
         elif data.peut_etre_celebree:
             status = _("ItemsCreator","Can be celebrated")
         if data.transferee:
-            status += _("ItemsCreator"," & transferred from {}".format(data.date_originelle))
+            status += _("ItemsCreator"," & transferred from {}".format(self.localizedDate(data.date_originelle)))
         degree = self.classes[data.degre]
-        colour = data.couleur.capitalize()
+        colour = data.couleur.capitalize() # english ???
         temporsanct = self.tempOrSanct[data.temporal]
-        time = first_upper(officia.affiche_temps_liturgique(data,'fr'))
+        time = first_upper(officia.affiche_temps_liturgique(data,self.lang))
         proper = self.mainWindow.propersDict[data.propre]
-        station = data.__dict__.get('station',{"fr":''})['fr']
-        addendum = data.addendum['fr']
+        station = data.__dict__.get('station',{self.lang:''})[self.lang]
+        addendum = data.addendum[self.lang]
         return name, date, (status, degree, colour, temporsanct, time, proper, station, addendum)
         
     def retranslateUI(self):

@@ -27,15 +27,23 @@ class ReTranslateBox():
         
 class SuperTranslator():
     """A class which should be inherited by every custom widget class to make an easy translation on the fly."""
-    
+    frLocale = QC.QLocale(QC.QLocale.French)
+    enLocale = QC.QLocale(QC.QLocale.English)
+
     def __init__(self):
         """This method only defines a ReTranslateBox object which is called 'W'. This attribute can only store widgets with a 'retranslateUI' method, i.e. from objects which inherit of this class"""
         self.W = ReTranslateBox()
         self.setUtilities()
 
+
     def setUtilities(self):
         """Set translated strings that can be used in many places.
         """
+        if getattr(self,'parent',False) and getattr(self.parent,"lang",False):
+            self.lang = self.parent.lang
+            self.setLocale( self.parent.locale())
+        elif getattr(self,"locale",False):
+            self.lang = self.locale().bcp47Name()# doesn't work if class inherited is not a QWidget
         self.ordinary_numbers_translated0 = (
 	    _('SuperTranslator','First'),
 	    _('SuperTranslator','Second'),
@@ -94,12 +102,11 @@ class SuperTranslator():
                 - month: 1..12
                 - year: 1600..4100
         """
-        lang = self.locale().bcp47Name() # doesn't work if class inherited is not a QWidget
         if "day" in kwargs:
             day = kwargs['day']
             weekday = self.weekdays_translated0[day.weekday()]
             month = self.months_translated1[day.month]
-            if lang == "fr":
+            if self.lang == "fr":
                 day_nb = day.day if day.day > 1 else "1er"
                 return "{} {} {} {}".format(
                         weekday, day_nb, month, day.year)
@@ -118,7 +125,6 @@ class SuperTranslator():
                     kwargs['year'])
         else:
             raise KeyError("No key match with requested arguments")
-
 
 
 

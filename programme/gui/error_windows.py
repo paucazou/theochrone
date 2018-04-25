@@ -19,8 +19,8 @@ class ErrorWindow(QMessageBox,SuperTranslator):
     """Window for errors"""
 
     def __init__(self,message,title=_("ErrorWindow","Error"),icon=QMessageBox.Warning):
-        SuperTranslator.__init__(self)
         QMessageBox.__init__(self)
+        SuperTranslator.__init__(self)
         self.message = message
         self.title = title
         self.Icon = icon

@@ -110,10 +110,9 @@ class State:
         """Set next or previous day."""
         base_date = QC.QDate(self.start)
         new_date = base_date.addDays(val)
-        print(self.start)
 
         self.parent.W.onglets.W.tab1.cal.setSelectedDate(new_date)
-        self.parent.useDate(new_date)
+        self.reload()
 
     def _week(self,val: int):
         """Set next or previous week"""
@@ -156,23 +155,31 @@ class State:
         if possible"""
         self._shift(-1)
 
+    def resetOptions(self):
+        """Reset options, in the case
+        they were changed"""
+        ## proper
+        if "proper" in self.__dict__:
+            self.parent.W.mainToolbar.selectProper.setCurrentText(self.parent.propersDict[self.proper])
+        ## pal
+        if "pal" in self.__dict__:
+            self.parent.pal.setChecked(self.pal)
+        ## martyrology
+        isMartyrology = self.type == "martyrology"
+        self.parent.martyrology_box.setChecked(isMartyrology)
+
     def reload(self):
         """Reloads the central Widget"""
         # reset options if they were changed
-        ## proper
-        if getattr(self,"proper",False):
-            self.parent.W.mainToolbar.selectProper.setCurrentText(self.parent.propersDict[self.proper])
-        ## pal
-        if getattr(self,"pal",False):
-            self.parent.pal.setChecked(True)
-        ## martyrology
-        if self.type == "martyrology":
-            self.parent.martyrology_box.setChecked(True)
+        self.resetOptions()
+        # TODO delete central widget ? Some problem occurs with garbage collector: a retranslateUI is requested for a child whose parent has already been deleted, and the child canno't get the lang, as the parent does no more exist.
+
         options = {
                 "week"      : self.parent.useWeek,
                 "month"     : self.parent.useMonth,
                 "year"      : self.parent.useYear,
                 "arbitrary" : self.parent.useArbitrary,
+                "day"       : self.parent.useDate,
                 } 
 
         options.get(self.span,lambda :None)()

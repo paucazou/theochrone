@@ -51,7 +51,7 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         rate determines the minimum matching rate.
         return the text and the title to set
         return the state of the main window"""
-        lang = self.locale().bcp47Name()
+        lang = self.parent.lang
         rate = rate/100
         results = self.martyrology.kw(kw,lang,max_nb_returned=max_result,min_ratio=rate,year=year)
         title = " ".join(kw)
@@ -69,7 +69,7 @@ class DisplayMartyrology(QW.QTextEdit,translation.SuperTranslator):
         """Function that set the text with a date research.
         return the text and the title to set.
         span: look to docstring of __call__ method."""
-        lang = self.locale().bcp47Name()
+        lang = self.parent.lang
         if end is None:
             title = self._title + self.localizedDate(day=start)
             end = start
