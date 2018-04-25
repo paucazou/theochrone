@@ -47,8 +47,13 @@ def main():
                 officia.pdata(max_history=args.settings)
                 args.settings = "History maximum lines number : {}".format(args.settings)
             except ValueError:
-                officia.pdata(langue=args.langue)
-                args.settings = "Default language : {}".format(args.langue)
+                args.settings = ''
+                if '--language' in sys.argv or '-l' in sys.argv:
+                    officia.pdata(langue=args.langue)
+                    args.settings += "Default language : {}\n".format(args.langue)
+                if "--proper" in sys.argv or '-p' in sys.argv or '--rite' in sys.argv:
+                    officia.pdata(proper=args.propre)
+                    args.settings += "Default proper: {}\n".format(args.propre)
             
         sys.exit("Settings saved : {}".format(args.settings))
             

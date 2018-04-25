@@ -393,6 +393,19 @@ def affiche_temps_liturgique(elt,lang='fr'): #TEST
 
     return seasons[lang][elt.temps_liturgique()]
 
+def liturgical_colour(elt,lang='en'):
+    """Return the liturgical colour"""
+    if lang == "fr":
+        return elt.couleur
+    colors = {'en': {
+        'blanc':'white',
+        'noir':'black',
+        'rouge':'red',
+        'vert':'green',
+        'violet':'purple',
+        }}
+    return colors[lang][elt.couleur]
+
 def affiche_jour(date,langue): #TEST
     """Une fonction pour afficher le jour"""
     if langue =='fr':
@@ -719,6 +732,17 @@ def pdata(read=True,write=False,**kwargs):
         try:
             with open(config_folder + '/LANG') as lang:
                 return lang.read()
+        except FileNotFoundError:
+            return False
+
+    if kwargs.get('proper',False):
+        with open(config_folder + '/PROPER','w') as proper:
+            proper.write(kwargs['proper'])
+
+    if kwargs.get('proper_saved',False):
+        try:
+            with open(config_folder + '/PROPER') as proper:
+                return proper.read()
         except FileNotFoundError:
             return False
             

@@ -240,6 +240,16 @@ def default_language():
         lang = 'en'
     return lang
 
+def default_proper():
+    """Return the proper selected by the user.
+    If no proper was selected, return the roman proper"""
+    file = os.path.expanduser('~/.theochrone/config/PROPER')
+    try:
+        with open(file) as f:
+            return f.read()
+    except FileNotFoundError:
+        return 'roman'
+
 class CoursDeLangue(argparse.Action):
     """A class to set language name entered by user"""
     def __call__(self,parser,namespace,value,option_string=None):
@@ -344,7 +354,7 @@ def args():
         - Latin"""), default=default_language())
 
     selection = parser.add_argument_group(_('Selection options'),description=_("Options to focus researches"))
-    selection.add_argument('-p','--proper','--rite', dest='propre', help=_('select which proper or rite you want to use'),action='store',default='roman',choices=arguments['propre']['options'])
+    selection.add_argument('-p','--proper','--rite', dest='propre', help=_('select which proper or rite you want to use'),action='store',default=default_proper(),choices=arguments['propre']['options'])
     selection.add_argument('-o','--ordo', dest='ordo', help=_('select which ordo you want to use'), type=int, action='store',default=1962,choices=[1962])
     selection.add_argument('-m','--more',dest='plus', help=_('used with -r/--reverse, print a more complete list of feasts matching with arguments entered'), action='store_true')
     
@@ -392,6 +402,7 @@ def args():
         OFF also deletes all your personal settings and history, if previously set.
         - An integer : set the maximum lines of your history.
         - --language : save the default language you want to use.
+        - --proper : save the default proper you want to use.
         Settings and history can be found in '.theochrone', which is in your personal directory."""))
 
     return parser.parse_args()
