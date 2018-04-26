@@ -283,6 +283,8 @@ class Main(QMainWindow,SuperTranslator):
         self.lang = self.locale().bcp47Name()
         self.parent.translator.load(loc,"theochrone",'.',chemin + '/i18n/','.qm') 
         #TODO reload translation of core app
+        central_widget = self.centralWidget()
+        del(central_widget) # it's useful to avoid the call to retranslateUI to the central widget, which causes a crash sometimes. But is it useful ?
         self.retranslateUI()
         self.state.reload()
     
@@ -347,6 +349,7 @@ class Main(QMainWindow,SuperTranslator):
             officia.pdata(write=True,history='dates',debut=debut,fin=fin)
         
     def useKeyWord(self):
+
         keyword = self.W.onglets.W.tab1.keyword.text()
         annee = self.W.onglets.W.tab1.spinbox.value()
         if keyword == '':
@@ -358,6 +361,8 @@ class Main(QMainWindow,SuperTranslator):
             rate = self.W.onglets.W.tab1.rate_result.value()
             self.W.martyrology(annee,kw=keyword,max_result=max_result,rate=rate)
         else:
+            if self.lang == 'en': ## TODO TODO
+                return error_windows.ErrorWindow("Keyword research is not yet available in english.\n Can you give us some help?")
             self.setWindowTitle('Theochrone - ' + keyword)
             debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
             lcalendar = self.getCalendarLoaded(debut.year)
