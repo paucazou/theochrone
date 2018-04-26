@@ -134,7 +134,8 @@ class State:
     def _shift(self,val: int):
         """Called by next of previous. Set the next if
         val is positive, previous if val is negative."""
-        self.tabPlus = self.parent.W.onglets.W.tabPlus 
+        if self.type == "kw" or self.type == 'martyrology' and self.kw:
+            return
         options = {
                 "year"      : self._year,
                 "month"     : self._month,
@@ -173,6 +174,8 @@ class State:
         # reset options if they were changed
         self.resetOptions()
         # TODO delete central widget ? Some problem occurs with garbage collector: a retranslateUI is requested for a child whose parent has already been deleted, and the child canno't get the lang, as the parent does no more exist.
+        if self.type == 'kw' or self.type == "martyrology" and self.kw:
+            return
 
         options = {
                 "week"      : self.parent.useWeek,
