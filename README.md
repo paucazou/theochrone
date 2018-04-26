@@ -37,6 +37,7 @@ python pip -e requirements.txt # in many OSes, you should enter python3 instead 
 python pip -e dev_requirement.txt # only if you want to contribute to the project
 python -c "import dataswitcher; dataswitcher.main(propers='all',ordo='1962')"
 lrelease programme/gui/i18n/theochrone.fr.ts # if you want to use the GUI with french translation
+lrelease programme/gui/i18n/theochrone.en.ts # if you want to use the GUI with english translation
 ```
 > Note that the version you download from Github may be broken. Feel free to contribute to fix the issue !
 
