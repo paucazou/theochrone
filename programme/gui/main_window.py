@@ -71,7 +71,6 @@ class Main(QMainWindow,SuperTranslator):
         self.ferryman = ExportResults(self)
         self.actions()
         self.initUI()
-        self.processCommandLineArgs(args)
         
         self.W.onglets.W.tab1.cal.clicked.connect(self.useDate)
         self.W.onglets.W.tab1.kw_bouton.clicked.connect(self.useKeyWord)
@@ -90,7 +89,8 @@ class Main(QMainWindow,SuperTranslator):
         self.W.onglets.W.tabPlus.bt_arbitrary.clicked.connect(self.useArbitrary)
         self.W.onglets.W.tabPlus.to.editingFinished.connect(self.useArbitrary)
         self.W.onglets.W.tabPlus.frome.editingFinished.connect(self.useArbitrary)
-        # DEBUG
+
+        self.processCommandLineArgs(args)
         
     def processCommandLineArgs(self,args): 
         # TODO if we got enough time, try to detect week, month and year and use matching boxes
@@ -281,7 +281,7 @@ class Main(QMainWindow,SuperTranslator):
         """Select another language for the app."""
         self.setLocale(loc)
         self.lang = self.locale().bcp47Name()
-        self.parent.translator.load(QLocale(),"gui",'.','./i18n','.qm') 
+        self.parent.translator.load(loc,"theochrone",'.',chemin + '/i18n/','.qm') 
         #TODO reload translation of core app
         self.retranslateUI()
         self.state.reload()
@@ -533,6 +533,7 @@ class ToolBar(QToolBar,SuperTranslator):
         self.pal.setText(_('Toolbar','Include Pro Aliquibus Locis'))
         self.martyrology_box.setText(_('ToolBar','Search in Roman Martyrology'))
         # propers
+        self.selectProper.clear()
         for proper in self.parent.propers:
             self.selectProper.addItem(proper[1])
         

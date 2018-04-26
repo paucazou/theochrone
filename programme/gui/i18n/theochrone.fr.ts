@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<!DOCTYPE TS><TS version="2.0" language="fr_FR" sourcelanguage="">
 <context>
     <name>DisplayMartyrology</name>
     <message>
@@ -20,37 +19,37 @@
 <context>
     <name>ExportResults</name>
     <message>
-        <location filename="../main_window.py" line="832"/>
+        <location filename="../main_window.py" line="833"/>
         <source>Print results</source>
         <translation>Imprimer les résultats</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="833"/>
+        <location filename="../main_window.py" line="834"/>
         <source>Export as PDF</source>
         <translation>Exporter au format PDF</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="834"/>
+        <location filename="../main_window.py" line="835"/>
         <source>Documents PDF (*.pdf)</source>
         <translation>Documents PDF (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="835"/>
+        <location filename="../main_window.py" line="836"/>
         <source>Export as spreadsheet</source>
         <translation>Exporter comme feuille de calcul</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="836"/>
+        <location filename="../main_window.py" line="837"/>
         <source>Documents Excel (*.xls)</source>
         <translation>Documents Excel (*.xls)</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="837"/>
+        <location filename="../main_window.py" line="838"/>
         <source>Export as ICS file</source>
         <translation>Exporter au format ICS</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="838"/>
+        <location filename="../main_window.py" line="839"/>
         <source>Documents ICS (*.ics)</source>
         <translation>Documents ICS (*.ics)</translation>
     </message>
@@ -58,67 +57,67 @@
 <context>
     <name>ItemsCreator</name>
     <message>
-        <location filename="../main_window.py" line="1245"/>
+        <location filename="../main_window.py" line="1246"/>
         <source>Celebrated</source>
         <translation>Célébrée</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1247"/>
+        <location filename="../main_window.py" line="1248"/>
         <source>Can be celebrated or commemorated</source>
         <translation>Peut être célébrée ou commémorée</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1249"/>
+        <location filename="../main_window.py" line="1250"/>
         <source>Commemorated</source>
         <translation>Commémorée</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1251"/>
+        <location filename="../main_window.py" line="1252"/>
         <source>Omitted</source>
         <translation>Omise</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1253"/>
+        <location filename="../main_window.py" line="1254"/>
         <source>Can be celebrated</source>
         <translation>Peut être célébrée</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1266"/>
+        <location filename="../main_window.py" line="1267"/>
         <source>Temporal</source>
         <translation>Temporal</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1266"/>
+        <location filename="../main_window.py" line="1267"/>
         <source>Sanctoral</source>
         <translation>Sanctoral</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1267"/>
+        <location filename="../main_window.py" line="1268"/>
         <source>First Class</source>
         <translation>Première classe</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1268"/>
+        <location filename="../main_window.py" line="1269"/>
         <source>Second Class</source>
         <translation>Deuxième classe</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1269"/>
+        <location filename="../main_window.py" line="1270"/>
         <source>Third Class</source>
         <translation>Troisième classe</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1270"/>
+        <location filename="../main_window.py" line="1271"/>
         <source>Fourth Class</source>
         <translation>Quatrième classe</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1271"/>
+        <location filename="../main_window.py" line="1272"/>
         <source>Commemoration</source>
         <translation>Commémoraison</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1272"/>
+        <location filename="../main_window.py" line="1273"/>
         <source>Mass Pro Aliquibus Locis</source>
         <translation>Messe Pro Aliquibus Locis</translation>
     </message>
@@ -199,37 +198,37 @@
 <context>
     <name>Multiple</name>
     <message>
-        <location filename="../main_window.py" line="1040"/>
+        <location filename="../main_window.py" line="1041"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1044"/>
+        <location filename="../main_window.py" line="1045"/>
         <source>Search for a whole week</source>
         <translation>Rechercher une semaine tout entière</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1048"/>
+        <location filename="../main_window.py" line="1049"/>
         <source>Search for a whole month</source>
         <translation>Rechercher un mois tout entier</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1052"/>
+        <location filename="../main_window.py" line="1053"/>
         <source>Search for a whole year</source>
         <translation>Rechercher une année tout entière</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1054"/>
+        <location filename="../main_window.py" line="1055"/>
         <source>Search for arbitrary dates</source>
         <translation>Rechercher une durée libre</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1055"/>
+        <location filename="../main_window.py" line="1056"/>
         <source>Select the earlier date : </source>
         <translation>Choisir la date de début :</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1056"/>
+        <location filename="../main_window.py" line="1057"/>
         <source>Select the later date : </source>
         <translation>Choisir la date de fin :</translation>
     </message>
@@ -237,7 +236,7 @@
 <context>
     <name>Onglets</name>
     <message>
-        <location filename="../main_window.py" line="868"/>
+        <location filename="../main_window.py" line="869"/>
         <source>Research Widget</source>
         <translation>Espace de recherche</translation>
     </message>
@@ -431,62 +430,62 @@
 <context>
     <name>Table</name>
     <message>
-        <location filename="../main_window.py" line="1197"/>
+        <location filename="../main_window.py" line="1198"/>
         <source>Temporal</source>
         <translation>Temporal</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1197"/>
+        <location filename="../main_window.py" line="1198"/>
         <source>Sanctoral</source>
         <translation>Sanctoral</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1203"/>
+        <location filename="../main_window.py" line="1204"/>
         <source>Name</source>
         <translation>Nom</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1202"/>
+        <location filename="../main_window.py" line="1203"/>
         <source>Date</source>
         <translation>Date</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1204"/>
+        <location filename="../main_window.py" line="1205"/>
         <source>Status</source>
         <translation>Statut</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1204"/>
+        <location filename="../main_window.py" line="1205"/>
         <source>Class</source>
         <translation>Classe</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1204"/>
+        <location filename="../main_window.py" line="1205"/>
         <source>Colour</source>
         <translation>Couleur</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1204"/>
+        <location filename="../main_window.py" line="1205"/>
         <source>Temporal/Sanctoral</source>
         <translation>Temporal/Sanctoral</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1204"/>
+        <location filename="../main_window.py" line="1205"/>
         <source>Time</source>
         <translation>Temps liturgique</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1204"/>
+        <location filename="../main_window.py" line="1205"/>
         <source>Proper</source>
         <translation>Propre</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1204"/>
+        <location filename="../main_window.py" line="1205"/>
         <source>Station</source>
         <translation>Station</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1204"/>
+        <location filename="../main_window.py" line="1205"/>
         <source>Addendum</source>
         <translation>Addendum</translation>
     </message>
@@ -570,52 +569,52 @@
 <context>
     <name>Tree</name>
     <message>
-        <location filename="../main_window.py" line="1140"/>
+        <location filename="../main_window.py" line="1141"/>
         <source>week</source>
         <translation>semaine</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1145"/>
+        <location filename="../main_window.py" line="1146"/>
         <source>Date/Name</source>
         <translation>Date/Nom</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1145"/>
+        <location filename="../main_window.py" line="1146"/>
         <source>Status</source>
         <translation>Statut</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1145"/>
+        <location filename="../main_window.py" line="1146"/>
         <source>Class</source>
         <translation>Classe</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1145"/>
+        <location filename="../main_window.py" line="1146"/>
         <source>Colour</source>
         <translation>Couleur</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1145"/>
+        <location filename="../main_window.py" line="1146"/>
         <source>Temporal/Sanctoral</source>
         <translation>Temporal/Sanctoral</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1145"/>
+        <location filename="../main_window.py" line="1146"/>
         <source>Time</source>
         <translation>Temps liturgique</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1145"/>
+        <location filename="../main_window.py" line="1146"/>
         <source>Proper</source>
         <translation>Propre</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1145"/>
+        <location filename="../main_window.py" line="1146"/>
         <source>Station</source>
         <translation>Station</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="1145"/>
+        <location filename="../main_window.py" line="1146"/>
         <source>Addendum</source>
         <translation>Addendum</translation>
     </message>
@@ -623,37 +622,37 @@
 <context>
     <name>Unique</name>
     <message>
-        <location filename="../main_window.py" line="948"/>
+        <location filename="../main_window.py" line="949"/>
         <source>Search for an only day</source>
         <translation>Rechercher une date seule</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="949"/>
+        <location filename="../main_window.py" line="950"/>
         <source>Search by keywords</source>
         <translation>Recherche par mots-clefs</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="950"/>
+        <location filename="../main_window.py" line="951"/>
         <source>Minimum rate: </source>
         <translation>Pourcentage d&apos;erreur minimal :</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="951"/>
+        <location filename="../main_window.py" line="952"/>
         <source>Maximum results: </source>
         <translation>Nombre maximum de résultats :</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="952"/>
+        <location filename="../main_window.py" line="953"/>
         <source>Enter keywords here</source>
         <translation>Entrez vos mots-clefs ici</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="953"/>
+        <location filename="../main_window.py" line="954"/>
         <source>More results</source>
         <translation>Plus de résultats</translation>
     </message>
     <message>
-        <location filename="../main_window.py" line="954"/>
+        <location filename="../main_window.py" line="955"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
