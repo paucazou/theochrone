@@ -134,6 +134,7 @@ class State:
     def _shift(self,val: int):
         """Called by next of previous. Set the next if
         val is positive, previous if val is negative."""
+        self.tabPlus = self.parent.W.onglets.W.tabPlus # useful for functions called after
         if self.type == "kw" or self.type == 'martyrology' and self.kw:
             return
         options = {

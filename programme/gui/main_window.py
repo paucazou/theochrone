@@ -283,8 +283,7 @@ class Main(QMainWindow,SuperTranslator):
         self.lang = self.locale().bcp47Name()
         self.parent.translator.load(loc,"theochrone",'.',chemin + '/i18n/','.qm') 
         #TODO reload translation of core app
-        central_widget = self.centralWidget()
-        del(central_widget) # it's useful to avoid the call to retranslateUI to the central widget, which causes a crash sometimes. But is it useful ?
+        central_widget = self.centralWidget() # keeps a reference to the object until the end of function. Avoid RuntimeError: wrapped C/C++ object of type Table has been deleted
         self.retranslateUI()
         self.state.reload()
     
