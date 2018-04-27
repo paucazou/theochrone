@@ -78,7 +78,7 @@ class SuperTranslator():
 	    _('SuperTranslator','December'))
         self.months_translated1 = ('',) + self.months_translated0
 
-        self.week_sentence = _("SuperTranslator","{} week of {} {}")#format(number,month,year)
+        self.week_sentence = _("SuperTranslator","{} {}: week {}")#format(month,year,number)
 
         
     def retranslateUI(self):
@@ -116,9 +116,9 @@ class SuperTranslator():
 
         elif "week" in kwargs:
             return self.week_sentence.format(
-                    self.ordinary_numbers_translated1[kwargs['week']],
                     self.months_translated1[kwargs['month']],
-                    kwargs['year'])
+                    kwargs['year'],
+                    kwargs['week'])
         elif 'month' in kwargs:
             return "{} {}".format(
                     self.months_translated1[kwargs['month']],

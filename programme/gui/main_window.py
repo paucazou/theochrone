@@ -360,7 +360,7 @@ class Main(QMainWindow,SuperTranslator):
             rate = self.W.onglets.W.tab1.rate_result.value()
             self.W.martyrology(annee,kw=keyword,max_result=max_result,rate=rate)
         else:
-            if self.lang == 'en': ## TODO TODO
+            if False and self.lang == 'en': ## TODO TODO
                 return error_windows.ErrorWindow("Keyword research is not yet available in english.\n Can you give us some help?")
             self.setWindowTitle('Theochrone - ' + keyword)
             debut, fin = datetime.date(annee,1,1), datetime.date(annee, 12,31)
@@ -1041,18 +1041,37 @@ class Multiple(QWidget,SuperTranslator):
     def retranslateUI(self):
         SuperTranslator.retranslateUI(self)
 
+        self._week_word = _("Multiple","week")
+        self._ordinary_numbers = (
+                _("Multiple","First"),
+                _("Multiple","Second"),
+                _("Multiple","Third"),
+                _("Multiple","Fourth"),
+                _("Multiple","Fifth"),
+                _("Multiple","Sixth")) # useful for gender
+
         # set ok buttons text
         OK = _("Multiple","OK")
         for button in (self.bt_week,self.bt_month,self.bt_year,self.bt_arbitrary):
             button.setText(OK)
         
+        # months of week widget
         self.gb_week.setTitle(_("Multiple","Search for a whole week"))
-        for month in self.months_translated0:
+        month_id = self.monthweek_combo.currentIndex()
+        self.monthweek_combo.clear()
+        for month in self.months_translated0: 
             self.monthweek_combo.addItem(month)
+        if month_id > 0:
+            self.monthweek_combo.setCurrentIndex(month_id)
+
         
         self.gb_month.setTitle(_("Multiple","Search for a whole month"))
+        month_id = self.month_combo.currentIndex()
+        self.month_combo.clear()
         for month in self.months_translated0:
             self.month_combo.addItem(month) # set current in main initUI
+        if month_id > 0:
+            self.month_combo.setCurrentIndex(month_id)
         
         self.gb_year.setTitle(_("Multiple","Search for a whole year"))
         
@@ -1070,12 +1089,15 @@ class Multiple(QWidget,SuperTranslator):
                 
     def change_weeks(self):
         """This method changes the week combo and set it to current week if possible"""
+        if self.monthweek_combo.count() == 0:
+            return
         self.week_combo.clear()
         month_requested = self.monthweek_combo.currentIndex() + 1
         year_requested = self.wy_spinbox.value()
         month = calendrier.monthdayscalendar(year_requested,month_requested)
-        for i, name in zip(month, self.ordinary_numbers_translated0):
-            self.week_combo.addItem("{} week".format(name))
+        for i, name in zip(month, self._ordinary_numbers):
+            self.week_combo.addItem("{} {}".format(name,self._week_word)) 
+
         if year_requested == current.year() and month_requested == current.month():
             for i, week in enumerate(month):
                 if current.day() in week:
@@ -1257,7 +1279,7 @@ class ItemsCreator(SuperTranslator):
         elif data.peut_etre_celebree:
             status = _("ItemsCreator","Can be celebrated")
         if data.transferee:
-            status += _("ItemsCreator"," & transferred from {}".format(self.localizedDate(data.date_originelle)))
+            status += _("ItemsCreator"," & transferred from {}").format(self.localizedDate(day=data.date_originelle))
         degree = self.classes[data.degre]
         colour = officia.liturgical_colour(data,self.lang).capitalize() # english ???
         temporsanct = self.tempOrSanct[data.temporal]
