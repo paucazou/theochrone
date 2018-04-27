@@ -136,7 +136,10 @@ def erreur(code,langue='en',exit=True):
         else:
             return "Erreur n° {} : {}".format(code,message)
     else:
-        sys.exit("Error {} : {} Please type --help for more information.".format(code,message))
+        if exit:
+            sys.exit("Error {} : {} Please type --help for more information.".format(code,message))
+        else:
+            return "Error n° {}: {}".format(code,message)
 
 
 def datevalable(entree,langue='fr',semaine_seule=False,mois_seul=False,annee_seule=False,exit=True):
@@ -304,7 +307,7 @@ def datevalable(entree,langue='fr',semaine_seule=False,mois_seul=False,annee_seu
         else: # erreur
             erreur(12,langue,exit)
     else: # en
-        date = datetime.date.today() # TODO
+        date = datetime.date.today() 
         semaine_seule = mois_seul = annee_seule = False
 
     return date, semaine_seule, mois_seul, annee_seule
@@ -636,6 +639,10 @@ def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='fr',exit=True):
     - langue : language used ;
     - exit : a bool to define whether the system have to exit or not in case of error ;
     """
+    if langue != 'fr':
+        print(exit)
+        return [erreur('01',langue,exit=exit)]
+
     if isinstance(mots_bruts,list):
         mots_bruts = [sans_accent(mot) for mot in mots_bruts]
     else:
