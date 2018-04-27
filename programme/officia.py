@@ -405,7 +405,7 @@ def liturgical_colour(elt,lang='en'):
         'noir':'black',
         'rouge':'red',
         'vert':'green',
-        'violet':'purple',
+        'violet':'violet',
         }}
     return colors[lang][elt.couleur]
 
