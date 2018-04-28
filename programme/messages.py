@@ -25,6 +25,7 @@ class MessagesTranslator: # TEST
                 'fr':['','dimanche','lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
                 }
 
+
     def __init__(self,langs, lang: str): # TEST
         """langs is a dict with str as keys matching with a gettext.translation"""
         self.current_lang = lang
@@ -52,7 +53,7 @@ class MessagesTranslator: # TEST
         self.setLang(lang)
         return _(getattr(self,message))
 
-    def markToTranslate(self,value: str,attribute: str) -> str: # TEST
+    def markToTranslate(self,attribute: str,value: str) -> str: # TEST
         """Mark a string literal to be translated
         and save it into the object under the attribute name
         `example = MessagesTranslator(langs,lang)
@@ -101,8 +102,16 @@ def translated_messages(file_name,language=args.langue):
     dateparse_msg.markToTranslate('yesterday','yesterday')
     dateparse_msg.markToTranslate('week','week')
 
+    io = MessagesTranslator(langs=languages,lang=language)
+    io.markToTranslate('colon',': ')
+    io.markToTranslate('color','Liturgical color: {}. ')
+    io.markToTranslate('dot','. ')
+    io.markToTranslate('proper','Proper: {}. ')
+    io.markToTranslate('status','Status: {}. ')
+    io.markToTranslate('station','Station: {}. ')
+
     messages['dateparse'] = dateparse_msg
-    messages['weekday_names'] = weekday_names
+    messages['io'] = io
     
     return messages[file_name]
 
