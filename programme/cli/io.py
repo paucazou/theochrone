@@ -25,7 +25,6 @@ def feast_results(args: argparse.Namespace,feast: adjutoria.Fete) -> str:
     if verbose:
         sentence += fw.fulldate + msg.colon
     elif args.date_affichee or args.INVERSE:
-        print(args.INVERSE)
         sentence += fw.digitdate
         if args.jour_semaine:
             sentence += " ({})".format(fw.weekday)
