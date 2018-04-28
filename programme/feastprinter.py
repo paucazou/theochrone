@@ -62,7 +62,7 @@ class FeastWrapper:
         for requested lang. If weekday is set, return the weekday too"""
         months = ('',_('January'),_('February'),_('March'),
                 _('April'),_('May'),_('June'),_('July'),
-                _('August'),_('September'),_('November'),_('December'))
+                _('August'),_('September'),_('October'),_('November'),_('December'))
         weekday_string = {'en':"{}, ",
                 'fr':"{} "}
         actual_weekday = weekday_string[lang].format(cls.weekdays_translated[date.weekday()]) if weekday else ''
@@ -75,7 +75,7 @@ class FeastWrapper:
         else: # en
             return "{}{} {}, {}".format(
                 actual_weekday,
-                date.month,date.day,date.year)
+                month,date.day,date.year)
 
     ## getters
 
