@@ -249,6 +249,7 @@ def main():
             #print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,Annee=Annee,langue=args.langue,date=debut,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal,print_proper=args.print_proper))
             print(io.select_results(args,liste),end='')
     else:
+        args.INVERSE = False
         if args.textes and debut == fin:
             for fete in Annee[debut]:
                 webbrowser.open_new_tab(fete.link)
