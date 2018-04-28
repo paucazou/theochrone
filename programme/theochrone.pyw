@@ -21,6 +21,7 @@ autocomplete.autocomplete()
 
 import annus
 import calendar
+import cli.io as io
 import datetime
 import martyrology
 import officia
@@ -245,17 +246,20 @@ def main():
                 for fete in liste:
                     webbrowser.open_new_tab(fete.link)
                     
-            print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,Annee=Annee,langue=args.langue,date=debut,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal,print_proper=args.print_proper))
+            #print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,Annee=Annee,langue=args.langue,date=debut,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal,print_proper=args.print_proper))
+            print(io.select_results(args,liste),end='')
     else:
         if args.textes and debut == fin:
             for fete in Annee[debut]:
                 webbrowser.open_new_tab(fete.link)
         date = debut
         while True:
-            print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=False,                   liste=Annee[date],Annee=Annee,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal,print_proper=args.print_proper))
+            #print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=False,                   liste=Annee[date],Annee=Annee,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal,print_proper=args.print_proper))
             if args.martyrology:
                 first_line,text,last_line, matching_line = roman_martyrology.daytext(date,args.langue)
                 print('\n',roman_martyrology.name[args.langue],*text,last_line,sep='\n')
+            else:
+                print(io.select_results(args,Annee[date]),end='')
             date = date + datetime.timedelta(1)
             if date <= fin:
                 print('')
