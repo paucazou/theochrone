@@ -90,6 +90,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'long' : ['--language'],
             'options': ['fr','en','la'],
             },
+        'status':{
+                'short':['-A'],
+                'long':['--status'],
+                },
         
         # Selection options
         'propre': {
@@ -340,6 +344,7 @@ def args():
     affichage.add_argument('-L','--liturgical-time', dest='temps_liturgique',help=_('print to which liturgical time the feast belongs to'),action='store_true')
     affichage.add_argument('-D','--print-date',dest='date_affichee',help=_('print date'),action='store_true')
     affichage.add_argument(*arguments['print_proper']['short'],*arguments['print_proper']['long'],dest='print_proper',help=_("""Prints the name of the proper of the feasts on screen"""),action="store_true")
+    affichage.add_argument(*arguments['status']['short'],*arguments['status']['long'],dest='status',action="store_true",help=_("""Prints the status of the feasts"""))
     affichage.add_argument(*arguments['pal']['short'],*arguments['pal']['long'],dest="pal",help=_("""Include Pro Aliquibus Locis masses in results."""),action="store_true")
     affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected.
         Opens the introibo.fr page in a webbrowser.
