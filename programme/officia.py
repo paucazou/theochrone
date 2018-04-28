@@ -431,7 +431,7 @@ def upper_first(string):
     without lowering the others"""
     return string[0].upper() + string[1:]
 
-def affichage(**kwargs):
+def affichage(**kwargs): # DEPRECATED
     """Une fonction destinée à l'affichage des résultats."""
     if kwargs['verbose'] and not kwargs['recherche']:
         sortie = upper_first(affiche_jour(kwargs['date'],kwargs['langue'])) + ' :'
