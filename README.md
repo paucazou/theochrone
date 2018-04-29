@@ -90,7 +90,7 @@ Latest version is 0.5.0
 ## New features available in v0.5.0
 - [x] widget available in english.
   - [x] Rework ferial days names in english
-- [ ] CLI available in english.
+- [x] CLI available in english: only for the current day on CLI. Keyword research is not available.
   - [x] rework translation full system
 - [x] local propers :
   - [x] France;
@@ -120,7 +120,7 @@ Latest version is 0.5.0
     - [x] CLI;
     - [ ] website;
     - [x] GUI;
-- [ ] a new convenient help app
+- [ ] ~~a new convenient help app~~
 - [ ] varia:
   - [x] add the rose colour into details of the third week of advent (optional liturgical colour)
   - [x] add proper in user preferences
