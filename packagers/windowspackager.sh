@@ -1,6 +1,5 @@
 #!/bin/zsh
 print You must first specify this : '# -*-coding:Latin-1 -* for Windows !!!!'
-exit 1
 # This script creates a windows installer with the help of pynsist
 # and installer.cfg
 if [[ $PWD != *packagers ]] ; then print Please go to packagers dir ; exit 1 ; fi
@@ -19,6 +18,7 @@ fcm.delete_if_exist tmp
 fcm.copy_and_cd
 cfg=installer.cfg
 cp ../$cfg ./
+cp -r ../../../levenshtein_windows/ ./ # for levenshtein wheels
 
 # set bitness
 preset_bitness='bitness=64'
@@ -40,7 +40,7 @@ pynsist $cfg
 
 cd build/nsis/
 output_file=`ls *.exe`
-popd
+cd ../../
 mv build/nsis/$output_file ../outputs/
 print $output_file moved in outputs
 cd ../outputs/
