@@ -122,6 +122,8 @@ def translated_messages(file_name,language=args.langue):
         io.markToTranslate('Station: {}. ','station')
     elif file_name == "feastprinter":
         f=feastprinter
+        #TODO it is possible to enter lists or dicts by doing that:
+        # list = (_(elt),_(elt),) or {k:_(v),k:_(v)}. should work. less verbose...
         #weekdays
         feastprinter.markToTranslate('Monday','monday')
         feastprinter.markToTranslate('Tuesday','tuesday')
@@ -162,12 +164,14 @@ def translated_messages(file_name,language=args.langue):
         feastprinter.markToTranslate('black','black')
         feastprinter.markToTranslate('violet','violet')
         feastprinter.markToTranslate('red','red')
+        feastprinter.markToTranslate('rose','rose')
         feastprinter.colors={
                 'blanc':f.white,
                 'vert':f.green,
                 'noir':f.black,
                 'violet':f.violet,
-                'rouge':f.red}
+                'rouge':f.red,
+                'rose':f.rose}
         # pal
         feastprinter.markToTranslate('Mass Pro Aliquibus Locis','pal')
         # propers
