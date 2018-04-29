@@ -5,10 +5,8 @@
 of a Fete object"""
 
 import datetime
-import gettext
+import messages
 import os
-
-loc = os.path.dirname(os.path.abspath(__file__)) + '/../i18n'
 
 
 def toEmptyString(fun):
@@ -29,11 +27,6 @@ def toEmptyString(fun):
 
 class FeastWrapper:
     """Return informations more readable by humans"""
-    weekdays_translated = (
-        _('Monday'),_('Tuesday'),_('Wednesday'),
-        _('Thursday'),_('Friday'),_('Saturday'),_('Sunday'))
-    lang_installed = 'en'
-    translation_installed = None
 
     def __init__(self,feast,lang='en'):
         """Inits the object.
@@ -45,10 +38,9 @@ class FeastWrapper:
             raise ValueError("Feast is not already set: {}".format(feast))
         self.feast = feast
         self.lang = lang
-        # install translations
-        if lang != self.lang_installed:
-            self.translation_installed = gettext.translation('feastprinter',loc,languages=[lang],fallback=True)
-            self.translation_installed.install()
+        #translations
+        type(self).msg = messages.translated_messages('feastprinter',lang)
+
 
     def __str__(self):
         return "FeastWrapper: {}".format(self.feast)
@@ -60,13 +52,10 @@ class FeastWrapper:
     def humandate(cls,date: datetime.date,lang='en',weekday=False) -> str:
         """Return a humanized and localized date
         for requested lang. If weekday is set, return the weekday too"""
-        months = ('',_('January'),_('February'),_('March'),
-                _('April'),_('May'),_('June'),_('July'),
-                _('August'),_('September'),_('October'),_('November'),_('December'))
         weekday_string = {'en':"{}, ",
                 'fr':"{} "}
-        actual_weekday = weekday_string[lang].format(cls.weekdays_translated[date.weekday()]) if weekday else ''
-        month = months[date.month]
+        actual_weekday = weekday_string[lang].format(cls.msg.weekdays[date.weekday()]) if weekday else ''
+        month = cls.msg.months[date.month]
         if lang == 'fr':
             day_nb = date.day if date.day > 1 else '1er'
             return "{}{} {} {}".format(
@@ -89,24 +78,12 @@ class FeastWrapper:
     def _get_class(self):
         """Return the class of the feast
         as a localized string"""
-        classes = ('',_("First class"),
-                _("Second class"),
-                _("Third class"),
-                _("Fourth class"),
-                _("Commemoration")) # Pro aliquibus locis is not here, but in _get_pal
-        return classes[self.feast.degre]
+        return self.msg.classes[self.feast.degre]
 
     def _get_color(self):
         """Return the liturgical colour
         for the feast as a localized string"""
-        colors = {
-                'blanc':_('white'),
-                'noir':_('black'),
-                'rouge':_('red'),
-                'vert':_('green'),
-                'violet':_('violet'),
-                }
-        return colors[self.feast.couleur]
+        return self.msg.colors[self.feast.couleur]
 
     def _get_date(self):
         """Return the date of the feast
@@ -144,43 +121,16 @@ class FeastWrapper:
         """If a feast is Pro Aliquibus locis, return
         a string mentioning it.
         If not return ''"""
-        return _("Mass Pro Aliquibus Locis") if self.feast.pal else '' 
+        return self.msg.pal if self.feast.pal else '' 
 
     def _get_proper(self):
         """Return the proper as a humanized
         and localized string"""
-        propers = {
-                'roman'         :_('Roman'),
-                'australian'    :_('Australian'),
-                'brazilian'     :_('Brazilian'),
-                'canadian'      :_('Canadian'),
-                'english'       :_('English'),
-                'french'        :_('French'),
-                'new_zealander' :_('New-Zealander'),
-                'polish'        :_('Polish'),
-                'portuguese'    :_('Portuguese'),
-                'scottish'      :_('Scottish'),
-                'spanish'       :_('Spanish'),
-                'welsh'         :_('Welsh')
-                }
-        return propers[self.feast.propre]
+        return self.msg.propers[self.feast.propre]
 
     def _get_season(self):
         """Return the liturgical time"""
-        seasons = {
-                'avent'             :_("Season of Advent"),
-                'nativite'          :_("Christmastide (Season of Christmas)"),
-                'epiphanie'         :_("Epiphanytide (Season of Christmas)"),
-                'apres_epiphanie'   :_("Season per annum after Epiphany"),
-                'septuagesime'      :_("Season of Septuagesim"),
-                'careme'            :_("Lent (Season of Lent)"),
-                'passion'           :_("Passiontide (Season of Lent)"),
-                'paques'            :_("Eastertide (Season of Easter)"),
-                'ascension'         :_("Ascensiontide (Season of Easter)"),
-                'octave_pentecote'  :_("Octave of Pentecost (Season of Easter)"),
-                'pentecote'         :_("Season per annum after Pentecost"),
-                }
-        return seasons[self.feast.temps_liturgique()]
+        return self.msg.seasons[self.feast.temps_liturgique()]
 
     @toEmptyString
     def _get_station(self):
@@ -191,37 +141,37 @@ class FeastWrapper:
     def _get_status(self):
         """Return the status of the feast"""
         if self.feast.celebree:
-            return _("celebrated")
+            return self.msg.celebrated
         if self.feast.peut_etre_celebree and self.feast.commemoraison:
-            return _("can be celebrated or commemorated")
+            return self.msg.celebrated_commemorated
         if self.feast.peut_etre_celebree and not self.feast.commemoraison:
-            return _("can be celebrated")
+            return self.msg.can_celebrated
         if self.feast.commemoraison:
-            return _("commemorated")
+            return self.msg.commemorated
         if self.feast.omission:
-            return _("omitted")
+            return self.msg.omitted
 
     @toEmptyString
     def _get_temporsanct(self):
         """Return if a feast is of the Sanctoral
         or Temporal"""
         if self.feast.temporal:
-            return _("Temporal")
+            return self.msg.temporal
         elif self.feast.sanctoral:
-            return _("Sanctoral")
+            return self.msg.sanctoral
 
     @toEmptyString
     def _get_transfert(self):
         """Return if the feast is transferred,
         and from which date"""
         if self.feast.transferee:
-            return _("Transfered. Original date: {}").format(
+            return self.msg.transfert.format(
                     self.humandate(self.feast.date_originelle,self.lang)
                     )
 
     def _get_weekday(self):
         """Return the weekday of the feast"""
-        return self.weekdays_translated[self.feast.date.weekday()]
+        return self.msg.weekdays[self.feast.date.weekday()]
 
     ## properties
     addendum = property(_get_addendum)
