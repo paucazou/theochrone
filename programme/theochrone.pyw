@@ -51,10 +51,10 @@ def main():
                 args.settings = ''
                 if '--language' in sys.argv or '-l' in sys.argv:
                     officia.pdata(langue=args.langue)
-                    args.settings += "Default language : {}\n".format(args.langue)
+                    args.settings += """Default language : {}\n""".format(args.langue)
                 if "--proper" in sys.argv or '-p' in sys.argv or '--rite' in sys.argv:
                     officia.pdata(proper=args.propre)
-                    args.settings += "Default proper: {}\n".format(args.propre)
+                    args.settings += """Default proper: {}\n""".format(args.propre)
             
         sys.exit("Settings saved : {}".format(args.settings))
             
@@ -233,13 +233,13 @@ def main():
             for res in results:
                 print(res.title)
                 if res.matching_line > 0:
-                    print(*res.main[:res.matching_line],sep='\n')
+                    print(*res.main[:res.matching_line],sep="""\n""")
                 sys.stdout.write("\033[1;31m") # print red
                 print(res.main[res.matching_line])
                 sys.stdout.write("\033[0;0m") # print white
                 if res.matching_line + 1 != len(res.main):
-                    print(*res.main[res.matching_line + 1:],sep='\n')
-                print(res.last_sentence,'\n')
+                    print(*res.main[res.matching_line + 1:],sep="""\n""")
+                print(res.last_sentence,"""\n""")
         else:
             liste = officia.inversons(args.INVERSE,Annee,debut,fin,plus=args.plus,langue=args.langue,exit=True)
             if args.textes and len(liste) < 4:
@@ -258,7 +258,7 @@ def main():
             #print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=False,                   liste=Annee[date],Annee=Annee,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal,print_proper=args.print_proper))
             if args.martyrology:
                 first_line,text,last_line, matching_line = roman_martyrology.daytext(date,args.langue)
-                print('\n',roman_martyrology.name[args.langue],*text,last_line,sep='\n')
+                print('''\n''',roman_martyrology.name[args.langue],*text,last_line,sep='''\n''')
             else:
                 print(io.select_results(args,Annee[date]),end='')
             date = date + datetime.timedelta(1)
