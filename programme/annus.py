@@ -509,6 +509,8 @@ class LiturgicalCalendar():
                     self._move(opponent,date + datetime.timedelta(1))
                 else:
                     liste.append(new_comer)
+            else:
+                liste.append(new_comer)
         else:
             liste.append(new_comer)
         liste.sort(key=lambda x: x.priorite,reverse=True)
