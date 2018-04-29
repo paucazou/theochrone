@@ -307,6 +307,7 @@ def datevalable(entree,langue='fr',semaine_seule=False,mois_seul=False,annee_seu
         else: # erreur
             erreur(12,langue,exit)
     else: # en
+        print("Only today is available in english on CLI. Please use the GUI by typing ./theochrone --gui.\n You can also give some help to fix the error.")
         date = datetime.date.today() 
         semaine_seule = mois_seul = annee_seule = False
 
