@@ -18,7 +18,7 @@ fcm.delete_if_exist tmp
 fcm.copy_and_cd
 cfg=installer.cfg
 cp ../$cfg ./
-cp -r ../../../levenshtein_windows/ ./ # for levenshtein wheels
+cp -r ../../../windows_packages/ ./ # for levenshtein wheels and arrow package
 
 # set bitness
 preset_bitness='bitness=64'
