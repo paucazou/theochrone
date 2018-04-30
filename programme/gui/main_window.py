@@ -257,6 +257,7 @@ class Main(QMainWindow,SuperTranslator):
         self.propers = [
                 ('roman'         ,_('Toolbar','Roman')),
                 ('australian'    ,_('Toolbar','Australian')),
+                ('american'      ,_('Toolbar','American')),
                 ('brazilian'     ,_('Toolbar','Brazilian')),
                 ('canadian'      ,_('Toolbar','Canadian')),
                 ('english'       ,_('Toolbar','English')),
