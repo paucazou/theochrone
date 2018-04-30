@@ -283,8 +283,13 @@ class Main(QMainWindow,SuperTranslator):
         self.lang = self.locale().bcp47Name()
         self.parent.translator.load(loc,"theochrone",'.',chemin + '/i18n/','.qm') 
         #TODO reload translation of core app
-        central_widget = self.centralWidget() # keeps a reference to the object until the end of function. Avoid RuntimeError: wrapped C/C++ object of type Table has been deleted
-        self.retranslateUI()
+        while True: # this horrible loop tries to avoid the RuntimeError:wrapped C/C++ object of type Table has been deleted
+            try:
+                self.retranslateUI()
+                break
+            except RuntimeError:
+                pass
+        
         self.state.reload()
     
     def setLocaleFr(self):
