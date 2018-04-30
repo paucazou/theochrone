@@ -179,6 +179,7 @@ def translated_messages(file_name,language=args.langue):
                 'roman'         :feastprinter.markToTranslate('Roman','roman'),
                 'brazilian'     :feastprinter.markToTranslate('Brazilian','brazilian'),
                 'australian'    :feastprinter.markToTranslate('Australian','australian'),
+                'american'      :feastprinter.markToTranslate('American','american'),
                 'canadian'      :feastprinter.markToTranslate('Canadian','canadian'),
                 'english'       :feastprinter.markToTranslate('English','english'),
                 'french'        :feastprinter.markToTranslate('French','french'),
