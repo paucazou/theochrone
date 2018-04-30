@@ -5,6 +5,7 @@ Theochrone is a liturgical calendar for the Traditional Rite. You can enter a da
 
 ## Core Features
 * The roman calendar of 1962, accessible by dates or by keywords. A range of dates, or a period (a week or a month, for instance), is also a good option to have a better look.
+* **[NEW]** Twelve national propers: Australia, USA, Brazil, Canada, England, France, New Zealand, Poland, Portugal, Scotland, Spain and Wales.
 * The calendar is connected to a website which provides the texts for the mass and the office of the feast.
 * The Roman martyrology, used in 1962, accessible by date or by keywords.
 
@@ -38,7 +39,7 @@ python pip -e dev_requirement.txt # only if you want to contribute to the projec
 python -c "import dataswitcher; dataswitcher.main(propers='all',ordo='1962')"
 lrelease programme/gui/i18n/theochrone.fr.ts # if you want to use the GUI with french translation
 lrelease programme/gui/i18n/theochrone.en.ts # if you want to use the GUI with english translation
-msgfmt -o programmes/messages.py programme/i18n/fr_FR/LC_LANGUAGES/messages.mo
+msgfmt -o programmes/messages.py programme/i18n/fr_FR/LC_LANGUAGES/messages.mo # if you want to use CLI with french translation
 ```
 > Note that the version you download from Github may be broken. Feel free to contribute to fix the issue !
 
@@ -81,7 +82,7 @@ Also, this list may change one day, especially if you put forward something else
 * GUI: *PyQt5*
 * Others:
   * Bash/Zsh
-### Introduce other language
+### Introducing other language
 You want to contribute to Theochrone but you want to use your personal favorite language? You're welcome, *but...*
 * if it is an interpreted language, like PHP, Perl, Ruby, be sure that it is worth to add a whole new interpreter ; your contribution must be very huge : a new important feature, at least. Indeed, imagine the weight of the program with two or more interpreters...
 * if it is a compiled language, like C, Go, Rust, be sure that your module can be compiled on major architectures and OSes.
