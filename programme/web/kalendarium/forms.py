@@ -36,7 +36,7 @@ class SharedResearch(forms.Form):
     pal = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
     martyrology = forms.BooleanField(label="Dans le Martyrologe Romain",required=False)
     proper = forms.CharField(widget=forms.Select(choices=sorted(propers.items()),
-        attrs={'class':"form-control"}),
+        attrs={'class':'form-control'}),
         required=False,label="Choisissez le propre",initial='roman')
 
 class RechercheSimple(_BaseResearch):

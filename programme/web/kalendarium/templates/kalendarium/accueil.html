@@ -74,9 +74,9 @@
     <tbody>
         
         <tr>
-            <th>Propre</th><td>{% if fete.propre == "romanus"%}Romain{% endif %}</td></tr>
+		<th>Propre</th><td>{{ fete.proper_ }}<td></tr>
         <tr>
-            <th>Ordo</th><td>{{ fete.ordo }}</td></tr>
+            <th>Édition</th><td>{{ fete.ordo }}</td></tr>
         <tr>
             <th>Célébration</th><td>Cette fête{% if fete.peut_etre_celebree %} peut être célébrée{% if fete.commemoraison %} ou commémorée{% endif %}{% else %} est {% if fete.celebree or fete.peut_etre_celebree %}célébrée{% endif %}{% if fete.commemoraison %}commémorée{% endif %}{% if fete.omission %}omise{% endif %}{% endif %}.
         {% if fete.degre <= 5 %}
@@ -141,6 +141,11 @@
         <div class="section clearfix object-non-visible" data-animation-effect="fadeIn">
 			<div class="container"><h1 id="research" class="title text-center">Recherche</h1>
 				<div class="row">
+					<form class="form-inline">
+						<ul class="list-inline">{{ shared_research.as_ul }}</ul> {# TODO Aligner le texte et le menu déroulant. TODO set proper following requested proper #}
+					</form>
+				</div>
+				<div class="row">
 					<div class="col-md-4"><h2>Rechercher une <span>date seule</span></h2>
 						
                                                     <form role="form" action="date_seule#resultup" method="get">
@@ -167,4 +172,26 @@
         </div>
         
     </div><!-- section end -->
+    <script> // TODO à déplacer dans un fichier de script
+
+function fillForm(event) {
+	//fill the hidden items in the form
+	//get values from shared form
+	var pal = document.getElementById("id_pal");//bool
+	var martyrology = document.getElementById("id_martyrology"); //bool
+	var proper = document.getElementById("id_proper"); // string
+	//set values in target form
+	var parent = event.target;
+	parent['pal'].checked = pal.checked;
+	parent['martyrology'].checked = martyrology.checked;
+	parent['proper'].value = proper.value;
+}
+
+for (var i=0; i< document.forms.length; ++i) {
+	document.forms[i].addEventListener('submit',fillForm);
+}
+
+
+
+    </script>
 {% endblock %}
