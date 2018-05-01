@@ -87,6 +87,17 @@ class LiturgicalCalendar():
     Functions started with _ should not be accessed
     from outside the class"""
     instances = []
+
+    def __new__(cls,proper='roman',ordo=1962):
+        """Checks if an instance of the requested calendar
+        has been already loaded.
+        return a loaded instance, or a new one."""
+        instance_loaded = [elt for elt in cls.instances if elt.proper == proper and elt.ordo == ordo]
+        if instance_loaded:
+            return instance_loaded[0]
+        new_instance = super(LiturgicalCalendar,cls).__new__(cls)
+        cls.instances.append(new_instance)
+        return new_instance
     
     def __init__(self, proper='roman',ordo=1962):
         """Init of the instance"""
@@ -103,7 +114,6 @@ class LiturgicalCalendar():
         self.ordo = ordo
         self.proper = proper
                 
-        LiturgicalCalendar.instances.append(self)
      
     @oncecalled
     def _load_raw_data(self,proper,ordo): # TEST
