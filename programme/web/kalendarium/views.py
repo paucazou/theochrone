@@ -1,6 +1,7 @@
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+import calendar
 import datetime
 import os
 import sys
@@ -18,7 +19,7 @@ import martyrology
 import officia
 
 martyrology_instance = martyrology.Martyrology()
-Annee = annus.LiturgicalCalendar()
+liturgical_calendar = annus.LiturgicalCalendar(proper='roman')
 host = "localhost:8000"
 s=''
     
@@ -27,6 +28,7 @@ s=''
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
          debut=None,fin=None,pal=False,
+         proper='roman',
          mots_clefs='',plus=False,annee=datetime.date.today().year):
     """A function which defines homepage. It is also used
     by other pages to print common code.
@@ -40,6 +42,10 @@ def home(request,
     - plus : a bool used to know whether the research must be large, or not ;
     - annee : the year ;
     """
+    if proper not in propers:
+        proper = 'roman'
+    liturgycal = annus.LiturgicalCalendar(proper=proper)
+    print(liturgycal.instances)
     retour = ''
     deroule = {}
     if debut == None:
@@ -55,9 +61,9 @@ def home(request,
             next_item = officia.month_to_link(fin,host,1,hashtag,s)
             previous_item = officia.month_to_link(debut,host,-1,hashtag,s)
         date = debut
-        Annee(date.year)
+        liturgycal(date.year)
         while date <= fin:
-            deroule[date] = Annee[date]
+            deroule[date] = liturgycal[date]
             date = date + datetime.timedelta(1)
         inversion=False
         if mois_seul:
@@ -66,9 +72,9 @@ def home(request,
             titre = debut
     else:
         titre = mots_clefs
-        Annee(annee)
+        liturgycal(annee)
         try:
-            deroule[titre] = officia.inversons(mots_clefs,Annee,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='fr',exit=True,plus=plus)
+            deroule[titre] = officia.inversons(mots_clefs,liturgycal,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='fr',exit=True,plus=plus)
         except SystemExit:
             deroule[titre] = []
         inversion=True
@@ -92,7 +98,8 @@ def mc_transfert(request):
             plus = recherche_mot_clef.cleaned_data['plus']
             annee = recherche_mot_clef.cleaned_data['annee']
             pal = recherche_mot_clef.cleaned_data['pal']
-            result = home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,pal=pal,annee=annee)
+            proper = recherche_mot_clef.cleaned_data['proper']
+            result = home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,pal=pal,annee=annee,proper=proper)
     else:
         result = home(request, recherche_mot_clef)
     return result
@@ -103,10 +110,11 @@ def date_transfert(request):
     if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
         pal = recherche_simple.cleaned_data['pal']
+        proper = recherche_simple.cleaned_data['proper']
         if recherche_simple.cleaned_data['martyrology']:
             result = martyrology_date(request,date,recherche_simple)
         else:
-            result = home(request,recherche_simple=recherche_simple,debut=date,fin=date,pal=pal)
+            result = home(request,recherche_simple=recherche_simple,debut=date,fin=date,pal=pal,proper=proper)
     else:
         result = home(request,recherche_simple=recherche_simple)
     return result
@@ -118,15 +126,10 @@ def mois_transfert(request):
         mois = mois_entier.cleaned_data['mois']
         annee = mois_entier.cleaned_data['annee']
         debut = datetime.date(annee,mois,1)
+        fin = datetime.date(annee,mois,calendar.monthrange(annee,mois)[1])
         pal = mois_entier.cleaned_data['pal']
-        i=31
-        while True:
-            try:
-                fin = datetime.date(annee,mois,i)
-                break
-            except ValueError:
-                i -= 1
-        return home(request,mois_entier=mois_entier,mois_seul=True,pal=pal,debut=debut,fin=fin)
+        proper = mois_entier.cleaned_data['proper']
+        return home(request,mois_entier=mois_entier,mois_seul=True,pal=pal,debut=debut,fin=fin,proper=proper)
     else:
         return home(request, mois_entier=mois_entier)
     
