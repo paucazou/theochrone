@@ -85,7 +85,7 @@ def home(request,
             liturgical_time = officia.affiche_temps_liturgique(elt,lang='fr')
             elt.temps_liturgique_ = liturgical_time[0].upper() + liturgical_time[1:]
             elt.proper_ = propers[elt.propre]
-    shared_research = SharedResearch(None)
+    shared_research = _setSharedResearch(pal=pal,martyrology=False,proper=proper)
     deroule = sorted(deroule.items())
 
     return render(request,'kalendarium/accueil.html',locals())
@@ -151,10 +151,11 @@ def martyrology_date(request,date=None,recherche_simple=None):
     credits = martyrology_instance.credits('fr')
     titre = "Martyrologe romain : {}".format(result[0].title)
     result_len = len(result)
+    shared_research = _setSharedResearch(martyrology=True)
     return render(request,'kalendarium/accueil.html',locals())
 
 def martyrology_kw(request,recherche_mot_clef=None):
-    """Return martyrology for a keyword reseach"""
+    """Return martyrology for a keyword research"""
     inversion = martyrology = True
     keywords = recherche_mot_clef.cleaned_data['recherche']
     max_nb_returned = [10,5][not recherche_mot_clef.cleaned_data['plus']]
@@ -165,6 +166,7 @@ def martyrology_kw(request,recherche_mot_clef=None):
     credits = martyrology_instance.credits('fr')
     titre = "Martyrologe romain : {}".format(keywords)
     result_len = len(result)
+    shared_research = _setSharedResearch(martyrology=True)
     return render(request,'kalendarium/accueil.html',locals())
     
 # contact
@@ -234,5 +236,12 @@ def download(request):
                  'python':trunk + 'python/Theochrone.zip',
                  } # list of downloads
     return render(request,'kalendarium/download.html',locals())
+
+def _setSharedResearch(martyrology=False,pal=False,proper='roman') -> SharedResearch:
+    """Set the shared research form"""
+    values = {'pal':pal,
+            'martyrology':martyrology,
+            'proper':proper}
+    return SharedResearch(initial=values)
 
 
