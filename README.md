@@ -107,7 +107,7 @@ Latest version is 0.5.0
   - [x] Australia;
   - [x] New Zealand;
 - [ ] local propers available on:
-  - [ ] website;
+  - [x] website;
   - [ ] widget;
   - [x] CLI;
     - [x] print proper name on screen if requested
