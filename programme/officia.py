@@ -832,18 +832,18 @@ def pdata(read=True,write=False,**kwargs):
                     return history
     return True
         
-def datetime_to_link(day,host,martyrology='',hashtag='',s='s'): # peut-être à refactoriser pour y intégrer le gui
+def datetime_to_link(day,host,martyrology='',hashtag='',s='s',proper='roman'): 
     """Take a datetime.date like object
     and return a link to requested host.
     Hashtag can be set to point to a specific id on the page
     s is a s of https: default is 's'"""
     if martyrology:
         martyrology = "&martyrology="+martyrology
-    link = "http{}://{}/kalendarium/date_seule?date_seule_day={}&date_seule_month={}&date_seule_year={}{}#{}".format(
-        s,host,day.day,day.month,day.year,martyrology,hashtag)
+    link = "http{}://{}/kalendarium/date_seule?date_seule_day={}&date_seule_month={}&date_seule_year={}&proper={}{}#{}".format(
+        s,host,day.day,day.month,day.year,proper,martyrology,hashtag)
     return link
         
-def month_to_link(day,host,diff=0,hashtag='',s='s'):
+def month_to_link(day,host,diff=0,hashtag='',s='s',proper='roman'):
     """Similar to datetime_to_link, but returns a link to a month.
     diff : 0 == day.month
     diff : 1 == day.month + 1
@@ -856,8 +856,8 @@ def month_to_link(day,host,diff=0,hashtag='',s='s'):
     elif month < 1:
         month = 12
         year = year - 1
-    link = "http{}://{}/kalendarium/mois?annee={}&mois={}#{}".format(
-        s,host,year,month,hashtag)
+    link = "http{}://{}/kalendarium/mois?annee={}&mois={}&proper={}#{}".format(
+        s,host,year,month,proper,hashtag)
     return link
         
         
