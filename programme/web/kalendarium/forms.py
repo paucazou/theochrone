@@ -8,38 +8,62 @@ for a in range(1960,2101):
     annees.append((a,a))
     
 douze = ('janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
+propers = {
+        'roman':'Romain',
+        'american':'Américain',
+        'australian':'Australien',
+        'brazilian':'Brésilien',
+        'canadian':'Canadien',
+        'english':'Anglais',
+        'french':'Français',
+        'new_zealander':'Néo-Zélandais',
+        'polish':'Polonais',
+        'portuguese':'Portugais',
+        'scottish':'Écossais',
+        'welsh':'Gallois',
+        }
 
-class RechercheSimple(forms.Form):
+class _BaseResearch(forms.Form):
+    """Abstract base class"""
+    _empty_value = {'value':''}
+    _form_control = {'class':'form-control'}
+    pal = forms.BooleanField(widget=forms.HiddenInput(attrs=_empty_value),required=False)
+    martyrology = forms.BooleanField(widget=forms.HiddenInput(attrs=_empty_value),required=False)
+    proper = forms.CharField(widget=forms.HiddenInput(attrs=_empty_value),required=False)
+
+class SharedResearch(forms.Form):
+    """Used by all the research forms"""
+    pal = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
+    martyrology = forms.BooleanField(label="Dans le Martyrologe Romain",required=False)
+    proper = forms.CharField(widget=forms.Select(choices=sorted(propers.items()),
+        attrs={'class':"form-control"}),
+        required=False,label="Choisissez le propre",initial='roman')
+
+class RechercheSimple(_BaseResearch):
     """A class which defines a form for a research by an only date"""
     date_seule = forms.DateField(widget = forms.SelectDateWidget(years=range(1960,2100),
                                  attrs = {
                                      'class' : "form-control"}),
                                  required = True,label="Choisissez une date",initial = datetime.date.today
                                  )
-    pal = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
-    martyrology = forms.BooleanField(label="Afficher le Martyrologe Romain",required=False)
 
-class RechercheMotClef(forms.Form):
+class RechercheMotClef(_BaseResearch):
     """A class which defines a form for a research by key words"""
-    annee = forms.IntegerField(widget=forms.Select(choices = annees,attrs = {
-                                     'class' : "form-control"}), max_value=2100,min_value=1960,
+    annee = forms.IntegerField(widget=forms.Select(choices = annees,attrs = _BaseResearch._form_control),
+                                     max_value=2100,min_value=1960,
                                required=True,initial=datetime.date.today().year)
-    recherche = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'},),
+    recherche = forms.CharField(widget=forms.TextInput(attrs=_BaseResearch._form_control),
         label="Entrez vos mots-clefs",required=True)
     plus = forms.BooleanField(label="Recherche large",required=False)
-    pal = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
-    martyrology = forms.BooleanField(label="Rechercher dans le Martyrologe Romain",required=False)
 
-class MoisEntier(forms.Form):
+class MoisEntier(_BaseResearch):
     """A class which defines a form for a reserch of a complete month"""
     annee = forms.IntegerField(widget=forms.Select(choices = annees,attrs = {
                                      'class' : "form-control"}),max_value=2100,min_value=1960,
                                required=True,initial=datetime.date.today().year)
-    mois = forms.IntegerField(widget = forms.Select(choices = [(i+1,month.capitalize()) for i,month in enumerate(douze)],attrs = {
-                                     'class' : "form-control"}),
+    mois = forms.IntegerField(widget = forms.Select(choices = [(i+1,month.capitalize()) for i,month in enumerate(douze)],attrs =_BaseResearch._form_control),
                               max_value=12,min_value=1,required = True,
                               initial = datetime.date.today().month)
-    pal = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
     
     
 class ContactForm(forms.Form):
