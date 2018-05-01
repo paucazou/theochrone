@@ -182,12 +182,12 @@ function fillForm(event) {
 	var proper = document.getElementById("id_proper"); // string
 	//set values in target form
 	var parent = event.target;
-	parent['pal'].checked = pal.checked;
-	parent['martyrology'].checked = martyrology.checked;
+	parent['pal'].value = pal.checked;
+	parent['martyrology'].value = martyrology.checked;
 	parent['proper'].value = proper.value;
 }
 
-for (var i=0; i< document.forms.length; ++i) {
+for (var i=1; i< document.forms.length; ++i) {
 	document.forms[i].addEventListener('submit',fillForm);
 }
 
