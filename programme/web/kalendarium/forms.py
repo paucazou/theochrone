@@ -26,11 +26,13 @@ palForm = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",requ
 properForm = forms.CharField(widget=forms.Select(choices=sorted(propers.items()),
     attrs={'class':'form-control'}),
     required=False,label="Choisissez le propre",initial='roman')
+# widget attributes
+
+_form_control = {'class':'form-control'}
 
 class _BaseResearch(forms.Form):
     """Abstract base class"""
     _empty_value = {'value':''}
-    _form_control = {'class':'form-control'}
     pal = forms.BooleanField(widget=forms.HiddenInput(attrs=_empty_value),required=False)
     martyrology = forms.BooleanField(widget=forms.HiddenInput(attrs=_empty_value),required=False)
     proper = forms.CharField(widget=forms.HiddenInput(attrs=_empty_value),required=False)
@@ -40,6 +42,7 @@ class SharedResearch(forms.Form):
     pal = palForm
     martyrology = forms.BooleanField(label="Dans le Martyrologe Romain",required=False)
     proper = properForm
+    field_order = ['martyrology','pal','proper']
 
 class RechercheSimple(_BaseResearch):
     """A class which defines a form for a research by an only date"""
@@ -51,10 +54,10 @@ class RechercheSimple(_BaseResearch):
 
 class RechercheMotClef(_BaseResearch):
     """A class which defines a form for a research by key words"""
-    annee = forms.IntegerField(widget=forms.Select(choices = annees,attrs = _BaseResearch._form_control),
+    annee = forms.IntegerField(widget=forms.Select(choices = annees,attrs = _form_control),
                                      max_value=2100,min_value=1960,
                                required=True,initial=datetime.date.today().year)
-    recherche = forms.CharField(widget=forms.TextInput(attrs=_BaseResearch._form_control),
+    recherche = forms.CharField(widget=forms.TextInput(attrs=_form_control),
         label="Entrez vos mots-clefs",required=True)
     plus = forms.BooleanField(label="Recherche large",required=False)
 
@@ -63,7 +66,7 @@ class MoisEntier(_BaseResearch):
     annee = forms.IntegerField(widget=forms.Select(choices = annees,attrs = {
                                      'class' : "form-control"}),max_value=2100,min_value=1960,
                                required=True,initial=datetime.date.today().year)
-    mois = forms.IntegerField(widget = forms.Select(choices = [(i+1,month.capitalize()) for i,month in enumerate(douze)],attrs =_BaseResearch._form_control),
+    mois = forms.IntegerField(widget = forms.Select(choices = [(i+1,month.capitalize()) for i,month in enumerate(douze)],attrs =_form_control),
                               max_value=12,min_value=1,required = True,
                               initial = datetime.date.today().month)
     
@@ -83,8 +86,8 @@ class ExportResults(forms.Form):
     _end = _current_year + 5
     # year to export
     year = forms.IntegerField(widget=forms.Select(
-        choices = [(y,y) for y in range(_start,_end+1)]),
-        max_value=_start,min_value=1960,
+        choices = [(y,y) for y in range(_start,_end+1)],attrs=_form_control),
+        max_value=_end,min_value=_start,
         required = True, initial = _current_year,
         label="Choisissez l'année à exporter")
     # format of the file returned
@@ -94,4 +97,5 @@ class ExportResults(forms.Form):
     proper = properForm
     #pal
     pal = palForm
+    field_order = ['format','year','proper','pal']
 

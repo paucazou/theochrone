@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import calendar
 import datetime
+import io
 import os
 import sys
 from .forms import * 
@@ -15,6 +16,7 @@ programme = os.path.abspath(chemin + '/../..')
 sys.path.append(programme)
 import annus
 import adjutoria
+import exporter
 import martyrology
 import officia
 
@@ -229,13 +231,43 @@ def download(request):
     trunk = 'https://theochrone.000webhostapp.com/static/downloads/'
     downloads = {'windows32':trunk + 'windows/theochrone32.zip',
                  'windows64':trunk + 'windows/theochrone64.zip',
-                 'linux32':trunk + 'linux/theochrone32',
-                 'linux64':trunk + 'linux/theochrone64',
-                 'osx32':trunk + 'osx/theochrone32',
-                 'osx64':trunk + 'osx/theochrone64',
+                 'linux32':trunk + 'linux/theochrone32.zip',
+                 'linux64':trunk + 'linux/theochrone64.zip',
+                 'osx32':trunk + 'osx/theochrone32.zip',
+                 'osx64':trunk + 'osx/theochrone64.zip',
                  'python':trunk + 'python/Theochrone.zip',
                  } # list of downloads
+    # variables for template
+    export_form = ExportResults(request.GET or None)
     return render(request,'kalendarium/download.html',locals())
+
+def export(request):
+    """Export the data to ICS or CSV format"""
+    export_request = ExportResults(request.GET or None)
+    if export_request.is_valid():
+        # prepare data
+        data = export_request.cleaned_data
+        year = data['year']
+        start = datetime.date(year,1,1)
+        end = datetime.date(year,12,31)
+        # export
+        stream = io.StringIO()
+        exporter.main(start,end,'fr',stream,
+                proper=data['proper'],
+                file_ext=data['format'],
+                pal=data['pal'])
+
+        #filename
+        pal_filename_details = "_PAL" if data['pal'] else ''
+        filename = "Theochrone_{}_{}{}.{}".format(year,data['proper'],pal_filename_details,data['format'])
+        print('Stream: ',stream.read())
+
+        #response
+        response = HttpResponse(stream.getvalue(),content_type='type/{}'.format(data['format'])) # type calendar for ics ??
+        response['Content-Disposition'] = 'attachment; filename="{}"'.format(filename)
+        return response
+    else:
+        return download(request)
 
 def _setSharedResearch(martyrology=False,pal=False,proper='roman') -> SharedResearch:
     """Set the shared research form"""
