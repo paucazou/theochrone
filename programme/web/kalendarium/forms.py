@@ -3,9 +3,7 @@
 from django import forms
 import datetime
 
-annees=[]
-for a in range(1960,2101):
-    annees.append((a,a))
+annees=[(y,y) for y in range(1960,2101)]
     
 douze = ('janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre')
 propers = {
@@ -22,6 +20,12 @@ propers = {
         'scottish':'Écossais',
         'welsh':'Gallois',
         }
+# forms shared
+
+palForm = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
+properForm = forms.CharField(widget=forms.Select(choices=sorted(propers.items()),
+    attrs={'class':'form-control'}),
+    required=False,label="Choisissez le propre",initial='roman')
 
 class _BaseResearch(forms.Form):
     """Abstract base class"""
@@ -33,11 +37,9 @@ class _BaseResearch(forms.Form):
 
 class SharedResearch(forms.Form):
     """Used by all the research forms"""
-    pal = forms.BooleanField(label="Inclure les messes Pro Aliquibus Locis",required=False)
+    pal = palForm
     martyrology = forms.BooleanField(label="Dans le Martyrologe Romain",required=False)
-    proper = forms.CharField(widget=forms.Select(choices=sorted(propers.items()),
-        attrs={'class':'form-control'}),
-        required=False,label="Choisissez le propre",initial='roman')
+    proper = properForm
 
 class RechercheSimple(_BaseResearch):
     """A class which defines a form for a research by an only date"""
@@ -71,3 +73,25 @@ class ContactForm(forms.Form):
     subject = forms.CharField(max_length=100)
     message = forms.CharField(widget=forms.Textarea)
     sender = forms.EmailField()
+
+class ExportResults(forms.Form):
+    """A class which defines a form to export
+    results of the Theochrone for a whole year"""
+    # variables used below to define real items of the form
+    _current_year = datetime.date.today().year
+    _start = _current_year - 5
+    _end = _current_year + 5
+    # year to export
+    year = forms.IntegerField(widget=forms.Select(
+        choices = [(y,y) for y in range(_start,_end+1)]),
+        max_value=_start,min_value=1960,
+        required = True, initial = _current_year,
+        label="Choisissez l'année à exporter")
+    # format of the file returned
+    format = forms.ChoiceField(widget=forms.RadioSelect,choices=(('ics','ICS'),('csv','CSV')),
+            required = True,label="Choisissez le format de votre fichier")
+    # proper
+    proper = properForm
+    #pal
+    pal = palForm
+
