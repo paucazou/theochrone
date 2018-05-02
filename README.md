@@ -113,13 +113,13 @@ Latest version is 0.5.0
     - [x] print proper name on screen if requested
   - [x] Gui;
 - [x] update GUI to support new features.
-- [ ] export data to files:
+- [x] export data to files:
   - [x] Formats:
     - [x] CSV;
     - [x] ICS;
-  - [ ] Availability:
+  - [x] Availability:
     - [x] CLI;
-    - [ ] website;
+    - [x] website;
     - [x] GUI;
 - [ ] ~~a new convenient help app~~
 - [ ] varia:
