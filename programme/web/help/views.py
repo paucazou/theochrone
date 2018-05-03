@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from .models import HelpArticle
 
 # Create your views here.
-def main(request): # TODO
+def _main(request): # TODO
     """This view return the menu of the app and loads the home page of Help"""
     root_articles = HelpArticle.objects.defer('text').filter(Children__isnull=True,published__exact=True)
     tree = [] # list to render
@@ -25,3 +25,6 @@ def _populate(model,tree):
         tree.append('STOP')
     return tree
 
+# temporary view
+def main(request):
+    return render(request,'help/whole.html',locals())
