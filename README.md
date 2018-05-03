@@ -106,9 +106,9 @@ Latest version is 0.5.0
   - [x] Portugal;
   - [x] Australia;
   - [x] New Zealand;
-- [ ] local propers available on:
+- [x] local propers available on:
   - [x] website;
-  - [ ] widget;
+  - [x] widget;
   - [x] CLI;
     - [x] print proper name on screen if requested
   - [x] Gui;
