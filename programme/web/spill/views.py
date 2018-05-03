@@ -16,8 +16,9 @@ import annus
 import officia
 
 lyear = annus.LiturgicalCalendar()
-language = 'fr'
+language = 'fr' # useless ?
 host = 'theochrone.fr'
+host = 'localhost:8000'
 # Create your views here.
 
 @xframe_options_exempt
@@ -36,16 +37,20 @@ def day(request):
     if sentvalue.is_valid():
         day = sentvalue.cleaned_data['date_seule']
         pal = sentvalue.cleaned_data['pal']
+        proper = sentvalue.cleaned_data['proper']
     else:
         day = datetime.date.today()
         pal = False
+        proper='roman'
     lang = get_language_from_request(request)
+    lyear = annus.LiturgicalCalendar(proper=proper)
+    print(lyear.instances)
     lyear(day.year)
     data = lyear[day] # data of requested day
     hashtag = "resultup"
-    link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag)
-    link_to_tomorrow = datetime_to_param(day + datetime.timedelta(1),pal=pal)
-    link_to_yesterday = datetime_to_param(day - datetime.timedelta(1),pal=pal)
+    link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag,proper=proper)
+    link_to_tomorrow = datetime_to_param(day + datetime.timedelta(1),pal=pal,proper=proper)
+    link_to_yesterday = datetime_to_param(day - datetime.timedelta(1),pal=pal,proper=proper)
     return render(request,'spill/day.html',locals())
 
 def day_mobile(request):
@@ -55,14 +60,18 @@ def day_mobile(request):
     sentvalue = RechercheSimple(request.GET or None)
     if sentvalue.is_valid():
         day = sentvalue.cleaned_data['date_seule']
+        proper = sentvalue.cleaned_data['proper']
     else:
         day = datetime.date.today()
+        proper='roman'
+    lyear = annus.LiturgicalCalendar(proper=proper)
+    print(lyear.instances)
     lyear(day.year)
     data = lyear[day]
     index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie'
     feast = data[index]
     hashtag = "resultup"
-    link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag)
+    link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag,proper=proper)
     return render(request,'spill/day_mobile.html',locals())    
     
 def create_module(request):
@@ -77,8 +86,8 @@ def test(request):
 def datetime_to_param(day,proper='roman',pal=False):
     """Take a datetime.date like object
     return a link to requested host"""
-    link = "day?date_seule_day={}&date_seule_month={}&date_seule_year={}&pal={}".format(
-            day.day,day.month,day.year,pal)
+    link = "day?date_seule_day={}&date_seule_month={}&date_seule_year={}&pal={}&proper={}".format(
+            day.day,day.month,day.year,pal,proper)
     return link
 
 def saveUrls(request):
