@@ -14,7 +14,7 @@ propers = {
         'canadian':'Canadien',
         'english':'Anglais',
         'french':'Français',
-        'new_zealander':'Néo-Zélandais',
+        'newzealander':'Néo-Zélandais',
         'polish':'Polonais',
         'portuguese':'Portugais',
         'scottish':'Écossais',
@@ -92,7 +92,7 @@ class ExportResults(forms.Form):
         label="Choisissez l'année à exporter")
     # format of the file returned
     format = forms.ChoiceField(widget=forms.RadioSelect,choices=(('ics','ICS'),('csv','CSV')),
-            required = True,label="Choisissez le format de votre fichier")
+            required = True,label="Choisissez le format de votre fichier",initial='ics')
     # proper
     proper = properForm
     #pal

@@ -262,7 +262,7 @@ class Main(QMainWindow,SuperTranslator):
                 ('canadian'      ,_('Toolbar','Canadian')),
                 ('english'       ,_('Toolbar','English')),
                 ('french'        ,_('Toolbar','French')),
-                ('new_zealander' ,_('Toolbar','New-Zealander')),
+                ('newzealander' ,_('Toolbar','New-Zealander')),
                 ('polish'        ,_('Toolbar','Polish')),
                 ('portuguese'    ,_('Toolbar','Portuguese')),
                 ('scottish'      ,_('Toolbar','Scottish')),
