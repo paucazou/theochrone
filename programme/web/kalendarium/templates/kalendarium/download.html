@@ -107,13 +107,19 @@
 					<h1 id="export" class="title text-center">Exporter</h1>
 					<div class="row">
 						<div class="col-md-offset-2 col-md-4">
+							<h2>Module <span>d'export</span></h2>
 							<form role="form" action="export#export" method="get">
 								{{ export_form.as_p }}
 								<input type="submit" value="Exporter" class="btn btn-default" />
 							</form>
 						</div>
-						<div class="col-md-4">
-							{# add a pic #}
+						<div class="col-md-6">
+							<h2>Aide à <span>l'export</span></h2>
+							<p class="lead text-justify">Le module d'export vous permet de récupérer une année entière avec ses fêtes pour pouvoir être utilisé dans des programmes comme Outlook, Google Calendar, Thunderbid, etc.<br>
+							Nous vous suggérons fortement l'utilisation du format ICS, qui sera reconnu partout.<br>
+							Pour importer le fichier exporté dans votre calendrier, consultez sa documentation. Une simple recherche sur Google devrait vous donner toutes les clefs.
+							</p>
+							<div class="well">Si vous voulez exporter le Théochrone au format PDF, ou Excel, ou si vous désirez exporter une période autre qu'une année, téléchargez le programme sur votre ordinateur. </div>
 						</div>
 					</div>
 				</div>
