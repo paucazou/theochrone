@@ -223,6 +223,9 @@ def widget(request):
     for filename in files:
         with open(fpath + filename) as f:
             widgets[filename] = f.read().format(whost)#.replace("https","http") # replace : dev TODO
+    # templates variables
+    options_day = OptionsWidgetDay()
+    options_day_mobile = OptionsWidgetDayMobile()
     return render(request,'kalendarium/widget.html',locals())
 
 def download(request):
@@ -241,7 +244,7 @@ def download(request):
     export_form = ExportResults(request.GET or None)
     return render(request,'kalendarium/download.html',locals())
 
-def export(request):
+def export(request):#TODO passer cette fonction en statique, ou de telle manière que cloudflare l'enregistre
     """Export the data to ICS or CSV format"""
     export_request = ExportResults(request.GET or None)
     if export_request.is_valid():
