@@ -99,3 +99,11 @@ class ExportResults(forms.Form):
     pal = palForm
     field_order = ['format','year','proper','pal']
 
+class OptionsWidgetDay(forms.Form):
+    """Defines the options that can be used to create a widget"""
+    proper = properForm
+    pal=palForm
+
+class OptionsWidgetDayMobile(forms.Form):
+    """Defines the options that can be used to create the mobile widget"""
+    proper = properForm
