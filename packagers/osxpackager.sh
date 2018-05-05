@@ -30,7 +30,7 @@ mv $progdir/theochrone.pyw $theochrone
 fcm.modify_lines $theochrone $pcm_line_theochrone0
 fcm.modify_lines $theochrone $pcm_line_theochrone1 $pcm_line_theochrone1_sub
 dcm.modify_lines $theochrone "from messages import args" "from messages import args
-args.langue = 'francais'" 
+args.langue = 'fr'" 
 dcm.modify_lines $theochrone "from gui import main_window" "import main_window"
 
 fcm.modify_lines $progdir/main_window.py "os.chdir(chemin)"
