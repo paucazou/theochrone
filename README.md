@@ -123,5 +123,6 @@ Latest version is 0.5.0
     - [x] GUI;
 - [ ] ~~a new convenient help app~~
 - [ ] varia:
+  - [x] enable twitter app in english
   - [x] add the rose colour into details of the third week of advent (optional liturgical colour)
   - [x] add proper in user preferences

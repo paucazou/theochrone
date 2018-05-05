@@ -21,9 +21,9 @@ import martyrology
 import officia
 
 martyrology_instance = martyrology.Martyrology()
-host = os.environ.get("THEHOST")
+host = os.environ.get("THEHOST","localhost:8000")
 liturgical_calendar = annus.LiturgicalCalendar(proper='roman')
-s='s'
+s=os.environ.get("SECURE",'s')
     
 # use online
 
@@ -219,11 +219,10 @@ def widget(request):
     fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"
     files = ("widget_day","widget_day_mobile")
     widgets = {}
-    whost = "theochrone.fr"
-    #whost = "localhost:8000" # dev TODO
+    print(os.environ['THEHOST'])
     for filename in files:
         with open(fpath + filename) as f:
-            widgets[filename] = f.read().format(whost)#.replace("https","http") # replace : dev TODO
+            widgets[filename] = f.read().format(s,host)#.replace("https","http") # replace : dev TODO
     # templates variables
     options_day = OptionsWidgetDay()
     options_day_mobile = OptionsWidgetDayMobile()
