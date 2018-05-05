@@ -87,41 +87,26 @@ You want to contribute to Theochrone but you want to use your personal favorite 
 * if it is an interpreted language, like PHP, Perl, Ruby, be sure that it is worth to add a whole new interpreter ; your contribution must be very huge : a new important feature, at least. Indeed, imagine the weight of the program with two or more interpreters...
 * if it is a compiled language, like C, Go, Rust, be sure that your module can be compiled on major architectures and OSes.
 ## Version
-Latest version is 0.5.0
-## New features available in v0.5.0
-- [x] widget available in english.
-  - [x] Rework ferial days names in english
-- [x] CLI available in english: only for the current day on CLI. Keyword research is not available.
-  - [x] rework translation full system
-- [x] local propers :
-  - [x] France;
-  - [x] USA;
-  - [x] England;
-  - [x] Wales;
-  - [x] Scotland;
-  - [x] Canada;
-  - [x] Brazil;
-  - [x] Poland;
-  - [x] Spain;
-  - [x] Portugal;
-  - [x] Australia;
-  - [x] New Zealand;
-- [x] local propers available on:
-  - [x] website;
-  - [x] widget;
-  - [x] CLI;
-    - [x] print proper name on screen if requested
-  - [x] Gui;
-- [x] update GUI to support new features.
-- [x] export data to files:
-  - [x] Formats:
-    - [x] CSV;
-    - [x] ICS;
-  - [x] Availability:
-    - [x] CLI;
-    - [x] website;
-    - [x] GUI;
-- [ ] ~~a new convenient help app~~
-- [ ] varia:
-  - [x] add the rose colour into details of the third week of advent (optional liturgical colour)
-  - [x] add proper in user preferences
+Latest version is 0.6.0
+## New features available in 0.6.0
+- [ ] votives
+  - [ ] add votive main system
+  - [ ] add first friday of the month
+  - [ ] add rogations
+  - [ ] add solemnities of fixed feasts
+- [ ] implement votives
+  - [ ] cli
+  - [ ] gui
+  - [ ] web
+  - [ ] widget (for extern solemnities only)
+- [ ] local propers:
+  - [ ] english propers
+  - [ ] welsh propers
+- [ ] rewrite web version
+  - [ ] include i18n
+  - [ ] remove htmlcoder theme and shift to pure Bootstrap 4
+- [ ] export
+  - [ ] add excel export in web.
+  - [ ] rewrite it for GUI
+- [ ] a new convenient help app
+

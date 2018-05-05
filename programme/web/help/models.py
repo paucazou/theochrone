@@ -1,5 +1,5 @@
 from django.db import models
-VERSION = '0.5.0'
+VERSION = "0.6.0"
 
 # Create your models here.
 class HelpArticle(models.Model):
