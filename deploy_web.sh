@@ -7,15 +7,21 @@ cp -r programme ./_deploy_tmp
 
 cd _deploy_tmp
 rm -r **/.* # deleting all files starting by .
+rm -r **/*__pycache__*
+rm -r **/*~
 cd programme
 rm -r gui 
+cd web
+rm -r help/migrations/
 
 mv images/fetes web/kalendarium/static/ # for the images of saints
 cd web
 print Compiling translation files...
 django-admin compilemessages
-print Please put shtml in the right repertory. Do not forget base widget nor light widget !
-./manage.py shell
+### deprecated ###
+#print Please put shtml in the right repertory. Do not forget base widget nor light widget !
+#./manage.py shell 
+### end deprecated ### 
 # changing some lines
 line_to_modify='    fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"'
 line_modified='    fpath = os.path.abspath(chemin + "/static/spill") + "/"'

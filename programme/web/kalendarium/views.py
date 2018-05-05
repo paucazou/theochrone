@@ -232,13 +232,13 @@ def download(request):
     """View for download page"""
     title = "Télécharger"
     trunk = 'https://theochrone.000webhostapp.com/static/downloads/'
-    downloads = {'windows32':trunk + 'windows/theochrone32.zip',
-                 'windows64':trunk + 'windows/theochrone64.zip',
-                 'linux32':trunk + 'linux/theochrone32.zip',
-                 'linux64':trunk + 'linux/theochrone64.zip',
-                 'osx32':trunk + 'osx/theochrone32.zip',
-                 'osx64':trunk + 'osx/theochrone64.zip',
-                 'python':trunk + 'python/Theochrone.zip',
+    downloads = {'windows32':trunk + 'theochrone_windows32.zip',
+                 'windows64':trunk + 'theochrone_windows64.zip',
+                 'linux32':trunk + 'theochrone_linux32.zip',
+                 'linux64':trunk + 'theochrone_linux64.zip',
+                 'osx32':trunk + 'theochrone_osx32.zip',
+                 'osx64':trunk + 'theochrone_osx64.zip',
+                 'python':trunk + 'theochrone.zip',
                  } # list of downloads
     # variables for template
     export_form = ExportResults(request.GET or None)

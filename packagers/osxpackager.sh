@@ -13,11 +13,11 @@ fcm.delete_if_exist build
 
 # parameters
 if [[ $1 == *32* ]] ; then # 32 bits or 64 bits (default), maybe useless
-	name=Theochrone32.zip
+	name=theochrone_osx32.zip
 	args+='--prefer-ppc'
 	
 else
-	name=Theochrone64.zip
+	name=theochrone_osx64.zip
 fi
 
 fcm.copy_and_cd

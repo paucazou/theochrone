@@ -46,7 +46,10 @@ pyinstaller $progdir/theochrone.pyw \
 
 pyinstaller $name.spec
 print $PWD
-mv dist/* ../outputs/
+cd dist/
+zip -r dist/*
+cd ..
+mv dist/*.zip ../outputs/
 fcm.end_script
 
 #options disabled

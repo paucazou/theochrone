@@ -40,12 +40,13 @@ pynsist $cfg
 
 cd build/nsis/
 output_file=`ls *.exe`
-cd ../../
-mv build/nsis/$output_file ../outputs/
-print $output_file moved in outputs
-cd ../outputs/
-zip -r theochrone$bitness.zip $output_file
+cd ../../build/nsis/
+zip_name=theochrone_windows$bitness.zip
+zip -r $zip_name $output_file
 print $output_file zipped
+mv $zip_name ../../../outputs/
+print $zip_name moved in outputs
+cd ../../../outputs/
 fcm.end_script
 
 
