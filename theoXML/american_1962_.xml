@@ -1,0 +1,274 @@
+<?xml version="1.0" ?>
+<list>
+
+  
+        <Modele>
+
+    
+                <str key="classe">FeteFixe</str>
+
+    
+                <dict key="attributs">
+
+      
+                        <str key="_couleur">blanc</str>
+
+      
+                        <str key="_images">marie_guadalupe</str>
+
+      
+                        <int key="_priorite">700</int>
+
+      
+                        <str key="_temps_liturgique">variable</str>
+
+      
+                        <bool key="_transferee">False</bool>
+
+      
+                        <dict key="addendum">
+
+        
+                                <str key="en"/>
+
+        
+                                <str key="fr"/>
+
+        
+                                <str key="la"/>
+
+      
+                        </dict>
+
+      
+                        <bool key="celebree">True</bool>
+
+      
+                        <bool key="commemoraison">False</bool>
+
+      
+                        <int key="commemoraison_privilegiee">0</int>
+
+      
+                        <None key="date"/>
+
+      
+                        <dict key="date_">
+
+        
+                                <int key="jour">12</int>
+
+        
+                                <int key="mois">12</int>
+
+      
+                        </dict>
+
+      
+                        <None key="date_originelle"/>
+
+      
+                        <int key="degre">3</int>
+
+      
+                        <bool key="dimanche">False</bool>
+
+      
+                        <bool key="fete_du_Seigneur">False</bool>
+
+      
+                        <str key="link">http://www.maternalheart.org/propers/Propers%20of%20the%20Saints/Dec%2012%20-%20Our%20Lady%20of%20Guadalupe/Our%20Lady%20of%20Guadalupe.pdf</str>
+
+      
+                        <dict key="nom">
+
+        
+                                <str key="en">Our Lady of Guadalupe, Principal Patroness of Americas</str>
+
+        
+                                <str key="fr">Notre-Dame de Guadalupe, Patronne principale des Amériques</str>
+
+        
+                                <str key="la">Sanctae Mariae Guadalupensis, Patronae primae Americarum</str>
+
+      
+                        </dict>
+
+      
+                        <bool key="occurrence_perpetuelle">False</bool>
+
+      
+                        <bool key="omission">False</bool>
+
+      
+                        <int key="ordo">1962</int>
+
+      
+                        <bool key="pal">False</bool>
+
+      
+                        <None key="parent"/>
+
+      
+                        <set key="personne">
+
+        
+                                <str>marie</str>
+
+      
+                        </set>
+
+      
+                        <bool key="peut_etre_celebree">False</bool>
+
+      
+                        <bool key="peut_etre_votive">False</bool>
+
+      
+                        <str key="propre">american</str>
+
+      
+                        <None key="regex"/>
+
+      
+                        <dict key="regex_">
+
+        
+                                <list key="attribut"/>
+
+        
+                                <list key="attribut_compose"/>
+
+        
+                                <list key="egal"/>
+
+        
+                                <list key="hyperonyme"/>
+
+        
+                                <list key="nom"/>
+
+        
+                                <list key="nom_compose"/>
+
+        
+                                <list key="refus_faible"/>
+
+        
+                                <list key="refus_fort"/>
+
+        
+                                <list key="syntaxiques"/>
+
+        
+                                <list key="titre"/>
+
+      
+                        </dict>
+
+      
+                        <bool key="repris_en_ferie">False</bool>
+
+      
+                        <bool key="sanctoral">True</bool>
+
+      
+                        <bool key="temporal">False</bool>
+
+      
+                        <str key="textes"/>
+
+      
+                        <None key="tokens"/>
+
+      
+                        <str key="tokens_">notre dame sainte vierge marie guadalupe patronne principale amerique</str>
+
+      
+                        <int key="valeur">0</int>
+
+      
+                        <bool key="votive">False</bool>
+
+    
+                </dict>
+
+  
+        </Modele>
+<Modele>
+                <str key="classe">FeteFixe</str>
+                <dict key="attributs">
+                        <str key="_couleur">blanc</str>
+                        <str key="_images">immaculee_conception</str>
+                        <int key="_priorite">2501</int>
+                        <str key="_temps_liturgique">variable</str>
+                        <bool key="_transferee">False</bool>
+                        <dict key="addendum">
+                                <str key="en"/>
+                                <str key="fr"/>
+                                <str key="la"/>
+                        </dict>
+                        <bool key="celebree">True</bool>
+                        <bool key="commemoraison">False</bool>
+                        <int key="commemoraison_privilegiee">90</int>
+                        <None key="date"/>
+                        <dict key="date_">
+                                <int key="jour">8</int>
+                                <int key="mois">12</int>
+                        </dict>
+                        <None key="date_originelle"/>
+                        <int key="degre">1</int>
+                        <bool key="dimanche">False</bool>
+                        <bool key="fete_du_Seigneur">False</bool>
+                        <str key="link">http://introibo.fr/08-12-Immaculee-Conception-de-la</str>
+                        <dict key="nom">
+                                <str key="en">The Immaculate Conception of the Blessed Virgin Mary, Principal Patroness of the United States of America</str>
+                                <str key="fr">L'Immaculée Conception de la Bienheureuse Vierge Marie, Patronne principale des États-Unis d'Amérique</str>
+                                <str key="la">In Conceptione Immaculata Beatae Mariae Virginis, Primae Patronae Foederatarum Americae Civitatum</str>
+                        </dict>
+                        <bool key="occurrence_perpetuelle">False</bool>
+                        <bool key="omission">False</bool>
+                        <int key="ordo">1962</int>
+                        <bool key="pal">False</bool>
+                        <set key="personne">
+                                <str>marie</str>
+                        </set>
+                        <bool key="peut_etre_celebree">False</bool>
+                        <bool key="peut_etre_votive">False</bool>
+                        <str key="propre">american</str>
+                        <None key="regex"/>
+                        <dict key="regex_">
+                                <list key="attribut">
+                                        <str>immaculée</str>
+                                        <str>marie</str>
+                                </list>
+                                <list key="attribut_compose"/>
+                                <list key="egal"/>
+                                <list key="hyperonyme"/>
+                                <list key="nom">
+                                        <str>conception</str>
+                                </list>
+                                <list key="nom_compose"/>
+                                <list key="refus_faible"/>
+                                <list key="refus_fort"/>
+                                <list key="syntaxiques">
+                                        <str>de</str>
+                                        <str>la</str>
+                                </list>
+                                <list key="titre">
+                                        <str>bienheureuse</str>
+                                        <str>sainte</str>
+                                        <str>vierge</str>
+                                </list>
+                        </dict>
+                        <bool key="repris_en_ferie">False</bool>
+                        <bool key="sanctoral">True</bool>
+                        <bool key="temporal">False</bool>
+                        <str key="textes"/>
+                        <int key="valeur">0</int>
+                        <bool key="votive">False</bool>
+                </dict>
+        </Modele>
+
+</list>
+

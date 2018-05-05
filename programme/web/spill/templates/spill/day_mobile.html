@@ -1,3 +1,11 @@
+{% load filters %}
+{% load i18n %}
+{# variables #}
+{% trans "More details on Theochrone" as details %}
+{% trans "Texts of the Mass and the Divine Office" as mass_texts %}
+{% trans "mass" as mass %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
 <style>
 a
 {
@@ -9,5 +17,5 @@ a:hover
     text-decoration: underline;
 }
 </style>
-<!-- Voir si on ne peut pas utiliser plutôt postmessage/ajax plutôt qu'un iframe -->
-<a href="{{ link_to_day }}" target="blank" id="today" class="black-link" alt="More details on Theochrone" title="Plus de détails sur Theochrone.fr">{{ day }}</a> : <a target='blank' href="{{ feast.link }}" id="text-mass" alt="Link to Introibo.fr" title="Textes de la messe et de l'office sur Introibo">{{ feast.nom.fr }} {% if feast.pal %} (messe <em>Pro Aliquibus Locis</em>){% endif %}</a>
+{# Voir si on ne peut pas utiliser plutôt postmessage/ajax plutôt qu'un iframe #}
+<a href="{{ link_to_day }}" target="blank" id="today" class="black-link" alt="{{ details }}" title="{{ details }}">{{ day }}</a> : <a target='blank' href="{{ feast.link }}" id="text-mass" alt="{{ mass_texts }}" title="{{ mass_texts }}">{{ feast.nom|key:lang.code|defkey:'en' }} {% if feast.pal %} ({{ mass }}<em>Pro Aliquibus Locis</em>){% endif %}</a>

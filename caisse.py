@@ -383,34 +383,32 @@ def ajouter(modele,entrees={}):
         nouveau.nom['fr'] = finput('Rentrez le nom de la fête en français',nouveau.nom['fr'])
         nouveau.nom['en'] = finput('Rentrez le nom de la fête en anglais',nouveau.nom['en'])
         #nouveau.ordo=valider('Rentrez l\'année de l\'ordo de référence.',nouveau.ordo)
-        #nouveau.propre = finput('Rentrez le propre de cette fête.',nouveau.propre)
+        nouveau.propre = finput('Rentrez le propre de cette fête.',nouveau.propre)
         
-        #nouveau.degre = valider('Rentrez le degré de la fête (1 à 5)',nouveau.degre)
-        #print("""Voici les différents degrés de préséance :""")
-        #for i,a in sorted(variables.priorites.items()):
-            #print(i,':',a)
-        #nouveau._priorite = valider('Rentrez le degré de préséance de la fête',nouveau._priorite)
-        #print("""Voici les différents degrés de commémoraison : """)
-        #for i,a in sorted(variables.priorites_de_commemoraison.items()):
-            #print(i,':',a)
-        #nouveau.commemoraison_privilegiee = valider('Rentrez le degré de commémoraison.',nouveau.commemoraison_privilegiee)
-        nouveau.degre = 6 # pal
-        nouveau._priorite = 50 # pal
-        nouveau.commemoraison_privilegiee = 0 # pal
+        nouveau.degre = valider('Rentrez le degré de la fête (1 à 5)',nouveau.degre)
+        print("""Voici les différents degrés de préséance :""")
+        for i,a in sorted(variables.priorites.items()):
+            print(i,':',a)
+        nouveau._priorite = valider('Rentrez le degré de préséance de la fête',nouveau._priorite)
+        print("""Voici les différents degrés de commémoraison : """)
+        for i,a in sorted(variables.priorites_de_commemoraison.items()):
+            print(i,':',a)
+        nouveau.commemoraison_privilegiee = valider('Rentrez le degré de commémoraison.',nouveau.commemoraison_privilegiee)
+        #nouveau.degre = 6 # pal
+        #nouveau._priorite = 50 # pal
+        #nouveau.commemoraison_privilegiee = 0 # pal
         
         #nouveau.pal = valider('La messe peut-elle être Pro aliquibus locis ?',nouveau.pal,'bool')
-        nouveau.pal = True
+        nouveau.pal = False
         #nouveau.votive = valider('La messe est-elle votive, ou peut-elle être reprise comme votive ?',nouveau.votive,'bool')
-        #nouveau.occurrence_perpetuelle = valider('La fête souffre-t-elle d\'une occurrence perpétuelle avec une autre fête ?',nouveau.occurrence_perpetuelle,'bool')
-        #nouveau.dimanche = valider('La fête tombe-t-elle un dimanche ?',nouveau.dimanche,'bool')
+        nouveau.occurrence_perpetuelle = valider('La fête souffre-t-elle d\'une occurrence perpétuelle avec une autre fête ?',nouveau.occurrence_perpetuelle,'bool')
+        nouveau.dimanche = valider('La fête tombe-t-elle un dimanche ?',nouveau.dimanche,'bool')
         #nouveau.repris_en_ferie = valider('La fête est-elle reprise en férie ?',nouveau.repris_en_ferie,'bool')
         nouveau.fete_du_Seigneur = valider('La fête est-elle une fête du Seigneur ?',nouveau.fete_du_Seigneur,'bool')
-        #nouveau.temporal = valider('La fête fait-elle partie du Temporal ?', nouveau.temporal,'bool')
-        nouveau.temporal = False
-        nouveau.sanctoral = False
-        if True:
-            pass
-        elif not nouveau.temporal:
+        nouveau.temporal = valider('La fête fait-elle partie du Temporal ?', nouveau.temporal,'bool')
+        #nouveau.temporal = False
+        #nouveau.sanctoral = False
+        if not nouveau.temporal:
             nouveau.sanctoral = True
         else:
             reponse = finput('Cette fête appartient-elle à un temps liturgique variable ?',nouveau._temps_liturgique)

@@ -116,7 +116,7 @@ temps_liturgiques = {
 programmes_utilises = (
     'xmllint --format -',
     'enc.py',
-    'xgettext -(j)p ./programme/i18n/[language]/LC_MESSAGES [filename]',
+    'xgettext -kmarkToTranslate -(j)p ./programme/i18n/[language]/LC_MESSAGES [filename]',
     'msgformat [filename].po',
     'caisse.py',
     'python -m doctest -v example.txt', # for doctests

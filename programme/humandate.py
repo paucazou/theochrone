@@ -18,7 +18,7 @@ def main(lang,item,item_type):
     lang
     item is a datetime like obj to render
     item_type is if item is a day, a month, etc."""
-    functions = {'fr':_fr,'la':_la}
+    functions = {'fr':_fr,'la':_la,'en':_en}
     if lang not in languages_available:
         raise ValueError("Language requested is not available")
     return functions[lang](item,item_type)
@@ -34,4 +34,8 @@ def _fr(item,item_type):
 def _la(item,item_type):
     """For latin"""
     return str(item)
+
+def _en(item,item_type):
+    """For english"""
+    return item
 

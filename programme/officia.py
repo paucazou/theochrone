@@ -136,7 +136,10 @@ def erreur(code,langue='en',exit=True):
         else:
             return "Erreur n° {} : {}".format(code,message)
     else:
-        sys.exit("Error {} : {} Please type --help for more information.".format(code,message))
+        if exit:
+            sys.exit("Error {} : {} Please type --help for more information.".format(code,message))
+        else:
+            return "Error n° {}: {}".format(code,message)
 
 
 def datevalable(entree,langue='fr',semaine_seule=False,mois_seul=False,annee_seule=False,exit=True):
@@ -304,7 +307,10 @@ def datevalable(entree,langue='fr',semaine_seule=False,mois_seul=False,annee_seu
         else: # erreur
             erreur(12,langue,exit)
     else: # en
-        pass
+        print("Only today is available in english on CLI. Please use the GUI by typing ./theochrone --gui.\n You can also give some help to fix the error.")
+        date = datetime.date.today() 
+        semaine_seule = mois_seul = annee_seule = False
+
     return date, semaine_seule, mois_seul, annee_seule
 
 def AtoZ(semaine_seule,mois_seul,annee_seule,date): # TEST
@@ -336,6 +342,8 @@ def mois_lettre(mot,langue='en'): #TEST
                 return i + 1
         erreur(13,langue)
     else: #default : en
+        if isinstance(mot,int):
+            return calendar.month_name[mot]
         for month_idx in range(1,13):
             if mot in calendar.month_name[month_idx].lower():
                 return True, str(month_idx)
@@ -357,35 +365,50 @@ def renvoie_regex(retour,regex,liste): # est-ce qu'on ne pourrait pas la remplac
     retour.regex['egal'] += de_cote
     return retour.regex
 
-def affiche_temps_liturgique(objet,langue='fr'): #TEST
-    """Une fonction capable d'afficher le temps liturgique"""
-    sortie = 'erreur'
-    if langue == 'fr':
-        if objet.temps_liturgique() == 'nativite':
-            sortie = "temps de la Nativité (Temps de Noël)"
-        elif objet.temps_liturgique() == 'epiphanie':
-            sortie = "temps de l'Épiphanie (Temps de Noël)"
-        elif objet.temps_liturgique() == 'avent':
-            sortie = "temps de l'Avent"
-        elif objet.temps_liturgique() == 'apres_epiphanie':
-            sortie = "temps per Annum après l'Épiphanie"
-        elif objet.temps_liturgique() == 'septuagesime':
-            sortie = "temps de la Septuagésime"
-        elif objet.temps_liturgique() == 'careme':
-            sortie = "temps du Carême proprement dit (Temps du Carême)"
-        elif objet.temps_liturgique() == 'passion':
-            sortie = "temps de la Passion (Temps du Carême)"
-        elif objet.temps_liturgique() == 'paques':
-            sortie = "temps de Pâques (Temps Pascal)"
-        elif objet.temps_liturgique() == 'ascension':
-            sortie = "temps de l'Ascension (Temps Pascal)"
-        elif objet.temps_liturgique() == 'octave_pentecote':
-            sortie = "octave de la Pentecôte (Temps Pascal)"
-        elif objet.temps_liturgique() == 'pentecote':
-            sortie = "temps per Annum après la Pentecôte"
-    else: # en
-        pass
-    return sortie
+def affiche_temps_liturgique(elt,lang='fr'): #TEST
+    """Return liturgical season"""
+    seasons = {'fr': {
+	'nativite': "temps de la Nativité (Temps de Noël)",
+        'epiphanie': "temps de l'Épiphanie (Temps de Noël)",
+        'avent': "temps de l'Avent",
+        'apres_epiphanie': "temps per Annum après l'Épiphanie",
+        'septuagesime': "temps de la Septuagésime",
+        'careme': "temps du Carême proprement dit (Temps du Carême)",
+        'passion': "temps de la Passion (Temps du Carême)",
+        'paques': "temps de Pâques (Temps Pascal)",
+        'ascension': "temps de l'Ascension (Temps Pascal)",
+        'octave_pentecote': "octave de la Pentecôte (Temps Pascal)",
+        'pentecote': "temps per Annum après la Pentecôte",
+            },
+        'en' : {
+            'avent': 'Season of Advent',
+            'nativite': 'Christmastide (Season of Christmas)',
+            'epiphanie': 'Epiphanytide (Season of Christmas)',
+            'apres_epiphanie': 'Season per annum after Epiphany',
+            'septuagesime': 'Season of Septuagesima',
+            'careme': 'Lent (Season of Lent)',
+            'passion': 'Passiontide (Season of Lent)',
+            'paques': 'Eastertide (Season of Easter)',
+            'ascension': 'Ascensiontide (Season of Easter',
+            'octave_pentecote': 'Octave of Pentecost (Season of Easter)',
+            'pentecote': 'Season per annum after Pentecost',
+            },
+        }
+
+    return seasons[lang][elt.temps_liturgique()]
+
+def liturgical_colour(elt,lang='en'):
+    """Return the liturgical colour"""
+    if lang == "fr":
+        return elt.couleur
+    colors = {'en': {
+        'blanc':'white',
+        'noir':'black',
+        'rouge':'red',
+        'vert':'green',
+        'violet':'violet',
+        }}
+    return colors[lang][elt.couleur]
 
 def affiche_jour(date,langue): #TEST
     """Une fonction pour afficher le jour"""
@@ -396,17 +419,23 @@ def affiche_jour(date,langue): #TEST
             jour = date.day
         mois = mois_lettre(date.month,langue)
         sortie="""le {} {} {} {}""".format(nom_jour(date,langue),jour,mois,date.year)
-    elif kwargs['langue']=='en':
-        sortie="""on {}""".format(date)
+    elif langue=='en':
+        month = mois_lettre(date.month,langue)
+        sortie="""on {}, {} {} {}""".format(nom_jour(date,langue).capitalize(),date.day,month,date.year)
     elif kwargs['langue']=='la':
         sortie="""in {}""".format(date) # à développer
     
     return sortie
 
-def affichage(**kwargs):
+def upper_first(string):
+    """Uppers the first letter only,
+    without lowering the others"""
+    return string[0].upper() + string[1:]
+
+def affichage(**kwargs): # DEPRECATED
     """Une fonction destinée à l'affichage des résultats."""
     if kwargs['verbose'] and not kwargs['recherche']:
-        sortie = affiche_jour(kwargs['date'],kwargs['langue']).capitalize() + ' :'
+        sortie = upper_first(affiche_jour(kwargs['date'],kwargs['langue'])) + ' :'
     else:
         sortie=''
     return_value = []
@@ -524,6 +553,9 @@ def affichage(**kwargs):
                 else:
                     prep = 'à'
                 sortie += """Station {} {}. """.format(prep,a.station[kwargs['langue']])
+
+            if kwargs.get('print_proper') or kwargs.get('verbose'):
+                sortie += 'Propre : {}. '.format(a.propre)
             
             if kwargs['verbose']:
                 sortie += a.addendum[kwargs['langue']]
@@ -532,12 +564,8 @@ def affichage(**kwargs):
                 return_value.append(sortie)
                 sortie = ''
                 
-        elif kwargs['langue'] == 'en':
-            erreur('01')
-        else: # latin
+        else: # en
             pass
-        """if a != kwargs['liste'][-1]:
-            sortie += '\n'"""
             
     if not kwargs.get('split'):
         return_value = sortie
@@ -612,6 +640,10 @@ def inversons(mots_bruts,Annee,debut,fin,plus=False,langue='fr',exit=True):
     - langue : language used ;
     - exit : a bool to define whether the system have to exit or not in case of error ;
     """
+    if langue != 'fr':
+        print(exit)
+        return [erreur('01',langue,exit=exit)]
+
     if isinstance(mots_bruts,list):
         mots_bruts = [sans_accent(mot) for mot in mots_bruts]
     else:
@@ -710,6 +742,17 @@ def pdata(read=True,write=False,**kwargs):
                 return lang.read()
         except FileNotFoundError:
             return False
+
+    if kwargs.get('proper',False):
+        with open(config_folder + '/PROPER','w') as proper:
+            proper.write(kwargs['proper'])
+
+    if kwargs.get('proper_saved',False):
+        try:
+            with open(config_folder + '/PROPER') as proper:
+                return proper.read()
+        except FileNotFoundError:
+            return False
             
     if kwargs.get('max_history',False):
         with open(config_folder + '/max_history','w') as max_history:
@@ -789,18 +832,18 @@ def pdata(read=True,write=False,**kwargs):
                     return history
     return True
         
-def datetime_to_link(day,host,martyrology='',hashtag='',s='s'): # peut-être à refactoriser pour y intégrer le gui
+def datetime_to_link(day,host,martyrology='',hashtag='',s='s',proper='roman'): 
     """Take a datetime.date like object
     and return a link to requested host.
     Hashtag can be set to point to a specific id on the page
     s is a s of https: default is 's'"""
     if martyrology:
         martyrology = "&martyrology="+martyrology
-    link = "http{}://{}/kalendarium/date_seule?date_seule_day={}&date_seule_month={}&date_seule_year={}{}#{}".format(
-        s,host,day.day,day.month,day.year,martyrology,hashtag)
+    link = "http{}://{}/kalendarium/date_seule?date_seule_day={}&date_seule_month={}&date_seule_year={}&proper={}{}#{}".format(
+        s,host,day.day,day.month,day.year,proper,martyrology,hashtag)
     return link
         
-def month_to_link(day,host,diff=0,hashtag='',s='s'):
+def month_to_link(day,host,diff=0,hashtag='',s='s',proper='roman'):
     """Similar to datetime_to_link, but returns a link to a month.
     diff : 0 == day.month
     diff : 1 == day.month + 1
@@ -813,8 +856,8 @@ def month_to_link(day,host,diff=0,hashtag='',s='s'):
     elif month < 1:
         month = 12
         year = year - 1
-    link = "http{}://{}/kalendarium/mois?annee={}&mois={}#{}".format(
-        s,host,year,month,hashtag)
+    link = "http{}://{}/kalendarium/mois?annee={}&mois={}&proper={}#{}".format(
+        s,host,year,month,proper,hashtag)
     return link
         
         

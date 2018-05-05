@@ -5,11 +5,15 @@
     <div class="space"></div>
     <h1 id="main" class="title text-center">Widget <span>complet</span></h1>
     <div class="row">
-        <div class="col-md-8">
+	<div class="col-md-4">
+		<h3>Options</h3>
+		<form textareaid="mainwidget" widgetid="widget_example">
+			{{ options_day.as_p }}
+			<input type="submit" class="btn btn-default" value="OK" textareaid="mainwidget" name="ok"/>
+		</form>
+	</div>
+        <div class="col-md-4">
             <h3>Code à copier/coller</h3>
-            <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" id="palbut" insert="pal=on">
-            Inclure les messes <em>Pro Aliquibus Locis</em>
-            </button>
             <textarea class="form-control" rows="3" id="mainwidget" placeholder="Message" name="message" required>{{ widgets.widget_day }}</textarea>
         </div>
         <div class="col-md-4">
@@ -20,44 +24,70 @@
     <div class="space"></div>
     <h1 id="mobile" class="title text-center">Widget <span>léger</span></h1>
     <div class="row">
-        <div class="col-md-8">
+	    <div class="col-md-4">
+		    <h3>Options</h3>
+		    <form textareaid="mobmessage" widgetid="widget_example_mobile">
+			    {{ options_day_mobile.as_p }}
+			    <input type="submit" class="btn btn-default" value="OK" textareaid="mobmessage" name="ok"/>
+		    </form>
+	    </div>
+        <div class="col-md-4">
         <h3>Code à copier/coller</h3>
         <textarea class="form-control" rows="3" id="mobmessage" placeholder="Message" name="message" required>{{ widgets.widget_day_mobile }}</textarea>
         </div>
         <div class="col-md-4">
         <h3>Exemple</h3>
-        {{ widgets.widget_day_mobile | safe }}
+		<div id="widget_example_mobile">{{ widgets.widget_day_mobile | safe }}
+		</div>
         </div>
     </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+function setUrl(event) {
+	/* This function sets the url in the textarea if the PAL option or a proper is changed
+	*/
+	event.preventDefault();
+	// find textarea
+	var options = event.target;
+	var textareaid = $(options).attr("textareaid");
+	var textarea = $("#" + textareaid);
+	var text_inside = textarea.val();
+	// find values and replace
+	// proper
+	var new_proper = options['proper'].value;
+	var properRegex = /&proper=[a-z]+/;
+	text_inside=text_inside.replace(properRegex,"&proper=" + new_proper); 
+	// pal
+	if (textareaid === "mainwidget") {
+		// set or unset pal
+		var pal = options['pal'].checked;
+		var palRegex = /&pal=[a-z]+/;
+		text_inside=text_inside.replace(palRegex,"&pal="+pal); 
+	}
+	// reset textarea value
+	textarea.val(text_inside);
+	// change widget example TODO
+	var exampleid = $(options).attr("widgetid");
+	var example = $("#" + exampleid);
+	example.html(text_inside);
+}
 // show the widget when the page is loaded. HACK
 $("#widget_example").html($("#mainwidget").val())
-// if user click on "Include Pro Aliquibus Locis Masses"
-$( "#palbut" ).click(function() { // TODO essayer de remplacer cet id par un name plus large, lorsqu'il y aura d'autres boutons // changer l'exemple en même temps
-    var text_area = $("#mainwidget").val().split('"'); // text area value
-    var insertion = $("#palbut").attr("insert"); // part of url to add
-    var url_to_change = text_area[13]; // main url
-    if ( url_to_change.indexOf(insertion) == -1){
-        url_to_change += '&' + insertion;
-        } // add part of url
-    else {
-        url_to_change = url_to_change.split('&');
-        var new_url = [];
-        for (i=0;i < url_to_change.length; i++){
-            if (url_to_change[i] != insertion){
-            new_url.push(url_to_change[i]);}
-            }
-        url_to_change = new_url.join("&");
-        } // remove part of url
-    text_area[13] = url_to_change; // setting the url
-    text_area = text_area.join('"');
-    $("#mainwidget").val(text_area); // filling the textarea
-    $("#widget_example").html(text_area) ;
-    console.log($("#widget_example").html());
-});
+
+// if user click on a texterea: select it
+var textereas = document.querySelectorAll('textarea');
+for (var i=0;i<textereas.length;i++) {
+	var elt = textereas[i];
+	elt.addEventListener('click',function (event) {
+		event.target.select();
+	});
+}
+// link forms to setUrl
+for (var i=0;i<document.forms.length;++i) {
+	document.forms[i].addEventListener('submit',setUrl);
+}
 </script>
     
 {% endblock %}

@@ -25,12 +25,13 @@ class Martyrology:
     This class can only contain one edition (by date)
     of the martyrology, with its different translations"""
     _first_line = {'fr':"Le {} {}",
-                   'la':"Die {}. {}"
+                   'la':"Die {}. {}",
+                   'en':"On {1} {0}",
             } # a dict of the pattern for the first line
     _last_line = {
         'fr':"V. Et ailleurs, beaucoup d'autres saints martyrs, confesseurs et saintes vierges. Chœur. R. Rendons grâces à Dieu.",
         'la':"V. Et álibi aliórum plurimórum sanctórum Mártyrum et Confessórum, atque sanctárum Vírginum. Chorus. R. Deo grátias. ",
-        'en':"And elsewhere in divers places, many other holy martyrs, confessors, and holy virgins. R. Thanks be to God.",
+        'en':"V. And elsewhere in divers places, many other holy martyrs, confessors, and holy virgins. R. Thanks be to God.",
             } # a dict of the last lines
     name = {
         'fr':'Martyrologe Romain',

@@ -1,0 +1,12 @@
+<div class="container">
+<div class="list-group">
+  <span class="list-group-item">
+  <button type="button" class="btn btn-info badge" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+    <a class="list-group-item-heading">List group item heading</a>
+  
+
+  <div id="demo" class="list-group collapse">
+  <span class="list-group-item">OK
+  </span>
+  </div></span></div>
+</div>

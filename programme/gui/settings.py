@@ -24,7 +24,7 @@ class SettingsWindow(QWidget,SuperTranslator):
         SuperTranslator.__init__(self)
         self.parent = parent
         
-        self.languages = ('en','fr','la')
+        self.languages = ('en','fr')#,'la')
         self.initUI()
         self.retranslateUI()
     
@@ -52,6 +52,13 @@ class SettingsWindow(QWidget,SuperTranslator):
         self.languages_label = QLabel('Choose your default language')
         self.language_layout.addWidget(self.language_combo)
         self.language_layout.addWidget(self.languages_label)
+
+        # proper choice
+        self.propers_layout = QHBoxLayout()
+        self.propers_combo = QComboBox()
+        self.propers_label = QLabel("Choose your preferred proper")
+        self.propers_layout.addWidget(self.propers_combo)
+        self.propers_layout.addWidget(self.propers_label)
         
         # OK & Cancel buttons
         self.buttons_layout = QHBoxLayout()
@@ -77,6 +84,7 @@ class SettingsWindow(QWidget,SuperTranslator):
         self.layout.addWidget(self.settings_state)
         self.layout.addLayout(self.history_layout)
         self.layout.addLayout(self.language_layout)
+        self.layout.addLayout(self.propers_layout)
         self.layout.addLayout(self.buttons_layout)
         self.setLayout(self.layout)
         
@@ -92,9 +100,9 @@ class SettingsWindow(QWidget,SuperTranslator):
         self.setWindowTitle(_("SettingsWindow","Settings"))
         self.title.setText(_("SettingsWindow","Settings"))
         self.history_label.setText(_("SettingsWindow","Maximum number of lines of your history"))
-        languages = (_("SettingsWindow","English"),_("SettingsWindow","French"),_("SettingsWindow","Latin"),)
+        # lang
+        languages = (_("SettingsWindow","English"),_("SettingsWindow","French"))#,_("SettingsWindow","Latin"),)
         self.language_combo.clear()
-        print(len(languages))
         for lang in languages:
             self.language_combo.addItem(lang)
         lang = officia.pdata(language_saved=True)
@@ -103,7 +111,16 @@ class SettingsWindow(QWidget,SuperTranslator):
         else:
             index = 0
         self.language_combo.setCurrentIndex(index)
+
+        # proper
+        for proper in self.parent.propers:
+            self.propers_combo.addItem(proper[1])
+        proper = officia.pdata(proper_saved=True)
+        if proper:
+            self.propers_combo.setCurrentText(self.parent.propersDict[proper])
+
         self.languages_label.setText(_("SettingsWindow","Choose your default language"))
+        self.propers_label.setText(_('SettingsWindow',"Choose your default proper"))
         self.cancel.setText(_("SettingsWindow","Cancel"))
         self.ok.setText(_("SettingsWindow","OK"))
         if self.settings_state.isChecked():
@@ -119,7 +136,11 @@ class SettingsWindow(QWidget,SuperTranslator):
         self.retranslateUI()
         
     def saveSettings(self):
+        # TODO save proper
+        proper_id = self.propers_combo.currentIndex()
+        proper_name = self.parent.propers[proper_id][0]
         officia.pdata(langue=str(self.languages[self.language_combo.currentIndex()]),
                       max_history=str(self.history_lines.value()),
+                      proper=proper_name,
                       )
         self.close()

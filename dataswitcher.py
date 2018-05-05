@@ -135,6 +135,7 @@ def prepare_data(pkl_file_name):
     - deletes useless attributes (such as regex_)
     - returns the list. At the end of the list, saturday of the Virgin Mary, and Ferie"""
     obj_list = [] # list which will be returned with all the files
+    end_of_list = [] # this is necessary because feria and Virgin Saturday MUST be a the end
     # load
     for xml_file in [elt for elt in xml_files if pkl_file_name in elt ]:
         logger.debug(xml_file)
@@ -164,14 +165,26 @@ def data_pickler(pkl_file_name,obj_list):
         pickler.dump(obj_list)
     return file_path
 
-def main(pkl_file_name):
+def main(**kwargs):
     """What did you think ? It is the main function,
     which calls every other one in this module.
-    Unfortunately, it will not give you a coffee."""
-    return data_pickler(
-        pkl_file_name,
-        prepare_data(pkl_file_name)
-        )
+    Unfortunately, it will not give you a coffee.
+    """
+    if kwargs.get('propers') == 'all':
+        propers = ['roman','american','english','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','australian','newzealander']
+    elif 'proper' in kwargs:
+        propers = [v for k,v in kwargs.items() if 'proper' in k]
+    else:
+        propers = ['roman']
+
+    ordo = kwargs.get('ordo','1962')
+
+    for proper in propers:
+        pkl_file_name = "{}_{}".format(proper,ordo)
+        data_pickler(
+            pkl_file_name,
+            prepare_data(pkl_file_name)
+            )
 
 def modify_in_obj(function,pattern='.*',auto_saved=False):
     """This function applies function

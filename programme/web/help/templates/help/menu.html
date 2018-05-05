@@ -1,0 +1,21 @@
+<div class="list-group">
+{% for elt in tree %}
+{% if elt == "STOP" %}
+</ul>
+</div>
+</li>
+{% else %}
+<li class="list-group-item">
+	{% if elt.has_children %}
+	<button type="button" class="btn btn-info badge" data-toggle="collapse" data-target="#{{ elt.id }}"><i class="fa fa-caret-square-o-down" aria-hidden="true"></i></button>
+	{% endif %}
+	<a href="#">elt.title</a>
+	{% if elt.has_children %}
+	<div id="#{{ elt.id }}" class="collapse">
+	<ul class="list-group">
+	{% else %}
+</li>
+	{% endif %}
+
+{% endif %}
+</div>

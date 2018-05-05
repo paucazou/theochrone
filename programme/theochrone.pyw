@@ -21,6 +21,7 @@ autocomplete.autocomplete()
 
 import annus
 import calendar
+import cli.io as io
 import datetime
 import martyrology
 import officia
@@ -47,8 +48,13 @@ def main():
                 officia.pdata(max_history=args.settings)
                 args.settings = "History maximum lines number : {}".format(args.settings)
             except ValueError:
-                officia.pdata(langue=args.langue)
-                args.settings = "Default language : {}".format(args.langue)
+                args.settings = ''
+                if '--language' in sys.argv or '-l' in sys.argv:
+                    officia.pdata(langue=args.langue)
+                    args.settings += """Default language : {}\n""".format(args.langue)
+                if "--proper" in sys.argv or '-p' in sys.argv or '--rite' in sys.argv:
+                    officia.pdata(proper=args.propre)
+                    args.settings += """Default proper: {}\n""".format(args.propre)
             
         sys.exit("Settings saved : {}".format(args.settings))
             
@@ -182,6 +188,18 @@ def main():
     elif args.INVERSE != 1:
         officia.pdata(write=True,history='reverse',debut=debut,fin=fin,keywords=args.INVERSE)
 
+    ### export
+    if args.export:
+        import exporter
+        exporter.main(debut,fin,
+                args.langue,
+                args.output,
+                proper=args.propre,ordo=args.ordo,
+                file_ext=args.export,
+                pal=args.pal)
+        args.output.close()
+        print('Export completed')
+
     if args.navigateur:
         if mois_seul:
             sys.exit(shiptobrowser.openBrowser(search_type='month',date=debut))
@@ -193,7 +211,7 @@ def main():
             sys.exit(shiptobrowser.openBrowser())
     elif not os.isatty(0) or args.gui or (len(sys.argv) <= 1 and not sys.platform.startswith('linux')):
         from gui import main_window
-        app = main_window.App([args.INVERSE,debut,fin,args.plus])
+        app = main_window.App([args,debut,fin])
         sys.exit(app.exec_())
         
 ### Définition de quelques variables ###  
@@ -203,7 +221,8 @@ def main():
     #Annee = officia.fabrique_an(debut,fin,ordo,argsr.propre)
     Annee = annus.LiturgicalCalendar(args.propre,ordo)
     Annee(debut.year,fin.year)
-    roman_martyrology = martyrology.Martyrology(args.ordo)
+    if args.martyrology:
+        roman_martyrology = martyrology.Martyrology(args.ordo)
 
 #### Affichage ###
 
@@ -214,30 +233,34 @@ def main():
             for res in results:
                 print(res.title)
                 if res.matching_line > 0:
-                    print(*res.main[:res.matching_line],sep='\n')
+                    print(*res.main[:res.matching_line],sep="""\n""")
                 sys.stdout.write("\033[1;31m") # print red
                 print(res.main[res.matching_line])
                 sys.stdout.write("\033[0;0m") # print white
                 if res.matching_line + 1 != len(res.main):
-                    print(*res.main[res.matching_line + 1:],sep='\n')
-                print(res.last_sentence,'\n')
+                    print(*res.main[res.matching_line + 1:],sep="""\n""")
+                print(res.last_sentence,"""\n""")
         else:
             liste = officia.inversons(args.INVERSE,Annee,debut,fin,plus=args.plus,langue=args.langue,exit=True)
             if args.textes and len(liste) < 4:
                 for fete in liste:
                     webbrowser.open_new_tab(fete.link)
                     
-            print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,Annee=Annee,langue=args.langue,date=debut,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal))
+            #print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=True,                   liste=liste,Annee=Annee,langue=args.langue,date=debut,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal,print_proper=args.print_proper))
+            print(io.select_results(args,liste),end='')
     else:
+        args.INVERSE = False
         if args.textes and debut == fin:
             for fete in Annee[debut]:
                 webbrowser.open_new_tab(fete.link)
         date = debut
         while True:
-            print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=False,                   liste=Annee[date],Annee=Annee,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal))
+            #print(officia.affichage(date_affichee=args.date_affichee,temps_liturgique=args.temps_liturgique,recherche=False,                   liste=Annee[date],Annee=Annee,langue=args.langue,date=date,verbose=args.verbose,degre=args.degre,temporal_ou_sanctoral=args.temporal_ou_sanctoral,couleur=args.couleur,transfert=args.transfert,jour_semaine=args.jour_semaine,station=args.station,pal=args.pal,print_proper=args.print_proper))
             if args.martyrology:
                 first_line,text,last_line, matching_line = roman_martyrology.daytext(date,args.langue)
-                print('\n',roman_martyrology.name[args.langue],*text,last_line,sep='\n')
+                print('''\n''',roman_martyrology.name[args.langue],*text,last_line,sep='''\n''')
+            else:
+                print(io.select_results(args,Annee[date]),end='')
             date = date + datetime.timedelta(1)
             if date <= fin:
                 print('')

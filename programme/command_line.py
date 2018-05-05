@@ -49,6 +49,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':['-w'],
             'long' : ['--weekday'],
             },
+        'print_proper':{
+            'short':['-R'],
+            'long': ['--print-proper'],
+            },
         'transfert':{
             'short':['-t'],
             'long' : ['--transfert'],
@@ -86,12 +90,18 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'long' : ['--language'],
             'options': ['fr','en','la'],
             },
+        'status':{
+                'short':['-A'],
+                'long':['--status'],
+                },
         
         # Selection options
         'propre': {
             'short':['-p',],
             'long':['--proper','--rite',],
-            'options':['romanus','all',]
+            'options':['roman',
+                'american','australian','brazilian','canadian','english','french','newzealander','polish','portuguese','scottish','spanish','welsh',
+                ]
             },
         'ordo': {
             'short':['-o'],
@@ -142,6 +152,16 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short': ['-P'],
             'long': ['--previous'],
             },
+        
+        # Export options
+        'export':{
+                'short': ['-e'],
+                'long': ['--export'],
+                },
+        'output': {
+                'short': ['-O'],
+                'long': ['--output'],
+                },
         
         # Help
         'help':{
@@ -219,12 +239,20 @@ def default_language():
             return f.read()
     except FileNotFoundError:
         pass
-    langue = locale.getdefaultlocale()[0]
-    if 'fr' in langue:
-        langue = 'fr'
-    else:
-        langue = 'en'
-    return langue
+    lang = locale.getdefaultlocale()[0].split('_')[0]
+    if lang not in arguments['langue']['options']:
+        lang = 'en'
+    return lang
+
+def default_proper():
+    """Return the proper selected by the user.
+    If no proper was selected, return the roman proper"""
+    file = os.path.expanduser('~/.theochrone/config/PROPER')
+    try:
+        with open(file) as f:
+            return f.read()
+    except FileNotFoundError:
+        return 'roman'
 
 class CoursDeLangue(argparse.Action):
     """A class to set language name entered by user"""
@@ -240,7 +268,7 @@ class CoursDeLangue(argparse.Action):
             if value in values or value == key:
                 value = key
                 break
-        if value not in ('fr','la','en'):
+        if value not in arguments['langue']['options']:
             print(_("Language entered is not available. Default language will be used instead."))
             value = default_language()
         setattr(namespace,self.dest,value)
@@ -315,6 +343,8 @@ def args():
     affichage.add_argument('-s','--temporsanct',dest='temporal_ou_sanctoral', help=_('print whether the feast belongs to the sanctorum or de tempore'), action='store_true')
     affichage.add_argument('-L','--liturgical-time', dest='temps_liturgique',help=_('print to which liturgical time the feast belongs to'),action='store_true')
     affichage.add_argument('-D','--print-date',dest='date_affichee',help=_('print date'),action='store_true')
+    affichage.add_argument(*arguments['print_proper']['short'],*arguments['print_proper']['long'],dest='print_proper',help=_("""Prints the name of the proper of the feasts on screen"""),action="store_true")
+    affichage.add_argument(*arguments['status']['short'],*arguments['status']['long'],dest='status',action="store_true",help=_("""Prints the status of the feasts"""))
     affichage.add_argument(*arguments['pal']['short'],*arguments['pal']['long'],dest="pal",help=_("""Include Pro Aliquibus Locis masses in results."""),action="store_true")
     affichage.add_argument('--show-texts',dest='textes',help=_("""Show mass texts of the day selected.
         Opens the introibo.fr page in a webbrowser.
@@ -329,7 +359,7 @@ def args():
         - Latin"""), default=default_language())
 
     selection = parser.add_argument_group(_('Selection options'),description=_("Options to focus researches"))
-    selection.add_argument('-p','--proper','--rite', dest='propre', help=_('select which proper or rite you want to use'),action='store',default='romanus',choices=['romanus','all'])
+    selection.add_argument('-p','--proper','--rite', dest='propre', help=_('select which proper or rite you want to use'),action='store',default=default_proper(),choices=arguments['propre']['options'])
     selection.add_argument('-o','--ordo', dest='ordo', help=_('select which ordo you want to use'), type=int, action='store',default=1962,choices=[1962])
     selection.add_argument('-m','--more',dest='plus', help=_('used with -r/--reverse, print a more complete list of feasts matching with arguments entered'), action='store_true')
     
@@ -351,6 +381,13 @@ def args():
         Works the same way as --next, on the other side. See above.
         Doesn't work with -r/--reverse"""),action='store',default=0,const=1,type=int,nargs='?') # mettre toutes ces options dans un groupe exclusif avec -r/DATE, etc.
 
+    export = parser.add_argument_group(_("Export options"),description=_("""Export results to file in a specific format.
+        Following options can be used with export:
+        any date, --pal, --ordo, --proper"""))
+    export.add_argument(*arguments['export']['long'],*arguments['export']['short'],dest='export',choices=['csv','ics'],action='store',help=_("""Select which file format you want to use. Available: ics, csv"""))
+    output_required = '--export' in sys.argv or '-e' in sys.argv # WARNING if changes in args # https://stackoverflow.com/questions/19414060/argparse-required-argument-y-if-x-is-present
+    export.add_argument(*arguments['output']['long'],*arguments['output']['short'],dest='output',action='store',required=output_required,type=argparse.FileType('w'),help=_("Path to the destination. If you want a suffix, please add it."))
+
     system = parser.add_argument_group(_('System options'), description=_("Other options"))
     system.add_argument("-b","--browser",dest="navigateur",help=_("""Open Theochrone in your default webbrowser. You can pass args but following options are disabled :
         - --from/--to options
@@ -363,13 +400,14 @@ def args():
     system.add_argument(*arguments['gui']['short'],*arguments['gui']['long'],dest='gui',help=_("""Open Theochrone in a Graphical User Interface (GUI).
         This is the standard behaviour if Theochrone is opened in a file manager.
         You can pass all research types args."""),action='store_true')
-    system.add_argument('--version', action='version',version='%(prog)s 0.4.7')
+    system.add_argument('--version', action='version',version='%(prog)s 0.5.0')
     system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
     system.add_argument(*arguments['settings']['long'],dest='settings',nargs='?',const='nothing',help=_("""Modify some settings of the program and exits. Following options are available :
         - ON/OFF : set settings and history ON (default) or OFF.
         OFF also deletes all your personal settings and history, if previously set.
         - An integer : set the maximum lines of your history.
         - --language : save the default language you want to use.
+        - --proper : save the default proper you want to use.
         Settings and history can be found in '.theochrone', which is in your personal directory."""))
 
     return parser.parse_args()

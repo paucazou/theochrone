@@ -26,7 +26,7 @@ var wHeight;
 
 function resizeContent(itheo,orurl){
       itheo.postMessage("set container to 0px",orurl);
-      wHeight = $(document).height();
+      wHeight = $(document).height(); // envoyer la offsetHeight plutôt ? TODO 
      itheo.postMessage(wHeight,orurl); // vérifier que ce soit chargé
 };
 
@@ -44,7 +44,7 @@ function loadDoc(page) {
 };
 
 var start_page = "{{ page }}";
-if (start_page == "day") { // date set to locale
+if (start_page == "day" || start_page == "day_mobile") { // date set to locale
 var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v}); // GET parameters; source = https://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
 
 var today = new Date;
@@ -52,7 +52,10 @@ var d = today.getDate();
 var m = today.getMonth() + 1;
 var y = today.getFullYear();
 var pal = params['pal'];
-start_page = "day?date_seule_day=" + d + "&date_seule_month=" + m + "&date_seule_year=" + y;
+var proper = params['proper'];
+proper = proper ? proper:'roman'; // roman by default
+start_page += "?date_seule_day=" + d + "&date_seule_month=" + m + "&date_seule_year=" + y;
+start_page += "&proper=" + proper;
 
 if (pal == "on"){ // if Pro Aliquibus Locis is requested by user
 start_page += "&pal=on";

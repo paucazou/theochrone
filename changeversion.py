@@ -29,12 +29,16 @@ def main(new_version: str) -> None:
 
     for file_item in files_data:
         change_version(new_version,file_item.path,file_item.line,file_item.line_clue)
+
+    print('Please do not forget to apply following commands: `./manage.py makemigrations && ./manage.py migrate`')
     
     return None
 
 files_data = (
     FileData('programme/command_line.py',4*' '+"""system.add_argument('--version', action='version',version='%(prog)s {}')""","""'--version', action='version',version='"""),
-    FileData('README.md','Latest version is {}','Latest version is')
+    FileData('README.md','Latest version is {}','Latest version is'),
+    FileData('README.md','## New features available in {}','## New features available in'),
+    FileData('programme/web/help/models.py','VERSION = {}','VERSION = '),
     )
 
 parser = argparse.ArgumentParser(description="Change version of the soft in different places")

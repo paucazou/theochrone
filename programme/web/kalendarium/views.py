@@ -1,7 +1,9 @@
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+import calendar
 import datetime
+import io
 import os
 import sys
 from .forms import * 
@@ -14,20 +16,22 @@ programme = os.path.abspath(chemin + '/../..')
 sys.path.append(programme)
 import annus
 import adjutoria
+import exporter
 import martyrology
 import officia
 
 martyrology_instance = martyrology.Martyrology()
-Annee = annus.LiturgicalCalendar()
 host = os.environ.get("THEHOST")
-s=''
+liturgical_calendar = annus.LiturgicalCalendar(proper='roman')
+s='s'
     
 # use online
 
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
          debut=None,fin=None,pal=False,
-         mots_clefs='',plus=False,annee=datetime.date.today().year):
+         proper='roman',
+         mots_clefs='',plus=False,annee=None):
     """A function which defines homepage. It is also used
     by other pages to print common code.
     It takes many arguments :
@@ -40,6 +44,9 @@ def home(request,
     - plus : a bool used to know whether the research must be large, or not ;
     - annee : the year ;
     """
+    if proper not in propers:
+        proper = 'roman'
+    liturgycal = annus.LiturgicalCalendar(proper=proper)
     retour = ''
     deroule = {}
     if debut == None:
@@ -49,15 +56,15 @@ def home(request,
     if mots_clefs == '':
         hashtag = 'resultup'
         if debut == fin: #à mettre dans le template
-            next_item = officia.datetime_to_link(fin + datetime.timedelta(1),host,hashtag=hashtag,s=s)
-            previous_item = officia.datetime_to_link(debut - datetime.timedelta(1),host,hashtag=hashtag,s=s)
+            next_item = officia.datetime_to_link(fin + datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper)
+            previous_item = officia.datetime_to_link(debut - datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper)
         else:
             next_item = officia.month_to_link(fin,host,1,hashtag,s)
             previous_item = officia.month_to_link(debut,host,-1,hashtag,s)
         date = debut
-        Annee(date.year)
+        liturgycal(date.year)
         while date <= fin:
-            deroule[date] = Annee[date]
+            deroule[date] = liturgycal[date]
             date = date + datetime.timedelta(1)
         inversion=False
         if mois_seul:
@@ -65,18 +72,23 @@ def home(request,
         else:
             titre = debut
     else:
+        if annee is None:
+            annee = datetime.date.today().year
         titre = mots_clefs
-        Annee(annee)
+        liturgycal(annee)
         try:
-            deroule[titre] = officia.inversons(mots_clefs,Annee,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='fr',exit=True,plus=plus)
+            deroule[titre] = officia.inversons(mots_clefs,liturgycal,datetime.date(annee,1,1),datetime.date(annee,12,31),langue='fr',exit=True,plus=plus)
         except SystemExit:
             deroule[titre] = []
         inversion=True
 
+    #values for templates
     for value in deroule.values():
         for elt in value:
-            liturgical_time = officia.affiche_temps_liturgique(elt,langue='fr')
+            liturgical_time = officia.affiche_temps_liturgique(elt,lang='fr')
             elt.temps_liturgique_ = liturgical_time[0].upper() + liturgical_time[1:]
+            elt.proper_ = propers[elt.propre]
+    shared_research = _setSharedResearch(pal=pal,martyrology=False,proper=proper)
     deroule = sorted(deroule.items())
 
     return render(request,'kalendarium/accueil.html',locals())
@@ -92,7 +104,8 @@ def mc_transfert(request):
             plus = recherche_mot_clef.cleaned_data['plus']
             annee = recherche_mot_clef.cleaned_data['annee']
             pal = recherche_mot_clef.cleaned_data['pal']
-            result = home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,pal=pal,annee=annee)
+            proper = recherche_mot_clef.cleaned_data['proper']
+            result = home(request,recherche_mot_clef,mots_clefs=mots_clefs,plus=plus,pal=pal,annee=annee,proper=proper)
     else:
         result = home(request, recherche_mot_clef)
     return result
@@ -103,10 +116,11 @@ def date_transfert(request):
     if recherche_simple.is_valid():
         date = recherche_simple.cleaned_data['date_seule']
         pal = recherche_simple.cleaned_data['pal']
+        proper = recherche_simple.cleaned_data['proper']
         if recherche_simple.cleaned_data['martyrology']:
             result = martyrology_date(request,date,recherche_simple)
         else:
-            result = home(request,recherche_simple=recherche_simple,debut=date,fin=date,pal=pal)
+            result = home(request,recherche_simple=recherche_simple,debut=date,fin=date,pal=pal,proper=proper)
     else:
         result = home(request,recherche_simple=recherche_simple)
     return result
@@ -118,15 +132,10 @@ def mois_transfert(request):
         mois = mois_entier.cleaned_data['mois']
         annee = mois_entier.cleaned_data['annee']
         debut = datetime.date(annee,mois,1)
+        fin = datetime.date(annee,mois,calendar.monthrange(annee,mois)[1])
         pal = mois_entier.cleaned_data['pal']
-        i=31
-        while True:
-            try:
-                fin = datetime.date(annee,mois,i)
-                break
-            except ValueError:
-                i -= 1
-        return home(request,mois_entier=mois_entier,mois_seul=True,pal=pal,debut=debut,fin=fin)
+        proper = mois_entier.cleaned_data['proper']
+        return home(request,mois_entier=mois_entier,mois_seul=True,pal=pal,debut=debut,fin=fin,proper=proper)
     else:
         return home(request, mois_entier=mois_entier)
     
@@ -145,10 +154,11 @@ def martyrology_date(request,date=None,recherche_simple=None):
     credits = martyrology_instance.credits('fr')
     titre = "Martyrologe romain : {}".format(result[0].title)
     result_len = len(result)
+    shared_research = _setSharedResearch(martyrology=True)
     return render(request,'kalendarium/accueil.html',locals())
 
 def martyrology_kw(request,recherche_mot_clef=None):
-    """Return martyrology for a keyword reseach"""
+    """Return martyrology for a keyword research"""
     inversion = martyrology = True
     keywords = recherche_mot_clef.cleaned_data['recherche']
     max_nb_returned = [10,5][not recherche_mot_clef.cleaned_data['plus']]
@@ -159,6 +169,7 @@ def martyrology_kw(request,recherche_mot_clef=None):
     credits = martyrology_instance.credits('fr')
     titre = "Martyrologe romain : {}".format(keywords)
     result_len = len(result)
+    shared_research = _setSharedResearch(martyrology=True)
     return render(request,'kalendarium/accueil.html',locals())
     
 # contact
@@ -213,6 +224,9 @@ def widget(request):
     for filename in files:
         with open(fpath + filename) as f:
             widgets[filename] = f.read().format(whost)#.replace("https","http") # replace : dev TODO
+    # templates variables
+    options_day = OptionsWidgetDay()
+    options_day_mobile = OptionsWidgetDayMobile()
     return render(request,'kalendarium/widget.html',locals())
 
 def download(request):
@@ -221,12 +235,49 @@ def download(request):
     trunk = 'https://theochrone.000webhostapp.com/static/downloads/'
     downloads = {'windows32':trunk + 'windows/theochrone32.zip',
                  'windows64':trunk + 'windows/theochrone64.zip',
-                 'linux32':trunk + 'linux/theochrone32',
-                 'linux64':trunk + 'linux/theochrone64',
-                 'osx32':trunk + 'osx/theochrone32',
-                 'osx64':trunk + 'osx/theochrone64',
+                 'linux32':trunk + 'linux/theochrone32.zip',
+                 'linux64':trunk + 'linux/theochrone64.zip',
+                 'osx32':trunk + 'osx/theochrone32.zip',
+                 'osx64':trunk + 'osx/theochrone64.zip',
                  'python':trunk + 'python/Theochrone.zip',
                  } # list of downloads
+    # variables for template
+    export_form = ExportResults(request.GET or None)
     return render(request,'kalendarium/download.html',locals())
+
+def export(request):#TODO passer cette fonction en statique, ou de telle manière que cloudflare l'enregistre
+    """Export the data to ICS or CSV format"""
+    export_request = ExportResults(request.GET or None)
+    if export_request.is_valid():
+        # prepare data
+        data = export_request.cleaned_data
+        year = data['year']
+        start = datetime.date(year,1,1)
+        end = datetime.date(year,12,31)
+        # export
+        stream = io.StringIO()
+        exporter.main(start,end,'fr',stream,
+                proper=data['proper'],
+                file_ext=data['format'],
+                pal=data['pal'])
+
+        #filename
+        pal_filename_details = "_PAL" if data['pal'] else ''
+        filename = "Theochrone_{}_{}{}.{}".format(year,data['proper'],pal_filename_details,data['format'])
+        print('Stream: ',stream.read())
+
+        #response
+        response = HttpResponse(stream.getvalue(),content_type='type/{}'.format(data['format'])) # type calendar for ics ??
+        response['Content-Disposition'] = 'attachment; filename="{}"'.format(filename)
+        return response
+    else:
+        return download(request)
+
+def _setSharedResearch(martyrology=False,pal=False,proper='roman') -> SharedResearch:
+    """Set the shared research form"""
+    values = {'pal':pal,
+            'martyrology':martyrology,
+            'proper':proper}
+    return SharedResearch(initial=values)
 
 

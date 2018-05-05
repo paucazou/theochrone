@@ -41,10 +41,11 @@ pyinstaller $progdir/theochrone.pyw \
 	--add-binary $progdir/data/:./data/ \
 	--add-binary $progdir/i18n/:./i18n/ \
 	--add-binary $progdir/gui/icons/:./gui/icons/ \
+	--add-binary $progdir/gui/i18n/:./gui/i18n/ \
 	--clean 
 
 pyinstaller $name.spec
-fcm.delete_if_exist ../outputs/*$name*
+print $PWD
 mv dist/* ../outputs/
 fcm.end_script
 
