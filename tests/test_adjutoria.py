@@ -232,7 +232,7 @@ def test_QuelNom(Ltime_patch,Nday_patch):
     fete = adjutoria.FeteFerie()
     return_value = fete.QuelNom(datetime.date(2017,6,20))
     assert return_value['la'] == 'Feria'
-    assert return_value['en'] == 'Feria'
+    assert return_value['en'] == 'Ferial Feria of Liturgical time'
     assert return_value['fr'] == 'Feria de la férie du Liturgical time'
 
 @mock.patch('adjutoria.FeteFerie.QuelNom')
