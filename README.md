@@ -34,12 +34,13 @@ For more info, type in a terminal after downloading the program:
 4. Install python3.5 or greater if it is not yet done. Please consult the documentation for your own OS and architecture on http://python.org/.
 5. Enter following commands:
 ```shell
-python pip -e requirements.txt # in many OSes, you should enter python3 instead of python
-python pip -e dev_requirement.txt # only if you want to contribute to the project
+python pip -r requirements.txt # in many OSes, you should enter python3 instead of python, or python3.5
+python pip -r dev_requirement.txt # only if you want to contribute to the project
+msgfmt programme/i18n/fr_FR/LC_LANGUAGES/messages.po -o programme/i18n/fr_FR/LC_LANGUAGES/messages.mo # if you want to use CLI with french translation
 python -c "import dataswitcher; dataswitcher.main(propers='all',ordo='1962')"
+python -c "import dataswitcher; dataswitcher.xml_to_pkl('en_roman_martyrology');dataswitcher.xml_to_pkl('fr_roman_martyrology')" # if you want to use roman martyrology
 lrelease programme/gui/i18n/theochrone.fr.ts # if you want to use the GUI with french translation
 lrelease programme/gui/i18n/theochrone.en.ts # if you want to use the GUI with english translation
-msgfmt -o programmes/messages.py programme/i18n/fr_FR/LC_LANGUAGES/messages.mo # if you want to use CLI with french translation
 ```
 > Note that the version you download from Github may be broken. Feel free to contribute to fix the issue !
 
