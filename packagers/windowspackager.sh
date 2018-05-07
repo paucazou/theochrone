@@ -19,6 +19,7 @@ fcm.copy_and_cd
 cfg=installer.cfg
 cp ../$cfg ./
 cp -r ../../../windows_packages/ ./ # for levenshtein wheels and arrow package
+cp ../../../logo_blue.ico ./ # for the icon
 
 # set bitness
 preset_bitness='bitness=64'

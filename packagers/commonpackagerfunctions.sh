@@ -5,6 +5,13 @@
 
 
 # functions
+### special overloaded functions ###
+
+cd () {
+	builtin cd $@
+	print New dir: $PWD
+}
+### other functions
 fcm.miss_exit () {
     # use this if a file was modified and some lines must be changed manually
     # $1 -> name of the script modified

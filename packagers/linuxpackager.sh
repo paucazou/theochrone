@@ -14,8 +14,10 @@ else
 	output="--onedir"
 fi
 if [[ $2 == *32* ]] ; then # 32 bits or 64 bits (default)
+	bitness=32
 	name=theochrone32
 else
+	bitness=64
 	name=theochrone64
 fi
 
@@ -47,7 +49,7 @@ pyinstaller $progdir/theochrone.pyw \
 pyinstaller $name.spec
 print $PWD
 cd dist/
-zip -r dist/*
+zip -r theochrone_linux$bitness.zip ./*
 cd ..
 mv dist/*.zip ../outputs/
 fcm.end_script
