@@ -89,6 +89,7 @@ You want to contribute to Theochrone but you want to use your personal favorite 
 ## Version
 Latest version is 0.6.0
 ## New features available in 0.6.0
+- [ ] Add type of feast: sunday, octave, feria, votive, vigil...
 - [ ] votives
   - [ ] add votive main system
   - [ ] add first friday of the month
