@@ -32,21 +32,22 @@ For more info, type in a terminal after downloading the program:
 2. Open a console/terminal in the folder where you can find your clone/downloaded file.
 3. Unzip it if necessary.
 4. Install python3.5 or greater if it is not yet done. Please consult the documentation for your own OS and architecture on http://python.org/.
-5. Enter following commands:
+5. If necessary, install programs and libraries required to use Theochrone: GNU Gettext, Qt5. Download them for your own OS and architecture if they are not installed on your computer.
+6. Enter following commands:
 ```shell
 python pip -r requirements.txt # in many OSes, you should enter python3 instead of python, or python3.5
 python pip -r dev_requirement.txt # only if you want to contribute to the project
-msgfmt programme/i18n/fr_FR/LC_LANGUAGES/messages.po -o programme/i18n/fr_FR/LC_LANGUAGES/messages.mo # if you want to use CLI with french translation
+msgfmt programme/i18n/fr_FR/LC_LANGUAGES/messages.po -o programme/i18n/fr_FR/LC_LANGUAGES/messages.mo # if you want to use CLI with french translation. Gettext must be installed before.
 python -c "import dataswitcher; dataswitcher.main(propers='all',ordo='1962')"
 python -c "import dataswitcher; dataswitcher.xml_to_pkl('en_roman_martyrology');dataswitcher.xml_to_pkl('fr_roman_martyrology')" # if you want to use roman martyrology
-lrelease programme/gui/i18n/theochrone.fr.ts # if you want to use the GUI with french translation
+lrelease programme/gui/i18n/theochrone.fr.ts # if you want to use the GUI with french translation. Qt5 must be installed first.
 lrelease programme/gui/i18n/theochrone.en.ts # if you want to use the GUI with english translation
 ```
 > Note that the version you download from Github may be broken. Feel free to contribute to fix the issue !
 
 
 ## Who are we ?
-Unfortunately, 'we' are mainly one person : Philippe Aucazou, a young french catholic. However, many persons have helped us : do not hesitate to take a look at our THX.md file. You can also join us and contribute : we have **HUGE** needs in many domains, including programming, translating, and resources.
+Unfortunately, 'we' are mainly one person : Philippe Aucazou, a young french catholic. However, many persons have helped us : do not hesitate to take a look at our [THX.md](https://github.com/paucazou/theochrone/blob/master/THX.md) file. You can also join us and contribute : we have **HUGE** needs in many domains, including programming, translating, and resources.
 ## Contribute
 Maybe you can give us a little bit of help ? We need you in these domains:
 * translations, especially in:
