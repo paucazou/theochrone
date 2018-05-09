@@ -56,8 +56,8 @@ def home(request,
     if mots_clefs == '':
         hashtag = 'resultup'
         if debut == fin: #à mettre dans le template
-            next_item = officia.datetime_to_link(fin + datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper)
-            previous_item = officia.datetime_to_link(debut - datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper)
+            next_item = officia.datetime_to_link(fin + datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper,pal=pal)
+            previous_item = officia.datetime_to_link(debut - datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper,pal=pal)
         else:
             next_item = officia.month_to_link(fin,host,1,hashtag,s)
             previous_item = officia.month_to_link(debut,host,-1,hashtag,s)
