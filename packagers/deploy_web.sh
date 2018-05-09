@@ -1,9 +1,10 @@
 #!/bin/zsh
 # This script is used to deploy the Theochrone website
-source packager/commonpackagerfunctions.sh
+source commonpackagerfunctions.sh
 
+fcm.delete_if_exist _deploy_tmp
 mkdir _deploy_tmp
-cp -r programme ./_deploy_tmp
+cp -r ../programme ./_deploy_tmp
 
 cd _deploy_tmp
 rm -r **/.* # deleting all files starting by .
@@ -14,8 +15,7 @@ rm -r gui
 cd web
 rm -r help/migrations/
 
-mv images/fetes web/kalendarium/static/ # for the images of saints
-cd web
+mv ../images/fetes web/kalendarium/static/ # for the images of saints
 print Compiling translation files...
 django-admin compilemessages
 ### deprecated ###
@@ -30,7 +30,8 @@ print "DEBUG = False" >> ./web/settings.py
 print "ALLOWED_HOSTS = ['theochrone.fr','www.theochrone.fr','theochrone.ga','www.theochrone.ga']" >> ./web/settings.py
 
 cd ../../ # returning to _deploy_tmp
-scp -P 22 theochrone@ssh-theochrone-alwaysdata.net:/home/theochrone/_twit_auth ./programme/
+scp -P 22 theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/_twit_auth_fr ./programme/_twit_auth_fr
+scp -P 22 theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/_twit_auth_en ./programme/_twit_auth_en
 scp -P 22 -r programme theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/
 
 cd .. # returning to wip_fetes
