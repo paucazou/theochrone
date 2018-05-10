@@ -1,0 +1,15 @@
+Instructions d'installation du Théochrone
+
+1. Assurez-vous d'avoir une connexion internet active.
+2. Un script va télécharger et installer tout ce qui est nécessaire au fonctionnement du Théochrone. 
+	2a. Tout ce qui est déjà présent sur votre ordinateur ne sera ni téléchargé, ni installé.
+3. Double-cliquez sur le script `installer.command`.
+	3a. L'installateur va chercher à savoir si vous avez une version de Python compatible. A priori, c'est le cas.
+	3b. S'il ne trouve pas une version convenable, il va la télécharger (ce peut être long).
+	3c. Lorsque vous verrez ces mots: `Please enter your password`, entrez votre mot de passe utilisateur.
+	3d. Il téléchargera ensuite toutes les bibliothèques et les installera. Ce peut être long. Profitez-en pour prier pour moi.
+	3e. La liste de ces bibliothèques est disponible dans le fichier `requirements.txt`.
+4. Lorsque l'installation est terminée, vous pouvez fermer la fenêtre.
+5. Pour utiliser le Théochrone, cliquez simplement sur le script `theochrone.command`.
+
+Note : Le déploiement du Théochrone sur Mac OS est difficile. Ce script d'installation n'est pas la panacée. Si vous connaissez quelqu'un ou si vous-même avez des connaissances dans ce domaine, n'hésitez pas à proposer votre aide en envoyant un mail à paucazou@theochrone.fr .
