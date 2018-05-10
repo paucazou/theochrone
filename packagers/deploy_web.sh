@@ -15,7 +15,9 @@ rm -r gui
 cd web
 rm -r help/migrations/
 
-mv ../images/fetes web/kalendarium/static/ # for the images of saints
+mv ../images/fetes kalendarium/static/ # for the images of saints
+mv spill/static/spill kalendarium/static/ 
+
 print Compiling translation files...
 django-admin compilemessages
 ### deprecated ###
@@ -23,8 +25,8 @@ django-admin compilemessages
 #./manage.py shell 
 ### end deprecated ### 
 # changing some lines
-line_to_modify='    fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"'
-line_modified='    fpath = os.path.abspath(chemin + "/static/spill") + "/"'
+line_to_modify='fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"'
+line_modified='fpath = os.path.abspath(chemin + "/static/spill") + "/"'
 fcm.modify_lines kalendarium/views.py $line_to_modify $line_to_modify
 print "DEBUG = False" >> ./web/settings.py
 print "ALLOWED_HOSTS = ['theochrone.fr','www.theochrone.fr','theochrone.ga','www.theochrone.ga']" >> ./web/settings.py

@@ -25,7 +25,12 @@ host = os.environ.get("THEHOST","localhost:8000")
 liturgical_calendar = annus.LiturgicalCalendar(proper='roman')
 s=os.environ.get("SECURE",'s')
     
-# use online
+#load raw widgets
+fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"
+unformated_widgets = {}
+for filename in ("widget_day","widget_day_mobile"):
+    with open(fpath + filename) as f:
+        unformated_widgets[filename] = f.read()
 
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
@@ -216,13 +221,7 @@ def contribute(request):
 def widget(request):
     """View for widget page"""
     title = "Installer le widget sur votre site"
-    fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"
-    files = ("widget_day","widget_day_mobile")
-    widgets = {}
-    print(os.environ['THEHOST'])
-    for filename in files:
-        with open(fpath + filename) as f:
-            widgets[filename] = f.read().format(s,host)#.replace("https","http") # replace : dev TODO
+    widgets = { widget.format(s,host) for widget in unformated_widgets }
     # templates variables
     options_day = OptionsWidgetDay()
     options_day_mobile = OptionsWidgetDayMobile()
