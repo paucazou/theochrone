@@ -12,6 +12,12 @@ fcm.delete_if_exist build
 
 fcm.copy_and_cd
 
+# copy installation files
+cp ../osxresources/{installer.command,LISEZ-MOI.txt,README.txt} ./
+cp ../../requirements.txt ./
+# delete Django requirement as useless
+fcm.modify_lines ./requirements.txt 'Django>=1.10.1'
+
 # modify some lines
 theochrone=$progdir/theochrone.pyw
 fcm.modify_lines $theochrone $pcm_line_theochrone0
@@ -24,10 +30,6 @@ fcm.modify_lines $cm $pcm_line_command_line2
 # add some prod lines
 fcm.add_lines $progdir/phlog.py $pcm_disable_logs
 fcm.add_lines $theochrone $pcm_import_imagines
-
-# copy installation files
-cp ../osxresources/{installer.command,LISEZ-MOI.txt,README.txt} ./
-cp ../../requirements.txt ./
 
 # end of the script
 zip -r $name *

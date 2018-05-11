@@ -1,4 +1,4 @@
-#!/bin/env zsh
+#!/usr/bin/env zsh
 ### set colors
 autoload -U colors
 colors
@@ -36,6 +36,7 @@ if [[ $pypath[1] != '/' ]] ; then
 		alias pip='pip3.6'
 	fi
 fi
+print Python3.5 was found.
 
 ### install libraries
 print Downloading and installing libraries...
@@ -44,9 +45,9 @@ pip install -r requirements.txt
 ### setting the launcher
 print '#!/usr/bin/env zsh \
 	dir=${0:a:h} \
-	export LC_CTYPE=`defaults read -g AppleLocale`' >> $launcher
-print $pyversion >> $launcher
-print '$dir/programme/theochrone.pyw $@ \
+	export LC_CTYPE=`defaults read -g AppleLocale`' > $launcher # in case of error, must erase the content of the file
+print -n $pyversion >> $launcher
+print ' $dir/programme/theochrone.pyw $@ \
 	exit $?' >> $launcher
 chmod u+x $launcher
 
