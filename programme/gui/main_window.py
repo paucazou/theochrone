@@ -335,7 +335,7 @@ class Main(QMainWindow,SuperTranslator):
         self.exportSpreadsheet.setEnabled(not on)
 
         on = (self.state.type in ("kw","martyrology"))
-        #self.exportIcs.setEnabled(not on)
+        self.exportIcs.setEnabled(not on)
 
         
     def useDate(self):
@@ -520,7 +520,7 @@ class ToolBar(QToolBar,SuperTranslator):
         - set inactive the export to spreadsheet entry in file menu
         """
         one_tab = self.parent.W.onglets.W.tab1
-        on = True if self.martyrology_box.isChecked() else False
+        on = True if self.martyrology_box.isChecked() else False # why this condition ? -> better -> on = self.martyrology_box.isChecked()
 
         self.pal.setChecked(False) 
         one_tab.plus.setVisible(not on)

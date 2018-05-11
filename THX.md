@@ -18,7 +18,7 @@ Thank you to all of them.*
 * Tradinews *Especially for the idea of the widget*
 * Metablog
 * Le Salon Beige
-* Le Forum Catholique
+* Le Forum Catholique *(Our widget was once on this platform.)*
 * BLHland
 
 ## Newspapers

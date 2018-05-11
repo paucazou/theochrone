@@ -9,6 +9,7 @@ It must be used with a crontab to be really useful."""
 import annus
 import argparse
 import datetime
+import feastprinter
 import officia
 import phlog
 import tweepy
@@ -25,6 +26,7 @@ parser = argparse.ArgumentParser(
             )
 
 parser.add_argument('auth_file',type=argparse.FileType('r'),help="Name of the file which contains tokens")
+parser.add_argument('-L','--language',dest="language",choices=['en','fr'],default='en',help="Language the script will use to send tweets")
 parser.add_argument('-l','--log-level',dest="log_level",type=int,choices=range(-5,5),default=phlog.levels[-1],help="Importance level of the messages that should be printed in the log file")
 parser.add_argument('-f','--get-followers',dest='get_followers',nargs='*',help="Get the followers of the users screen name entered. Do not enter them with '@' in front of the screen names : @paucazou -> paucazou")
 
@@ -50,8 +52,8 @@ api=tweepy.API(auth)
 logger.debug('Auth completed')
 
 # Theochrone stuff
-liturgiccal = annus.LiturgicalCalendar('romanus',1962)
-language = 'fr'
+liturgiccal = annus.LiturgicalCalendar('roman',1962)
+language = args.language
 
 logger.debug('Theochrone loaded')
 
@@ -67,20 +69,11 @@ def limit_handled(cursor):
 
 def sendFeastsToUsers(api,today,liturgiccal):
     """This function sends each day tweets to users with the name of the feast."""
-    msg = officia.affichage(liste=liturgiccal[today],
-                            langue=language,
-                            date=today,
-                            split=True,
-                            date_affichee=True,
-                            temps_liturgique=False,
-                            degre=False,
-                            temporal_ou_sanctoral=False,
-                            couleur=False,
-                            transfert=False,
-                            station=False,
-                            recherche=False,
-                            jour_semaine=False,
-                            verbose=False,)
+    msg = []
+    for feast in liturgiccal[today]:
+        fw = feastprinter.FeastWrapper(feast,language)
+        msg.append("{}: {}".format(fw.digitdate,fw.name))
+
     for follower in limit_handled(tweepy.Cursor(api.followers).items()):
         update_status([follower.screen_name],msg)
 

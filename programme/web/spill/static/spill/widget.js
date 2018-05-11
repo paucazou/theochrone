@@ -1,6 +1,8 @@
 var iwtheo; // iframe content window
 var ifratheo = document.getElementById("theowidget");
-var bsurl = "https://theochrone.ga";
+var theocontainer = document.getElementById("theocontainer");
+console.log(ifratheo.src);
+var bsurl = ifratheo.src.split('/spill',1)[0]; // get the url requested by user. It will match with the url of the content, which can be either url possible, even other created by other users
 var surl = bsurl + "/spill/main";
 console.log(surl);
 

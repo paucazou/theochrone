@@ -239,7 +239,10 @@ def default_language():
             return f.read()
     except FileNotFoundError:
         pass
-    lang = locale.getdefaultlocale()[0].split('_')[0]
+    try:
+        lang = locale.getdefaultlocale()[0].split('_')[0]
+    except ValueError: # an unknown locale can be found and raise the ValueError
+        lang = 'en'
     if lang not in arguments['langue']['options']:
         lang = 'en'
     return lang

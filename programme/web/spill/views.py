@@ -17,8 +17,7 @@ import officia
 
 lyear = annus.LiturgicalCalendar()
 language = 'fr' # useless ?
-host = 'theochrone.fr'
-host = 'localhost:8000'
+host = os.environ.get('THEHOST','localhost:8000')
 # Create your views here.
 
 @xframe_options_exempt
@@ -44,11 +43,10 @@ def day(request):
         proper='roman'
     lang = get_language_from_request(request)
     lyear = annus.LiturgicalCalendar(proper=proper)
-    print(lyear.instances)
     lyear(day.year)
     data = lyear[day] # data of requested day
     hashtag = "resultup"
-    link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag,proper=proper)
+    link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag,proper=proper,pal=pal)
     link_to_tomorrow = datetime_to_param(day + datetime.timedelta(1),pal=pal,proper=proper)
     link_to_yesterday = datetime_to_param(day - datetime.timedelta(1),pal=pal,proper=proper)
     return render(request,'spill/day.html',locals())

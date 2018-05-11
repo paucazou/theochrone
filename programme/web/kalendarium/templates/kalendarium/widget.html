@@ -18,7 +18,8 @@
         </div>
         <div class="col-md-4">
             <h3>Exemple</h3>
-            <div id="widget_example">{{ widgets.widget_day | safe }}</div> {# BUG height : 0px; pose problème -> problème de postMessage surtout : origin == null Aussi, le widget est coupé. #}
+	    <div id="widget_example">{# {{ widgets.widget_day | safe }} #}
+		    </div> {# BUG height : 0px; pose problème -> problème de postMessage surtout : origin == null Aussi, le widget est coupé. #}
         </div>
     </div>
     <div class="space"></div>
@@ -37,7 +38,7 @@
         </div>
         <div class="col-md-4">
         <h3>Exemple</h3>
-		<div id="widget_example_mobile">{{ widgets.widget_day_mobile | safe }}
+	<div id="widget_example_mobile">{# {{ widgets.widget_day_mobile | safe }} #}
 		</div>
         </div>
     </div>
@@ -63,6 +64,9 @@ function setUrl(event) {
 	if (textareaid === "mainwidget") {
 		// set or unset pal
 		var pal = options['pal'].checked;
+		if (pal) {
+			pal="on";
+		}
 		var palRegex = /&pal=[a-z]+/;
 		text_inside=text_inside.replace(palRegex,"&pal="+pal); 
 	}
@@ -74,6 +78,7 @@ function setUrl(event) {
 	example.html(text_inside);
 }
 // show the widget when the page is loaded. HACK
+$("#widget_example_mobile").html($("#mobmessage").val()) {# it is very important that this one is called before this beyond #}
 $("#widget_example").html($("#mainwidget").val())
 
 // if user click on a texterea: select it

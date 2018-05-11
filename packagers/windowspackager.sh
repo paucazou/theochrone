@@ -19,6 +19,7 @@ fcm.copy_and_cd
 cfg=installer.cfg
 cp ../$cfg ./
 cp -r ../../../windows_packages/ ./ # for levenshtein wheels and arrow package
+cp ../../../logo_blue.ico ./ # for the icon
 
 # set bitness
 preset_bitness='bitness=64'
@@ -40,12 +41,13 @@ pynsist $cfg
 
 cd build/nsis/
 output_file=`ls *.exe`
-cd ../../
-mv build/nsis/$output_file ../outputs/
-print $output_file moved in outputs
-cd ../outputs/
-zip -r theochrone$bitness.zip $output_file
+cd ../../build/nsis/
+zip_name=theochrone_windows$bitness.zip
+zip -r $zip_name $output_file
 print $output_file zipped
+mv $zip_name ../../../outputs/
+print $zip_name moved in outputs
+cd ../../../outputs/
 fcm.end_script
 
 

@@ -21,17 +21,22 @@ import martyrology
 import officia
 
 martyrology_instance = martyrology.Martyrology()
+host = os.environ.get("THEHOST","localhost:8000")
 liturgical_calendar = annus.LiturgicalCalendar(proper='roman')
-host = "localhost:8000"
-s=''
+s=os.environ.get("SECURE",'s')
     
-# use online
+#load raw widgets
+fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"
+unformated_widgets = {}
+for filename in ("widget_day","widget_day_mobile"):
+    with open(fpath + filename) as f:
+        unformated_widgets[filename] = f.read()
 
 def home(request,
          recherche_mot_clef=RechercheMotClef(None),recherche_simple=RechercheSimple(None),mois_entier=MoisEntier(None),mois_seul=False,
          debut=None,fin=None,pal=False,
          proper='roman',
-         mots_clefs='',plus=False,annee=datetime.date.today().year):
+         mots_clefs='',plus=False,annee=None):
     """A function which defines homepage. It is also used
     by other pages to print common code.
     It takes many arguments :
@@ -47,7 +52,6 @@ def home(request,
     if proper not in propers:
         proper = 'roman'
     liturgycal = annus.LiturgicalCalendar(proper=proper)
-    print(liturgycal.instances)
     retour = ''
     deroule = {}
     if debut == None:
@@ -57,8 +61,8 @@ def home(request,
     if mots_clefs == '':
         hashtag = 'resultup'
         if debut == fin: #à mettre dans le template
-            next_item = officia.datetime_to_link(fin + datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper)
-            previous_item = officia.datetime_to_link(debut - datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper)
+            next_item = officia.datetime_to_link(fin + datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper,pal=pal)
+            previous_item = officia.datetime_to_link(debut - datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper,pal=pal)
         else:
             next_item = officia.month_to_link(fin,host,1,hashtag,s)
             previous_item = officia.month_to_link(debut,host,-1,hashtag,s)
@@ -73,6 +77,8 @@ def home(request,
         else:
             titre = debut
     else:
+        if annee is None:
+            annee = datetime.date.today().year
         titre = mots_clefs
         liturgycal(annee)
         try:
@@ -215,14 +221,7 @@ def contribute(request):
 def widget(request):
     """View for widget page"""
     title = "Installer le widget sur votre site"
-    fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"
-    files = ("widget_day","widget_day_mobile")
-    widgets = {}
-    whost = "theochrone.fr"
-    #whost = "localhost:8000" # dev TODO
-    for filename in files:
-        with open(fpath + filename) as f:
-            widgets[filename] = f.read().format(whost)#.replace("https","http") # replace : dev TODO
+    widgets = { widget.format(s,host) for widget in unformated_widgets }
     # templates variables
     options_day = OptionsWidgetDay()
     options_day_mobile = OptionsWidgetDayMobile()
@@ -231,14 +230,14 @@ def widget(request):
 def download(request):
     """View for download page"""
     title = "Télécharger"
-    trunk = 'https://theochrone.000webhostapp.com/static/downloads/'
-    downloads = {'windows32':trunk + 'windows/theochrone32.zip',
-                 'windows64':trunk + 'windows/theochrone64.zip',
-                 'linux32':trunk + 'linux/theochrone32.zip',
-                 'linux64':trunk + 'linux/theochrone64.zip',
-                 'osx32':trunk + 'osx/theochrone32.zip',
-                 'osx64':trunk + 'osx/theochrone64.zip',
-                 'python':trunk + 'python/Theochrone.zip',
+    trunk = 'https://theochrone.000webhostapp.com/static/downloads/' # deprecated 
+    trunk = "https://github.com/paucazou/theochrone/releases/download/v0.5.0/"
+    downloads = {'windows32':trunk + 'theochrone_windows32.zip',
+                 'windows64':trunk + 'theochrone_windows64.zip',
+                 'linux32':trunk + 'theochrone_linux32.zip',
+                 'linux64':trunk + 'theochrone_linux64.zip',
+                 'osx':trunk + 'theochrone_osx.zip', 
+                 'python':trunk + 'theochrone.zip',
                  } # list of downloads
     # variables for template
     export_form = ExportResults(request.GET or None)

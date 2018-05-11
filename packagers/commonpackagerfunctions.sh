@@ -5,6 +5,13 @@
 
 
 # functions
+### special overloaded functions ###
+
+cd () {
+	builtin cd $@
+	print New dir: $PWD
+}
+### other functions
 fcm.miss_exit () {
     # use this if a file was modified and some lines must be changed manually
     # $1 -> name of the script modified
@@ -27,10 +34,15 @@ fcm.delete_if_exist () { # WARNING seems to do not work with * : * not expanded
 fcm.copy_and_cd () {
     # copy programme folder to tmp
     # change directory
+    # create outputs folder if necessary
+    if [[ ! -d outputs ]]; then
+	    mkdir outputs
+	    print outputs created
+    fi
     dir=./tmp/
     mkdir $dir
     print $dir created
-    cp -r ../programme/ $dir
+    cp -r ../programme $dir/
     print program copied
     cd $dir
     print Change dir $dir
