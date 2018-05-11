@@ -2,6 +2,7 @@
 # -*-coding:Utf-8 -*
 #Deus, in adjutorium meum intende
 """Change version of the soft in different places"""
+TODO change versions of download packages directly
 
 import argparse
 import collections
