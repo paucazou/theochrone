@@ -28,7 +28,7 @@ os.chdir(chemin)
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, QLocale, QPoint, QRect, QRectF, QSize, Qt, QTranslator
 from PyQt5.QtGui import QColor, QFont, QFontMetrics, QIcon, QPen, QPainter, QTextDocument
 from PyQt5.QtPrintSupport import QPrintDialog, QPrinter, QPrintPreviewDialog
-from PyQt5.QtWidgets import QAbstractItemView, QAction, QApplication, QButtonGroup, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QLabel, QLineEdit, QPushButton, QSizePolicy, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QToolBar, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QAbstractItemView, QAction, QApplication, QButtonGroup, QCalendarWidget, QCheckBox, QComboBox, QDateEdit, QDockWidget, QFileDialog, QGroupBox, QHBoxLayout, QMainWindow, QMenuBar, QLabel, QLineEdit, QPushButton, QSizePolicy, QSlider, QSpinBox, QStyle, QTableWidget, QTableWidgetItem, QTabWidget, QToolBar, QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget
 from state import State
 from translation import *
 
@@ -123,12 +123,15 @@ class Main(QMainWindow,SuperTranslator):
             self.setLocaleFr()
         else:
             self.setLocaleEn()
-        
+       
     def menu(self):
         """A function which describes the menubar of the main window"""
-        menubar = self.menuBar()
-        if sys.platform.startswith('darwin') or '32bit' in platform.architecture(): # TODO make a special class for each platform ?
-            menubar.setNativeMenuBar(False)
+        #menubar = self.menuBar()
+        menubar = QMenuBar(self)
+        menubar.setNativeMenuBar(True)
+        self.setMenuBar(menubar)
+        #if sys.platform.startswith('darwin') or '32bit' in platform.architecture(): # TODO make a special class for each platform ?
+        #    menubar.setNativeMenuBar(False)
         
         # File menu
         self.fileMenu = menubar.addMenu('file')
@@ -196,6 +199,9 @@ class Main(QMainWindow,SuperTranslator):
         
     def initUI(self):
         """A function which defines widgets and main features of the window"""
+
+        ### Special mac OS ###
+        self.setUnifiedTitleAndToolBarOnMac(True) # mac os typical UI
         
         # widgets
         # main widget
@@ -284,12 +290,12 @@ class Main(QMainWindow,SuperTranslator):
         self.lang = self.locale().bcp47Name()
         self.parent.translator.load(loc,"theochrone",'.',chemin + '/i18n/','.qm') 
         #TODO reload translation of core app
-        while True: # this horrible loop tries to avoid the RuntimeError:wrapped C/C++ object of type Table has been deleted
-            try:
-                self.retranslateUI()
-                break
-            except RuntimeError:
-                pass
+        #while True: # this horrible loop tries to avoid the RuntimeError:wrapped C/C++ object of type Table has been deleted
+        try:
+            self.retranslateUI()
+            #break
+        except RuntimeError:
+            pass
         
         self.state.reload()
     
