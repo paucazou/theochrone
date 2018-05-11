@@ -236,8 +236,7 @@ def download(request):
                  'windows64':trunk + 'theochrone_windows64.zip',
                  'linux32':trunk + 'theochrone_linux32.zip',
                  'linux64':trunk + 'theochrone_linux64.zip',
-                 'osx32':trunk + 'theochrone_osx32.zip',
-                 'osx64':trunk + 'theochrone_osx64.zip',
+                 'osx':trunk + 'theochrone_osx.zip', 
                  'python':trunk + 'theochrone.zip',
                  } # list of downloads
     # variables for template
