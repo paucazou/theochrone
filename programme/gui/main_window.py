@@ -1292,7 +1292,7 @@ class ItemsCreator(SuperTranslator):
         time = first_upper(officia.affiche_temps_liturgique(data,self.lang))
         proper = self.mainWindow.propersDict[data.propre]
         station = data.__dict__.get('station',{self.lang:''})[self.lang]
-        addendum = data.addendum[self.lang]
+        addendum = data.addendum.get(self.lang,'')
         return name, date, (status, degree, colour, temporsanct, time, proper, station, addendum)
         
     def retranslateUI(self):
