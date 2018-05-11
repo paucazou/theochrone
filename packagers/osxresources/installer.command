@@ -39,6 +39,8 @@ fi
 print Python3.5 was found.
 
 ### install libraries
+print Updating PIP... # PIP must be upgraded due to the TLS error
+pip install pip
 print Downloading and installing libraries...
 pip install -r requirements.txt
 
