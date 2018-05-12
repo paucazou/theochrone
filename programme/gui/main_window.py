@@ -65,7 +65,8 @@ class Main(QMainWindow,SuperTranslator):
         SuperTranslator.__init__(self)
 
         self.parent = parent
-
+        self.setUnifiedTitleAndToolBarOnMac(True) 
+        
         self.__calendars = {}
         self.state = State(self) # state of the central widget
         self.ferryman = ExportResults(self)
@@ -127,8 +128,10 @@ class Main(QMainWindow,SuperTranslator):
     def menu(self):
         """A function which describes the menubar of the main window"""
         menubar = self.menuBar()
-        if sys.platform.startswith('darwin') or '32bit' in platform.architecture(): # TODO make a special class for each platform ?
+        if '32bit' in platform.architecture(): # TODO make a special class for each platform ?
             menubar.setNativeMenuBar(False)
+        else:
+            menubar.setNativeMenuBar(True)
         
         # File menu
         self.fileMenu = menubar.addMenu('file')
@@ -151,7 +154,7 @@ class Main(QMainWindow,SuperTranslator):
         # Help menu
         #self.helpMenu = menubar.addMenu('help')
         
-    def actions(self): # WARNING not available on os x
+    def actions(self):
         """A function which defines actions in the main window"""
         ctrl = 'Ctrl+'
         
