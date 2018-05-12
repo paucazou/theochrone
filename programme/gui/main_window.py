@@ -202,6 +202,7 @@ class Main(QMainWindow,SuperTranslator):
         self.arbre = QTreeWidget() # TODO seems to be useless...
         # widgets on the right
         self.rightDock = QDockWidget('right_dock',self)
+        self.rightDock.setSizePolicy(QSizePolicy(QSizePolicy.Maximum,QSizePolicy.Maximum))
         self.W.onglets = Onglets(self)
         self.rightDock.setWidget(self.W.onglets)
         self.addDockWidget(Qt.RightDockWidgetArea,self.rightDock)
@@ -284,12 +285,12 @@ class Main(QMainWindow,SuperTranslator):
         self.lang = self.locale().bcp47Name()
         self.parent.translator.load(loc,"theochrone",'.',chemin + '/i18n/','.qm') 
         #TODO reload translation of core app
-        while True: # this horrible loop tries to avoid the RuntimeError:wrapped C/C++ object of type Table has been deleted
-            try:
-                self.retranslateUI()
-                break
-            except RuntimeError:
-                pass
+        #while True: # this horrible loop tries to avoid the RuntimeError:wrapped C/C++ object of type Table has been deleted
+        try:
+            self.retranslateUI()
+            #break
+        except RuntimeError:
+            pass
         
         self.state.reload()
     
