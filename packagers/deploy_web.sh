@@ -34,7 +34,7 @@ print "ALLOWED_HOSTS = ['theochrone.fr','www.theochrone.fr','theochrone.ga','www
 cd ../../ # returning to _deploy_tmp
 scp -P 22 theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/_twit_auth_fr ./programme/_twit_auth_fr
 scp -P 22 theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/_twit_auth_en ./programme/_twit_auth_en
-scp -P 22 -r programme theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/
+rsync -r programme theochrone@ssh-theochrone.alwaysdata.net:22/home/theochrone/ --delete-after --progress 
 
 cd .. # returning to wip_fetes
 rm -r _deploy_tmp
