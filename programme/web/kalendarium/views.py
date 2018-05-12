@@ -23,7 +23,9 @@ import officia
 martyrology_instance = martyrology.Martyrology()
 host = os.environ.get("THEHOST","localhost:8000")
 liturgical_calendar = annus.LiturgicalCalendar(proper='roman')
-s=os.environ.get("SECURE",'s')
+s=os.environ.get("SECURE")
+if s is None:
+    s='s'
     
 #load raw widgets
 fpath = os.path.abspath(chemin + "/../spill/static/spill") + "/"
@@ -221,7 +223,7 @@ def contribute(request):
 def widget(request):
     """View for widget page"""
     title = "Installer le widget sur votre site"
-    widgets = { widget.format(s,host) for widget in unformated_widgets }
+    widgets = { filename:widget.format(s,host) for filename,widget in unformated_widgets.items() }
     # templates variables
     options_day = OptionsWidgetDay()
     options_day_mobile = OptionsWidgetDayMobile()
