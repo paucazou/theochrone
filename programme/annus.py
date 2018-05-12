@@ -87,20 +87,24 @@ class LiturgicalCalendar():
     Functions started with _ should not be accessed
     from outside the class"""
     instances = []
+    propers_ordo = [(name.split('_')[0],name.split('_')[1]) for name in fichiers]
 
     def __new__(cls,proper='roman',ordo=1962):
         """Checks if an instance of the requested calendar
         has been already loaded.
         return a loaded instance, or a new one."""
+        if (proper,ordo) not in cls.propers_ordo: # check parameters correctness
+            proper='roman'
+            ordo=1962
         instance_loaded = [elt for elt in cls.instances if elt.proper == proper and elt.ordo == ordo]
         if instance_loaded:
             return instance_loaded[0]
-        new_instance = super(LiturgicalCalendar,cls).__new__(cls)
-        cls.instances.append(new_instance)
-        return new_instance
+        return object.__new__(cls)
     
     def __init__(self, proper='roman',ordo=1962):
         """Init of the instance"""
+        if self in type(self).instances: # if the instance already exists, does nothing
+            return
         self.once_called = [] # A list containing hash of methods once called
         self._load_raw_data(proper,ordo) # tuple which contains the data extracted from files
         self.year_names = [] # an ordered list of the year currently saved in the instance
@@ -113,6 +117,7 @@ class LiturgicalCalendar():
         
         self.ordo = ordo
         self.proper = proper
+        type(self).instances.append(self)
                 
      
     @oncecalled
