@@ -75,20 +75,20 @@ class Main(QMainWindow,SuperTranslator):
         self.W.onglets.W.tab1.cal.clicked.connect(self.useDate)
         self.W.onglets.W.tab1.kw_bouton.clicked.connect(self.useKeyWord)
         self.W.onglets.W.tab1.keyword.returnPressed.connect(self.useKeyWord)
-        self.W.onglets.W.tab1.spinbox.editingFinished.connect(self.useKeyWord)
+        #self.W.onglets.W.tab1.spinbox.editingFinished.connect(self.useKeyWord)
         
         self.W.onglets.W.tabPlus.bt_week.clicked.connect(self.useWeek)
-        self.W.onglets.W.tabPlus.wy_spinbox.editingFinished.connect(self.useWeek)
+        #self.W.onglets.W.tabPlus.wy_spinbox.editingFinished.connect(self.useWeek)
         
         self.W.onglets.W.tabPlus.bt_month.clicked.connect(self.useMonth)
-        self.W.onglets.W.tabPlus.my_spinbox.editingFinished.connect(self.useMonth)
+        #self.W.onglets.W.tabPlus.my_spinbox.editingFinished.connect(self.useMonth)
         
-        self.W.onglets.W.tabPlus.yy_spinbox.editingFinished.connect(self.useYear)
+        #self.W.onglets.W.tabPlus.yy_spinbox.editingFinished.connect(self.useYear)
         self.W.onglets.W.tabPlus.bt_year.clicked.connect(self.useYear)
         
         self.W.onglets.W.tabPlus.bt_arbitrary.clicked.connect(self.useArbitrary)
-        self.W.onglets.W.tabPlus.to.editingFinished.connect(self.useArbitrary)
-        self.W.onglets.W.tabPlus.frome.editingFinished.connect(self.useArbitrary)
+        #self.W.onglets.W.tabPlus.to.editingFinished.connect(self.useArbitrary)
+        #self.W.onglets.W.tabPlus.frome.editingFinished.connect(self.useArbitrary)
 
         self.processCommandLineArgs(args)
         
