@@ -116,4 +116,4 @@ Latest version is 0.6.0
   - [ ] add excel export in web.
   - [ ] rewrite it for GUI
 - [ ] a new convenient help app
-
+- [ ] deploy Theochrone on PIP
