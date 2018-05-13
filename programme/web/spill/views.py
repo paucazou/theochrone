@@ -63,7 +63,6 @@ def day_mobile(request):
         day = datetime.date.today()
         proper='roman'
     lyear = annus.LiturgicalCalendar(proper=proper)
-    print(lyear.instances)
     lyear(day.year)
     data = lyear[day]
     index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie'
