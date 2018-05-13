@@ -107,6 +107,7 @@ def translated_messages(file_name,language=args.langue):
     dateparse_msg = MessagesTranslator(langs=languages,lang=language)
     io = MessagesTranslator(langs=languages,lang=language)
     feastprinter = MessagesTranslator(langs=languages,lang=language)
+    exporter = MessagesTranslator(langs=languages,lang=language)
     if file_name == "dateparse":
         dateparse_msg.markToTranslate('today','today')
         dateparse_msg.markToTranslate('tomorrow','tomorrow')
@@ -214,8 +215,20 @@ def translated_messages(file_name,language=args.langue):
         #transfert
         feastprinter.markToTranslate('Transferred. Original date: {}','transfert')
 
+    elif file_name == "exporter":
+        exporter.markToTranslate("""\
+                State: {}
+                Class: {}
+                Category: {}
+                Liturgical Season: {}
+                Color: {}
+                Proper: {}
+                Station: {}""",
+                'export_pattern')
+
 
     messages['dateparse'] = dateparse_msg
+    messages['exporter'] = exporter
     messages['io'] = io
     messages['feastprinter'] = feastprinter
     
