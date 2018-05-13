@@ -39,8 +39,15 @@ fi
 print Python3.5 was found.
 
 ### install libraries
-print Updating PIP... # PIP must be upgraded due to the TLS error
-pip install pip
+if [[ "pip 10.*.*" == `pip --version` ]]; then
+	print PIP is up to date.
+else
+	print Updating PIP to 10.0.1...
+	pip install --user pip.tar.gz
+fi
+print Removing pip archive...
+rm pip.tar.gz
+
 print Downloading and installing libraries...
 pip install -r requirements.txt
 

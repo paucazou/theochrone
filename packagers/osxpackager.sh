@@ -13,7 +13,7 @@ fcm.delete_if_exist build
 fcm.copy_and_cd
 
 # copy installation files
-cp ../osxresources/{installer.command,LISEZ-MOI.txt,README.txt} ./
+cp ../osxresources/{installer.command,LISEZ-MOI.txt,README.txt,pip.tar.gz} ./
 cp ../../requirements.txt ./
 # delete Django requirement as useless
 fcm.modify_lines ./requirements.txt 'Django>=1.10.1'
