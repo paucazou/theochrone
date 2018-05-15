@@ -15,6 +15,10 @@ Theochrone is a liturgical calendar for the Traditional Rite. You can enter a da
 The website provides you basic tools: search by date, by keywords and for a whole month. The Roman Martyrology is also available. See here : https://theochrone.fr
 #### Widget
 The Widget provides very limited infos, but can be a great feature on a website. For an example, see here : https://tradinews.blogspot.fr#theocontainer
+#### Twitter
+The twitter interfaces manages a bot sending to every follower of the bot the feasts of the day. Any account can become a bot, even an existing one, but creating a Twitter app is required first.
+
+[Theochrone on Twitter](https://twitter.com/theochroneEN)
 #### Web Services
 **Not yet available**
 
