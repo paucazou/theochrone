@@ -32,9 +32,9 @@ print "DEBUG = False" >> ./web/settings.py
 print "ALLOWED_HOSTS = ['theochrone.fr','www.theochrone.fr','theochrone.ga','www.theochrone.ga']" >> ./web/settings.py
 
 cd ../../ # returning to _deploy_tmp
-scp -P 22 theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/_twit_auth_fr ./programme/_twit_auth_fr
-scp -P 22 theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/_twit_auth_en ./programme/_twit_auth_en
-rsync -r programme theochrone@ssh-theochrone.alwaysdata.net:22/home/theochrone/ --delete-after --progress
+#scp -P 22 theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/_twit_auth_fr ./programme/_twit_auth_fr
+#scp -P 22 theochrone@ssh-theochrone.alwaysdata.net:/home/theochrone/_twit_auth_en ./programme/_twit_auth_en
+rsync -r programme theochrone@ssh-theochrone.alwaysdata.net:22/home/theochrone/ 
 
 cd .. # returning to wip_fetes
 rm -r _deploy_tmp
