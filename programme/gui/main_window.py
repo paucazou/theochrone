@@ -1151,7 +1151,7 @@ class Tree(QTreeWidget,SuperTranslator):
                 if isinstance(key,tuple):
                     if key[1] == 'week':
                         key = """{} {}""".format(
-                                self.ordinary_numbers_translated0[key[0]],
+                                self.parent.W.onglets.W.tabPlus._ordinary_numbers[key[0]],
                                 self.week_translated)
                     else:
                         key = self.months_translated1[key[0]].capitalize()
