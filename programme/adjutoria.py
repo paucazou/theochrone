@@ -49,6 +49,7 @@ class Fete:
         self.occurrence_perpetuelle=False # Pour toutes les fêtes souffrant d'une occurrence perpetuelle avec une autre fête.
         self.dimanche=False # Pour les dimanches
         self.repris_en_ferie=False # Pour les jours qui sont repris en férie
+        self.type = "feria" # a string with the type of the liturgical day: sunday, feria, vigil, feast, octave, votive_mass or requiem_mass 
         
         self.temporal=False
         self.sanctoral=False
