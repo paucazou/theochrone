@@ -95,7 +95,10 @@ You want to contribute to Theochrone but you want to use your personal favorite 
 ## Version
 Latest version is 0.6.0
 ## New features available in 0.6.0
-- [ ] Add type of feast: sunday, octave, feria, votive, vigil...
+- [x] Add type of feast: sunday, octave, feria, votive, vigil...
+  - [x] available on CLI
+  - [ ] available on GUI
+  - [ ] available on website
 - [ ] Add wether a commemoration has a privilege, or not
 - [ ] replaced old type research by new one (Levenshtein)
 - [ ] Add research for english
