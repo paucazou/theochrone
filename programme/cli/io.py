@@ -44,6 +44,10 @@ def feast_results(args: argparse.Namespace,feast: adjutoria.Fete) -> str:
     if verbose or args.status:
         sentence += msg.status.format(fw.status)
 
+    # type
+    if verbose or args.type:
+        sentence += fw.type + msg.dot
+
     # class
     if (verbose or args.degre) and not feast.pal:
         sentence += fw.Class + msg.dot
