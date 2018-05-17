@@ -15,6 +15,10 @@ Theochrone is a liturgical calendar for the Traditional Rite. You can enter a da
 The website provides you basic tools: search by date, by keywords and for a whole month. The Roman Martyrology is also available. See here : https://theochrone.fr
 #### Widget
 The Widget provides very limited infos, but can be a great feature on a website. For an example, see here : https://tradinews.blogspot.fr#theocontainer
+#### Twitter
+The twitter interfaces manages a bot sending to every follower of the bot the feasts of the day. Any account can become a bot, even an existing one, but creating a Twitter app is required first.
+
+[Theochrone on Twitter](https://twitter.com/theochroneEN)
 #### Web Services
 **Not yet available**
 
@@ -47,7 +51,7 @@ lrelease programme/gui/i18n/theochrone.en.ts # if you want to use the GUI with e
 
 
 ## Who are we ?
-Unfortunately, 'we' are mainly one person : Philippe Aucazou, a young french catholic. However, many persons have helped us : do not hesitate to take a look at our [THX.md](https://github.com/paucazou/theochrone/blob/master/THX.md) file. You can also join us and contribute : we have **HUGE** needs in many domains, including programming, translating, and resources.
+We are two young french catholics. We are neither professional programmers (our jobs have almost nothing to do with programming), neither priests (we two are married), but we love our religion and her liturgy, and we love programming. Many other persons have helped us: do not hesitate to take a look at our [THX.md](https://github.com/paucazou/theochrone/blob/master/THX.md) file. You can also join us and contribute : we have **HUGE** needs in many domains, including programming, translating, and resources.
 ## Contribute
 Maybe you can give us a little bit of help ? We need you in these domains:
 * translations, especially in:

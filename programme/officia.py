@@ -405,6 +405,7 @@ def liturgical_colour(elt,lang='en'):
         'blanc':'white',
         'noir':'black',
         'rouge':'red',
+        'rose':'rose',
         'vert':'green',
         'violet':'violet',
         }}

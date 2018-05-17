@@ -26,3 +26,4 @@ static
 package-lock.json
 node_modules
 *.qm
+*.tar.gz

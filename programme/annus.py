@@ -87,7 +87,7 @@ class LiturgicalCalendar():
     Functions started with _ should not be accessed
     from outside the class"""
     instances = []
-    propers_ordo = [(name.split('_')[0],name.split('_')[1]) for name in fichiers]
+    propers_ordo = [(name.split('_')[0],int(name.split('_')[1])) for name in fichiers]
 
     def __new__(cls,proper='roman',ordo=1962):
         """Checks if an instance of the requested calendar

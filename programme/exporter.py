@@ -8,7 +8,9 @@ import annus
 import arrow
 import csv
 import datetime
+import feastprinter
 import ics
+import messages
 import officia
 import textwrap
 
@@ -17,51 +19,25 @@ def _data_wrapper(feast, lang: str, rank: int) -> tuple:
     """Extract data from feast, which is a Fete or Fete like object.
     rank is the rank of the feast in the day
     Return a tuple : name, description, start, end"""
-    descriptions = {'fr':textwrap.dedent("""\
-                    État : {}
-                    Classe : {}
-                    Catégorie : {}
-                    Temps liturgique : {}
-                    Couleur : {}
-                    Station : {}""")}
-    state = {"fr":['célébrée','peut être célébrée','peut être célébrée ou commémorée','commémorée','omise']}
-    category = {"fr":['Temporal','Sanctoral']}
-    classe = {"fr":[0,1,2,3,4,"Commémoraison","messe Pro Aliquibus Locis"]}
+    msg = messages.translated_messages('exporter',lang)
+    fw = feastprinter.FeastWrapper(feast,lang)
+
+    description = textwrap.dedent(msg.export_pattern)
     no_info = '/'
-    ## state of feast
-    if feast.omission:
-        fstate = state[lang][-1]
-    elif feast.celebree:
-        fstate = state[lang][0]
-    elif feast.commemoraison and feast.peut_etre_celebree:
-        fstate = state[lang][2]
-    elif feast.peut_etre_celebree:
-        fstate = state[lang][1]
-    else:
-        fstate = state[lang][-2]
-    ## station
-    if feast.__dict__.get('station',{lang:None})[lang]:
-        fstation = feast.station[lang]
-    else:
-        fstation = no_info
-    ## category
-    if not feast.sanctoral and not feast.temporal:
-        fcategory = no_info
-    else:
-        fcategory = category[lang][feast.sanctoral]
     # setting description
-    description = descriptions[lang].format(
-                    fstate,
-                    classe[lang][feast.degre],
-                    fcategory,
-                    officia.affiche_temps_liturgique(feast,lang),
-                    feast.couleur, # TODO not good for other languages
-                    fstation)
+    description = description.format(
+                    fw.status,
+                    fw.Class,
+                    fw.temporsanct or no_info,
+                    fw.season,
+                    fw.color,
+                    fw.proper,
+                    fw.station or no_info)
     # dates
     fdate = arrow.Arrow(feast.date.year,feast.date.month,feast.date.day)
     fdate = fdate.shift(seconds = rank)
     
-    return feast.nom[lang], description, fdate 
+    return fw.name, description, fdate 
 
 def main(start: datetime.date,stop: datetime.date, lang: str,
            stream, proper='roman', ordo=1962, file_ext='ics', **options) -> bool:

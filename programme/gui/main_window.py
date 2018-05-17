@@ -65,7 +65,8 @@ class Main(QMainWindow,SuperTranslator):
         SuperTranslator.__init__(self)
 
         self.parent = parent
-
+        self.setUnifiedTitleAndToolBarOnMac(True) 
+        
         self.__calendars = {}
         self.state = State(self) # state of the central widget
         self.ferryman = ExportResults(self)
@@ -154,7 +155,7 @@ class Main(QMainWindow,SuperTranslator):
         # Help menu
         #self.helpMenu = menubar.addMenu('help')
         
-    def actions(self): # WARNING not available on os x
+    def actions(self):
         """A function which defines actions in the main window"""
         ctrl = 'Ctrl+'
         
@@ -208,6 +209,7 @@ class Main(QMainWindow,SuperTranslator):
         self.arbre = QTreeWidget() # TODO seems to be useless...
         # widgets on the right
         self.rightDock = QDockWidget('right_dock',self)
+        self.rightDock.setSizePolicy(QSizePolicy(QSizePolicy.Maximum,QSizePolicy.Maximum))
         self.W.onglets = Onglets(self)
         self.rightDock.setWidget(self.W.onglets)
         self.addDockWidget(Qt.RightDockWidgetArea,self.rightDock)
@@ -1153,7 +1155,7 @@ class Tree(QTreeWidget,SuperTranslator):
                 if isinstance(key,tuple):
                     if key[1] == 'week':
                         key = """{} {}""".format(
-                                self.ordinary_numbers_translated0[key[0]],
+                                self.parent.W.onglets.W.tabPlus._ordinary_numbers[key[0]],
                                 self.week_translated)
                     else:
                         key = self.months_translated1[key[0]].capitalize()

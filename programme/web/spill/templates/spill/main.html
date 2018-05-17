@@ -44,7 +44,7 @@ function loadDoc(page) {
 };
 
 var start_page = "{{ page }}";
-if (start_page == "day" || start_page == "day_mobile") { // date set to locale
+if (start_page == "day" || start_page == "day_mobile") { 
 var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v}); // GET parameters; source = https://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
 
 var today = new Date;
@@ -61,6 +61,20 @@ if (pal == "on"){ // if Pro Aliquibus Locis is requested by user
 start_page += "&pal=on";
 }
 }
+/* The language required is put here, due to the static save made by Cloudflare.
+   If more money is given to the project, we can rely on the views, which already
+   do the job and discard that mess.
+*/
+// results can differ: FF/Safari: fr-FR, Chrome: fr or fr-FR, etc. navigator.languages is not available on Safari
+// userLanguage is used on IE
+var raw_lang = navigator.language || navigator.userLanguage;
+var lang = raw_lang[0] + raw_lang[1]; 
+if (['en','fr'].indexOf(lang) == -1) { // check if language is available. Default is englis.
+	lang = 'en';
+}
+start_page = '../' + lang + '/spill/' + start_page;
+/* End of the dirty work */
+
 loadDoc(start_page);
 
 
