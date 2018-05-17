@@ -169,6 +169,12 @@ class FeastWrapper:
                     self.humandate(self.feast.date_originelle,self.lang)
                     )
 
+    def _get_type(self) -> str:
+        """Return the type of the liturgical day:
+            sunday, feria, vigil, feast,
+            octave, votive, requiem"""
+        return self.msg.liturgical_day_type[self.feast.type]
+
     def _get_weekday(self):
         """Return the weekday of the feast"""
         return self.msg.weekdays[self.feast.date.weekday()]
@@ -189,5 +195,6 @@ class FeastWrapper:
     status = property(_get_status)
     temporsanct = property(_get_temporsanct)
     transfert = property(_get_transfert) # may return '' or 'transferred from DATE'
+    type = property(_get_type)
     weekday = property(_get_weekday)
 

@@ -214,6 +214,16 @@ def translated_messages(file_name,language=args.langue):
         feastprinter.markToTranslate('Sanctoral','sanctoral')
         #transfert
         feastprinter.markToTranslate('Transferred. Original date: {}','transfert')
+        #liturgical day type
+        feastprinter.liturgical_day_type = {
+                'sunday'        :feastprinter.markToTranslate("Sunday","Sunday"),
+                'feria'         :feastprinter.markToTranslate("Feria","feria"),
+                'vigil'         :feastprinter.markToTranslate("Vigil","vigil"),
+                'feast'         :feastprinter.markToTranslate("Feast","feast"),
+                'octave'        :feastprinter.markToTranslate("Octave","octave"),
+                'votive_mass'   :feastprinter.markToTranslate("Votive Mass","votive_mass"),
+                'requiem_mass'  :feastprinter.markToTranslate("Requiem Mass","requiem_mass"),
+                }
 
     elif file_name == "exporter":
         exporter.markToTranslate("""\
