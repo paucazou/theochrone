@@ -38,7 +38,7 @@ class Fete:
         self._priorite=int()
         self.commemoraison_privilegiee=int()
         
-        self.propre='romanus' # a string with the propre the feast belongs to 
+        self.propre='roman' # a string with the propre the feast belongs to 
         self.ordo=1962 # Default : 1962 ordo. The others may be : 1955,1942,1914
         self._couleur='blanc' # vert par défaut 
         self.date_='' # un élément qui permet de calculer la date
@@ -89,8 +89,7 @@ class Fete:
                     'refus_faible':[],                    
             } # les éléments propres de la regex, avant compilation
         self.regex=None# la regex véritable, après compilation avec la fonction à créer
-        self.tokens_="" # tokens entered by hand for research by keywords
-        self.tokens=None # actual tokens used for research by keywords
+        self.tokens = {'fr':'','en':'','la':''} # the tokens used by keyword research
         self.valeur=int() # the value returned by Correspondance
         # parent
         self.parent = None
@@ -200,7 +199,7 @@ class Fete:
         """Une fonction qui calcule le nombre de jours par rapport à Pâques"""
         return paques - self.date
     
-    def Correspondance(self,mots,mots_separes,plus):
+    def Correspondance(self,mots,mots_separes,plus): # DEPRECATED
         """Fonction qui renvoie un chiffre de correspondance entre les mots rentrés et les regex"""
         if self.regex and isinstance(self.regex['annexes'][0],str):
             for index in self.regex:
@@ -257,31 +256,6 @@ class Fete:
                         else:
                             niveau += 10
         return niveau
-    
-    def Correspondance2(self,liste,attache): # ceci n'est qu'un modèle à améliorer ; l'incrémentation fonctionne.
-        """Une fonction permettant de rechercher les mots d'une autre manière."""
-        liste_match=[]
-        for mot in liste:
-            compteur = 0
-            hideux = 0
-            for i, lettre in enumerate(mot):
-                nouveau = mot
-                if lettre == '(':
-                    compteur += 1
-                    if compteur == 1:
-                        hideux = i
-                    continue
-                if lettre == ')':
-                    compteur -= 1
-                if compteur == 0:
-                    print(i,hideux)
-                    nouveau = mot[:hideux] + '.?' + mot[i+1:]
-                    print(nouveau)
-                    hideux = i+1
-                    if re.search(nouveau,attache):
-                        liste_match.append(mot)
-                        break
-        return liste_match
     
     def temps_liturgique(self): # TEST
         """Une fonction qui renvoie le temps liturgique"""
