@@ -1,85 +1,76 @@
 <?xml version="1.0" ?>
 <list>
-<Modele>
-                <str key="classe">FeteFixe</str>
-                <dict key="attributs">
-                        <str key="_couleur">blanc</str>
-                        <str key="_images">immaculee_conception</str>
-                        <int key="_priorite">2501</int>
-                        <str key="_temps_liturgique">variable</str>
-                        <bool key="_transferee">False</bool>
-                        <dict key="addendum">
-                                <str key="en"/>
-                                <str key="fr"/>
-                                <str key="la"/>
-                        </dict>
-                        <bool key="celebree">True</bool>
-                        <bool key="commemoraison">False</bool>
-                        <int key="commemoraison_privilegiee">90</int>
-                        <None key="date"/>
-                        <dict key="date_">
-                                <int key="jour">8</int>
-                                <int key="mois">12</int>
-                        </dict>
-                        <None key="date_originelle"/>
-                        <int key="degre">1</int>
-                        <bool key="dimanche">False</bool>
-                        <bool key="fete_du_Seigneur">False</bool>
-                        <str key="link">http://introibo.fr/08-12-Immaculee-Conception-de-la</str>
-                        <dict key="nom">
-                                <str key="en">The Immaculate Conception of the Blessed Virgin Mary, Principal Patroness of Spain</str>
-                                <str key="fr">L'Immaculée Conception de la Bienheureuse Vierge Marie, Patronne principale de l'Espagne</str>
-                                <str key="la">In Conceptione Immaculata Beatae Mariae Virginis, Primae Patronae Hispaniae</str>
-                        </dict>
-                        <bool key="occurrence_perpetuelle">False</bool>
-                        <bool key="omission">False</bool>
-                        <int key="ordo">1962</int>
-                        <bool key="pal">False</bool>
-                        <set key="personne">
-                                <str>marie</str>
-                        </set>
-                        <bool key="peut_etre_celebree">False</bool>
-                        <bool key="peut_etre_votive">False</bool>
-                        <str key="propre">spanish</str>
-                        <None key="regex"/>
-                        <dict key="regex_">
-                                <list key="attribut">
-                                        <str>immaculée</str>
-                                        <str>marie</str>
-                                </list>
-                                <list key="attribut_compose"/>
-                                <list key="egal"/>
-                                <list key="hyperonyme"/>
-                                <list key="nom">
-                                        <str>conception</str>
-                                </list>
-                                <list key="nom_compose"/>
-                                <list key="refus_faible"/>
-                                <list key="refus_fort"/>
-                                <list key="syntaxiques">
-                                        <str>de</str>
-                                        <str>la</str>
-                                </list>
-                                <list key="titre">
-                                        <str>bienheureuse</str>
-                                        <str>sainte</str>
-                                        <str>vierge</str>
-                                </list>
-                        </dict>
-                        <bool key="repris_en_ferie">False</bool>
-                        <bool key="sanctoral">True</bool>
-                        <bool key="temporal">False</bool>
-                        <str key="textes"/>
-                        <int key="valeur">0</int>
-                        <bool key="votive">False</bool>
-                </dict>
-        </Modele>
-<Modele>
-		<str key="classe">FeteFixe</str>
+	<Modele>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
-			<list key="_images"/>
-			<int key="_priorite">1800</int>
+			<str key="_images">andre_apotre</str>
+			<int key="_priorite">1901</int>
+			<str key="_temps_liturgique">variable</str>
+			<bool key="_transferee">False</bool>
+			<dict key="addendum">
+				<str key="en"/>
+				<str key="fr"/>
+				<str key="la"/>
+			</dict>
+			<bool key="celebree">True</bool>
+			<bool key="commemoraison">False</bool>
+			<int key="commemoraison_privilegiee">90</int>
+			<None key="date"/>
+			<dict key="date_">
+				<int key="jour">30</int>
+				<int key="mois">11</int>
+			</dict>
+			<None key="date_originelle"/>
+			<int key="degre">1</int>
+			<bool key="dimanche">False</bool>
+			<bool key="fete_du_Seigneur">False</bool>
+			<str key="link">http://introibo.fr/30-11-St-Andre-apotre#inter5</str>
+			<dict key="nom">
+				<str key="en">Saint Andrew, Apostle, Principal Patron of Scotland</str>
+				<str key="fr">Saint André, Apôtre, Patron principal de l'Écosse</str>
+				<str key="la">Sancti Andreae, Apostoli, Patroni Primi Caledoniae</str>
+			</dict>
+			<bool key="occurrence_perpetuelle">False</bool>
+			<bool key="omission">False</bool>
+			<int key="ordo">1962</int>
+			<bool key="pal">False</bool>
+			<None key="parent"/>
+			<set key="personne">
+				<str>andre_apotre</str>
+			</set>
+			<bool key="peut_etre_celebree">False</bool>
+			<bool key="peut_etre_votive">False</bool>
+			<str key="propre">scottish</str>
+			<None key="regex"/>
+			<dict key="regex_">
+				<list key="attribut"/>
+				<list key="attribut_compose"/>
+				<list key="egal"/>
+				<list key="hyperonyme"/>
+				<list key="nom"/>
+				<list key="nom_compose"/>
+				<list key="refus_faible"/>
+				<list key="refus_fort"/>
+				<list key="syntaxiques"/>
+				<list key="titre"/>
+			</dict>
+			<bool key="repris_en_ferie">False</bool>
+			<bool key="sanctoral">True</bool>
+			<bool key="temporal">False</bool>
+			<str key="textes"/>
+			<None key="tokens"/>
+			<str key="tokens_">saint andre apotre patron principal ecosse protoclite</str>
+			<str key="type">feast</str>
+			<int key="valeur">0</int>
+			<bool key="votive">False</bool>
+		</dict>
+		<str key="classe">FeteFixe</str>
+	</Modele>
+	<Modele>
+		<dict key="attributs">
+			<str key="_couleur">blanc</str>
+			<str key="_images">marguerite_ecosse</str>
+			<int key="_priorite">1100</int>
 			<str key="_temps_liturgique">variable</str>
 			<bool key="_transferee">False</bool>
 			<dict key="addendum">
@@ -92,96 +83,53 @@
 			<int key="commemoraison_privilegiee">0</int>
 			<None key="date"/>
 			<dict key="date_">
-				<int key="jour">25</int>
-				<int key="mois">7</int>
+				<int key="jour">16</int>
+				<int key="mois">11</int>
 			</dict>
 			<None key="date_originelle"/>
-			<int key="degre">1</int>
+			<int key="degre">2</int>
 			<bool key="dimanche">False</bool>
 			<bool key="fete_du_Seigneur">False</bool>
-			<str key="images_rep"/>
-			<str key="link">http://introibo.fr/25-07-St-Jacques-apotre</str>
+			<str key="link">www.introibo.fr</str>
 			<dict key="nom">
-				<str key="en">Saint James the Greater, Apostle, Principal Patron of Spain</str>
-				<str key="fr">Saint Jacques, Apôtre, Patron Principal de l'Espagne</str>
-				<str key="la">Sancti Jacobi, Apostoli, Primi Patroni Hispaniae</str>
+				<str key="en">Saint Margaret, Queen, Secondary Patroness of Scotland</str>
+				<str key="fr">Sainte Marguerite, Reine, Patronne secondaire de l'Écosse</str>
+				<str key="la">Sanctae Margaritae, Reginae, Patronae secundariae Caledoniae</str>
 			</dict>
 			<bool key="occurrence_perpetuelle">False</bool>
 			<bool key="omission">False</bool>
 			<int key="ordo">1962</int>
 			<bool key="pal">False</bool>
+			<None key="parent"/>
 			<set key="personne">
-				<str>jacques_majeur</str>
+				<str>marguerite_ecosse</str>
 			</set>
 			<bool key="peut_etre_celebree">False</bool>
 			<bool key="peut_etre_votive">False</bool>
-			<str key="propre">spanish</str>
+			<str key="propre">scottish</str>
 			<None key="regex"/>
 			<dict key="regex_">
-				<list key="attribut">
-					<str>majeur</str>
-					<str>zébédée</str>
-				</list>
+				<list key="attribut"/>
 				<list key="attribut_compose"/>
 				<list key="egal"/>
 				<list key="hyperonyme"/>
-				<list key="nom">
-					<str>jacques</str>
-				</list>
+				<list key="nom"/>
 				<list key="nom_compose"/>
 				<list key="refus_faible"/>
-				<list key="refus_fort">
-					<str>jean</str>
-					<str>majeur</str>
-					<str>lambèse</str>
-					<str>nisibe</str>
-					<str>perse</str>
-					<str>bergame</str>
-					<str>ascète</str>
-					<str>tarentaise</str>
-					<str>asce?lepios</str>
-					<str>osroene</str>
-					<str>batnès</str>
-					<str>docteur</str>
-					<str>ermite</str>
-					<str>benfatti</str>
-					<str>rostov</str>
-					<str>jelezny-bor</str>
-					<str>marche</str>
-					<str>athos</str>
-					<str>thompson</str>
-					<str>carvalho</str>
-					<str>felice</str>
-					<str>amoroso</str>
-					<str>nicosie</str>
-					<str>lombardie</str>
-					<str>mai</str>
-					<str>nam</str>
-					<str>chastan</str>
-					<str>cusmano</str>
-					<str>berthieu</str>
-					<str>buch</str>
-					<str>canals</str>
-					<str>hilario</str>
-					<str>alberione</str>
-					<str>berry</str>
-					<str>portillon</str>
-				</list>
-				<list key="syntaxiques">
-					<str>de</str>
-					<str>le</str>
-				</list>
-				<list key="titre">
-					<str>saint</str>
-					<str>apôtre</str>
-				</list>
+				<list key="refus_fort"/>
+				<list key="syntaxiques"/>
+				<list key="titre"/>
 			</dict>
 			<bool key="repris_en_ferie">False</bool>
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<None key="tokens"/>
+			<str key="tokens_">sainte marguerite ecosse patronne secondaire reine</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 </list>

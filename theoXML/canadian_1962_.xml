@@ -1,205 +1,208 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" ?>
 <list>
-  <Modele>
-    <dict key="attributs">
-      <str key="_couleur">blanc</str>
-      <str key="_images">marie_guadalupe</str>
-      <int key="_priorite">1801</int>
-      <str key="_temps_liturgique">variable</str>
-      <bool key="_transferee">False</bool>
-      <dict key="addendum">
-        <str key="en"/>
-        <str key="fr"/>
-        <str key="la"/>
-      </dict>
-      <bool key="celebree">True</bool>
-      <bool key="commemoraison">False</bool>
-      <int key="commemoraison_privilegiee">90</int>
-      <None key="date"/>
-      <dict key="date_">
-        <int key="jour">12</int>
-        <int key="mois">12</int>
-      </dict>
-      <None key="date_originelle"/>
-      <int key="degre">1</int>
-      <bool key="dimanche">False</bool>
-      <bool key="fete_du_Seigneur">False</bool>
-      <str key="link">http://www.maternalheart.org/propers/Propers%20of%20the%20Saints/Dec%2012%20-%20Our%20Lady%20of%20Guadalupe/Our%20Lady%20of%20Guadalupe.pdf</str>
-      <dict key="nom">
-        <str key="en">Our Lady of Guadalupe, Principal Patroness of the Americas</str>
-        <str key="fr">Notre-Dame de Guadalupe, Patronne principale des Amériques</str>
-        <str key="la">Sanctae Mariae Guadalupensis, Patronae primae Americarum</str>
-      </dict>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <bool key="omission">False</bool>
-      <int key="ordo">1962</int>
-      <bool key="pal">False</bool>
-      <None key="parent"/>
-      <set key="personne">
-        <str>marie</str>
-      </set>
-      <bool key="peut_etre_celebree">False</bool>
-      <bool key="peut_etre_votive">False</bool>
-      <str key="propre">canadian</str>
-      <None key="regex"/>
-      <dict key="regex_">
-        <list key="attribut"/>
-        <list key="attribut_compose"/>
-        <list key="egal"/>
-        <list key="hyperonyme"/>
-        <list key="nom"/>
-        <list key="nom_compose"/>
-        <list key="refus_faible"/>
-        <list key="refus_fort"/>
-        <list key="syntaxiques"/>
-        <list key="titre"/>
-      </dict>
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="sanctoral">True</bool>
-      <bool key="temporal">False</bool>
-      <str key="textes"/>
-      <None key="tokens"/>
-      <str key="tokens_">notre dame sainte vierge marie guadalupe patronne principale ameriques</str>
-      <int key="valeur">0</int>
-      <bool key="votive">False</bool>
-    </dict>
-    <str key="classe">FeteFixe</str>
-  </Modele>
-  <Modele>
-    <dict key="attributs">
-      <str key="_couleur">blanc</str>
-      <str key="_images">joseph</str>
-      <int key="_priorite">1901</int>
-      <str key="_temps_liturgique">variable</str>
-      <bool key="_transferee">False</bool>
-      <dict key="addendum">
-        <str key="en"/>
-        <str key="fr"/>
-        <str key="la"/>
-      </dict>
-      <bool key="celebree">True</bool>
-      <bool key="commemoraison">False</bool>
-      <int key="commemoraison_privilegiee">90</int>
-      <None key="date"/>
-      <dict key="date_">
-        <int key="jour">19</int>
-        <int key="mois">3</int>
-      </dict>
-      <None key="date_originelle"/>
-      <int key="degre">1</int>
-      <bool key="dimanche">False</bool>
-      <bool key="fete_du_Seigneur">False</bool>
-      <str key="link">http://introibo.fr/19-03-St-Joseph-epoux-de-la</str>
-      <dict key="nom">
-        <str key="en">Saint Joseph, Spouse of the Blessed Virgin Mary and Confessor, Principal Patron of Canada</str>
-        <str key="fr">Saint Joseph, Époux de la Bienheureuse Vierge Marie, Confesseur, Patron principal du Canada</str>
-        <str key="la">Sancti Joseph, Sponsi Beatae Mariae Virginis, Confessoris, Patroni primi Canadae</str>
-      </dict>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <bool key="omission">False</bool>
-      <int key="ordo">1962</int>
-      <bool key="pal">False</bool>
-      <None key="parent"/>
-      <set key="personne">
-        <str>joseph</str>
-      </set>
-      <bool key="peut_etre_celebree">False</bool>
-      <bool key="peut_etre_votive">False</bool>
-      <str key="propre">canadian</str>
-      <None key="regex"/>
-      <dict key="regex_">
-        <list key="attribut"/>
-        <list key="attribut_compose"/>
-        <list key="egal"/>
-        <list key="hyperonyme"/>
-        <list key="nom"/>
-        <list key="nom_compose"/>
-        <list key="refus_faible"/>
-        <list key="refus_fort"/>
-        <list key="syntaxiques"/>
-        <list key="titre"/>
-      </dict>
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="sanctoral">True</bool>
-      <bool key="temporal">False</bool>
-      <str key="textes"/>
-      <None key="tokens"/>
-      <str key="tokens_">saint joseph epoux vierge confesseur patron principal canada</str>
-      <int key="valeur">0</int>
-      <bool key="votive">False</bool>
-    </dict>
-    <str key="classe">FeteFixe</str>
-  </Modele>
-  <Modele>
-    <dict key="attributs">
-      <str key="_couleur">rouge</str>
-      <str key="_images">jean_brebeuf_isaac_jogues_compagnons</str>
-      <int key="_priorite">1100</int>
-      <str key="_temps_liturgique">variable</str>
-      <bool key="_transferee">False</bool>
-      <dict key="addendum">
-        <str key="en"/>
-        <str key="fr"/>
-        <str key="la"/>
-      </dict>
-      <bool key="celebree">True</bool>
-      <bool key="commemoraison">False</bool>
-      <int key="commemoraison_privilegiee">0</int>
-      <None key="date"/>
-      <dict key="date_">
-        <int key="jour">19</int>
-        <int key="mois">10</int>
-      </dict>
-      <None key="date_originelle"/>
-      <int key="degre">2</int>
-      <bool key="dimanche">False</bool>
-      <bool key="fete_du_Seigneur">False</bool>
-      <str key="link">www.introibo.fr</str>
-      <dict key="nom">
-        <str key="en">Saint Canadian Martyrs, Secondary Patrons of Canada</str>
-        <str key="fr">Les Saints Martyrs Canadiens, Patrons secondaires du Canada</str>
-        <str key="la">Sanctorum Canadensum Martyrum, Patronorum secundariorum Canadae</str>
-      </dict>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <bool key="omission">False</bool>
-      <int key="ordo">1962</int>
-      <bool key="pal">False</bool>
-      <None key="parent"/>
-      <set key="personne">
-        <str>noel_chabanel</str>
-        <str>jean_brebeuf</str>
-        <str>gabriel_lalemant</str>
-        <str>charles_garnier</str>
-        <str>isaac_jogues</str>
-        <str>rene_goupil</str>
-        <str>jean_de_lalande</str>
-        <str>antoine_daniel</str>
-      </set>
-      <bool key="peut_etre_celebree">False</bool>
-      <bool key="peut_etre_votive">False</bool>
-      <str key="propre">canadian</str>
-      <None key="regex"/>
-      <dict key="regex_">
-        <list key="attribut"/>
-        <list key="attribut_compose"/>
-        <list key="egal"/>
-        <list key="hyperonyme"/>
-        <list key="nom"/>
-        <list key="nom_compose"/>
-        <list key="refus_faible"/>
-        <list key="refus_fort"/>
-        <list key="syntaxiques"/>
-        <list key="titre"/>
-      </dict>
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="sanctoral">True</bool>
-      <bool key="temporal">False</bool>
-      <str key="textes"/>
-      <None key="tokens"/>
-      <str key="tokens_">saints martyrs canadiens nord americains patrons secondaires rene goupil isaac jogues jean lalande antoine daniel brebeuf noel chabanel charles garnier gabriel lalemant</str>
-      <int key="valeur">0</int>
-      <bool key="votive">False</bool>
-    </dict>
-    <str key="classe">FeteFixe</str>
-  </Modele>
+	<Modele>
+		<dict key="attributs">
+			<str key="_couleur">blanc</str>
+			<str key="_images">marie_guadalupe</str>
+			<int key="_priorite">1801</int>
+			<str key="_temps_liturgique">variable</str>
+			<bool key="_transferee">False</bool>
+			<dict key="addendum">
+				<str key="en"/>
+				<str key="fr"/>
+				<str key="la"/>
+			</dict>
+			<bool key="celebree">True</bool>
+			<bool key="commemoraison">False</bool>
+			<int key="commemoraison_privilegiee">90</int>
+			<None key="date"/>
+			<dict key="date_">
+				<int key="jour">12</int>
+				<int key="mois">12</int>
+			</dict>
+			<None key="date_originelle"/>
+			<int key="degre">1</int>
+			<bool key="dimanche">False</bool>
+			<bool key="fete_du_Seigneur">False</bool>
+			<str key="link">http://www.maternalheart.org/propers/Propers%20of%20the%20Saints/Dec%2012%20-%20Our%20Lady%20of%20Guadalupe/Our%20Lady%20of%20Guadalupe.pdf</str>
+			<dict key="nom">
+				<str key="en">Our Lady of Guadalupe, Principal Patroness of the Americas</str>
+				<str key="fr">Notre-Dame de Guadalupe, Patronne principale des Amériques</str>
+				<str key="la">Sanctae Mariae Guadalupensis, Patronae primae Americarum</str>
+			</dict>
+			<bool key="occurrence_perpetuelle">False</bool>
+			<bool key="omission">False</bool>
+			<int key="ordo">1962</int>
+			<bool key="pal">False</bool>
+			<None key="parent"/>
+			<set key="personne">
+				<str>marie</str>
+			</set>
+			<bool key="peut_etre_celebree">False</bool>
+			<bool key="peut_etre_votive">False</bool>
+			<str key="propre">canadian</str>
+			<None key="regex"/>
+			<dict key="regex_">
+				<list key="attribut"/>
+				<list key="attribut_compose"/>
+				<list key="egal"/>
+				<list key="hyperonyme"/>
+				<list key="nom"/>
+				<list key="nom_compose"/>
+				<list key="refus_faible"/>
+				<list key="refus_fort"/>
+				<list key="syntaxiques"/>
+				<list key="titre"/>
+			</dict>
+			<bool key="repris_en_ferie">False</bool>
+			<bool key="sanctoral">True</bool>
+			<bool key="temporal">False</bool>
+			<str key="textes"/>
+			<None key="tokens"/>
+			<str key="tokens_">notre dame sainte vierge marie guadalupe patronne principale ameriques</str>
+			<str key="type">feast</str>
+			<int key="valeur">0</int>
+			<bool key="votive">False</bool>
+		</dict>
+		<str key="classe">FeteFixe</str>
+	</Modele>
+	<Modele>
+		<dict key="attributs">
+			<str key="_couleur">blanc</str>
+			<str key="_images">joseph</str>
+			<int key="_priorite">1901</int>
+			<str key="_temps_liturgique">variable</str>
+			<bool key="_transferee">False</bool>
+			<dict key="addendum">
+				<str key="en"/>
+				<str key="fr"/>
+				<str key="la"/>
+			</dict>
+			<bool key="celebree">True</bool>
+			<bool key="commemoraison">False</bool>
+			<int key="commemoraison_privilegiee">90</int>
+			<None key="date"/>
+			<dict key="date_">
+				<int key="jour">19</int>
+				<int key="mois">3</int>
+			</dict>
+			<None key="date_originelle"/>
+			<int key="degre">1</int>
+			<bool key="dimanche">False</bool>
+			<bool key="fete_du_Seigneur">False</bool>
+			<str key="link">http://introibo.fr/19-03-St-Joseph-epoux-de-la</str>
+			<dict key="nom">
+				<str key="en">Saint Joseph, Spouse of the Blessed Virgin Mary and Confessor, Principal Patron of Canada</str>
+				<str key="fr">Saint Joseph, Époux de la Bienheureuse Vierge Marie, Confesseur, Patron principal du Canada</str>
+				<str key="la">Sancti Joseph, Sponsi Beatae Mariae Virginis, Confessoris, Patroni primi Canadae</str>
+			</dict>
+			<bool key="occurrence_perpetuelle">False</bool>
+			<bool key="omission">False</bool>
+			<int key="ordo">1962</int>
+			<bool key="pal">False</bool>
+			<None key="parent"/>
+			<set key="personne">
+				<str>joseph</str>
+			</set>
+			<bool key="peut_etre_celebree">False</bool>
+			<bool key="peut_etre_votive">False</bool>
+			<str key="propre">canadian</str>
+			<None key="regex"/>
+			<dict key="regex_">
+				<list key="attribut"/>
+				<list key="attribut_compose"/>
+				<list key="egal"/>
+				<list key="hyperonyme"/>
+				<list key="nom"/>
+				<list key="nom_compose"/>
+				<list key="refus_faible"/>
+				<list key="refus_fort"/>
+				<list key="syntaxiques"/>
+				<list key="titre"/>
+			</dict>
+			<bool key="repris_en_ferie">False</bool>
+			<bool key="sanctoral">True</bool>
+			<bool key="temporal">False</bool>
+			<str key="textes"/>
+			<None key="tokens"/>
+			<str key="tokens_">saint joseph epoux vierge confesseur patron principal canada</str>
+			<str key="type">feast</str>
+			<int key="valeur">0</int>
+			<bool key="votive">False</bool>
+		</dict>
+		<str key="classe">FeteFixe</str>
+	</Modele>
+	<Modele>
+		<dict key="attributs">
+			<str key="_couleur">rouge</str>
+			<str key="_images">jean_brebeuf_isaac_jogues_compagnons</str>
+			<int key="_priorite">1100</int>
+			<str key="_temps_liturgique">variable</str>
+			<bool key="_transferee">False</bool>
+			<dict key="addendum">
+				<str key="en"/>
+				<str key="fr"/>
+				<str key="la"/>
+			</dict>
+			<bool key="celebree">True</bool>
+			<bool key="commemoraison">False</bool>
+			<int key="commemoraison_privilegiee">0</int>
+			<None key="date"/>
+			<dict key="date_">
+				<int key="jour">19</int>
+				<int key="mois">10</int>
+			</dict>
+			<None key="date_originelle"/>
+			<int key="degre">2</int>
+			<bool key="dimanche">False</bool>
+			<bool key="fete_du_Seigneur">False</bool>
+			<str key="link">www.introibo.fr</str>
+			<dict key="nom">
+				<str key="en">Saint Canadian Martyrs, Secondary Patrons of Canada</str>
+				<str key="fr">Les Saints Martyrs Canadiens, Patrons secondaires du Canada</str>
+				<str key="la">Sanctorum Canadensum Martyrum, Patronorum secundariorum Canadae</str>
+			</dict>
+			<bool key="occurrence_perpetuelle">False</bool>
+			<bool key="omission">False</bool>
+			<int key="ordo">1962</int>
+			<bool key="pal">False</bool>
+			<None key="parent"/>
+			<set key="personne">
+				<str>charles_garnier</str>
+				<str>jean_de_lalande</str>
+				<str>noel_chabanel</str>
+				<str>rene_goupil</str>
+				<str>gabriel_lalemant</str>
+				<str>antoine_daniel</str>
+				<str>isaac_jogues</str>
+				<str>jean_brebeuf</str>
+			</set>
+			<bool key="peut_etre_celebree">False</bool>
+			<bool key="peut_etre_votive">False</bool>
+			<str key="propre">canadian</str>
+			<None key="regex"/>
+			<dict key="regex_">
+				<list key="attribut"/>
+				<list key="attribut_compose"/>
+				<list key="egal"/>
+				<list key="hyperonyme"/>
+				<list key="nom"/>
+				<list key="nom_compose"/>
+				<list key="refus_faible"/>
+				<list key="refus_fort"/>
+				<list key="syntaxiques"/>
+				<list key="titre"/>
+			</dict>
+			<bool key="repris_en_ferie">False</bool>
+			<bool key="sanctoral">True</bool>
+			<bool key="temporal">False</bool>
+			<str key="textes"/>
+			<None key="tokens"/>
+			<str key="tokens_">saints martyrs canadiens nord americains patrons secondaires rene goupil isaac jogues jean lalande antoine daniel brebeuf noel chabanel charles garnier gabriel lalemant</str>
+			<str key="type">feast</str>
+			<int key="valeur">0</int>
+			<bool key="votive">False</bool>
+		</dict>
+		<str key="classe">FeteFixe</str>
+	</Modele>
 </list>

@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <list>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">jeanne_arc</str>
@@ -61,12 +60,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte jeanne arc patronne secondaire france pucelle orleans</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">therese_lisieux</str>
@@ -113,12 +113,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<str key="tokens_">sainte therese enfant jesus face patronne secondaire france lisieux</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">assomption</str>
@@ -166,12 +167,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<str key="tokens_">Assomption sainte bienheureuse vierge marie patronne principale france</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixeTransferableDimanche</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -227,8 +229,10 @@
 			<str key="textes"/>
 			<str key="tokens_">solennite epiphanie seigneur</str>
 			<bool key="transferee">False</bool>
+			<str key="type">votive_mass</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixeTransferableDimanche</str>
 	</Modele>
 </list>

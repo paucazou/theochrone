@@ -1,590 +1,201 @@
 <?xml version="1.0" ?>
 <list>
-	
-  
 	<Modele>
-		
-    
-		<str key="classe">FeteFixe</str>
-		
-    
 		<dict key="attributs">
-			
-      
 			<str key="_couleur">blanc</str>
-			
-      
 			<str key="_images">marie_guadalupe</str>
-			
-      
 			<int key="_priorite">1801</int>
-			
-      
 			<str key="_temps_liturgique">variable</str>
-			
-      
 			<bool key="_transferee">False</bool>
-			
-      
 			<dict key="addendum">
-				
-        
 				<str key="en"/>
-				
-        
 				<str key="fr"/>
-				
-        
 				<str key="la"/>
-				
-      
 			</dict>
-			
-      
 			<bool key="celebree">True</bool>
-			
-      
 			<bool key="commemoraison">False</bool>
-			
-      
 			<int key="commemoraison_privilegiee">90</int>
-			
-      
 			<None key="date"/>
-			
-      
 			<dict key="date_">
-				
-        
 				<int key="jour">12</int>
-				
-        
 				<int key="mois">12</int>
-				
-      
 			</dict>
-			
-      
 			<None key="date_originelle"/>
-			
-      
 			<int key="degre">1</int>
-			
-      
 			<bool key="dimanche">False</bool>
-			
-      
 			<bool key="fete_du_Seigneur">False</bool>
-			
-      
 			<str key="link">http://www.maternalheart.org/propers/Propers%20of%20the%20Saints/Dec%2012%20-%20Our%20Lady%20of%20Guadalupe/Our%20Lady%20of%20Guadalupe.pdf</str>
-			
-      
 			<dict key="nom">
-				
-        
 				<str key="en">Our Lady of Guadalupe, Principal Patroness of America</str>
-				
-        
 				<str key="fr">Notre-Dame de Guadalupe, Patronne principale de l'Amérique</str>
-				
-        
 				<str key="la">Sanctae Mariae Guadalupensis, Patronae primae Americae</str>
-				
-      
 			</dict>
-			
-      
 			<bool key="occurrence_perpetuelle">False</bool>
-			
-      
 			<bool key="omission">False</bool>
-			
-      
 			<int key="ordo">1962</int>
-			
-      
 			<bool key="pal">False</bool>
-			
-      
 			<None key="parent"/>
-			
-      
 			<set key="personne">
-				
-        
 				<str>marie</str>
-				
-      
 			</set>
-			
-      
 			<bool key="peut_etre_celebree">False</bool>
-			
-      
 			<bool key="peut_etre_votive">False</bool>
-			
-      
 			<str key="propre">brazilian</str>
-			
-      
 			<None key="regex"/>
-			
-      
 			<dict key="regex_">
-				
-        
 				<list key="attribut"/>
-				
-        
 				<list key="attribut_compose"/>
-				
-        
 				<list key="egal"/>
-				
-        
 				<list key="hyperonyme"/>
-				
-        
 				<list key="nom"/>
-				
-        
 				<list key="nom_compose"/>
-				
-        
 				<list key="refus_faible"/>
-				
-        
 				<list key="refus_fort"/>
-				
-        
 				<list key="syntaxiques"/>
-				
-        
 				<list key="titre"/>
-				
-      
 			</dict>
-			
-      
 			<bool key="repris_en_ferie">False</bool>
-			
-      
 			<bool key="sanctoral">True</bool>
-			
-      
 			<bool key="temporal">False</bool>
-			
-      
 			<str key="textes"/>
-			
-      
 			<None key="tokens"/>
-			
-      
 			<str key="tokens_">notre dame sainte vierge marie guadalupe patronne principale amerique</str>
-			
-      
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
-			
-      
 			<bool key="votive">False</bool>
-			
-    
 		</dict>
-		
-  
-	</Modele>
-	
-  
-	<Modele>
-		
-    
 		<str key="classe">FeteFixe</str>
-		
-    
+	</Modele>
+	<Modele>
 		<dict key="attributs">
-			
-      
 			<str key="_couleur">blanc</str>
-			
-      
 			<str key="_images">rose_lima</str>
-			
-      
 			<int key="_priorite">1801</int>
-			
-      
 			<str key="_temps_liturgique">variable</str>
-			
-      
 			<bool key="_transferee">False</bool>
-			
-      
 			<dict key="addendum">
-				
-        
 				<str key="en"/>
-				
-        
 				<str key="fr"/>
-				
-        
 				<str key="la"/>
-				
-      
 			</dict>
-			
-      
 			<bool key="celebree">True</bool>
-			
-      
 			<bool key="commemoraison">False</bool>
-			
-      
 			<int key="commemoraison_privilegiee">90</int>
-			
-      
 			<None key="date"/>
-			
-      
 			<dict key="date_">
-				
-        
 				<int key="jour">30</int>
-				
-        
 				<int key="mois">8</int>
-				
-      
 			</dict>
-			
-      
 			<None key="date_originelle"/>
-			
-      
 			<int key="degre">1</int>
-			
-      
 			<bool key="dimanche">False</bool>
-			
-      
 			<bool key="fete_du_Seigneur">False</bool>
-			
-      
 			<str key="link">http://introibo.fr/30-08-Ste-Rose-de-Lima-vierge</str>
-			
-      
 			<dict key="nom">
-				
-        
 				<str key="en">Saint Rose of Lima, Virgin, Principal Patroness of Latin America</str>
-				
-        
 				<str key="fr">Sainte Rose de Lima, Vierge, Patronne principale de l'Amérique latine</str>
-				
-        
 				<str key="la">Sanctae Rosae Limanae, Virginis, Patronae primae Americae Latinae</str>
-				
-      
 			</dict>
-			
-      
 			<bool key="occurrence_perpetuelle">True</bool>
-			
-      
 			<bool key="omission">False</bool>
-			
-      
 			<int key="ordo">1962</int>
-			
-      
 			<bool key="pal">False</bool>
-			
-      
 			<None key="parent"/>
-			
-      
 			<set key="personne">
-				
-        
 				<str>rose_lima</str>
-				
-      
 			</set>
-			
-      
 			<bool key="peut_etre_celebree">False</bool>
-			
-      
 			<bool key="peut_etre_votive">False</bool>
-			
-      
 			<str key="propre">brazilian</str>
-			
-      
 			<None key="regex"/>
-			
-      
 			<dict key="regex_">
-				
-        
 				<list key="attribut"/>
-				
-        
 				<list key="attribut_compose"/>
-				
-        
 				<list key="egal"/>
-				
-        
 				<list key="hyperonyme"/>
-				
-        
 				<list key="nom"/>
-				
-        
 				<list key="nom_compose"/>
-				
-        
 				<list key="refus_faible"/>
-				
-        
 				<list key="refus_fort"/>
-				
-        
 				<list key="syntaxiques"/>
-				
-        
 				<list key="titre"/>
-				
-      
 			</dict>
-			
-      
 			<bool key="repris_en_ferie">False</bool>
-			
-      
 			<bool key="sanctoral">True</bool>
-			
-      
 			<bool key="temporal">False</bool>
-			
-      
 			<str key="textes"/>
-			
-      
 			<None key="tokens"/>
-			
-      
 			<str key="tokens_">sainte rose lima patronne principale amerique latine isabel flores oliva</str>
-			
-      
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
-			
-      
 			<bool key="votive">False</bool>
-			
-    
 		</dict>
-		
-  
-	</Modele>
-	
-  
-	<Modele>
-		
-    
 		<str key="classe">FeteFixe</str>
-		
-    
-		<dict key="attributs">
-			
-      
-			<str key="_couleur">blanc</str>
-			
-      
-			<str key="_images">marie_aparecida</str>
-			
-      
-			<int key="_priorite">1800</int>
-			
-      
-			<str key="_temps_liturgique">variable</str>
-			
-      
-			<bool key="_transferee">False</bool>
-			
-      
-			<dict key="addendum">
-				
-        
-				<str key="en"/>
-				
-        
-				<str key="fr"/>
-				
-        
-				<str key="la"/>
-				
-      
-			</dict>
-			
-      
-			<bool key="celebree">True</bool>
-			
-      
-			<bool key="commemoraison">False</bool>
-			
-      
-			<int key="commemoraison_privilegiee">90</int>
-			
-      
-			<None key="date"/>
-			
-      
-			<dict key="date_">
-				
-        
-				<int key="jour">12</int>
-				
-        
-				<int key="mois">10</int>
-				
-      
-			</dict>
-			
-      
-			<None key="date_originelle"/>
-			
-      
-			<int key="degre">1</int>
-			
-      
-			<bool key="dimanche">False</bool>
-			
-      
-			<bool key="fete_du_Seigneur">False</bool>
-			
-      
-			<str key="link">www.introibo.fr</str>
-			
-      
-			<dict key="nom">
-				
-        
-				<str key="en">Our Lady of Aparecida, Principal Patroness of Brazil</str>
-				
-        
-				<str key="fr">Notre-Dame d'Aparecida, Patronne principale du Brésil</str>
-				
-        
-				<str key="la">Sanctae Mariae Aparecidae, Patronae primae Brasiliae</str>
-				
-      
-			</dict>
-			
-      
-			<bool key="occurrence_perpetuelle">False</bool>
-			
-      
-			<bool key="omission">False</bool>
-			
-      
-			<int key="ordo">1962</int>
-			
-      
-			<bool key="pal">False</bool>
-			
-      
-			<None key="parent"/>
-			
-      
-			<set key="personne">
-				
-        
-				<str>marie</str>
-				
-      
-			</set>
-			
-      
-			<bool key="peut_etre_celebree">False</bool>
-			
-      
-			<bool key="peut_etre_votive">False</bool>
-			
-      
-			<str key="propre">brazilian</str>
-			
-      
-			<None key="regex"/>
-			
-      
-			<dict key="regex_">
-				
-        
-				<list key="attribut"/>
-				
-        
-				<list key="attribut_compose"/>
-				
-        
-				<list key="egal"/>
-				
-        
-				<list key="hyperonyme"/>
-				
-        
-				<list key="nom"/>
-				
-        
-				<list key="nom_compose"/>
-				
-        
-				<list key="refus_faible"/>
-				
-        
-				<list key="refus_fort"/>
-				
-        
-				<list key="syntaxiques"/>
-				
-        
-				<list key="titre"/>
-				
-      
-			</dict>
-			
-      
-			<bool key="repris_en_ferie">False</bool>
-			
-      
-			<bool key="sanctoral">True</bool>
-			
-      
-			<bool key="temporal">False</bool>
-			
-      
-			<str key="textes"/>
-			
-      
-			<None key="tokens"/>
-			
-      
-			<str key="tokens_">notre dame sainte marie vierge aparecida principale patronne bresil</str>
-			
-      
-			<int key="valeur">0</int>
-			
-      
-			<bool key="votive">False</bool>
-			
-    
-		</dict>
-		
-  
 	</Modele>
-	
-
+	<Modele>
+		<dict key="attributs">
+			<str key="_couleur">blanc</str>
+			<str key="_images">marie_aparecida</str>
+			<int key="_priorite">1800</int>
+			<str key="_temps_liturgique">variable</str>
+			<bool key="_transferee">False</bool>
+			<dict key="addendum">
+				<str key="en"/>
+				<str key="fr"/>
+				<str key="la"/>
+			</dict>
+			<bool key="celebree">True</bool>
+			<bool key="commemoraison">False</bool>
+			<int key="commemoraison_privilegiee">90</int>
+			<None key="date"/>
+			<dict key="date_">
+				<int key="jour">12</int>
+				<int key="mois">10</int>
+			</dict>
+			<None key="date_originelle"/>
+			<int key="degre">1</int>
+			<bool key="dimanche">False</bool>
+			<bool key="fete_du_Seigneur">False</bool>
+			<str key="link">www.introibo.fr</str>
+			<dict key="nom">
+				<str key="en">Our Lady of Aparecida, Principal Patroness of Brazil</str>
+				<str key="fr">Notre-Dame d'Aparecida, Patronne principale du Brésil</str>
+				<str key="la">Sanctae Mariae Aparecidae, Patronae primae Brasiliae</str>
+			</dict>
+			<bool key="occurrence_perpetuelle">False</bool>
+			<bool key="omission">False</bool>
+			<int key="ordo">1962</int>
+			<bool key="pal">False</bool>
+			<None key="parent"/>
+			<set key="personne">
+				<str>marie</str>
+			</set>
+			<bool key="peut_etre_celebree">False</bool>
+			<bool key="peut_etre_votive">False</bool>
+			<str key="propre">brazilian</str>
+			<None key="regex"/>
+			<dict key="regex_">
+				<list key="attribut"/>
+				<list key="attribut_compose"/>
+				<list key="egal"/>
+				<list key="hyperonyme"/>
+				<list key="nom"/>
+				<list key="nom_compose"/>
+				<list key="refus_faible"/>
+				<list key="refus_fort"/>
+				<list key="syntaxiques"/>
+				<list key="titre"/>
+			</dict>
+			<bool key="repris_en_ferie">False</bool>
+			<bool key="sanctoral">True</bool>
+			<bool key="temporal">False</bool>
+			<str key="textes"/>
+			<None key="tokens"/>
+			<str key="tokens_">notre dame sainte marie vierge aparecida principale patronne bresil</str>
+			<str key="type">feast</str>
+			<int key="valeur">0</int>
+			<bool key="votive">False</bool>
+		</dict>
+		<str key="classe">FeteFixe</str>
+	</Modele>
 </list>

@@ -1,68 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" ?>
 <list>
-  <Modele>
-    <dict key="attributs">
-      <str key="_couleur">rouge</str>
-      <str key="_images">georges_lydda</str>
-      <int key="_priorite">1800</int>
-      <str key="_temps_liturgique">variable</str>
-      <bool key="_transferee">False</bool>
-      <dict key="addendum">
-        <str key="en"/>
-        <str key="fr"/>
-        <str key="la"/>
-      </dict>
-      <bool key="celebree">True</bool>
-      <bool key="commemoraison">False</bool>
-      <int key="commemoraison_privilegiee">90</int>
-      <None key="date"/>
-      <dict key="date_">
-        <int key="jour">23</int>
-        <int key="mois">4</int>
-      </dict>
-      <None key="date_originelle"/>
-      <int key="degre">1</int>
-      <bool key="dimanche">False</bool>
-      <bool key="fete_du_Seigneur">False</bool>
-      <str key="link">http://introibo.fr/23-04-St-Georges-martyr</str>
-      <dict key="nom">
-        <str key="en">Saint George Martyr, Principal Patron of England</str>
-        <str key="fr">Saint Georges de Lydda, Martyr, Patron Principal de l'Angleterre</str>
-        <str key="la">Sancti Georgii, Martyris, Primi Patroni Angliae</str>
-      </dict>
-      <bool key="occurrence_perpetuelle">False</bool>
-      <bool key="omission">False</bool>
-      <int key="ordo">1962</int>
-      <bool key="pal">False</bool>
-      <None key="parent"/>
-      <set key="personne">
-        <str>georges_lydda</str>
-      </set>
-      <bool key="peut_etre_celebree">False</bool>
-      <bool key="peut_etre_votive">False</bool>
-      <str key="propre">english</str>
-      <None key="regex"/>
-      <dict key="regex_">
-        <list key="attribut"/>
-        <list key="attribut_compose"/>
-        <list key="egal"/>
-        <list key="hyperonyme"/>
-        <list key="nom"/>
-        <list key="nom_compose"/>
-        <list key="refus_faible"/>
-        <list key="refus_fort"/>
-        <list key="syntaxiques"/>
-        <list key="titre"/>
-      </dict>
-      <bool key="repris_en_ferie">False</bool>
-      <bool key="sanctoral">True</bool>
-      <bool key="temporal">False</bool>
-      <str key="textes"/>
-      <None key="tokens"/>
-      <str key="tokens_">saint georges lydda principal patron angleterre martyr</str>
-      <int key="valeur">0</int>
-      <bool key="votive">False</bool>
-    </dict>
-    <str key="classe">FeteFixe</str>
-  </Modele>
+	<Modele>
+		<dict key="attributs">
+			<str key="_couleur">rouge</str>
+			<str key="_images">georges_lydda</str>
+			<int key="_priorite">1800</int>
+			<str key="_temps_liturgique">variable</str>
+			<bool key="_transferee">False</bool>
+			<dict key="addendum">
+				<str key="en"/>
+				<str key="fr"/>
+				<str key="la"/>
+			</dict>
+			<bool key="celebree">True</bool>
+			<bool key="commemoraison">False</bool>
+			<int key="commemoraison_privilegiee">90</int>
+			<None key="date"/>
+			<dict key="date_">
+				<int key="jour">23</int>
+				<int key="mois">4</int>
+			</dict>
+			<None key="date_originelle"/>
+			<int key="degre">1</int>
+			<bool key="dimanche">False</bool>
+			<bool key="fete_du_Seigneur">False</bool>
+			<str key="link">http://introibo.fr/23-04-St-Georges-martyr</str>
+			<dict key="nom">
+				<str key="en">Saint George Martyr, Principal Patron of England</str>
+				<str key="fr">Saint Georges de Lydda, Martyr, Patron Principal de l'Angleterre</str>
+				<str key="la">Sancti Georgii, Martyris, Primi Patroni Angliae</str>
+			</dict>
+			<bool key="occurrence_perpetuelle">False</bool>
+			<bool key="omission">False</bool>
+			<int key="ordo">1962</int>
+			<bool key="pal">False</bool>
+			<None key="parent"/>
+			<set key="personne">
+				<str>georges_lydda</str>
+			</set>
+			<bool key="peut_etre_celebree">False</bool>
+			<bool key="peut_etre_votive">False</bool>
+			<str key="propre">english</str>
+			<None key="regex"/>
+			<dict key="regex_">
+				<list key="attribut"/>
+				<list key="attribut_compose"/>
+				<list key="egal"/>
+				<list key="hyperonyme"/>
+				<list key="nom"/>
+				<list key="nom_compose"/>
+				<list key="refus_faible"/>
+				<list key="refus_fort"/>
+				<list key="syntaxiques"/>
+				<list key="titre"/>
+			</dict>
+			<bool key="repris_en_ferie">False</bool>
+			<bool key="sanctoral">True</bool>
+			<bool key="temporal">False</bool>
+			<str key="textes"/>
+			<None key="tokens"/>
+			<str key="tokens_">saint georges lydda principal patron angleterre martyr</str>
+			<str key="type">feast</str>
+			<int key="valeur">0</int>
+			<bool key="votive">False</bool>
+		</dict>
+		<str key="classe">FeteFixe</str>
+	</Modele>
 </list>
