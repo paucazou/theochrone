@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <list>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -96,12 +95,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -182,12 +182,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -280,12 +281,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -363,12 +365,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -432,12 +435,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -516,12 +520,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">True</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -557,9 +562,9 @@
 			<int key="ordo">1962</int>
 			<bool key="pal">False</bool>
 			<set key="personne">
-				<str>valerien_rome</str>
-				<str>tiburce_(valerien_maxime)</str>
 				<str>maxime_rome_officier</str>
+				<str>tiburce_(valerien_maxime)</str>
+				<str>valerien_rome</str>
 			</set>
 			<bool key="peut_etre_celebree">False</bool>
 			<bool key="peut_etre_votive">False</bool>
@@ -621,12 +626,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -692,12 +698,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -774,12 +781,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -853,12 +861,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -944,12 +953,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">True</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -1026,12 +1036,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">True</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -1107,12 +1118,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">True</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -1148,8 +1160,8 @@
 			<int key="ordo">1962</int>
 			<bool key="pal">False</bool>
 			<set key="personne">
-				<str>clet</str>
 				<str>marcellin_pape</str>
+				<str>clet</str>
 			</set>
 			<bool key="peut_etre_celebree">False</bool>
 			<bool key="peut_etre_votive">False</bool>
@@ -1197,12 +1209,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -1332,12 +1345,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -1441,12 +1455,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -1573,12 +1588,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">True</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -1664,12 +1680,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -1782,12 +1799,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -1862,12 +1880,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">True</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -1903,10 +1922,10 @@
 			<int key="ordo">1962</int>
 			<bool key="pal">False</bool>
 			<set key="personne">
-				<str>eventius</str>
-				<str>theodule_martyr</str>
 				<str>alexandre_1</str>
+				<str>eventius</str>
 				<str>juvenal_narni</str>
+				<str>theodule_martyr</str>
 			</set>
 			<bool key="peut_etre_celebree">False</bool>
 			<bool key="peut_etre_votive">False</bool>
@@ -1983,12 +2002,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">True</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -2052,12 +2072,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -2129,12 +2150,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -2213,12 +2235,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -2310,12 +2333,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -2398,12 +2422,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -2439,8 +2464,8 @@
 			<int key="ordo">1962</int>
 			<bool key="pal">False</bool>
 			<set key="personne">
-				<str>epimaque_alexandrie</str>
 				<str>gordien_juge</str>
+				<str>epimaque_alexandrie</str>
 			</set>
 			<bool key="peut_etre_celebree">False</bool>
 			<bool key="peut_etre_votive">False</bool>
@@ -2476,12 +2501,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -2629,12 +2655,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -2671,9 +2698,9 @@
 			<bool key="pal">False</bool>
 			<set key="personne">
 				<str>pancrace_rome</str>
-				<str>domitille</str>
 				<str>achille_rome</str>
 				<str>neree_rome</str>
+				<str>domitille</str>
 			</set>
 			<bool key="peut_etre_celebree">False</bool>
 			<bool key="peut_etre_votive">False</bool>
@@ -2720,12 +2747,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -2803,12 +2831,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -2886,12 +2915,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -2971,12 +3001,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -3048,12 +3079,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -3119,12 +3151,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -3199,12 +3232,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -3276,12 +3310,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -3345,12 +3380,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -3421,12 +3457,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -3518,12 +3555,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -3596,12 +3634,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -3705,12 +3744,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -3781,12 +3821,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -3855,12 +3896,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -4024,12 +4066,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -4121,12 +4164,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -4199,12 +4243,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -4301,12 +4346,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -4374,12 +4420,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -4443,12 +4490,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -4520,12 +4568,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -4561,9 +4610,9 @@
 			<int key="ordo">1962</int>
 			<bool key="pal">False</bool>
 			<set key="personne">
+				<str>pierre_exorciste</str>
 				<str>erasme_formies</str>
 				<str>marcellin_(avec pierre)</str>
-				<str>pierre_exorciste</str>
 			</set>
 			<bool key="peut_etre_celebree">False</bool>
 			<bool key="peut_etre_votive">False</bool>
@@ -4676,12 +4725,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -4775,12 +4825,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -4861,12 +4912,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -4936,12 +4988,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -4977,8 +5030,8 @@
 			<int key="ordo">1962</int>
 			<bool key="pal">False</bool>
 			<set key="personne">
-				<str>prime</str>
 				<str>felicien_patricien</str>
+				<str>prime</str>
 			</set>
 			<bool key="peut_etre_celebree">False</bool>
 			<bool key="peut_etre_votive">False</bool>
@@ -5011,12 +5064,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -5108,12 +5162,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -5180,12 +5235,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -5349,12 +5405,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -5390,8 +5447,8 @@
 			<int key="ordo">1962</int>
 			<bool key="pal">False</bool>
 			<set key="personne">
-				<str>cyrin_soldat</str>
 				<str>nazaire_soldat</str>
+				<str>cyrin_soldat</str>
 				<str>basilide_soldat</str>
 				<str>nabor</str>
 			</set>
@@ -5431,12 +5488,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -5527,12 +5585,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -5612,12 +5671,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -5706,12 +5766,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -5798,12 +5859,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -5879,12 +5941,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -5962,12 +6025,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -6047,12 +6111,13 @@
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
 			<bool key="transferee">False</bool>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -6088,8 +6153,8 @@
 			<int key="ordo">1962</int>
 			<bool key="pal">False</bool>
 			<set key="personne">
-				<str>protais_(avec gervais)</str>
 				<str>gervais_(avec protais)</str>
+				<str>protais_(avec gervais)</str>
 			</set>
 			<bool key="peut_etre_celebree">False</bool>
 			<bool key="peut_etre_votive">False</bool>
@@ -6122,12 +6187,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -6191,12 +6257,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -6305,12 +6372,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -6382,12 +6450,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">violet</str>
 			<list key="_images"/>
@@ -6456,12 +6525,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">vigil</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -6529,12 +6599,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<list key="_images"/>
@@ -6632,12 +6703,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -6836,12 +6908,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">violet</str>
 			<list key="_images"/>
@@ -7006,12 +7079,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">vigil</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -7181,12 +7255,13 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<list key="_images"/>
@@ -7286,8 +7361,10 @@
 			<bool key="sanctoral">True</bool>
 			<bool key="temporal">False</bool>
 			<str key="textes"/>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 </list>

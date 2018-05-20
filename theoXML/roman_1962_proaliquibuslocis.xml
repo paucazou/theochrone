@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <list>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">gaspard_bufalo</str>
@@ -61,12 +60,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint gaspard del bufalo</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">francoise-xaviere_cabrini</str>
@@ -126,12 +126,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte françoise xaviere cabrini vierge mere</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">ildefonse</str>
@@ -191,12 +192,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint ildefonse tolède alfonso alonzo évêque confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marguerite_cortone</str>
@@ -256,12 +258,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte marie marguerite cortone penitente</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">louise_marillac</str>
@@ -321,12 +324,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte louise marillac veuve</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">benoit-joseph_labre</str>
@@ -386,12 +390,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint benoit joseph labre vagabond dieu confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">vierge_bon_conseil</str>
@@ -451,12 +456,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">marie notre dame bienheureuse bon conseil</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<str key="_images">pierre_chanel</str>
@@ -516,12 +522,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint pierre chanel martyr</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">louis-marie_grignion_montfort</str>
@@ -581,12 +588,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint louis marie grignion montfort confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">joseph-benoit_cottolengo</str>
@@ -646,12 +654,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint joseph benoit cottolengo</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<str key="_images">invention_croix</str>
@@ -711,12 +720,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">invention sainte croix</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">jean_porte_latine</str>
@@ -776,12 +786,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint jean porte latine martyre apotre evangeliste patmos</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">dominique_savio</str>
@@ -841,12 +852,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint dominique savio</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_reine_saints_mere_belle_dilection</str>
@@ -906,12 +918,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">notre dame marie reine tous saints mere belle dilection</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_mediatrice_toutes_graces</str>
@@ -971,12 +984,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">bienheureuse sainte notre dame marie mediatrice toutes graces</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">notre_dame_sacre_coeur</str>
@@ -1036,12 +1050,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">notre dame marie bienheureuse vierge sacre coeur jesus</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">apparition_michel_archange</str>
@@ -1101,12 +1116,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">apparition saint michel archange</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">isidore_laboureur</str>
@@ -1166,12 +1182,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint isidore laboureur confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<str key="_images">jean_nepomucene</str>
@@ -1231,12 +1248,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint jean nepomucene </str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">rita_cascia</str>
@@ -1296,12 +1314,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte rita cascia marguerite manchini</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">jean-baptiste_rossi</str>
@@ -1361,12 +1380,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint jean baptiste rossi</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_auxiliatrice</str>
@@ -1426,12 +1446,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">marie secours chretiens perpetuel auxiliatrice</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">ferdinand_castille</str>
@@ -1491,12 +1512,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint ferdinand roi confesseur castille 3</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">jeanne_arc</str>
@@ -1556,12 +1578,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte jeanne arc vierge pucelle orleans</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteMobilePaques</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_reine_apotres</str>
@@ -1618,12 +1641,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">notre dame sainte bienheureuse marie vierge reine des apotres</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteMobilePaques</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_mere_grace</str>
@@ -1683,12 +1707,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte vierge marie bienheureuse notre dame mere grace</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">jean-francois_regis</str>
@@ -1748,12 +1773,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint jean francois regis confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_perpetuel_secours</str>
@@ -1813,12 +1839,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">notre dame perpetuel secours marie vierge sainte bienheureuse</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">joseph_cafasso</str>
@@ -1878,12 +1905,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint joseph cafasso confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">souverains_pontifes</str>
@@ -1943,12 +1971,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">commémoraison tous saints papes souverains pontifes</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<str key="_images">maria_goretti</str>
@@ -2008,12 +2037,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte maria goretti vierge martyre</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">veronique_giuliani</str>
@@ -2073,12 +2103,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte veronique giuliani orsola</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeastMonthDayCompared</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_mere_misericorde</str>
@@ -2140,12 +2171,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte vierge bienheureuse marie notre dame mere merci</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeastMonthDayCompared</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">pierre_aux_liens</str>
@@ -2205,12 +2237,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint pierre aux liens</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<str key="_images">invention_etienne</str>
@@ -2270,12 +2303,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint etienne protomartyr invention decouverte corps</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<str key="_images">emidius</str>
@@ -2335,12 +2369,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint emidius ascoli eveque martyr</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_refuge_pecheurs</str>
@@ -2400,12 +2435,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte bienheureuse vierge marie notre dame refuge des pecheurs</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">jean_berchmans</str>
@@ -2465,12 +2501,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint jean berchmans confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">roch</str>
@@ -2530,12 +2567,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint roch montpellier</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">helene_imperatrice</str>
@@ -2595,12 +2633,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte helene imperatrice veuve</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteMobileCivile</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">notre_dame_consolation</str>
@@ -2662,12 +2701,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte bienheureuse vierge marie notre dame consolation</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteMobileCivile</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeastMonthDayCompared</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">notre_dame_sante_malades</str>
@@ -2729,12 +2769,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte bienheureuse marie vierge notre dame sante des malades</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeastMonthDayCompared</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_mere_divin_pasteur</str>
@@ -2794,12 +2835,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte bienheureuse notre dame marie vierge mere divin pasteur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">rose_viterbe</str>
@@ -2859,12 +2901,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte rose viterbe vierge</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">pierre_claver</str>
@@ -2924,12 +2967,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte pierre claver confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">catherine_genes</str>
@@ -2989,12 +3033,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte catherine genes fieschi adorno veuve</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<str key="_images">jean_brebeuf_isaac_jogues_compagnons</str>
@@ -3055,12 +3100,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saints jean brebeuf isaac jogues martyrs</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<str key="_images">gregoire_illuminateur</str>
@@ -3120,12 +3166,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint gregoire 1 illuminateur martyr patriarche armenie</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">tres_saint_redempteur</str>
@@ -3183,12 +3230,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">tres saint redempteur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">rouge</str>
 			<str key="_images">saintes_reliques</str>
@@ -3248,12 +3296,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saintes reliques</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">stanislas_kostka</str>
@@ -3313,12 +3362,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint stanislas kostka confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeastMonthDayCompared</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_mere_divine_providence_</str>
@@ -3380,12 +3430,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte bienheureuse vierge marie notre dame mere divine providence</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeastMonthDayCompared</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">leonard_port-maurice</str>
@@ -3445,12 +3496,13 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">saint leonard port maurice confesseur</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 	<Modele>
-		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
 			<str key="_images">marie_medaille_miraculeuse</str>
@@ -3510,8 +3562,10 @@
 			<str key="textes"/>
 			<None key="tokens"/>
 			<str key="tokens_">sainte bienheureuse vierge marie notre dame medaille miraculeuse</str>
+			<str key="type">feast</str>
 			<int key="valeur">0</int>
 			<bool key="votive">False</bool>
 		</dict>
+		<str key="classe">FeteFixe</str>
 	</Modele>
 </list>
