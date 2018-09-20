@@ -188,7 +188,7 @@ def contact(request):
     other_apps = (
         ('Divinum Officium, le plus complet','http://divinumofficium.com/'),
         ('Chant grégorien','http://www.chantgregorien.free.fr/calendrier/calend.php'),
-        ('Evangelizo','http://ordoweb.evangelizo.org/ordo//calendar/2'),
+        ('Per Ipsum','https://peripsum.org/peripsum.php'),
         ('1962 Ordo (FSSPX, en anglais)','https://1962ordo.today/'),
         )
     partners = (
