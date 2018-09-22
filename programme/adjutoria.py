@@ -498,6 +498,10 @@ class FeteFixeTransferableDimanche(FeteFixe):
     def DateCivile_(self,paques,annee): # TEST
         """Une fonction calculant la date civile."""
         date_fixe = datetime.date(annee,self.date_['mois'],self.date_['jour'])
+
+        if date_fixe.weekday() == 6: # if it is already a sunday
+            return date_fixe
+
         if self.apres:
             return officia.dimancheapres(date_fixe) + datetime.timedelta(self.ecart_dimanche*7)
         else:
