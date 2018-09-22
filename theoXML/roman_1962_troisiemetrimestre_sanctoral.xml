@@ -24,7 +24,7 @@
 			<None key="date_originelle"/>
 			<int key="degre">1</int>
 			<bool key="dimanche">False</bool>
-			<bool key="fete_du_Seigneur">False</bool>
+			<bool key="fete_du_Seigneur">True</bool>
 			<str key="images_rep"/>
 			<str key="link">http://introibo.fr/Le-Precieux-Sang-1er-juillet</str>
 			<dict key="nom">
