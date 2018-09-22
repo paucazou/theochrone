@@ -196,6 +196,7 @@ def contact(request):
         ('Metablog','https://ab2t.blogspot.fr/'),
         ('Le Salon Beige','http://lesalonbeige.blogs.com/my_weblog/web.html#theocontainer'),
         ('BLH Land','http://www.blh-land.fr/#theocontainer'),
+        ('Contre Info','http://www.contre-info.com/'),
         ) # Mettre cela ailleurs. Où ? TODO
     if request.method == 'GET':
         form = ContactForm()
