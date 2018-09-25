@@ -575,7 +575,7 @@ class ExportResults(SuperTranslator):
             if child.columnCount() == 1:
                 data[child.text(0)] = self.extractTreeData(parent=child)
             else:
-                liste.append([child.text(j) for j in range(child.columnCount()) if child.text(j)])
+                liste.append([child.text(j) for j in range(child.columnCount()) ])
         if not liste:
             return data
         else:
@@ -585,6 +585,7 @@ class ExportResults(SuperTranslator):
         for key,value in data.items():
             if dic_depth(value) == 0:
                 ndata[title[:-3]] = data
+                print(ndata)
                 return ndata
             else:
                 self.formatTreeData(value,ndata,title + key + " : ")
@@ -606,7 +607,7 @@ class ExportResults(SuperTranslator):
             data = {item(i,0).text():[] for i in range(nb_lines) if item(i,0) }
             for row in range(nb_lines):
                 data[item(row,0).text()].append(
-                    [item(row,i).text() for i in range(1,table.columnCount()) if item(row,i).text()]
+                    [item(row,i).text() for i in range(1,table.columnCount()) ]
                      )        
         return headers, data
 
@@ -814,6 +815,10 @@ class ExportResults(SuperTranslator):
         rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
         last_items = []
         for i, tuple_ in enumerate(zip(headers,data[1:])):
+            # if box is empty
+            if not tuple_[1]:
+                continue
+
             text = "{} : {}".format(*tuple_)
             if self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width() > rectangle_sizes[0].width():
                 last_items.append((text,self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width()/rectangle_sizes[1].width()))
@@ -828,7 +833,6 @@ class ExportResults(SuperTranslator):
         self.currentPoint.setX(self.left)
         self.currentPoint.setY(box.bottom())
         if last_items:
-            print(last_items)
             last_items.sort(key=lambda x: len(x[0]))
             for elt, rate in last_items:
                 box = QRect(self.currentPoint,self.createHRectangles(1,1.5+1.5*math.ceil(rate)))
