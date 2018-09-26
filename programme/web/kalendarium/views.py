@@ -194,7 +194,7 @@ def contact(request):
     partners = (
         ('Tradinews','http://tradinews.blogspot.fr/'),
         ('Metablog','https://ab2t.blogspot.fr/'),
-        ('Le Salon Beige','http://lesalonbeige.blogs.com/my_weblog/web.html#theocontainer'),
+        ('Le Salon Beige','https://www.lesalonbeige.fr/#theocontainer'),
         ('BLH Land','http://www.blh-land.fr/#theocontainer'),
         ('Contre Info','http://www.contre-info.com/'),
         ('Association Saint Florent d\'Anjou','https://saint-florent-anjou.fr/#theocontainer'),
