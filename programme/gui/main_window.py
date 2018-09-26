@@ -629,11 +629,20 @@ class ExportResults(SuperTranslator):
 
 
         
-    def exportToSpreadsheet(self):# TODO mettre les cases à la bonne taille, changer les dates en dates Excel
+    def exportToSpreadsheet(self):# TODO mettre les cases à la bonne taille, changer les dates en dates Excel, 
         """Export current data to spreadsheet"""
         headers, data = self.extractData()
         book = xlwt.Workbook()
-        sheet = book.add_sheet(self.parent.windowTitle())
+
+        try: #in case of invalid characters or name too long
+            sheet = book.add_sheet(self.parent.windowTitle())
+        except Exception:
+            sheet = book.add_sheet("Theochrone")
+
+        # if it is a tree representation, change first column
+        if isinstance(self.parent.centralWidget(),Tree):
+            headers = headers[0].split('/') + headers[1:]
+
         for i, elt in enumerate(headers):
             sheet.write(0,i,elt)
         row = 1
