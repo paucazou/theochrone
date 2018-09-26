@@ -93,8 +93,8 @@ You want to contribute to Theochrone but you want to use your personal favorite 
 * if it is an interpreted language, like PHP, Perl, Ruby, be sure that it is worth to add a whole new interpreter ; your contribution must be very huge : a new important feature, at least. Indeed, imagine the weight of the program with two or more interpreters...
 * if it is a compiled language, like C, Go, Rust, be sure that your module can be compiled on major architectures and OSes.
 ## Version
-Latest version is 0.5.0
-## New features available in v0.5.0
+Latest version is 0.5.1
+## New features available in 0.5.1
 - [x] widget available in english.
   - [x] Rework ferial days names in english
 - [x] CLI available in english: only for the current day on CLI. Keyword research is not available.
