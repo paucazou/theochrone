@@ -21,6 +21,8 @@ Thank you to all of them.*
 * Le Salon Beige
 * Le Forum Catholique *(Our widget was once on this platform.)*
 * BLHland
+* Contre Info
+* Association Saint Florent d'Anjou
 
 ## Newspapers
 * La Nef
