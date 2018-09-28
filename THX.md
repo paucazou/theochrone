@@ -14,6 +14,7 @@ Thank you to all of them.*
 * Aleth S. *English translations*
 * Br Stephen
 * Benoit Haraldsson *Tests*
+* Michel Tocabens *Proper of Strasburg and correction of many mistakes*
 
 ## Blogs and websites
 * Tradinews *Especially for the idea of the widget*
