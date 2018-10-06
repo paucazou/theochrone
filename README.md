@@ -5,7 +5,10 @@ Theochrone is a liturgical calendar for the Traditional Rite. You can enter a da
 
 ## Core Features
 * The roman calendar of 1962, accessible by dates or by keywords. A range of dates, or a period (a week or a month, for instance), is also a good option to have a better look.
-* **[NEW]** Twelve national propers: Australia, USA, Brazil, Canada, England, France, New Zealand, Poland, Portugal, Scotland, Spain and Wales.
+* Twelve national propers: Australia, USA, Brazil, Canada, England, France, New Zealand, Poland, Portugal, Scotland, Spain and Wales.
+* Diocesan propers:
+	* France
+		* Strasburg
 * The calendar is connected to a website which provides the texts for the mass and the office of the feast.
 * The Roman martyrology, used in 1962, accessible by date or by keywords.
 
@@ -93,42 +96,6 @@ You want to contribute to Theochrone but you want to use your personal favorite 
 * if it is an interpreted language, like PHP, Perl, Ruby, be sure that it is worth to add a whole new interpreter ; your contribution must be very huge : a new important feature, at least. Indeed, imagine the weight of the program with two or more interpreters...
 * if it is a compiled language, like C, Go, Rust, be sure that your module can be compiled on major architectures and OSes.
 ## Version
-Latest version is 0.5.1
-## New features available in 0.5.1
-- [x] widget available in english.
-  - [x] Rework ferial days names in english
-- [x] CLI available in english: only for the current day on CLI. Keyword research is not available.
-  - [x] rework translation full system
-- [x] local propers :
-  - [x] France;
-  - [x] USA;
-  - [x] England;
-  - [x] Wales;
-  - [x] Scotland;
-  - [x] Canada;
-  - [x] Brazil;
-  - [x] Poland;
-  - [x] Spain;
-  - [x] Portugal;
-  - [x] Australia;
-  - [x] New Zealand;
-- [x] local propers available on:
-  - [x] website;
-  - [x] widget;
-  - [x] CLI;
-    - [x] print proper name on screen if requested
-  - [x] Gui;
-- [x] update GUI to support new features.
-- [x] export data to files:
-  - [x] Formats:
-    - [x] CSV;
-    - [x] ICS;
-  - [x] Availability:
-    - [x] CLI;
-    - [x] website;
-    - [x] GUI;
-- [ ] ~~a new convenient help app~~
-- [ ] varia:
-  - [x] enable twitter app in english
-  - [x] add the rose colour into details of the third week of advent (optional liturgical colour)
-  - [x] add proper in user preferences
+Latest version is 0.6.0
+## New features available in 0.6.0
+- [ ] New diocesan proper: Strasburg

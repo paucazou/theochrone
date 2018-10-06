@@ -234,7 +234,7 @@ def widget(request):
 def download(request):
     """View for download page"""
     title = "Télécharger"
-    VERSION = "0.5.1"
+    VERSION = "0.6.0"
     trunk = "https://github.com/paucazou/theochrone/releases/download/v{}/".format(VERSION)
     downloads = {'windows32':trunk + 'theochrone_windows32.zip',
                  'windows64':trunk + 'theochrone_windows64.zip',
