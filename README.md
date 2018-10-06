@@ -8,7 +8,7 @@ Theochrone is a liturgical calendar for the Traditional Rite. You can enter a da
 * Twelve national propers: Australia, USA, Brazil, Canada, England, France, New Zealand, Poland, Portugal, Scotland, Spain and Wales.
 * Diocesan propers:
 	* France
-		* Strasburg
+		* Strasburg **[NEW]**
 * The calendar is connected to a website which provides the texts for the mass and the office of the feast.
 * The Roman martyrology, used in 1962, accessible by date or by keywords.
 
