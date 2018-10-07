@@ -492,9 +492,9 @@
       <bool key="pal">False</bool>
       <None key="parent"/>
       <set key="personne">
-        <str>elide_acolyte</str>
         <str>marin_doroang</str>
         <str>prict_clermont</str>
+        <str>elide_acolyte</str>
       </set>
       <bool key="peut_etre_celebree">False</bool>
       <bool key="peut_etre_votive">False</bool>
@@ -1042,69 +1042,134 @@
       <bool key="votive">False</bool>
     </dict>
   </Modele>
-<Modele>
-                <str key="classe">FeteFixe</str>
-                <dict key="attributs">
-                        <str key="_couleur">blanc</str>
-                        <str key="_images">jeanne_arc</str>
-                        <int key="_priorite">1100</int>
-                        <str key="_temps_liturgique">variable</str>
-                        <bool key="_transferee">False</bool>
-                        <dict key="addendum">
-                                <str key="en"/>
-                                <str key="fr"/>
-                                <str key="la"/>
-                        </dict>
-                        <bool key="celebree">True</bool>
-                        <bool key="commemoraison">False</bool>
-                        <int key="commemoraison_privilegiee">0</int>
-                        <None key="date"/>
-                        <dict key="date_">
-                                <int key="jour">30</int>
-                                <int key="mois">5</int>
-                        </dict>
-                        <None key="date_originelle"/>
-                        <int key="degre">2</int>
-                        <bool key="dimanche">False</bool>
-                        <bool key="fete_du_Seigneur">False</bool>
-                        <str key="link">http://introibo.fr/Sainte-Jeanne-d-Arc-vierge#inter1</str>
-                        <dict key="nom">
-                                <str key="en">Saint Joan of Arc, Virgin, Secondary Patroness of France</str>
-                                <str key="fr">Sainte Jeanne d'Arc, Vierge, Patronne secondaire de la France</str>
-                                <str key="la">Sanctae Joannae de Arc, Virginis, Patronae Secundariae Galliae</str>
-                        </dict>
-                        <bool key="occurrence_perpetuelle">False</bool>
-                        <bool key="omission">False</bool>
-                        <int key="ordo">1962</int>
-                        <bool key="pal">False</bool>
-                        <None key="parent"/>
-                        <set key="personne">
-                                <str>jeanne_arc</str>
-                        </set>
-                        <bool key="peut_etre_celebree">False</bool>
-                        <bool key="peut_etre_votive">False</bool>
-                        <str key="propre">strasburger</str>
-                        <None key="regex"/>
-                        <dict key="regex_">
-                                <list key="attribut"/>
-                                <list key="attribut_compose"/>
-                                <list key="egal"/>
-                                <list key="hyperonyme"/>
-                                <list key="nom"/>
-                                <list key="nom_compose"/>
-                                <list key="refus_faible"/>
-                                <list key="refus_fort"/>
-                                <list key="syntaxiques"/>
-                                <list key="titre"/>
-                        </dict>
-                        <bool key="repris_en_ferie">False</bool>
-                        <bool key="sanctoral">True</bool>
-                        <bool key="temporal">False</bool>
-                        <str key="textes"/>
-                        <None key="tokens"/>
-                        <str key="tokens_">sainte jeanne arc patronne secondaire france pucelle orleans</str>
-                        <int key="valeur">0</int>
-                        <bool key="votive">False</bool>
-                </dict>
-        </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <str key="_images">jeanne_arc</str>
+      <int key="_priorite">1100</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">30</int>
+        <int key="mois">5</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">2</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr/Sainte-Jeanne-d-Arc-vierge#inter1</str>
+      <dict key="nom">
+        <str key="en">Saint Joan of Arc, Virgin, Secondary Patroness of France</str>
+        <str key="fr">Sainte Jeanne d'Arc, Vierge, Patronne secondaire de la France</str>
+        <str key="la">Beatae Johannae, Virginis, Patronae Secundariae Galliae</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <None key="parent"/>
+      <set key="personne">
+        <str>jeanne_arc</str>
+      </set>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">strasburger</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques"/>
+        <list key="titre"/>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <None key="tokens"/>
+      <str key="tokens_">sainte jeanne arc patronne secondaire france pucelle orleans</str>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
+  <Modele>
+    <str key="classe">FeteFixe</str>
+    <dict key="attributs">
+      <str key="_couleur">blanc</str>
+      <str key="_images">morand</str>
+      <int key="_priorite">620</int>
+      <str key="_temps_liturgique">variable</str>
+      <bool key="_transferee">False</bool>
+      <dict key="addendum">
+        <str key="en"/>
+        <str key="fr"/>
+        <str key="la"/>
+      </dict>
+      <bool key="celebree">True</bool>
+      <bool key="commemoraison">False</bool>
+      <int key="commemoraison_privilegiee">0</int>
+      <None key="date"/>
+      <dict key="date_">
+        <int key="jour">3</int>
+        <int key="mois">6</int>
+      </dict>
+      <None key="date_originelle"/>
+      <int key="degre">3</int>
+      <bool key="dimanche">False</bool>
+      <bool key="fete_du_Seigneur">False</bool>
+      <str key="link">http://introibo.fr</str>
+      <dict key="nom">
+        <str key="en">Saint Morand, Confessor</str>
+        <str key="fr">Saint Morand, Confesseur</str>
+        <str key="la">Beati Morandi, Confessoris</str>
+      </dict>
+      <bool key="occurrence_perpetuelle">False</bool>
+      <bool key="omission">False</bool>
+      <int key="ordo">1962</int>
+      <bool key="pal">False</bool>
+      <None key="parent"/>
+      <set key="personne">
+        <str>morand</str>
+      </set>
+      <bool key="peut_etre_celebree">False</bool>
+      <bool key="peut_etre_votive">False</bool>
+      <str key="propre">strasburger</str>
+      <None key="regex"/>
+      <dict key="regex_">
+        <list key="attribut"/>
+        <list key="attribut_compose"/>
+        <list key="egal"/>
+        <list key="hyperonyme"/>
+        <list key="nom"/>
+        <list key="nom_compose"/>
+        <list key="refus_faible"/>
+        <list key="refus_fort"/>
+        <list key="syntaxiques"/>
+        <list key="titre"/>
+      </dict>
+      <bool key="repris_en_ferie">False</bool>
+      <bool key="sanctoral">True</bool>
+      <bool key="temporal">False</bool>
+      <str key="textes"/>
+      <None key="tokens"/>
+      <str key="tokens_">saint morand cluny apôtre sundgau confesseur</str>
+      <int key="valeur">0</int>
+      <bool key="votive">False</bool>
+    </dict>
+  </Modele>
 </list>

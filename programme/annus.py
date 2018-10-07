@@ -21,6 +21,7 @@ fichiers=('roman_1962_.pkl',
         'polish_1962_.pkl',
         'portuguese_1962_.pkl',
         'scottish_1962_.pkl',
+        'strasburger_1962_.pkl',
         'welsh_1962_.pkl',
         )
 """"
@@ -43,8 +44,7 @@ latin={
         'canadian': {},
         'english': {},
         'french':{
-            'lugdunensis':{},
-            'parisianus':{},
+            'strasburger':{},
             },
         'newzealander':{},
         'polish': {},
