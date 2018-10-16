@@ -100,7 +100,7 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':['-p',],
             'long':['--proper','--rite',],
             'options':['roman',
-                'american','australian','brazilian','canadian','english','french','newzealander','polish','portuguese','scottish','spanish','welsh',
+                'american','australian','brazilian','canadian','english','french','newzealander','polish','portuguese','scottish','spanish','strasburger','welsh',
                 ]
             },
         'ordo': {
