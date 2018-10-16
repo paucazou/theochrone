@@ -1340,7 +1340,7 @@
 			<str key="link">http://introibo.fr/15-10-Ste-Therese-vierge</str>
 			<dict key="nom">
 				<str key="en">Saint Teresa of Avila, Virgin</str>
-				<str key="fr">Sainte Thérèse, Vierge</str>
+				<str key="fr">Sainte Thérèse d'Avila, Vierge</str>
 				<str key="la">Sanctae Theresiae, Virginis</str>
 			</dict>
 			<bool key="occurrence_perpetuelle">False</bool>
