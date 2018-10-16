@@ -24,6 +24,8 @@ for file_name in os.listdir(xml_folder):
 def CompileRegex(objet):
     """Fonction de compilation des regex""" # énormément d'erreurs dans cette fonction = certaines regex font n'importe quoi, et certains titres ne sont pas supprimés.
     
+    if not objet.__dict__.get("regex_",False):
+        return
     vaisseau = copy.deepcopy(objet.regex_)
     titres = ['saint([^e]|$|\.|\?)', 'sainte', 'saints','saintes','bienheureux', 'bienheureuse([^s]|$|\.|\?)','bienheureuses.',
               'lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche','janvier','février','mars','avril','mai$', 'juin','juillet','août','septembre','octobre','novembre','décembre',]
@@ -152,7 +154,8 @@ def prepare_data(pkl_file_name):
     # delete useless attributes
     logger.info('Delete useless attributes')
     for obj in obj_list:
-        delattr(obj,'regex_')    
+        if obj.__dict__.get("regex_",False):
+            delattr(obj,'regex_')    
     return obj_list
 
 def data_pickler(pkl_file_name,obj_list):
@@ -171,7 +174,7 @@ def main(**kwargs):
     Unfortunately, it will not give you a coffee.
     """
     if kwargs.get('propers') == 'all':
-        propers = ['roman','american','english','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','australian','newzealander']
+        propers = ['roman','american','english','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','strasburger','australian','newzealander']
     elif 'proper' in kwargs:
         propers = [v for k,v in kwargs.items() if 'proper' in k]
     else:
