@@ -272,6 +272,7 @@ class Main(QMainWindow,SuperTranslator):
                 ('scottish'      ,_('Toolbar','Scottish')),
                 ('spanish'       ,_('Toolbar','Spanish')),
                 ('welsh'         ,_('Toolbar','Welsh'),),
+                ('strasburger'  ,_('ToolBar','Strasburger'),),
                 ]
         self.propersDict = collections.OrderedDict(self.propers) # a convenient way to access to names of propers
 
