@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-13 21:48+0200\n"
+"POT-Creation-Date: 2018-10-17 08:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -436,126 +436,151 @@ msgstr "Français"
 
 #: programme/messages.py:173 programme/messages.py:174
 #: programme/messages.py:186 programme/messages.py:187
+#: programme/messages.py:188
 msgid "New-Zealander"
 msgstr "Néo-Zélandais"
 
 #: programme/messages.py:174 programme/messages.py:175
 #: programme/messages.py:187 programme/messages.py:188
+#: programme/messages.py:189
 msgid "Polish"
 msgstr "Polonais"
 
 #: programme/messages.py:175 programme/messages.py:176
 #: programme/messages.py:188 programme/messages.py:189
+#: programme/messages.py:190
 msgid "Portuguese"
 msgstr "Portugais"
 
 #: programme/messages.py:176 programme/messages.py:177
 #: programme/messages.py:189 programme/messages.py:190
+#: programme/messages.py:191
 msgid "Scottish"
 msgstr "Écossais"
 
 #: programme/messages.py:177 programme/messages.py:178
 #: programme/messages.py:190 programme/messages.py:191
+#: programme/messages.py:192
 msgid "Spanish"
 msgstr "Espagnol"
 
 #: programme/messages.py:178 programme/messages.py:179
 #: programme/messages.py:191 programme/messages.py:192
+#: programme/messages.py:193
 msgid "Welsh"
 msgstr "Gallois"
 
 #: programme/messages.py:181 programme/messages.py:182
 #: programme/messages.py:194 programme/messages.py:195
+#: programme/messages.py:196
 msgid "Season of Advent"
 msgstr "Temps de l'Avent"
 
 #: programme/messages.py:182 programme/messages.py:183
 #: programme/messages.py:195 programme/messages.py:196
+#: programme/messages.py:197
 msgid "Christmastide (Season of Christmas)"
 msgstr "Temps de la Nativité (Temps de Noël)"
 
 #: programme/messages.py:183 programme/messages.py:184
 #: programme/messages.py:196 programme/messages.py:197
+#: programme/messages.py:198
 msgid "Epiphanytide (Season of Christmas)"
 msgstr "Temps de l'Épiphanie (Temps de Noël)"
 
 #: programme/messages.py:184 programme/messages.py:185
 #: programme/messages.py:197 programme/messages.py:198
+#: programme/messages.py:199
 msgid "Season per annum after Epiphany"
 msgstr "Temps per Annum après l'Épiphanie"
 
 #: programme/messages.py:185 programme/messages.py:186
 #: programme/messages.py:198 programme/messages.py:199
+#: programme/messages.py:200
 msgid "Season of Septuagesim"
 msgstr "Temps de la Septuagésime"
 
 #: programme/messages.py:186 programme/messages.py:187
 #: programme/messages.py:199 programme/messages.py:200
+#: programme/messages.py:201
 msgid "Lent (Season of Lent)"
 msgstr "Temps du Carême proprement dit (Temps du Carême)"
 
 #: programme/messages.py:187 programme/messages.py:188
 #: programme/messages.py:200 programme/messages.py:201
+#: programme/messages.py:202
 msgid "Passiontide (Season of Lent)"
 msgstr "Temps de la Passion (Temps du Carême)"
 
 #: programme/messages.py:188 programme/messages.py:189
 #: programme/messages.py:201 programme/messages.py:202
+#: programme/messages.py:203
 msgid "Eastertide (Season of Easter)"
 msgstr "Temps de Pâques (Temps Pascal)"
 
 #: programme/messages.py:189 programme/messages.py:190
 #: programme/messages.py:202 programme/messages.py:203
+#: programme/messages.py:204
 msgid "Ascensiontide (Season of Easter)"
 msgstr "Temps de l'Ascension (Temps Pascal)"
 
 #: programme/messages.py:190 programme/messages.py:191
 #: programme/messages.py:203 programme/messages.py:204
+#: programme/messages.py:205
 msgid "Octave of Pentecost (Season of Easter)"
 msgstr "Octave de la Pentecôte (Temps Pascal)"
 
 #: programme/messages.py:191 programme/messages.py:192
 #: programme/messages.py:204 programme/messages.py:205
+#: programme/messages.py:206
 msgid "Season per annum after Pentecost"
 msgstr "Temps per Annum après la Pentecôte"
 
 #: programme/messages.py:193 programme/messages.py:194
 #: programme/messages.py:206 programme/messages.py:207
+#: programme/messages.py:208
 msgid "celebrated"
 msgstr "célébrée"
 
 #: programme/messages.py:194 programme/messages.py:195
 #: programme/messages.py:207 programme/messages.py:208
+#: programme/messages.py:209
 msgid "can be celebrated or commemorated"
 msgstr "peut être célébrée ou commémorée"
 
 #: programme/messages.py:195 programme/messages.py:196
 #: programme/messages.py:208 programme/messages.py:209
+#: programme/messages.py:210
 msgid "can be celebrated"
 msgstr "peut être célébrée"
 
 #: programme/messages.py:196 programme/messages.py:197
 #: programme/messages.py:209 programme/messages.py:210
+#: programme/messages.py:211
 msgid "commemorated"
 msgstr "commémorée"
 
 #: programme/messages.py:197 programme/messages.py:198
 #: programme/messages.py:210 programme/messages.py:211
+#: programme/messages.py:212
 msgid "omitted"
 msgstr "omise"
 
 #: programme/messages.py:199 programme/messages.py:200
 #: programme/messages.py:212 programme/messages.py:213
+#: programme/messages.py:214
 msgid "Temporal"
 msgstr "Temporal"
 
 #: programme/messages.py:200 programme/messages.py:201
 #: programme/messages.py:213 programme/messages.py:214
+#: programme/messages.py:215
 msgid "Sanctoral"
 msgstr "Sanctoral"
 
 #: programme/messages.py:202 programme/messages.py:203
 #: programme/messages.py:215 programme/messages.py:216
+#: programme/messages.py:217
 msgid "Transferred. Original date: {}"
 msgstr "Transférée. Date originelle : {}"
 
@@ -567,7 +592,7 @@ msgstr ""
 msgid "American"
 msgstr "Américain"
 
-#: programme/messages.py:219
+#: programme/messages.py:219 programme/messages.py:220
 msgid ""
 "                State: {}\n"
 "                Class: {}\n"
@@ -584,3 +609,7 @@ msgstr ""
 "                Couleur : {}\n"
 "                Propre : {}\n"
 "                Station: {}"
+
+#: programme/messages.py:187
+msgid "Strasburger"
+msgstr "Strasbourgeois"

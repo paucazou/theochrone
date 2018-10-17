@@ -40,7 +40,7 @@
       </set>
       <bool key="peut_etre_celebree">False</bool>
       <bool key="peut_etre_votive">False</bool>
-      <str key="propre">strasbuger</str>
+      <str key="propre">strasburger</str>
       <None key="regex"/>
       <dict key="regex_">
         <list key="attribut"/>
