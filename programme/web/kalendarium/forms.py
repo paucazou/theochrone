@@ -19,6 +19,7 @@ propers = {
         'portuguese':'Portugais',
         'scottish':'Écossais',
         'welsh':'Gallois',
+        'strasburger':'Strasbourgeois',
         }
 # forms shared
 

@@ -23,7 +23,7 @@ import officia
 martyrology_instance = martyrology.Martyrology()
 host = os.environ.get("THEHOST","localhost:8000")
 liturgical_calendar = annus.LiturgicalCalendar(proper='roman')
-s=os.environ.get("SECURE")
+s=os.environ.get("SECURE",'')
 if s is None:
     s='s'
     
