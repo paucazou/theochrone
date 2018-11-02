@@ -604,7 +604,7 @@
       <int key="commemoraison_privilegiee">0</int>
       <None key="date"/>
       <dict key="date_">
-        <int key="jour">6</int>
+        <int key="jour">5</int>
         <int key="mois">3</int>
       </dict>
       <None key="date_originelle"/>
