@@ -126,5 +126,6 @@ programmes_utilises = (
     'gcc -Os -I /usr/include/python3.5 -o hello hello.c -lpython3.5m -lpthread -lm -lutil -ldl', # marche seul, mais pas comme module
     'http://cython.readthedocs.io/en/latest/src/tutorial/cython_tutorial.html', # section Cython Hello World, qui marche comme module
     'NSIS', # windows : pynsist
+    'Debug: IPython import embed; embed()'
     )
     
