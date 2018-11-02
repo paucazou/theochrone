@@ -23,6 +23,8 @@ import display_martyrology
 import math
 import officia
 import settings
+import select_items_window
+import utils
 os.chdir(chemin)
 
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QCoreApplication, QDate, QLineF, QLocale, QPoint, QRect, QRectF, QSize, Qt, QTranslator
@@ -586,7 +588,6 @@ class ExportResults(SuperTranslator):
         for key,value in data.items():
             if dic_depth(value) == 0:
                 ndata[title[:-3]] = data
-                print(ndata)
                 return ndata
             else:
                 self.formatTreeData(value,ndata,title + key + " : ")
@@ -610,6 +611,12 @@ class ExportResults(SuperTranslator):
                 data[item(row,0).text()].append(
                     [item(row,i).text() for i in range(1,table.columnCount()) ]
                      )        
+        # select which headers are wanted
+        selecter = select_items_window.SelectWindow(self.parent)
+        autoselect = 2 if "/" not in headers[0] else 1
+        selecter(headers,autoselect)
+        headers = [h if b else ""  for h,b in zip(headers,selecter.results) ]
+
         return headers, data
 
     def exportToIcs(self):
@@ -644,14 +651,23 @@ class ExportResults(SuperTranslator):
         if isinstance(self.parent.centralWidget(),Tree):
             headers = headers[0].split('/') + headers[1:]
 
-        for i, elt in enumerate(headers):
-            sheet.write(0,i,elt)
+        i = 0
+        for elt in headers:
+            if elt: # if header has been selected
+                sheet.write(0,i,elt)
+                i += 1
+
         row = 1
         self.spreadsheetlist = []
         self.iterSpreadsheet(data)
         for elt in self.spreadsheetlist:
-            [sheet.write(row,i,text) for i, text in enumerate(elt)]
+            i = 0
+            for idx, text in enumerate(elt):
+                if headers[idx]:
+                    sheet.write(row,i,text)
+                    i += 1
             row += 1
+
         dialog = QFileDialog.getSaveFileName(self.parent,self.exportAsSheetTitle,self.personal_directory,self.typeSheetFiles)
         if dialog[0]:
             book.save(dialog[0])
@@ -706,22 +722,22 @@ class ExportResults(SuperTranslator):
         self.paintMainTitle()
         headers, data = self.extractData()
         self.iterPainter(data,headers[(isinstance(self.parent.centralWidget(),Table) + 1):])
-        #self.paintIntermediateTitles('2017 : janvier : sixième semaine')
-        #self.paintSubtitles('Vendredi premier janvier 2017')
-        #self.paintFeasts(('Classe','Statut','Couleur'),('Vendredi de la première semaine de Carême','Deuxième classe','Célébrée','Violet'))
         self.painter.end()
         
     def iterPainter(self,data,headers):
         """Iters into data to paint correctly titles and feasts"""
         for key, value in data.items():
             if dic_depth(data) == 1:
-                self.goonOrNewPage(2,len(value[0]))
+                nb_items = utils.lower_valuable(headers,value[0])
+                self.goonOrNewPage(2,nb_items)
                 self.paintSubtitles(key)
                 for item in value:
-                    self.goonOrNewPage(1,len(item))
+                    nb_items = utils.lower_valuable(headers,item)
+                    self.goonOrNewPage(1,nb_items)
                     self.paintFeasts(headers,item)
             else:
-                nb_items = len([elt for elt in value.values()][0][0])
+                #nb_items = len([elt for elt in value.values()][0][0])
+                nb_items = utils.lower_valuable(headers,[ elt for elt in value.values()][0][0])
                 self.goonOrNewPage(3,nb_items)
                 self.paintIntermediateTitles(key)
                 self.iterPainter(value,headers)
@@ -823,25 +839,29 @@ class ExportResults(SuperTranslator):
         feastFont.setBold(False)
         self.painter.setFont(feastFont)
         rectangle_sizes = [self.createHRectangles(2,3),self.createHRectangles(1,3)]
+        # other values than the name and the date have been selected
         last_items = []
-        for i, tuple_ in enumerate(zip(headers,data[1:])):
-            # if box is empty
-            if not tuple_[1]:
-                continue
 
-            text = "{} : {}".format(*tuple_)
-            if self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width() > rectangle_sizes[0].width():
-                last_items.append((text,self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width()/rectangle_sizes[1].width()))
-                continue
-            box = QRect(self.currentPoint,rectangle_sizes[0])
-            self.painter.drawText(box,left_center,text)
-            if box.left() == self.page_rectangle.left():
-                self.currentPoint = box.topRight()
-            else:
-                self.currentPoint.setX(self.left)
-                self.currentPoint.setY(box.bottom())
-        self.currentPoint.setX(self.left)
-        self.currentPoint.setY(box.bottom())
+        if not utils.full_of("",headers):
+            for i, tuple_ in enumerate(zip(headers,data[1:])):
+                # if box is empty or header has been removed
+                if not tuple_[1] or not tuple_[0]:
+                    continue
+
+                text = "{} : {}".format(*tuple_)
+                if self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width() > rectangle_sizes[0].width():
+                    last_items.append((text,self.painter.boundingRect(QRectF(),Qt.AlignLeft + Qt.AlignVCenter,text).width()/rectangle_sizes[1].width()))
+                    continue
+                box = QRect(self.currentPoint,rectangle_sizes[0])
+                self.painter.drawText(box,left_center,text)
+                if box.left() == self.page_rectangle.left():
+                    self.currentPoint = box.topRight()
+                else:
+                    self.currentPoint.setX(self.left)
+                    self.currentPoint.setY(box.bottom())
+            self.currentPoint.setX(self.left)
+            self.currentPoint.setY(box.bottom())
+
         if last_items:
             last_items.sort(key=lambda x: len(x[0]))
             for elt, rate in last_items:

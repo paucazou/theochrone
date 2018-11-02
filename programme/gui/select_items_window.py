@@ -29,6 +29,7 @@ class SelectWindow(pw.QDialog,SuperTranslator):
 
         self.initUI()
         self.retranslateUI()
+        self.exec()
 
     def initUI(self):
         """Initializes the window
@@ -59,14 +60,14 @@ class SelectWindow(pw.QDialog,SuperTranslator):
 
         # OK & Cancel buttons
         self.buttons_layout = pw.QHBoxLayout()
-        self.cancel = pw.QPushButton("Cancel")
+        #self.cancel = pw.QPushButton("Cancel")
         self.ok = pw.QPushButton("Ok")
         self.buttons_layout.addStretch(1)
-        self.buttons_layout.addWidget(self.cancel)
+        #self.buttons_layout.addWidget(self.cancel)
         self.buttons_layout.addWidget(self.ok)
         ## logic
         self.ok.clicked.connect(self.setResults)
-        self.cancel.clicked.connect(self.close)
+        #self.cancel.clicked.connect(self.close)
 
 
         # main layout
@@ -76,16 +77,12 @@ class SelectWindow(pw.QDialog,SuperTranslator):
         self.layout.addLayout(self.buttons_layout)
         self.setLayout(self.layout)
 
-        #geometry
-        self.move(self.parent.geometry().topLeft())
-        self.exec()
-
     def retranslateUI(self):
         """Retranslate the whole window if necessary"""
         self.setWindowTitle(_("SelectWindow","Select items"))
         self.message.setText(_("SelectWindow","Select the items you want to export"))
         self.ok.setText(_("SelectWindow","OK"))
-        self.cancel.setText(_("SelectWindow","Cancel"))
+        #self.cancel.setText(_("SelectWindow","Cancel"))
 
     def setResults(self):
         """Called by a click to OK"""
