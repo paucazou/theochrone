@@ -553,14 +553,37 @@ class ToolBar(QToolBar,SuperTranslator):
         self.selectProper.clear()
         for proper in self.parent.propers:
             self.selectProper.addItem(proper[1])
+
+
         
 class ExportResults(SuperTranslator):
     """Manage the exports in other formats.
     For now : PDF, print"""
+
+    class __Decorators:
+        """Class of decorators for ExportResults"""
+        @staticmethod
+        def clean_up(function):
+            """Decorator that is in charge
+            to clean attributes after function
+            is called for the ExportResults class
+            """
+            def wrapper(*args,**kwargs):
+                self = args[0]
+                from IPython import embed; embed()
+                result = function(self)
+                # clean up is here
+                self.headers = []
+                self.currentPoint = QPoint(0,0)
+                return result
+
+            return wrapper
+
     
     def __init__(self,parent):
         SuperTranslator.__init__(self)
         self.parent = parent
+        self.headers = [] # dirty trick
         self.printer = QPrinter(QPrinter.HighResolution)
         self.painter = QPainter()
         self.currentPoint = QPoint(0,0)
@@ -568,6 +591,7 @@ class ExportResults(SuperTranslator):
         self.printDialog.setWindowTitle(_('ExportResults','Print results'))
         self.personal_directory = os.path.expanduser('~')
         self.retranslateUI()
+
         
     def extractTreeData(self,parent=None):
         """Returns the data as they appeared on the screen"""
@@ -612,12 +636,14 @@ class ExportResults(SuperTranslator):
                     [item(row,i).text() for i in range(1,table.columnCount()) ]
                      )        
         # select which headers are wanted
-        selecter = select_items_window.SelectWindow(self.parent)
-        autoselect = 2 if "/" not in headers[0] else 1
-        selecter(headers,autoselect)
-        headers = [h if b else ""  for h,b in zip(headers,selecter.results) ]
+        if not self.headers:
+            selecter = select_items_window.SelectWindow(self.parent)
+            autoselect = 2 if "/" not in headers[0] else 1
+            selecter(headers,autoselect)
+            self.headers = [h if b else ""  for h,b in zip(headers,selecter.results) ]
+            #self.headers must be emptied by the calling export function
 
-        return headers, data
+        return self.headers, data
 
     def exportToIcs(self):
         """Export data to the ICS format, useful
@@ -637,6 +663,7 @@ class ExportResults(SuperTranslator):
 
 
         
+    @__Decorators.clean_up
     def exportToSpreadsheet(self):# TODO mettre les cases à la bonne taille, changer les dates en dates Excel, 
         """Export current data to spreadsheet"""
         headers, data = self.extractData()
@@ -684,6 +711,7 @@ class ExportResults(SuperTranslator):
         """Method which will be filled by a dialog window"""
         self.font = 'Arial'
         
+    @__Decorators.clean_up
     def exportToPrinter(self):
         preview = QPrintPreviewDialog(self.printer)
         if isinstance(self.parent.centralWidget(),display_martyrology.DisplayMartyrology):
@@ -692,6 +720,7 @@ class ExportResults(SuperTranslator):
             preview.paintRequested.connect(self.paintController)
         preview.exec()
         
+    @__Decorators.clean_up
     def exportAsPDF(self):
         dialog = QFileDialog.getSaveFileName(self.parent,self.exportAsPdfTitle,self.personal_directory,self.typeFiles)
         if dialog[0]:
