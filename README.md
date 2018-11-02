@@ -98,4 +98,5 @@ You want to contribute to Theochrone but you want to use your personal favorite 
 ## Version
 Latest version is 0.6.0
 ## New features available in 0.6.0
-- [ ] New diocesan proper: Strasburg
+- [x] New diocesan proper: Strasburg
+- [x] GUI: export: it is now possible to select which items to export
