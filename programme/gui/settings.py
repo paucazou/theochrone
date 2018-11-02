@@ -13,11 +13,11 @@ os.chdir(chemin)
 from translation import *
 from PyQt5.QtCore import QCoreApplication, Qt, QTranslator
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QCheckBox, QComboBox, QHBoxLayout, QLabel, QPushButton, QSpinBox, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QCheckBox, QComboBox, QDialog, QHBoxLayout, QLabel, QPushButton, QSpinBox, QVBoxLayout, QWidget
 
 _ = QCoreApplication.translate
 
-class SettingsWindow(QWidget,SuperTranslator):
+class SettingsWindow(QDialog,SuperTranslator):
     """Settings window"""
     def __init__(self,parent):
         QWidget.__init__(self)
@@ -27,6 +27,7 @@ class SettingsWindow(QWidget,SuperTranslator):
         self.languages = ('en','fr')#,'la')
         self.initUI()
         self.retranslateUI()
+        self.exec()
     
     def initUI(self):
         #title
@@ -91,10 +92,6 @@ class SettingsWindow(QWidget,SuperTranslator):
         # Buttons
         self.ok.clicked.connect(self.saveSettings)
         self.cancel.clicked.connect(self.close)
-        
-        # geometry
-        self.move(self.parent.geometry().topLeft())
-        self.show()
         
     def retranslateUI(self):
         self.setWindowTitle(_("SettingsWindow","Settings"))
