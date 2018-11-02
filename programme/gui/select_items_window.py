@@ -88,3 +88,10 @@ class SelectWindow(pw.QDialog,SuperTranslator):
         """Called by a click to OK"""
         self.results = [elt.isChecked() for elt in self.items_checkboxes]
         self.close()
+
+    def closeEvent(self,event):
+        """This function handles the close event.
+        It blocks the event if the user has not selected
+        items"""
+        if not self.results:
+            event.ignore()
