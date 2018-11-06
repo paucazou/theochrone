@@ -570,7 +570,6 @@ class ExportResults(SuperTranslator):
             """
             def wrapper(*args,**kwargs):
                 self = args[0]
-                from IPython import embed; embed()
                 result = function(self)
                 # clean up is here
                 self.headers = []
