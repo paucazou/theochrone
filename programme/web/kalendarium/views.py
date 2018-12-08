@@ -66,8 +66,8 @@ def home(request,
             next_item = officia.datetime_to_link(fin + datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper,pal=pal)
             previous_item = officia.datetime_to_link(debut - datetime.timedelta(1),host,hashtag=hashtag,s=s,proper=proper,pal=pal)
         else:
-            next_item = officia.month_to_link(fin,host,1,hashtag,s)
-            previous_item = officia.month_to_link(debut,host,-1,hashtag,s)
+            next_item = officia.month_to_link(fin,host,1,hashtag,s,proper)
+            previous_item = officia.month_to_link(debut,host,-1,hashtag,s,proper)
         date = debut
         liturgycal(date.year)
         while date <= fin:
@@ -197,7 +197,7 @@ def contact(request):
         ('Le Salon Beige','https://www.lesalonbeige.fr/#theocontainer'),
         ('BLH Land','http://www.blh-land.fr/#theocontainer'),
         ('Contre Info','http://www.contre-info.com/'),
-        ('Association Saint Florent d\'Anjou','https://saint-florent-anjou.fr/#theocontainer'),
+        ("Association Saint Florent d'Anjou",'https://saint-florent-anjou.fr/#theocontainer'),
         ) # Mettre cela ailleurs. Où ? TODO
     if request.method == 'GET':
         form = ContactForm()
