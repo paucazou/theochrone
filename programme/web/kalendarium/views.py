@@ -190,6 +190,7 @@ def contact(request):
         ('Chant grégorien','http://www.chantgregorien.free.fr/calendrier/calend.php'),
         ('Per Ipsum','https://peripsum.org/peripsum.php'),
         ('1962 Ordo (FSSPX, en anglais)','https://1962ordo.today/'),
+        ('Ordo, appli Android','https://play.google.com/store/apps/details?id=com.traddevs.ordo'),
         )
     partners = (
         ('Tradinews','http://tradinews.blogspot.fr/'),
