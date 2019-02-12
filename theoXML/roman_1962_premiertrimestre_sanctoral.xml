@@ -3431,7 +3431,7 @@
 			<str key="link">http://introibo.fr/11-02-Apparition-de-la-Vierge</str>
 			<dict key="nom">
 				<str key="en">Apparitions at Lourdes</str>
-				<str key="fr">Apparition de la Bienheureuse Vierge Marie</str>
+				<str key="fr">Apparition de la Bienheureuse Vierge Marie à Lourdes</str>
 				<str key="la">In Apparitione Beatae Mariae Virginis Immaculatae</str>
 			</dict>
 			<bool key="occurrence_perpetuelle">False</bool>
