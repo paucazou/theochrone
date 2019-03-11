@@ -8,18 +8,22 @@ import json
 import messages
 import officia
 import os
+import phlog
 import re
 import sys
 
 msg = messages.translated_messages('adjutoria')
 liturgiccal = calendar.Calendar(firstweekday=6)
 file_folder = os.path.dirname(os.path.abspath(__file__))
-if (messages.args.gui or not 'theochrone' in sys.argv[0]) and 'ipython' not in sys.argv[0] and 'dataswitcher' not in sys.argv[0]:
+logger = phlog.loggers['console']
+
+try:
     import pickle
     with open(file_folder+'/data/images.pkl','rb') as file:
         images = pickle.Unpickler(file).load() # Un dictionnaire, prenant pour clef Fete._images et pour valeur une liste d'objets imagines.Images
+except FileNotFoundError:
+    logger.warning("/data/images.pkl not found. Please run dataswitcher")
 
-#import pdb ; pdb.set_trace()
 
 
 # classes

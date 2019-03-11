@@ -38,7 +38,7 @@ For more info, type in a terminal after downloading the program:
 1. Clone or download repository.
 2. Open a console/terminal in the folder where you can find your clone/downloaded file.
 3. Unzip it if necessary.
-4. Install python3.5 or greater if it is not yet done. Please consult the documentation for your own OS and architecture on http://python.org/.
+4. Install python3.5 or greater if it is not yet done. You also need to install the Python Development package. Please consult the documentation for your own OS and architecture on http://python.org/.
 5. If necessary, install programs and libraries required to use Theochrone: GNU Gettext, Qt5. Download them for your own OS and architecture if they are not installed on your computer.
 6. Enter following commands:
 ```shell

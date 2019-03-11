@@ -13,6 +13,7 @@ import programme.splitter as splitter
 import re
 import readline
 
+
 logger = enc.logger
 xml_folder = "theoXML/"
 xml_files = [] # a list of all the files in xml
@@ -160,8 +161,13 @@ def prepare_data(pkl_file_name):
 
 def data_pickler(pkl_file_name,obj_list):
     """Save obj_list (list) as pickle file
-    pkl_file_name has no suffix"""
-    file_path = "programme/data/{}_.pkl".format(pkl_file_name)
+    pkl_file_name has no suffix
+    Creates the /data/ directory if necessary"""
+    dir_path = "programme/data/"
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+
+    file_path = "{}{}_.pkl".format(dir_path,pkl_file_name)
     logger.info("Pickling... to {}".format(file_path))
     with open(file_path,'bw') as file:
         pickler = pickle.Pickler(file)
@@ -174,7 +180,7 @@ def main(**kwargs):
     Unfortunately, it will not give you a coffee.
     """
     if kwargs.get('propers') == 'all':
-        propers = ['roman','american','english','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','strasburger','australian','newzealander']
+        propers = ['roman','american','english','french','welsh','scottish','canadian','brazilian','polish','spanish','portuguese','strasburger','australian','newzealander']
     elif 'proper' in kwargs:
         propers = [v for k,v in kwargs.items() if 'proper' in k]
     else:
