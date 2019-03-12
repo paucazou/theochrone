@@ -44,7 +44,7 @@ For more info, type in a terminal after downloading the program:
 ```shell
 python -m pip install -r requirements.txt # in many OSes, you should enter python3 instead of python, or python3.5
 python -m pip install -r dev_requirement.txt # only if you want to contribute to the project
-msgfmt programme/i18n/fr_FR/LC_LANGUAGES/messages.po -o programme/i18n/fr_FR/LC_LANGUAGES/messages.mo # if you want to use CLI with french translation. Gettext must be installed before.
+msgfmt programme/i18n/fr_FR/LC_MESSAGES/messages.po -o programme/i18n/fr_FR/LC_LANGUAGES/messages.mo # if you want to use CLI with french translation. Gettext must be installed before.
 python -c "import dataswitcher; dataswitcher.main(propers='all',ordo='1962')"
 python -c "import dataswitcher; dataswitcher.xml_to_pkl('en_roman_martyrology');dataswitcher.xml_to_pkl('fr_roman_martyrology')" # if you want to use roman martyrology
 lrelease programme/gui/i18n/theochrone.fr.ts # if you want to use the GUI with french translation. Qt5 must be installed first.
