@@ -62,11 +62,14 @@ def day_mobile(request):
     else:
         day = datetime.date.today()
         proper='roman'
+    pal = False
     lyear = annus.LiturgicalCalendar(proper=proper)
     lyear(day.year)
     data = lyear[day]
-    index = len(data) > 1 and type(data[0]).__name__ == 'FeteFerie'
-    feast = data[index]
+    feast = data[0]
+    if len(data) > 1 and type(data[0]).__name__ == 'FeteFerie' and data[1].pal is False:
+        feast = data[1]
+
     hashtag = "resultup"
     link_to_day = officia.datetime_to_link(day,host,hashtag=hashtag,proper=proper)
     return render(request,'spill/day_mobile.html',locals())    
