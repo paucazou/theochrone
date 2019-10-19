@@ -13,7 +13,7 @@ Thank you to all of them.*
 * Father Claude B.
 * Aleth S. *English translations*
 * Br Stephen
-* Benoit Haraldsson *Tests*
+* Benoit Eirik *Tests*
 * Michel Tocabens *Proper of Strasburg and correction of many mistakes*
 
 ## Blogs and websites
