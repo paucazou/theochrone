@@ -94,9 +94,3 @@ Item {
 
     Component.onCompleted: splashTimer.start()          //Dès que le chargement QML est fini, démarre le Timer
 }
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
-##^##*/
