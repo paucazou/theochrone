@@ -27,6 +27,7 @@ Item {
         pageLoader.setSource(name)
         __currentIndex = lastPages.length-1;
     }
+
     TitleBar {
         id: titleBar
         currentIndex: __currentIndex
@@ -47,7 +48,7 @@ Item {
         onStatusChanged: {
             if (status === Loader.Ready)    //loading next page
             {
-                pageLoader.item.init();
+                //pageLoader.item.init();
                 pageLoader.item.forceActiveFocus()
             }
         }
