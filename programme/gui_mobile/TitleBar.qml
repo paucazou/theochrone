@@ -27,8 +27,8 @@ Rectangle    {
         width: parent.width
         height: 7
         gradient: Gradient {
-                GradientStop { position: 0; color: "#ffffff" }
-                GradientStop { position: 2; color: "grey" }
+                GradientStop { position: 0.0; color: "#00ffffff" }
+                GradientStop { position: 2.0; color: "grey" }
         }
     }
 

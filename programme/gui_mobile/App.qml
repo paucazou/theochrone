@@ -28,6 +28,10 @@ Item {
         __currentIndex = lastPages.length-1;
     }
 
+    HeaderBar{
+        id: headerBar
+    }
+
     TitleBar {
         id: titleBar
         currentIndex: __currentIndex
