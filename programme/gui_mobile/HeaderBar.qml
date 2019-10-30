@@ -28,8 +28,6 @@ Rectangle {
             font.pixelSize: 0
             font.bold: true
             color: "black"
-            horizontalAlignment: parent.horizontalCenter
-            verticalAlignment: parent.verticalCenter
         }
     }
 

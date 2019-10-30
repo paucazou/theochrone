@@ -46,13 +46,13 @@ Item {
         id: pageLoader
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.top: parent.top
+        anchors.top: headerBar.top
         anchors.bottom: titleBar.top
 
         onStatusChanged: {
             if (status === Loader.Ready)    //loading next page
             {
-                //pageLoader.item.init();
+                pageLoader.item.init();
                 pageLoader.item.forceActiveFocus()
             }
         }
