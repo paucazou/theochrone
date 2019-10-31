@@ -14,7 +14,7 @@ Rectangle    {
                            "images/icons/book.png",
                            "images/icons/settings.png"]
     property var __currentIcons: ["images/icons/house_page.png",
-                           "images/icons/search_page.png",
+                           "images/icons/calendar_page.png",
                            "images/icons/book_page.png",
                            "images/icons/settings_page.png"]
 

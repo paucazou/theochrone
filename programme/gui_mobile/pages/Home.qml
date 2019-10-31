@@ -4,11 +4,13 @@ GamePage {
     anchors.fill: parent
 
     Rectangle{
-        width: (720 * .7) / 4
-        height: parent.height
-        x: 0
+        anchors.fill: parent
         color: "red"
         border.color: "black"
         border.width: 10
+        Text {
+            anchors.centerIn: parent
+            text: "Home page"
+        }
     }
 }
