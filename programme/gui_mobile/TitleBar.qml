@@ -10,7 +10,7 @@ Rectangle    {
 
     property var __titles: ["Home", "Search", "Ressources", "Settings"]
     property var __icons: ["images/icons/house.png",
-                           "images/icons/search.png",
+                           "images/icons/calendar.png",
                            "images/icons/book.png",
                            "images/icons/settings.png"]
     property var __currentIcons: ["images/icons/house_page.png",
@@ -55,7 +55,6 @@ Rectangle    {
             }
             Text {
                 id: titleDisplay
-                //anchors.top: iconDisplay.bottom
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
@@ -65,11 +64,10 @@ Rectangle    {
                 font.pixelSize: 0
                 fontSizeMode: Text.HorizontalFit
                 color: titleBar.currentIndex === index ? GameSettings.textColor : GameSettings.disabledTextColor
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: titleClicked(index)
-                }
+            }
+            MouseArea {     //user action on title bar navigation
+                anchors.fill: parent
+                onClicked: titleClicked(index)
             }
         }
     }

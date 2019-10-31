@@ -5,27 +5,25 @@ Item {
     anchors.fill: parent
     opacity: 0.0
 
+    //Animation sur l'opacité
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
-    property var lastPages: []
+    property var pages: ["pages/Home.qml",
+                         "pages/Calendar.qml",
+                         "pages/Resources.qml",
+                         "pages/Settings.qml"]
+
     property int __currentIndex: 0
 
     function init()
     {
         opacity = 1.0
-        showPage("Home.qml")
+        __currentIndex = 0
+        pageLoader.setSource(pages[0])
     }
-    function prevPage()
+    function nextPage()
     {
-        lastPages.pop()
-        pageLoader.setSource(lastPages[lastPages.length-1])
-        __currentIndex = lastPages.length-1;
-    }
-    function showPage(name)
-    {
-        lastPages.push(name)
-        pageLoader.setSource(name)
-        __currentIndex = lastPages.length-1;
+        pageLoader.setSource(pages[__currentIndex]);
     }
 
     HeaderBar{
@@ -37,8 +35,9 @@ Item {
         currentIndex: __currentIndex
 
         onTitleClicked: {
-            if (index < __currentIndex)
+            if (index != __currentIndex)
                 pageLoader.item.close()
+                __currentIndex = index
         }
     }
 
@@ -46,11 +45,11 @@ Item {
         id: pageLoader
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.top: headerBar.top
+        anchors.top: headerBar.bottom
         anchors.bottom: titleBar.top
 
         onStatusChanged: {
-            if (status === Loader.Ready)    //loading next page
+            if (status === Loader.Ready)
             {
                 pageLoader.item.init();
                 pageLoader.item.forceActiveFocus()

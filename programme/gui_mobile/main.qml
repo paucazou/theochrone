@@ -20,8 +20,6 @@ Window {
                 appLoader.setSource("App.qml");
             }
         }
-
-
     }
 
     Connections{
