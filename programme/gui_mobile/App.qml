@@ -36,8 +36,8 @@ Item {
 
         onTitleClicked: {
             if (index != __currentIndex)
-                pageLoader.item.close()
                 __currentIndex = index
+                pageLoader.item.close()
         }
     }
 
