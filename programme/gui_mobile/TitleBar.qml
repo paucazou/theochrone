@@ -8,7 +8,7 @@ Rectangle    {
     height: 60 //GameSettings.fieldHeight #########################!!! ATTENTION REMETTRE APRES
     color: GameSettings.viewColor
 
-    property var __titles: ["Home", "Search", "Ressources", "Settings"]
+    property var __titles: [qsTr("Home"), qsTr("Calendar"), qsTr("Resources"), qsTr("Settings")]
     property var __icons: ["images/icons/house.png",
                            "images/icons/calendar.png",
                            "images/icons/book.png",
