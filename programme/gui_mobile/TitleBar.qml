@@ -35,13 +35,14 @@ Rectangle    {
     Repeater {
         model: 4    //nbr of page
 
-        Item {
+        Rectangle {
             id: container
             x: index * width
             width: titleBar.width / 4
             height: titleBar.height
             anchors.top: borderGradient.bottom
             anchors.bottom: parent.bottom
+            color: "white"
 
             Image {
                 id: iconDisplay

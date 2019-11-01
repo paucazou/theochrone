@@ -26,6 +26,22 @@ Item {
         pageLoader.setSource(pages[__currentIndex]);
     }
 
+    Loader {
+        id: pageLoader
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: headerBar.bottom
+        anchors.bottom: parent.bottom
+
+        onStatusChanged: {
+            if (status === Loader.Ready)
+            {
+                pageLoader.item.init();
+                pageLoader.item.forceActiveFocus()
+            }
+        }
+    }
+
     HeaderBar{
         id: headerBar
     }
@@ -38,22 +54,6 @@ Item {
             if (index != __currentIndex)
                 __currentIndex = index
                 pageLoader.item.close()
-        }
-    }
-
-    Loader {
-        id: pageLoader
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: headerBar.bottom
-        anchors.bottom: titleBar.top
-
-        onStatusChanged: {
-            if (status === Loader.Ready)
-            {
-                pageLoader.item.init();
-                pageLoader.item.forceActiveFocus()
-            }
         }
     }
 

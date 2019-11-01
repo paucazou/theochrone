@@ -11,7 +11,7 @@ Item {
     readonly property color buttonColor: "#ffffff"
     readonly property color buttonPressedColor: "#6ccaf2"
     readonly property color disabledButtonColor: "#555555"
-    readonly property color viewColor: "#ffffff"
+    readonly property color viewColor: "#00ffffff"  //Transparent
     readonly property color delegate1Color: Qt.darker(viewColor, 1.2)
     readonly property color delegate2Color: Qt.lighter(viewColor, 1.2)
     readonly property color textColor: "#55ACEE"
