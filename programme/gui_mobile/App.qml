@@ -8,10 +8,10 @@ Item {
     //Animation sur l'opacité
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
-    property var pages: ["pages/Home.qml",
-                         "pages/Calendar.qml",
-                         "pages/Resources.qml",
-                         "pages/Settings.qml"]
+    property var pages: ["pages/HomeTab.qml",
+                         "pages/CalendarTab.qml",
+                         "pages/ResourcesTab.qml",
+                         "pages/SettingsTab.qml"]
 
     property int __currentIndex: 0
 

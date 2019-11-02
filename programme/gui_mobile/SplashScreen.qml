@@ -76,7 +76,7 @@ Item {
             anchors.leftMargin: 5
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 5
-            text: "Le temps au service de Dieu"
+            text: qsTr("Time in the service of God")
             minimumPixelSize: 2
             fontSizeMode: Text.HorizontalFit
             font.pixelSize:20
