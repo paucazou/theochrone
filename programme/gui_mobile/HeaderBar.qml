@@ -9,7 +9,7 @@ Rectangle {
     anchors.right: parent.right
     property int windowWidth: parent.width
     property int windowHeight: parent.height
-    height: windowHeight > windowWidth ? 2*(40 /*GameSettings.fieldHeight*/) : 40//GameSettings.fieldHeight
+    height: windowHeight > windowWidth ? 2*(60 /*GameSettings.fieldHeight*/) : 40//GameSettings.fieldHeight
     //########## ATTENTION REMTTRE HEIGHT GAMESETTINGS
     color: "#55ACEE"
 
@@ -25,8 +25,7 @@ Rectangle {
             id: title
             anchors.centerIn: parent
             text: "Theochrone"
-            font.pixelSize: 0
-            font.bold: true
+            font.pixelSize: 18
             color: "black"
         }
     }
@@ -39,22 +38,21 @@ Rectangle {
         width: windowHeight > windowWidth ? parent.width : parent.width / 2
         height: windowHeight > windowWidth ? parent.height / 2 : parent.height
 
-        RectangularGlow {
-                id: effect
+        /*RectangularGlow {
+                id: gradientEffect
                 anchors.fill: backgroundSearch
                 glowRadius: 4
                 spread: 0.2
                 color: "grey"
                 cornerRadius: backgroundSearch.radius + glowRadius
-        }
+        }*/
 
         Rectangle{
             id: backgroundSearch
             anchors.centerIn: parent   //ne change pas les dimensions contrairement à anchors.fill
-            width: parent.width * 0.9
-            height: parent.height *0.6
-            border.width: 1
-            border.color: "#00ffffff"
+            width: parent.width - 20
+            height: parent.height - 20
+            color: "white"
             radius: 5
 
             Text{

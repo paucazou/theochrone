@@ -14,8 +14,6 @@ GamePage {
 
         Calendar {
             anchors.fill: parent
-            minimumDate: new Date(2019, 0, 1)
-            maximumDate: new Date(3000, 0, 1)
         }
 
         //for test zone put Item=>Rectangle
@@ -41,40 +39,65 @@ GamePage {
 
 
         ListModel {
-            id: contactModel
-
-            ListElement {
-                fest: "Fest of the day 1"
-            }
+            id: contactModelTitleFest
 
             ListElement {
                 fest: "Fest of the day 2"
             }
+
+            ListElement {
+                fest: "Fest of the day 1"
+            }
         }
 
         Component {
-            id: contactDelegate
-            Rectangle {
+            id: contactTitleFest
+            Item {
+                id: festContainer
                 width: parent.width
-                height: 50
-                color: "#55ACEE"
-                border.width: 5
-                border.color: "white"
-                Column {
+                height: 2*40 /* CHANGER par heightField gammesettings */
+
+                signal titleClicked()
+                onTitleClicked: {
+                    console.log("Click OK")
+                }
+
+                Item {
+                    id: titleFest
                     anchors.centerIn: parent
-                    Text {
-                        text: fest
+                    width: parent.width - 20
+                    height: parent.height - 20
+
+                    Rectangle{
+                        id: backgroundTitleFest
+                        width: parent.width
+                        height: parent.height
+                        color: "#55ACEE"
+                        radius: 10
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: fest
+                        }
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: titleClicked()
                     }
                 }
             }
         }
 
-        ListView {
+        Rectangle{
             anchors.fill: parent
-            model: contactModel
-            delegate: contactDelegate
-            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
-            focus: true
+
+            ListView{
+                anchors.fill: parent
+                model: contactModelTitleFest
+                delegate: contactTitleFest
+                focus: true
+            }
         }
     }
 }

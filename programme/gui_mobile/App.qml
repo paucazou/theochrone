@@ -46,6 +46,17 @@ Item {
         id: headerBar
     }
 
+    Rectangle{
+        id: borderGradientHeader
+        anchors.top: headerBar.bottom
+        width: parent.width
+        height: 7
+        gradient: Gradient {
+                GradientStop { position: 0.0; color: "grey" }
+                GradientStop { position: 0.8; color: "#00ffffff" }
+        }
+    }
+
     TitleBar {
         id: titleBar
         currentIndex: __currentIndex

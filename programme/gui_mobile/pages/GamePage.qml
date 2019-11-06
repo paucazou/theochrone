@@ -5,6 +5,7 @@ Item {
 
     function init()
     {
+
     }
 
     function close()

@@ -12,5 +12,4 @@ GamePage {
             text: "Resources page"
         }
     }
-
 }
