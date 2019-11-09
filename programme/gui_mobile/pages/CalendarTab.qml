@@ -1,6 +1,9 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls 1.4
+import QtQuick.Controls.Styles 1.4
+import QtGraphicalEffects 1.12
+import "../."
 
 GamePage {
 
@@ -13,15 +16,103 @@ GamePage {
         width: parent.height > parent.width ? parent.width : parent.width / 2
 
         Calendar {
+            id: calendar
             anchors.fill: parent
-        }
 
-        //for test zone put Item=>Rectangle
-        /*
-        color: "red"
-        border.color: "blue"
-        border.width: 5
-        */
+            style: CalendarStyle {
+                gridVisible: false
+
+                navigationBar: Rectangle{
+                    height: GameSettings.fieldHeight
+                    width: calendarContainer.width
+                    color: "white"
+
+                    Label {
+                        text: styleData.title
+                        anchors.centerIn: parent
+                        font.bold: true
+			font.pixelSize: 15
+                        color: "#55ACEE"
+                    }
+
+                    Item {
+                        id: previous
+                        anchors.top: parent.top
+                        anchors.left: parent.left
+                        anchors.bottom: parent.bottom
+                        width: parent.height
+                        height: parent.height
+
+                        Image{
+                            id: previousImage
+                            anchors.centerIn: parent
+                            width: parent.height * 0.4
+                            height: parent.width * 0.4
+                            source: mousePrevious.pressed ? "../images/icons/back_clicked.png" : "../images/icons/back.png"
+                        }
+                        MouseArea{
+                            id: mousePrevious
+                            anchors.fill: parent
+                            onClicked: {
+                                calendar.showPreviousMonth();
+                            }
+                        }
+                    }
+
+                    Item {
+                        id: next
+                        anchors.top: parent.top
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        width: parent.height
+                        height: parent.height
+
+                        Image{
+                            id: nextImage
+                            anchors.centerIn: parent
+                            width: parent.height * 0.4
+                            height: parent.width * 0.4
+                            source: mouseNext.pressed ? "../images/icons/next_clicked.png" : "../images/icons/next.png"
+                        }
+                        MouseArea{
+                            id: mouseNext
+                            anchors.fill: parent
+                            onClicked: {
+                                calendar.showNextMonth()
+                            }
+                        }
+                    }
+                }
+
+                dayDelegate: Rectangle {
+                    RadialGradient {
+                        anchors.centerIn: parent
+                        visible: styleData.selected ? true : false
+                        width: parent.height > parent.width ? parent.width : parent.height
+                        height: parent.height > parent.width ? parent.width : parent.height
+
+                        gradient: Gradient {
+                            GradientStop { position: 0.0; color: "grey" }
+                            GradientStop { position: 0.5; color: "white" }
+                        }
+                    }
+                    Rectangle{
+                        anchors.centerIn: parent
+                        width: parent.height > parent.width ? parent.width * 0.8 : parent.height * 0.8
+                        height: parent.height > parent.width ? parent.width * 0.8 : parent.height * 0.8
+                        color: styleData.selected ? "#55ACEE" : "white"
+                        radius: (parent.height / 2)
+                    }
+
+                    Label {
+                        text: styleData.date.getDate()
+                        anchors.centerIn: parent
+                        font.bold: true
+                        color: styleData.selected ? "white" : (styleData.visibleMonth ? "#55ACEE" : "grey" )
+                    }
+                }
+            }
+        }
     }
 
     Item {
@@ -30,13 +121,6 @@ GamePage {
         anchors.right: parent.right
         anchors.left: parent.height > parent.width ? parent.left : calendarContainer.right
         anchors.bottom: parent.bottom
-        //for test zone put Item=>Rectangle
-        /*
-        color: "blue"
-        border.color: "black"
-        border.width: 5
-        */
-
 
         ListModel {
             id: contactModelTitleFest

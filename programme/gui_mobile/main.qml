@@ -8,6 +8,11 @@ Window {
     width: 720 * .7
     height: 1240 * .7
 
+    Component.onCompleted: {
+        GameSettings.wWidth = Qt.binding(function() {return width})
+        GameSettings.wHeight = Qt.binding(function() {return height})
+    }
+
     Loader{                                           //Charge une sous-page, ici le document SplashScreen.qml
         id: splashLoader
         anchors.fill: parent                          //La page remplit l'écran

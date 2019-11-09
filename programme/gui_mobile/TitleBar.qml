@@ -5,17 +5,13 @@ Rectangle    {
     anchors.bottom: parent.bottom
     anchors.left: parent.left
     anchors.right: parent.right
-    height: 60 //GameSettings.fieldHeight #########################!!! ATTENTION REMETTRE APRES
+    height: GameSettings.fieldHeight //60 //GameSettings.fieldHeight #########################!!! ATTENTION REMETTRE APRES
     color: GameSettings.viewColor
 
-    property var __titles: [qsTr("Home"), qsTr("Calendar"), qsTr("Resources"), qsTr("Settings")]
-    property var __icons: ["images/icons/house.png",
-                           "images/icons/calendar.png",
-                           "images/icons/book.png",
+    property var __titles: [qsTr("Calendar"), qsTr("Settings")]
+    property var __icons: ["images/icons/calendar.png",
                            "images/icons/settings.png"]
-    property var __currentIcons: ["images/icons/house_page.png",
-                           "images/icons/calendar_page.png",
-                           "images/icons/book_page.png",
+    property var __currentIcons: ["images/icons/calendar_page.png",
                            "images/icons/settings_page.png"]
 
     property int currentIndex: 0
@@ -27,18 +23,18 @@ Rectangle    {
         width: parent.width
         height: 7
         gradient: Gradient {
-                GradientStop { position: 0.0; color: "#00ffffff" }
+                GradientStop { position: 0.3; color: "#00ffffff" }
                 GradientStop { position: 2.0; color: "grey" }
         }
     }
 
     Repeater {
-        model: 4    //nbr of page
+        model: 2    //nbr of page
 
         Rectangle {
             id: container
             x: index * width
-            width: titleBar.width / 4
+            width: titleBar.width / 2
             height: titleBar.height
             anchors.top: borderGradient.bottom
             anchors.bottom: parent.bottom

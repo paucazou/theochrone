@@ -33,7 +33,7 @@ Item {
     property real giganticFontSize: (wWidth + wHeight) * 0.04
 
     // Some other values
-    property real fieldHeight: wHeight * 0.08
+    property real fieldHeight: wHeight > wWidth ? wHeight * 0.08 : wWidth * 0.08
     property real fieldMargin: fieldHeight * 0.5
     property real buttonHeight: wHeight * 0.08
     property real buttonRadius: buttonHeight * 0.1

@@ -8,9 +8,7 @@ Item {
     //Animation sur l'opacité
     Behavior on opacity { NumberAnimation { duration: 500 } }
 
-    property var pages: ["pages/HomeTab.qml",
-                         "pages/CalendarTab.qml",
-                         "pages/ResourcesTab.qml",
+    property var pages: ["pages/CalendarTab.qml",
                          "pages/SettingsTab.qml"]
 
     property int __currentIndex: 0
@@ -53,7 +51,7 @@ Item {
         height: 7
         gradient: Gradient {
                 GradientStop { position: 0.0; color: "grey" }
-                GradientStop { position: 0.8; color: "#00ffffff" }
+                GradientStop { position: 0.7; color: "#00ffffff" }
         }
     }
 

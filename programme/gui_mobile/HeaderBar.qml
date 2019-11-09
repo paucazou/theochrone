@@ -9,8 +9,7 @@ Rectangle {
     anchors.right: parent.right
     property int windowWidth: parent.width
     property int windowHeight: parent.height
-    height: windowHeight > windowWidth ? 2*(60 /*GameSettings.fieldHeight*/) : 40//GameSettings.fieldHeight
-    //########## ATTENTION REMTTRE HEIGHT GAMESETTINGS
+    height: windowHeight > windowWidth ? 2*(GameSettings.fieldHeight) : GameSettings.fieldHeight
     color: "#55ACEE"
 
     Item{
@@ -20,6 +19,35 @@ Rectangle {
         anchors.right: windowHeight > windowWidth ? parent.right : undefined
         width: windowHeight > windowWidth ? parent.width : parent.width / 2
         height: windowHeight > windowWidth ? parent.height / 2 : parent.height//color: "blue"
+
+        Item {
+            id: imageContainer
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.bottom: parent.bottom
+            width: parent.height
+            height: parent.height
+
+            Image {
+                id: settings
+                anchors.centerIn: parent
+                width: parent.height * 0.5
+                height: parent.width * 0.5
+                //fillMode: Image.PreserveAspectFit
+                source: "images/icons/menu.png"
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: RotationAnimator {
+                        target: settings;
+                        from: 0;
+                        to: 180;
+                        duration: 300
+                        running: true
+                    }
+                }
+            }
+        }
 
         Text {
             id: title
@@ -38,14 +66,6 @@ Rectangle {
         width: windowHeight > windowWidth ? parent.width : parent.width / 2
         height: windowHeight > windowWidth ? parent.height / 2 : parent.height
 
-        /*RectangularGlow {
-                id: gradientEffect
-                anchors.fill: backgroundSearch
-                glowRadius: 4
-                spread: 0.2
-                color: "grey"
-                cornerRadius: backgroundSearch.radius + glowRadius
-        }*/
 
         Rectangle{
             id: backgroundSearch
