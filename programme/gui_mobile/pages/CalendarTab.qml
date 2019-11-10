@@ -31,7 +31,7 @@ GamePage {
                         text: styleData.title
                         anchors.centerIn: parent
                         font.bold: true
-			font.pixelSize: 15
+                        font.pixelSize: 15
                         color: "#55ACEE"
                     }
 
@@ -82,6 +82,62 @@ GamePage {
                             }
                         }
                     }
+
+                    Rectangle {
+                        id: underLine
+                        anchors.bottom: parent.bottom
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        width: parent.width
+                        height: 1
+                        color: "black"
+                    }
+
+                    //Begin
+                    Rectangle{
+                        id: rect /* test bubble clicked*/
+                        radius: height / 2
+                        color: "grey"
+
+
+                        ParallelAnimation {
+                            id: anim
+                            NumberAnimation { target: rect; property: "width"; from: 0; to: 40; duration: 80 }
+                            NumberAnimation { target: rect; property: "height"; from: 0; to: 40; duration: 80 }
+                            NumberAnimation { target: rect; property: "x"; from: mouseClicked.mouseX; to: mouseClicked.mouseX-20; duration: 80 }
+                            NumberAnimation { target: rect; property: "y"; from: mouseClicked.mouseY; to: mouseClicked.mouseY-20; duration: 80 }
+                            onFinished: {
+                                rect.opacity = 0.2
+                            }
+                        }
+                        Behavior on opacity {
+                            NumberAnimation {
+                                target: rect
+                                property: "opacity"
+                                from: 0.2
+                                to: 0.0
+                                duration: 300
+                                onFinished: {
+                                    rect.width = 0
+                                    rect.height = 0
+                                }
+                                //easing.type: Easing.InOutQuad
+                            }
+                        }
+                    }
+
+                    MouseArea{
+                        id: mouseClicked
+                        anchors.fill: parent
+                        onClicked: {
+                            rect.opacity = 0.2
+                            anim.running = true
+                            rect.x = mouseX
+                            rect.y = mouseY
+                        }
+
+                    }
+                    //End
                 }
 
                 dayDelegate: Rectangle {
