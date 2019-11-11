@@ -12,6 +12,7 @@ GamePage {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.height > parent.width ? parent.right : undefined
+        anchors.bottom: parent.height > parent.width ? undefined : parent.bottom
         height: parent.height > parent.width ? parent.height / 2 : (parent.height - (60-7))/*TitleBar measure - gradient measure : CHANGER VIA GameSettings.fieldHeight*/
         width: parent.height > parent.width ? parent.width : parent.width / 2
 
@@ -162,18 +163,19 @@ GamePage {
 
 
 
-    Rectangle {
+    Item {
         id: festContainer
         anchors.top: parent.height > parent.width ? calendarContainer.bottom : parent.top
         anchors.right: parent.right
         anchors.left: parent.height > parent.width ? parent.left : calendarContainer.right
         anchors.bottom: parent.bottom
-        color: "#f3e2dd"
 
-        Item {
-            id: swipeContainer
+        Rectangle {
+            id: swipeFestContainer
             width: parent.width
             height: parent.height - GameSettings.fieldHeight
+            color: "white"
+
 
             SwipeView{
                 id: swipeFest
@@ -182,48 +184,54 @@ GamePage {
                 height: parent.height
                 currentIndex: swipeNameFest.currentIndex
 
-                Rectangle{
+                Item{
                     id: firstElement
-                    color: "red"
-                    border.width: 10
-                    border.color: "black"
-                    Image{
+                    Rectangle{
                         anchors.centerIn: parent
-                        width: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
-                        height: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
-                        source: "../images/default.png"
-                        antialiasing: true
+                        width: img1.width
+                        height: parent.height > parent.width ? parent.width * 0.8 : parent.height * 0.8
+
+                        RectangularGlow {
+                            anchors.fill: parent
+                            glowRadius: 10
+                            spread: 0
+                            color: "#c7c7c7"
+                            cornerRadius: 0
+                        }
+                        Image{
+                            id: img1
+                            fillMode: Image.PreserveAspectFit
+                            anchors.centerIn: parent
+                            height: parent.height
+                            source: "../images/Martin.jpg"
+                            antialiasing: true
+                        }
                     }
                 }
-
-                Rectangle{
+                Item{
                     id: secondElement
-                    color: "yellow"
-                    border.width: 10
-                    border.color: "black"
-                    Image{
+                    Rectangle{
                         anchors.centerIn: parent
-                        width: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
-                        height: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
-                        source: "../images/default.png"
-                        antialiasing: true
+                        width: img2.width
+                        height: parent.height > parent.width ? parent.width * 0.8 : parent.height * 0.8
+
+                        RectangularGlow {
+                            anchors.fill: parent
+                            glowRadius: 10
+                            spread: 0
+                            color: "#c7c7c7"
+                            cornerRadius: 0
+                        }
+                        Image{
+                            id: img2
+                            fillMode: Image.PreserveAspectFit
+                            anchors.centerIn: parent
+                            height: parent.height
+                            source: "../images/Menne.jpg"
+                            antialiasing: true
+                        }
                     }
                 }
-
-                Rectangle{
-                    id: thirdElement
-                    color: "green"
-                    border.width: 10
-                    border.color: "black"
-                    Image{
-                        anchors.centerIn: parent
-                        width: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
-                        height: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
-                        source: "../images/default.png"
-                        antialiasing: true
-                    }
-                }
-
             }
         }
 
@@ -245,95 +253,73 @@ GamePage {
                 currentIndex: swipeFest.currentIndex
 
                 Rectangle {
-                    color: "red"
+                    color: "#55ACEE"
                     Text {
                         id: name1
                         anchors.centerIn: parent
-                        text: qsTr("Fest of the day 1")
+                        font.pixelSize: 20
+                        color: "white"
+                        text: qsTr("Saint Martin, Bishop and Confessor")
+                    }
+                    Rectangle{
+                        anchors.top: parent.top
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        width: parent.height
+                        height: parent.height
+                        color: "#55ACEE"
+                        Image{
+                            anchors.centerIn: parent
+                            width: parent.height * 0.3
+                            height: parent.height * 0.3
+                            source: mouse1.pressed ? "../images/icons/moins.png" : "../images/icons/plus.png"
+                        }
+                    }
+                    MouseArea{
+                        id: mouse1
+                        anchors.fill: parent
                     }
                 }
 
                 Rectangle {
-                    color: "yellow"
+                    color: "#55ACEE"
                     Text {
                         id: name2
                         anchors.centerIn: parent
-                        text: qsTr("Fest of the day 2")
-                    }
-                }
-
-                Rectangle {
-                    color: "green"
-                    Text {
-                        id: name3
-                        anchors.centerIn: parent
-                        text: qsTr("Fest of the day 3")
-                    }
-                }
-            }
-        }
-
-        /*ListModel {
-            id: contactModelTitleFest
-
-            ListElement {
-                fest: "Fest of the day 1"
-                dateFest: ""
-            }
-
-            ListElement {
-                fest: "Fest of the day 2"
-            }
-        }
-
-        Component {
-            id: contactTitleFest
-            Item {
-                id: festContainer
-                width: parent.width
-                height: 2*40
-
-                signal titleClicked()
-                onTitleClicked: {
-                    console.log("Click OK")
-                }
-
-                Item {
-                    id: titleFest
-                    anchors.centerIn: parent
-                    width: parent.width - 20
-                    height: parent.height - 20
-
-                    Rectangle{
-                        id: backgroundTitleFest
-                        width: parent.width
-                        height: parent.height
+                        font.pixelSize: 20
                         color: "white"
-                        radius: 10
-
-                        Text {
+                        text: qsTr("Saint Menne, Martyr")
+                    }
+                    Rectangle{
+                        anchors.top: parent.top
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        width: parent.height
+                        height: parent.height
+                        color: "#55ACEE"
+                        Image{
                             anchors.centerIn: parent
-                            text: fest
+                            width: parent.height * 0.3
+                            height: parent.height * 0.3
+                            source: mouse2.pressed ? "../images/icons/moins.png" : "../images/icons/plus.png"
                         }
                     }
-
                     MouseArea{
+                        id: mouse2
                         anchors.fill: parent
-                        onClicked: titleClicked()
                     }
                 }
             }
         }
-
         Rectangle{
-            anchors.fill: parent
-
-            ListView{
-                anchors.fill: parent
-                model: contactModelTitleFest
-                delegate: contactTitleFest
-                focus: true
+            id: borderGradient
+            anchors.bottom: nameFestContainer.top
+            width: parent.width
+            height: 5
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#00ffffff" }
+                GradientStop { position: 3.0; color: "grey" }
             }
-        }*/
+        }
     }
 }
