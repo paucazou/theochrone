@@ -7,7 +7,7 @@ Item {
 
     // Colors
         //color blue theme tehochrone: #55ACEE
-    readonly property color backgroundColor: "#2d3037"
+    readonly property color backgroundColor: "#55ACEE"
     readonly property color buttonColor: "#ffffff"
     readonly property color buttonPressedColor: "#6ccaf2"
     readonly property color disabledButtonColor: "#555555"

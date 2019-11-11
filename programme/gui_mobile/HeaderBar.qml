@@ -11,7 +11,7 @@ Rectangle {
     property int windowWidth: parent.width
     property int windowHeight: parent.height
     height: windowHeight > windowWidth ? 2*(GameSettings.fieldHeight) : GameSettings.fieldHeight
-    color: "black"
+    color: "#55ACEE"
 
     Item{
         id: titleAppContainer
@@ -21,32 +21,11 @@ Rectangle {
         width: windowHeight > windowWidth ? parent.width : parent.width / 2
         height: windowHeight > windowWidth ? parent.height / 2 : parent.height//color: "blue"
 
+
         Item {
-            id: logoContainer
+            id: settingsContainer
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.bottom: parent.bottom
-            width: parent.height
-            height: parent.height
-
-            Image {
-                id: icon
-                anchors.centerIn: parent
-                width: parent.height * 0.6
-                height: parent.width * 0.6
-                source: "images/logo.png"
-
-                MouseArea{
-                    anchors.fill: parent
-                    onClicked: Qt.openUrlExternally("https://theochrone.fr/")
-                }
-            }
-        }
-
-        Item {
-            id: imageContainer
-            anchors.top: parent.top
-            anchors.right: parent.right
             anchors.bottom: parent.bottom
             width: parent.height
             height: parent.height
@@ -55,7 +34,7 @@ Rectangle {
                 anchors.centerIn: parent
                 height: parent.height * 0.6
                 width: parent.width * 0.8
-                color: mouseMenu.pressed ? "white" : "black"
+                color: mouseMenu.pressed ? "grey" : "#55ACEE"
                 border.width: 1
                 border.color: "white"
                 radius: 5
@@ -68,15 +47,22 @@ Rectangle {
                 height: parent.width * 0.5
                 source: "images/icons/menu.png"
 
+                SequentialAnimation{
+                    id: rotation
+                    RotationAnimator {
+                        target: settings;
+                        from: 0
+                        to: 180
+                        duration: 300
+                    }
+                }
+
                 MouseArea{
                     id: mouseMenu
                     anchors.fill: parent
-                    onClicked: RotationAnimator {
-                        target: settings;
-                        from: 0;
-                        to: 180;
-                        duration: 300
-                        running: true
+                    onClicked:{
+                        rotation.running = true
+                        drawer.open()
                     }
                 }
             }
@@ -105,13 +91,33 @@ Rectangle {
             anchors.centerIn: parent   //ne change pas les dimensions contrairement à anchors.fill
             width: parent.width - 20
             height: parent.height * 0.60
-            color: Qt.rgba(255, 255, 255, 0.50)
+            color: "white" //Qt.rgba(255, 255, 255, 0.50)
+            opacity: 0.5
             radius: parent.width / 2
+
+            Item {
+                id: searchContainer
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.bottom: parent.bottom
+                width: parent.height
+                height: parent.height
+
+                Image {
+                    id: searchIcon
+                    anchors.centerIn: parent
+                    fillMode: Image.PreserveAspectFit
+                    width: parent.width * 0.5
+                    height: parent.height * 0.5
+                    source: "images/icons/search.png"
+                }
+            }
 
             Text{
                 anchors.centerIn: parent
                 text: qsTr("Search")
-                color: "grey"
+                font.pixelSize: 15
+                color: "black"
             }
         }
     }

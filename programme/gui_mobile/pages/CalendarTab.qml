@@ -27,6 +27,36 @@ GamePage {
                     width: calendarContainer.width
                     color: "white"
 
+                    //Mouse Bubble Animation
+                    Rectangle{
+                        id: rect /* test bubble clicked*/
+
+                        radius: height / 2
+                        color: "#55ACEE"
+
+                        ParallelAnimation {
+                            id: anim
+                            NumberAnimation { target: rect; property: "width"; from: 0; to: height * 0.8; duration: 80 }
+                            NumberAnimation { target: rect; property: "height"; from: 0; to: height * 0.8; duration: 80 }
+                        }
+
+                        SequentialAnimation{
+                            id: opacityReduct
+                            NumberAnimation {
+                                target: rect
+                                property: "opacity"
+                                from: 0.3
+                                to: 0.0
+                                duration: 300
+                                onFinished: {
+                                    rect.width = 0
+                                    rect.height = 0
+                                }
+                            }
+                        }
+                    }
+                    //End Mouse Bubble Animation
+
                     Label {
                         text: styleData.title
                         anchors.centerIn: parent
@@ -53,8 +83,16 @@ GamePage {
                         MouseArea{
                             id: mousePrevious
                             anchors.fill: parent
+                            onPressed: {
+
+                                //Enable Mouse Bubble Animation
+                                rect.opacity = 0.2
+                                rect.anchors.centerIn = previous
+                                anim.running = true
+                            }
                             onClicked: {
-                                calendar.showPreviousMonth();
+                                calendar.showPreviousMonth()
+                                opacityReduct.running = true
                             }
                         }
                     }
@@ -77,67 +115,19 @@ GamePage {
                         MouseArea{
                             id: mouseNext
                             anchors.fill: parent
+                            onPressed: {
+
+                                //Enable Mouse Bubble Animation
+                                rect.opacity = 0.2
+                                rect.anchors.centerIn = next
+                                anim.running = true
+                            }
                             onClicked: {
+                                opacityReduct.running = true
                                 calendar.showNextMonth()
                             }
                         }
                     }
-
-                    Rectangle {
-                        id: underLine
-                        anchors.bottom: parent.bottom
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        width: parent.width
-                        height: 1
-                        color: "black"
-                    }
-
-                    //Begin
-                    Rectangle{
-                        id: rect /* test bubble clicked*/
-                        radius: height / 2
-                        color: "grey"
-
-
-                        ParallelAnimation {
-                            id: anim
-                            NumberAnimation { target: rect; property: "width"; from: 0; to: 40; duration: 80 }
-                            NumberAnimation { target: rect; property: "height"; from: 0; to: 40; duration: 80 }
-                            NumberAnimation { target: rect; property: "x"; from: mouseClicked.mouseX; to: mouseClicked.mouseX-20; duration: 80 }
-                            NumberAnimation { target: rect; property: "y"; from: mouseClicked.mouseY; to: mouseClicked.mouseY-20; duration: 80 }
-                            onFinished: {
-                                rect.opacity = 0.2
-                            }
-                        }
-                        Behavior on opacity {
-                            NumberAnimation {
-                                target: rect
-                                property: "opacity"
-                                from: 0.2
-                                to: 0.0
-                                duration: 300
-                                onFinished: {
-                                    rect.width = 0
-                                    rect.height = 0
-                                }
-                                //easing.type: Easing.InOutQuad
-                            }
-                        }
-                    }
-
-                    MouseArea{
-                        id: mouseClicked
-                        anchors.fill: parent
-                        onClicked: {
-                            rect.opacity = 0.2
-                            anim.running = true
-                            rect.x = mouseX
-                            rect.y = mouseY
-                        }
-
-                    }
-                    //End
                 }
 
                 dayDelegate: Rectangle {
@@ -154,8 +144,8 @@ GamePage {
                     }
                     Rectangle{
                         anchors.centerIn: parent
-                        width: parent.height > parent.width ? parent.width * 0.8 : parent.height * 0.8
-                        height: parent.height > parent.width ? parent.width * 0.8 : parent.height * 0.8
+                        width: parent.height > parent.width ? parent.width : parent.height
+                        height: parent.height > parent.width ? parent.width : parent.height
                         color: styleData.selected ? "#55ACEE" : "white"
                         radius: (parent.height / 2)
                     }
@@ -163,7 +153,6 @@ GamePage {
                     Label {
                         text: styleData.date.getDate()
                         anchors.centerIn: parent
-                        font.bold: true
                         color: styleData.selected ? "white" : (styleData.visibleMonth ? "#55ACEE" : "grey" )
                     }
                 }
@@ -171,22 +160,129 @@ GamePage {
         }
     }
 
-    Item {
-        id: selectDayContainer
+
+
+    Rectangle {
+        id: festContainer
         anchors.top: parent.height > parent.width ? calendarContainer.bottom : parent.top
         anchors.right: parent.right
         anchors.left: parent.height > parent.width ? parent.left : calendarContainer.right
         anchors.bottom: parent.bottom
+        color: "#f3e2dd"
 
-        ListModel {
+        Item {
+            id: swipeContainer
+            width: parent.width
+            height: parent.height - GameSettings.fieldHeight
+
+            SwipeView{
+                id: swipeFest
+                anchors.centerIn: parent
+                width: parent.width * 0.6
+                height: parent.height
+                currentIndex: swipeNameFest.currentIndex
+
+                Rectangle{
+                    id: firstElement
+                    color: "red"
+                    border.width: 10
+                    border.color: "black"
+                    Image{
+                        anchors.centerIn: parent
+                        width: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
+                        height: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
+                        source: "../images/default.png"
+                        antialiasing: true
+                    }
+                }
+
+                Rectangle{
+                    id: secondElement
+                    color: "yellow"
+                    border.width: 10
+                    border.color: "black"
+                    Image{
+                        anchors.centerIn: parent
+                        width: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
+                        height: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
+                        source: "../images/default.png"
+                        antialiasing: true
+                    }
+                }
+
+                Rectangle{
+                    id: thirdElement
+                    color: "green"
+                    border.width: 10
+                    border.color: "black"
+                    Image{
+                        anchors.centerIn: parent
+                        width: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
+                        height: parent.height > parent.width ? parent.width * 0.6 : parent.height * 0.6
+                        source: "../images/default.png"
+                        antialiasing: true
+                    }
+                }
+
+            }
+        }
+
+        Rectangle {
+            id: nameFestContainer
+            anchors.top: undefined
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            width: parent.width
+            height: GameSettings.fieldHeight
+            color: "white"
+
+            SwipeView{
+                id: swipeNameFest
+                anchors.centerIn: parent
+                width: parent.width
+                height: parent.height
+                currentIndex: swipeFest.currentIndex
+
+                Rectangle {
+                    color: "red"
+                    Text {
+                        id: name1
+                        anchors.centerIn: parent
+                        text: qsTr("Fest of the day 1")
+                    }
+                }
+
+                Rectangle {
+                    color: "yellow"
+                    Text {
+                        id: name2
+                        anchors.centerIn: parent
+                        text: qsTr("Fest of the day 2")
+                    }
+                }
+
+                Rectangle {
+                    color: "green"
+                    Text {
+                        id: name3
+                        anchors.centerIn: parent
+                        text: qsTr("Fest of the day 3")
+                    }
+                }
+            }
+        }
+
+        /*ListModel {
             id: contactModelTitleFest
 
             ListElement {
-                fest: "Fest of the day 2"
+                fest: "Fest of the day 1"
+                dateFest: ""
             }
 
             ListElement {
-                fest: "Fest of the day 1"
+                fest: "Fest of the day 2"
             }
         }
 
@@ -195,7 +291,7 @@ GamePage {
             Item {
                 id: festContainer
                 width: parent.width
-                height: 2*40 /* CHANGER par heightField gammesettings */
+                height: 2*40
 
                 signal titleClicked()
                 onTitleClicked: {
@@ -212,7 +308,7 @@ GamePage {
                         id: backgroundTitleFest
                         width: parent.width
                         height: parent.height
-                        color: "#55ACEE"
+                        color: "white"
                         radius: 10
 
                         Text {
@@ -238,6 +334,6 @@ GamePage {
                 delegate: contactTitleFest
                 focus: true
             }
-        }
+        }*/
     }
 }

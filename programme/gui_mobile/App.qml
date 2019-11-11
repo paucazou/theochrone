@@ -1,12 +1,11 @@
 import QtQuick 2.12
+import QtQuick.Controls 2.2
 
 Item {
     id: app
     anchors.fill: parent
     opacity: 0.0
 
-    //Animation sur l'opacité
-    Behavior on opacity { NumberAnimation { duration: 500 } }
 
     property var pages: ["pages/CalendarTab.qml",
                          "pages/SettingsTab.qml"]
@@ -16,12 +15,6 @@ Item {
     function init()
     {
         opacity = 1.0
-        __currentIndex = 0
-        pageLoader.setSource(pages[0])
-    }
-    function nextPage()
-    {
-        pageLoader.setSource(pages[__currentIndex]);
     }
 
     Loader {
@@ -30,11 +23,11 @@ Item {
         anchors.right: parent.right
         anchors.top: headerBar.bottom
         anchors.bottom: parent.bottom
+        source: "pages/CalendarTab.qml"
 
         onStatusChanged: {
             if (status === Loader.Ready)
             {
-                pageLoader.item.init();
                 pageLoader.item.forceActiveFocus()
             }
         }
@@ -42,6 +35,9 @@ Item {
 
     HeaderBar{
         id: headerBar
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
     }
 
     Rectangle{
@@ -55,15 +51,15 @@ Item {
         }
     }
 
-    TitleBar {
-        id: titleBar
-        currentIndex: __currentIndex
+    Drawer {
+        id: drawer
+        width: 300
+        height: parent.height
+        interactive: true
+    }
 
-        onTitleClicked: {
-            if (index != __currentIndex)
-                __currentIndex = index
-                pageLoader.item.close()
-        }
+    transform: Translate {  //translation Drawer when opened
+        x: drawer.position * drawer.width
     }
 
     Keys.onReleased: {  //user interaction to quit

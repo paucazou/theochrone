@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.5
 import QtGraphicalEffects 1.12
 import "."
 
@@ -28,11 +28,11 @@ Item {
     }
 
     BrightnessContrast {
-            anchors.fill: background
-            source: background
-            brightness: -0.5
-            contrast: 0
-        }
+        anchors.fill: background
+        source: background
+        brightness: -0.5
+        contrast: 0
+    }
 
     Item {
         id: centralContent
@@ -63,7 +63,6 @@ Item {
             fontSizeMode: Text.HorizontalFit
             font.pixelSize:30
             color: "white"
-            //verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
         }
 

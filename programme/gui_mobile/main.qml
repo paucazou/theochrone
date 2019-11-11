@@ -1,12 +1,25 @@
 import QtQuick 2.12
-import QtQuick.Window 2.12
+import QtQuick.Window 2.2
 import "."
+
+import StatusBar 0.1
+import QtQuick.Controls.Material 2.0
 
 Window {
     id: wroot
     visible: true
     width: 720 * .7
     height: 1240 * .7
+    title: "Theochrone"
+    color: GameSettings.backgroundColor
+
+    Material.theme: Material.Dark
+    /**/
+    StatusBar {
+        theme: StatusBar.Dark // or Material.Dark
+        color: "#55ACEE"
+    }
+    /**/
 
     Component.onCompleted: {
         GameSettings.wWidth = Qt.binding(function() {return width})
@@ -16,9 +29,9 @@ Window {
     Loader{                                           //Charge une sous-page, ici le document SplashScreen.qml
         id: splashLoader
         anchors.fill: parent                          //La page remplit l'écran
-        visible: true
         source: "SplashScreen.qml"
         asynchronous: false                           //Affichage dès que la page est entièrement chargé (écrire true pour activé)
+        visible: true
 
         onStatusChanged: {
             if (status === Loader.Ready) {            //Chargement complet de SplashScreen => chargement fichier source pour appLoader
@@ -30,10 +43,10 @@ Window {
     Connections{
         target: splashLoader.item
         onReadyToGo: {
-            splashLoader.visible = false                //spalshLoader devient invisible
-            splashLoader.setSource("")                  //déchargement de splashLoader
             appLoader.visible = true                    //appLoader devient visible
             appLoader.item.init()
+            splashLoader.visible = false                //spalshLoader devient invisible
+            splashLoader.setSource("");                  //déchargement de splashLoader
         }
     }
 

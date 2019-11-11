@@ -3,14 +3,4 @@ import "."
 
 Item {
 
-    function init()
-    {
-
-    }
-
-    function close()
-    {
-        app.nextPage()
-    }
-
 }
