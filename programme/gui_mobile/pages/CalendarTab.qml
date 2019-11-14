@@ -6,6 +6,7 @@ import QtGraphicalEffects 1.12
 import "../."
 
 GamePage {
+    id: pageCalendar
 
     Item {
         id: calendarContainer
@@ -15,6 +16,7 @@ GamePage {
         anchors.bottom: parent.height > parent.width ? undefined : parent.bottom
         height: parent.height > parent.width ? parent.height / 2 : (parent.height - (60-7))/*TitleBar measure - gradient measure : CHANGER VIA GameSettings.fieldHeight*/
         width: parent.height > parent.width ? parent.width : parent.width / 2
+        layer.enabled: true
 
         Calendar {
             id: calendar
@@ -22,11 +24,11 @@ GamePage {
 
             style: CalendarStyle {
                 gridVisible: false
+                gridColor: "white"
 
                 navigationBar: Rectangle{
                     height: GameSettings.fieldHeight
                     width: calendarContainer.width
-                    color: "white"
 
                     //Mouse Bubble Animation
                     Rectangle{
@@ -131,6 +133,19 @@ GamePage {
                     }
                 }
 
+                property var dayName: [qsTr("Mon."),qsTr("Tue."),qsTr("Wed."),qsTr("Thu."),qsTr("Fri."),qsTr("Sat."),qsTr("Sun.")]
+
+                dayOfWeekDelegate: Rectangle {
+                    height: GameSettings.fieldHeight * 0.5
+                    width: calendarContainer.width
+
+                        Label {
+                            anchors.centerIn: parent
+                            text: dayName[styleData.index]
+                            color: "black"
+                        }
+                }
+
                 dayDelegate: Rectangle {
                     RadialGradient {
                         anchors.centerIn: parent
@@ -154,8 +169,9 @@ GamePage {
                     Label {
                         text: styleData.date.getDate()
                         anchors.centerIn: parent
-                        color: styleData.selected ? "white" : (styleData.visibleMonth ? "#55ACEE" : "grey" )
+                        color: styleData.selected ? "white" : (styleData.visibleMonth ? "#55ACEE" : "#c9c9c9" )
                     }
+
                 }
             }
         }
@@ -169,6 +185,7 @@ GamePage {
         anchors.right: parent.right
         anchors.left: parent.height > parent.width ? parent.left : calendarContainer.right
         anchors.bottom: parent.bottom
+        layer.enabled: true
 
         Rectangle {
             id: swipeFestContainer
@@ -189,7 +206,7 @@ GamePage {
                     Rectangle{
                         anchors.centerIn: parent
                         width: img1.width
-                        height: parent.height > parent.width ? parent.width * 0.8 : parent.height * 0.8
+                        height: parent.height > parent.width ? parent.width * 0.9 : parent.height * 0.9
 
                         RectangularGlow {
                             anchors.fill: parent
@@ -213,7 +230,7 @@ GamePage {
                     Rectangle{
                         anchors.centerIn: parent
                         width: img2.width
-                        height: parent.height > parent.width ? parent.width * 0.8 : parent.height * 0.8
+                        height: parent.height > parent.width ? parent.width * 0.9 : parent.height * 0.9
 
                         RectangularGlow {
                             anchors.fill: parent
@@ -237,7 +254,6 @@ GamePage {
 
         Rectangle {
             id: nameFestContainer
-            anchors.top: undefined
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom

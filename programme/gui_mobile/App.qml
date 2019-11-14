@@ -47,7 +47,7 @@ Item {
         height: 7
         gradient: Gradient {
                 GradientStop { position: 0.0; color: "grey" }
-                GradientStop { position: 0.7; color: "#00ffffff" }
+                GradientStop { position: 0.6; color: "#00ffffff" }
         }
     }
 
