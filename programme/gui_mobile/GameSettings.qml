@@ -21,6 +21,14 @@ Item {
     readonly property color errorColor: "#ba3f62"
     readonly property color infoColor: "#3fba62"
 
+    readonly property color liturgical_red: "#e02817"
+    readonly property color liturgical_gold: "#FFD700"
+    readonly property color liturgical_pink: "#ff7fdf"
+    readonly property color liturgical_purple: "#7f3f7f"
+    readonly property color liturgical_black: "#333333"
+    readonly property color liturgical_white: "#e0e2e3"
+    readonly property color liturgical_green: "#3ba338"
+
     // Font sizes
     property real microFontSize: hugeFontSize * 0.2
     property real tinyFontSize: hugeFontSize * 0.4

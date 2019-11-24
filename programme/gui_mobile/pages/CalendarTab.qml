@@ -210,9 +210,9 @@ GamePage {
 
                         RectangularGlow {
                             anchors.fill: parent
-                            glowRadius: 10
+                            glowRadius: 5
                             spread: 0
-                            color: "#c7c7c7"
+                            color: GameSettings.liturgical_white
                             cornerRadius: 0
                         }
                         Image{
@@ -234,9 +234,9 @@ GamePage {
 
                         RectangularGlow {
                             anchors.fill: parent
-                            glowRadius: 10
+                            glowRadius: 5
                             spread: 0
-                            color: "#c7c7c7"
+                            color: GameSettings.liturgical_white
                             cornerRadius: 0
                         }
                         Image{
@@ -269,26 +269,56 @@ GamePage {
                 currentIndex: swipeFest.currentIndex
 
                 Rectangle {
-                    color: "#55ACEE"
+                    color: "white"
+                    Rectangle
+                    {
+                        anchors.top: parent.top
+                        width: parent.width
+                        height: 0.5
+                        color: GameSettings.liturgical_white
+                    }
+                    Item {
+                        anchors.left: parent.left
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        width: parent.height
+                        height: parent.height
+                        Image{
+                            anchors.centerIn: parent
+                            width: parent.height * 0.8
+                            height: parent.height * 0.8
+                            source: "../images/icons/saint_white.png"
+                            fillMode: Image.PreserveAspectFit
+                        }
+                    }
                     Text {
                         id: name1
-                        anchors.centerIn: parent
-                        font.pixelSize: 20
-                        color: "white"
-                        text: qsTr("Saint Martin, Bishop and Confessor")
+                        anchors.left: parent.left
+                        topPadding: parent.height / 9
+                        leftPadding: parent.height + 15
+                        font.pixelSize: 18
+                        color: "black"
+                        text: qsTr("Saint Martin")
                     }
-                    Rectangle{
+                    Text {
+                        anchors.left: parent.left
+                        topPadding: parent.height / 2
+                        leftPadding: parent.height + 15
+                        font.pixelSize: 14
+                        color: "#3c3d42"
+                        text: qsTr("Bishop and Confessor")
+                    }
+                    Item{
                         anchors.top: parent.top
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
                         width: parent.height
                         height: parent.height
-                        color: "#55ACEE"
                         Image{
                             anchors.centerIn: parent
                             width: parent.height * 0.3
                             height: parent.height * 0.3
-                            source: mouse1.pressed ? "../images/icons/moins.png" : "../images/icons/plus.png"
+                            source: mouse1.pressed ? "../images/icons/moins_white.png" : "../images/icons/plus_white.png"
                         }
                     }
                     MouseArea{
@@ -298,26 +328,55 @@ GamePage {
                 }
 
                 Rectangle {
-                    color: "#55ACEE"
+                    color: "white"
+                    Rectangle
+                    {
+                        anchors.top: parent.top
+                        width: parent.width
+                        height: 0.5
+                        color: GameSettings.liturgical_red
+                    }
+                    Item {
+                        anchors.left: parent.left
+                        anchors.top: parent.top
+                        anchors.bottom: parent.bottom
+                        width: parent.height
+                        height: parent.height
+                        Image{
+                            anchors.centerIn: parent
+                            width: parent.height * 0.8
+                            height: parent.height * 0.8
+                            source: "../images/icons/saint_red.png"
+                        }
+                    }
                     Text {
                         id: name2
-                        anchors.centerIn: parent
-                        font.pixelSize: 20
-                        color: "white"
-                        text: qsTr("Saint Menne, Martyr")
+                        anchors.left: parent.left
+                        topPadding: parent.height / 9
+                        leftPadding: parent.height + 15
+                        font.pixelSize: 18
+                        color: "black"
+                        text: qsTr("Saint Menne")
                     }
-                    Rectangle{
+                    Text {
+                        anchors.left: parent.left
+                        topPadding: parent.height / 2
+                        leftPadding: parent.height + 15
+                        font.pixelSize: 14
+                        color: "#3c3d42"
+                        text: qsTr("Martyr")
+                    }
+                    Item{
                         anchors.top: parent.top
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
                         width: parent.height
                         height: parent.height
-                        color: "#55ACEE"
                         Image{
                             anchors.centerIn: parent
                             width: parent.height * 0.3
                             height: parent.height * 0.3
-                            source: mouse2.pressed ? "../images/icons/moins.png" : "../images/icons/plus.png"
+                            source: mouse2.pressed ? "../images/icons/moins_red.png" : "../images/icons/plus_red.png"
                         }
                     }
                     MouseArea{
@@ -325,16 +384,6 @@ GamePage {
                         anchors.fill: parent
                     }
                 }
-            }
-        }
-        Rectangle{
-            id: borderGradient
-            anchors.bottom: nameFestContainer.top
-            width: parent.width
-            height: 5
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: "#00ffffff" }
-                GradientStop { position: 3.0; color: "grey" }
             }
         }
     }
