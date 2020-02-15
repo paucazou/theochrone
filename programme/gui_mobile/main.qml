@@ -2,7 +2,7 @@ import QtQuick 2.12
 import QtQuick.Window 2.2
 import "."
 
-import StatusBar 0.1
+//import StatusBar 0.1
 import QtQuick.Controls.Material 2.0
 
 Window {
@@ -15,6 +15,7 @@ Window {
 
     Material.theme: Material.Dark
 
+/*
     StatusBar {
         theme: StatusBar.Dark // or Material.Dark
         color: "#55ACEE"
