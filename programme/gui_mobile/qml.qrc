@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/HomePage.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/SearchPage.qml</file>
+        <file>qml/SettingsPage.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>qml/CoverFlowDelegate.qml</file>
+        <file>qml/CoverFlowPath.qml</file>
+        <file>qml/SaintInfoPage.qml</file>
+        <file>qml/CarouselFestView.qml</file>
+        <file>qml/ListFestView.qml</file>
+        <file>qml/ListModelExample.qml</file>
+    </qresource>
+</RCC>

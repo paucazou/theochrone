@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/logo/logo.png</file>
+        <file>images/icons/icons8-ICS-100.png</file>
+        <file>images/icons/icons8-pdf-100.png</file>
+        <file>images/icons/icons8-worksheet-100.png</file>
+        <file>images/icons/round_exit_to_app_black_48.png</file>
+        <file>images/icons/outline_settings_black_48.png</file>
+        <file>images/icons/round_arrow_back_white_48.png</file>
+        <file>images/icons/round_menu_white_48.png</file>
+        <file>images/icons/round_search_white_48.png</file>
+        <file>images/icons/round_view_carousel_white_48.png</file>
+        <file>images/icons/round_view_list_white_48.png</file>
+        <file>images/background/background.jpg</file>
+        <file>images/icons/round_arrow_back_ios_black_48.png</file>
+        <file>images/icons/round_arrow_forward_ios_black_48.png</file>
+        <file>images/icons/saint.png</file>
+        <file>images/icons/round_open_in_full_black_48.png</file>
+        <file>images/icons/baseline_language_black_48.png</file>
+        <file>images/icons/outline_public_black_48.png</file>
+        <file>images/background/default_image_saint.png</file>
+        <file>images/icons/saint_black.png</file>
+        <file>images/icons/saint_gold.png</file>
+        <file>images/icons/saint_green.png</file>
+        <file>images/icons/saint_pink.png</file>
+        <file>images/icons/saint_purple.png</file>
+        <file>images/icons/saint_red.png</file>
+        <file>images/background/Martin.jpg</file>
+        <file>images/background/Menne.jpg</file>
+    </qresource>
+</RCC>
