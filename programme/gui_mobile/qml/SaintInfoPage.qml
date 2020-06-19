@@ -125,6 +125,7 @@ Page {
                                         text: celebration
                                         color: "#333333"
                                         padding: 15
+                                        width: 2 * parent.width / 3
                                         clip: true
                                         wrapMode: Text.Wrap
                                     }
@@ -278,19 +279,20 @@ Page {
                                 }
                                 Rectangle{
                                     width: parent.width
-                                    height: 50
+                                    height: mT.implicitHeight
                                     color: "#F5F5F5"
                                     Text {
+                                        id: mT
                                         text: qsTr("Textes de la messe et de l'office sur Intoibo.fr")
                                         color: "#55ACEE"
-                                        baseUrl: "https://www.introibo.fr/"
                                         padding: 15
                                         clip: true
-                                        height: 40
+                                        width: parent.width
+                                        wrapMode: Text.Wrap
                                     }
                                     MouseArea{
                                         anchors.fill: parent
-                                        onClicked: Qt.openUrlExternally("https://theochrone.fr");
+                                        onClicked: Qt.openUrlExternally(massText);
                                     }
                                 }
                             }

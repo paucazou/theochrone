@@ -18,7 +18,7 @@ ListModel{  // just for the example
         sanctoral: "Oui"
         liturgicalTime: "Temps per Annum après la Pentecôte"
         transferredFest: "Non"
-
+        massText: "http://introibo.fr/11-11-St-Martin-eveque-et"
     }
     ListElement{
         nameFest: "Saint Menne"
@@ -35,5 +35,6 @@ ListModel{  // just for the example
         sanctoral: "Oui"
         liturgicalTime: "Temps per Annum après la Pentecôte"
         transferredFest: "Non"
+        massText: "http://introibo.fr/11-11-St-Menne-martyr"
     }
 }

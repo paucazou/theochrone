@@ -15,7 +15,6 @@ Page {
         if (myCarouselFestView == false)
         {
             loaderView.source = "qrc:/qml/ListFestView.qml";
-            console.log("Change take effect");
         }
         else
         {

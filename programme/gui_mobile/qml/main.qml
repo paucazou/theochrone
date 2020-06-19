@@ -1,6 +1,7 @@
 import QtQuick 2.14
 import QtQuick.Controls 2.14
 import QtQuick.Controls.Material 2.12
+import QtGraphicalEffects 1.14
 
 
 ApplicationWindow {
@@ -105,6 +106,12 @@ ApplicationWindow {
                     height: width * 1.056
                     anchors.centerIn: parent
                 }
+                Glow{
+                    anchors.fill: drawerLogoImg
+                    radius: 5
+                    color: "white"
+                    source: drawerLogoImg
+                }
             }
 
             Rectangle{
@@ -157,15 +164,7 @@ ApplicationWindow {
                         }
                     }
                     ItemDelegate {
-                        text: qsTr("Exporter en feuille de calcul")
-                        width: parent.width
-                        icon.source: "qrc:/images/icons/icons8-worksheet-100.png"
-                        icon.color: "#55ACEE"
-                        onClicked: {
-                        }
-                    }
-                    ItemDelegate {
-                        text: qsTr("Exporter en ICS")
+                        text: qsTr("Exporter vers votre calendrier")
                         width: parent.width
                         icon.source: "qrc:/images/icons/icons8-ICS-100.png"
                         icon.color: "#55ACEE"

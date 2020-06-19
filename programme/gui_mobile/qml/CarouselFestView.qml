@@ -56,9 +56,6 @@ Item {
                 right: parent.right
                 bottom: parent.bottom
             }
-            onCurrentIndexChanged: {
-                console.log("currentIndex: ", currentIndex)
-            }
             Repeater{
                 model: ListModelExample{}
                 Loader{
