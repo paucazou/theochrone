@@ -13,7 +13,7 @@ Thank you to all of them.*
 * Father Claude B.
 * Aleth S. *English translations*
 * Br Stephen
-* Benoit Eirik *Tests*
+* Benoit Eirik *Mobile development*
 * Michel Tocabens *Proper of Strasburg and correction of many mistakes*
 
 ## Blogs and websites
