@@ -122,6 +122,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':['-g'],
             'long':['--gui'],
             },
+        'mgui':{
+            'short':['-mg'],
+            'long':['--mgui']
+        },
         'version': {
             'short':[],
             'long':['--version'],
@@ -403,6 +407,7 @@ def args():
     system.add_argument(*arguments['gui']['short'],*arguments['gui']['long'],dest='gui',help=_("""Open Theochrone in a Graphical User Interface (GUI).
         This is the standard behaviour if Theochrone is opened in a file manager.
         You can pass all research types args."""),action='store_true')
+    system.add_argument(*arguments['mgui']['short'],*arguments['mgui']['long'],dest='mgui',help=_("""Open theochrone in a Mobile Graphical User Interface specially designed for  IOS/Android."""),action='store_true')
     system.add_argument('--version', action='version',version='%(prog)s 0.6.1')
     system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
     system.add_argument(*arguments['settings']['long'],dest='settings',nargs='?',const='nothing',help=_("""Modify some settings of the program and exits. Following options are available :
