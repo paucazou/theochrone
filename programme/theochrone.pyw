@@ -211,8 +211,7 @@ def main():
             sys.exit(shiptobrowser.openBrowser())
     if args.mgui:
         from gui_mobile import main_winqml
-        app = main_winqml.App([args,debut,fin])
-        sys.exit(app.exec())
+        main_winqml.App([args,debut,fin])
     elif not os.isatty(0) or args.gui or (len(sys.argv) <= 1 and not sys.platform.startswith('linux')):
         from gui import main_window
         app = main_window.App([args,debut,fin])
