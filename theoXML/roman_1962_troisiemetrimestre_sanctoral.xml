@@ -4690,9 +4690,7 @@
 		<str key="classe">FeteFixe</str>
 		<dict key="attributs">
 			<str key="_couleur">blanc</str>
-			<list key="_images">
-				<str>joachim</str>
-			</list>
+			<str key="_images">joachim</str>
 			<int key="_priorite">1400</int>
 			<str key="_temps_liturgique">variable</str>
 			<bool key="_transferee">False</bool>
