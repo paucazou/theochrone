@@ -11,11 +11,13 @@ sys.path.append(chemin)
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine
-from PyQt5.QtCore import pyqtSlot, pyqtProperty, QAbstractListModel, QModelIndex, Qt, QTranslator
+from PyQt5.QtCore import pyqtSlot, pyqtProperty, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
 from translation import *
 
 import qml
 import images
+
+_ = QCoreApplication.translate
 
 class App(QApplication):
     def __init__(self, args):
@@ -35,11 +37,20 @@ class Main(SuperTranslator):
         SuperTranslator.__init__(self)
         self.parent = parent
         self.processCommandLineArgs(args)
+        #self.settings = setSettings()
 
     def processCommandLineArgs(self, args):
         args, debut, fin = args
         reverse, plus = args.INVERSE, args.plus
 
+"""
+class setSettings(QObject):
+    def __init__(self):
+        self.lang = self._selectLanguage()
+        self.proper = None
+
+    def _selectLanguage(self):
+        """
 
 
 
