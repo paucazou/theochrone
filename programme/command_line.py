@@ -109,8 +109,8 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'options':['1962'],
             },
         'plus': {
-            'short':['-m'],
-            'long':['--more'],
+            'short':['-x'],
+            'long':['--x-more'],
             },
         
         # System options
@@ -123,8 +123,8 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'long':['--gui'],
             },
         'mgui':{
-            'short':['-mg'],
-            'long':['--mgui']
+            'short':['-m'],
+            'long':['--mgui','--gui-mobile']
         },
         'version': {
             'short':[],
@@ -368,7 +368,7 @@ def args():
     selection = parser.add_argument_group(_('Selection options'),description=_("Options to focus researches"))
     selection.add_argument('-p','--proper','--rite', dest='propre', help=_('select which proper or rite you want to use'),action='store',default=default_proper(),choices=arguments['propre']['options'])
     selection.add_argument('-o','--ordo', dest='ordo', help=_('select which ordo you want to use'), type=int, action='store',default=1962,choices=[1962])
-    selection.add_argument('-m','--more',dest='plus', help=_('used with -r/--reverse, print a more complete list of feasts matching with arguments entered'), action='store_true')
+    selection.add_argument('-x','--x-more',dest='plus', help=_('used with -r/--reverse, print a more complete list of feasts matching with arguments entered'), action='store_true')
     
     history = parser.add_argument_group(_('History options'),description=_('All about history'))
     history.add_argument(*arguments['historique']['short'],*arguments['historique']['long'],dest='historique', help=_("Print history and exit. With -r/--reverse, print reverse history"),action='store_true')
