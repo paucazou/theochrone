@@ -17,6 +17,9 @@ from translation import *
 import qml
 import images
 
+# a set of years from 1600 to 4100
+comboYears = list(range(1600,4100))
+
 _ = QCoreApplication.translate
 
 class App(QApplication):
@@ -28,6 +31,7 @@ class App(QApplication):
         self.engine.load(chemin + "/qml/main.qml")
         self.engine.quit.connect(App.quit)
 
+        self.engine.rootContext().setContextProperty("comboYears", comboYears)
         self.translator = QTranslator()
         self.installTranslator(self.translator)
         self.execute = Main(self,args)
