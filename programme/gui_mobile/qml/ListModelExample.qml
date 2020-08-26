@@ -1,6 +1,18 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.5
 
+ListModel{
+    id: theModel
+
+    /*Component.onCompleted: {
+        for(var i = 0; i < lElements.getNbElements(); i++){
+            theModel.append(lElements.getData(i))
+        }
+    }*/
+}
+
+
+/*
 ListModel{  // just for the example
     id: theModel
     ListElement{
@@ -38,3 +50,4 @@ ListModel{  // just for the example
         massText: "http://introibo.fr/11-11-St-Menne-martyr"
     }
 }
+*/
