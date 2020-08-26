@@ -67,7 +67,8 @@ class Main(QMainWindow,SuperTranslator):
         SuperTranslator.__init__(self)
 
         self.parent = parent
-        self.setUnifiedTitleAndToolBarOnMac(True) 
+        self.setUnifiedTitleAndToolBarOnMac(True)
+
         
         self.__calendars = {}
         self.state = State(self) # state of the central widget
