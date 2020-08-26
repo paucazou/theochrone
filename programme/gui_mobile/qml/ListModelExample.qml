@@ -4,13 +4,12 @@ import QtQuick.Controls 2.5
 ListModel{
     id: theModel
 
-    /*Component.onCompleted: {
-        for(var i = 0; i < lElements.getNbElements(); i++){
-            theModel.append(lElements.getData(i))
+    Component.onCompleted: {
+        for(var i = 0; i < feast.getNbElements(); i++){
+            theModel.append(feast.getData(i))
         }
-    }*/
+    }
 }
-
 
 /*
 ListModel{  // just for the example

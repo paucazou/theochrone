@@ -13,7 +13,7 @@ import annus
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine, qmlRegisterType, QQmlListProperty
-from PyQt5.QtCore import pyqtSlot, pyqtProperty, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
+from PyQt5.QtCore import pyqtSlot, pyqtProperty, QVariant, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
 from translation import *
 
 # QML Resources
@@ -22,7 +22,6 @@ import qml_rcc
 # a set of years from 1600 to 4100
 comboYears = list(range(1600,4100))
 
-_ = QCoreApplication.translate
 
 class App(QApplication):
     def __init__(self, args):
@@ -30,11 +29,7 @@ class App(QApplication):
 
         # set QML engine
         self.engine = QQmlApplicationEngine()
-        self.engine.load(chemin + "/qml/main.qml")
-        self.engine.quit.connect(App.quit)
 
-        self.translator = QTranslator()
-        self.installTranslator(self.translator)
         self.execute = Main(self,args)
 
         # Communication with QML
@@ -43,32 +38,29 @@ class App(QApplication):
         self.lcalendar = annus.LiturgicalCalendar(proper='roman', ordo=1962)
         self.lcalendar(2020)
         self.list_feast = self.lcalendar[datetime.date.today()]
-        lelements = ListElements(self.list_feast)
-        self.engine.rootContext().setContextProperty("lElements", lelements)
+        self.feast = ListElements(self.list_feast)
+        self.engine.rootContext().setContextProperty("feast", self.feast)
+
+        # load qml files
+        self.engine.load(chemin + "/qml/main.qml")
+        self.engine.quit.connect(App.quit)
+
 
 class Main():
     def __init__(self, parent, args):
         self.parent = parent
-        self.processCommandLineArgs(args)
-
-
-
-    def processCommandLineArgs(self, args):
-        args, debut, fin = args
-        reverse, plus = args.INVERSE, args.plus
 
 class ListElements(QObject):
     def __init__(self, lfeast):
         QObject.__init__(self)
         self.lfeast = lfeast
         self.nbElements = len(lfeast)
-        print(self.nbElements)
 
     @pyqtSlot(result=int)
     def getNbElements(self):
         return self.nbElements
 
-    @pyqtSlot(int, result=dict)
+    @pyqtSlot(int, result=QVariant)
     def getData(self, index):
         self.dictio = {}
         self.dictio["nameFest"] = str(self.lfeast[index])

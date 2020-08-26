@@ -6,23 +6,10 @@ import QtQuick.Layouts 1.12
 Item {
     anchors.fill: parent
 
-    //property var test: lElements.getData(0)
-    property var dict: {'nameFest': "De feria quarta", 'typeFest': "De feria quarta", 'srcImg': 'qrc:/images/icons/saint_gold.png', 'srcImgSaint': 'qrc:/images/background/background.jpg', 'proper': 'roman', 'edition': '1962', 'celebration': "False", 'classe': "4", 'liturgicalColor': 'vert', 'temporal': "True", 'sanctoral': "False", 'liturgicalTime': "De feria quarta", 'transferredFest': "False", 'massText': 'http://www.introibo.fr/12eme-Dimanche-apres-la-Pentecote'}
-    ListModel{
-        id: theModel
-
-        Component.onCompleted: {
-            /*for(var i = 0; i < lElements.getNbElements(); i++){
-                theModel.append(lElements.getData(i))
-            }*/
-            theModel.append(dict)
-        }
-    }
-
     ListView{
         id: listView
         anchors.fill: parent
-        model: theModel
+        model: ListModelExample{}
         delegate: contactDelegate
         clip: true
         focus: true
