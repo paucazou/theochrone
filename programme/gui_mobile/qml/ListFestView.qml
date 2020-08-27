@@ -9,7 +9,24 @@ Item {
     ListView{
         id: listView
         anchors.fill: parent
-        model: ListModelExample{}
+        model: ListModel{
+            id: model
+            Component.onCompleted: {
+                for(var i = 0; i < feast.getNbElements(); i++){
+                    model.append(feast.getData(i))
+                }
+            }
+        }
+        Connections {
+            target: feast
+
+            onChangeSignal: {
+                model.clear()
+                for(var i = 0; i < feast.getNbElements(); i++){
+                    model.append(feast.getData(i))
+                }
+            }
+        }
         delegate: contactDelegate
         clip: true
         focus: true
