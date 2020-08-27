@@ -59,8 +59,15 @@ class ListElements(QObject):
     @pyqtSlot(int, result=QVariant)
     def getData(self, index):
         self.dictio = {}
-        self.dictio["nameFest"] = str(self.lfeast[index])
-        self.dictio["typeFest"] = str(self.lfeast[index])
+
+        # separate nameFest and typeFest
+        list_str = str(self.lfeast[index]).split(",")
+        if len(list_str) == 1:
+            list_str += list_str[0]
+
+        # Fill all data about the fest
+        self.dictio["nameFest"] = list_str[0]
+        self.dictio["typeFest"] = list_str[1]
         self.dictio["srcImg"] = "qrc:/images/icons/saint_gold.png"
         self.dictio["srcImgSaint"] = "qrc:/images/background/default_image_saint.png"
         self.dictio["proper"] = self.lfeast[index].propre
@@ -82,7 +89,7 @@ class ListElements(QObject):
         self.lfeast = self.lcalendar[datetime.date(year, month, day)]
         self.nbElements = len(self.lfeast)
         print(year,month,day)
-        self.changeSignal.emit(self.lcalendar)
+        self.changeSignal.emit(self.lcalendar)  # enable to update feast in QML
 
 
 """
