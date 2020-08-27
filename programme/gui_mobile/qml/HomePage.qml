@@ -3,6 +3,7 @@ import QtQuick.Controls 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.12
+import QtQml 2.13
 
 
 Page {
@@ -46,6 +47,10 @@ Page {
             Calendar {
                 id: calendar
                 anchors.fill: parent
+
+                onClicked:{
+                    feast.changeDate(date.getFullYear(), date.getMonth(), date.getDate())
+                }
 
                 style: CalendarStyle {
                     gridVisible: false
@@ -154,6 +159,7 @@ Page {
             Loader{
                 id: loaderView
                 anchors.fill: parent
+                clip: true
                 source: "qrc:/qml/CarouselFestView.qml"
             }
         }

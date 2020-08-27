@@ -1,17 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.5
 
-ListModel{
-    id: theModel
 
-    Component.onCompleted: {
-        for(var i = 0; i < feast.getNbElements(); i++){
-            theModel.append(feast.getData(i))
-        }
-    }
-}
-
-/*
 ListModel{  // just for the example
     id: theModel
     ListElement{
@@ -49,4 +39,3 @@ ListModel{  // just for the example
         massText: "http://introibo.fr/11-11-St-Menne-martyr"
     }
 }
-*/

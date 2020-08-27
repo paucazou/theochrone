@@ -18,7 +18,24 @@ Page {
         id: swipeView
         anchors.fill: parent
         Repeater{
-            model: ListModelExample{}
+            model: ListModel{
+                id: model
+                Component.onCompleted: {
+                    for(var i = 0; i < feast.getNbElements(); i++){
+                        model.append(feast.getData(i))
+                    }
+                }
+            }
+            Connections {
+                target: feast
+
+                onChangeSignal: {
+                    model.clear()
+                    for(var i = 0; i < feast.getNbElements(); i++){
+                        model.append(feast.getData(i))
+                    }
+                }
+            }
             Loader{
                 active: SwipeView.isCurrentItem || SwipeView.isNextItem || SwipeView.isPreviousItem
                 sourceComponent: ScrollView{

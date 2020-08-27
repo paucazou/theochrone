@@ -13,7 +13,7 @@ import annus
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine, qmlRegisterType, QQmlListProperty
-from PyQt5.QtCore import pyqtSlot, pyqtProperty, QVariant, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, pyqtProperty, QVariant, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
 from translation import *
 
 # QML Resources
@@ -30,31 +30,27 @@ class App(QApplication):
         # set QML engine
         self.engine = QQmlApplicationEngine()
 
-        self.execute = Main(self,args)
-
         # Communication with QML
         self.engine.rootContext().setContextProperty("comboYears", comboYears)
 
-        self.lcalendar = annus.LiturgicalCalendar(proper='roman', ordo=1962)
-        self.lcalendar(2020)
-        self.list_feast = self.lcalendar[datetime.date.today()]
-        self.feast = ListElements(self.list_feast)
+        # Set the calendar on the main page
+        self.feast = ListElements('roman', 1962)
         self.engine.rootContext().setContextProperty("feast", self.feast)
 
-        # load qml files
+        # Show the app
         self.engine.load(chemin + "/qml/main.qml")
         self.engine.quit.connect(App.quit)
 
-
-class Main():
-    def __init__(self, parent, args):
-        self.parent = parent
-
 class ListElements(QObject):
-    def __init__(self, lfeast):
+    def __init__(self, s_proper, s_ordo):
         QObject.__init__(self)
-        self.lfeast = lfeast
-        self.nbElements = len(lfeast)
+        self.lcalendar = annus.LiturgicalCalendar(proper=s_proper, ordo=s_ordo)
+        self.lcalendar(datetime.date.today().year)
+        self.lfeast = self.lcalendar[datetime.date.today()]
+        self.nbElements = len(self.lfeast)
+
+        # Signal load data
+        self.changeSignal.emit(self.lcalendar)
 
     @pyqtSlot(result=int)
     def getNbElements(self):
@@ -79,7 +75,14 @@ class ListElements(QObject):
         self.dictio["massText"] = self.lfeast[index].link
         return self.dictio
 
-
+    changeSignal = pyqtSignal(QVariant)
+    @pyqtSlot(int, int, int)
+    def changeDate(self, year, month, day):
+        self.lcalendar(datetime.date.today().year)
+        self.lfeast = self.lcalendar[datetime.date(year, month, day)]
+        self.nbElements = len(self.lfeast)
+        print(year,month,day)
+        self.changeSignal.emit(self.lcalendar)
 
 
 """
