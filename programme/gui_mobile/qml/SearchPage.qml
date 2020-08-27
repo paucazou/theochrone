@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.12
+import QtQml 2.14
 
 Page {
     id: searchPage
@@ -8,6 +9,7 @@ Page {
 
     property int maxWidth: 500
     property int contentPadding: 20
+    property date currentTime: new Date()
 
     ScrollView{
         anchors.fill: parent
@@ -148,7 +150,11 @@ Page {
                             id: cB2
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: ["2019","2020","2021"]
+                            model: comboYears
+                            Component.onCompleted: {
+
+                                currentIndex=cB2.find(currentTime.getFullYear());
+                            }
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40
@@ -209,7 +215,11 @@ Page {
                             id: cB3
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: ["2019","2020","2021"]
+                            model: comboYears
+                            Component.onCompleted: {
+
+                                currentIndex=cB3.find(currentTime.getFullYear());
+                            }
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40
@@ -302,7 +312,11 @@ Page {
                             id: cB6
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: ["2019","2020","2021"]
+                            model: comboYears
+                            Component.onCompleted: {
+
+                                currentIndex=cB6.find(currentTime.getFullYear());
+                            }
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40
@@ -375,7 +389,11 @@ Page {
                             left: parent.left
                             right: parent.right
                         }
-                        model: ["2019","2020","2021"]
+                        model: comboYears
+                        Component.onCompleted: {
+
+                            currentIndex=cB8.find(currentTime.getFullYear());
+                        }
                         background: Rectangle {
                                 implicitWidth: 120
                                 implicitHeight: 40
@@ -468,7 +486,11 @@ Page {
                             id: cB11
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: ["2019","2020","2021"]
+                            model: comboYears
+                            Component.onCompleted: {
+
+                                currentIndex=cB11.find(currentTime.getFullYear());
+                            }
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40
@@ -519,7 +541,11 @@ Page {
                             id: cB14
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: ["2019","2020","2021"]
+                            model: comboYears
+                            Component.onCompleted: {
+
+                                currentIndex=cB14.find(currentTime.getFullYear());
+                            }
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40

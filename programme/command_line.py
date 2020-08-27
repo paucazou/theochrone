@@ -109,8 +109,8 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'options':['1962'],
             },
         'plus': {
-            'short':['-m'],
-            'long':['--more'],
+            'short':['-x'],
+            'long':['--x-more'],
             },
         
         # System options
@@ -122,6 +122,10 @@ arguments = { # essayer d'ajouter les commandes de DATE
             'short':['-g'],
             'long':['--gui'],
             },
+        'mgui':{
+            'short':['-m'],
+            'long':['--mgui','--gui-mobile']
+        },
         'version': {
             'short':[],
             'long':['--version'],
@@ -364,7 +368,7 @@ def args():
     selection = parser.add_argument_group(_('Selection options'),description=_("Options to focus researches"))
     selection.add_argument('-p','--proper','--rite', dest='propre', help=_('select which proper or rite you want to use'),action='store',default=default_proper(),choices=arguments['propre']['options'])
     selection.add_argument('-o','--ordo', dest='ordo', help=_('select which ordo you want to use'), type=int, action='store',default=1962,choices=[1962])
-    selection.add_argument('-m','--more',dest='plus', help=_('used with -r/--reverse, print a more complete list of feasts matching with arguments entered'), action='store_true')
+    selection.add_argument('-x','--x-more',dest='plus', help=_('used with -r/--reverse, print a more complete list of feasts matching with arguments entered'), action='store_true')
     
     history = parser.add_argument_group(_('History options'),description=_('All about history'))
     history.add_argument(*arguments['historique']['short'],*arguments['historique']['long'],dest='historique', help=_("Print history and exit. With -r/--reverse, print reverse history"),action='store_true')
@@ -403,6 +407,7 @@ def args():
     system.add_argument(*arguments['gui']['short'],*arguments['gui']['long'],dest='gui',help=_("""Open Theochrone in a Graphical User Interface (GUI).
         This is the standard behaviour if Theochrone is opened in a file manager.
         You can pass all research types args."""),action='store_true')
+    system.add_argument(*arguments['mgui']['short'],*arguments['mgui']['long'],dest='mgui',help=_("""Open theochrone in a Mobile Graphical User Interface specially designed for  IOS/Android."""),action='store_true')
     system.add_argument('--version', action='version',version='%(prog)s 0.6.1')
     system.add_argument('--poems',help=_('open O Crux ave Spes Unica'), action='store_true')
     system.add_argument(*arguments['settings']['long'],dest='settings',nargs='?',const='nothing',help=_("""Modify some settings of the program and exits. Following options are available :
