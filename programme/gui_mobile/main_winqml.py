@@ -90,26 +90,3 @@ class ListElements(QObject):
         self.nbElements = len(self.lfeast)
         print(year,month,day)
         self.changeSignal.emit(self.lcalendar)  # enable to update feast in QML
-
-
-"""
-class ListModel(QAbstractListModel):
-    def __init__(self, data, parent=None, *args):
-        QAbstractListModel.__init__(self, parent, *args)
-        self._data = data
-
-    def setData(self, index, value, role):
-        if not index.isValid():
-            return False
-        self._data[index.row()] = value
-        self.dataChanged.emit(index, index, [role])
-        return True
-
-    @pyqtSlot(int, str, result=bool)
-    def insert(self, row, value):
-        return self.setData(self.createIndex(row, 0), value, Qt.EditRole)
-
-    @pyqtSlot(str, result=bool)
-    def append(self, value):
-        return self.insert(self.count, value)
-"""

@@ -49,7 +49,7 @@ Page {
                 anchors.fill: parent
 
                 onClicked:{
-                    feast.changeDate(date.getFullYear(), date.getMonth(), date.getDate())
+                    feast.changeDate(date.getFullYear(), date.getMonth() + 1, date.getDate())
                 }
 
                 style: CalendarStyle {

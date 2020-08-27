@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.12
 
 Page {
     id: saintInfoPage
-    title: qsTr("Résultats")
+    title: qsTr("Résultat")
 
     property int maxWidth: 500
     property int contentPadding: 20
@@ -28,7 +28,6 @@ Page {
             }
             Connections {
                 target: feast
-
                 onChangeSignal: {
                     model.clear()
                     for(var i = 0; i < feast.getNbElements(); i++){
