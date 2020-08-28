@@ -88,15 +88,15 @@ class ListElements(QObject):
         self.dictio["typeFest"] = list_str[1]
         self.dictio["srcImg"] = icon_path
         self.dictio["srcImgSaint"] = "qrc:/images/background/default_image_saint.png"
-        self.dictio["proper"] = self.lfeast[index].propre
+        self.dictio["proper"] = str(self.lfeast[index].propre).capitalize()
         self.dictio["edition"] = "1962"
-        self.dictio["celebration"] = str(self.lfeast[index].celebree)
+        self.dictio["celebration"] = str(self.lfeast[index].celebree).capitalize()
         self.dictio["classe"] = str(self.lfeast[index].degre)
-        self.dictio["liturgicalColor"] = self.lfeast[index].couleur
-        self.dictio["temporal"] = str(self.lfeast[index].temporal)
-        self.dictio["sanctoral"] = str(self.lfeast[index].sanctoral)
-        self.dictio["liturgicalTime"] = self.lfeast[index].temps_liturgique()
-        self.dictio["transferredFest"] = str(self.lfeast[index].transferee)
+        self.dictio["liturgicalColor"] = str(self.lfeast[index].couleur).capitalize()
+        self.dictio["temporal"] = str(self.lfeast[index].temporal).capitalize()
+        self.dictio["sanctoral"] = str(self.lfeast[index].sanctoral).capitalize()
+        self.dictio["liturgicalTime"] = str(self.lfeast[index].temps_liturgique()).capitalize()
+        self.dictio["transferredFest"] = str(self.lfeast[index].transferee).capitalize()
         self.dictio["massText"] = self.lfeast[index].link
         return self.dictio
 
