@@ -65,10 +65,28 @@ class ListElements(QObject):
         if len(list_str) == 1:
             list_str += list_str[0]
 
+        # Select the good icon
+        color = self.lfeast[index].couleur
+        if color == "blanc":
+            icon_path = "qrc:/images/icons/saint_gold.png"
+        elif color == "vert":
+            icon_path = "qrc:/images/icons/saint_green.png"
+        elif color == "rose":
+            icon_path = "qrc:/images/icons/saint_pink.png"
+        elif color == "violet":
+            icon_path = "qrc:/images/icons/saint_purple.png"
+        elif color == "rouge":
+            icon_path = "qrc:/images/icons/saint_red.png"
+        elif color == "noir":
+            icon_path = "qrc:/images/icons/saint_black.png"
+        else:
+            icon_path = "qrc:/images/icons/saint.png"
+
+
         # Fill all data about the fest
         self.dictio["nameFest"] = list_str[0]
         self.dictio["typeFest"] = list_str[1]
-        self.dictio["srcImg"] = "qrc:/images/icons/saint_gold.png"
+        self.dictio["srcImg"] = icon_path
         self.dictio["srcImgSaint"] = "qrc:/images/background/default_image_saint.png"
         self.dictio["proper"] = self.lfeast[index].propre
         self.dictio["edition"] = "1962"
