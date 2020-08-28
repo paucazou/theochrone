@@ -60,7 +60,7 @@ class ListElements(QObject):
     def getData(self, index):
         self.dictio = {}
 
-        # separate nameFest and typeFest
+        # Separate nameFest and typeFest
         list_str = str(self.lfeast[index]).split(",")
         if len(list_str) == 1:
             list_str += list_str[0]
@@ -82,8 +82,7 @@ class ListElements(QObject):
         else:
             icon_path = "qrc:/images/icons/saint.png"
 
-
-        # Fill all data about the fest
+        # Fill all data in a dict about the fest
         self.dictio["nameFest"] = list_str[0]
         self.dictio["typeFest"] = list_str[1]
         self.dictio["srcImg"] = icon_path
