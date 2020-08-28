@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.15
 
 Item {
     id: root
@@ -27,8 +28,7 @@ Item {
     Rectangle {
         id: rectDelegate
         anchors.fill: parent
-        color: "white"
-
+        color: "transparent"
         Text {
             anchors.centerIn: parent
             font.pointSize: 32
@@ -36,11 +36,26 @@ Item {
             color: "white"
         }
         Image {
+            id: saintImage
             source: srcImgSaint
             fillMode: Image.PreserveAspectFit
             width: parent.width
             height: parent.height
-            clip: true
+            smooth: true
+            visible: false
+        }
+        Rectangle{
+            id: mask
+            anchors.fill: saintImage
+            color: "blue"
+            radius: 10
+            smooth: true
+            visible: false
+        }
+        OpacityMask{
+            anchors.fill: saintImage
+            source: saintImage
+            maskSource: mask
         }
     }
 

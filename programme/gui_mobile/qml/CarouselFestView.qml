@@ -102,23 +102,33 @@ Item {
                             color: "white"
                             Item{
                                 anchors.centerIn: parent
-                                width: parent.width * 0.7
+                                width: parent.width * 0.9
                                 height: parent.height * 0.7
                                 Text {
                                     id: nameSaint
                                     text: nameFest
+                                    clip: true
                                     color: "#181818"
+                                    horizontalAlignment: Text.AlignHCenter
+                                    fontSizeMode: Text.Fit
                                     font.pixelSize: 20
+                                    minimumPixelSize: 1
                                     anchors.top: parent.top
-                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    anchors.left: parent.left
+                                    anchors.right: parent.right
                                 }
                                 Text {
                                     id: typeSaint
                                     text: typeFest
+                                    clip: true
                                     color: "#181818"
+                                    horizontalAlignment: Text.AlignHCenter
+                                    fontSizeMode: Text.Fit
                                     font.pixelSize: 15
+                                    minimumPixelSize: 1
                                     anchors.bottom: parent.bottom
-                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    anchors.left: parent.left
+                                    anchors.right: parent.right
                                 }
                             }
                         }

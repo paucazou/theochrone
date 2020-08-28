@@ -3,7 +3,6 @@ import QtQuick.Controls 2.5
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.12
-import QtQml 2.13
 
 
 Page {
@@ -52,6 +51,8 @@ Page {
                     feast.changeDate(date.getFullYear(), date.getMonth() + 1, date.getDate())
                 }
 
+                property date today: new Date()
+
                 style: CalendarStyle {
                     gridVisible: false
                     gridColor: "white"
@@ -72,7 +73,14 @@ Page {
                                 height: parent.width * 0.5
                             }
                             onClicked: {
-                                calendar.showPreviousMonth();
+                                calendar.showPreviousMonth()
+                                feast.changeDate(calendar.visibleYear, calendar.visibleMonth + 1, 1)    // month begin to 0 not 1 in QML !
+                                if (calendar.today.getMonth() == calendar.visibleMonth){
+                                    calendar.selectedDate = new Date(calendar.visibleYear, calendar.visibleMonth, calendar.today.getDate())
+                                }
+                                else{
+                                    calendar.selectedDate = new Date(calendar.visibleYear, calendar.visibleMonth, 1)
+                                }
                             }
                         }
 
@@ -80,6 +88,7 @@ Page {
                             text: styleData.title
                             anchors.centerIn: parent
                             font.pixelSize: 20
+                            font.capitalization: Font.Capitalize
                             color: "black"
                         }
 
@@ -94,8 +103,16 @@ Page {
                                 width: parent.height * 0.5
                                 height: parent.width * 0.5
                             }
+                            property date time: new Date()
                             onClicked: {
-                                calendar.showNextMonth();
+                                calendar.showNextMonth()
+                                feast.changeDate(calendar.visibleYear, calendar.visibleMonth + 1, 1)    // month begin to 0 not 1 in QML !
+                                if (calendar.today.getMonth() == calendar.visibleMonth){
+                                    calendar.selectedDate = new Date(calendar.visibleYear, calendar.visibleMonth, calendar.today.getDate())
+                                }
+                                else{
+                                    calendar.selectedDate = new Date(calendar.visibleYear, calendar.visibleMonth, 1)
+                                }
                             }
                         }
                     }

@@ -114,7 +114,6 @@ class ListElements(QObject):
         self.lcalendar(datetime.date.today().year)
         self.lfeast = self.lcalendar[datetime.date(year, month, day)]
         self.nbElements = len(self.lfeast)
-        print(year,month,day)
         self.changeSignal.emit(self.lcalendar)  # enable to update feast in QML
 
 class Settings(QObject):
