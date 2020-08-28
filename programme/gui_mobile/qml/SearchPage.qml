@@ -69,7 +69,7 @@ Page {
                             id: cB1
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: ["Roman","Australian","American","Brazilian","Canadian","English","French","New-Zealander","Polish","Portugese","Scottish","Spanish","Welsh"]
+                            model: listLang
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40
@@ -232,7 +232,7 @@ Page {
                             id: cB4
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: [qsTr("Janvier"),qsTr("Février"),qsTr("Mars"),qsTr("Avril"),qsTr("Mai"),qsTr("Juin"),qsTr("Juillet"),qsTr("Août"),qsTr("Septembre"),qsTr("Octobre"),qsTr("Novembre"),qsTr("Décembre")]
+                            model: listMonth
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40
@@ -329,7 +329,7 @@ Page {
                             id: cB7
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: [qsTr("Janvier"),qsTr("Février"),qsTr("Mars"),qsTr("Avril"),qsTr("Mai"),qsTr("Juin"),qsTr("Juillet"),qsTr("Août"),qsTr("Septembre"),qsTr("Octobre"),qsTr("Novembre"),qsTr("Décembre")]
+                            model: listMonth
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40
@@ -473,7 +473,7 @@ Page {
                             id: cB10
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: [qsTr("Janvier"),qsTr("Février"),qsTr("Mars"),qsTr("Avril"),qsTr("Mai"),qsTr("Juin"),qsTr("Juillet"),qsTr("Août"),qsTr("Septembre"),qsTr("Octobre"),qsTr("Novembre"),qsTr("Décembre")]
+                            model: listMonth
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40
@@ -528,7 +528,7 @@ Page {
                             id: cB13
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: [qsTr("Janvier"),qsTr("Février"),qsTr("Mars"),qsTr("Avril"),qsTr("Mai"),qsTr("Juin"),qsTr("Juillet"),qsTr("Août"),qsTr("Septembre"),qsTr("Octobre"),qsTr("Novembre"),qsTr("Décembre")]
+                            model: listMonth
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40

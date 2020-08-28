@@ -11,6 +11,7 @@ sys.path.append(programme)
 sys.path.append(chemin)
 import annus
 
+from configparser import ConfigParser
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine, qmlRegisterType, QQmlListProperty
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, pyqtProperty, QVariant, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
@@ -22,6 +23,11 @@ import qml_rcc
 # a set of years from 1600 to 4100
 comboYears = list(range(1600,4100))
 
+# set all available language, using for Settings and SearchPage
+list_lang = ["Roman","Australian","American","Brazilian","Canadian","English","French","New-Zealander","Polish","Portugese","Scottish","Spanish","Welsh"]
+
+# a set of month, using for SearchPage
+list_month = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]
 
 class App(QApplication):
     def __init__(self, args):
@@ -32,8 +38,11 @@ class App(QApplication):
 
         # Communication with QML
         self.engine.rootContext().setContextProperty("comboYears", comboYears)
+        self.engine.rootContext().setContextProperty("listLang", list_lang)
+        self.engine.rootContext().setContextProperty("listMonth", list_month)
 
         # Set the calendar on the main page
+        self.settings = Settings()
         self.feast = ListElements('roman', 1962)
         self.engine.rootContext().setContextProperty("feast", self.feast)
 
@@ -107,3 +116,19 @@ class ListElements(QObject):
         self.nbElements = len(self.lfeast)
         print(year,month,day)
         self.changeSignal.emit(self.lcalendar)  # enable to update feast in QML
+
+class Settings(QObject):
+    def __init__(self):
+        QObject.__init__(self)
+        self.filePath = "gui_mobile/.settings.ini"
+        self.list_settings = ['','']
+        self.getSettings()
+
+    def getSettings(self):
+        if os.path.isfile(self.filePath):
+            file = ConfigParser()
+            file.read("gui_mobile/.settings.ini")
+            self.list_settings[0] = file.get('settings', 'language')
+            self.list_settings[1] = file.get('settings', 'proper')
+        else:
+            return

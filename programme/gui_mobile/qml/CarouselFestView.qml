@@ -26,7 +26,7 @@ Item {
         Connections {
             target: feast
 
-            onChangeSignal: {
+            function onChangeSignal() {
                 model.clear()
                 for(var i = 0; i < feast.getNbElements(); i++){
                     model.append(feast.getData(i))
