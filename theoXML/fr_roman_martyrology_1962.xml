@@ -136,7 +136,7 @@
 			<list>
 				<str>La Commémoration du baptême de Notre-Seigneur Jésus-Christ.</str>
 				<str>À Poitiers, en France, l'anniversaire de saint Hilaire, évêque et confesseur. Pour avoir défendu avec énergie la Foi catholique, il fut relégué pendant quatre ans en Phrygie, où, entre autres miracles, il ressuscita un mort. Le souverain pontife Pie IX, l'a déclaré et confirmé docteur de l'Église universelle. Sa fête se célèbre le jour suivant.</str>
-				<str>À Reims, en France, l'anniversaire de saint Rémi, évêque et confesseur. Il convertit au Christ la nation des Francs, après avoir lavé dans les eaux du baptême et initié aux mystères de la foi leur roi Clovis. Ayant passé de nombreuses années dans l'épiscopat, devenu célèbre par sa sainteté et l'éclat des miracles, il quitta cette vie. Sa fête est célébrée aux calendes d'octobre (1er octobre), jour de la translation de son saint corps.</str>
+				<str>À Reims, en France, l'anniversaire de saint Rémi, évêque et confesseur. Il convertit au Christ la nation des Francs, après avoir lavé dans les eaux du baptême et initié aux mystères de la foi leur roi Clovis. Ayant passé de nombreuses années dans l'épiscopat, devenu célèbre par sa sainteté et l'éclat des miracles, il quitta cette vie. Sa fête est célébrée aux calendes d'octobre (Ier octobre), jour de la translation de son saint corps.</str>
 				<str>À Rome, sur la voie Lavicane, les couronnes que de saints soldats, au nombre de quarante, méritèrent de remporter pour avoir professé la vraie foi, sous l'empereur Gallien.</str>
 				<str>À Cordoue, en Espagne, les saints martyrs Gumesinde, prêtre, et Serdieu, moine.</str>
 				<str>En Sardaigne, saint Potit, martyr, qui sous l'empereur Antonin et le préfet Gélase eut beaucoup à souffrir, et obtint le martyre par le glaive.</str>
@@ -170,7 +170,7 @@
 				<str>À Constantinople, saint Jean Calybite. Il demeura quelques temps dans un réduit de la maison paternelle, puis dans une hutte, complètement inconnu de ses parents ; ceux-ci le reconnurent au moment de sa mort où sa gloire resplendit par des miracles. Dans la suite, son corps fut transféré à Rome, et placé dans une église de l'île du Tibre, élevée en son honneur.</str>
 			</list>
 			<list>
-				<str>À Rome, sur la voie Salaria, l'anniversaire de saint Marcel 1er, pape et martyr. Pour avoir confessé la foi catholique, il fut, par ordre du tyran Maxence, d'abord battu de verges, puis envoyé sous bonne garde pour soigner les animaux ; il mourut dans ce service, couvert d'un vêtement de crin.</str>
+				<str>À Rome, sur la voie Salaria, l'anniversaire de saint Marcel Ier, pape et martyr. Pour avoir confessé la foi catholique, il fut, par ordre du tyran Maxence, d'abord battu de verges, puis envoyé sous bonne garde pour soigner les animaux ; il mourut dans ce service, couvert d'un vêtement de crin.</str>
 				<str>À Marrakech, en Afrique, la passion des cinq premiers martyrs de l'Ordre des Frères Mineurs, savoir : Bérard, Pierre et Othon, prêtres, Accurse et Adjut, laïques. Pour avoir prêché la Foi chrétienne et réprouvé la loi de Mahomet, ils endurèrent divers tourments et outrages, puis furent décapités par ordre du roi des Sarrasins.</str>
 				<str>À Rhinocolure, en Égypte, saint Mélas, évêque, qui, sous Valens, endura l'exil et d'autres mauvais traitements pour la Foi catholique, puis reposa en paix.</str>
 				<str>À Arles, en Gaule, saint Honorat, évêque et confesseur, dont la vie fut illustrée par sa doctrine et ses miracles.</str>
@@ -185,7 +185,7 @@
 				<str>À Bourges, en Aquitaine, la mise au tombeau de saint Sulpice, évêque, surnommé le Pieux. Sa vie et sa précieuse mort sont illustrées par de glorieux miracles.</str>
 				<str>À Rome, au monastère de saint André, les bienheureux moines Antoine, Mérule et Jean, dont le pape saint Grégoire fait mention dans ses écrits.</str>
 				<str>Sur les confins de la région d'Édesse, en Mésopotamie, saint Julien, ermite, surnommé Sabas. Sous l'empereur Valens, il releva par la puissance de ses miracles, la Foi catholique presque éteinte à Antioche.</str>
-				<str>À Rome, l'invention des saints martyrs Diodore, prêtre, Marien, diacre et de leurs compagnons, qui obtinrent le martyre aux calendes de décembre (1er décembre), alors que le pape saint Étienne gouvernait l'église de Dieu.</str>
+				<str>À Rome, l'invention des saints martyrs Diodore, prêtre, Marien, diacre et de leurs compagnons, qui obtinrent le martyre aux calendes de décembre (Ier décembre), alors que le pape saint Étienne gouvernait l'église de Dieu.</str>
 			</list>
 			<list>
 				<str>À Rome, la passion de sainte Prisque, vierge et martyre, qui, sous l'empereur Claude, reçut la couronne du martyre après de nombreux tourments.</str>
@@ -299,7 +299,7 @@
 				<str>À Bourges, en Aquitaine, saint Sulpice-Sévère, évêque, remarquable par ses vertus et son savoir.</str>
 			</list>
 			<list>
-				<str>Sainte Martine, vierge et martyre, dont l'anniversaire est mentionné aux calendes de janvier (1er janvier).</str>
+				<str>Sainte Martine, vierge et martyre, dont l'anniversaire est mentionné aux calendes de janvier (Ier janvier).</str>
 				<str>À Édesse, en Syrie, saint Barsimée, évêque. Après avoir converti un grand nombre de païens, qui le précédèrent dans la conquête de la couronne, il les suivit, recevant à son tour la palme du martyre, sous l'empereur Trajan.</str>
 				<str>À Antioche, la passion du bienheureux prêtre Hippolyte. Il fut d'abord trompé quelque temps par le schisme de Novat ; mais, touché par la grâce du Christ, il s'amenda, rentra dans l'unité de l'Église, pour laquelle et dans laquelle il endura plus tard un glorieux martyre. Les siens lui ayant demandé quelle était la vraie doctrine, il exécra l'erreur de Novat, puis, déclarant qu'il fallait garder la Foi enseignée par la Chaire de Pierre, il présenta sa gorge au bourreau.</str>
 				<str>En Afrique, la passion des saints Félicien, Philappien et de cent vingt-quatre autres martyrs.</str>
@@ -618,46 +618,46 @@
 				<str>À Rome, deux cent soixante martyrs, que l'empereur Claude condamna d'abord, en raison du nom chrétien, à tirer du sable au-delà de la porte Salaria, et qu'il fit ensuite percer de flèches par ses soldats dans l'amphithéâtre.</str>
 				<str>De plus, l'anniversaire des saints martyrs Léon, Donat, Abondance, Nicéphore et neuf autres.</str>
 				<str>À Marseille, en France, les saints martyrs Hermès et Adrien.</str>
-				<str>À Héliopolis, près du Liban, sainte Eudoxie martyre. Durant la persécution de Trajan, ayant été baptisée et préparée au combat par l'évêque Théodote, elle fut, au même endroit, percée du glaive par ordre du préfet Vincent, et reçut ainsi la couronne du martyre.</str>
-				<str>Le même jour, sainte Antonine martyre. Pendant la persécution de Dioclétien, elle s'était moquée des dieux des païens, et, pour ce motif, après divers tourments, on l'enferma dans un tonneau et on la plongea dans l'étang de la ville de Céa.</str>
+				<str>À Héliopolis, près du Liban, sainte Eudoxie, martyre. Durant la persécution de Trajan, ayant été baptisée et préparée au combat par l'évêque Théodote, elle fut, au même endroit, percée du glaive par ordre du préfet Vincent, et reçut ainsi la couronne du martyre.</str>
+				<str>Le même jour, sainte Antonine, martyre. Pendant la persécution de Dioclétien, elle s'était moquée des dieux des païens, et, pour ce motif, après divers tourments, on l'enferma dans un tonneau et on la plongea dans l'étang de la ville de Céa.</str>
 				<str>À Rome, l'anniversaire du pape saint Félix III, aïeul de saint Grégoire le Grand. Le même Grégoire raconte de lui qu'il apparut à sa nièce sainte Tharsille, et l'appela au royaume céleste.</str>
-				<str>Dans la cité de Verden, saint Suitbert évêque. Au temps du pape saint Sergius Ier, il prêcha l'Évangile aux Frisons, aux Bataves, et à d'autres peuples de la Germanie.</str>
+				<str>Dans la cité de Verden, saint Suitbert, évêque. Au temps du pape saint Sergius Ier, il prêcha l'Évangile aux Frisons, aux Bataves, et à d'autres peuples de la Germanie.</str>
 				<str>À Angers, en France, saint Aubin, évêque et confesseur, homme d'une vertu et d'une sainteté éclatantes.</str>
-				<str>Dans le Maine, en France, saint Siviard abbé.</str>
+				<str>Dans le Maine, en France, saint Siviard, abbé.</str>
 				<str>À Pérouse, la translation de saint Herculan, évêque et martyr : il fut décapité par ordre de Totila, roi des Goths. Le quarantième jour après la décollation, le corps, d'après le récit du pape saint Grégoire, fut trouvé uni à la tête et intact comme si le fer ne l'avait pas amputé.</str>
 			</list>
 			<list>
 				<str>À Rome, sur la voie Latine, les saints martyrs Jovin et Basilée, qui souffrirent sous les empereurs Valérien et Gallien.</str>
 				<str>À Rome encore, de nombreux saints martyrs, qui, sous l'empereur Alexandre et le préfet Ulpien, furent longtemps tourmentés et finalement condamnés à la peine capitale.</str>
-				<str>À Césarée de Cappadoce, les saints martyrs Lucius évêque, Absalon et Lorge.</str>
+				<str>À Césarée de Cappadoce, les saints martyrs Lucius, évêque, Absalon et Lorge.</str>
 				<str>À Porto, les saints martyrs Paul, Héracléas, Secondille et Janvière.</str>
 				<str>En Campanie, la commémoraison de quatre-vingts bienheureux martyrs, qui refusèrent de manger la chair offerte aux idoles et d'adorer une tête de chèvre ; pour ce motif ils furent cruellement mis à mort par les Lombards.</str>
-				<str>À Lichfield, en Angleterre, saint Céadde évêque des Merciens et de Lindisfarne. Saint Bède le Vénérable décrit ses éclatantes vertus.</str>
+				<str>À Lichfield, en Angleterre, saint Céadde, évêque des Merciens et de Lindisfarne. Saint Bède le Vénérable décrit ses éclatantes vertus.</str>
 			</list>
 			<list>
-				<str>À Césarée de Palestine, les saints martyrs Marin soldat, et Astère sénateur, durant la persécution de Valérien. Le premier, accusé par ses compagnons d'armes d'être Chrétien, et interrogé par le juge, déclara hautement qu'il l'était et reçut la couronne du martyre par la décapitation. Au moment où Astère recueillait le corps du martyr décapité et le plaçait sur ses épaules en lui faisant un coussin de son vêtement, il devint lui-même martyr, méritant ainsi un honneur égal à celui qu'il rendait à son compagnon.</str>
+				<str>À Césarée de Palestine, les saints martyrs Marin, soldat, et Astère, sénateur, durant la persécution de Valérien. Le premier, accusé par ses compagnons d'armes d'être chrétien, et interrogé par le juge, déclara hautement qu'il l'était et reçut la couronne du martyre par la décapitation. Au moment où Astère recueillait le corps du martyr décapité et le plaçait sur ses épaules en lui faisant un coussin de son vêtement, il devint lui-même martyr, méritant ainsi un honneur égal à celui qu'il rendait à son compagnon.</str>
 				<str>À Calahorra, en Espagne, l'anniversaire des saints frères martyrs Hémitère et Chélidoine. Ils servaient comme soldats au camp de Léon, en Galice, quand se déchaîna la tempête de la persécution ; tous deux, pour confesser le nom du Christ, partirent pour Calahorra, où ils endurèrent divers tourments et reçurent la couronne du martyre.</str>
 				<str>Le même jour, la passion des saints Félix, Luciole, Fortunat, Marcia et de leurs compagnons.</str>
 				<str>Le même jour encore, les saints soldats Cléonique, Eutrope et Basilisque, qui, pendant la persécution de Maximien, sous le préfet Asclépiade, triomphèrent heureusement par le supplice de la croix.</str>
 				<str>À Brescia, saint Titien, évêque et confesseur.</str>
-				<str>À Bamberg, sainte Cunégonde impératrice. Mariée à saint Henri Ier, empereur des Romains, elle garda, du consentement de son époux, la virginité perpetuelle ; comblée des mérites de ses bonnes œuvres, elle fit une sainte mort, après laquelle elle devint célèbre par ses miracles.</str>
+				<str>À Bamberg, sainte Cunégonde, impératrice. Mariée à saint Henri Ier, empereur des Romains, elle garda, du consentement de son époux, la virginité perpétuelle ; comblée des mérites de ses bonnes œuvres, elle fit une sainte mort, après laquelle elle devint célèbre par ses miracles.</str>
 			</list>
 			<list>
-				<str>À Vilna, en Lithuanie, saint Casimir confesseur, fils du roi Casimir. Il a été inscrit au nombre des saints par le pontife romain Léon X.</str>
+				<str>À Vilna, en Lithuanie, saint Casimir, confesseur, fils du roi Casimir. Il a été inscrit au nombre des saints par le pontife romain Léon X.</str>
 				<str>À Rome sur la voie Appienne, l'anniversaire de saint Lucius Ier, pape et martyr. Tout d'abord, durant la persécution de Valérien, il fut envoyé en exil pour la Foi du Christ ; il put ensuite, par un effet de la volonté divine, revenir dans son église. Après avoir beaucoup lutté contre les novatiens, il fut décapité et consomma ainsi son martyre. Saint Cyprien lui a décerné de magnifiques louanges.</str>
-				<str>À Nicomédie, saint Adrien martyr, avec vingt trois autres, qui, tous, sous l'empereur Dioclétien, eurent les jambes brisées et accomplirent ainsi leur martyre. Les chrétiens portèrent leurs restes à Byzance, et leur donnèrent une honorable sépulture. De là, le corps de saint Adrien fut transféré plus tard à Rome le 6 des ides de septembre (8 septembre), jour où on le fête de préférence.</str>
+				<str>À Nicomédie, saint Adrien, martyr, avec vingt-trois autres, qui, tous, sous l'empereur Dioclétien, eurent les jambes brisées et accomplirent ainsi leur martyre. Les chrétiens portèrent leurs restes à Byzance, et leur donnèrent une honorable sépulture. De là, le corps de saint Adrien fut transféré plus tard à Rome le 6 des ides de septembre (8 septembre), jour où on le fête de préférence.</str>
 				<str>À Rome, sur la voie Appienne, neuf cents bienheureux martyrs, qui ont été ensevelis dans le cimetière de sainte Cécile.</str>
 				<str>À Cherson, la passion des saints évêques Basile, Eugène, Agathodore, Elpide, Ethère, Capiton, Ephrem, Nestor et Arcade.</str>
-				<str>Le même jour, saint Caïus, officier du palais, qui fut précipité dans la mer avec vingt-sept autres Chretiens.</str>
+				<str>Le même jour, saint Caïus, officier du palais, qui fut précipité dans la mer avec vingt-sept autres chrétiens.</str>
 				<str>De plus, la passion des saints Archelaüs, Cyrille et Photius.</str>
 			</list>
 			<list>
-				<str>À Antioche, l'anniversaire de saint Phocas martyr. Après de nombreux outrages subis pour le Nom du Rédempteur, il triompha heureusement de l'antique serpent ; ce qui est confirmé actuellement encore aux yeux des populations par le fait que quiconque, ayant été mordu par un serpent, vient toucher avec Foi la porte de la basilique du martyr, se trouve aussitôt guéri, le venin perdant alors toute sa force.</str>
-				<str>À Césarée de Palestine, saint Adrien martyr. Durant la persécution de l'empereur Dioclétien et par ordre du préfet Firmilien, il fut d'abord exposé à un lion, à cause de sa Foi au Christ, puis on lui perça la gorge d'un coup d'épée et il reçut ainsi la couronne du martyre.</str>
+				<str>À Antioche, l'anniversaire de saint Phocas, martyr. Après de nombreux outrages subis pour le nom du Rédempteur, il triompha heureusement de l'antique serpent ; ce qui est confirmé actuellement encore aux yeux des populations par le fait que quiconque, ayant été mordu par un serpent, vient toucher avec Foi la porte de la basilique du martyr, se trouve aussitôt guéri, le venin perdant alors toute sa force.</str>
+				<str>À Césarée de Palestine, saint Adrien, martyr. Durant la persécution de l'empereur Dioclétien et par ordre du préfet Firmilien, il fut d'abord exposé à un lion, à cause de sa Foi au Christ, puis on lui perça la gorge d'un coup d'épée et il reçut ainsi la couronne du martyre.</str>
 				<str>Le même jour, la passion de saint Eusèbe, officier du palais, et de neuf autres martyrs.</str>
-				<str>À Césarée de Palestine, saint Théophile évêque, qui, sous l'empereur Sévère, se rendit remarquable par sa sagesse et l'intégrité de sa vie.</str>
+				<str>À Césarée de Palestine, saint Théophile, évêque, qui, sous l'empereur Sévère, se rendit remarquable par sa sagesse et l'intégrité de sa vie.</str>
 				<str>Sur le bord du Jourdain, également en Palestine, saint Gérasime, anachorète et abbé, qui fut célèbre au temps de l'empereur Zénon.</str>
-				<str>À Naples, en Campanie, la mise au tombeau de saint Jean Joseph de la Croix, prêtre de l'Ordre des Frères Mineurs et confesseur. Par son zèle il fut l'émule des saints François d'Assise et Pierre d'Alcantara, et ajouta une nouvelle gloire à l'Ordre séraphique. Il a été inscrit au catalogue des saints par le pape Grégoire XVI.</str>
+				<str>À Naples, en Campanie, la mise au tombeau de saint Jean-Joseph de la Croix, prêtre de l'Ordre des Frères Mineurs et confesseur. Par son zèle il fut l'émule des saints François d'Assise et Pierre d'Alcantara, et ajouta une nouvelle gloire à l'Ordre séraphique. Il a été inscrit au catalogue des saints par le pape Grégoire XVI.</str>
 			</list>
 			<list>
 				<str>Les saintes Perpétue et Félicité martyres, qui, le lendemain de ce jour, reçurent du Seigneur la glorieuse couronne du martyre.</str>
@@ -764,7 +764,7 @@
 				<str>À Paris, sainte Louise de Marillac, veuve Le Gras, fondatrice, avec saint Vincent de Paul, de la Société des Filles de la Charité. Animée d'un très grand dévouement pour le soulagement des indigents, elle a été inscrite sur la liste des Saintes par le pape Pie XI.</str>
 			</list>
 			<list>
-				<str>À Rome, la passion de saint Cyriaque diacre. Après une longue et rigoureuse prison, il fut couvert de poix en fusion, étendu sur une claie, tiré violemment avec des cordes de nerfs, meurtri de coups de bâton et enfin, avec Large, Smaragde et vingt autres, décapité par ordre de Maximien. La fête des saints Cyriaque, Large et Smaragde se célèbre le 6 des ides d'août (8 août), jour où les corps de ces vingt trois martyrs furent exhumés par le bienheureux pape Marcel et reçurent de lui une honorable sépulture.</str>
+				<str>À Rome, la passion de saint Cyriaque diacre. Après une longue et rigoureuse prison, il fut couvert de poix en fusion, étendu sur une claie, tiré violemment avec des cordes de nerfs, meurtri de coups de bâton et enfin, avec Large, Smaragde et vingt autres, décapité par ordre de Maximien. La fête des saints Cyriaque, Large et Smaragde se célèbre le 6 des ides d'août (8 août), jour où les corps de ces vingt-trois martyrs furent exhumés par le bienheureux pape Marcel et reçurent de lui une honorable sépulture.</str>
 				<str>À Aquilée, l'anniversaire des bienheureux Hilaire évêque, et Tatien diacre. Sous l'empereur Numérien et le préfet Béroine, ils endurèrent le supplice du chevalet et plusieurs autres tourments, avec Félix, Large et Denis, et accomplirent ainsi leur martyre.</str>
 				<str>En Lycaonie, saint Papas martyr. Pour la Foi du Christ, il fut flagellé, déchiré avec des ongles de fer, contraint de marcher avec des chaussures garnies intérieurement de pointes, puis attaché à un arbre, où il expira. L'arbre jusque là stérile donna désormais des fruits.</str>
 				<str>À Anazarbe, en Cilicie, saint Julien martyr, qui sous le préfet Marcien, fut longtemps torturé. À la fin on l'enferma dans un sac avec des serpents et on le jeta à la mer.</str>
@@ -1278,7 +1278,7 @@
 				<str>À Auxerre, saint Curcodème diacre.</str>
 			</list>
 			<list>
-				<str>Saint Pie V, de l'Ordre des Frères Prêcheurs, pape et confesseur. Il s'endormit dans le Seigneur le jour des calendes de ce mois (1er mai).</str>
+				<str>Saint Pie V, de l'Ordre des Frères Prêcheurs, pape et confesseur. Il s'endormit dans le Seigneur le jour des calendes de ce mois (Ier mai).</str>
 				<str>À Rome, saint Silvain martyr.</str>
 				<str>À Rome encore, sainte Crescentienne martyre.</str>
 				<str>À Licate, en Sicile, saint Ange, de l'Ordre des Carmes, prêtre et martyr. Il fut massacré par les hérétiques pour la défense de la Foi Catholique.</str>
@@ -1377,7 +1377,7 @@
 			</list>
 			<list>
 				<str>Saint Robert Bellarmin, de la Compagnie de Jésus, cardinal, et pendant un temps, évêque de Capoue, confesseur et docteur de l'Église. Son anniversaire est mentionné le 15 des calendes d'octobre (17 septembre).</str>
-				<str>À Rome, la dédicace de l'église Sainte-Marie-aux-Martyrs, rite accompli par le bienheureux pape Boniface IV, qui purifia cet antique temple dédié à tous les dieux, sous le nom de Panthéon, puis le consacra en l'honneur de la bienheureuse Vierge Marie et de tous les martyrs, au temps de l'empereur Phocas. Dans la suite, le souverain pontife Grégoire IV décida que l'anniversaire solennel de cette dédicace se célébrerait aux calendes de novembre (1er novembre), et en l'honneur de tous les Saints.</str>
+				<str>À Rome, la dédicace de l'église Sainte-Marie-aux-Martyrs, rite accompli par le bienheureux pape Boniface IV, qui purifia cet antique temple dédié à tous les dieux, sous le nom de Panthéon, puis le consacra en l'honneur de la bienheureuse Vierge Marie et de tous les martyrs, au temps de l'empereur Phocas. Dans la suite, le souverain pontife Grégoire IV décida que l'anniversaire solennel de cette dédicace se célébrerait aux calendes de novembre (Ier novembre), et en l'honneur de tous les Saints.</str>
 				<str>À Constantinople, le bienheureux Muce, prêtre et martyr. Sous l'empereur Dioclétien et le proconsul Laodice, il eut beaucoup de peines et tourments à souffrir pour la confession du Christ, à Amphipolis, ville de Macédoine. Emmené ensuite à Byzance, il y fut condamné à la peine capitale.</str>
 				<str>À Alexandrie, la commémoraison de plusieurs saints martyrs que les ariens mirent à mort dans l'église de saint Théonas, en haine de la Foi Catholique.</str>
 				<str>À Héraclée, en Thrace, sainte Glycère, martyre romaine. Sous l'empereur Antonin et le préfet Sabin, elle fut éprouvée par de nombreux et cruels tourments, dont elle sortit saine et sauve par la protection divine ; elle fut enfin exposée aux bêtes, et sous la morsure de l'une d'elles rendit son âme à Dieu.</str>
@@ -1724,7 +1724,7 @@
 				<str>En Chypre, saint Tryphille évêque.</str>
 			</list>
 			<list>
-				<str>Saint Basile, surnommé le Grand, confesseur et docteur de l'Église. Il s'endormit dans le Seigneur le jour des calendes de janvier (1er janvier) ; mais il est principalement honoré en ce jour, où il fut ordonné évêque de Césarée de Cappadoce.</str>
+				<str>Saint Basile, surnommé le Grand, confesseur et docteur de l'Église. Il s'endormit dans le Seigneur le jour des calendes de janvier (Ier janvier) ; mais il est principalement honoré en ce jour, où il fut ordonné évêque de Césarée de Cappadoce.</str>
 				<str>À Samarie en Palestine, le prophète saint Elisée. Saint Jérôme rapporte que son sépulcre, où repose aussi le prophète Abdias, fait frémir les démons.</str>
 				<str>À Syracuse, en Sicile, saint Marcien évêque, qui fut ordonné par le bienheureux apôtre Pierre, et qui, après avoir prêché l'Évangile, fut massacré par les Juifs.</str>
 				<str>À Cordoue, en Espagne, les saints martyrs Anastase prêtre, Félix moine, et Digne vierge.</str>
@@ -1833,7 +1833,7 @@
 			<list>
 				<str>La Nativité de saint Jean Baptiste, précurseur du Seigneur, fils des saints Zacharie et élisabeth. Il fut rempli du Saint-Esprit dès le sein de sa mère.</str>
 				<str>À Rome, la commémoraison de nombreux saints martyrs, que l'empereur Néron, pour détourner de sa personne l'odieux d'avoir incendié la Ville, accusa faussement de ce forfait. Il les fit cruellement périr par divers genres de mort  : les uns, revêtus de peaux de bêtes furent exposés aux morsures des chiens ; les autres crucifiés ; d'autres allumés en guise de torches, afin qu'à la chute du jour ils servissent à éclairer durant la nuit. Tous étaient disciples des Apôtres : ce furent là les prémices des martyrs, que l'église romaine, champ fertile en ce genre de fruits, offrit au Seigneur avant la mort des Apôtres.</str>
-				<str>À Rome encore, saint Fauste et vingt trois autres martyrs.</str>
+				<str>À Rome encore, saint Fauste et vingt-trois autres martyrs.</str>
 				<str>À Malines, en Brabant, la passion de saint Rombaut, évêque de Dublin et martyr, fils d'un roi d'écosse.</str>
 				<str>À Satala, en Arménie, sept frères martyrs : Orence, Héros, Pharnace, Firmin, Firme, Cyriaque et Longin, soldats, auxquels l'empereur Maximien fit retirer le baudrier parce qu'ils étaient chrétiens. Ils furent ensuite séparés les uns des autres, emmenés en divers lieux, où ils s'endormirent dans le Seigneur, accablés de douleur et de misères.</str>
 				<str>Au village de Créteil, dans le territoire de Paris, la passion des saints martyrs Agoard et Aglibert, avec beaucoup d'autres chrétiens de l'un et l'autre sexe.</str>
@@ -2162,7 +2162,7 @@
 			<list>
 				<str>À Tiro, sur le lac de Bolsena en Toscane, sainte Christine, vierge et martyre. Devenue Chrétienne, elle brisa les idoles d'or et d'argent de son père et en distribua les morceaux aux pauvres : son père ordonna de la déchirer à coups de fouet, de la tourmenter par les supplices les plus cruels, et de la jeter dans le lac, une grosse pierre au cou ; mais un Ange la délivra. Plus tard, un autre juge ayant succédé à son père, elle subit avec constance de plus grandes cruautés ; enfin sous le préfet Julien, après avoir été jetée dans une fournaise ardente, où elle demeura cinq jours sans éprouver de mal, après avoir, par la puissance du Christ, triomphé des serpents, elle eut la langue coupée, fut percée de flèches, et parvint ainsi au terme de son martyre.</str>
 				<str>À Rome, sur la voie Tiburtine, saint Vincent martyr.</str>
-				<str>À Amiterne, cité des Vestins, la passion de quatre-vingt trois saints soldats.</str>
+				<str>À Amiterne, cité des Vestins, la passion de quatre-vingt-trois saints soldats.</str>
 				<str>À Merida, en Espagne, saint Victor, homme de guerre ; avec ses deux frères Stercace et Antinogène, il consomma son martyre par divers supplices.</str>
 				<str>De plus, les saints martyrs Ménée et Capiton.</str>
 				<str>En Lycie, les saintes martyres Nicéta et Aquiline. Elles furent converties au Christ par la prédication du bienheureux martyr Christophe ; et, décapitées, elles remportèrent la palme du martyre.</str>
@@ -2290,7 +2290,7 @@
 			<list>
 				<str>À Rome, sur le Mont Esquilin, la dédicace de la basilique de Sainte-Marie-des-Neiges.</str>
 				<str>À Châlons-sur-Marne, en Gaule, saint Memmie, citoyen romain. Sacré évêque de cette ville par l'Apôtre saint Pierre, il amena à la vérité de l'Évangile le peuple confié à ses soins.</str>
-				<str>À Rome, la passion de vingt trois saints martyrs, qui, durant la persécution de Dioclétien, furent décapités sur la voie Salaria antique, et ensevelis au même lieu, près de la colline des Concombres.</str>
+				<str>À Rome, la passion de vingt-trois saints martyrs, qui, durant la persécution de Dioclétien, furent décapités sur la voie Salaria antique, et ensevelis au même lieu, près de la colline des Concombres.</str>
 				<str>À Ascoli, en Picenum, saint Emygde, évêque et martyr. Ordonné évêque par le pape saint Marcel, et envoyé dans ce lieu pour y prêcher l'Évangile, il y confessa le Christ et reçut la couronne du martyre sous l'empereur Dioclétien.</str>
 				<str>À Antioche, saint Eusigne soldat. À l'âge de cent dix ans, il rappela à Julien l'Apostat la Foi de Constantin le Grand sous lequel il avait combattu, et lui reprocha d'avoir déserté le culte de ses pères ; ce qui lui valut d'être décapité par ordre de ce prince.</str>
 				<str>De plus, les saints martyrs Egyptiens Cantide, Cantidien et Sobel.</str>
@@ -2544,7 +2544,7 @@
 			</list>
 			<list>
 				<str>Saint Joseph Calasanz, prêtre et confesseur, qui fonda l'Ordre des Pauvres Clercs Réguliers de la Mère de Dieu des écoles pies, et s'endormit dans le Seigneur le 8 des calendes de septembre (25 août).</str>
-				<str>À Potenza, en Lucanie, la passion des saints Aronce, Honorat, Fortunat et Sabinien, fils des saints Boniface et Thècle ; ils furent condamnés à la peine capitale par le juge Valérien, sous l'empereur Maximien. Leur fête et celle de leurs huit autres frères martyrs se célèbre aux calendes de septembre (1er septembre).</str>
+				<str>À Potenza, en Lucanie, la passion des saints Aronce, Honorat, Fortunat et Sabinien, fils des saints Boniface et Thècle ; ils furent condamnés à la peine capitale par le juge Valérien, sous l'empereur Maximien. Leur fête et celle de leurs huit autres frères martyrs se célèbre aux calendes de septembre (Ier septembre).</str>
 				<str>À Bergame, saint Narne, qui fut baptisé, et ordonné premier évêque de cette ville par saint Barnabé.</str>
 				<str>À Capoue, l'anniversaire de saint Ruf, évêque et martyr. De famille patricienne, il fut baptisé avec toute sa famille par le bienheureux Apollinaire, disciple de saint Pierre.</str>
 				<str>Dans la même ville, les saints martyrs Ruf et Carpophore, qui souffrirent sous Dioclétien et Maximien.</str>
@@ -2561,7 +2561,7 @@
 			<list>
 				<str>À Hippone Royale, en Afrique, l'anniversaire de saint Augustin évêque, confesseur, et docteur très éminent de l'Église. Converti à la Foi catholique et baptisé par le bienheureux évêque Ambroise, il la défendit vigoureusement contre les manichéens et les autres hérétiques ; puis, après s'être livré à beaucoup d'autres travaux pour l'Église de Dieu, il alla au ciel recevoir sa récompense. Ses restes furent d'abord portés d'Hippone en Sardaigne par crainte des barbares ; dans la suite, le roi des Lombards Luitprand, les fit transférer à Pavie, où elles furent inhumées avec honneur.</str>
 				<str>À Rome, l'anniversaire de saint Hermès, personnage illustre. D'après les Actes du bienheureux pape Alexandre, il fut d'abord enfermé dans une prison, puis, avec plusieurs autres, fut frappé du glaive sous le juge Aurélien et consomma ainsi son martyre.</str>
-				<str>À Venosa, dans la Pouille, la passion des saints Septimin, Janvier et Félix, fils des saints Boniface et Thècle : ils furent décapités par ordre du juge Valérien, sous l'empereur Maximien. Leur fête, avec celle de leurs neuf autres frères martyrs, se célèbre aux calendes de septembre (1er septembre).</str>
+				<str>À Venosa, dans la Pouille, la passion des saints Septimin, Janvier et Félix, fils des saints Boniface et Thècle : ils furent décapités par ordre du juge Valérien, sous l'empereur Maximien. Leur fête, avec celle de leurs neuf autres frères martyrs, se célèbre aux calendes de septembre (Ier septembre).</str>
 				<str>À Brioude, en Auvergne, la passion de saint Julien martyr, compagnon du tribun saint Ferréol. Servant secrètement le Christ sous l'habit militaire, il fut arrêté par des soldats durant la persécution de Dioclétien, eut la gorge tranchée et subit une mort cruelle.</str>
 				<str>À Constance, en Germanie, saint Pélage martyr, qui fut décapité et reçut ainsi la couronne du martyre, sous l'empereur Numérien et le juge Evilasie.</str>
 				<str>À Salerne, les saints martyrs Fortunat, Caïus et Anthès, décapités sous l'empereur Dioclétien et le proconsul Léonce.</str>
@@ -2572,7 +2572,7 @@
 			<list>
 				<str>La Décollation de saint Jean-Baptiste, à qui Hérode fit trancher la tête, vers la fête de Pâques. La mémoire solennelle de ce fait se célèbre néanmoins en ce jour, où la tête vénérable du Précurseur fut trouvée pour la seconde fois ; dans la suite, ce chef fut transporté à Rome et déposé dans l'église Saint-Silvestre, au Champ de Mars, où les fidèles lui témoignent la plus grande vénération.</str>
 				<str>À Rome, sur le mont Aventin, l'anniversaire de sainte Sabine martyre, qui, frappée du glaive sous l'empereur Adrien, mérita la palme du martyre.</str>
-				<str>À Veliniano, sur les confins de la Pouille, la passion des saints Vital, Sator et Reposite, fils des saints Boniface et Thècle, condamnés à la peine capitale par le juge Valérien, sous l'empereur Maximien. Leur fête et celle de leurs neuf autres frères martyrs se célèbre aux calendes de septembre (1er septembre).</str>
+				<str>À Veliniano, sur les confins de la Pouille, la passion des saints Vital, Sator et Reposite, fils des saints Boniface et Thècle, condamnés à la peine capitale par le juge Valérien, sous l'empereur Maximien. Leur fête et celle de leurs neuf autres frères martyrs se célèbre aux calendes de septembre (Ier septembre).</str>
 				<str>À Rome, sainte Candide, vierge et martyre, dont le corps fut transféré par le bienheureux pape Pascal Ier, dans l'église Sainte-Praxède.</str>
 				<str>À Constantinople, les saints martyrs Hypace, évêque d'Asie, et André prêtres tous deux, pour le culte des saintes images, eurent, sous Léon l'Isaurien, la barbe enduite de poix, puis brûlée, la peau de la tête arrachée, et furent ensuite égorgés.</str>
 				<str>À Antioche, l'anniversaire des saints martyrs Nicéas et Paul.</str>
@@ -3810,7 +3810,7 @@
 				<str>À Verceil, l'ordination de saint Eusèbe, évêque et martyr.</str>
 			</list>
 			<list>
-				<str>Saint Eusèbe, évêque de Verceil et martyr, dont l'anniversaire est mentionné le jour des calendes d'août (1er août) et l'ordination le 18 des calendes de janvier (15 décembre).</str>
+				<str>Saint Eusèbe, évêque de Verceil et martyr, dont l'anniversaire est mentionné le jour des calendes d'août (Ier août) et l'ordination le 18 des calendes de janvier (15 décembre).</str>
 				<str>Les trois saints enfants, Ananie, Azarias et Misael, dont les corps furent inhumés dans une grotte, près de Babylone.</str>
 				<str>À Ravenne, les saints martyrs Valentin, officier militaire, son fils Concorde, Naval et Agricole, qui souffrirent pour le Christ durant la persécution de Maximien.</str>
 				<str>À Formie, en Campanie (aujourd'hui le Latium), sainte Albine, vierge et martyre, sous l'empereur Dèce.</str>
@@ -3852,7 +3852,7 @@
 			</list>
 			<list>
 				<str>À Rome, l'anniversaire de saint Zéphyrin, pape et martyr. Sa fête se célèbre le 7 des calendes de septembre (26 août).</str>
-				<str>De plus à Rome, la passion de saint Ignace, évêque et martyr : le troisième après le bienheureux Apôtre Pierre, il gouverna l'église d'Antioche. Durant la persécution de Trajan, il fut condamné aux bêtes et envoyé à Rome chargé de chaines  : là, au milieu du Sénat qui siégeait autour de lui, il fut d'abord soumis à d'horribles supplices, puis exposé aux lions, qui le broyèrent sous leurs dents et en firent une hostie du Christ. Sa fête se célèbre le jour des calendes de février (1er février).</str>
+				<str>De plus à Rome, la passion de saint Ignace, évêque et martyr : le troisième après le bienheureux Apôtre Pierre, il gouverna l'église d'Antioche. Durant la persécution de Trajan, il fut condamné aux bêtes et envoyé à Rome chargé de chaines  : là, au milieu du Sénat qui siégeait autour de lui, il fut d'abord soumis à d'horribles supplices, puis exposé aux lions, qui le broyèrent sous leurs dents et en firent une hostie du Christ. Sa fête se célèbre le jour des calendes de février (Ier février).</str>
 				<str>À Rome encore, les saints martyrs Libérat et Bajule.</str>
 				<str>En Arabie, les saints prêtres et martyrs Eugène et Macaire. Pour avoir repris de son impiété Julien l'Apostat, ils furent par son ordre cruellement meurtris de coups, puis relégués dans un vaste désert, où on les fit mourir par le glaive.</str>
 				<str>À Alexandrie, les saints soldats et martyrs Ammon, Zénon, Ptolémée, Ingène et Théophile. Étant au service du tribunal, et voyant un chrétien qui commençait à chanceler dans les tortures et sur le point de renier sa Foi, ils s'efforçaient, par leur contenance, leurs regards et des signes de tête, de l'encourager à demeurer ferme. Tout le peuple s'étant mis àcrier contre eux, ils s'élancèrent au milieu de l'assemblée et se déclarèrent chrétiens. Leur victoire fut un glorieux triomphe pour le Christ, qui leur avait inspiré cette résolution magnanime.</str>
