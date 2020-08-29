@@ -75,10 +75,12 @@ Page {
                             onClicked: {
                                 calendar.showPreviousMonth()
                                 feast.changeDate(calendar.visibleYear, calendar.visibleMonth + 1, 1)    // month begin to 0 not 1 in QML !
-                                if (calendar.today.getMonth() == calendar.visibleMonth){
+                                if (calendar.today.getMonth() == calendar.visibleMonth && calendar.today.getFullYear() == calendar.visibleYear){
+                                    delete calendar.selectedDate
                                     calendar.selectedDate = new Date(calendar.visibleYear, calendar.visibleMonth, calendar.today.getDate())
                                 }
                                 else{
+                                    delete calendar.selectedDate
                                     calendar.selectedDate = new Date(calendar.visibleYear, calendar.visibleMonth, 1)
                                 }
                             }
@@ -107,10 +109,12 @@ Page {
                             onClicked: {
                                 calendar.showNextMonth()
                                 feast.changeDate(calendar.visibleYear, calendar.visibleMonth + 1, 1)    // month begin to 0 not 1 in QML !
-                                if (calendar.today.getMonth() == calendar.visibleMonth){
+                                if (calendar.today.getMonth() == calendar.visibleMonth && calendar.today.getFullYear() == calendar.visibleYear){
+                                    delete calendar.selectedDate
                                     calendar.selectedDate = new Date(calendar.visibleYear, calendar.visibleMonth, calendar.today.getDate())
                                 }
                                 else{
+                                    delete calendar.selectedDate
                                     calendar.selectedDate = new Date(calendar.visibleYear, calendar.visibleMonth, 1)
                                 }
                             }

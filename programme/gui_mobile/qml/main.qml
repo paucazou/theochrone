@@ -7,8 +7,8 @@ import QtGraphicalEffects 1.14
 ApplicationWindow {
     id: window
     visible: true
-    width: 640
-    height: 480
+    width: 450
+    height: 800
     title: qsTr("Theochrone")
     color: "#55ACEE"
 
