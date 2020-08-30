@@ -11,6 +11,7 @@ sys.path.append(programme)
 sys.path.append(chemin)
 import annus
 
+from configparser import ConfigParser
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine, qmlRegisterType, QQmlListProperty
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, pyqtProperty, QVariant, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
@@ -22,6 +23,11 @@ import qml_rcc
 # a set of years from 1600 to 4100
 comboYears = list(range(1600,4100))
 
+# set all available language, using for Settings and SearchPage
+list_lang = ["Roman","Australian","American","Brazilian","Canadian","English","French","New-Zealander","Polish","Portugese","Scottish","Spanish","Welsh"]
+
+# a set of month, using for SearchPage
+list_month = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]
 
 class App(QApplication):
     def __init__(self, args):
@@ -32,8 +38,11 @@ class App(QApplication):
 
         # Communication with QML
         self.engine.rootContext().setContextProperty("comboYears", comboYears)
+        self.engine.rootContext().setContextProperty("listLang", list_lang)
+        self.engine.rootContext().setContextProperty("listMonth", list_month)
 
         # Set the calendar on the main page
+        self.settings = Settings()
         self.feast = ListElements('roman', 1962)
         self.engine.rootContext().setContextProperty("feast", self.feast)
 
@@ -60,25 +69,42 @@ class ListElements(QObject):
     def getData(self, index):
         self.dictio = {}
 
-        # separate nameFest and typeFest
+        # Separate nameFest and typeFest
         list_str = str(self.lfeast[index]).split(",")
         if len(list_str) == 1:
             list_str += list_str[0]
 
-        # Fill all data about the fest
+        # Select the good icon
+        color = self.lfeast[index].couleur
+        if color == "blanc":
+            icon_path = "qrc:/images/icons/saint_gold.png"
+        elif color == "vert":
+            icon_path = "qrc:/images/icons/saint_green.png"
+        elif color == "rose":
+            icon_path = "qrc:/images/icons/saint_pink.png"
+        elif color == "violet":
+            icon_path = "qrc:/images/icons/saint_purple.png"
+        elif color == "rouge":
+            icon_path = "qrc:/images/icons/saint_red.png"
+        elif color == "noir":
+            icon_path = "qrc:/images/icons/saint_black.png"
+        else:
+            icon_path = "qrc:/images/icons/saint.png"
+
+        # Fill all data in a dict about the fest
         self.dictio["nameFest"] = list_str[0]
         self.dictio["typeFest"] = list_str[1]
-        self.dictio["srcImg"] = "qrc:/images/icons/saint_gold.png"
+        self.dictio["srcImg"] = icon_path
         self.dictio["srcImgSaint"] = "qrc:/images/background/default_image_saint.png"
-        self.dictio["proper"] = self.lfeast[index].propre
+        self.dictio["proper"] = str(self.lfeast[index].propre).capitalize()
         self.dictio["edition"] = "1962"
-        self.dictio["celebration"] = str(self.lfeast[index].celebree)
+        self.dictio["celebration"] = str(self.lfeast[index].celebree).capitalize()
         self.dictio["classe"] = str(self.lfeast[index].degre)
-        self.dictio["liturgicalColor"] = self.lfeast[index].couleur
-        self.dictio["temporal"] = str(self.lfeast[index].temporal)
-        self.dictio["sanctoral"] = str(self.lfeast[index].sanctoral)
-        self.dictio["liturgicalTime"] = self.lfeast[index].temps_liturgique()
-        self.dictio["transferredFest"] = str(self.lfeast[index].transferee)
+        self.dictio["liturgicalColor"] = str(self.lfeast[index].couleur).capitalize()
+        self.dictio["temporal"] = str(self.lfeast[index].temporal).capitalize()
+        self.dictio["sanctoral"] = str(self.lfeast[index].sanctoral).capitalize()
+        self.dictio["liturgicalTime"] = str(self.lfeast[index].temps_liturgique()).capitalize()
+        self.dictio["transferredFest"] = str(self.lfeast[index].transferee).capitalize()
         self.dictio["massText"] = self.lfeast[index].link
         return self.dictio
 
@@ -88,5 +114,20 @@ class ListElements(QObject):
         self.lcalendar(datetime.date.today().year)
         self.lfeast = self.lcalendar[datetime.date(year, month, day)]
         self.nbElements = len(self.lfeast)
-        print(year,month,day)
         self.changeSignal.emit(self.lcalendar)  # enable to update feast in QML
+
+class Settings(QObject):
+    def __init__(self):
+        QObject.__init__(self)
+        self.filePath = "gui_mobile/.settings.ini"
+        self.list_settings = ['','']
+        self.getSettings()
+
+    def getSettings(self):
+        if os.path.isfile(self.filePath):
+            file = ConfigParser()
+            file.read("gui_mobile/.settings.ini")
+            self.list_settings[0] = file.get('settings', 'language')
+            self.list_settings[1] = file.get('settings', 'proper')
+        else:
+            return
