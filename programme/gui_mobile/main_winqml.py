@@ -10,12 +10,15 @@ programme = os.path.abspath(chemin + '/..')
 sys.path.append(programme)
 sys.path.append(chemin)
 import annus
+import officia
 
 from configparser import ConfigParser
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine, qmlRegisterType, QQmlListProperty
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, pyqtProperty, QVariant, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
 from translation import *
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtWebEngineWidgets import QWebEnginePage
 
 # QML Resources
 import qml_rcc
@@ -97,13 +100,13 @@ class ListElements(QObject):
         self.dictio["srcImg"] = icon_path
         self.dictio["srcImgSaint"] = "qrc:/images/background/default_image_saint.png"
         self.dictio["proper"] = str(self.lfeast[index].propre).capitalize()
-        self.dictio["edition"] = "1962"
+        self.dictio["edition"] = str(self.lfeast[index].ordo)
         self.dictio["celebration"] = str(self.lfeast[index].celebree).capitalize()
         self.dictio["classe"] = str(self.lfeast[index].degre)
         self.dictio["liturgicalColor"] = str(self.lfeast[index].couleur).capitalize()
         self.dictio["temporal"] = str(self.lfeast[index].temporal).capitalize()
         self.dictio["sanctoral"] = str(self.lfeast[index].sanctoral).capitalize()
-        self.dictio["liturgicalTime"] = str(self.lfeast[index].temps_liturgique()).capitalize()
+        self.dictio["liturgicalTime"] = officia.affiche_temps_liturgique(self.lfeast[index]).capitalize()
         self.dictio["transferredFest"] = str(self.lfeast[index].transferee).capitalize()
         self.dictio["massText"] = self.lfeast[index].link
         return self.dictio

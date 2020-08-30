@@ -11,5 +11,6 @@
         <file>qml/CarouselFestView.qml</file>
         <file>qml/ListFestView.qml</file>
         <file>qml/ListModelExample.qml</file>
+        <file>qml/WebViewPage.qml</file>
     </qresource>
 </RCC>
