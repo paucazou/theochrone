@@ -50,6 +50,10 @@ Page {
                                 border.width: cB1.visualFocus ? 2 : 1
                                 radius: 3
                         }
+                        onCurrentIndexChanged: {
+                            translator.updateLanguage("EN")
+                            console.log("Langue changer via comboBox : currentIndex = " + cB1.currentIndex)
+                        }
                     }
                 }
             }

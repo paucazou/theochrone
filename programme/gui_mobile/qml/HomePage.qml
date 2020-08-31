@@ -8,7 +8,7 @@ import QtQuick.Layouts 1.12
 Page {
     id: home
 
-    title: qsTr("Theochrone")
+    title: qsTr("Théochrone")
 
     property bool myCarouselFestView: true
     onMyCarouselFestViewChanged: {
@@ -87,7 +87,7 @@ Page {
                         }
 
                         Label {
-                            text: styleData.title
+                            text: qsTr(styleData.title)
                             anchors.centerIn: parent
                             font.pixelSize: 20
                             font.capitalization: Font.Capitalize
@@ -121,7 +121,7 @@ Page {
                         }
                     }
 
-                    property var dayName: [qsTr("LUN"),qsTr("MAR"),qsTr("MER."),qsTr("JEU"),qsTr("VEN"),qsTr("SAM"),qsTr("DIM")]
+                    property var dayName: [qsTr("LUN"),qsTr("MAR"),qsTr("MER"),qsTr("JEU"),qsTr("VEN"),qsTr("SAM"),qsTr("DIM")]
 
                     dayOfWeekDelegate: Rectangle {
                         height: 30
@@ -144,12 +144,12 @@ Page {
                     dayDelegate: Rectangle {
                         Rectangle{
                             anchors.centerIn: parent
-                            width: parent.height > parent.width ? parent.width : parent.height
-                            height: parent.height > parent.width ? parent.width : parent.height
+                            width: parent.height > parent.width ? parent.width * 0.9 : parent.height * 0.9
+                            height: parent.height > parent.width ? parent.width * 0.9 : parent.height * 0.9
                             border.color: styleData.selected ? "#55ACEE" : "white"
                             border.width: 0.5
                             color: "transparent"
-                            radius: (parent.height / 2)
+                            radius: (parent.height * 0.9 / 2)
                             Rectangle{
                                 height: 4
                                 width: 4

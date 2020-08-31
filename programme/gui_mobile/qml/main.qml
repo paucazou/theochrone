@@ -9,7 +9,7 @@ ApplicationWindow {
     visible: true
     width: 450
     height: 800
-    title: qsTr("Theochrone")
+    title: qsTr("Théochrone")
     color: "#55ACEE"
 
     header: ToolBar {
@@ -192,7 +192,7 @@ ApplicationWindow {
                         color: "#DCDCDC"
                     }
                     ItemDelegate {
-                        text: qsTr("Site web")
+                        text: qsTr("Site internet")
                         width: parent.width
                         icon.source: "qrc:/images/icons/outline_public_black_48.png"
                         icon.color: "#55ACEE"

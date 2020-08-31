@@ -30,7 +30,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     Switch{
                         id: s1
-                        text: "Rechercher dans le martyrologue Romain"
+                        text: qsTr("Rechercher dans le martyrologue Romain")
                         width: parent.width
                         clip: true
                         contentItem: Text {
@@ -44,7 +44,7 @@ Page {
                     }
                     Switch{
                         id: s2
-                        text: "Inclure les messes Pro Aliquibus Locis"
+                        text: qsTr("Inclure les messes Pro Aliquibus Locis")
                         width: parent.width
                         clip: true
                         contentItem: Text {
@@ -62,7 +62,7 @@ Page {
                             right: parent.right
                         }
                         Text {
-                            text: qsTr("Proper")
+                            text: qsTr("Prope")
                             Layout.alignment: Qt.AlignVCenter
                         }
                         ComboBox{
@@ -164,7 +164,7 @@ Page {
                             }
                         }
                         Button{
-                            text: qsTr("OK")
+                            text: qsTr("Chercher")
                             Layout.fillWidth: true
                             Layout.fillHeight: true
                         }
@@ -198,7 +198,7 @@ Page {
                     anchors.margins: contentPadding
                     anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        text: qsTr("Rechercher une semaine toute entière")
+                        text: qsTr("Rechercher une semaine")
                         color: "#55ACEE"
                         font.pixelSize: 20
                         bottomPadding: 10
@@ -251,7 +251,7 @@ Page {
                             id: cB5
                             Layout.fillWidth: true
                             Layout.fillHeight: true
-                            model: ["Première semaine","Deuxième semaine","Troisième semaine","Quatrième semaine"]
+                            model: [qsTr("Première semaine"),qsTr("Deuxième semaine"),qsTr("Troisième semaine"),qsTr("Quatrième semaine")]
                             background: Rectangle {
                                     implicitWidth: 120
                                     implicitHeight: 40
@@ -261,7 +261,7 @@ Page {
                             }
                         }
                         Button{
-                            text: qsTr("OK")
+                            text: qsTr("Chercher")
                             Layout.fillWidth: true
                             Layout.fillHeight: true
                         }
@@ -295,7 +295,7 @@ Page {
                     anchors.margins: contentPadding
                     anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        text: qsTr("Rechercher un mois tout entier")
+                        text: qsTr("Rechercher un mois")
                         color: "#55ACEE"
                         font.pixelSize: 20
                         bottomPadding: 10
@@ -340,7 +340,7 @@ Page {
                         }
                     }
                     Button{
-                        text: qsTr("OK")
+                        text: qsTr("Chercher")
                         anchors{
                             left: parent.left
                             right: parent.right
@@ -375,7 +375,7 @@ Page {
                     anchors.margins: contentPadding
                     anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        text: qsTr("Rechercher une année toute entière")
+                        text: qsTr("Rechercher une année")
                         color: "#55ACEE"
                         font.pixelSize: 20
                         bottomPadding: 10
@@ -403,7 +403,7 @@ Page {
                         }
                     }
                     Button{
-                        text: qsTr("OK")
+                        text: qsTr("Chercher")
                         anchors{
                             left: parent.left
                             right: parent.right

@@ -16,9 +16,6 @@ from configparser import ConfigParser
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine, qmlRegisterType, QQmlListProperty
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, pyqtProperty, QVariant, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
-from translation import *
-from PyQt5.QtWebEngineWidgets import QWebEngineView
-from PyQt5.QtWebEngineWidgets import QWebEnginePage
 
 # QML Resources
 import qml_rcc
@@ -36,10 +33,14 @@ class App(QApplication):
     def __init__(self, args):
         QApplication.__init__(self, args)
 
+        # Install translator
+        self.translator = QmlTranslator(self)
+
         # set QML engine
         self.engine = QQmlApplicationEngine()
 
         # Communication with QML
+        self.engine.rootContext().setContextProperty("translator", self.translator)
         self.engine.rootContext().setContextProperty("comboYears", comboYears)
         self.engine.rootContext().setContextProperty("listLang", list_lang)
         self.engine.rootContext().setContextProperty("listMonth", list_month)
@@ -118,6 +119,28 @@ class ListElements(QObject):
         self.lfeast = self.lcalendar[datetime.date(year, month, day)]
         self.nbElements = len(self.lfeast)
         self.changeSignal.emit(self.lcalendar)  # enable to update feast in QML
+
+class QmlTranslator(QObject):
+    def __init__(self, app):
+        QObject.__init__(self)
+        self.app = app
+        self.mTranslator = QTranslator()
+        self.updateLanguage("EN")
+
+
+    @pyqtSlot(str)
+    def updateLanguage(self, lang):
+        if lang == "EN":
+            self.mTranslator.load("Theochrnone_en_EN.qm", "i18n")
+            self.app.installTranslator(self.mTranslator)
+        elif lang == "FR":
+            self.mTranslator.load("Theochrone_fr_FR.qm", "i18n")
+            self.app.installTranslator(self.mTranslator)
+        else:
+            self.app.removeTranslator(self.mTranslator)
+            print("removed translator")
+
+
 
 class Settings(QObject):
     def __init__(self):
