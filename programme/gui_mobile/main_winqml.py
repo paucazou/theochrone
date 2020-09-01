@@ -122,7 +122,7 @@ class ListElements(QObject):
     changeSignal = pyqtSignal(QVariant)
     @pyqtSlot(int, int, int)
     def changeDate(self, year, month, day):
-        self.lcalendar(datetime.date.today().year)
+        self.lcalendar(year)
         self.lfeast = self.lcalendar[datetime.date(year, month, day)]
         self.nbElements = len(self.lfeast)
         self.changeSignal.emit(self.lcalendar)  # enable to update feast in QML

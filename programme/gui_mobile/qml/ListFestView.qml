@@ -7,30 +7,29 @@ import QtGraphicalEffects 1.15
 Item {
     anchors.fill: parent
 
-    // MAJ data
+    // MAJ data on homeModel
     Connections {
         target: feast
 
         function onChangeSignal() {
-            model.clear()
+            homeModel.clear()
             for(var i = 0; i < feast.getNbElements(); i++){
                 if (feast.checkPal(i)){
-                    model.append(feast.getData(i))
+                    homeModel.append(feast.getData(i))
                 }
             }
         }
     }
 
-
     ListView{
         id: listView
         anchors.fill: parent
         model: ListModel{
-            id: model
+            id: homeModel
             Component.onCompleted: {
                 for(var i = 0; i < feast.getNbElements(); i++){
                     if (feast.checkPal(i)){
-                        model.append(feast.getData(i))
+                        homeModel.append(feast.getData(i))
                     }
                 }
             }
@@ -126,7 +125,6 @@ Item {
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        listView.currentIndex = index;
                         stackView.push("qrc:/qml/SaintInfoPage.qml");
                         stackView.currentItem.myFirstCurrentIndex = listView.currentIndex;
                     }
