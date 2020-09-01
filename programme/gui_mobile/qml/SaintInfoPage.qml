@@ -12,7 +12,9 @@ Page {
         function onChangeSignal() {
             model.clear()
             for(var i = 0; i < feast.getNbElements(); i++){
-                model.append(feast.getData(i))
+                if (feast.checkPal(i)){
+                    model.append(feast.getData(i))
+                }
             }
         }
     }
@@ -49,7 +51,9 @@ Page {
                 id: model
                 Component.onCompleted: {
                     for(var i = 0; i < feast.getNbElements(); i++){
-                        model.append(feast.getData(i))
+                        if (feast.checkPal(i)){
+                            model.append(feast.getData(i))
+                        }
                     }
                     swipeView.modelFullLoaded = true
                 }

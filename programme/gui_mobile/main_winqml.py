@@ -112,6 +112,13 @@ class ListElements(QObject):
         self.dictio["massText"] = self.lfeast[index].link
         return self.dictio
 
+    @pyqtSlot(int, result=QVariant)
+    def checkPal(self, index):
+        if self.lfeast[index].pal == True:
+            return False
+        else:
+            return True
+
     changeSignal = pyqtSignal(QVariant)
     @pyqtSlot(int, int, int)
     def changeDate(self, year, month, day):
