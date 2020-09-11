@@ -107,7 +107,7 @@ class ListElements(QObject):
         self.dictio["liturgicalColor"] = str(self.lfeast[index].couleur).capitalize()
         self.dictio["temporal"] = str(self.lfeast[index].temporal).capitalize()
         self.dictio["sanctoral"] = str(self.lfeast[index].sanctoral).capitalize()
-        self.dictio["liturgicalTime"] = officia.affiche_temps_liturgique(self.lfeast[index]).capitalize()
+        self.dictio["liturgicalTime"] = officia.affiche_temps_liturgique(self.lfeast[index], 'fr').capitalize()
         self.dictio["transferredFest"] = str(self.lfeast[index].transferee).capitalize()
         self.dictio["massText"] = self.lfeast[index].link
         return self.dictio
