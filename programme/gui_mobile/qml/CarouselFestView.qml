@@ -27,7 +27,7 @@ Item {
             top: parent.top
             left: parent.left
             right: parent.right
-            bottom: containerNameSaint.top
+            bottom: indicator.top
         }
         clip: true
         Repeater{
@@ -47,44 +47,40 @@ Item {
                     id: rectDelegate
                     anchors.fill: parent
                     color: "transparent"
-                    Text {
-                        anchors.centerIn: parent
-                        font.pointSize: 32
-                        text: index + 1
-                        color: "white"
-                    }
                     Image {
                         id: saintImage
                         source: srcImgSaint
                         fillMode: Image.PreserveAspectFit
-                        width: parent.width
-                        height: parent.height
+                        width: parent.width > parent.height ? parent.height * 0.9 : parent.width * 0.9
+                        height: parent.width > parent.height ? parent.height * 0.9 : parent.width * 0.9
+                        anchors.centerIn: parent
                         smooth: true
-                        visible: false
-                    }
-                    Rectangle{
-                        id: mask
-                        anchors.fill: saintImage
-                        color: "blue"
-                        radius: 10
-                        smooth: true
-                        visible: false
-                    }
-                    OpacityMask{
-                        anchors.fill: saintImage
-                        source: saintImage
-                        maskSource: mask
+
+                        layer.enabled: true
+                        layer.effect: OpacityMask {
+                            maskSource: Item {
+                                width: saintImage.width
+                                height: saintImage.height
+                                Rectangle {
+                                    anchors.centerIn: parent
+                                    width: saintImage.paintedWidth
+                                    height: saintImage.paintedHeight
+                                    radius: 10
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
     }
+
     PageIndicator{
         id: indicator
         currentIndex: swipeImageSaint.currentIndex
         count: repeater.count
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: swipeImageSaint.bottom
+        anchors.bottom: containerNameSaint.top
         visible: repeater.count > 1 ? true : false
     }
 
