@@ -9,7 +9,7 @@ ApplicationWindow {
     visible: true
     width: 450
     height: 800
-    title: qsTr("Theochrone")
+    title: qsTr("Théochrone")
     color: "#55ACEE"
 
     header: ToolBar {
@@ -50,10 +50,24 @@ ApplicationWindow {
             anchors.rightMargin: 5
             visible:  stackView.depth > 1 ? false : true
             Image {
+                id: rightIcon
                 source: "qrc:/images/icons/round_view_list_white_48.png"
                 anchors.centerIn: parent
                 width: parent.height * 0.5
                 height: parent.width * 0.5
+                Connections{
+                    target: stackView.currentItem
+                    ignoreUnknownSignals: true
+                    function onMyCarouselFestViewChanged() {
+                        if (rightIcon.source == "qrc:/images/icons/round_view_carousel_white_48.png"){
+                            rightIcon.source = "qrc:/images/icons/round_view_list_white_48.png"
+                        }
+                        else{
+                            rightIcon.source = "qrc:/images/icons/round_view_carousel_white_48.png"
+                        }
+
+                    }
+                }
             }
             onClicked: {
                 stackView.currentItem.myCarouselFestView = !stackView.currentItem.myCarouselFestView;
@@ -178,7 +192,7 @@ ApplicationWindow {
                         color: "#DCDCDC"
                     }
                     ItemDelegate {
-                        text: qsTr("Site web")
+                        text: qsTr("Site internet")
                         width: parent.width
                         icon.source: "qrc:/images/icons/outline_public_black_48.png"
                         icon.color: "#55ACEE"

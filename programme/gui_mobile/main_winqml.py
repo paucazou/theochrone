@@ -10,12 +10,12 @@ programme = os.path.abspath(chemin + '/..')
 sys.path.append(programme)
 sys.path.append(chemin)
 import annus
+import officia
 
 from configparser import ConfigParser
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine, qmlRegisterType, QQmlListProperty
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, pyqtProperty, QVariant, QAbstractListModel, QModelIndex, Qt, QTranslator, QObject, QCoreApplication
-from translation import *
 
 # QML Resources
 import qml_rcc
@@ -33,10 +33,14 @@ class App(QApplication):
     def __init__(self, args):
         QApplication.__init__(self, args)
 
+        # Install translator
+        self.translator = QmlTranslator(self)
+
         # set QML engine
         self.engine = QQmlApplicationEngine()
 
         # Communication with QML
+        self.engine.rootContext().setContextProperty("translator", self.translator)
         self.engine.rootContext().setContextProperty("comboYears", comboYears)
         self.engine.rootContext().setContextProperty("listLang", list_lang)
         self.engine.rootContext().setContextProperty("listMonth", list_month)
@@ -97,24 +101,53 @@ class ListElements(QObject):
         self.dictio["srcImg"] = icon_path
         self.dictio["srcImgSaint"] = "qrc:/images/background/default_image_saint.png"
         self.dictio["proper"] = str(self.lfeast[index].propre).capitalize()
-        self.dictio["edition"] = "1962"
+        self.dictio["edition"] = str(self.lfeast[index].ordo)
         self.dictio["celebration"] = str(self.lfeast[index].celebree).capitalize()
         self.dictio["classe"] = str(self.lfeast[index].degre)
         self.dictio["liturgicalColor"] = str(self.lfeast[index].couleur).capitalize()
         self.dictio["temporal"] = str(self.lfeast[index].temporal).capitalize()
         self.dictio["sanctoral"] = str(self.lfeast[index].sanctoral).capitalize()
-        self.dictio["liturgicalTime"] = str(self.lfeast[index].temps_liturgique()).capitalize()
+        self.dictio["liturgicalTime"] = officia.affiche_temps_liturgique(self.lfeast[index], 'fr').capitalize()
         self.dictio["transferredFest"] = str(self.lfeast[index].transferee).capitalize()
         self.dictio["massText"] = self.lfeast[index].link
         return self.dictio
 
+    @pyqtSlot(int, result=QVariant)
+    def checkPal(self, index):
+        if self.lfeast[index].pal == True:
+            return False
+        else:
+            return True
+
     changeSignal = pyqtSignal(QVariant)
     @pyqtSlot(int, int, int)
     def changeDate(self, year, month, day):
-        self.lcalendar(datetime.date.today().year)
+        self.lcalendar(year)
         self.lfeast = self.lcalendar[datetime.date(year, month, day)]
         self.nbElements = len(self.lfeast)
         self.changeSignal.emit(self.lcalendar)  # enable to update feast in QML
+
+class QmlTranslator(QObject):
+    def __init__(self, app):
+        QObject.__init__(self)
+        self.app = app
+        self.mTranslator = QTranslator()
+        self.updateLanguage("EN")
+
+
+    @pyqtSlot(str)
+    def updateLanguage(self, lang):
+        if lang == "EN":
+            self.mTranslator.load("Theochrnone_en_EN.qm", "i18n")
+            self.app.installTranslator(self.mTranslator)
+        elif lang == "FR":
+            self.mTranslator.load("Theochrone_fr_FR.qm", "i18n")
+            self.app.installTranslator(self.mTranslator)
+        else:
+            self.app.removeTranslator(self.mTranslator)
+            print("removed translator")
+
+
 
 class Settings(QObject):
     def __init__(self):

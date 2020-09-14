@@ -1,9 +1,9 @@
 import QtQuick 2.0
 
 // 5 points
-//    PathLine | PathQuad  | PathLine
+//    PathLine  |   PathQuad   |    PathLine
 // * ---------- *                 * ---------- *
-//                   ----- * -----
+//                ----- * -----
 
 Path {
     // Point 1
